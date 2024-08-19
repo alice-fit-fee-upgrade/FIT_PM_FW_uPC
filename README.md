@@ -24,16 +24,16 @@ FPGA status is stored at 0x215b with starting value equal zero.
     2. Set FPGA init pin (FPGA_INIT_B), clear then set FPGA program pin (FPGA_PROGRAM_B), delay 2,5s.	
 4. Wait for FPGA done pin (FPGA_DONE_B) then:
     1. Set 0x2157 4-th bit
-    2. Set FPGA reg 0x80 to 0xAF -> EEPROM values (0x21cf - 0x222e)
+    2. Set FPGA reg 0x80 to 0xAF -> EEPROM values (0x6C - 0xCA / 0x21cf - 0x222e)
 5. If xmega_PB7 is set (FPGA_RST) -> proceed setting FPGA regs:
     1. 0xF7 -> MCU timestamp
     2. 0x7C -> Hardcoded value: 0x0000
-    3. 0x00 -> EEPROM value (0x222f)
-    4. 0x01 to 0x0C -> EEPROM values (0x21b7 - 0x22ce)
-    5. 0x25 to 0x3C -> EEPROM values (0x2187 - 0x21b6)
-    6. 0x3D -> EEPROM value (0x2230)
+    3. 0x00 -> EEPROM value (0xCC / 0x222f)
+    4. 0x01 to 0x0C -> EEPROM values (0x54 - 0x6A / 0x21b7 - 0x22ce)
+    5. 0x25 to 0x3C -> EEPROM values (0x24 - 0x52 / 0x2187 - 0x21b6)
+    6. 0x3D -> EEPROM value (0xCE / 0x2230)
     7. 0xBC -> MEM value (0x2160)
-    8. 0xBD -> EEPROM value (0x2132)
+    8. 0xBD -> EEPROM value (0xD0 / 0x2232)
     9. 0x7C -> Hardcoded value: 0xFFFF
 
 
