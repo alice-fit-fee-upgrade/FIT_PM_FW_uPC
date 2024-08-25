@@ -169,3 +169,39 @@ Some details about the peripherals the MCU ATxmega128a3 is communicating with.
 | SZ		| Set CH CFD zero |
 | WR 		| Write settings to EEPROM|
 
+### Sample responses
+#### RC
+CH:    0 Lcal: 2190 TDC:     0 Time shift:   979 Range corr: 2048  2048  
+CH:    1 Lcal: 2240 TDC:     0 Time shift:   958 Range corr: 2048  2048  
+CH:    2 Lcal: 2520 TDC:     0 Time shift:   930 Range corr: 2048  2048  
+CH:    3 Lcal: 2420 TDC:     0 Time shift:   932 Range corr: 2048  2048  
+CH:    4 Lcal: 2500 TDC:     0 Time shift:   980 Range corr: 2048  2048  
+CH:    5 Lcal: 2365 TDC:     0 Time shift:  1022 Range corr: 2048  2048  
+CH:    6 Lcal: 2780 TDC:     0 Time shift:   915 Range corr: 2048  2048  
+CH:    7 Lcal: 2420 TDC:     0 Time shift:  1021 Range corr: 2048  2048  
+CH:    8 Lcal: 2225 TDC:     0 Time shift:  1020 Range corr: 2048  2048  
+CH:    9 Lcal: 2490 TDC:     0 Time shift:  1048 Range corr: 2048  2048  
+CH:   10 Lcal: 2190 TDC:     0 Time shift:   969 Range corr: 2048  2048  
+CH:   11 Lcal: 2300 TDC:     0 Time shift:   968 Range corr: 2048  2048  
+
+#### RF
+CH:    0 Treshold:   3.00 Shift:   3.25 Zero offs:   3.82 Delay 10.260  
+CH:    1 Treshold:   3.00 Shift:   2.65 Zero offs:   2.42 Delay  9.387  
+CH:    2 Treshold:   3.00 Shift:   3.00 Zero offs:   3.23 Delay  9.298  
+CH:    3 Treshold:   3.00 Shift:   3.05 Zero offs:   1.54 Delay  9.998  
+CH:    4 Treshold:   5.00 Shift:   3.20 Zero offs:   3.91 Delay 10.765  
+CH:    5 Treshold:   3.00 Shift:   2.30 Zero offs:   2.06 Delay  9.425  
+CH:    6 Treshold:   3.00 Shift:  -0.15 Zero offs:   3.81 Delay 10.025  
+CH:    7 Treshold:   3.00 Shift:   0.70 Zero offs:   3.17 Delay 10.682  
+CH:    8 Treshold:   3.00 Shift:  -0.30 Zero offs:   3.85 Delay 10.432  
+CH:    9 Treshold:   3.00 Shift:  -0.50 Zero offs:   1.84 Delay 11.462  
+CH:   10 Treshold:   3.00 Shift:   0.30 Zero offs:   1.59 Delay  9.807  
+CH:   11 Treshold:   3.00 Shift:   0.30 Zero offs:   2.23 Delay  9.714  
+Trigger window:  153  
+CFD sat. level: 4095  
+
+#### RS
+Board S/N: 1803 Flash Timestamp: 852AD92B  
+External power source: OK  
+Temperature    24.7 NORMAL  
+Board power OFF  
