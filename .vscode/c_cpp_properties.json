@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/lib/avr/include/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atxmega128a3u",
+                "DF_CPU=16000000UL",
+                "-0s"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
