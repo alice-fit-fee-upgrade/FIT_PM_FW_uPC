@@ -6,14 +6,17 @@
                 "${workspaceFolder}/**",
                 "/usr/lib/avr/include/"
             ],
-            "defines": [],
+            "defines": [
+                "__AVR_ATxmega128A3U__",
+                "__GNUC__ "
+            ],
             "compilerPath": "/usr/bin/avr-gcc",
             "compilerArgs": [
                 "-mmcu=atxmega128a3u",
                 "DF_CPU=16000000UL",
                 "-0s"
             ],
-            "cStandard": "c11",
+            "cStandard": "c17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.makefile-tools"

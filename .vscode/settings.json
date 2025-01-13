@@ -12,7 +12,9 @@
         "stdio.h": "c",
         "eeprom.h": "c",
         "console.h": "c",
-        "eeprom_driver.h": "c"
+        "eeprom_driver.h": "c",
+        "pgmspace.h": "c",
+        "sfr_defs.h": "c"
     },
     "todo-tree.tree.showBadges": false
 }
