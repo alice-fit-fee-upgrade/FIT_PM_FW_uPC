@@ -58,10 +58,10 @@ Some details about the peripherals the MCU ATxmega128a3 is communicating with.
 |10	|HSTROBE3	|PB4	| OUT CS		|		|		
 |11	|THS788_RESET	|PB5	| OUT RST		|		|
 |12	|THS788_OT_ALARM|PB6	| INT0 (overtemperature alarm)	|	|
-|16	|SYNC_A		|PC0	| ???			|**  **|
-|17	|SYNC_B		|PC1	| ???			|		|
-|18	|SYNC_C		|PC2	| ???			| 		|
-|19	|DD21_PWRDNB	|PC3	| ???			| **CDCF5801ADBQ(multiple)**|
+|16	|DAC_SYNC_A	|PC0	| OUT SYNC1..4		|**DAC8554IPW (x12)**|
+|17	|DAC_SYNC_B	|PC1	| OUT SYNC5..8		|		|
+|18	|DAC_SYNC_C	|PC2	| OUT SYNC9..12		| 		|
+|19	|DD21_PWRDNB	|PC3	| OUT PWRDNB		| **CDCF5801ADBQ(multiple)**|
 |21 	|DA22_DIN	|PC5 	| SPI MOSI		| **CDCE62005RGZT & DAC8554IPW(multiple)**|
 |22 	|DD3_SPI_MISO	|PC6 	| SPI MISO 		| **CDCE62005RGZT**|
 |23 	|DD3_SPI_CLK	|PC7 	| SPI SCK		|		|
@@ -71,9 +71,9 @@ Some details about the peripherals the MCU ATxmega128a3 is communicating with.
 |36 	|Xmega_PE0	|PE0 	| ??? 			| **FPGA**	|
 |26 	|Xmega_PD0	|PD0 	| ??? 			|		|
 |27 	|Xmega_PD1	|PD1 	| OUT (PROGRAM_B_0) 	|		|
-|28	|Xmega_PD2	|PD2 	| ??? (INIT_B_0)	|		|
-|29	|DD13D_AB	|PD3	| ??? (DONE_0)		|		|
-|20	|DD18_60_12	|PC4	| ???			| 		|
+|28	|Xmega_PD2	|PD2 	| FPGA (INIT_B_0)	|		|
+|29	|DD13D_AB	|PD3	| FPGA (DONE_0)		|		|
+|20	|DD18_60_12	|PC4	| FPGA (EVENT_out) 			| 		|
 |9	|Xmega_PB7	|PB7	| ???			|		|
 |30	|DD28A_OUT	|PD4	| IN ??? 		| **HDMI13**	|
 |31	|DD28C_OUT	|PD5 	| IN ???		| **HDMI16**	|
