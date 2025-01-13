@@ -2,46 +2,47 @@
 
 void io_init(void)
 {
-    // PORTA
+    /* PORT A*/
+    /* LEDS - PA0, PA5..7 */
+    /* TEMP SENSOR  - PA1..4 */
     PORT_SetDirection(&PORTA, 0b11111011);
     PORT_SetPins(&PORTA, 0b11110011);
-    PORT_ConfigurePins(&PORTA, 0b00011010, true, false, 0, 0);
-    PORT_ConfigurePins(&PORTA, 0b00000100, false, false, PORT_OPC_PULLUP_gc, 0);
+    PORT_ConfigurePins(&PORTA, (PIN1_bm | PIN3_bm | PIN4_bm), true, false, PORT_OPC_TOTEM_gc, 0);
+    PORT_ConfigurePins(&PORTA, PIN2_bm, false, false, PORT_OPC_PULLUP_gc, 0);
 
-    // PORTB
-    PORT_SetDirection(&PORTB, 0b00011111);
-    PORT_SetPins(&PORTB, 0b00010000);
-    PORT_ConfigurePins(&PORTB, 0b01100000, false, false, PORT_OPC_PULLDOWN_gc, 0);
+    /* PORTB */
+    /* THS788 - PB0..6 */
+    /* FPGA - PB7 */
+    PORT_ConfigurePins(&PORTB, 0b01000000, false, false, PORT_OPC_TOTEM_gc, PORT_ISC_FALLING_gc);
+    PORT_ConfigureInterrupt0(&PORTB, PORT_INT0LVL_OFF_gc, PIN7_bm);
 
-    // PORTC
-    PORT_ConfigurePins(&PORTC, 0b00000011, false, false, PORT_OPC_WIREDAND_gc, 0);
-    PORT_ConfigurePins(&PORTC, 0b00011000, false, false, 0, 0);
-    PORT_ConfigureInterrupt0(&PORTC, PORT_INT0LVL_OFF_gc, 0b00001100);
+    /* PORTC */
+    PORT_ConfigurePins(&PORTC, PIN3_bm, true, false, PORT_OPC_TOTEM_gc, 0);
+    PORT_ConfigurePins(&PORTC, PIN4_bm, false, false, PORT_OPC_WIREDOR_gcs, 0);
 
-    // PORTD
-    PORT_SetDirection(&PORTD, 0b00010010);
-    PORT_SetPins(&PORTD, 0b00000010);
-    PORT_ClearPins(&PORTD, 0b00010000);
-    PORT_ConfigurePins(&PORTD, 0b00010010, false, false, PORT_OPC_WIREDAND_gc, 0);
-    PORT_ConfigurePins(&PORTD, 0b00100000, false, false, 0, 0);
-    PORT_ConfigurePins(&PORTD, 0b11000000, false, false, PORT_OPC_PULLDOWN_gc, 0);
-    PORT_ConfigureInterrupt0(&PORTD, PORT_INT0LVL_OFF_gc, PIN5_bm);
+    /* PORTD */
+    PORT_SetDirection(&PORTD, 0b00000110);
+    PORT_SetPins(&PORTD, PIN1_bm);
+    PORT_ClearPins(&PORTD, PIN2_bm);
+    PORT_ConfigurePins(&PORTD, PIN3_bm, false, false, PORT_OPC_TOTEM_gc, PORT_ISC_BOTHEDGES_gc);
+    PORT_ConfigurePins(&PORTD, (PIN1_bm | PIN2_bm), false, false, PORT_OPC_WIREDAND_gc, 0);
+    PORT_ConfigureInterrupt0(&PORTD, PORT_INT0LVL_OFF_gc, PIN3_bm);
 
-    // PORTE
+    /* PORTE */
     PORT_SetDirection(&PORTE, 0b00000100);
-    PORT_ConfigurePins(&PORTE, 0b00000001, false, false, 0, PORT_ISC_RISING_gc);
-    PORT_ConfigurePins(&PORTE, 0b00001010, false, false, 0, 0);
-    PORT_ConfigurePins(&PORTE, 0b00000100, true, false, 0, 0);
-    PORT_ConfigureInterrupt0(&PORTE, PORT_INT0LVL_OFF_gc, 0b00001010);
-    PORT_ConfigureInterrupt1(&PORTE, PORT_INT0LVL_OFF_gc, 0b00000001);
+    PORT_ConfigurePins(&PORTE, PIN0_bm, false, false, PORT_OPC_TOTEM_gc, PORT_ISC_RISING_gc);
+    PORT_ConfigurePins(&PORTE, (PIN1_bm | PIN3_bm), false, false, PORT_OPC_TOTEM_gc, PORT_ISC_BOTHEDGES_gc);
+    PORT_ConfigurePins(&PORTE, PIN2_bm, true, false, PORT_OPC_TOTEM_gc, 0);
+    PORT_ConfigureInterrupt0(&PORTE, PORT_INT0LVL_OFF_gc, (PIN3_bm | PIN1_bm));
+    PORT_ConfigureInterrupt1(&PORTE, PORT_INT0LVL_OFF_gc, PIN0_bm);
 
-    // PORTF
+    /* PORTF */ 
     PORT_SetDirection(&PORTF, 0b00001001);
-    PORT_SetPins(&PORTF, 0b00000001);
-    PORT_ConfigurePins(&PORTF, 0b00110010, false, false, 0, 0);
-    PORT_ConfigurePins(&PORTF, 0b11000000, false, false, PORT_OPC_PULLDOWN_gc, 0);
-    PORT_ConfigureInterrupt0(&PORTF, PORT_INT0LVL_OFF_gc, 0b00000010);
-    PORT_ConfigureInterrupt1(&PORTF, PORT_INT0LVL_OFF_gc, 0b00110000);
+    PORT_SetPins(&PORTF, PIN0_bm);
+    PORT_ConfigurePins(&PORTF, (PIN1_bm | PIN6_bm), false, false, PORT_OPC_TOTEM_gc, PORT_ISC_BOTHEDGES_gc);
+    PORT_ConfigurePins(&PORTF, PIN7_bm, false, false, PORT_OPC_PULLDOWN_gc, 0);
+    PORT_ConfigureInterrupt0(&PORTF, PORT_INT0LVL_OFF_gc, PIN1_bm);
+    PORT_ConfigureInterrupt1(&PORTF, PORT_INT0LVL_OFF_gc, PIN6_bm);
 
     return;
 }

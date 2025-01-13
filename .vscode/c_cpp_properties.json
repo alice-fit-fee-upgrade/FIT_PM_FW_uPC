@@ -8,7 +8,7 @@
             ],
             "defines": [
                 "__AVR_ATxmega128A3U__",
-                "__GNUC__ "
+                "__GNUC__"
             ],
             "compilerPath": "/usr/bin/avr-gcc",
             "compilerArgs": [
