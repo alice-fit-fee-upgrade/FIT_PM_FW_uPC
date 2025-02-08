@@ -3,6 +3,13 @@
 #include "drivers/port_driver.h"
 #include "system.h"
 
+#define PORTD_OUT_FPGA_PROG_PIN_bp  (1)
+#define PORTD_OUT_FPGA_PROG_PIN_bm  (1 << PORT_DOUT_FPGA_PROG_PIN_bp)
+#define PORTD_OUT_FPGA_INIT_PIN_bp  (2)
+#define PORTD_OUT_FPGA_INIT_PIN_bm  (1 << PORTD_OUT_FPGA_INIT_PIN_bp)
+#define PORTD_IN_FPGA_DONE_PIN_bp   (3)
+#define PORTD_IN_FPGA_DONE_PIN_bm   (1 << PORTD_IN_FPGA_DONE_PIN_bp)
+
 static inline void fpga_done_intr_enable(void)
 {
     PORT_ClearInterruptFlags(&PORTD, PORT_INT0IF_bm);
@@ -47,36 +54,36 @@ static inline void fpga_cs_deselect()
 
 static inline void fpga_prog_set()
 {
-    PORT_SetOutputBit(&PORTD, 1);
+    PORT_SetOutputBit(&PORTD, PORTD_OUT_FPGA_PROG_PIN_bp);
     return;
 }
 
 static inline void fpga_prog_clr()
 {
-    PORT_ClearOutputBit(&PORTD, 1);
+    PORT_ClearOutputBit(&PORTD, PORTD_OUT_FPGA_PROG_PIN_bp);
     return;
 }
 
 static inline void fpga_init_set()
 {
-    PORT_SetOutputBit(&PORTD, 4);
+    PORT_SetOutputBit(&PORTD, PORTD_OUT_FPGA_INIT_PIN_bp);
     return;
 }
 
 static inline void fpga_init_clr()
 {
-    PORT_ClearOutputBit(&PORTD, 4);
+    PORT_ClearOutputBit(&PORTD, PORTD_OUT_FPGA_INIT_PIN_bp);
     return; 
 }
 
 static inline bool fpga_init_get()
 {
-    return PORT_GetPinValue(&PORTD, 4);
+    return PORT_GetPinValue(&PORTD, PORTD_OUT_FPGA_INIT_PIN_bp);
 }
 
 static inline bool fpga_done_get()
 {
-    return PORT_GetPinValue(&PORTD, 5);
+    return PORT_GetPinValue(&PORTD, PORTD_IN_FPGA_DONE_PIN_bp);
 }
 
 void fpga_init();

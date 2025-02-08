@@ -4,8 +4,8 @@
 
 #include "drivers/spi_driver.h"
 
+
 #include "fpga.h"
-#include "si5338.h"
 
 volatile bool fpga_comm_request = false;
 
@@ -60,10 +60,9 @@ ISR(PORTD_INT0_vect)
         system_status_get()->b_fpga_done_ok = true;
         fpga_rst_clr();
         
-        if (system_status_get()->b_si5338_fail)
+        if (system_status_get()->b_ths788_fail)
         {
-            system_timers_get()->ts_si5338.state = 5;
-            system_timers_get()->ts_si5338.counter = 100;
+            system_timers_get()->ts_ths788.state = 5;            system_timers_get()->ts_ths788.counter = 100;
             system_timers_get()->ts_fpga.state = 4;
         }
     }

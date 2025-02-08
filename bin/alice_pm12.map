@@ -24,7 +24,6 @@ Common symbol       size              file
 
 USART_data          0x8e              build/console.o
 spiMasterC          0x7               build/fpga.o
-twiMaster           0x19              build/si5338.o
 
 Discarded input sections
 
@@ -166,6 +165,10 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/twi_master_driver.o
  .data          0x0000000000000000        0x0 build/twi_master_driver.o
  .bss           0x0000000000000000        0x0 build/twi_master_driver.o
+ .stab          0x0000000000000000      0xbe8 build/twi_master_driver.o
+                                       0x1ef0 (size before relaxing)
+ .text.TWI_MasterInit
+                0x0000000000000000       0x22 build/twi_master_driver.o
  .text.TWI_MasterState
                 0x0000000000000000        0xc build/twi_master_driver.o
  .text.TWI_MasterReady
@@ -176,8 +179,17 @@ Discarded input sections
                 0x0000000000000000        0xc build/twi_master_driver.o
  .text.TWI_MasterRead
                 0x0000000000000000       0x12 build/twi_master_driver.o
+ .text.TWI_MasterArbitrationLostBusErrorHandler
+                0x0000000000000000       0x22 build/twi_master_driver.o
+ .text.TWI_MasterWriteHandler
+                0x0000000000000000       0x60 build/twi_master_driver.o
+ .text.TWI_MasterReadHandler
+                0x0000000000000000       0x52 build/twi_master_driver.o
+ .text.TWI_MasterInterruptHandler
+                0x0000000000000000       0x28 build/twi_master_driver.o
  .text.TWI_MasterTransactionFinished
                 0x0000000000000000        0x8 build/twi_master_driver.o
+ .comment       0x0000000000000000       0x12 build/twi_master_driver.o
  .text          0x0000000000000000        0x0 build/usart_driver.o
  .data          0x0000000000000000        0x0 build/usart_driver.o
  .bss           0x0000000000000000        0x0 build/usart_driver.o
@@ -204,14 +216,21 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/main.o
  .data          0x0000000000000000        0x0 build/main.o
  .bss           0x0000000000000000        0x0 build/main.o
- .text          0x0000000000000000        0x0 build/si5338.o
- .data          0x0000000000000000        0x0 build/si5338.o
- .bss           0x0000000000000000        0x0 build/si5338.o
  .text          0x0000000000000000        0x0 build/system.o
  .data          0x0000000000000000        0x0 build/system.o
  .bss           0x0000000000000000        0x0 build/system.o
  .text.system_reset
                 0x0000000000000000       0x28 build/system.o
+ .text          0x0000000000000000        0x0 build/ths788.o
+ .data          0x0000000000000000        0x0 build/ths788.o
+ .bss           0x0000000000000000        0x0 build/ths788.o
+ .stab          0x0000000000000000      0x3a8 build/ths788.o
+                                       0x16bc (size before relaxing)
+ .text.ths788_init
+                0x0000000000000000        0x2 build/ths788.o
+ .text.ths788_data_write
+                0x0000000000000000        0x2 build/ths788.o
+ .comment       0x0000000000000000       0x12 build/ths788.o
  .text          0x0000000000000000        0x0 build/timer.o
  .data          0x0000000000000000        0x0 build/timer.o
  .bss           0x0000000000000000        0x0 build/timer.o
@@ -310,8 +329,8 @@ LOAD build/usart_driver.o
 LOAD build/fpga.o
 LOAD build/io.o
 LOAD build/main.o
-LOAD build/si5338.o
 LOAD build/system.o
+LOAD build/ths788.o
 LOAD build/timer.o
 START GROUP
 LOAD /usr/lib/gcc/avr/5.4.0/avrxmega6/libgcc.a
@@ -419,7 +438,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x1710
+.text           0x0000000000000000     0x1472
  *(.vectors)
  .vectors       0x0000000000000000      0x1fc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/crtatxmega128a3u.o
                 0x0000000000000000                __vectors
@@ -527,6 +546,7 @@ END GROUP
                 0x000000000000023e                __vector_11
                 0x000000000000023e                __vector_54
                 0x000000000000023e                __vector_99
+                0x000000000000023e                __vector_13
                 0x000000000000023e                __vector_17
                 0x000000000000023e                __vector_19
                 0x000000000000023e                __vector_56
@@ -650,129 +670,105 @@ END GROUP
  .text.SPI_MasterInit
                 0x00000000000004a2       0x58 build/spi_driver.o
                 0x00000000000004a2                SPI_MasterInit
- .text.TWI_MasterInit
-                0x00000000000004fa       0x22 build/twi_master_driver.o
-                0x00000000000004fa                TWI_MasterInit
- .text.TWI_MasterArbitrationLostBusErrorHandler
-                0x000000000000051c       0x22 build/twi_master_driver.o
-                0x000000000000051c                TWI_MasterArbitrationLostBusErrorHandler
- .text.TWI_MasterWriteHandler
-                0x000000000000053e       0x60 build/twi_master_driver.o
-                0x000000000000053e                TWI_MasterWriteHandler
- .text.TWI_MasterReadHandler
-                0x000000000000059e       0x52 build/twi_master_driver.o
-                0x000000000000059e                TWI_MasterReadHandler
- .text.TWI_MasterInterruptHandler
-                0x00000000000005f0       0x28 build/twi_master_driver.o
-                0x00000000000005f0                TWI_MasterInterruptHandler
  .text.USART_InterruptDriver_Initialize
-                0x0000000000000618       0x20 build/usart_driver.o
-                0x0000000000000618                USART_InterruptDriver_Initialize
+                0x00000000000004fa       0x20 build/usart_driver.o
+                0x00000000000004fa                USART_InterruptDriver_Initialize
  .text.USART_FlowControl_Initialize
-                0x0000000000000638       0x34 build/usart_driver.o
-                0x0000000000000638                USART_FlowControl_Initialize
+                0x000000000000051a       0x34 build/usart_driver.o
+                0x000000000000051a                USART_FlowControl_Initialize
  .text.USART_CTS_Enable
-                0x000000000000066c       0x1e build/usart_driver.o
-                0x000000000000066c                USART_CTS_Enable
+                0x000000000000054e       0x1e build/usart_driver.o
+                0x000000000000054e                USART_CTS_Enable
  .text.USART_CTS_Read
-                0x000000000000068a       0x30 build/usart_driver.o
-                0x000000000000068a                USART_CTS_Read
+                0x000000000000056c       0x30 build/usart_driver.o
+                0x000000000000056c                USART_CTS_Read
  .text.USART_RTS_Set
-                0x00000000000006ba       0x28 build/usart_driver.o
-                0x00000000000006ba                USART_RTS_Set
+                0x000000000000059c       0x28 build/usart_driver.o
+                0x000000000000059c                USART_RTS_Set
  .text.USART_TXBuffer_FreeSpace
-                0x00000000000006e2       0x1a build/usart_driver.o
-                0x00000000000006e2                USART_TXBuffer_FreeSpace
+                0x00000000000005c4       0x1a build/usart_driver.o
+                0x00000000000005c4                USART_TXBuffer_FreeSpace
  .text.USART_TXBuffer_PutByte
-                0x00000000000006fc       0x42 build/usart_driver.o
-                0x00000000000006fc                USART_TXBuffer_PutByte
+                0x00000000000005de       0x42 build/usart_driver.o
+                0x00000000000005de                USART_TXBuffer_PutByte
  .text.USART_RXComplete
-                0x000000000000073e       0x3a build/usart_driver.o
-                0x000000000000073e                USART_RXComplete
+                0x0000000000000620       0x3a build/usart_driver.o
+                0x0000000000000620                USART_RXComplete
  .text.USART_DataRegEmpty
-                0x0000000000000778       0x5c build/usart_driver.o
-                0x0000000000000778                USART_DataRegEmpty
+                0x000000000000065a       0x5c build/usart_driver.o
+                0x000000000000065a                USART_DataRegEmpty
  .text.USART_ClearToSend
-                0x00000000000007d4       0x78 build/usart_driver.o
-                0x00000000000007d4                USART_ClearToSend
+                0x00000000000006b6       0x78 build/usart_driver.o
+                0x00000000000006b6                USART_ClearToSend
  .text.fpga_init
-                0x000000000000084c       0x3e build/fpga.o
-                0x000000000000084c                fpga_init
+                0x000000000000072e       0x3e build/fpga.o
+                0x000000000000072e                fpga_init
  .text.__vector_64
-                0x000000000000088a       0xb2 build/fpga.o
-                0x000000000000088a                __vector_64
+                0x000000000000076c       0xb2 build/fpga.o
+                0x000000000000076c                __vector_64
  .text.__vector_44
-                0x000000000000093c       0x14 build/fpga.o
-                0x000000000000093c                __vector_44
- .text.io_init  0x0000000000000950      0x15e build/io.o
-                0x0000000000000950                io_init
+                0x000000000000081e       0x14 build/fpga.o
+                0x000000000000081e                __vector_44
+ .text.io_init  0x0000000000000832      0x146 build/io.o
+                0x0000000000000832                io_init
  .text.__vector_43
-                0x0000000000000aae      0x100 build/io.o
-                0x0000000000000aae                __vector_43
+                0x0000000000000978      0x100 build/io.o
+                0x0000000000000978                __vector_43
  .text.startup.main
-                0x0000000000000bae      0x146 build/main.o
-                0x0000000000000bae                main
- .text.si5338_init
-                0x0000000000000cf4       0x18 build/si5338.o
-                0x0000000000000cf4                si5338_init
- .text.si5338_state_get
-                0x0000000000000d0c        0x6 build/si5338.o
-                0x0000000000000d0c                si5338_state_get
- .text.__vector_13
-                0x0000000000000d12       0x5a build/si5338.o
-                0x0000000000000d12                __vector_13
+                0x0000000000000a78      0x146 build/main.o
+                0x0000000000000a78                main
  .text.system_init
-                0x0000000000000d6c       0x50 build/system.o
-                0x0000000000000d6c                system_init
+                0x0000000000000bbe       0x32 build/system.o
+                0x0000000000000bbe                system_init
  .text.system_deinit
-                0x0000000000000dbc        0x2 build/system.o
-                0x0000000000000dbc                system_deinit
+                0x0000000000000bf0        0x2 build/system.o
+                0x0000000000000bf0                system_deinit
  .text.system_eeprom_get
-                0x0000000000000dbe        0xa build/system.o
-                0x0000000000000dbe                system_eeprom_get
+                0x0000000000000bf2        0xa build/system.o
+                0x0000000000000bf2                system_eeprom_get
  .text.system_status_get
-                0x0000000000000dc8        0x6 build/system.o
-                0x0000000000000dc8                system_status_get
+                0x0000000000000bfc        0x6 build/system.o
+                0x0000000000000bfc                system_status_get
  .text.system_timers_get
-                0x0000000000000dce        0x6 build/system.o
-                0x0000000000000dce                system_timers_get
+                0x0000000000000c02        0x6 build/system.o
+                0x0000000000000c02                system_timers_get
  .text.io_led_system_fail_update
-                0x0000000000000dd4       0x20 build/timer.o
+                0x0000000000000c08       0x20 build/timer.o
  .text.timer_init
-                0x0000000000000df4       0x34 build/timer.o
-                0x0000000000000df4                timer_init
+                0x0000000000000c28       0x34 build/timer.o
+                0x0000000000000c28                timer_init
  .text.timer_tc_set_state
-                0x0000000000000e28        0x6 build/timer.o
-                0x0000000000000e28                timer_tc_set_state
+                0x0000000000000c5c        0x6 build/timer.o
+                0x0000000000000c5c                timer_tc_set_state
  .text.timer_tc_set_value_ms
-                0x0000000000000e2e        0x8 build/timer.o
-                0x0000000000000e2e                timer_tc_set_value_ms
+                0x0000000000000c62        0x8 build/timer.o
+                0x0000000000000c62                timer_tc_set_value_ms
  .text.__vector_14
-                0x0000000000000e36      0x308 build/timer.o
-                0x0000000000000e36                __vector_14
+                0x0000000000000c6a      0x236 build/timer.o
+                0x0000000000000c6a                __vector_14
  .text.avr-libc
-                0x000000000000113e       0x66 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(vsnprintf.o)
-                0x000000000000113e                vsnprintf
+                0x0000000000000ea0       0x66 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(vsnprintf.o)
+                0x0000000000000ea0                vsnprintf
  .text.avr-libc
-                0x00000000000011a4      0x408 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(vfprintf_std.o)
-                0x00000000000011a4                vfprintf
+                0x0000000000000f06      0x408 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(vfprintf_std.o)
+                0x0000000000000f06                vfprintf
  .text.avr-libc
-                0x00000000000015ac       0x16 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(strnlen_P.o)
-                0x00000000000015ac                strnlen_P
+                0x000000000000130e       0x16 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(strnlen_P.o)
+                0x000000000000130e                strnlen_P
  .text.avr-libc
-                0x00000000000015c2       0x16 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(strnlen.o)
-                0x00000000000015c2                strnlen
+                0x0000000000001324       0x16 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(strnlen.o)
+                0x0000000000001324                strnlen
  .text.avr-libc
-                0x00000000000015d8       0x78 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(fputc.o)
-                0x00000000000015d8                fputc
+                0x000000000000133a       0x78 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(fputc.o)
+                0x000000000000133a                fputc
  .text.avr-libc
-                0x0000000000001650       0xbc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(ultoa_invert.o)
-                0x0000000000001650                __ultoa_invert
-                0x000000000000170c                . = ALIGN (0x2)
+                0x00000000000013b2       0xbc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(ultoa_invert.o)
+                0x00000000000013b2                __ultoa_invert
+                0x000000000000146e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000000000170c        0x0 /usr/lib/gcc/avr/5.4.0/avrxmega6/libgcc.a(_exit.o)
-                0x000000000000170c                exit
-                0x000000000000170c                _exit
+ .fini9         0x000000000000146e        0x0 /usr/lib/gcc/avr/5.4.0/avrxmega6/libgcc.a(_exit.o)
+                0x000000000000146e                exit
+                0x000000000000146e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -791,11 +787,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000000000170c        0x4 /usr/lib/gcc/avr/5.4.0/avrxmega6/libgcc.a(_exit.o)
+ .fini0         0x000000000000146e        0x4 /usr/lib/gcc/avr/5.4.0/avrxmega6/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000001710                _etext = .
+                0x0000000000001472                _etext = .
 
-.data           0x0000000000802000       0x2a load address 0x0000000000001710
+.data           0x0000000000802000       0x2a load address 0x0000000000001472
                 0x0000000000802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -817,40 +813,35 @@ END GROUP
                 0x000000000080202a                _edata = .
                 0x000000000080202a                PROVIDE (__data_end, .)
 
-.bss            0x000000000080202a      0x1c4
+.bss            0x000000000080202a      0x1a6
                 0x000000000080202a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.vsprintf_buf
                 0x000000000080202a      0x100 build/console.o
- .bss.si5338_state
-                0x000000000080212a        0x5 build/si5338.o
-                0x000000000080212a                si5338_state
  .bss.system_timers
-                0x000000000080212f        0x9 build/system.o
-                0x000000000080212f                system_timers
+                0x000000000080212a        0x9 build/system.o
+                0x000000000080212a                system_timers
  .bss.system_status
-                0x0000000000802138        0x7 build/system.o
-                0x0000000000802138                system_status
+                0x0000000000802133        0x7 build/system.o
+                0x0000000000802133                system_status
  .bss.b_report_rdy
-                0x000000000080213f        0x1 build/timer.o
-                0x000000000080213f                b_report_rdy
+                0x000000000080213a        0x1 build/timer.o
+                0x000000000080213a                b_report_rdy
  *(COMMON)
- COMMON         0x0000000000802140       0x8e build/console.o
-                0x0000000000802140                USART_data
- COMMON         0x00000000008021ce        0x7 build/fpga.o
-                0x00000000008021ce                spiMasterC
- COMMON         0x00000000008021d5       0x19 build/si5338.o
-                0x00000000008021d5                twiMaster
-                0x00000000008021ee                PROVIDE (__bss_end, .)
-                0x0000000000001710                __data_load_start = LOADADDR (.data)
-                0x000000000000173a                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x000000000080213b       0x8e build/console.o
+                0x000000000080213b                USART_data
+ COMMON         0x00000000008021c9        0x7 build/fpga.o
+                0x00000000008021c9                spiMasterC
+                0x00000000008021d0                PROVIDE (__bss_end, .)
+                0x0000000000001472                __data_load_start = LOADADDR (.data)
+                0x000000000000149c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00000000008021ee        0x0
+.noinit         0x00000000008021d0        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x00000000008021ee                _end = .
+                0x00000000008021d0                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -872,7 +863,7 @@ END GROUP
 .user_signatures
  *(.user_signatures*)
 
-.stab           0x0000000000000000     0x6918
+.stab           0x0000000000000000     0x5acc
  *(.stab)
  .stab          0x0000000000000000     0x1a1c build/console.o
                                        0x1a94 (size before relaxing)
@@ -884,26 +875,22 @@ END GROUP
                                        0x1980 (size before relaxing)
  .stab          0x0000000000002940      0x4bc build/spi_driver.o
                                        0x1ddc (size before relaxing)
- .stab          0x0000000000002dfc      0x858 build/twi_master_driver.o
-                                       0x1ef0 (size before relaxing)
- .stab          0x0000000000003654      0xbc4 build/usart_driver.o
+ .stab          0x0000000000002dfc      0xbc4 build/usart_driver.o
                                        0x2184 (size before relaxing)
- .stab          0x0000000000004218      0x5ac build/fpga.o
-                                       0x1a1c (size before relaxing)
- .stab          0x00000000000047c4      0x6cc build/io.o
-                                       0x19f8 (size before relaxing)
- .stab          0x0000000000004e90      0x678 build/main.o
-                                       0x1aa0 (size before relaxing)
- .stab          0x0000000000005508      0x42c build/si5338.o
-                                       0x1794 (size before relaxing)
- .stab          0x0000000000005934      0x5c4 build/system.o
+ .stab          0x00000000000039c0      0x570 build/fpga.o
+                                       0x19a4 (size before relaxing)
+ .stab          0x0000000000003f30      0x6a8 build/io.o
+                                       0x19d4 (size before relaxing)
+ .stab          0x00000000000045d8      0x660 build/main.o
                                        0x1a34 (size before relaxing)
- .stab          0x0000000000005ef8      0xa20 build/timer.o
-                                       0x1ddc (size before relaxing)
+ .stab          0x0000000000004c38      0x588 build/system.o
+                                       0x19a4 (size before relaxing)
+ .stab          0x00000000000051c0      0x90c build/timer.o
+                                       0x1c44 (size before relaxing)
 
-.stabstr        0x0000000000000000    0x10726
+.stabstr        0x0000000000000000    0x1073d
  *(.stabstr)
- .stabstr       0x0000000000000000    0x10726 build/console.o
+ .stabstr       0x0000000000000000    0x1073d build/console.o
 
 .stab.excl
  *(.stab.excl)
@@ -925,12 +912,10 @@ END GROUP
  .comment       0x0000000000000011       0x12 build/clksys_driver.o
  .comment       0x0000000000000011       0x12 build/port_driver.o
  .comment       0x0000000000000011       0x12 build/spi_driver.o
- .comment       0x0000000000000011       0x12 build/twi_master_driver.o
  .comment       0x0000000000000011       0x12 build/usart_driver.o
  .comment       0x0000000000000011       0x12 build/fpga.o
  .comment       0x0000000000000011       0x12 build/io.o
  .comment       0x0000000000000011       0x12 build/main.o
- .comment       0x0000000000000011       0x12 build/si5338.o
  .comment       0x0000000000000011       0x12 build/system.o
  .comment       0x0000000000000011       0x12 build/timer.o
  .comment       0x0000000000000011       0x12 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avrxmega6/libc.a(vsnprintf.o)

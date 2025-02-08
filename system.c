@@ -4,7 +4,7 @@
 #include "drivers/spi_driver.h"
 
 #include "fpga.h"
-#include "si5338.h"
+#include "ths788.h"
 #include "system.h"
 
 struct system_eeprom *p_ee_params = (struct system_eeprom *)MAPPED_EEPROM_START;
@@ -36,9 +36,9 @@ void system_init()
     /* TODO: Si5338 settings */
     
     TWIC_MASTER_STATUS = 1;
-    si5338_state_get()->case_pri_state = 0;
-    si5338_state_get()->case_sec_state = 0;
-    si5338_state_get()->msg = 0x06;
+    //si5338_state_get()->case_pri_state = 0;
+    //si5338_state_get()->case_sec_state = 0;
+    //si5338_state_get()->msg = 0x06;
 
     /*DAT_mem_2163 = 0;
     DAT_mem_2164 = 0;
@@ -47,7 +47,7 @@ void system_init()
 
     /* TODO: DAT_mem_2168 = 0xe0;*/
 
-    system_status_get()->b_si5338_fail = false;
+    system_status_get()->b_ths788_fail = false;
     /*
     bVar1 = GPIO_GPIOR0;
     GPIO_GPIOR0 = bVar1 & 0b11000111;
@@ -94,7 +94,7 @@ void system_deinit()
 
 void system_reset()
 {
-    system_status.b_si5338_fail = true;
+    system_status.b_ths788_fail = true;
     PORTC_INTCTRL = 0;
     PORTE_INTCTRL = 1;
     PORTA_OUTSET = 0x80;
@@ -102,8 +102,8 @@ void system_reset()
 
     //DAT_clk_frs = DAT_clk_frs & 0b00001110;
 
-    system_timers.ts_si5338.state = 1;
-    system_timers.ts_si5338.counter = 100;
+    system_timers.ts_ths788.state = 1;
+    system_timers.ts_ths788.counter = 100;
 
     return;
 }

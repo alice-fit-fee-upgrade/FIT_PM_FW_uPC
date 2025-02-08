@@ -29,7 +29,7 @@ struct system_eeprom
 struct system_status
 {
   bool b_sys_fail;
-  bool b_si5338_fail;
+  bool b_ths788_fail;
   bool b_pwr_in_ok;
   bool b_pwr_ldo_ok;
   bool b_fpga_done_ok;
@@ -41,7 +41,7 @@ struct system_timers
 {
     struct timer_state ts_fpga;
     struct timer_state ts_attenuator;
-    struct timer_state ts_si5338;
+    struct timer_state ts_ths788;
 };
 
 void system_init(void);

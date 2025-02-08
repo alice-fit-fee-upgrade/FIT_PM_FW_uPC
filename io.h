@@ -5,10 +5,10 @@
 
 #define PORTE_IN_PWR_OK_PIN_bp  (1)
 #define PORTE_IN_PWR_OK_PIN_bm  (1 << PORTE_IN_PWR_OK_PIN_bp)
-#define PORTE_EN_PSU_PIN_bp      (2)
-#define PORTE_EN_PSU_PIN_bm      (1 << PORTE_EN_PSU_PIN_bp)
-#define PORTE_LDO_OK_PIN_bp      (3)
-#define PORTE_LDO_OK_PIN_bm      (1 << PORTE_LDO_OK_PIN_bp)
+#define PORTE_EN_PSU_PIN_bp     (2)
+#define PORTE_EN_PSU_PIN_bm     (1 << PORTE_EN_PSU_PIN_bp)
+#define PORTE_LDO_OK_PIN_bp     (3)
+#define PORTE_LDO_OK_PIN_bm     (1 << PORTE_LDO_OK_PIN_bp)
 
 static inline bool io_is_12v_present(void)
 {

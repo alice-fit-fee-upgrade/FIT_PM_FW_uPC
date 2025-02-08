@@ -1,8 +1,9 @@
 #include "fpga.h"
 #include "io.h"
-#include "si5338.h"
+#include "ths788.h"
 #include "timer.h"
 #include "drivers/TC_driver.h"
+#include "drivers/port_driver.h"
 
 volatile bool b_report_rdy = false;
 volatile uint16_t report_cnt = 1000;
@@ -49,121 +50,97 @@ ISR(TCC0_OVF_vect)
         --report_cnt;
     }
 
-    /* Check Si5338 state and timer */
-    struct timer_state *p_ts_si5338 = &system_timers_get()->ts_si5338;
-    switch (p_ts_si5338->state)
+    /* Check THS788 state and timer */
+    struct timer_state *p_ts_ths788 = &system_timers_get()->ts_ths788;
+    switch (p_ts_ths788->state)
     {
         /* Do nothing, state 0 is a "nop" state */
         case 0:
         {
             break;
         }
-        /* State 1 is just waiting for state 2 to happen */
+        /* Check OT alarm, initialize Control Regs and  */
         case 1:
         {
-            if (1 == --p_ts_si5338->counter)
+            if (0 == --p_ts_ths788->counter)
             {
-                timer_tc_set_state(p_ts_si5338, 2);
+                timer_tc_set_state(p_ts_ths788, 2);
+
+                PORT_ClearPins(&PORTF, 0b00100000); 
+                PORT_SetPins(&PORTF, 0b00100000); // CDCE62005RGZT PLL_SYNC clr->set
+                PORT_SetPins(&PORTB, 0b00100000); // THS788 RESET
+                PORT_SetPins(&PORTC, 0b00001000); // CDCF5801ADBQ ADC_PLL_PWRDNB
+
+                /* THS788 Overtemperature alarm */
+                if( ths788_ot_alarm_get() == 0)
+                {
+                    // DAT_mem_2157 = DAT_mem_2157 | 0x40; TODO THS788 set alarm status
+                    PORT_ClearPins(&PORTA, 0b01000000); // LED_CLK_ERR
+                    io_psu_disable();
+                }
+                /* Enable interrupts & send configuration data (Positive edge sync and positive edge hit calibration) */
+                else 
+                {
+                    ths788_ot_intr_enable();
+
+                    // 0x80 0x00 0xa6 0x03
+                    ths788_write();
+                    // 0x81 0x02 0x00 0x03
+                    ths788_write();
+                    uint8_t reg_num = 0x0C;
+                    uint8_t strobe_id = 0x00;
+                    // Get data from EEPROM 0x1018 to 0x1023;
+                    do 
+                    {
+                        do 
+                        {
+                            // 0xX0 0x00 0xDATA 0x0a
+                            ths788_write();
+                        } 
+                        while (reg_num != 140);
+
+                        reg_num = 0xc;
+                        strobe_id += 1;
+                        //in_R21R20 = extraout_R21R20_03;
+                        //in_R23R22 = extraout_R23R22_03;
+                    } 
+                    while (strobe_id != 3);
+                }
+            }
+            break;
+        }
+        /* Check for TMU READY status set CH.A control registers (0x00, 0x01) */
+        case 2:
+        {
+            // 0x00 0x03 0x00 0x07
+            // 0x01 0x00 0x00 0x07
+            break;
+        }
+        /* Check DLL LOCK status for each channel */
+        case 3:
+        {
+            
+            break;
+        }
+        /* Checkif FPGA DONE flag is ready */
+        case 4:
+        {
+            if(fpga_done_get())
+            {
+                fpga_rst_set();
+                timer_tc_set_state(p_ts_ths788, 5);
+                timer_tc_set_value_ms(p_ts_ths788, 250);
             }
             break;
         }
         /*  */
-        case 2:
-        {
-            timer_tc_set_state(p_ts_si5338, 0);
-            /* TODO: FUN_code_000571(); */
-            si5338_state_get()->case_sec_state = 0x12;
-            if (0 == si5338_state_get()->case_pri_state)
-            {
-                si5338_state_get()->case_sec_state = 0x00;
-
-                // 0x00 + 0x00
-
-            }
-            si5338_state_get()->case_pri_state = 0x03;
-            // DAT_mem_2165 = 0xe0;
-            TWIC_MASTER_ADDR = 0xE0;
-            TWIC_MASTER_CTRLA = 0x58;
-            break;
-        }
-        case 3:
-        {
-            if (1 == --p_ts_si5338->counter)
-            {
-                timer_tc_set_state(p_ts_si5338, 0);
-                si5338_state_get()->case_pri_state = 0x04;
-                si5338_state_get()->case_sec_state = 0x00;
-                // DAT_mem_2165 = 0xe0;
-                TWIC_MASTER_ADDR = 0xE0;
-                TWIC_MASTER_CTRLA = 0x58;
-            }
-            break;
-        }
-        case 4:
-        {
-            uint8_t portc_val = PORT_GetPortValue(&PORTC);
-            PORTC_INTFLAGS = 1;
-            PORTC_INTCTRL = 2;
-            // bVar6 = 0;
-            if ((portc_val & 0b00001100) == 0) 
-            {
-                si5338_state_get()->case_pri_state = 0x01;
-                si5338_state_get()->case_sec_state = 0x00;
-                // DAT_mem_2165 = 0xe0;
-                TWIC_MASTER_ADDR = 0xE0;
-                TWIC_MASTER_CTRLA = 0x58;
-                system_status_get()->b_si5338_fail = false;
-                timer_tc_set_state(p_ts_si5338, 5);
-                timer_tc_set_value_ms(p_ts_si5338, 75);
-                //bVar6 = extraout_R18;
-            }
-            else 
-            {
-                timer_tc_set_state(p_ts_si5338, 0);
-            }
-            //DAT_clk_frs = DAT_clk_frs & 0xe | bVar6;
-            break;
-        }
         case 5:
-        {
-            if (1 == p_ts_si5338->counter)
-            {
-                bool b_fpga_timer_done = !!(system_timers_get()->ts_fpga.counter);
-                uint8_t fpga_status = system_timers_get()->ts_fpga.state;
-                if(fpga_done_get() && ((0 == fpga_status) || ((5 == fpga_status) && b_fpga_timer_done)))
-                {
-                    fpga_rst_set();
-                    timer_tc_set_state(p_ts_si5338, 6);
-                }
-            }
-            else
-            {
-                --p_ts_si5338->counter;
-            }
-            break;
-        }
-        case 6:
         {
             uint8_t data = 0;
             // fpga_send_msg_t1(0x7f,data);
-            if ((data & 0b00001111) == 0b00000011) 
-            {
-                PORTE_INTFLAGS = 2;
-                PORTE_INTCTRL = 9;
-                // fpga_send_msg_t2(0x18,CONCAT11(DAT_clk_frs,DAT_mem_2188) | 0x1000);
-                PORTA_OUTCLR = 0x80;
-            }
-            else 
-            {
-                // No PLL locks in place
-                system_status_get()->b_clk_err = true;
-                PORTA_OUTCLR = 0x40;
-            }
 
-            timer_tc_set_state(p_ts_si5338, 0);
             break;
         }
-
         default:
         {
             break;
@@ -174,12 +151,22 @@ ISR(TCC0_OVF_vect)
     struct timer_state *p_ts_fpga = &system_timers_get()->ts_fpga;
     switch (p_ts_fpga->state)
     {
-        /* Do nothing, state 0 is a "nop" state */
+        /* [OK] Do nothing, state 0 is a "nop" state */
         case 0:
         {
             break;
         }
-        /* If 5V is present, then enable (EN_PSU) 2x LM21212AMHX-1 & 1x LD49150PT10R */
+        /* [OK] If 5V is present, then enable the following PS
+         * and wait 1 second before going to the next state
+         * - DA11: LM21215AMHX-1 
+         * - DA7:  LTC3649EFE
+         * - DA8:  LTC7149EFE
+         * - DA12: LM21212MH-1
+         * - DA13: LM21215AMHX-1
+         * - DA3:  LD49150PT10R
+         * - DA4:  LD49150PT12R
+         * - DA5:  LT1963EQ-1.8
+         */
         case 1:
         {
             if (0 == --p_ts_fpga->counter)
@@ -198,29 +185,19 @@ ISR(TCC0_OVF_vect)
             }
             break;
         }
-        /*  */
+        /* [OK] Check for Power Good flag, init system ports and DMA */
         case 2:
         {
-            if (system_status_get()->b_pwr_ldo_ok)
+            if (0 == --p_ts_fpga->counter)
             {
-                if (PORT_GetPinValue(&PORTE, 4))    // CFG_FCS
+                if (system_status_get()->b_pwr_ldo_ok)
                 {
-                    system_init();
-                    /* TODO: USARTD0 status? DAT_mem_2185 = 0x1f; */
+                    system_init(); // TODO
                     timer_tc_set_state(p_ts_fpga, 3); 
                     timer_tc_set_value_ms(p_ts_fpga, 1000);
                 }
                 else
                 {
-                    system_status_get()->b_sys_fail = true;
-                    io_led_system_fail_update();
-                    timer_tc_set_state(p_ts_fpga, 0);
-                }
-            }
-            else
-            {
-                if (0 == --p_ts_fpga->counter)
-                {   
                     io_psu_disable();
                     system_status_get()->b_sys_fail = true;
                     io_led_system_fail_update();
@@ -229,10 +206,12 @@ ISR(TCC0_OVF_vect)
             }
             break;
         }
+        /* [OK] Reset CDCE62005, initiate FPGA programming */
         case 3:
         {
             if (0 == --p_ts_fpga->counter)
             { 
+                // CDCE62005_reset_control(); TODO 
                 fpga_init_set();
                 fpga_prog_clr();
                 timer_tc_set_state(p_ts_fpga, 4);
@@ -241,16 +220,15 @@ ISR(TCC0_OVF_vect)
             }
             break;
         }
+        /* [OK] Wait for FPGA DONE flag */
         case 4:
         {
             if (fpga_done_get())
             {
-                fpga_done_intr_enable();
                 timer_tc_set_state(p_ts_fpga, 5);
                 timer_tc_set_value_ms(p_ts_fpga, 2560);
                 system_status_get()->b_fpga_done_ok = true;
-                /* TODO: Send MCU TS */
-                /* TODO: Send IP ADDR */
+                // FUN_code_0004ef(iVar17,(char)in_R23R22,in_R21R20,uVar8,uVar7); TODO
             }
             else
             {
@@ -263,21 +241,18 @@ ISR(TCC0_OVF_vect)
             }
             break;
         }
+        /* [OK] Check for FPGA RST flag, send initial settings */
         case 5:
         {
-            if (p_ts_fpga->counter > 0)
+            if (fpga_rst_is_set())
             {
-                --p_ts_fpga->counter;
-            }
-            else
-            {
-                if (fpga_rst_is_set())
+                fpga_req_intr_enable();
+                if (0 == --p_ts_fpga->counter)
                 {
                     timer_tc_set_state(p_ts_fpga, 0);
-                    /* TODO: FPGA send settings */
-                    PORTB_OUTCLR = 0b00010000;
-                    
-                }
+                    // fpga_send_mcu_ts(); TODO
+                    // fpga_init_settings(); TODO
+                }   
             }
             break;
         }
@@ -286,4 +261,6 @@ ISR(TCC0_OVF_vect)
             break;
         }
     }
+
+    /* Check ... status and timer */
 }

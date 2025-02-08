@@ -15,8 +15,14 @@ All the values are coded using the following alphabet:
 ## Firmware
 ### Boot
 
+### THS788 startup
+THS788 initial settings are stored in EEPROM 0x1018 to 0x1023
+1. Check OT alarm. If present -> disable psu, display error. Otherwise, set control registers
+2. Check for TMU READY status, set CH.A control registers
+3. Check for DLL LOCK status for every channel (CH.A-D)
+
 #### FPGA startup
-FPGA status is stored at 0x215b with starting value equal zero.
+FPGA status is stored at 0x215b with starting value equal zero.  
 1. If 5V is present (DA21_RST_N), then enable (DA11_EN->DA7_RUN, DA4_EN, DA13_EN) 1x LM21215AMHX-1, 2x LM21212MH-1, 1x LD49150PT10R, 1x LD49150PT12R, delay 2s.
 2. Check whether .. ok, ...
 3. Setup clock generator & FPGA:
@@ -119,12 +125,11 @@ Some details about the peripherals the MCU ATxmega128a3 is communicating with.
 | 0x2160| 	| 2 	| #16#BC reg Board Temperature		|
 | 0x2162| 	| 1 	| clock source settings |
 | --- 	| ---	| ---	| --- EEPROM START ---	|
-| 0x2163|0x1000 | 24 	| #16#B0 to #16#BB regs (0x2163 - 0x217A)|
-| 0x217b|0x1018	| 10	|  regs (0x217B - 0x2182)|
-| ...	|	|	|	|
-| 0x2187|0x1024	| 48	| #16#25 to #16#3C regs	(0x2187 - 0x21b6)|
-| 0x21b7|0x1054	| 24	| #16#01 to #16#C regs	(0x21b7 - 0x22ce)|
-| 0x21cf|0x106c	| 96 	| #16#80 to #16#AF regs	(0x21cf - 0x222e)|
+| 0x2163|0x1000 | 24 	| #16#B0 to #16#BB regs (0x2163 - 0x217A)	|
+| 0x217b|0x1018	| 12	| THS788 0x?C regs (0x217B - 0x2182)		|
+| 0x2187|0x1024	| 48	| #16#25 to #16#3C regs	(0x2187 - 0x21b6)	|
+| 0x21b7|0x1054	| 24	| #16#01 to #16#C regs	(0x21b7 - 0x22ce)	|
+| 0x21cf|0x106c	| 96 	| #16#80 to #16#AF regs	(0x21cf - 0x222e)	|
 | 0x222f|0x10cc	| 2 	| #16#00 reg - Gate Time High	|
 | 0x2230|0x10ce	| 2	| #16#3D reg - Amp1_sat	|
 | 0x2232|0x10d0	| 2	| Board S/N (4x4bit)	|

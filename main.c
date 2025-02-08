@@ -12,7 +12,7 @@
 
 #include "fpga.h"
 #include "io.h"
-#include "si5338.h"
+#include "ths788.h"
 #include "system.h"
 
 extern bool fpga_comm_request;
@@ -59,8 +59,6 @@ int main(void)
 {
   sysclk_init();
   io_init();
-
-  si5338_init();
 
   /* TODO: attenuator init*/
   USARTD0_BAUDCTRLB = 0x40;
@@ -119,7 +117,6 @@ int main(void)
       {
         b_report_rdy = false;
         //console_print("FPGA: %d, %d\r\n", system_timers_get()->ts_fpga.state, system_timers_get()->ts_fpga.counter);
-        //console_print("Si5338: %d, %d\r\n\r\n", system_timers_get()->ts_si5338.state, system_timers_get()->ts_si5338.counter);
         //uint16_t data;
         //fpga_exchange_data(0xF2, &data);
         //console_print("MSG: %x \r\n", data);

@@ -14,11 +14,11 @@ void io_init(void)
     /* THS788 - PB0..6 */
     /* FPGA - PB7 */
     PORT_ConfigurePins(&PORTB, 0b01000000, false, false, PORT_OPC_TOTEM_gc, PORT_ISC_FALLING_gc);
-    PORT_ConfigureInterrupt0(&PORTB, PORT_INT0LVL_OFF_gc, PIN7_bm);
+    PORT_ConfigureInterrupt0(&PORTB, PORT_INT0LVL_OFF_gc, PIN6_bm);
 
     /* PORTC */
     PORT_ConfigurePins(&PORTC, PIN3_bm, true, false, PORT_OPC_TOTEM_gc, 0);
-    PORT_ConfigurePins(&PORTC, PIN4_bm, false, false, PORT_OPC_WIREDOR_gcs, 0);
+    PORT_ConfigurePins(&PORTC, PIN4_bm, false, false, PORT_OPC_WIREDOR_gc, 0);
 
     /* PORTD */
     PORT_SetDirection(&PORTD, 0b00000110);
