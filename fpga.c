@@ -60,10 +60,12 @@ ISR(PORTD_INT0_vect)
         system_status_get()->b_fpga_done_ok = true;
         fpga_rst_clr();
         
-        if (system_status_get()->b_ths788_fail)
+        system_timers_get()->ts_fpga.state = 5;
+        // PORTB_OUTCLR = 0x80;
+
+        if (system_timers_get()->ts_ths788.state == 0 || system_timers_get()->ts_ths788.state == 5)
         {
-            system_timers_get()->ts_ths788.state = 5;            system_timers_get()->ts_ths788.counter = 100;
-            system_timers_get()->ts_fpga.state = 4;
+            system_timers_get()->ts_ths788.state = 4;
         }
     }
     else
@@ -71,8 +73,9 @@ ISR(PORTD_INT0_vect)
         /* FPGA NOT DONE */
         system_status_get()->b_fpga_done_ok = false;
         PORTE_INTCTRL = 1;
-        PORTB_OUTSET = 0b00010000;
+        // DAT_mem_2158 = 0; -> fpga 0x7F status
         PORTA_OUTSET = 0b11000000;
+        //DAT_mem_2441 = 1;
     }
 }
 

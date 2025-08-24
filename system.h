@@ -47,6 +47,7 @@ struct system_timers
 void system_init(void);
 void system_deinit(void);
 void system_reset(void);
+void system_clock_init(void);
 
 struct system_eeprom *system_eeprom_get(void);
 struct system_status *system_status_get(void);

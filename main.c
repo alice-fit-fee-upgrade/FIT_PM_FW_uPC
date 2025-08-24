@@ -20,29 +20,6 @@ extern bool fpga_comm_request;
 extern volatile bool b_report_rdy;
 extern volatile uint16_t report_cnt;
 
-static void sysclk_init(void)
-{
-  CLKSYS_XOSC_Config(OSC_FRQRANGE_12TO16_gc, false, OSC_XOSCSEL_XTAL_16KCLK_gc);
-  CLKSYS_Enable(OSC_RC2MEN_bm | OSC_XOSCEN_bm);
-  do
-  {
-  } while (CLKSYS_IsReady(OSC_XOSCRDY_bm) == 0);
-
-  /* PLL: 16MHz x 2 */
-  CLKSYS_PLL_Config(OSC_PLLSRC_XOSC_gc, 2);
-  CLKSYS_Enable(OSC_PLLEN_bm);
-  do
-  {
-  } while (CLKSYS_IsReady(OSC_PLLRDY_bm) == 0);
-
-  CPU_CCP = CCP_IOREG_gc;
-  /* Set PLL as sysclk */
-  CLK_CTRL = CLK_SCLKSEL_PLL_gc;
-  CLKSYS_Disable(OSC_RC2MEN_bm);
-
-  return;
-}
-
 /*! \brief Main loop of the PM ATxmega MCU code
  *
  * This function:
@@ -57,18 +34,17 @@ static void sysclk_init(void)
  */
 int main(void)
 {
-  sysclk_init();
+  system_clock_init();
+
   io_init();
 
-  /* TODO: attenuator init*/
-  USARTD0_BAUDCTRLB = 0x40;
-  USARTD0_BAUDCTRLA = 0xc;
-  USARTD0_CTRLC = 3;
-
   console_init();
+
   timer_init();
 
   EEPROM_EnableMapping();
+
+  //TODO DAT_mem_2442 = 3;
 
   /* Check 5V supply status */
   if (io_is_12v_present())
@@ -100,13 +76,10 @@ int main(void)
   PMIC_EnableMediumLevel();
   sei();
 
-  /* TODO: Set ADT7311 */
-
-  /* Set attenuator PORTB according to EEPROM settings*/
-  io_attenuator_port_set(system_eeprom_get()->attenuator_portb_config);
+  /* TODO: Init ADT7311 */
 
   /* Send welcome message */
-  console_print("\r\nINR TCM control interface ready\r\n");
+  console_print("\r\nINR PM12 control interface ready\r\n");
   console_rts_clr();
 
   do
@@ -115,6 +88,7 @@ int main(void)
     {
       if (b_report_rdy)
       {
+        // TODO
         b_report_rdy = false;
         //console_print("FPGA: %d, %d\r\n", system_timers_get()->ts_fpga.state, system_timers_get()->ts_fpga.counter);
         //uint16_t data;
@@ -123,6 +97,7 @@ int main(void)
         report_cnt = 250;
       }
     } while (true);
+    // TODO usart_f0_parse_prompt();
 
   } while (true);
 

@@ -193,6 +193,7 @@ ISR(TCC0_OVF_vect)
                 if (system_status_get()->b_pwr_ldo_ok)
                 {
                     system_init(); // TODO
+                    // DAT_mem_2442 = 3
                     timer_tc_set_state(p_ts_fpga, 3); 
                     timer_tc_set_value_ms(p_ts_fpga, 1000);
                 }
@@ -262,5 +263,83 @@ ISR(TCC0_OVF_vect)
         }
     }
 
-    /* Check ... status and timer */
+    /*  Check error flags (every 0.5 second)
+        GPIOR0 0x000000001 -> porta.0 toggle
+        GPIOR0 0x000000100 -> porta.5 toggle 
+    */
+
+    /*  Check ADT7311 every 1 second
+        Send 0x50 0xFF 0xFF -> Read register 0x02 temperature value and status
+        if critical -> system fail led
+        Store temperature value at 0x2160
+        If DA7_PGOOD store temperature at FPGA (if changed)
+        fpga_send_msg_t2(0xbc,uVar8)
+    */
+
+    /*  If (GPIOR0 & 0b00001000) == 0:
+        fpga_send_msg_t1(0x7d,uVar8) 
+              bVar12 = (byte)((uint)uVar8 >> 8);
+      bVar15 = (byte)uVar8 | bVar12;
+      puVar16 = (undefined *)CONCAT11(bVar12,bVar15);
+      if (bVar15 != 0) {
+        cVar6 = '\0';
+        do {
+          bVar12 = (byte)((uint)uVar8 >> 8);
+          bVar15 = (byte)uVar8;
+          uVar8 = CONCAT11(bVar12 >> 1,bVar12 << 7 | bVar15 >> 1);
+          if ((bool)(bVar15 & 1)) {
+            bVar15 = cVar6 * '\x02' + 0xd;
+            fpga_send_msg_t1(bVar15,puVar16);
+            puVar13 = puVar16;
+            fpga_send_msg_t1(bVar15 + 1,puVar16);
+            bVar12 = (byte)((uint)puVar13 >> 8);
+            bVar15 = (byte)((uint)puVar16 >> 8);
+            puVar3 = puVar16;
+            if (bVar15 < bVar12 || (byte)(bVar15 - bVar12) < ((byte)puVar16 < (byte)puVar13)) {
+              puVar3 = puVar13;
+              puVar13 = puVar16;
+            }
+            puVar16 = puVar3;
+            cVar10 = (char)((uint)puVar16 >> 8);
+            bVar12 = (byte)puVar16;
+            bVar15 = (byte)puVar13;
+            if ((cVar10 == '\0') && (bVar12 < 0x97)) {
+              if (bVar15 < 0x1e) {
+                bVar15 = 0x1e - bVar15;
+                cVar10 = '\0';
+LAB_code_000434:
+                pbVar19 = (byte *)CONCAT11((0x30 < (byte)(cVar6 * '\b' + 4U)) + '!',
+                                           cVar6 * '\b' + -0x2d);
+                bVar12 = *pbVar19 + bVar15;
+                bVar15 = pbVar19[1] + cVar10 + CARRY1(*pbVar19,bVar15);
+                puVar16 = (undefined *)CONCAT11(bVar15,bVar12);
+                uVar4 = 1;
+                if ((char)(bVar15 - ((bVar12 < 0xf5) + '\x01')) < '\0' ==
+                    (SBORROW1(bVar15,'\x01') != SBORROW1(bVar15 - 1,bVar12 < 0xf5))) {
+                  puVar16 = &UNK_mem_01f4;
+                }
+                else {
+                  uVar4 = 0xfe;
+                  if ((char)(bVar15 - ((bVar15 < 0xc) + -2)) < '\0' !=
+                      (SBORROW1(bVar15,-2) != SBORROW1(bVar15 + 2,bVar15 < 0xc))) {
+                    puVar16 = (undefined *)0xfe0c;
+                  }
+                }
+                *pbVar19 = (byte)puVar16;
+                pbVar19[1] = (byte)((uint)puVar16 >> 8);
+                fpga_send_msg_t2(cVar6 * '\x04' + 0x82,puVar16);
+                uVar22 = dac_set_value(uVar4,CONCAT11(cVar6,cVar6),puVar16);
+                cVar6 = (char)((uint3)uVar22 >> 8);
+              }
+            }
+            else if (((char)((uint)puVar13 >> 8) == '\0') || (0x1d < bVar15)) {
+              bVar15 = 0x96 - bVar12;
+              cVar10 = -(cVar10 + (0x96 < bVar12));
+              goto LAB_code_000434;
+            }
+          }
+          cVar6 = cVar6 + '\x01';
+        } while (cVar6 != '\f');
+      }
+    */
 }

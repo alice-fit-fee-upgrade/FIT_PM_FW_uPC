@@ -16,3 +16,10 @@ void ths788_data_write(uint8_t addr, uint16_t *p_data)
 {
     return;
 }
+
+ISR(PORTB_INT0_vect)
+{
+    // DAT_mem_2157 = DAT_mem_2157 | 0b01100000;
+    //PORTA_OUTCLR = 0b01000000;
+    //PORTE_OUTCLR = 0b00000100;
+}

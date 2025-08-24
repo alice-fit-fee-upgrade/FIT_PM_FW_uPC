@@ -63,30 +63,28 @@ void system_init()
 void system_deinit()
 {
     /*
-  DAT_mem_215c = 0;
+    DAT_mem_215c = 0;
   DAT_mem_215d = 0;
   DAT_mem_215b = 0;
-  DAT_fpga_comm_request = 0;
-  DAT_mem_2185 = 0;
   DAT_mem_2159 = 0;
-  DAT_clk_frs = 0;
+  DAT_mem_2441 = 0;
+  DAT_mem_2006 = 0;
+  DAT_mem_2162 = 0;
   PORTE_INTCTRL = 1;
   PORTF_INTCTRL = 2;
-  PORTC_INTCTRL = 0;
+  PORTB_INTCTRL = 0;
   PORTD_INTCTRL = 0;
-  USARTD0_CTRLB = 0;
-  USARTD0_CTRLA = 0;
-  PORTB_DIRCLR = 0x80;
-  PORTB_OUTSET = 0x10;
+  PORTB_DIRCLR = 0xbf;
   SPIC = 0;
-  PORTC_DIRCLR = 0xb0;
-  PORTD_DIRCLR = 9;
-  PORTD_OUTCLR = 0x10;
-  PORTF_DIRCLR = 0x30;
+  PORTC_DIRCLR = 0xff;
+  PORTD_DIRCLR = 0x41;
+  PORTD_OUTCLR = 4;
+  PORTF_OUTCLR = 0x20;
+  PORTF_DIRCLR = 0x20;
   DAT_mem_2157 = DAT_mem_2157 & 0xef;
   PORTA_OUTSET = 0xa0;
-  TWIC_MASTER_CTRLA = 0x48;
-  TWIC_MASTER_STATUS = 1;
+  SPID = 0;
+  DMA = 0;
   */
 
     return;
@@ -104,6 +102,29 @@ void system_reset()
 
     system_timers.ts_ths788.state = 1;
     system_timers.ts_ths788.counter = 100;
+
+    return;
+}
+
+void system_clock_init(void)
+{
+    CLKSYS_XOSC_Config(OSC_FRQRANGE_12TO16_gc, false, OSC_XOSCSEL_XTAL_16KCLK_gc);
+    CLKSYS_Enable(OSC_RC2MEN_bm | OSC_XOSCEN_bm);
+    do
+    {
+    } while (CLKSYS_IsReady(OSC_XOSCRDY_bm) == 0);
+
+    /* PLL: 16MHz x 2 */
+    CLKSYS_PLL_Config(OSC_PLLSRC_XOSC_gc, 2);
+    CLKSYS_Enable(OSC_PLLEN_bm);
+    do
+    {
+    } while (CLKSYS_IsReady(OSC_PLLRDY_bm) == 0);
+
+    CPU_CCP = CCP_IOREG_gc;
+    /* Set PLL as sysclk */
+    CLK_CTRL = CLK_SCLKSEL_PLL_gc;
+    CLKSYS_Disable(OSC_RC2MEN_bm);
 
     return;
 }
