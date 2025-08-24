@@ -113,15 +113,13 @@ Some details about the peripherals the MCU ATxmega128a3 is communicating with.
 | ...	|	|	|	|
 | 0x214f|	| ?	| Some attenuator msg bufffer (ending here)	|
 | 0x2156|	| ?	| Some usart f0 msg buffer (ending here)       	|
-| 0x2157| 	| 1	| 5V on PORTE.1 present |
+| 0x2157| 	| 1	| Error flags buffer |
 | 0x2158| 	| 1	| FPGA 0x7F status 	|
 | 0x2159| 	| 1	| Timer THS788 status 	|
 | 0x215a| 	| 1	| Timer THS788 value	|
 | 0x215b| 	| 1	| Timer FPGA status	| 
 | 0x215c| 	| 2	| Timer FPGA value 	| 
-| ...	|	|	|	|
-| 0x2156|	| ?	| Some usart f0 msg buffer (ending here)|
-| ...	|	|	|	|
+| 0x215e|	| 2	| Timer 		|
 | 0x2160| 	| 2 	| #16#BC reg Board Temperature		|
 | 0x2162| 	| 1 	| clock source settings |
 | --- 	| ---	| ---	| --- EEPROM START ---	|
@@ -138,7 +136,7 @@ Some details about the peripherals the MCU ATxmega128a3 is communicating with.
 | 0x2435| 	| 4	| DMA?	|
 | 0x2439| 	| 4	| DMA?	|
 | 0x243d| 	| 4	| DMA?	|
-| 0x2441|	| 2	| #16#BE reg Last Restart Reason	|
+| 0x2441|	| 1	| #16#BE reg Last Restart Reason	|
 | ...	|	|	|	|
 | 0x2b76| 	| 8 	| Programming lock [0x78,0x56,0x34,0x12,0x98,0xBA,0xDC,0xFE ] |
 | 0x2b92|	| 4	| Flash timestamp	|
