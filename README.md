@@ -1,7 +1,7 @@
 # ALICE Fast Interaction Trigger – XMEGA Firmware
 
 Firmware for the **ALICE Fast Interaction Trigger (FIT)** system, developed for the **Atmel XMEGA** microcontroller platform.
-This repository contains source code for the two main subsystems of FIT:
+This repository contains source code:
 
 - **Processing Module (PM)** – responsible for signal acquisition, digitization, and preprocessing.
 
