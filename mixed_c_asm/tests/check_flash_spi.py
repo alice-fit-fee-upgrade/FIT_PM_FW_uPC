@@ -5,8 +5,8 @@ from cpu_state import CPU,ROOT
 sys.path.insert(0,str(ROOT/'source_recovery/tests'))
 from avr_oracle import PROGRAM,load_program
 parser=argparse.ArgumentParser()
-parser.add_argument('--entry',action='append',type=lambda s:int(s,0),choices=(0x1664,0x171e,0x1808))
-entries=parser.parse_args().entry or [0x1664,0x171e,0x1808]
+parser.add_argument('--entry',action='append',type=lambda s:int(s,0),choices=(0x1664,0x171e,0x1808,0x1710))
+entries=parser.parse_args().entry or [0x1664,0x171e,0x1808,0x1710]
 MIXED=load_program(ROOT/'mixed_c_asm/build/flash_mixed.bin')
 class IO:
  def __init__(self,status,delay):self.status=status;self.delay=delay;self.poll=0;self.trace=[]

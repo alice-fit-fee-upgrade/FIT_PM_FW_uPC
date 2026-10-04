@@ -221,3 +221,9 @@ c-check:
 .PHONY: mixed-check
 mixed-check:
 	$(MAKE) -C mixed_c_asm check
+
+# Verified original entry-point inventory for the current mixed firmware.
+.PHONY: c-progress
+c-progress:
+	$(MAKE) -C mixed_c_asm all
+	python3 tools/function_inventory.py

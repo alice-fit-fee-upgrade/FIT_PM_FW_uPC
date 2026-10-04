@@ -44,3 +44,18 @@ uint8_t pm_flash_send_address(uint8_t command, uint8_t high,
     do { status = SPIE_STATUS; } while ((status & 0x80u) == 0);
     return status;
 }
+
+/* One original status transaction. The outer busy retry and the exact
+ * 1600-iteration ASM delay are retained by the bridge/entry region. */
+uint16_t pm_flash_read_status_transaction(void)
+{
+    uint8_t status;
+    PORTE_OUTCLR = 0x10;
+    SPIE_DATA = 5;
+    do { status = SPIE_STATUS; } while ((status & 0x80u) == 0);
+    SPIE_DATA = 0;
+    do { status = SPIE_STATUS; } while ((status & 0x80u) == 0);
+    uint8_t data = SPIE_DATA;
+    PORTE_OUTSET = 0x10;
+    return (uint16_t)(((uint16_t)status << 8) | data);
+}

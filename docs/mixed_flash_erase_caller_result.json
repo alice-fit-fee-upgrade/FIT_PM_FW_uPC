@@ -1,0 +1,14 @@
+{
+  "cases": 65536,
+  "entries": [
+    {
+      "entry": 5904,
+      "cases": 65536
+    }
+  ],
+  "registers_sreg_mmio_order_and_return_stack_equal": true,
+  "incoming_sreg_patterns": 256,
+  "maximum_additional_stack": 20,
+  "mixed_bin_sha256": "c04f73ed7748609d4941a92d0e2c3a7d9c44d0bc744c4a8e3ab107aadf9653a7",
+  "limits": "bounded functional interpreter; scripted hardware SPI polling; no cycle/async interrupt/hardware validation"
+}

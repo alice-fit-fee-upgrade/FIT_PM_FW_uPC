@@ -1,5 +1,6 @@
 .global dac_send_value
 .global cli_send_msg
+.global FUN_code_000b9d
 #include "ATxmega128A3Udef.inc"
 
 .section .application,"ax",@progbits
@@ -2672,29 +2673,11 @@ FUN_code_000b9d:
 LAB_code_000b9f:              
 	sbiw        R24,0x1                              
 	brbc        CPU_Z_bp, LAB_code_000b9f                    
-	ldi         R16,0x10                                
-	sts         PORTE_OUTCLR,R16                ;= ??
-	ldi         R16,0x5                                 
-	sts         SPIE_DATA,R16                   ;= ??
-LAB_code_000ba7:              
-	lds         R19,SPIE_STATUS                 ;= ??
-	sbrs        R19,0x7                                 
-	rjmp        LAB_code_000ba7                         
-	sts         SPIE_DATA,R24                   ;= ??
-LAB_code_000bad:              
-	lds         R19,SPIE_STATUS                 ;= ??
-	sbrs        R19,0x7                                 
-	rjmp        LAB_code_000bad                         
-	lds         R24,SPIE_DATA                   ;= ??
-	ldi         R16,0x10                                
-	sts         PORTE_OUTSET,R16                ;= ??
-	sbrc        R24,0x0                                 
-	rjmp        FUN_code_000b9d                         
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000bb9()
+    jmp pm_flash_wait_bridge
+.org 0x174e, 0xff
+LAB_code_000ba7:
+.org 0x175a, 0xff
+LAB_code_000bad:
 .org (0x0bb9 << 1), 0xff
 FUN_code_000bb9:
 	ldi         R16,0x10                                

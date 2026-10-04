@@ -502,3 +502,59 @@ pm_flash_address_bridge:
     pop r0
     ret
 .size pm_flash_address_bridge, .-pm_flash_address_bridge
+
+/* At 0x1742 after the UNCHANGED original timed delay. Save its precise
+ * SREG state; retry the original delay if the returned FLASH busy bit is set. */
+.global pm_flash_wait_bridge
+.type pm_flash_wait_bridge,@function
+pm_flash_wait_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r20
+    push r21
+    push r22
+    push r23
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_flash_read_status_transaction
+    mov r19, r25
+    ldi r25, 0
+    ldi r16, 0x10
+    sbrc r24, 0
+    rjmp .Lflash_wait_restart
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.Lflash_wait_restart:
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    jmp FUN_code_000b9d
+.size pm_flash_wait_bridge, .-pm_flash_wait_bridge

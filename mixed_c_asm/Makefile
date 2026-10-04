@@ -41,6 +41,9 @@ check:
 	$(PYTHON) tests/check_dac_edges.py
 	$(PYTHON) tests/check_status_gate.py
 	$(PYTHON) tests/check_crc_byte.py
+	$(PYTHON) tests/check_flash_spi.py
+	$(PYTHON) tests/check_flash_wait.py
+	$(PYTHON) ../tools/function_inventory.py
 clean:
 	rm -rf build
 	rm -f generated/application.S
