@@ -28,6 +28,7 @@ check:
 	$(PYTHON) tests/check_layout.py
 	$(PYTHON) ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_mixed.bin --code-range 0x3000:0x3100 --code-range 0x3100:0x1e000 > build/instruction_diff.txt
 	$(PYTHON) tests/check_abi.py
+	$(PYTHON) tests/check_unsigned_abi.py
 	$(PYTHON) tests/check_callers.py
 clean:
 	rm -rf build

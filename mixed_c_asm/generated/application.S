@@ -4144,32 +4144,11 @@ fpga_is_ready:
     jmp pm_scale_signed_bridge
 ; next original function retains its exact address
 .org (0x10a6 << 1), 0xff
-FUN_code_0010a6:          
-	eor         R17,R17                                 
-	mul         R18,R20                       
-	sbrc        R0,0x7                                  
-	inc         R1                                      
-	mov         R16,R1                                  
-	mul         R19,R20
-	add         R16,R0                                  
-	adc         R17,R1                                  
-	mul         R18,R21
-	add         R16,R0                                  
-	adc         R17,R1                                  
-	mul         R19,R21
-	and         R1,R1                                   
-	brbc        CPU_Z_bp, LAB_code_0010b7                    
-	add         R17,R0                                  
-	brbs        CPU_C_bp, LAB_code_0010b7                    
-	ret                                                 
-LAB_code_0010b7:              
-	ser         R16                                     
-	ser         R17                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined5 FUN_code_0010ba()
+FUN_code_0010a6:
+    jmp pm_scale_unsigned_bridge
+.org (0x10b7 << 1), 0xff
+LAB_code_0010b7:
+    /* Internal original saturation label retained for address audit. */
 .org (0x10ba << 1), 0xff
 ths788_write:
 	push        R16                           

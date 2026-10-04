@@ -1,0 +1,39 @@
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: 30a3f97a86a12af471922f6e7b6222e364b60d47b1995a7757efad1537ffb55f
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 138585
+Differing bytes: 679
+ALL FLASH identical percentage: 99.512437%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 68 differing, 99.401092% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11965 bytes, 679 differing, 94.325115% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 679 differing, 99.486873% identical
+First mismatch: 0x2130
+Last mismatch: 0x32cb
+Number of mismatch regions: 12
+START       END         LENGTH      TYPE
+0x000000    0x00212F    8496        MATCH
+0x002130    0x002173    68          DIFF
+0x002174    0x002FFF    3724        MATCH
+0x003000    0x003019    26          DIFF
+0x00301A    0x00301A    1           MATCH
+0x00301B    0x003027    13          DIFF
+0x003028    0x003028    1           MATCH
+0x003029    0x003065    61          DIFF
+0x003066    0x003066    1           MATCH
+0x003067    0x003077    17          DIFF
+0x003078    0x003078    1           MATCH
+0x003079    0x00309F    39          DIFF
+0x0030A0    0x0030FF    96          MATCH
+0x003100    0x003106    7           DIFF
+0x003107    0x003107    1           MATCH
+0x003108    0x00312B    36          DIFF
+0x00312C    0x00312C    1           MATCH
+0x00312D    0x003139    13          DIFF
+0x00313A    0x00313A    1           MATCH
+0x00313B    0x003263    297         DIFF
+0x003264    0x003264    1           MATCH
+0x003265    0x003291    45          DIFF
+0x003292    0x003292    1           MATCH
+0x003293    0x0032CB    57          DIFF
+0x0032CC    0x021FFF    126260      MATCH

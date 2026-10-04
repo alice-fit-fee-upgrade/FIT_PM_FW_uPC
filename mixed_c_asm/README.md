@@ -15,21 +15,22 @@ Outputs: `build/mixed.elf`, `mixed.hex`, `flash_mixed.bin`, linker map and JSON 
 This is a mixed firmware development image with original vectors/startup/boot, distinct from
 source_recovery's empty-main linker smoke test. Physical module execution is still pending.
 
-| Region (byte address) | Source |
-|---|---|
-| 0x0000..0x212F | Original application ASM |
-| 0x2130..0x214B | Original scaler entry: 4-byte JMP followed by 24 FF padding bytes |
-| 0x214C..0x2BDB | Original application ASM, constants and strings |
-| 0x3000..0x304B | ASM ABI bridge (76 bytes) |
-| 0x3100..0x315D | AVR-compiled C scaler + two GCC multiply helpers (94 bytes) |
-| 0x20000..0x204E5 | Original boot region |
+Two original procedures are now integrated: signed scaler at 0x2130 (28 original
+bytes) and unsigned scaler at 0x214C (40 original bytes). Both keep their original
+entry addresses, with JMP trampolines and FF padding. All 806 original code-symbol
+addresses remain fixed, including the unsigned routine's internal saturation label
+at 0x216E; the converter verifies that no external source reference targets it.
 
-806 original code-symbol addresses remain fixed. The mixed image differs at 195 byte positions,
-all within the replaced 28-byte scaler region or the two additions above. Original vectors, all
-other application bytes, tables, constants, boot bytes and unused space outside additions match.
-No new static SRAM, BSS, initialization data or CRT is permitted by the linker. Added code is
-below the application-table region. The unused unsigned C scaler is removed with gc-sections.
-Only one original procedure has been integrated; the remaining recovered C modules stay separate.
+The ABI bridges occupy 0x3000..0x309F (160 bytes), and C plus GCC helpers occupy
+0x3100..0x32CB (460 bytes). The mixed image differs at 679 byte positions only within
+these replacements and additions. Original vectors, other instructions, constants,
+boot and unused space outside additions remain unchanged. The linker permits no new
+static SRAM, BSS or initialized data. The exact assembly baseline remains separate.
+
+See [unsigned integration evidence](../docs/mixed_unsigned_checkpoint.md) and the
+[historical signed checkpoint](../docs/mixed_c_asm_checkpoint.md). Functional recovery
+coverage and actual replacement coverage are separate: two integrated entries cover
+68 original code bytes (0.63% of 10,836 symbolic baseline bytes).
 
 ## Original ABI
 
@@ -42,14 +43,14 @@ replays the final MULSU, and reconstructs the final ADD's prestate from C's retu
 
 ATxmega128A3U compiler target defines __AVR_3_BYTE_PC__; tests physically model three-byte return
 addresses and actual SRAM push/pop. Original startup sets SP=0x3FFF. A simulated calling frame
-enters at SP=0x3FFC. Maximum additional scaler stack is 22 bytes (minimum SP=0x3FE6);
-from either DAC caller it is 26 bytes. Return SP and saved return addresses are checked.
+enters at SP=0x3FFC. Maximum additional signed-scaler stack is 22 bytes (minimum SP=0x3FE6);
+from either signed DAC caller it is 26 bytes. Return SP and saved return addresses are checked.
 Dead stack scratch bytes change and are not required to equal old contents. Static/live nonstack
 RAM and peripheral effects are checked separately; this does not prove worst-case firmware stack
 usage with nested asynchronous interrupts.
 
-796,432 direct compiled-AVR cases compare all 32 registers, SREG and return/stack balance.
-131,072 end-to-end caller cases compare registers, flags, DAC SPI polling/write/IRQ traces and stack.
+796,432 direct compiled-AVR cases per scaler compare all 32 registers, SREG and return/stack balance.
+262,144 end-to-end caller cases compare registers, flags, DAC SPI polling/write/IRQ traces and stack.
 The custom bounded interpreter fails closed on unsupported instructions. It is a functional model,
 not cycle-accurate hardware proof. Executed instruction count rises from 13/14 to 81/82;
 full firmware timing/interrupt scheduling remains pending validation. Golden exact_asm is retained.

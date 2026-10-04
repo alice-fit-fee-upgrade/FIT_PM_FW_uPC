@@ -1,0 +1,8 @@
+{
+  "two_clean_builds_identical": true,
+  "sha256": {
+    "mixed.elf": "56805f1fdb4b869933d8d927f98311d6bcc20d9b04f87921bd5d39f93c34e8d8",
+    "mixed.hex": "53ef6f8a5ed3c82ceebc44d4fad4866e85d6b1537138378f58ea4716da4cabe9",
+    "flash_mixed.bin": "30a3f97a86a12af471922f6e7b6222e364b60d47b1995a7757efad1537ffb55f"
+  }
+}

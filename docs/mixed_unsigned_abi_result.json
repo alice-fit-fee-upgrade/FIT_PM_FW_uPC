@@ -1,0 +1,75 @@
+{
+  "cases": 796432,
+  "stages": [
+    {
+      "name": "all inputs, coefficient 0x0000",
+      "cases": 65536
+    },
+    {
+      "name": "all inputs, coefficient 0x0001",
+      "cases": 65536
+    },
+    {
+      "name": "all inputs, coefficient 0x00ff",
+      "cases": 65536
+    },
+    {
+      "name": "all inputs, coefficient 0x0100",
+      "cases": 65536
+    },
+    {
+      "name": "all inputs, coefficient 0x4188",
+      "cases": 65536
+    },
+    {
+      "name": "all inputs, coefficient 0x8000",
+      "cases": 65536
+    },
+    {
+      "name": "all inputs, coefficient 0xffff",
+      "cases": 65536
+    },
+    {
+      "name": "all coefficients, input 0x0000",
+      "cases": 65536
+    },
+    {
+      "name": "all coefficients, input 0x0001",
+      "cases": 65536
+    },
+    {
+      "name": "all coefficients, input 0x7fff",
+      "cases": 65536
+    },
+    {
+      "name": "all coefficients, input 0x8000",
+      "cases": 65536
+    },
+    {
+      "name": "all coefficients, input 0xffff",
+      "cases": 65536
+    },
+    {
+      "name": "random input/coefficient/state",
+      "cases": 10000
+    }
+  ],
+  "seed": "0x41424912",
+  "checked_registers": 32,
+  "checked_sreg_bits": 8,
+  "all_initial_sreg_values": 256,
+  "executed_code": "linked AVR opcodes, including pm_scale_unsigned_abi and bridge; no native/host C hooks",
+  "return_address_bytes": 3,
+  "entry_stack_pointer": 16380,
+  "returned_stack_pointer": 16383,
+  "maximum_additional_stack_below_entry": 22,
+  "minimum_stack_pointer": 16358,
+  "mixed_instruction_steps_range": [
+    149,
+    192
+  ],
+  "peripheral_reads_writes": 0,
+  "new_static_ram_bytes": 0,
+  "mixed_bin_sha256": "30a3f97a86a12af471922f6e7b6222e364b60d47b1995a7757efad1537ffb55f",
+  "limits": "bounded custom functional interpreter; no asynchronous interrupt injection, cycle equivalence or physical device execution"
+}

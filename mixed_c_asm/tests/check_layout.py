@@ -10,7 +10,7 @@ for line in subprocess.check_output(['avr-objdump','-h',str(build/'mixed.elf')],
  if m: sections[m[1]]=(int(m[3],16),int(m[2],16))
 assert sections['.application']==(0,0x2bdc)
 assert sections['.boot']==(0x20000,0x4e6)
-allowed=set(range(0x2130,0x214c)); additions=[]
+allowed=set(range(0x2130,0x2174)); additions=[]
 for name,base in [('.bridges',0x3000),('.text',0x3100)]:
  a,n=sections[name]; assert a==base and n>0
  assert all(b==255 for b in golden[a:a+n]),'new source overlaps golden programming'
@@ -21,6 +21,7 @@ assert len(golden)==len(mixed)==0x22000
 changes=[a for a,(g,r) in enumerate(zip(golden,mixed)) if g!=r]
 assert changes and all(a in allowed for a in changes),'difference outside replacement/addition regions'
 assert mixed[0x2134:0x214c]==b'\xff'*24
+assert mixed[0x2150:0x2174]==b'\xff'*36
 
 def symbols(elf):
  result={}
@@ -30,10 +31,10 @@ def symbols(elf):
  return result
 original=symbols(ROOT/'exact_asm/build/reconstructed.elf'); rebuilt=symbols(build/'mixed.elf')
 for name,a in original.items(): assert rebuilt.get(name)==a,('original symbol moved/missing',name,a,rebuilt.get(name))
-assert rebuilt['fpga_is_ready']==0x2130 and rebuilt['pm_scale_signed']==0x3100
+assert rebuilt['fpga_is_ready']==0x2130 and rebuilt['FUN_code_0010a6']==0x214c
 assert 'pm_scale_unsigned' not in rebuilt,'unused C retained despite gc-sections'
 assert 'pm_scale_signed_bridge' in rebuilt
 text,_=report(golden,mixed); (build/'byte_comparison.txt').write_text(text)
-result={'image_size':len(mixed),'changed_bytes':len(changes),'original_code_replaced':{'start':0x2130,'size':28},'additions':additions,'original_text_symbols_preserved':len(original),'boot_vectors_data_unchanged':True,'new_data_bss_bytes':0,'permitted_changes_only':True}
+result={'image_size':len(mixed),'changed_bytes':len(changes),'original_code_replaced':[{'start':0x2130,'size':28},{'start':0x214c,'size':40}],'additions':additions,'original_text_symbols_preserved':len(original),'boot_vectors_data_unchanged':True,'new_data_bss_bytes':0,'permitted_changes_only':True}
 (build/'layout_result.json').write_text(json.dumps(result,indent=2)+'\n')
 print('PASS mixed layout:',len(changes),'changed bytes;',len(original),'original text symbols unmoved; no new static SRAM')

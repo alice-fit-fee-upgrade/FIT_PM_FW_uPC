@@ -33,6 +33,8 @@ void pm_send_flash_string(const pm_bus *, const pm_stream *, uint16_t);
 void pm_send_decimal(const pm_stream *, uint16_t, bool signed_value, uint8_t decimal_places);
 uint16_t pm_scale_signed(uint16_t coefficient, uint16_t signed_input_bits);
 uint16_t pm_scale_unsigned(uint16_t coefficient, uint16_t input);
+/* Original AVR ABI adapter: result bits 0..15, full SREG bits 16..23. */
+uint32_t pm_scale_unsigned_abi(uint16_t coefficient, uint16_t input, uint8_t entry_sreg);
 uint8_t pm_console_next(const pm_bus *, bool raw);
 void pm_console_send(const pm_bus *, uint8_t);
 uint8_t pm_adt7311_byte(const pm_bus *, uint8_t);
