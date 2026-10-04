@@ -5,8 +5,8 @@ Only stream hooks bypass original subroutines; MMIO routines execute real calls.
 import pathlib,re,subprocess
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 FLASH=(ROOT/'reference/flash_golden.bin').read_bytes()
-def load_program():
-    text=subprocess.check_output(['avr-objdump','-D','-b','binary','-m','avr:106',str(ROOT/'reference/flash_golden.bin')],text=True)
+def load_program(path=None):
+    text=subprocess.check_output(['avr-objdump','-D','-b','binary','-m','avr:106',str(path or (ROOT/'reference/flash_golden.bin'))],text=True)
     program={}
     for line in text.splitlines():
         m=re.match(r'\s*([0-9a-f]+):\s*((?:[0-9a-f]{2} )+)\s*(\S+)\s*(.*)',line)
@@ -18,10 +18,15 @@ def load_program():
 PROGRAM=load_program()
 
 class Machine:
-    def __init__(self,read,write,irq,stream=None,output=None):
+    def __init__(self,read,write,irq,stream=None,output=None,program=None):
         self.r=[0]*32; self.f=[0]*8; self.stack=[]; self.calls=[]
         self.read=read; self.write=write; self.irq=irq
-        self.stream=stream; self.output=output; self.steps=0
+        self.stream=stream; self.output=output; self.steps=0; self.program=PROGRAM if program is None else program
+    def push_byte(self,value): self.stack.append(value)
+    def pop_byte(self): return self.stack.pop()
+    def enter_call(self,address): self.calls.append(address)
+    def leave_call(self): return self.calls.pop()
+    def finish_root_return(self): pass
     def reg(self,s): return int(s.strip()[1:])
     def ptr(self,p):
         n={'X':26,'Y':28,'Z':30}[p]; return self.r[n]|self.r[n+1]<<8
@@ -51,11 +56,12 @@ class Machine:
         self.pc=start
         while self.steps<limit:
             self.steps+=1
-            op,args,n,target=PROGRAM[self.pc]; self.pc+=n
+            op,args,n,target=self.program[self.pc]; self.pc+=n
             p=[s.strip() for s in args.split(',')] if args else []
             if op in ('ret','reti'):
-                if not self.calls: return self
-                self.pc=self.calls.pop(); continue
+                if not self.calls:
+                    self.finish_root_return(); return self
+                self.pc=self.leave_call(); continue
             if op in ('call','rcall','jmp','rjmp'):
                 dest=target if target is not None else int(args,0)
                 if op in ('call','rcall'):
@@ -63,7 +69,7 @@ class Machine:
                         self.r[16]=self.stream(); continue
                     if dest==0x28ac and self.output is not None:
                         self.output(self.r[16]); continue
-                    self.calls.append(self.pc)
+                    self.enter_call(self.pc)
                 self.pc=dest; continue
             if op.startswith('br'):
                 conditions={'breq':(1,1),'brne':(1,0),'brcs':(0,1),'brcc':(0,0),'brlo':(0,1),'brsh':(0,0),'brlt':(4,1),'brge':(4,0),'brmi':(2,1),'brpl':(2,0),'brts':(6,1),'brtc':(6,0)}
@@ -71,12 +77,12 @@ class Machine:
                 bit,value=conditions[op]
                 if self.f[bit]==value: self.pc=target
                 continue
-            if op=='push': self.stack.append(self.r[self.reg(p[0])]); continue
-            if op=='pop': self.r[self.reg(p[0])]=self.stack.pop(); continue
+            if op=='push': self.push_byte(self.r[self.reg(p[0])]); continue
+            if op=='pop': self.r[self.reg(p[0])]=self.pop_byte(); continue
             if op in ('sbrc','sbrs','cpse'):
                 if op=='cpse': skip=self.r[self.reg(p[0])]==self.r[self.reg(p[1])]
                 else: skip=bool(self.r[self.reg(p[0])]&(1<<int(p[1],0)))==(op=='sbrs')
-                if skip: self.pc+=PROGRAM[self.pc][2]
+                if skip: self.pc+=self.program[self.pc][2]
                 continue
             if op in ('sei','cli'):
                 self.f[7]=int(op=='sei'); self.irq(op=='sei'); continue

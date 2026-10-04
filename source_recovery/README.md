@@ -41,7 +41,10 @@ Signed/unsigned scaling retains original rounding and the original staged unsign
 TX indices wrap at 256 while RX wraps at 64; signed character comparison excludes bytes >=0x80.
 The settings-init code writes a ONE-byte gate value and final 0x0FFF unlock value, not 0xFFFF.
 
-Next integration work: prove original ABI contracts and ISR preservation, map callback/data storage
+First integration: ../mixed_c_asm now links the signed scaler through a verified original-ABI
+bridge and compares compiled AVR register/SREG/stack state. Other routines remain separate.
+
+Remaining integration work: prove remaining original ABI contracts and ISR preservation, map callback/data storage
 into original RAM without disturbing buffers, retain cycle-sensitive assembly until timing is proven,
 then create a separate mixed development ELF. Keep exact_asm available to compare every region.
 The original formatter exposes signed decimal places 0..3 and unsigned integer mode only.

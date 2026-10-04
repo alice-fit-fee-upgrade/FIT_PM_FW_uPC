@@ -5,10 +5,11 @@ uint16_t pm_scale_signed(uint16_t coefficient, uint16_t input)
 {
     int32_t value = input < 0x8000u ? (int32_t)input : (int32_t)input - 65536;
     int32_t product = value * coefficient;
-    /* Division rounds toward zero in C; AVR truncates low byte toward -infinity. */
-    int32_t rounded = product + 128;
-    int32_t result = rounded >= 0 ? rounded / 256 : -((-rounded + 255) / 256);
-    return (uint16_t)result;
+    /* Only bits 8..23 survive the 16-bit return. Unsigned shifting of
+     * the modulo-2^32 product has exactly those bits for either sign;
+     * no implementation-defined signed shift or runtime division is needed. */
+    uint32_t rounded_bits = (uint32_t)product + 128u;
+    return (uint16_t)(rounded_bits >> 8);
 }
 /* 0x214C..0x2173: preserve ORIGINAL staged saturation. Carry from the
  * penultimate addition is not used by the final test; retain the original

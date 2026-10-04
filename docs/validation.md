@@ -26,3 +26,14 @@ including MMIO/IRQ traces, parser partial-error states, formatting and settings/
 AVR library compilation and whole-library link check passed with warnings treated as errors.
 Exact FLASH check was repeated after C development: still 0 differing bytes.
 See c_recovery.md, c_recovery_validation.json and c_recovery_coverage.json for scope and limits.
+
+## First compiled-AVR mixed firmware checkpoint
+
+796,432 direct ABI comparisons passed on linked AVR C/ASM opcodes, comparing all registers,
+SREG and architectural three-byte return stack. Both original DAC callers passed another
+131,072 full-input cases with matching register/flag/stack state and SPI/IRQ traces.
+Native C regression still passed 390,601 cases. The exact baseline still matches all FLASH bytes.
+Mixed layout differs at 195 positions only within the designated 28-byte replacement and new
+76-byte bridge / 94-byte C+GCC-helper additions. No new static SRAM is linked.
+Reports: mixed_abi_result.json, mixed_callers_result.json, mixed_layout_result.json,
+mixed_byte_comparison.txt and mixed_instruction_diff.txt. Physical/timing validation remains pending.

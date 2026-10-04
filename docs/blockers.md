@@ -8,3 +8,7 @@ validation remain pending; schematic/device-selector revision differences remain
 The separate C recovery now covers 33 original entries spanning 2,494 routine bytes.
 Functional differential tests passed; C ABI/vector/timing integration remains pending, and
 none of those routines replaces bytes in the exact firmware. See c_recovery.md.
+
+A separate mixed C/ASM image now integrates the signed scaler at 0x2130, with original
+register/SREG/stack contracts checked on compiled AVR opcodes. Remaining routines' ABI and
+ISR integration, interrupt timing and hardware execution remain pending.

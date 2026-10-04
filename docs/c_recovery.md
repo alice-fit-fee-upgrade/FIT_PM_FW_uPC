@@ -54,3 +54,11 @@ write path, remaining application logic and bootloader still await C recovery. A
 requires preserving caller-visible flags/registers, allocating C data/stack within original RAM,
 and proving timing before replacing bit-banged routines. Those constraints are not hidden by a
 successful native functional test. exact_asm remains the binary oracle and its exact-check still passes.
+
+## First ABI-safe mixed-image checkpoint
+
+The signed scaler at 0x2130 is now integrated in a separate mixed C/ASM firmware image.
+Direct execution of AVR-compiled C and its GCC helpers passed 796,432 full CPU-state cases;
+both original DAC callers passed 131,072 end-to-end cases. Exact firmware still has zero C
+substitutions. See mixed_c_asm_checkpoint.md for the 28-byte replacement, preserved addresses,
+stack overhead, flag reconstruction and timing limits.

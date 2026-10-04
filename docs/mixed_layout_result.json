@@ -1,0 +1,24 @@
+{
+  "image_size": 139264,
+  "changed_bytes": 195,
+  "original_code_replaced": {
+    "start": 8496,
+    "size": 28
+  },
+  "additions": [
+    {
+      "section": ".bridges",
+      "start": 12288,
+      "size": 76
+    },
+    {
+      "section": ".text",
+      "start": 12544,
+      "size": 94
+    }
+  ],
+  "original_text_symbols_preserved": 806,
+  "boot_vectors_data_unchanged": true,
+  "new_data_bss_bytes": 0,
+  "permitted_changes_only": true
+}

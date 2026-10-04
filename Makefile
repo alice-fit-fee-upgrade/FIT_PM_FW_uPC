@@ -217,3 +217,7 @@ exact-check:
 .PHONY: c-check
 c-check:
 	$(MAKE) -C source_recovery check
+
+.PHONY: mixed-check
+mixed-check:
+	$(MAKE) -C mixed_c_asm check
