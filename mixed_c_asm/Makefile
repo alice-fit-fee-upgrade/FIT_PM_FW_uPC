@@ -30,8 +30,12 @@ build/fpga_settings.o: src/fpga_settings.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
 build/system_control.o: src/system_control.c ../source_recovery/include/pm_addresses.h | build
 	$(CC) $(CFLAGS) -I../source_recovery/include -c $< -o $@
-build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o build/system_control.o linker/mixed.ld
-	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o build/system_control.o -lgcc -o $@
+build/device_reads.o: src/device_reads.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+build/console_output.o: src/console_output.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o build/system_control.o build/device_reads.o build/console_output.o linker/mixed.ld
+	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o build/system_control.o build/device_reads.o build/console_output.o -lgcc -o $@
 build/mixed.hex: build/mixed.elf
 	avr-objcopy -O ihex $< $@
 build/flash_mixed.bin: build/mixed.hex
@@ -47,6 +51,12 @@ check:
 	$(PYTHON) tests/check_system_deinit.py
 	$(PYTHON) tests/check_system_init.py
 	$(PYTHON) tests/check_pll_reset.py
+	$(PYTHON) tests/check_pll_read.py
+	$(PYTHON) tests/check_adt.py
+	$(PYTHON) tests/check_fpga_stamp.py
+	$(PYTHON) tests/check_hex_digit.py
+	$(PYTHON) tests/check_hex16.py
+	$(PYTHON) tests/check_crlf.py
 	$(PYTHON) tests/check_layout.py
 	$(PYTHON) ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_mixed.bin --code-range 0x3000:0x4000 --code-range 0x4000:0x1e000 > build/instruction_diff.txt
 	$(PYTHON) tests/check_abi.py

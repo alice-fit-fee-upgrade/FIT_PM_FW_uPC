@@ -1,0 +1,16 @@
+{
+  "cases": 36864,
+  "all_sreg_patterns": 256,
+  "dma_ready_values": 128,
+  "spi_ready_values": 128,
+  "dma_and_spi_delay_values": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "registers_sreg_ordered_gpio_dma_spi_irq_and_return_stack_equal": true,
+  "maximum_additional_stack": 26,
+  "mixed_bin_sha256": "9f7a76d16f858b5174e11fa5b48725135b0381ff02523b9eb963e276f101e25c",
+  "limits": "functional interpreter, scripted DMA/SPI polling; no timeout added; no cycle/asynchronous IRQ/hardware validation"
+}

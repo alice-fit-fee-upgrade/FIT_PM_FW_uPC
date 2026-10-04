@@ -1,3 +1,5 @@
+.global cli_send_buf
+.global adt7311_byte_rw
 .global CDCE62005_send_control_settings
 .global fpga_msg_send_t2
 .global dac_send_value
@@ -4108,169 +4110,37 @@ LAB_code_00125e:
 ;undefined FUN_code_001267(void)
 .org (0x1267 << 1), 0xff
 FUN_code_001267:
-	push        R22                                     
-	push        R23                                     
-	ldi         R16,0x8e                                
-	eor         R17,R17                                 
-	eor         R18,R18                                 
-	eor         R19,R19                                 
-	rcall       CDCE62005_send_control_settings                         ;undefined FUN_code_001243(void)
-	ldi         R22,0x10                                
-	sts         PORTF_OUTCLR,R22                ;= ??
-	eor         R23,R23                                 
-	sts         SPIC_DATA,R23                   ;= ??
-LAB_code_001274:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_001274                         
-	lds         R16,SPIC_DATA                   ;= ??
-	sts         SPIC_DATA,R23                   ;= ??
-LAB_code_00127c:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_00127c                         
-	lds         R17,SPIC_DATA                   ;= ??
-	sts         SPIC_DATA,R23                   ;= ??
-LAB_code_001284:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_001284                         
-	lds         R18,SPIC_DATA                   ;= ??
-	sts         SPIC_DATA,R23                   ;= ??
-LAB_code_00128c:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_00128c                         
-	lds         R19,SPIC_DATA                   ;= ??
-	ldi         R22,0x10                                
-	sts         PORTF_OUTSET,R22                ;= ??
-	pop         R23                                     
-	pop         R22                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_001298(void)
+    jmp pm_pll_read_bridge
+.org 0x24e8, 0xff
+LAB_code_001274:
+.org 0x24f8, 0xff
+LAB_code_00127c:
+.org 0x2508, 0xff
+LAB_code_001284:
+.org 0x2518, 0xff
+LAB_code_00128c:
 .org (0x1298 << 1), 0xff
 fpga_send_mcu_ts:
-	push        R18                                     
-	push        R21                                     
-	push        R22                                     
-	push        ZL                                     
-	push        ZH                                     
-	ldi         ZL,0x92                                
-	ldi         ZH,0x2b                                
-	ldi         R22,0xd1                                
-	sts         SPIC_CTRL,R22                        ;= ??
-	ldi         R18,0x3d                                
-	ldi         R21,0x40                                
-	ldi         R22,0x1                                 
-	sts         PORTD_OUTCLR,R22                ;= ??
-	sts         SPIC_DATA,R18                   ;= ??
-LAB_code_0012a9:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_0012a9                         
-	sts         SPIC_DATA,R21                   ;= ??
-LAB_code_0012af:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_0012af                         
-LAB_code_0012b3:              
-	lpm         R18,Z+                                  
-	lpm         R21,Z+                                  
-	sts         SPIC_DATA,R21                   ;= ??
-LAB_code_0012b7:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_0012b7                         
-	sts         SPIC_DATA,R18                   ;= ??
-LAB_code_0012bd:              
-	lds         R22,SPIC_STATUS                 ;= ??
-	sbrs        R22,0x7                                 
-	rjmp        LAB_code_0012bd                         
-	cpi         ZL,0x96                                
-	brbc        CPU_Z_bp, LAB_code_0012b3                    
-	ldi         R22,0x1                                 
-	sts         PORTD_OUTSET,R22                ;= ??
-	pop         ZH                                     
-	pop         ZL                                     
-	pop         R22                                     
-	pop         R21                                     
-	pop         R18                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_0012cc(void)
+    jmp pm_fpga_stamp_bridge
+.org 0x2552, 0xff
+LAB_code_0012a9:
+.org 0x255e, 0xff
+LAB_code_0012af:
+.org 0x2566, 0xff
+LAB_code_0012b3:
+.org 0x256e, 0xff
+LAB_code_0012b7:
+.org 0x257a, 0xff
+LAB_code_0012bd:
 .org (0x12cc << 1), 0xff
 adt7311_8bit_rw:
-	push        R16                                     
-	push        R17                                     
-	push        R18                                     
-	push        R19                                     
-	ldi         R18,0x10                                
-	sts         PORTA_OUTCLR,R18                ;= ??
-	mov         R19,R17                                 
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	mov         R16,R19                                 
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	ldi         R18,0x10                                
-	sts         PORTA_OUTSET,R18                ;= ??
-	pop         R19                                     
-	pop         R18                                     
-	pop         R17                                     
-	pop         R16                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_0012df(void)
+    jmp pm_adt8_bridge
 .org (0x12df << 1), 0xff
 adt7311_16bit_rw:
-	push        R16                                     
-	push        R17                                     
-	push        R18                                     
-	ldi         R20,0x10                                
-	sts         PORTA_OUTCLR,R20                ;= ??
-	mov         R20,R17                                 
-	mov         R21,R18                                 
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	mov         R16,R21                                 
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	mov         R21,R16                                 
-	mov         R16,R20                                 
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	mov         R20,R16                                 
-	ldi         R18,0x10                                
-	sts         PORTA_OUTSET,R18                ;= ??
-	pop         R18                                     
-	pop         R17                                     
-	pop         R16                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_0012f5(void)
+    jmp pm_adt16_bridge
 .org (0x12f5 << 1), 0xff
 adt7311_faults_clr:
-	ldi         R16,0x10                                
-	sts         PORTA_OUTCLR,R16                ;= ??
-	ser         R16                                     
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	ser         R16                                     
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	ser         R16                                     
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	ser         R16                                     
-	rcall       adt7311_byte_rw                         ;undefined FUN_code_001304(void)
-	ldi         R16,0x10                                
-	sts         PORTA_OUTSET,R16                ;= ??
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_001304(void)
+    jmp pm_adt_faults_bridge
 .org (0x1304 << 1), 0xff
 adt7311_byte_rw:
 	ldi         R18,0x8                                 
@@ -4418,44 +4288,12 @@ LAB_code_001379:
 ;undefined FUN_code_00137c(void)
 .org (0x137c << 1), 0xff
 cli_send_32bit_hex:
-	push        R16                                     
-	push        R17                                     
-	push        R18                                     
-	mov         R18,R16                                 
-	swap        R17                                     
-	mov         R16,R17                                 
-	rcall       cli_send_digit_hex                         ;undefined FUN_code_001390(void)
-	swap        R17                                     
-	mov         R16,R17                                 
-	rcall       cli_send_digit_hex                         ;undefined FUN_code_001390(void)
-	swap        R18                                     
-	mov         R16,R18                                 
-	rcall       cli_send_digit_hex                         ;undefined FUN_code_001390(void)
-	swap        R18                                     
-	mov         R16,R18                                 
-	rcall       cli_send_digit_hex                         ;undefined FUN_code_001390(void)
-	pop         R18                                     
-	pop         R17                                     
-	pop         R16                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_001390(void)
+    jmp pm_hex16_bridge
 .org (0x1390 << 1), 0xff
 cli_send_digit_hex:
-	andi        R16,0xf                                 
-	subi        R16,0xd0                                
-	cpi         R16,0x3a                                
-	brbs        CPU_C_bp, LAB_code_001395                    
-	subi        R16,0xf9                                
-LAB_code_001395:              
-	rcall       cli_send_buf                         ;undefined FUN_code_001456(void)
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_001397(void)
+    jmp pm_hex_digit_bridge
+.org (0x1395 << 1), 0xff
+LAB_code_001395:
 .org (0x1397 << 1), 0xff
 FUN_code_001397:
 	push        R20                                     
@@ -4625,14 +4463,7 @@ LAB_code_001404:
 ;undefined FUN_code_00140f(void)
 .org (0x140f << 1), 0xff
 cli_send_crlf:
-	ldi         ZL,0x84                                
-	ldi         ZH,0x29                                
-	rcall       cli_send_msg                         ;undefined FUN_code_001413(void)
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_001413(void)
+    jmp pm_crlf_bridge
 .org (0x1413 << 1), 0xff
 cli_send_msg:
 	push        R16                                     

@@ -907,3 +907,385 @@ pm_pll_control_reset_bridge:
     pop r0
     ret
 .size pm_pll_control_reset_bridge, .-pm_pll_control_reset_bridge
+
+/* PLL read's original command sender does not mask interrupts. */
+.global pm_pll_write_unmasked
+.type pm_pll_write_unmasked,@function
+pm_pll_write_unmasked:
+    push r16
+    push r17
+    push r18
+    push r19
+    mov r16, r22
+    mov r17, r23
+    mov r18, r24
+    mov r19, r25
+    call CDCE62005_send_control_settings
+    pop r19
+    pop r18
+    pop r17
+    pop r16
+    ret
+.size pm_pll_write_unmasked, .-pm_pll_write_unmasked
+
+.global pm_pll_read_bridge
+.type pm_pll_read_bridge,@function
+pm_pll_read_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_pll_read_c
+    mov r16, r22
+    mov r17, r23
+    mov r18, r24
+    mov r19, r25
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r0
+    out 0x3f, r0
+    eor r0, r0 /* Original EOR R23 sets Z/N/V/S; C/H/T/I survive. */
+    pop r1
+    pop r0
+    ret
+.size pm_pll_read_bridge, .-pm_pll_read_bridge
+
+.global pm_adt_byte_call
+.type pm_adt_byte_call,@function
+pm_adt_byte_call:
+    push r16
+    push r17
+    mov r16, r24
+    call adt7311_byte_rw
+    mov r22, r16
+    mov r23, r17
+    in r24, 0x3f
+    ldi r25, 0
+    pop r17
+    pop r16
+    ret
+.size pm_adt_byte_call, .-pm_adt_byte_call
+
+.global pm_adt8_bridge
+.type pm_adt8_bridge,@function
+pm_adt8_bridge:
+    push r0
+    push r1
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    mov r24, r16
+    mov r22, r17
+    clr r1
+    call pm_adt8_c
+    mov r0, r24
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_adt8_bridge, .-pm_adt8_bridge
+
+.global pm_adt16_bridge
+.type pm_adt16_bridge,@function
+pm_adt16_bridge:
+    push r0
+    push r1
+    push r18
+    push r19
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    mov r24, r16
+    mov r22, r17
+    mov r23, r18
+    clr r1
+    call pm_adt16_c
+    mov r20, r22
+    mov r21, r23
+    mov r0, r24
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r19
+    pop r18
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_adt16_bridge, .-pm_adt16_bridge
+
+.global pm_adt_faults_bridge
+.type pm_adt_faults_bridge,@function
+pm_adt_faults_bridge:
+    push r0
+    push r1
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_adt_faults_c
+    ldi r16, 0x10
+    mov r17, r23
+    ldi r18, 0
+    mov r0, r24
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_adt_faults_bridge, .-pm_adt_faults_bridge
+
+.global pm_fpga_stamp_bridge
+.type pm_fpga_stamp_bridge,@function
+pm_fpga_stamp_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_fpga_stamp_c
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    push r18
+    mov r18, r0
+    andi r18, 0xc0
+    ori r18, 2
+    out 0x3f, r18
+    pop r18
+    pop r1
+    pop r0
+    ret
+.size pm_fpga_stamp_bridge, .-pm_fpga_stamp_bridge
+
+.global pm_hex_digit_bridge
+.type pm_hex_digit_bridge,@function
+pm_hex_digit_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    mov r24, r16
+    mov r22, r0
+    clr r1
+    call pm_hex_digit_c
+    mov r16, r24
+    mov r0, r25
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    out 0x3f, r0
+    pop r1
+    pop r0
+    jmp cli_send_buf
+.size pm_hex_digit_bridge, .-pm_hex_digit_bridge
+
+.global pm_ascii_emit_flags
+.type pm_ascii_emit_flags,@function
+pm_ascii_emit_flags:
+    push r16
+    mov r16, r24
+    out 0x3f, r22
+    call cli_send_buf
+    in r24, 0x3f
+    pop r16
+    ret
+.size pm_ascii_emit_flags, .-pm_ascii_emit_flags
+
+.global pm_hex16_bridge
+.type pm_hex16_bridge,@function
+pm_hex16_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    mov r24, r16
+    mov r25, r17
+    mov r22, r0
+    clr r1
+    call pm_hex16_c
+    mov r0, r24
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_hex16_bridge, .-pm_hex16_bridge
+
+.global pm_flash_message_call
+.type pm_flash_message_call,@function
+pm_flash_message_call:
+    movw r30, r24
+    call cli_send_msg
+    movw r22, r30
+    in r24, 0x3f
+    ldi r25, 0
+    ret
+.size pm_flash_message_call, .-pm_flash_message_call
+
+.global pm_crlf_bridge
+.type pm_crlf_bridge,@function
+pm_crlf_bridge:
+    push r0
+    push r1
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    clr r1
+    call pm_crlf_c
+    movw r30, r22
+    mov r0, r24
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_crlf_bridge, .-pm_crlf_bridge

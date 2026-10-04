@@ -1,0 +1,10 @@
+{
+  "cases": 49152,
+  "all_sreg_patterns": 256,
+  "ready_values": 128,
+  "all_256_bytes_in_each_reply_position": true,
+  "registers_sreg_ordered_spi_and_return_stack_equal": true,
+  "maximum_additional_stack": 31,
+  "mixed_bin_sha256": "9f7a76d16f858b5174e11fa5b48725135b0381ff02523b9eb963e276f101e25c",
+  "limits": "bounded functional interpreter; no timing/asynchronous IRQ/hardware validation"
+}

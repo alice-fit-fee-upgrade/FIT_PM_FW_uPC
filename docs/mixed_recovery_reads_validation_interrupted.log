@@ -1,0 +1,116 @@
+make -C mixed_c_asm check
+make[1]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+make clean
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+rm -rf build
+rm -f generated/application.S
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+make all
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+python3 tools/patch_application.py
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c ../exact_asm/src/boot.S -o build/boot.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/signed_scale_bridge.S -o build/bridge.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../source_recovery/include -c ../source_recovery/src/scaling.c -o build/scaling.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../source_recovery/include -c src/dac_prepare.c -o build/dac_prepare.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/status_gate.c -o build/status_gate.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/crc_byte.c -o build/crc_byte.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/flash_spi.c -o build/flash_spi.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/fpga_state.c -o build/fpga_state.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/status_led.c -o build/status_led.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/fpga_settings.c -o build/fpga_settings.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../source_recovery/include -c src/system_control.c -o build/system_control.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/device_reads.c -o build/device_reads.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/console_output.c -o build/console_output.o
+avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o build/system_control.o build/device_reads.o build/console_output.o -lgcc -o build/mixed.elf
+avr-objcopy -O ihex build/mixed.elf build/mixed.hex
+python3 ../tools/memory_image.py build/mixed.hex build/flash_mixed.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+make -C ../exact_asm exact-check
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+make clean
+make[3]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+rm -rf build
+rm -f generated/application.S
+make[3]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+make all
+make[3]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 ../tools/convert_analysis.py
+mkdir -p build
+avr-gcc -mmcu=atxmega128a3u -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -c src/boot.S -o build/boot.o
+avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,-T,linker/exact.ld,-Map,build/reconstructed.map build/application.o build/boot.o -o build/reconstructed.elf
+avr-objcopy -O ihex build/reconstructed.elf build/reconstructed.hex
+python3 ../tools/memory_image.py build/reconstructed.hex build/flash_rebuilt.bin
+make[3]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 ../tools/compare_flash.py ../reference/flash_golden.bin build/flash_rebuilt.bin --report build/comparison.txt --report-only
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 139264
+Differing bytes: 0
+ALL FLASH identical percentage: 100.000000%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 0 differing, 100.000000% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11354 bytes, 0 differing, 100.000000% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 0 differing, 100.000000% identical
+First mismatch: none
+Last mismatch: none
+Number of mismatch regions: 0
+START       END         LENGTH      TYPE
+0x000000    0x021FFF    139264      MATCH
+avr-objdump -D build/reconstructed.elf > build/rebuilt.dis
+avr-objdump -D -b binary -m avr:106 ../reference/flash_golden.bin > build/golden.dis
+python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_rebuilt.bin > build/instruction_diff.txt
+cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 tests/check_gpio_instructions.py
+PASS low-I/O opcode architecture fixtures: 16392
+python3 tests/check_fpga_settings_contract.py
+PASS golden FPGA settings ABI audit: 2048 cases
+python3 tests/check_fpga_settings.py
+PASS compiled AVR FPGA settings: 8192 cases
+python3 tests/check_system_deinit.py
+PASS system deinit entry: 0xc96
+PASS system deinit: 65536 cases; 18 additional stack bytes
+python3 tests/check_system_init.py
+PASS system init: 36864 cases; 26 additional stack bytes
+python3 tests/check_pll_reset.py
+PASS PLL control reset: 32768 cases; 31 additional stack bytes
+python3 tests/check_pll_read.py
+PASS PLL read: 49152 cases; 31 additional stack bytes
+python3 tests/check_adt.py
+Traceback (most recent call last):
+  File "/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm/tests/check_adt.py", line 42, in <module>
+    check(entry,command,data,[command^0xa5,data^0x5a],(command+data)&255,[command,data,0,255])
+  File "/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm/tests/check_adt.py", line 27, in check
+    old.run(entry,3000);new.run(entry,3000)
+                        ^^^^^^^^^^^^^^^^^^^
+  File "/home/codex-hil/FIT_PM_FW_uPC/source_recovery/tests/avr_oracle.py", line 116, in run
+    a=int(p[0],0) if op=='sts' else self.addr(p[0]); self.write(a,self.r[self.reg(p[1])]); continue
+      ^^^^^^^^^^^
+KeyboardInterrupt
+make[1]: *** [Makefile:55: check] Interrupt
+make: *** [Makefile:223: mixed-check] Interrupt

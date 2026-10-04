@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace nineteen audited original routine bodies with anchored JMPs.
+"""Replace twenty-seven audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -159,5 +159,55 @@ body=s[start:end]
 assert body.count('lpm         R')==4 and 'dec         R20' in body
 assert s[:start].count('LAB_code_0006f8')+s[end:].count('LAB_code_0006f8')==0
 s=s[:start]+'CDCE62005_control_rst:\n    jmp pm_pll_control_reset_bridge\n.org (0x06f8 << 1), 0xff\nLAB_code_0006f8:\n'+s[end:]
-s='.global CDCE62005_send_control_settings\n.global fpga_msg_send_t2\n.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
+start=s.index('FUN_code_001267:')
+end=s.index('.org (0x1298 << 1)',start)
+body=s[start:end]
+assert body.count('lds         R')>=8 and 'ldi         R16,0x8e' in body
+replacement='FUN_code_001267:\n    jmp pm_pll_read_bridge\n'
+for name,address in [('LAB_code_001274',0x24e8),('LAB_code_00127c',0x24f8),('LAB_code_001284',0x2508),('LAB_code_00128c',0x2518)]:
+ assert s[:start].count(name)+s[end:].count(name)==0,('external PLL read entry',name)
+ replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
+s=s[:start]+replacement+s[end:]
+start=s.index('adt7311_8bit_rw:')
+end=s.index('.org (0x12df << 1)',start)
+body=s[start:end]
+assert body.count('rcall       adt7311_byte_rw')==2 and 'mov         R19,R17' in body
+s=s[:start]+'adt7311_8bit_rw:\n    jmp pm_adt8_bridge\n'+s[end:]
+start=s.index('adt7311_16bit_rw:')
+end=s.index('.org (0x12f5 << 1)',start)
+body=s[start:end]
+assert body.count('rcall       adt7311_byte_rw')==3 and 'mov         R21,R16' in body
+s=s[:start]+'adt7311_16bit_rw:\n    jmp pm_adt16_bridge\n'+s[end:]
+start=s.index('adt7311_faults_clr:')
+end=s.index('.org (0x1304 << 1)',start)
+body=s[start:end]
+assert body.count('rcall       adt7311_byte_rw')==4 and body.count('ser         R16')==4
+s=s[:start]+'adt7311_faults_clr:\n    jmp pm_adt_faults_bridge\n'+s[end:]
+start=s.index('fpga_send_mcu_ts:')
+end=s.index('.org (0x12cc << 1)',start)
+body=s[start:end]
+assert 'cpi         ZL,0x96' in body and 'ldi         ZL,0x92' in body
+replacement='fpga_send_mcu_ts:\n    jmp pm_fpga_stamp_bridge\n'
+for word in (0x12a9,0x12af,0x12b3,0x12b7,0x12bd):
+ name=f'LAB_code_{word:06x}'
+ assert s[:start].count(name)+s[end:].count(name)==0,('external stamp entry',name)
+ replacement+=f'.org 0x{word*2:x}, 0xff\n{name}:\n'
+s=s[:start]+replacement+s[end:]
+start=s.index('cli_send_digit_hex:')
+end=s.index('.org (0x1397 << 1)',start)
+body=s[start:end]
+assert 'andi        R16,0xf' in body and 'subi        R16,0xf9' in body
+assert s[:start].count('LAB_code_001395')+s[end:].count('LAB_code_001395')==0
+s=s[:start]+'cli_send_digit_hex:\n    jmp pm_hex_digit_bridge\n.org (0x1395 << 1), 0xff\nLAB_code_001395:\n'+s[end:]
+start=s.index('cli_send_32bit_hex:')
+end=s.index('.org (0x1390 << 1)',start)
+body=s[start:end]
+assert body.count('rcall       cli_send_digit_hex')==4 and 'swap        R18' in body
+s=s[:start]+'cli_send_32bit_hex:\n    jmp pm_hex16_bridge\n'+s[end:]
+start=s.index('cli_send_crlf:')
+end=s.index('.org (0x1413 << 1)',start)
+body=s[start:end]
+assert 'ldi         ZL,0x84' in body and 'rcall       cli_send_msg' in body
+s=s[:start]+'cli_send_crlf:\n    jmp pm_crlf_bridge\n'+s[end:]
+s='.global cli_send_buf\n.global adt7311_byte_rw\n.global CDCE62005_send_control_settings\n.global fpga_msg_send_t2\n.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)
