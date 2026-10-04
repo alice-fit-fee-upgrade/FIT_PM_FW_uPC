@@ -20,3 +20,17 @@ pm_dac_packet pm_dac_prepare_inverse(uint16_t input, uint8_t channel)
     p.reserved = 0;
     return p;
 }
+
+/* Original byte 0x20A6: calibration is loaded by the ABI bridge so its
+ * two volatile RAM reads and the original final Z pointer remain explicit. */
+pm_dac_packet pm_dac_prepare_calibrated(uint16_t input, uint8_t channel,
+                                        uint16_t calibration)
+{
+    pm_dac_packet p;
+    p.value = (uint16_t)~(uint16_t)(pm_scale_unsigned(0x020cu, input) + calibration);
+    p.input = calibration;
+    p.product = (uint16_t)(2u * (input >> 8));
+    p.control = (uint8_t)((uint8_t)(channel * 4u) | 3u);
+    p.reserved = 0;
+    return p;
+}

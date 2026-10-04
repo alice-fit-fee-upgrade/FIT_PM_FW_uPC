@@ -32,6 +32,7 @@ check:
 	$(PYTHON) tests/check_abi.py
 	$(PYTHON) tests/check_unsigned_abi.py
 	$(PYTHON) tests/check_callers.py
+	$(PYTHON) tests/check_dac_edges.py
 clean:
 	rm -rf build
 	rm -f generated/application.S

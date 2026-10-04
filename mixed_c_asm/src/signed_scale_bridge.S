@@ -136,3 +136,48 @@ pm_dac_inverse_bridge:
     call dac_send_value
     ret
 .size pm_dac_inverse_bridge, .-pm_dac_inverse_bridge
+
+/* Calibrated DAC preparation at 0x20A6. Z is an output, not preserved:
+ * 0x2163 + ((channel * 2) mod 256) + 1. The two RAM reads remain ordered. */
+.global pm_dac_calibrated_bridge
+.type pm_dac_calibrated_bridge,@function
+pm_dac_calibrated_bridge:
+    push r18
+    in r18, 0x3f
+    push r18
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    movw r24, r20
+    mov r18, r22
+    add r18, r18
+    ldi r30, 0x63
+    ldi r31, 0x21
+    eor r0, r0
+    add r30, r18
+    adc r31, r0
+    ld r20, Z+
+    ld r21, Z
+    push r30
+    push r31
+    clr r1
+    call pm_dac_prepare_calibrated
+    movw r16, r18
+    movw r0, r22
+    mov r22, r24
+    ldi r19, 2
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r18
+    out 0x3f, r18
+    pop r18
+    call dac_send_value
+    ret
+.size pm_dac_calibrated_bridge, .-pm_dac_calibrated_bridge

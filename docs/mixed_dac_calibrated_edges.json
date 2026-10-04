@@ -1,0 +1,25 @@
+{
+  "cases": 87040,
+  "all_channel_bytes": 256,
+  "calibration_words": 65536,
+  "boundary_inputs": [
+    0,
+    1,
+    127,
+    128,
+    255,
+    256,
+    32767,
+    32768,
+    19999,
+    20000,
+    20001,
+    65535
+  ],
+  "calibration_scan_input": 1234,
+  "full_registers_sreg_spi_irq_and_return_stack_equal": true,
+  "calibration_read_order_and_final_z_checked": true,
+  "maximum_additional_stack": 33,
+  "mixed_bin_sha256": "65cb6127f456e656fb14c7af66c0306f77da758162966e6774323b2665d8583c",
+  "limits": "functional bounded interpreter; scripted hardware; no cycle/async interrupt/hardware validation"
+}

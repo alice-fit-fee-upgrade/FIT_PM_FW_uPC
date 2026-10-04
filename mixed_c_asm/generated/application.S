@@ -4043,31 +4043,7 @@ LAB_code_00103f:
 ;undefined4 FUN_code_001053()
 .org (0x1053 << 1), 0xff
 FUN_code_001053:
-	push        R18                                
-	ldi         R18,0xc                             
-	ldi         R19,0x2                             
-	rcall       FUN_code_0010a6                         ;undefined FUN_code_0010a6(undefined2...
-	ldi         ZL,0x63                                
-	ldi         ZH,0x21                                
-	eor         R20,R20
-	add         R22,R22
-	add         ZL,R22
-	adc         ZH,R20
-	add         R22,R22
-	ori         R22,0x3                             
-	ld          R20,Z+                              
-	ld         	R21,Z                               
-	add         R16,R20
-	adc         R17,R21
-	com         R16                                 
-	com         R17                                 
-	rcall       dac_send_value                         ;undefined3 FUN_code_001155(undefined...
-	pop         R18
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined4 FUN_code_001068()
+    jmp pm_dac_calibrated_bridge
 .org (0x1068 << 1), 0xff
 FUN_code_001068:
     jmp pm_dac_inverse_bridge
