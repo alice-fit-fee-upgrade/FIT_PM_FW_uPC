@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace ten audited original routine bodies with anchored JMPs.
+"""Replace eleven audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -92,5 +92,15 @@ s=s[:start]+'''FUN_code_000b8f:
 .org (0x0b95 << 1), 0xff
 LAB_code_000b95:
 '''+s[end:]
+start=s.index('FUN_code_000c04:')
+end=s.index('.org (0x0c20 << 1)',start)
+body=s[start:end]
+assert 'sts         SPIE_DATA,R22' in body and 'sts         SPIE_DATA,R20' in body
+labels=[('LAB_code_000c09',0x1812),('LAB_code_000c0f',0x181e),('LAB_code_000c15',0x182a),('LAB_code_000c1b',0x1836)]
+replacement='FUN_code_000c04:\n    jmp pm_flash_address_bridge\n'
+for name,address in labels:
+ assert s[:start].count(name)+s[end:].count(name)==0,('external SPI poll entry',name)
+ replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
+s=s[:start]+replacement+s[end:]
 s='.global dac_send_value\n.global cli_send_msg\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

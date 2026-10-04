@@ -2762,34 +2762,16 @@ LAB_code_000bfd:
 .org 0x1802, 0xff
 LAB_code_000c01:
 .org (0x0c04 << 1), 0xff
-FUN_code_000c04:                  
-	ldi         R17,0x10                                
-	sts         PORTE_OUTCLR,R17                ;= ??
-	sts         SPIE_DATA,R16
-LAB_code_000c09:              
-	lds         R19,SPIE_STATUS             ;= ??
-	sbrs        R19,0x7                             
-	rjmp        LAB_code_000c09                         
-	sts         SPIE_DATA,R22
-LAB_code_000c0f:              
-	lds         R19,SPIE_STATUS             ;= ??
-	sbrs        R19,0x7                             
-	rjmp        LAB_code_000c0f                         
-	sts         SPIE_DATA,R21
-LAB_code_000c15:              
-	lds         R19,SPIE_STATUS             ;= ??
-	sbrs        R19,0x7                             
-	rjmp        LAB_code_000c15                         
-	sts         SPIE_DATA,R20
-LAB_code_000c1b:              
-	lds         R19,SPIE_STATUS             ;= ??
-	sbrs        R19,0x7                             
-	rjmp        LAB_code_000c1b                         
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000c20(void)
+FUN_code_000c04:
+    jmp pm_flash_address_bridge
+.org 0x1812, 0xff
+LAB_code_000c09:
+.org 0x181e, 0xff
+LAB_code_000c0f:
+.org 0x182a, 0xff
+LAB_code_000c15:
+.org 0x1836, 0xff
+LAB_code_000c1b:
 .org (0x0c20 << 1), 0xff
 FUN_code_000c20:
 	ldi         R16,0x10                                
