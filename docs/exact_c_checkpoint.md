@@ -17,18 +17,20 @@ are no longer acceptance evidence for C integration.
 | 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 42 | 10 |
 | 0x1710 | FUN_code_000b88 | C_WITH_EXACT_ASM_HELPER | 10 | 4 |
 | 0x171E | FUN_code_000b8f | C_WITH_EXACT_ASM_HELPER | 20 | 8 |
+| 0x1808 | FUN_code_000c04 | C_WITH_EXACT_ASM_HELPER | 8 | 48 |
+| 0x2486 | CDCE62005_send_control_settings | C_WITH_EXACT_ASM_HELPER | 24 | 48 |
 | 0x2598 | adt7311_8bit_rw | C_WITH_EXACT_ASM_HELPER | 24 | 14 |
 | 0x25BE | adt7311_16bit_rw | C_WITH_EXACT_ASM_HELPER | 26 | 18 |
 | 0x25EA | adt7311_faults_clr | C_WITH_EXACT_ASM_HELPER | 22 | 8 |
 | 0x281E | cli_send_crlf | C_WITH_EXACT_ASM_HELPER | 6 | 2 |
 
 Every accepted replacement was followed by a complete clean build and exact-check.
-Final totals are **89 application entries: 2 C_BINARY_EXACT, 10
-C_WITH_EXACT_ASM_HELPER, 77 ASM_EXACT**, plus **9 boot ASM procedures**.
-Compiler-generated instructions cover **516/10836 executable bytes (4.7619%)**;
-ASM covers **10320/10836 (95.2381%)**, including **120 helper bytes**. Application-only
-C coverage is **5.1302%**, excluding all data, padding and erased FLASH. The 636 bytes
-hosted in C function regions are not counted as 636 pure C bytes.
+Final totals are **89 application entries: 2 C_BINARY_EXACT, 12
+C_WITH_EXACT_ASM_HELPER, 75 ASM_EXACT**, plus **9 boot ASM procedures**.
+Compiler-generated instructions cover **548/10836 executable bytes (5.0572%)**;
+ASM covers **10288/10836 (94.9428%)**, including **216 helper bytes**. Application-only
+C coverage is **5.4484%**, excluding all data, padding and erased FLASH. The 764 bytes
+hosted in C function regions are not counted as 764 pure C bytes.
 
 ## Accepted implementation choices
 
@@ -54,6 +56,22 @@ inline operands and per-file call-saved settings. GCC itself emits the exact ori
 prologues, epilogues and data moves. The byte-level bit-banged serializer at 0x2608
 remains unchanged ASM. Eight-bit transactions still discard RX; 16-bit results still
 appear in R20/R21; fault clearing still sends four FF bytes.
+
+## SPI continuation
+
+Two more entries were accepted, each after a complete exact-check:
+0x1808 sends a command and three FLASH address bytes in R16/R22/R21/R20 order;
+0x2486 writes the PLL word in R16/R17/R18/R19 order. A shared twelve-byte
+SPI primitive preserves each original STS/LDS/SBRS/RJMP sequence. All 96 added
+primitive bytes are counted as ASM; the two functions add only 32 compiler-generated
+bytes, including the PLL's original R22 PUSH/POP. C now describes the wire sequence,
+with the compiler-sensitive transfer mechanism in one reusable helper.
+
+A clean FLASH-string sender trial at 0x2826 failed register allocation in the
+constrained profile: GCC needed a general-register spill for its zero comparison.
+It remains ASM_EXACT. The byte-mode console entry at 0x2836 also remains ASM:
+it enters a shared receiver with an existing partial stack frame, rather than
+making a normal C call. No behavioral tests were used to justify either entry.
 
 ## Retained candidates
 
@@ -86,3 +104,7 @@ exact_c_instruction_diff.txt and function_inventory.json retain the build and
 comparison evidence. Per-conversion full build logs are in docs/exact_c_steps/.
 No exhaustive emulator suite was continued after the strategy change, and no device
 was programmed.
+
+### FPGA write candidate retained in ASM
+
+The trial conversion of `fpga_msg_send_t2` (0x230e–0x2367) reproduced the 90-byte section length, but failed complete FLASH comparison: the first mismatch was at 0x2314. GCC allocated the SPI control constant and GPIO mask to R18 instead of the original R22; this also overwrote the incoming address register. An earlier constrained-register trial omitted the original R18/R21 saves and failed the section-size assertion. The candidate was removed from the accepted manifest and source tree. The original symbolic ASM remains active. No behavioral equivalence tests were used to accept this candidate.

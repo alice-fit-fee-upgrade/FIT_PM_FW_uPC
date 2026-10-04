@@ -6,12 +6,12 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 `cmp` against reference/flash_golden.bin. There is no emulator acceptance step.
 `make c-progress` reports the three exact-source classifications.
 
-Current result: 89 application entries, 2 C_BINARY_EXACT, 10
-C_WITH_EXACT_ASM_HELPER, 77 ASM_EXACT. All nine boot procedures remain exact ASM.
+Current result: 89 application entries, 2 C_BINARY_EXACT, 12
+C_WITH_EXACT_ASM_HELPER, 75 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 516 of 10836 executable bytes (4.7619%);
-ASM occupies 10320 bytes (95.2381%), including 120 inline-helper bytes. Data and
-padding do not contribute to these percentages. Application-only C is 5.1302%.
+Compiler-generated instructions occupy 548 of 10836 executable bytes (5.0572%);
+ASM occupies 10288 bytes (94.9428%), including 216 inline-helper bytes. Data and
+padding do not contribute to these percentages. Application-only C is 5.4484%.
 The entry count includes main, ISRs and shared formatter entries, rather than
 89 independent C-style function bodies.
 

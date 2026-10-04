@@ -4,8 +4,8 @@
   "count_measure": "verified original entries, including 10 ISRs, main and shared formatter entries",
   "all_original_direct_application_call_targets_and_vector_destinations_listed": true,
   "C_BINARY_EXACT": 2,
-  "C_WITH_EXACT_ASM_HELPER": 10,
-  "ASM_EXACT": 77,
+  "C_WITH_EXACT_ASM_HELPER": 12,
+  "ASM_EXACT": 75,
   "bootloader_asm_count": 9,
   "bootloader_function_addresses": [
     131554,
@@ -21,13 +21,13 @@
   "complete_executable_bytes": 10836,
   "application_executable_bytes": 10058,
   "boot_executable_bytes": 778,
-  "compiler_generated_c_bytes": 516,
-  "exact_asm_helper_bytes_inside_c_regions": 120,
-  "all_asm_bytes_including_helpers": 10320,
-  "C_percentage_all_executable": 4.761904761904762,
-  "ASM_percentage_all_executable": 95.23809523809524,
-  "C_percentage_application_executable": 5.1302445814277196,
-  "ASM_percentage_application_executable": 94.86975541857228,
+  "compiler_generated_c_bytes": 548,
+  "exact_asm_helper_bytes_inside_c_regions": 216,
+  "all_asm_bytes_including_helpers": 10288,
+  "C_percentage_all_executable": 5.057216685123662,
+  "ASM_percentage_all_executable": 94.94278331487634,
+  "C_percentage_application_executable": 5.448399284151919,
+  "ASM_percentage_application_executable": 94.55160071584808,
   "coverage_measure": "instruction bytes; inline ASM helpers counted as ASM; data/padding excluded",
   "original_application_symbols_preserved": 459,
   "all_original_text_symbols_preserved": 806,
@@ -48,7 +48,9 @@
     "src/status_led.c": "8449c606cadba2bde4adeb0aa2fb3713d197f7c69da0d81ab1138a74dc277394",
     "src/adt8.c": "d4e7cd23f164c79c45826ace9aeb4137a83f809770b9f1ea39675445a0068c9e",
     "src/adt_fault_clear.c": "cca52b48d533e259a13fd280db7f56d445cab926dc6525cf0c90f7cfc06962d9",
-    "src/adt16.c": "39e51f30615cc5a534e2471eeb36e65d2d59a08056f81d6f3aed282d723b01f6"
+    "src/adt16.c": "39e51f30615cc5a534e2471eeb36e65d2d59a08056f81d6f3aed282d723b01f6",
+    "src/flash_address_send.c": "a0d9e7565059fdd346447ce9b320c153e86b3c9d3bd127bba97c46cc7b238d9a",
+    "src/pll_control_write.c": "db7a74464fa51cd97c8cf85ea7164696a508f35c552e32e5e6173001de5514b8"
   },
   "application": [
     {
@@ -285,7 +287,11 @@
       "address": 6152,
       "end_exclusive": 6208,
       "symbol": "FUN_code_000c04",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_address_send.c",
+      "compiler_profile": "r17_only_legacy_inputs",
+      "compiler_generated_bytes": 8,
+      "exact_asm_helper_bytes": 48
     },
     {
       "address": 6208,
@@ -495,7 +501,11 @@
       "address": 9350,
       "end_exclusive": 9422,
       "symbol": "CDCE62005_send_control_settings",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_control_write.c",
+      "compiler_profile": "r22_saved_legacy_inputs",
+      "compiler_generated_bytes": 24,
+      "exact_asm_helper_bytes": 48
     },
     {
       "address": 9422,

@@ -7,19 +7,19 @@ Regenerate the build report with `make c-progress`. `make exact-check` is the ac
 |---|---|
 | Application entries | 89 |
 | C_BINARY_EXACT | 2 |
-| C_WITH_EXACT_ASM_HELPER | 10 |
-| ASM_EXACT | 77 |
+| C_WITH_EXACT_ASM_HELPER | 12 |
+| ASM_EXACT | 75 |
 | Bootloader ASM procedures | 9 |
 
 Counts include 10 original ISRs, main and shared formatter entries. All 806 original
 code/data text symbols retain their addresses. Unconverted entries are verified exact
 ASM; their classification does not claim that further clean C recovery is impossible.
 
-Of 10836 executable bytes, compiler-generated C accounts for **516 (4.7619%)** and
-ASM for **10320 (95.2381%)**. The latter includes **120 inline ASM helper bytes**.
-For the 10058 application executable bytes alone, C is **5.1302%** and ASM **94.8698%**.
+Of 10836 executable bytes, compiler-generated C accounts for **548 (5.0572%)** and
+ASM for **10288 (94.9428%)**. The latter includes **216 inline ASM helper bytes**.
+For the 10058 application executable bytes alone, C is **5.4484%** and ASM **94.5516%**.
 All 778 boot executable bytes are ASM. Data (710 bytes) and erased/padding regions
-are excluded. C-hosted function regions total 636 bytes; this larger number includes
+are excluded. C-hosted function regions total 764 bytes; this larger number includes
 helpers and is not reported as pure C coverage.
 
 Golden and rebuilt canonical SHA256:
@@ -60,7 +60,7 @@ Golden and rebuilt canonical SHA256:
 | 0x173A | FUN_code_000b9d | ASM_EXACT |
 | 0x1772 | FUN_code_000bb9 | ASM_EXACT |
 | 0x17E4 | FUN_code_000bf2 | ASM_EXACT |
-| 0x1808 | FUN_code_000c04 | ASM_EXACT |
+| 0x1808 | FUN_code_000c04 | C_WITH_EXACT_ASM_HELPER |
 | 0x1840 | FUN_code_000c20 | ASM_EXACT |
 | 0x188E | cli_send_ch_mean_amplitude | ASM_EXACT |
 | 0x18BE | cli_send_adc_baseline_dispersion | ASM_EXACT |
@@ -95,7 +95,7 @@ Golden and rebuilt canonical SHA256:
 | 0x230E | fpga_msg_send_t2 | ASM_EXACT |
 | 0x2368 | fpga_msg_read_t1 | ASM_EXACT |
 | 0x23CA | FUN_code_0011e5 | ASM_EXACT |
-| 0x2486 | CDCE62005_send_control_settings | ASM_EXACT |
+| 0x2486 | CDCE62005_send_control_settings | C_WITH_EXACT_ASM_HELPER |
 | 0x24CE | FUN_code_001267 | ASM_EXACT |
 | 0x2530 | fpga_send_mcu_ts | ASM_EXACT |
 | 0x2598 | adt7311_8bit_rw | C_WITH_EXACT_ASM_HELPER |

@@ -335,6 +335,70 @@
           "reason": "Exact CS release store"
         }
       ]
+    },
+    {
+      "address": 6152,
+      "end_exclusive": 6208,
+      "symbol": "FUN_code_000c04",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_address_send.c",
+      "section": ".text.FUN_code_000c04",
+      "compiler_profile": "r17_only_legacy_inputs",
+      "meaning": "SPI FLASH command plus three address bytes in original R16/R22/R21/R20 order",
+      "asm_helper_ranges": [
+        {
+          "start": 6158,
+          "end_exclusive": 6170,
+          "reason": "Original SPI data store and status polling primitive"
+        },
+        {
+          "start": 6170,
+          "end_exclusive": 6182,
+          "reason": "Original SPI data store and status polling primitive"
+        },
+        {
+          "start": 6182,
+          "end_exclusive": 6194,
+          "reason": "Original SPI data store and status polling primitive"
+        },
+        {
+          "start": 6194,
+          "end_exclusive": 6206,
+          "reason": "Original SPI data store and status polling primitive"
+        }
+      ]
+    },
+    {
+      "address": 9350,
+      "end_exclusive": 9422,
+      "symbol": "CDCE62005_send_control_settings",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_control_write.c",
+      "section": ".text.CDCE62005_send_control_settings",
+      "compiler_profile": "r22_saved_legacy_inputs",
+      "meaning": "PLL control word transmitted R16 through R19, original SPIC setup and PF4 CS",
+      "asm_helper_ranges": [
+        {
+          "start": 9364,
+          "end_exclusive": 9376,
+          "reason": "Original SPI data store and R22 status polling"
+        },
+        {
+          "start": 9376,
+          "end_exclusive": 9388,
+          "reason": "Original SPI data store and R22 status polling"
+        },
+        {
+          "start": 9388,
+          "end_exclusive": 9400,
+          "reason": "Original SPI data store and R22 status polling"
+        },
+        {
+          "start": 9400,
+          "end_exclusive": 9412,
+          "reason": "Original SPI data store and R22 status polling"
+        }
+      ]
     }
   ],
   "asm_exports": [
