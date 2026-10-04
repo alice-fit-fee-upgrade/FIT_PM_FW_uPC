@@ -1,0 +1,126 @@
+make -C mixed_c_asm check
+make[1]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+make clean
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+rm -rf build
+rm -f generated/application.S
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+make all
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+python3 tools/patch_application.py
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c ../exact_asm/src/boot.S -o build/boot.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -c src/signed_scale_bridge.S -o build/bridge.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../source_recovery/include -c ../source_recovery/src/scaling.c -o build/scaling.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=c99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fstack-usage -I../source_recovery/include -c src/dac_prepare.c -o build/dac_prepare.o
+avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o -lgcc -o build/mixed.elf
+avr-objcopy -O ihex build/mixed.elf build/mixed.hex
+python3 ../tools/memory_image.py build/mixed.hex build/flash_mixed.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'
+make -C ../exact_asm exact-check
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+make clean
+make[3]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+rm -rf build
+rm -f generated/application.S
+make[3]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+make all
+make[3]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 ../tools/convert_analysis.py
+mkdir -p build
+avr-gcc -mmcu=atxmega128a3u -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -c src/boot.S -o build/boot.o
+avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,-T,linker/exact.ld,-Map,build/reconstructed.map build/application.o build/boot.o -o build/reconstructed.elf
+avr-objcopy -O ihex build/reconstructed.elf build/reconstructed.hex
+python3 ../tools/memory_image.py build/reconstructed.hex build/flash_rebuilt.bin
+make[3]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 ../tools/compare_flash.py ../reference/flash_golden.bin build/flash_rebuilt.bin --report build/comparison.txt --report-only
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 139264
+Differing bytes: 0
+ALL FLASH identical percentage: 100.000000%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 0 differing, 100.000000% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11354 bytes, 0 differing, 100.000000% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 0 differing, 100.000000% identical
+First mismatch: none
+Last mismatch: none
+Number of mismatch regions: 0
+START       END         LENGTH      TYPE
+0x000000    0x021FFF    139264      MATCH
+avr-objdump -D build/reconstructed.elf > build/rebuilt.dis
+avr-objdump -D -b binary -m avr:106 ../reference/flash_golden.bin > build/golden.dis
+python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_rebuilt.bin > build/instruction_diff.txt
+cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 tests/check_layout.py
+PASS mixed layout: 1518 changed bytes; 806 original text symbols unmoved; no new static SRAM
+python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_mixed.bin --code-range 0x3000:0x4000 --code-range 0x4000:0x1e000 > build/instruction_diff.txt
+python3 tests/check_abi.py
+PASS all inputs, coefficient 0x0000: 65536 cases; cumulative 65536; 11.2s
+PASS all inputs, coefficient 0x0001: 65536 cases; cumulative 131072; 22.6s
+PASS all inputs, coefficient 0x00ff: 65536 cases; cumulative 196608; 33.9s
+PASS all inputs, coefficient 0x0100: 65536 cases; cumulative 262144; 45.3s
+PASS all inputs, coefficient 0x4188: 65536 cases; cumulative 327680; 56.8s
+PASS all inputs, coefficient 0x8000: 65536 cases; cumulative 393216; 68.1s
+PASS all inputs, coefficient 0xffff: 65536 cases; cumulative 458752; 79.4s
+PASS all coefficients, input 0x0000: 65536 cases; cumulative 524288; 90.2s
+PASS all coefficients, input 0x0001: 65536 cases; cumulative 589824; 101.3s
+PASS all coefficients, input 0x7fff: 65536 cases; cumulative 655360; 112.4s
+PASS all coefficients, input 0x8000: 65536 cases; cumulative 720896; 123.8s
+PASS all coefficients, input 0xffff: 65536 cases; cumulative 786432; 135.2s
+PASS random input/coefficient/state: 10000 cases; cumulative 796432; 136.9s
+ALL PASS: 796432 register/SREG/stack comparisons; 22 additional stack bytes
+python3 tests/check_unsigned_abi.py
+PASS all inputs, coefficient 0x0000: 65536 cases; cumulative 65536; 23.1s
+PASS all inputs, coefficient 0x0001: 65536 cases; cumulative 131072; 46.4s
+PASS all inputs, coefficient 0x00ff: 65536 cases; cumulative 196608; 69.7s
+PASS all inputs, coefficient 0x0100: 65536 cases; cumulative 262144; 92.9s
+PASS all inputs, coefficient 0x4188: 65536 cases; cumulative 327680; 111.7s
+PASS all inputs, coefficient 0x8000: 65536 cases; cumulative 393216; 130.6s
+PASS all inputs, coefficient 0xffff: 65536 cases; cumulative 458752; 149.4s
+PASS all coefficients, input 0x0000: 65536 cases; cumulative 524288; 172.6s
+PASS all coefficients, input 0x0001: 65536 cases; cumulative 589824; 195.8s
+PASS all coefficients, input 0x7fff: 65536 cases; cumulative 655360; 214.8s
+PASS all coefficients, input 0x8000: 65536 cases; cumulative 720896; 233.6s
+PASS all coefficients, input 0xffff: 65536 cases; cumulative 786432; 252.4s
+PASS random input/coefficient/state: 10000 cases; cumulative 796432; 255.3s
+ALL PASS: 796432 register/SREG/stack comparisons; 22 additional stack bytes
+python3 tests/check_callers.py
+PASS original caller 0x20ec: all 65,536 inputs, cycled 12 channels
+PASS original caller 0x2104: all 65,536 inputs, cycled 12 channels
+PASS original caller 0x20a6: all 65,536 inputs, cycled 12 channels
+PASS original caller 0x20d0: all 65,536 inputs, cycled 12 channels
+ALL PASS caller composition: 262144 cases; 35 additional stack bytes
+python3 tests/check_dac_edges.py
+PASS DAC entry 0x20a6: all 256 channel bytes and boundary values
+PASS DAC entry 0x20d0: all 256 channel bytes and boundary values
+PASS DAC entry 0x20ec: all 256 channel bytes and boundary values
+PASS DAC entry 0x2104: all 256 channel bytes and boundary values
+PASS all 65,536 calibration words; channel/SREG patterns cycled
+ALL PASS DAC boundary/calibration cases: 87040
+make[1]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/mixed_c_asm'

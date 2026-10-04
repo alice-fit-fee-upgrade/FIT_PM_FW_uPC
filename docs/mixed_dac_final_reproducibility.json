@@ -1,0 +1,9 @@
+{
+  "two_clean_builds_identical": true,
+  "sha256": {
+    "mixed.elf": "172d3e1f48dce2da8944dc83a50d1c131ac11a3f4aae4fea4503bcd34ad09f8e",
+    "mixed.hex": "c6e71584c5a75fd9b880ce0eef92c3c8fb821039ca1d0a012fe72a06d06bc85b",
+    "flash_mixed.bin": "c574a60c9ba898d46a1e11e8cd480e4db62c9cacd425e0dad0b72532572e2963"
+  },
+  "avr_gcc": "avr-gcc (GCC) 7.3.0"
+}

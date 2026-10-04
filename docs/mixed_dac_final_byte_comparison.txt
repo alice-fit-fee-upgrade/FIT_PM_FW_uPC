@@ -1,0 +1,71 @@
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: c574a60c9ba898d46a1e11e8cd480e4db62c9cacd425e0dad0b72532572e2963
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 137746
+Differing bytes: 1518
+ALL FLASH identical percentage: 98.909984%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 186 differing, 98.361811% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 12686 bytes, 1518 differing, 88.034053% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 1518 differing, 98.852833% identical
+First mismatch: 0x20a6
+Last mismatch: 0x439d
+Number of mismatch regions: 28
+START       END         LENGTH      TYPE
+0x000000    0x0020A5    8358        MATCH
+0x0020A6    0x00211B    118         DIFF
+0x00211C    0x00212F    20          MATCH
+0x002130    0x002173    68          DIFF
+0x002174    0x002FFF    3724        MATCH
+0x003000    0x003019    26          DIFF
+0x00301A    0x00301A    1           MATCH
+0x00301B    0x003027    13          DIFF
+0x003028    0x003028    1           MATCH
+0x003029    0x003065    61          DIFF
+0x003066    0x003066    1           MATCH
+0x003067    0x003077    17          DIFF
+0x003078    0x003078    1           MATCH
+0x003079    0x0030B1    57          DIFF
+0x0030B2    0x0030B2    1           MATCH
+0x0030B3    0x0030C3    17          DIFF
+0x0030C4    0x0030C4    1           MATCH
+0x0030C5    0x003103    63          DIFF
+0x003104    0x003104    1           MATCH
+0x003105    0x003113    15          DIFF
+0x003114    0x003114    1           MATCH
+0x003115    0x00313F    43          DIFF
+0x003140    0x003140    1           MATCH
+0x003141    0x003153    19          DIFF
+0x003154    0x003154    1           MATCH
+0x003155    0x00317F    43          DIFF
+0x003180    0x003180    1           MATCH
+0x003181    0x003193    19          DIFF
+0x003194    0x003194    1           MATCH
+0x003195    0x0031AD    25          DIFF
+0x0031AE    0x003FFF    3666        MATCH
+0x004000    0x004006    7           DIFF
+0x004007    0x004007    1           MATCH
+0x004008    0x004051    74          DIFF
+0x004052    0x004052    1           MATCH
+0x004053    0x0040C1    111         DIFF
+0x0040C2    0x0040C2    1           MATCH
+0x0040C3    0x0040CF    13          DIFF
+0x0040D0    0x0040D0    1           MATCH
+0x0040D1    0x0041F9    297         DIFF
+0x0041FA    0x0041FA    1           MATCH
+0x0041FB    0x004227    45          DIFF
+0x004228    0x004228    1           MATCH
+0x004229    0x00422D    5           DIFF
+0x00422E    0x00422E    1           MATCH
+0x00422F    0x004283    85          DIFF
+0x004284    0x004284    1           MATCH
+0x004285    0x004289    5           DIFF
+0x00428A    0x00428A    1           MATCH
+0x00428B    0x0042ED    99          DIFF
+0x0042EE    0x0042EE    1           MATCH
+0x0042EF    0x0042F5    7           DIFF
+0x0042F6    0x0042F6    1           MATCH
+0x0042F7    0x004363    109         DIFF
+0x004364    0x004364    1           MATCH
+0x004365    0x00439D    57          DIFF
+0x00439E    0x021FFF    121954      MATCH

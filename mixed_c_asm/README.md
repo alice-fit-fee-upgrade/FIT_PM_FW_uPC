@@ -10,7 +10,8 @@ at 0x3000; compiled C starts at 0x4000. Static SRAM, BSS and initialized data ar
 forbidden by the linker. Outputs are build/mixed.elf, mixed.hex and flash_mixed.bin.
 
 Integrated original entries: signed scaler 0x2130, unsigned scaler 0x214C,
-inverse DAC preparation 0x20D0, and calibrated DAC preparation 0x20A6, and signed DAC command 2 at 0x20EC, and signed DAC command 1 at 0x2104. See docs/mixed_dac_inverse_checkpoint.md
+inverse DAC preparation 0x20D0, and calibrated DAC preparation 0x20A6, and signed DAC command 2 at 0x20EC, and signed DAC command 1 at 0x2104. See [final validation checkpoint](../docs/mixed_dac_final_checkpoint.md),
+docs/mixed_dac_inverse_checkpoint.md
 and the earlier signed/unsigned checkpoint documents for ABI and test evidence.
 The original SPI sender stays in ASM. Incoming R1 may be nonzero; outgoing R1,
 SREG, all other registers and three-byte return PCs are checked against original
@@ -21,3 +22,10 @@ RAM and SPI polling. Unsupported instructions fail closed. Asynchronous interrup
 cycle equivalence, total firmware stack budget and physical-device behavior remain
 unvalidated. No hardware programming is performed. Functional C recovery coverage
 and the count of entries actually substituted in this firmware are separate metrics.
+
+Final clean mixed-check passes 1,942,048 compiled AVR comparisons. The separate
+portable C regression passes 390,601 cases. All 806 original addresses stay fixed;
+no new static SRAM is introduced. The six substituted entries cover 186 original
+routine-span bytes; C/helpers take 926 bytes and bridges take 430 bytes. Maximum
+additional caller stack is 35 bytes. Two clean builds reproduce identical ELF,
+HEX and BIN hashes. Exact ASM still has zero differing FLASH bytes.
