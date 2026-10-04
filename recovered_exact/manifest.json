@@ -1,0 +1,347 @@
+{
+  "application_end": 11228,
+  "accepted": [
+    {
+      "address": 5732,
+      "end_exclusive": 5758,
+      "symbol": "FUN_code_000b32",
+      "classification": "C_BINARY_EXACT",
+      "source": "src/flash_interface_init.c",
+      "section": ".text.FUN_code_000b32",
+      "compiler_profile": "r16_leaf",
+      "meaning": "FLASH interface GPIO and SPIE initialization"
+    },
+    {
+      "address": 10270,
+      "end_exclusive": 10278,
+      "symbol": "cli_send_crlf",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_crlf.c",
+      "section": ".text.cli_send_crlf",
+      "compiler_profile": "default",
+      "meaning": "Send the original CRLF string from FLASH",
+      "asm_helper_ranges": [
+        {
+          "start": 10274,
+          "end_exclusive": 10276,
+          "reason": "Original RCALL encoding to unchanged FLASH-string sender"
+        }
+      ]
+    },
+    {
+      "address": 5918,
+      "end_exclusive": 5946,
+      "symbol": "FUN_code_000b8f",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_write_enable.c",
+      "section": ".text.FUN_code_000b8f",
+      "compiler_profile": "r16_only",
+      "meaning": "SPI FLASH write-enable transaction",
+      "asm_helper_ranges": [
+        {
+          "start": 5930,
+          "end_exclusive": 5938,
+          "reason": "Original R19 polling loop; preserves its instruction and register selection"
+        }
+      ]
+    },
+    {
+      "address": 3222,
+      "end_exclusive": 3344,
+      "symbol": "system_deinit",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/system_deinit.c",
+      "section": ".text.system_deinit",
+      "compiler_profile": "r16_only",
+      "meaning": "Ordered system deinitialization with original flags and scratch reloads",
+      "asm_helper_ranges": [
+        {
+          "start": 3222,
+          "end_exclusive": 3224,
+          "reason": "Original initial EOR"
+        },
+        {
+          "start": 3264,
+          "end_exclusive": 3266,
+          "reason": "LDI zero preserves flags"
+        },
+        {
+          "start": 3280,
+          "end_exclusive": 3282,
+          "reason": "Original EOR before SPIC disable"
+        },
+        {
+          "start": 3310,
+          "end_exclusive": 3312,
+          "reason": "Original scratch reload before direction clear"
+        },
+        {
+          "start": 3316,
+          "end_exclusive": 3320,
+          "reason": "Absolute status read preserves addressing"
+        },
+        {
+          "start": 3332,
+          "end_exclusive": 3334,
+          "reason": "Original final EOR flags"
+        }
+      ]
+    },
+    {
+      "address": 2920,
+      "end_exclusive": 2966,
+      "symbol": "FUN_code_0005b4",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_fault_state.c",
+      "section": ".text.FUN_code_0005b4",
+      "compiler_profile": "r16_only",
+      "meaning": "Power-fault state GPIO and status reset (name inferred)",
+      "asm_helper_ranges": [
+        {
+          "start": 2944,
+          "end_exclusive": 2946,
+          "reason": "Original EOR flags and register"
+        },
+        {
+          "start": 2954,
+          "end_exclusive": 2958,
+          "reason": "Absolute status read"
+        }
+      ]
+    },
+    {
+      "address": 5758,
+      "end_exclusive": 5810,
+      "symbol": "FUN_code_000b3f",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_interface_deinit.c",
+      "section": ".text.FUN_code_000b3f",
+      "compiler_profile": "r16_only",
+      "meaning": "FLASH interface teardown and original state transition",
+      "asm_helper_ranges": [
+        {
+          "start": 5758,
+          "end_exclusive": 5760,
+          "reason": "Original CLI"
+        },
+        {
+          "start": 5760,
+          "end_exclusive": 5762,
+          "reason": "Original zero and flags"
+        },
+        {
+          "start": 5776,
+          "end_exclusive": 5778,
+          "reason": "Atomic GPIOR0 bit clear"
+        },
+        {
+          "start": 5804,
+          "end_exclusive": 5806,
+          "reason": "Original relative call using R16"
+        },
+        {
+          "start": 5806,
+          "end_exclusive": 5808,
+          "reason": "Original SEI"
+        }
+      ]
+    },
+    {
+      "address": 5904,
+      "end_exclusive": 5918,
+      "symbol": "FUN_code_000b88",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_sector_erase.c",
+      "section": ".text.FUN_code_000b88",
+      "compiler_profile": "r16_only_r17_clobbered",
+      "meaning": "SPI FLASH sector erase command and chip-select release",
+      "asm_helper_ranges": [
+        {
+          "start": 5904,
+          "end_exclusive": 5906,
+          "reason": "Original relative write-enable call"
+        },
+        {
+          "start": 5908,
+          "end_exclusive": 5910,
+          "reason": "Original relative address-sender call"
+        }
+      ]
+    },
+    {
+      "address": 3344,
+      "end_exclusive": 3548,
+      "symbol": "system_init",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/system_init.c",
+      "section": ".text.system_init",
+      "compiler_profile": "r16_only_r17_clobbered",
+      "meaning": "GPIO, DMA and PLL startup in the original order",
+      "asm_helper_ranges": [
+        {
+          "start": 3404,
+          "end_exclusive": 3412,
+          "reason": "Exact DMA reset polling"
+        },
+        {
+          "start": 3420,
+          "end_exclusive": 3424,
+          "reason": "Absolute DMA_CTRL store avoids compiler pointer allocation"
+        },
+        {
+          "start": 3442,
+          "end_exclusive": 3444,
+          "reason": "Original zero and flags"
+        },
+        {
+          "start": 3472,
+          "end_exclusive": 3474,
+          "reason": "Original zero and flags"
+        },
+        {
+          "start": 3490,
+          "end_exclusive": 3492,
+          "reason": "Original zero and flags"
+        },
+        {
+          "start": 3506,
+          "end_exclusive": 3508,
+          "reason": "Original zero and flags"
+        },
+        {
+          "start": 3530,
+          "end_exclusive": 3546,
+          "reason": "Original PLL register ABI and CLI/CALL/SEI"
+        }
+      ]
+    },
+    {
+      "address": 3198,
+      "end_exclusive": 3222,
+      "symbol": "set_status_and_vd8_led",
+      "classification": "C_BINARY_EXACT",
+      "source": "src/status_led.c",
+      "section": ".text.set_status_and_vd8_led",
+      "compiler_profile": "r16_only",
+      "meaning": "Status flag consumption and LED update in original branch order"
+    },
+    {
+      "address": 9624,
+      "end_exclusive": 9662,
+      "symbol": "adt7311_8bit_rw",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt8.c",
+      "section": ".text.adt7311_8bit_rw",
+      "compiler_profile": "adt8_legacy",
+      "meaning": "Command/data transaction preserving all registers and discarding RX",
+      "asm_helper_ranges": [
+        {
+          "start": 9634,
+          "end_exclusive": 9638,
+          "reason": "Exact CS assertion store"
+        },
+        {
+          "start": 9638,
+          "end_exclusive": 9640,
+          "reason": "Capture original R17 transmit byte"
+        },
+        {
+          "start": 9640,
+          "end_exclusive": 9642,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9644,
+          "end_exclusive": 9646,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9648,
+          "end_exclusive": 9652,
+          "reason": "Exact CS release store"
+        }
+      ]
+    },
+    {
+      "address": 9706,
+      "end_exclusive": 9736,
+      "symbol": "adt7311_faults_clr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt_fault_clear.c",
+      "section": ".text.adt7311_faults_clr",
+      "compiler_profile": "r16_only_r17_clobbered",
+      "meaning": "Four FF transfers using the original temperature-sensor byte primitive",
+      "asm_helper_ranges": [
+        {
+          "start": 9714,
+          "end_exclusive": 9716,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9718,
+          "end_exclusive": 9720,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9722,
+          "end_exclusive": 9724,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9726,
+          "end_exclusive": 9728,
+          "reason": "Original byte-primitive RCALL"
+        }
+      ]
+    },
+    {
+      "address": 9662,
+      "end_exclusive": 9706,
+      "symbol": "adt7311_16bit_rw",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt16.c",
+      "section": ".text.adt7311_16bit_rw",
+      "compiler_profile": "adt16_legacy",
+      "meaning": "Command/high/low transaction with original R20/R21 receive outputs",
+      "asm_helper_ranges": [
+        {
+          "start": 9670,
+          "end_exclusive": 9674,
+          "reason": "Exact CS assertion store"
+        },
+        {
+          "start": 9674,
+          "end_exclusive": 9678,
+          "reason": "Capture original transmit registers"
+        },
+        {
+          "start": 9678,
+          "end_exclusive": 9680,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9682,
+          "end_exclusive": 9684,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9688,
+          "end_exclusive": 9690,
+          "reason": "Original byte-primitive RCALL"
+        },
+        {
+          "start": 9694,
+          "end_exclusive": 9698,
+          "reason": "Exact CS release store"
+        }
+      ]
+    }
+  ],
+  "asm_exports": [
+    "cli_send_msg",
+    "FUN_code_00054e",
+    "FUN_code_000c04",
+    "CDCE62005_send_control_settings",
+    "adt7311_byte_rw"
+  ]
+}

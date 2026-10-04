@@ -1,3 +1,4 @@
+.DEFAULT_GOAL := all
 
 ##########------------------------------------------------------##########
 ##########              Project-specific Details                ##########
@@ -105,7 +106,12 @@ $(BIN_DIR)/%.lst: $(BIN_DIR)/%.elf | $(BIN_DIR)
 ## These targets don't have files named after them
 .PHONY: all disassemble disasm eeprom size clean squeaky_clean flash fuses
 
-all: $(BIN_DIR)/$(TARGET).hex 
+all:
+	$(MAKE) -C recovered_exact all
+
+# Historical pre-reconstruction experiment, excluded from the exact baseline.
+.PHONY: legacy-all legacy-clean
+legacy-all: $(BIN_DIR)/$(TARGET).hex
 
 debug:
 	@echo
@@ -129,6 +135,9 @@ size:  $(TARGET).elf
 	$(AVRSIZE) -C --mcu=$(MCU) $(TARGET).elf
 
 clean:
+	$(MAKE) -C recovered_exact clean
+
+legacy-clean:
 	rm -rf $(BUILD_DIR) \
 	rm -rf $(BIN_DIR)
 
@@ -209,9 +218,13 @@ set_eeprom_save_fuse: fuses
 clear_eeprom_save_fuse: FUSE_STRING = -U hfuse:w:$(HFUSE):m
 clear_eeprom_save_fuse: fuses
 
-# Isolated bit-exact reconstruction; retains existing C build unchanged.
+# Current development baseline: exact C/ASM; immutable reference is exact_asm.
 .PHONY: exact-check
 exact-check:
+	$(MAKE) -C recovered_exact exact-check
+
+.PHONY: reference-exact-check
+reference-exact-check:
 	$(MAKE) -C exact_asm exact-check
 
 .PHONY: c-check
@@ -222,8 +235,13 @@ c-check:
 mixed-check:
 	$(MAKE) -C mixed_c_asm check
 
-# Verified original entry-point inventory for the current mixed firmware.
+# Verified classifications for the current binary-exact development baseline.
 .PHONY: c-progress
 c-progress:
+	$(MAKE) -C recovered_exact all
+	python3 recovered_exact/tools/inventory.py
+
+.PHONY: experimental-c-progress
+experimental-c-progress:
 	$(MAKE) -C mixed_c_asm all
 	python3 tools/function_inventory.py

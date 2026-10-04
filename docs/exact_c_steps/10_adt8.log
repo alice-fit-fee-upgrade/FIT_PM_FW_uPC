@@ -1,0 +1,61 @@
+make -C recovered_exact exact-check
+make[1]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+make clean
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+rm -rf build
+rm -f generated/stamp
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+make all
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+python3 tools/prepare_sources.py
+touch generated/stamp
+avr-gcc -mmcu=atxmega128a3u -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -c ../exact_asm/src/boot.S -o build/boot.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/flash_interface_init.c -o build/flash_interface_init.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -c src/console_crlf.c -o build/console_crlf.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/flash_write_enable.c -o build/flash_write_enable.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/system_deinit.c -o build/system_deinit.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/power_fault_state.c -o build/power_fault_state.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/flash_interface_deinit.c -o build/flash_interface_deinit.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r17 -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/flash_sector_erase.c -o build/flash_sector_erase.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r17 -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/system_init.c -o build/system_init.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c src/status_led.c -o build/status_led.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-saved-r18 -fcall-saved-r19 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/adt8.c -o build/adt8.o
+avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,-T,linker/exact.ld,-Map,build/reconstructed.map build/application.o build/boot.o build/flash_interface_init.o build/console_crlf.o build/flash_write_enable.o build/system_deinit.o build/power_fault_state.o build/flash_interface_deinit.o build/flash_sector_erase.o build/system_init.o build/status_led.o build/adt8.o -o build/reconstructed.elf
+avr-objcopy -O ihex build/reconstructed.elf build/reconstructed.hex
+python3 ../tools/memory_image.py build/reconstructed.hex build/flash_rebuilt.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+python3 ../tools/compare_flash.py ../reference/flash_golden.bin build/flash_rebuilt.bin --report build/comparison.txt --report-only
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 139264
+Differing bytes: 0
+ALL FLASH identical percentage: 100.000000%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 0 differing, 100.000000% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11354 bytes, 0 differing, 100.000000% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 0 differing, 100.000000% identical
+First mismatch: none
+Last mismatch: none
+Number of mismatch regions: 0
+START       END         LENGTH      TYPE
+0x000000    0x021FFF    139264      MATCH
+cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
+avr-objdump -D build/reconstructed.elf > build/rebuilt.dis
+python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_rebuilt.bin > build/instruction_diff.txt
+python3 tools/inventory.py
+Application 89: C_BINARY_EXACT=2, C_WITH_EXACT_ASM_HELPER=8, ASM_EXACT=79
+Boot ASM: 9; C instruction bytes: 468/10836 (4.3189%); differing bytes: 0
+make[1]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

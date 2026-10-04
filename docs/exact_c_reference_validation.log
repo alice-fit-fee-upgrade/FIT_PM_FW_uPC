@@ -1,0 +1,49 @@
+make -C exact_asm exact-check
+make[1]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+make clean
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+rm -rf build
+rm -f generated/application.S
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+make all
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 ../tools/convert_analysis.py
+mkdir -p build
+avr-gcc -mmcu=atxmega128a3u -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -c src/boot.S -o build/boot.o
+avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,-T,linker/exact.ld,-Map,build/reconstructed.map build/application.o build/boot.o -o build/reconstructed.elf
+avr-objcopy -O ihex build/reconstructed.elf build/reconstructed.hex
+python3 ../tools/memory_image.py build/reconstructed.hex build/flash_rebuilt.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'
+python3 ../tools/compare_flash.py ../reference/flash_golden.bin build/flash_rebuilt.bin --report build/comparison.txt --report-only
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 139264
+Differing bytes: 0
+ALL FLASH identical percentage: 100.000000%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 0 differing, 100.000000% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11354 bytes, 0 differing, 100.000000% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 0 differing, 100.000000% identical
+First mismatch: none
+Last mismatch: none
+Number of mismatch regions: 0
+START       END         LENGTH      TYPE
+0x000000    0x021FFF    139264      MATCH
+avr-objdump -D build/reconstructed.elf > build/rebuilt.dis
+avr-objdump -D -b binary -m avr:106 ../reference/flash_golden.bin > build/golden.dis
+python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_rebuilt.bin > build/instruction_diff.txt
+cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
+make[1]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/exact_asm'

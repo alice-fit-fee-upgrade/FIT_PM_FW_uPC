@@ -1,12 +1,13 @@
 {
-  "measure": "original entry points, including interrupts/main/shared formatter entries; not independent source function bodies",
-  "application_entries": 89,
-  "integrated_application_entries": 19,
-  "application_entries_not_integrated": 70,
-  "functional_c_application_entries": 47,
-  "application_entries_without_functional_c": 42,
-  "boot_procedures": 9,
-  "boot_procedure_addresses": [
+  "acceptance": "canonical complete FLASH equality only",
+  "application_functions": 89,
+  "count_measure": "verified original entries, including 10 ISRs, main and shared formatter entries",
+  "all_original_direct_application_call_targets_and_vector_destinations_listed": true,
+  "C_BINARY_EXACT": 2,
+  "C_WITH_EXACT_ASM_HELPER": 10,
+  "ASM_EXACT": 77,
+  "bootloader_asm_count": 9,
+  "bootloader_function_addresses": [
     131554,
     131642,
     131744,
@@ -17,810 +18,620 @@
     132138,
     132220
   ],
-  "boot_integrated_entries": 0,
-  "all_entries_not_integrated": 79,
-  "all_direct_application_call_targets_and_vector_destinations_listed": true,
+  "complete_executable_bytes": 10836,
+  "application_executable_bytes": 10058,
+  "boot_executable_bytes": 778,
+  "compiler_generated_c_bytes": 516,
+  "exact_asm_helper_bytes_inside_c_regions": 120,
+  "all_asm_bytes_including_helpers": 10320,
+  "C_percentage_all_executable": 4.761904761904762,
+  "ASM_percentage_all_executable": 95.23809523809524,
+  "C_percentage_application_executable": 5.1302445814277196,
+  "ASM_percentage_application_executable": 94.86975541857228,
+  "coverage_measure": "instruction bytes; inline ASM helpers counted as ASM; data/padding excluded",
+  "original_application_symbols_preserved": 459,
+  "all_original_text_symbols_preserved": 806,
+  "flash_size": 139264,
+  "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "rebuilt_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "differing_bytes": 0,
+  "compiler": "avr-gcc (GCC) 7.3.0",
+  "source_sha256": {
+    "src/flash_interface_init.c": "29c12696fe4db5147deb4b56cff62eb6cbc7ad2c24703cdb155a92ccdf378cc4",
+    "src/console_crlf.c": "4e71cc43016666c1f11cbb51932573a7b6bcf1b8cf46ad332d042b3a5db327e6",
+    "src/flash_write_enable.c": "40b4f1f451562d8cb29c83b2eec7a5bc54524f486fb9855c363ddaff2ef6e9e7",
+    "src/system_deinit.c": "385d5f21b4ae8a72cf9e27a6822ccb1384d61acb6079a76799a34fa2f8f9357d",
+    "src/power_fault_state.c": "a36f8c4ad3038f6f58f79cf008940b87e990b571d0d144de9f2b87c404879a68",
+    "src/flash_interface_deinit.c": "26b6dd68e06cf574278cd9e8821f580777bc0e1f17b2a66bd02f20bfc37d2f6e",
+    "src/flash_sector_erase.c": "6290ec2a2605477ced94197046fd7451655d07f08ae7f1d96d32b1c90c3c963b",
+    "src/system_init.c": "c92e08a3b9a6bdc268a8f1817b34c1a50f82bc41c8778eb9ff6a5babd3763761",
+    "src/status_led.c": "8449c606cadba2bde4adeb0aa2fb3713d197f7c69da0d81ab1138a74dc277394",
+    "src/adt8.c": "d4e7cd23f164c79c45826ace9aeb4137a83f809770b9f1ea39675445a0068c9e",
+    "src/adt_fault_clear.c": "cca52b48d533e259a13fd280db7f56d445cab926dc6525cf0c90f7cfc06962d9",
+    "src/adt16.c": "39e51f30615cc5a534e2471eeb36e65d2d59a08056f81d6f3aed282d723b01f6"
+  },
   "application": [
     {
       "address": 482,
-      "name": "DMA_CH1_vect_isr",
       "end_exclusive": 1132,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "DMA_CH1_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 1132,
-      "name": "FUN_code_000236",
       "end_exclusive": 1182,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000236",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 1182,
-      "name": "TCC0_OVF_vect_isr",
       "end_exclusive": 2276,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "TCC0_OVF_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2276,
-      "name": "fpga_settings_init",
       "end_exclusive": 2442,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_fpga_settings_init_bridge"
+      "symbol": "fpga_settings_init",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2442,
-      "name": "fpga_settings_reset",
       "end_exclusive": 2526,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_fpga_settings_reset_bridge"
+      "symbol": "fpga_settings_reset",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2526,
-      "name": "FUN_code_0004ef",
       "end_exclusive": 2636,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_0004ef",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2636,
-      "name": "PORTD_INT0_vect_isr",
       "end_exclusive": 2716,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "PORTD_INT0_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2716,
-      "name": "FUN_code_00054e",
       "end_exclusive": 2748,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_fpga_state_bridge"
+      "symbol": "FUN_code_00054e",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2748,
-      "name": "PORTB_INT0_vect_isr",
       "end_exclusive": 2784,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "PORTB_INT0_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2784,
-      "name": "PORTF_INT1_vect_isr",
       "end_exclusive": 2920,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "PORTF_INT1_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 2920,
-      "name": "FUN_code_0005b4",
       "end_exclusive": 2966,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_0005b4",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_fault_state.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 40,
+      "exact_asm_helper_bytes": 6
     },
     {
       "address": 2966,
-      "name": "PORTE_INT0_vect_isr",
       "end_exclusive": 3114,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "PORTE_INT0_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 3114,
-      "name": "PORTE_INT1_vect_isr",
       "end_exclusive": 3198,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "PORTE_INT1_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 3198,
-      "name": "set_status_and_vd8_led",
       "end_exclusive": 3222,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_status_led_bridge"
+      "symbol": "set_status_and_vd8_led",
+      "classification": "C_BINARY_EXACT",
+      "source": "src/status_led.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 24,
+      "exact_asm_helper_bytes": 0
     },
     {
       "address": 3222,
-      "name": "system_deinit",
       "end_exclusive": 3344,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_system_deinit_bridge"
+      "symbol": "system_deinit",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/system_deinit.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 108,
+      "exact_asm_helper_bytes": 14
     },
     {
       "address": 3344,
-      "name": "system_init",
       "end_exclusive": 3548,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_system_init_bridge"
+      "symbol": "system_init",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/system_init.c",
+      "compiler_profile": "r16_only_r17_clobbered",
+      "compiler_generated_bytes": 168,
+      "exact_asm_helper_bytes": 36
     },
     {
       "address": 3548,
-      "name": "CDCE62005_control_rst",
       "end_exclusive": 3616,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_pll_control_reset_bridge"
+      "symbol": "CDCE62005_control_rst",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 3616,
-      "name": "PORTF_INT0_vect_isr",
       "end_exclusive": 3720,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "PORTF_INT0_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 3720,
-      "name": "USARTF0_DRE_vect_isr",
       "end_exclusive": 3808,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "USARTF0_DRE_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 3808,
-      "name": "USARTF0_RXC_vect_isr",
       "end_exclusive": 3924,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "USARTF0_RXC_vect_isr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 3924,
-      "name": "main",
       "end_exclusive": 4444,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "main",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 4444,
-      "name": "fpga_data_exchange",
       "end_exclusive": 4842,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_data_exchange",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 4842,
-      "name": "cli_prompt_parse",
       "end_exclusive": 5498,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cli_prompt_parse",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 5498,
-      "name": "unlock_programming",
       "end_exclusive": 5542,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "unlock_programming",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 5542,
-      "name": "fpga_firmware_update",
       "end_exclusive": 5732,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_firmware_update",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 5732,
-      "name": "FUN_code_000b32",
       "end_exclusive": 5758,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_flash_init_bridge"
+      "symbol": "FUN_code_000b32",
+      "classification": "C_BINARY_EXACT",
+      "source": "src/flash_interface_init.c",
+      "compiler_profile": "r16_leaf",
+      "compiler_generated_bytes": 26,
+      "exact_asm_helper_bytes": 0
     },
     {
       "address": 5758,
-      "name": "FUN_code_000b3f",
       "end_exclusive": 5810,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000b3f",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_interface_deinit.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 42,
+      "exact_asm_helper_bytes": 10
     },
     {
       "address": 5810,
-      "name": "FUN_code_000b59",
       "end_exclusive": 5904,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000b59",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 5904,
-      "name": "FUN_code_000b88",
       "end_exclusive": 5918,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000b88",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_sector_erase.c",
+      "compiler_profile": "r16_only_r17_clobbered",
+      "compiler_generated_bytes": 10,
+      "exact_asm_helper_bytes": 4
     },
     {
       "address": 5918,
-      "name": "FUN_code_000b8f",
       "end_exclusive": 5946,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_flash_enable_bridge"
+      "symbol": "FUN_code_000b8f",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_write_enable.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 20,
+      "exact_asm_helper_bytes": 8
     },
     {
       "address": 5946,
-      "name": "FUN_code_000b9d",
       "end_exclusive": 6002,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 8,
-      "functional_c_recovered": true,
-      "bridge": "pm_flash_wait_bridge"
+      "symbol": "FUN_code_000b9d",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6002,
-      "name": "FUN_code_000bb9",
       "end_exclusive": 6116,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000bb9",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6116,
-      "name": "FUN_code_000bf2",
       "end_exclusive": 6152,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_crc_byte_bridge"
+      "symbol": "FUN_code_000bf2",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6152,
-      "name": "FUN_code_000c04",
       "end_exclusive": 6208,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_flash_address_bridge"
+      "symbol": "FUN_code_000c04",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6208,
-      "name": "FUN_code_000c20",
       "end_exclusive": 6286,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000c20",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6286,
-      "name": "cli_send_ch_mean_amplitude",
       "end_exclusive": 6334,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cli_send_ch_mean_amplitude",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6334,
-      "name": "cli_send_adc_baseline_dispersion",
       "end_exclusive": 6416,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cli_send_adc_baseline_dispersion",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6416,
-      "name": "cli_send_tdc_data",
       "end_exclusive": 6574,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cli_send_tdc_data",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6574,
-      "name": "eeprom_settings_save",
       "end_exclusive": 6670,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "eeprom_settings_save",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6670,
-      "name": "FUN_code_000d07",
       "end_exclusive": 6718,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000d07",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6718,
-      "name": "cdce62005_rst",
       "end_exclusive": 6756,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cdce62005_rst",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 6756,
-      "name": "cli_send_system_status",
       "end_exclusive": 7140,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cli_send_system_status",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7140,
-      "name": "alarms_clear",
       "end_exclusive": 7266,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "alarms_clear",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7266,
-      "name": "channels_read",
       "end_exclusive": 7410,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "channels_read",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7410,
-      "name": "cli_send_channel_cdf_adc",
       "end_exclusive": 7522,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "cli_send_channel_cdf_adc",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7522,
-      "name": "fpga_set_trg_charge_lvls",
       "end_exclusive": 7570,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_trg_charge_lvls",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7570,
-      "name": "fpga_set_trg_settings",
       "end_exclusive": 7606,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_trg_settings",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7606,
-      "name": "fpga_set_adc_range_corr",
       "end_exclusive": 7726,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_adc_range_corr",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7726,
-      "name": "fpga_set_tdc_values",
       "end_exclusive": 7804,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_tdc_values",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7804,
-      "name": "fpga_set_threshold_calibration",
       "end_exclusive": 7904,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_threshold_calibration",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7904,
-      "name": "FUN_code_000f70",
       "end_exclusive": 7994,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "FUN_code_000f70",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 7994,
-      "name": "fpga_set_ch_adc_delay",
       "end_exclusive": 8078,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_ch_adc_delay",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8078,
-      "name": "fpga_set_ch_cfd_threshold",
       "end_exclusive": 8172,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_ch_cfd_threshold",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8172,
-      "name": "fpga_set_adc_zero",
       "end_exclusive": 8270,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_adc_zero",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8270,
-      "name": "fpga_set_ch_cfd_zero",
       "end_exclusive": 8358,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_set_ch_cfd_zero",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8358,
-      "name": "FUN_code_001053",
       "end_exclusive": 8400,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_dac_calibrated_bridge"
+      "symbol": "FUN_code_001053",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8400,
-      "name": "FUN_code_001068",
       "end_exclusive": 8428,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_dac_inverse_bridge"
+      "symbol": "FUN_code_001068",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8428,
-      "name": "dac_set_value_2",
       "end_exclusive": 8452,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_dac_signed2_bridge"
+      "symbol": "dac_set_value_2",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8452,
-      "name": "dac_set_value",
       "end_exclusive": 8476,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_dac_signed1_bridge"
+      "symbol": "dac_set_value",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8476,
-      "name": "FUN_code_00108e",
       "end_exclusive": 8496,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_status_gate_bridge"
+      "symbol": "FUN_code_00108e",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8496,
-      "name": "fpga_is_ready",
       "end_exclusive": 8524,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_scale_signed_bridge"
+      "symbol": "fpga_is_ready",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8524,
-      "name": "FUN_code_0010a6",
       "end_exclusive": 8564,
-      "integrated_c": true,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": "pm_scale_unsigned_bridge"
+      "symbol": "FUN_code_0010a6",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8564,
-      "name": "ths788_write",
       "end_exclusive": 8712,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "ths788_write",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8712,
-      "name": "ths788_read",
       "end_exclusive": 8874,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "ths788_read",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8874,
-      "name": "dac_send_value",
       "end_exclusive": 8974,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "dac_send_value",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 8974,
-      "name": "fpga_msg_send_t2",
       "end_exclusive": 9064,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "fpga_msg_send_t2",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9064,
-      "name": "fpga_msg_read_t1",
       "end_exclusive": 9162,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "fpga_msg_read_t1",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9162,
-      "name": "FUN_code_0011e5",
       "end_exclusive": 9350,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "FUN_code_0011e5",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9350,
-      "name": "CDCE62005_send_control_settings",
       "end_exclusive": 9422,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "CDCE62005_send_control_settings",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9422,
-      "name": "FUN_code_001267",
       "end_exclusive": 9520,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "FUN_code_001267",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9520,
-      "name": "fpga_send_mcu_ts",
       "end_exclusive": 9624,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": false,
-      "bridge": null
+      "symbol": "fpga_send_mcu_ts",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9624,
-      "name": "adt7311_8bit_rw",
       "end_exclusive": 9662,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "adt7311_8bit_rw",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt8.c",
+      "compiler_profile": "adt8_legacy",
+      "compiler_generated_bytes": 24,
+      "exact_asm_helper_bytes": 14
     },
     {
       "address": 9662,
-      "name": "adt7311_16bit_rw",
       "end_exclusive": 9706,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "adt7311_16bit_rw",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt16.c",
+      "compiler_profile": "adt16_legacy",
+      "compiler_generated_bytes": 26,
+      "exact_asm_helper_bytes": 18
     },
     {
       "address": 9706,
-      "name": "adt7311_faults_clr",
       "end_exclusive": 9736,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "adt7311_faults_clr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt_fault_clear.c",
+      "compiler_profile": "r16_only_r17_clobbered",
+      "compiler_generated_bytes": 22,
+      "exact_asm_helper_bytes": 8
     },
     {
       "address": 9736,
-      "name": "adt7311_byte_rw",
       "end_exclusive": 9780,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "adt7311_byte_rw",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9780,
-      "name": "cli_get_integer",
       "end_exclusive": 9900,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_get_integer",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9900,
-      "name": "cli_get_hex",
       "end_exclusive": 9976,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_get_hex",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 9976,
-      "name": "cli_send_32bit_hex",
       "end_exclusive": 10016,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_32bit_hex",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10016,
-      "name": "cli_send_digit_hex",
       "end_exclusive": 10030,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_digit_hex",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10030,
-      "name": "FUN_code_001397",
       "end_exclusive": 10038,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "FUN_code_001397",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10038,
-      "name": "cli_send_temperature",
       "end_exclusive": 10046,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_temperature",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10046,
-      "name": "FUN_code_00139f",
       "end_exclusive": 10054,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "FUN_code_00139f",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10054,
-      "name": "cli_send_int16",
       "end_exclusive": 10062,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_int16",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10062,
-      "name": "cli_send_uint16",
       "end_exclusive": 10270,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_uint16",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10270,
-      "name": "cli_send_crlf",
       "end_exclusive": 10278,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_crlf",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_crlf.c",
+      "compiler_profile": "default",
+      "compiler_generated_bytes": 6,
+      "exact_asm_helper_bytes": 2
     },
     {
       "address": 10278,
-      "name": "cli_send_msg",
       "end_exclusive": 10294,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_msg",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10294,
-      "name": "cli_get_next_byte",
       "end_exclusive": 10300,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_get_next_byte",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10300,
-      "name": "cli_get_next_char",
       "end_exclusive": 10412,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_get_next_char",
+      "classification": "ASM_EXACT"
     },
     {
       "address": 10412,
-      "name": "cli_send_buf",
       "end_exclusive": 10518,
-      "integrated_c": false,
-      "retained_asm_prefix_bytes": 0,
-      "functional_c_recovered": true,
-      "bridge": null
+      "symbol": "cli_send_buf",
+      "classification": "ASM_EXACT"
     }
   ]
 }

@@ -1,5 +1,12 @@
 # FIT_PM_FW_uPC
 
+The accepted recovered baseline is [recovered_exact](recovered_exact/README.md).
+`make` builds its GNU C/ASM firmware and checks complete FLASH equality;
+`make exact-check` rebuilds from scratch and compares with canonical original PM.hex.
+[Current classification and byte coverage](docs/function_inventory.md).
+`exact_asm` remains the immutable all-ASM reference. Earlier `mixed_c_asm` and
+portable C recovery experiments are retained as historical work, not the accepted baseline.
+
 ## Firmware timestamp & version
 The build timestamp (32-bit) is located at the very end of the application code (e.g.: 0x2b7c), not far from the " Flash TImestamp:" string.  
 The timestamp can be easily translated to firmware version YMD.Hm using the following rule:  
