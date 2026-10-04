@@ -1,0 +1,27 @@
+{
+  "baseline_only": false,
+  "mixed_bin_sha256": "a2c536c2f88864651999c57d3e12ee26e203d8f45b907294dd7718dc03fbca21",
+  "cases": 8192,
+  "entries": [
+    {
+      "entry": 2276,
+      "cases": 4096,
+      "transactions": 42,
+      "maximum_additional_stack": 33,
+      "final_sreg_fixed_bits": 130,
+      "preserved_sreg_mask": 64,
+      "r28_output": 183
+    },
+    {
+      "entry": 2442,
+      "cases": 4096,
+      "transactions": 61,
+      "maximum_additional_stack": 33,
+      "final_sreg_fixed_bits": 140,
+      "preserved_sreg_mask": 64,
+      "r28_output": "preserved"
+    }
+  ],
+  "all_registers_sreg_irq_and_return_stack_contracts_verified": true,
+  "limits": "actual linked AVR execution in bounded functional interpreter; no cycle, asynchronous IRQ or hardware validation"
+}

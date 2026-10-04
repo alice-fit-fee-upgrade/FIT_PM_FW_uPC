@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace fourteen audited original routine bodies with anchored JMPs.
+"""Replace sixteen audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -124,5 +124,23 @@ body=s[start:end]
 assert 'sbic        GPIO_GPIOR0,0x1' in body and body.count('cbi         GPIO_GPIOR0,0x0')==2
 assert s[:start].count('LAB_code_000646')+s[end:].count('LAB_code_000646')==0
 s=s[:start]+"set_status_and_vd8_led:\n    jmp pm_status_led_bridge\n.org (0x0646 << 1), 0xff\nLAB_code_000646:\n"+s[end:]
-s='.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
+start=s.index('fpga_settings_reset:')
+end=s.index('.org (0x04ef << 1)',start)
+body=s[start:end]
+assert 'ldi         R18,0xbe' in body and 'lds         R16,0x2441' in body
+replacement='fpga_settings_reset:\n    jmp pm_fpga_settings_reset_bridge\n'
+for name,address in [('LAB_code_0004cd',0x99a),('LAB_code_0004d8',0x9b0)]:
+ assert s[:start].count(name)+s[end:].count(name)==0,('external settings entry',name)
+ replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
+s=s[:start]+replacement+s[end:]
+start=s.index('fpga_settings_init:')
+end=s.index('.org (0x04c5 << 1)',start)
+body=s[start:end]
+assert 'push        ZL' in body and 'ldi         R17,0xf' in body
+replacement='fpga_settings_init:\n    jmp pm_fpga_settings_init_bridge\n'
+for name,address in [('LAB_code_000488',0x910),('LAB_code_000494',0x928)]:
+ assert s[:start].count(name)+s[end:].count(name)==0,('external settings entry',name)
+ replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
+s=s[:start]+replacement+s[end:]
+s='.global fpga_msg_send_t2\n.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

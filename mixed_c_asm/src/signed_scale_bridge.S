@@ -641,3 +641,114 @@ pm_status_led_bridge:
     pop r0
     ret
 .size pm_status_led_bridge, .-pm_status_led_bridge
+
+/* C arguments: register in R24, value in R23:R22.
+ * Preserve GNU callee-saved registers used by the original serializer. */
+.global pm_fpga_settings_write
+.type pm_fpga_settings_write,@function
+pm_fpga_settings_write:
+    push r16
+    push r17
+    push r18
+    mov r18, r24
+    mov r16, r22
+    mov r17, r23
+    cli
+    call fpga_msg_send_t2
+    sei
+    pop r18
+    pop r17
+    pop r16
+    ret
+.size pm_fpga_settings_write, .-pm_fpga_settings_write
+
+.global pm_fpga_settings_reset_bridge
+.type pm_fpga_settings_reset_bridge,@function
+pm_fpga_settings_reset_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_fpga_settings_reset_c
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    push r18
+    bst r0, 6
+    ldi r18, 0x8c
+    bld r18, 6
+    out 0x3f, r18
+    pop r18
+    pop r1
+    pop r0
+    ret
+.size pm_fpga_settings_reset_bridge, .-pm_fpga_settings_reset_bridge
+
+.global pm_fpga_settings_init_bridge
+.type pm_fpga_settings_init_bridge,@function
+pm_fpga_settings_init_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_fpga_settings_init_c
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    push r18
+    bst r0, 6
+    ldi r18, 0x82
+    bld r18, 6
+    out 0x3f, r18
+    pop r18
+    ldi r28, 0xb7 /* Original init leaves YL modified. */
+    pop r1
+    pop r0
+    ret
+.size pm_fpga_settings_init_bridge, .-pm_fpga_settings_init_bridge

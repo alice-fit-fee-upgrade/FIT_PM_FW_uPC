@@ -26,8 +26,10 @@ build/fpga_state.o: src/fpga_state.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
 build/status_led.o: src/status_led.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
-build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o linker/mixed.ld
-	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o -lgcc -o $@
+build/fpga_settings.o: src/fpga_settings.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o linker/mixed.ld
+	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o build/fpga_state.o build/status_led.o build/fpga_settings.o -lgcc -o $@
 build/mixed.hex: build/mixed.elf
 	avr-objcopy -O ihex $< $@
 build/flash_mixed.bin: build/mixed.hex
@@ -39,6 +41,7 @@ check:
 	$(MAKE) -C ../exact_asm exact-check
 	$(PYTHON) tests/check_gpio_instructions.py
 	$(PYTHON) tests/check_fpga_settings_contract.py
+	$(PYTHON) tests/check_fpga_settings.py
 	$(PYTHON) tests/check_layout.py
 	$(PYTHON) ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_mixed.bin --code-range 0x3000:0x4000 --code-range 0x4000:0x1e000 > build/instruction_diff.txt
 	$(PYTHON) tests/check_abi.py

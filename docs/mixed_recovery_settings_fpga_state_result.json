@@ -1,0 +1,13 @@
+{
+  "cases": 131072,
+  "entries": [
+    2716,
+    5758
+  ],
+  "previous_state_values": 256,
+  "incoming_sreg_patterns": 256,
+  "all_registers_flags_memory_trace_return_stack_equal": true,
+  "maximum_additional_stack": 20,
+  "mixed_bin_sha256": "a2c536c2f88864651999c57d3e12ee26e203d8f45b907294dd7718dc03fbca21",
+  "limits": "bounded functional interpreter; no cycle, asynchronous IRQ or physical hardware validation"
+}

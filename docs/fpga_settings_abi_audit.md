@@ -1,8 +1,8 @@
-# FPGA settings: next original ABI integration
+# FPGA settings: original ABI integration
 
 Golden FLASH is authoritative; addresses below are byte addressed. Portable
-functional recovery already exists in source_recovery/src/settings.c. Neither
-entry below is routed to C in the current mixed build.
+functional recovery already exists in source_recovery/src/settings.c. Both entries now route to C in the mixed build; see mixed_recovery_settings_checkpoint.md.
+The original-only audit below remains the baseline contract.
 
 ## Initialization, 0x08E4..0x0989
 
@@ -21,7 +21,7 @@ Every transaction explicitly executes CLI, calls the existing SPI serializer at
 The serializer saves/restores R18/R21/R22; its LSR/ROR operations affect flags.
 The final register 0x7C produces SREG arithmetic bits C=0,Z=1,N=0,V=0,S=0;
 H is zero from the last equal loop CPI, and T is preserved. This contract is verified against actual golden execution; compiled-C integration
-still requires its own differential verification.
+has passed 8192 differential cases across both routines.
 
 ## Reset, 0x098A..0x09DD
 
@@ -33,7 +33,7 @@ one byte at 0x2441, sent to register 0xBE with high data byte zero.
 The final serializer's ROR of the second header byte yields 0x80. Derived final
 arithmetic flags are C=0,Z=0,N=1,V=1,S=0,H=0; T is preserved and I is forced one.
 All registers are expected preserved. This is verified against actual golden execution; compiled-C differential
-confirmation is still required before replacing the entry.
+confirmation has passed 8192 differential cases across both routines.
 
 ## Integration approach
 
@@ -53,5 +53,6 @@ validation; the existing interpreter is functional only.
 baseline cases: two entries, all 256 SREG patterns, four ready-poll delays
 and seeded RAM/register values. Full register outputs, derived flags, CLI/SEI
 sequence, 42 initialization / 61 reset transactions and return-stack balance
-match the contracts above. The settings routines still execute original ASM.
+match the contracts above. This audit deliberately executes golden ASM, while
+the separate compiled-C settings suite compares the mixed build against it.
 The result is saved in mixed_c_asm/build/fpga_settings_contract.json.

@@ -1,3 +1,4 @@
+.global fpga_msg_send_t2
 .global dac_send_value
 .global cli_send_msg
 .global FUN_code_000b9d
@@ -922,126 +923,18 @@ LAB_code_00045f:
 ;undefined FUN_code_000472(void)
 .org (0x0472 << 1), 0xff
 fpga_settings_init:
-	push        R18                                     
-	push        R17                                     
-	push        R16                                     
-	push        YH                                     
-	push        ZL                                     
-	ldi         R18,0x7c                                
-	eor         R16,R16                                 
-	eor         R17,R17                                 
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	lds         R16,0x222f                   ;= ??
-	eor         R17,R17                                 
-	eor         R18,R18                                 
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	ldi         YL,0xb7                                
-	ldi         YH,0x21                                
-LAB_code_000488:              
-	ld          R16,Y+                                  
-	ld          R17,Y+                                  
-	inc         R18                                     
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	cpi         R18,0xc                                 
-	brbc        CPU_Z_bp, LAB_code_000488                    
-	ldi         R18,0x24                                
-	ldi         YL,0x87                                
-	ldi         YH,0x21                                
-LAB_code_000494:              
-	ld          R16,Y+                                  
-	ld          R17,Y+                                  
-	inc         R18                                     
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	cpi         R18,0x3c                                
-	brbc        CPU_Z_bp, LAB_code_000494                    
-	inc         R18                                     
-	lds         R16,0x2230                   ;= ??
-	lds         R17,0x2231                   ;= ??
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	lds         R16,0x2160                   ;= ??
-	lds         R17,0x2161                   ;= ??
-	ldi         R18,0xbc                                
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	lds         R16,0x2232                   ;= ??
-	lds         R17,0x2233                   ;= ??
-	ldi         R18,0xbd                                
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	ldi         R18,0x7c                                
-	ser         R16                                     
-	ldi         R17,0xf                                 
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	pop         ZL                                     
-	pop         YH                                     
-	pop         R16                                     
-	pop         R17                                     
-	pop         R18                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_0004c5(void)
+    jmp pm_fpga_settings_init_bridge
+.org 0x910, 0xff
+LAB_code_000488:
+.org 0x928, 0xff
+LAB_code_000494:
 .org (0x04c5 << 1), 0xff
 fpga_settings_reset:
-	push        R16                                     
-	push        R17                                     
-	push        R18                                     
-	push        YL                                     
-	push        YH                                     
-	ldi         R18,0x80                                
-	ldi         YL,0xcf                                
-	ldi         YH,0x21                                
-LAB_code_0004cd:              
-	ld          R16,Y+                                  
-	ld          R17,Y+                                  
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	inc         R18                                     
-	cpi         R18,0xb0                                
-	brbc        CPU_Z_bp, LAB_code_0004cd                    
-	ldi         YL,0x63                                
-	ldi         YH,0x21                                
-LAB_code_0004d8:              
-	ld          R16,Y+                                  
-	ld          R17,Y+                                  
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	inc         R18                                     
-	cpi         R18,0xbc                                
-	brbc        CPU_Z_bp, LAB_code_0004d8                    
-	lds         R16,0x2441                   ;= ??
-	eor         R17,R17                                 
-	ldi         R18,0xbe                                
-	cli                                                 
-	call        fpga_msg_send_t2                         ;undefined FUN_code_001187(void)
-	bset        CPU_I_bp                                    
-	pop         YH                                     
-	pop         YL                                     
-	pop         R18                                     
-	pop         R17                                     
-	pop         R16                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;uint6 FUN_code_0004ef()
+    jmp pm_fpga_settings_reset_bridge
+.org 0x99a, 0xff
+LAB_code_0004cd:
+.org 0x9b0, 0xff
+LAB_code_0004d8:
 .org (0x04ef << 1), 0xff
 FUN_code_0004ef:
 	push        ZH                                     

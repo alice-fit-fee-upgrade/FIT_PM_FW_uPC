@@ -3,9 +3,9 @@
 Generated from the current mixed ELF/BIN and verified original listing.
 Regenerate with `make c-progress`; JSON is in mixed_c_asm/build/function_inventory.json.
 
-Application: **89 original entries; 14 integrated C; 75 not integrated**.
-Functional C recovery: **45 entries**, including 31 not yet integrated.
-Boot: **9 ASM procedures**, all untouched. Total not integrated including boot: **84**.
+Application: **89 original entries; 16 integrated C; 73 not integrated**.
+Functional C recovery: **45 entries**, including 29 not yet integrated.
+Boot: **9 ASM procedures**, all untouched. Total not integrated including boot: **82**.
 This counts entry points, including 10 application ISRs, main and shared formatter
 entries; it does not imply every entry requires or should receive a C replacement.
 All original direct CALL targets and vector destinations are included.
@@ -13,7 +13,7 @@ All original direct CALL targets and vector destinations are included.
 Functional C corresponds to 2890 original routine-span bytes (26.67% of 10836),
 including register/ISR scaffolding and eight retained timed ASM bytes. This broader
 metric includes the mixed project; the portable library's historical 2494-byte
-measure remains separate. Actual substituted entry spans cover 464 bytes (4.28%).
+measure remains separate. Actual substituted entry spans cover 714 bytes (6.59%).
 Timing-sensitive GPIO serializers and boot/NVM routines may remain ASM.
 Inherited function names are hypotheses; addresses are byte addressed.
 
@@ -22,8 +22,8 @@ Inherited function names are hypotheses; addresses are byte addressed.
 | 0x01E2 | DMA_CH1_vect_isr | ASM; C not recovered |
 | 0x046C | FUN_code_000236 | ASM; C not recovered |
 | 0x049E | TCC0_OVF_vect_isr | ASM; C not recovered |
-| 0x08E4 | fpga_settings_init | Functional C recovered; ASM entry |
-| 0x098A | fpga_settings_reset | Functional C recovered; ASM entry |
+| 0x08E4 | fpga_settings_init | Integrated C |
+| 0x098A | fpga_settings_reset | Integrated C |
 | 0x09DE | FUN_code_0004ef | ASM; C not recovered |
 | 0x0A4C | PORTD_INT0_vect_isr | ASM; C not recovered |
 | 0x0A9C | FUN_code_00054e | Integrated C |
