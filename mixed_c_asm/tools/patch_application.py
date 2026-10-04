@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace only the two original scaler bodies with an anchored JMP.
+"""Replace six audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -50,6 +50,12 @@ end=s.index('.org (0x1082 << 1)',start)
 assert 'ori         R22,0x2' in s[start:end]
 s=s[:start]+'''dac_set_value_2:
     jmp pm_dac_signed2_bridge
+'''+s[end:]
+start=s.index('dac_set_value:')
+end=s.index('.org (0x108e << 1)',start)
+assert 'ori         R22,0x1' in s[start:end]
+s=s[:start]+'''dac_set_value:
+    jmp pm_dac_signed1_bridge
 '''+s[end:]
 s='.global dac_send_value\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)
