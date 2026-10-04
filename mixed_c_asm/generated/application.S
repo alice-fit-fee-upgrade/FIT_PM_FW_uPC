@@ -1,4 +1,5 @@
 .global dac_send_value
+.global cli_send_msg
 #include "ATxmega128A3Udef.inc"
 
 .section .application,"ax",@progbits
@@ -4055,19 +4056,7 @@ dac_set_value:
     jmp pm_dac_signed1_bridge
 .org (0x108e << 1), 0xff
 FUN_code_00108e:
-	clc                                                 
-	lds         R16,0x2157                   ;= ??
-	sbrc        R16,0x4                                 
-	ret                                                 
-	ldi         ZL,0xb4                                
-	ldi         ZH,0x2a                                
-	rcall       cli_send_msg                         ;undefined FUN_code_001413(void)
-	bset        CPU_C_bp                                    
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_001098(void)
+    jmp pm_status_gate_bridge
 .org (0x1098 << 1), 0xff
 fpga_is_ready:
     /* Mixed build: original symbol/address retained; new C implementation. */

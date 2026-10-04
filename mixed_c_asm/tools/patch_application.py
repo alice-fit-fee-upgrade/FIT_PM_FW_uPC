@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace six audited original routine bodies with anchored JMPs.
+"""Replace seven audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -57,5 +57,11 @@ assert 'ori         R22,0x1' in s[start:end]
 s=s[:start]+'''dac_set_value:
     jmp pm_dac_signed1_bridge
 '''+s[end:]
-s='.global dac_send_value\n'+s
+start=s.index('FUN_code_00108e:')
+end=s.index('.org (0x1098 << 1)',start)
+assert 'lds         R16,0x2157' in s[start:end] and 'sbrc        R16,0x4' in s[start:end]
+s=s[:start]+'''FUN_code_00108e:
+    jmp pm_status_gate_bridge
+'''+s[end:]
+s='.global dac_send_value\n.global cli_send_msg\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

@@ -251,3 +251,75 @@ pm_dac_signed1_bridge:
     call dac_send_value
     ret
 .size pm_dac_signed1_bridge, .-pm_dac_signed1_bridge
+
+/* Status gate 0x211C: R16 becomes the full status byte. All other
+ * registers (including arbitrary incoming R1) remain unchanged on the
+ * ready path. C is cleared there; failure calls the original message
+ * sender with Z=0x2AB4 and sets C afterwards. */
+.global pm_status_gate_bridge
+.type pm_status_gate_bridge,@function
+pm_status_gate_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    lds r16, 0x2157
+    mov r24, r16
+    clr r1
+    call pm_status_gate_allowed
+    tst r24
+    breq .Lstatus_gate_failed
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    clc
+    ret
+.Lstatus_gate_failed:
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    clc
+    ldi r30, 0xb4
+    ldi r31, 0x2a
+    call cli_send_msg
+    sec
+    ret
+.size pm_status_gate_bridge, .-pm_status_gate_bridge
