@@ -4,7 +4,7 @@ The original ELF is a programming-state container. Raw sections, verified with o
 
 | Space | Bytes | Evidence |
 |---|---|---|
-| Device signature | 42 97 1E | ELF .signature; repo signature.hex agrees; UI displays 0x1E9742 |
+| Device signature | 42 97 1E | ELF .signature stores 42 97 1E; repo signature.hex stores 1E 97 42; UI displays 0x1E9742 |
 | Lock | FF | ELF .lock; repo lock.hex agrees |
 | Fuses indices 0..5 | FF 00 FE FF E3 E8 | ELF .fuse; repo per-byte dumps agree at defined indices |
 | User signature | 512 bytes FF | Both supplied PM_sign.hex files, repo usersig.hex and ELF .user_signature agree |
@@ -18,7 +18,7 @@ Screenshot device selection says ATxmega128A3, while requested target is ATxmega
 No hardware identity is changed on that basis.
 
 The device-signature byte order in the programming ELF is 42 97 1E, unlike the presentation order
-1E9742; these are container bytes, not instructions and not a FLASH region. Device signature is
+1E9742. Repo signature.hex uses the presentation order (1E 97 42), so ELF and HEX signature payloads differ byte-for-byte. These are container bytes, not instructions and not a FLASH region. Device signature is
 not a user-defined authentication signature. The 512-byte user signature is erased state.
 No production calibration-row dump was supplied; do not conflate it with the three-byte device ID.
 

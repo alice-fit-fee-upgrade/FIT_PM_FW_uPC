@@ -108,3 +108,12 @@ Repository flash HEX is shorter/sparse; supplied FLASH includes the full space. 
 | reference/originals/3-PM_sign.hex | 1453 | `768d3bc5b3fdbb978b96180b7a9509dc49741cc742509ece97eb11e0f4a7dc5a` | [0, 511]; {0: 32, 1: 1} | user signature | ASCII text, with CRLF line terminators |
 | reference/originals/4-PM.eep | 5773 | `2bf9f5cf4b9784bbe5d8822758331599b316e819fedebfe2e7d250d7ef5fbde6` | [0, 2047]; {0: 128, 1: 1} | EEPROM | ASCII text, with CRLF line terminators |
 | reference/originals/5-PM_sign.hex | 1453 | `768d3bc5b3fdbb978b96180b7a9509dc49741cc742509ece97eb11e0f4a7dc5a` | [0, 511]; {0: 32, 1: 1} | user signature | ASCII text, with CRLF line terminators |
+
+## Additional cross-checks
+
+- Repo application.hex is region-relative (base 0x0); canonical region matches supplied FLASH: True.
+- Repo boot.hex is region-relative (base 0x20000); canonical region matches supplied FLASH: True.
+- Repo apptable.hex has EOF only, no payload; it does not establish that the corresponding hardware space is erased.
+- Repo data.hex has EOF only, no payload; it does not establish that the corresponding hardware space is erased.
+- Supplied and repo schematic PDFs differ at file level; both are separately hashed. No PDF semantic identity is assumed.
+- ELF user signature matches both supplied HEX files. Lock and defined fuses match repo dumps. Device signature has REVERSED BYTE ORDER: ELF 42 97 1E versus repo HEX 1E 97 42; both describe displayed ID 0x1E9742, but these payloads are not byte-identical.
