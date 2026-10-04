@@ -1,0 +1,1 @@
+/home/codex-hil/.local/opt/avr/usr/bin/avr-nm: reference/originals/2-PM_Atxmega128.elf: no symbols

@@ -1,0 +1,99 @@
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: 18e42084ff4b5c757f0789b1818a988c8b992f6ab06cc4122f04b35e0c77e40a
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 138043
+Differing bytes: 1221
+ALL FLASH identical percentage: 99.123248%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 761 differing, 93.297516% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11814 bytes, 1221 differing, 89.664804% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 1221 differing, 99.077279% identical
+First mismatch: 0x2
+Last mismatch: 0x204e5
+Number of mismatch regions: 42
+START       END         LENGTH      TYPE
+0x000000    0x000001    2           MATCH
+0x000002    0x00001B    26          DIFF
+0x00001C    0x00001D    2           MATCH
+0x00001E    0x000037    26          DIFF
+0x000038    0x000039    2           MATCH
+0x00003A    0x000087    78          DIFF
+0x000088    0x000089    2           MATCH
+0x00008A    0x0000AB    34          DIFF
+0x0000AC    0x0000AD    2           MATCH
+0x0000AE    0x0000AF    2           DIFF
+0x0000B0    0x0000B1    2           MATCH
+0x0000B2    0x0000FF    78          DIFF
+0x000100    0x000101    2           MATCH
+0x000102    0x00019F    158         DIFF
+0x0001A0    0x0001A1    2           MATCH
+0x0001A2    0x0001A3    2           DIFF
+0x0001A4    0x0001A5    2           MATCH
+0x0001A6    0x0001DB    54          DIFF
+0x0001DC    0x0001DD    2           MATCH
+0x0001DE    0x0001DF    2           DIFF
+0x0001E0    0x001575    5014        MATCH
+0x001576    0x001579    4           DIFF
+0x00157A    0x002963    5098        MATCH
+0x002964    0x002966    3           DIFF
+0x002967    0x002969    3           MATCH
+0x00296A    0x00296B    2           DIFF
+0x00296C    0x02019F    120884      MATCH
+0x0201A0    0x0201A1    2           DIFF
+0x0201A2    0x0201DB    58          MATCH
+0x0201DC    0x0201DD    2           DIFF
+0x0201DE    0x0201DF    2           MATCH
+0x0201E0    0x0201E1    2           DIFF
+0x0201E2    0x0201E2    1           MATCH
+0x0201E3    0x0201E3    1           DIFF
+0x0201E4    0x0201E4    1           MATCH
+0x0201E5    0x0201E5    1           DIFF
+0x0201E6    0x0201E6    1           MATCH
+0x0201E7    0x020231    75          DIFF
+0x020232    0x020232    1           MATCH
+0x020233    0x020233    1           DIFF
+0x020234    0x020234    1           MATCH
+0x020235    0x020235    1           DIFF
+0x020236    0x020236    1           MATCH
+0x020237    0x020239    3           DIFF
+0x02023A    0x02023A    1           MATCH
+0x02023B    0x02023B    1           DIFF
+0x02023C    0x02023C    1           MATCH
+0x02023D    0x02023D    1           DIFF
+0x02023E    0x02023E    1           MATCH
+0x02023F    0x020297    89          DIFF
+0x020298    0x020298    1           MATCH
+0x020299    0x020299    1           DIFF
+0x02029A    0x02029A    1           MATCH
+0x02029B    0x02029B    1           DIFF
+0x02029C    0x02029C    1           MATCH
+0x02029D    0x02029F    3           DIFF
+0x0202A0    0x0202A0    1           MATCH
+0x0202A1    0x0202A1    1           DIFF
+0x0202A2    0x0202A2    1           MATCH
+0x0202A3    0x0202A3    1           DIFF
+0x0202A4    0x0202A4    1           MATCH
+0x0202A5    0x0202CC    40          DIFF
+0x0202CD    0x0202CD    1           MATCH
+0x0202CE    0x0202FF    50          DIFF
+0x020300    0x020300    1           MATCH
+0x020301    0x020301    1           DIFF
+0x020302    0x020302    1           MATCH
+0x020303    0x020303    1           DIFF
+0x020304    0x020304    1           MATCH
+0x020305    0x02035C    88          DIFF
+0x02035D    0x02035D    1           MATCH
+0x02035E    0x020431    212         DIFF
+0x020432    0x020432    1           MATCH
+0x020433    0x02044C    26          DIFF
+0x02044D    0x02044D    1           MATCH
+0x02044E    0x02046F    34          DIFF
+0x020470    0x020470    1           MATCH
+0x020471    0x02047B    11          DIFF
+0x02047C    0x02047C    1           MATCH
+0x02047D    0x0204C4    72          DIFF
+0x0204C5    0x0204C5    1           MATCH
+0x0204C6    0x0204E1    28          DIFF
+0x0204E2    0x0204E2    1           MATCH
+0x0204E3    0x0204E5    3           DIFF
+0x0204E6    0x021FFF    6938        MATCH

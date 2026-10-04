@@ -1,0 +1,66 @@
+{
+  "annotation_labels_checked": 394,
+  "annotation_address_errors": [],
+  "symbolic_asm_bytes": 10836,
+  "literal_code_bytes": 0,
+  "data_region_bytes": 710,
+  "padding_erased_bytes": 127718,
+  "instructions_32bit": 760,
+  "vectors": [
+    {
+      "address": 0,
+      "slot": 0,
+      "instruction": "rjmp\t.+3922   \t;  0xf54"
+    },
+    {
+      "address": 28,
+      "slot": 7,
+      "instruction": "rjmp\t.+452    \t;  0x1e2"
+    },
+    {
+      "address": 56,
+      "slot": 14,
+      "instruction": "rjmp\t.+1124   \t;  0x49e"
+    },
+    {
+      "address": 136,
+      "slot": 34,
+      "instruction": "rjmp\t.+2610   \t;  0xabc"
+    },
+    {
+      "address": 172,
+      "slot": 43,
+      "instruction": "rjmp\t.+2792   \t;  0xb96"
+    },
+    {
+      "address": 176,
+      "slot": 44,
+      "instruction": "rjmp\t.+2936   \t;  0xc2a"
+    },
+    {
+      "address": 256,
+      "slot": 64,
+      "instruction": "rjmp\t.+2378   \t;  0xa4c"
+    },
+    {
+      "address": 416,
+      "slot": 104,
+      "instruction": "rjmp\t.+3198   \t;  0xe20"
+    },
+    {
+      "address": 420,
+      "slot": 105,
+      "instruction": "rjmp\t.+2362   \t;  0xae0"
+    },
+    {
+      "address": 476,
+      "slot": 119,
+      "instruction": "rjmp\t.+3330   \t;  0xee0"
+    },
+    {
+      "address": 480,
+      "slot": 120,
+      "instruction": "rjmp\t.+3238   \t;  0xe88"
+    }
+  ]
+}

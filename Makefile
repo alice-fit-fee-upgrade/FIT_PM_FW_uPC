@@ -208,3 +208,8 @@ set_eeprom_save_fuse: fuses
 ## Clear the EESAVE fuse byte
 clear_eeprom_save_fuse: FUSE_STRING = -U hfuse:w:$(HFUSE):m
 clear_eeprom_save_fuse: fuses
+
+# Isolated bit-exact reconstruction; retains existing C build unchanged.
+.PHONY: exact-check
+exact-check:
+	$(MAKE) -C exact_asm exact-check

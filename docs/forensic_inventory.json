@@ -1,0 +1,740 @@
+[
+  {
+    "path": ".gitignore",
+    "size": 21,
+    "sha256": "e3881c0fafea776df46f74a8f8ee35a13fdd16c4c7af9f6a4a18722b22fe837c",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "Makefile",
+    "size": 7710,
+    "sha256": "4922e2b1378cb59a9dd05b25817234d1fdfef6055fd25c51cd027bf616bb3dcf",
+    "format": "makefile script, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "README.md",
+    "size": 9248,
+    "sha256": "ef9aea8cc49e865ba080f437e35fb15b2709b0701a940d845716908ae8e12327",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "asm_analysis/ATxmega128A3Udef.inc",
+    "size": 256931,
+    "sha256": "883bb3d3fe0be0683967499e6c1c197271c9d775191e2120c7420ebb9c8846d1",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "asm_analysis/Makefile",
+    "size": 649,
+    "sha256": "7fd69b2705c1ad6f2029592cbb4380f1e4fe7024aa24526d1e6915a543a37a62",
+    "format": "makefile script, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "asm_analysis/main.S",
+    "size": 282395,
+    "sha256": "aa99daadd2705460e4134f5e71bf3eaf600ca81160b0698254589307c7682232",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "avr_compiler.h",
+    "size": 5310,
+    "sha256": "04ed9b1a5ca4c4b0be1976a7c6f9125bf317df228e093509089c75d99267b3dc",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "console.c",
+    "size": 2400,
+    "sha256": "d938ac4436aa55b423d940412130f8430b14b29e58db727b1db44c14e29f9e04",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "console.h",
+    "size": 208,
+    "sha256": "35362eea96fae0cc0354b472c6f15d4583f43f8d4bd38a84c9e571a8cc78f68d",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "doc/PM12 module.png",
+    "size": 714121,
+    "sha256": "525fdf94fd8f2b6552b8cee75750124b4b23ed35094570f25e6a788ac7f7b2d9",
+    "format": "PNG image data, 1728 x 970, 8-bit/color RGBA, non-interlaced",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/TC_driver.c",
+    "size": 15205,
+    "sha256": "8bc0737f62340efd566bfede12e806c593542a6429b814ecf13ebce03c194565",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/TC_driver.h",
+    "size": 16600,
+    "sha256": "69b152f34e489e762bcffdfeb15de2dc727f46140cdc7995ae71993e791d083f",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/adt7311_driver.c",
+    "size": 3340,
+    "sha256": "7296fae508ce5a8e13b3f31271e5fd771f3645f0655e2cd469ae25297c9a5b3d",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/adt7311_driver.h",
+    "size": 3050,
+    "sha256": "efc7459e340791f0a6fe4e974c5582ad460431d040bfe4809c6dcfdc498ecf22",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/clksys_driver.c",
+    "size": 11005,
+    "sha256": "35a07557fdbc34e9bb59423d4b2e99d2afaebce5ad51ab45203b6744b3fc6d12",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/clksys_driver.h",
+    "size": 5389,
+    "sha256": "5610ce53dab6d0fff71e2ea96952aa39b37b66d2355f0ff98bf5d9a68d42290d",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/eeprom_driver.c",
+    "size": 10939,
+    "sha256": "2c3fef451107c524beb9bdaabb5fd14942b497ca30c9d262784893ebde250a8f",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/eeprom_driver.h",
+    "size": 5601,
+    "sha256": "e711c3fb79bedd02eddccd49a892f8806eb4ae7223b68b39e2a76c2bdeb06246",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/pmic_driver.c",
+    "size": 3854,
+    "sha256": "81c37fab8a1de289685bf9afeeb6b397ab18c7c82234daab5bebdc808e5b171c",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/pmic_driver.h",
+    "size": 5612,
+    "sha256": "c67ca977cab7ec4c0d649b2b6d720db66115a606d6e0681c12100c6fda53fe33",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/port_driver.c",
+    "size": 7146,
+    "sha256": "71b858832047ea5583441b614411fc5cd405aebe0fcf4d43cdbddf8e4ba19159",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/port_driver.h",
+    "size": 10946,
+    "sha256": "1116afaf430c66362e61e4c85e1847a60b6b5450d0ae76e70c458068905806c3",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/spi_driver.c",
+    "size": 14100,
+    "sha256": "9f3e71d6993fb2fe7050789015325e2f150357b9e8e0dbaf16f1e1770ab46f10",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/spi_driver.h",
+    "size": 8026,
+    "sha256": "8fd37f8562d7209e06243c69168f011d9047feeaffc7ed4f624bc7ad56a840e9",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/twi_master_driver.c",
+    "size": 12817,
+    "sha256": "21af9858a7fef6a9964f753245bb4022bd4ca13995bfba2a9a45c83261421d6c",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/twi_master_driver.h",
+    "size": 5973,
+    "sha256": "47625815e2c8d8d5c3046671ba1dabdbc0beb691e1a6052c6ad4b2fb5ad2dba1",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/usart_driver.c",
+    "size": 12843,
+    "sha256": "61a5814135f6507a50ad76cc077e46775ea39403b9e3db00dc9a7e2839ec7542",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "drivers/usart_driver.h",
+    "size": 11431,
+    "sha256": "7923c10d79e62b7c6f4e303911b90c009287efad5f16c5f7e6eb2e0d6d268559",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "dump/application.hex",
+    "size": 26680,
+    "sha256": "23f805bb58b36f8b74254209d7f7a0c77aea6fe32fde8a8a0e36d8cc83f6c27d",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "FLASH",
+    "records": {
+      "0": 351,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      11227
+    ],
+    "explicit_bytes": 11228,
+    "memory_payload_sha256": "2d2a15eb52ca5a5bbc61d196913cb943e904e9665141bfb564d28ffeef8b2997"
+  },
+  {
+    "path": "dump/apptable.hex",
+    "size": 12,
+    "sha256": "9e2df0a1190a1205c098889c455e5b76c4df18b5ccac2b7605da1575f05b64c5",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "FLASH",
+    "records": {
+      "1": 1
+    },
+    "address_range": null,
+    "explicit_bytes": 0,
+    "memory_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "dump/boot.hex",
+    "size": 3000,
+    "sha256": "c1b6f29b04d903748a7872fe2525c5ba1aceff4e06bae2097dce1c4593ded969",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "FLASH",
+    "records": {
+      "0": 40,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      1253
+    ],
+    "explicit_bytes": 1254,
+    "memory_payload_sha256": "9c3642d0e2a826a69521049492313193eb346a10f9e2a6642e9bbc4e63220b45"
+  },
+  {
+    "path": "dump/data.hex",
+    "size": 12,
+    "sha256": "9e2df0a1190a1205c098889c455e5b76c4df18b5ccac2b7605da1575f05b64c5",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "data-space dump; interpretation unverified",
+    "records": {
+      "1": 1
+    },
+    "address_range": null,
+    "explicit_bytes": 0,
+    "memory_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "dump/eeprom.hex",
+    "size": 4876,
+    "sha256": "196a669f62825c6737fb6644b6dcbbd432e72bbb4ddebfb1dd0651f286d2f355",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "EEPROM",
+    "records": {
+      "0": 64,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      2047
+    ],
+    "explicit_bytes": 2048,
+    "memory_payload_sha256": "952d350415c8cc2469b85715fc58338628587aca436785cc7273fdfefdeffc30"
+  },
+  {
+    "path": "dump/flash.hex",
+    "size": 314328,
+    "sha256": "44fe28b45a0bfaaf64d534b41b10c1e24cf61e971eb0d7ab5d6a95a4b5dae842",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "FLASH",
+    "records": {
+      "0": 4136,
+      "4": 2,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      132325
+    ],
+    "explicit_bytes": 132326,
+    "memory_payload_sha256": "ad5cc7a6a879ab7021c5a0c88e61a061f14a1f08f45dc003dc2fb67f137e083c"
+  },
+  {
+    "path": "dump/fuse0.hex",
+    "size": 26,
+    "sha256": "24f66141b6c78ee3e1d77e2b654d69791249dba323f2b646b48902b28ff55014",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "fuses",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      0
+    ],
+    "explicit_bytes": 1,
+    "memory_payload_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+  },
+  {
+    "path": "dump/fuse1.hex",
+    "size": 26,
+    "sha256": "c3f2ee75459ee15fe6bf5a6f5ad95766f1477ffe75fb9d867f540e1f36d39b3f",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "fuses",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      0
+    ],
+    "explicit_bytes": 1,
+    "memory_payload_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  {
+    "path": "dump/fuse2.hex",
+    "size": 26,
+    "sha256": "b9bd9767cbb1ebcc2bd9e143dd30c651d71257df3af29cc9e93381844f1649a4",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "fuses",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      0
+    ],
+    "explicit_bytes": 1,
+    "memory_payload_sha256": "aa687b58b0e73e2e383f8c500d75b591e188efe0168b3ffbcd3771caaa6dd4c7"
+  },
+  {
+    "path": "dump/fuse4.hex",
+    "size": 26,
+    "sha256": "be578724b135365b3cc24456b9abdd90f145101c5d47a93b8593c1e3c2f78ba2",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "fuses",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      0
+    ],
+    "explicit_bytes": 1,
+    "memory_payload_sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+  },
+  {
+    "path": "dump/fuse5.hex",
+    "size": 26,
+    "sha256": "ac7b5ae64e317049b67c1eee204935781008a055622d84477a6353eb03513d4b",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "fuses",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      0
+    ],
+    "explicit_bytes": 1,
+    "memory_payload_sha256": "e6f207509afa3908da116ce61a7576954248d9fe64a3c652b493cca57ce36e2e"
+  },
+  {
+    "path": "dump/lock.hex",
+    "size": 26,
+    "sha256": "24f66141b6c78ee3e1d77e2b654d69791249dba323f2b646b48902b28ff55014",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "lock bits",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      0
+    ],
+    "explicit_bytes": 1,
+    "memory_payload_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+  },
+  {
+    "path": "dump/signature.hex",
+    "size": 30,
+    "sha256": "dfc1f8e8d0e78c7c6b19a4205089ec15fbf03ab615321d34b6f09054a952f32a",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "device signature",
+    "records": {
+      "0": 1,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      2
+    ],
+    "explicit_bytes": 3,
+    "memory_payload_sha256": "d1d9412892f64083c1b42f60a563276a077ec4a11b1acef77948beb3b01e69ea"
+  },
+  {
+    "path": "dump/usersig.hex",
+    "size": 1228,
+    "sha256": "14af3a00d567ff72dd78733dcf409f4126d1a8e7ae26fe482729ebff2a9a0726",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested",
+    "memory": "user signature",
+    "records": {
+      "0": 16,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      511
+    ],
+    "explicit_bytes": 512,
+    "memory_payload_sha256": "9f56cda75fefeab90f6fa5d5ddc9601544b121732c5ecccab32e631060453a5d"
+  },
+  {
+    "path": "fpga.c",
+    "size": 2773,
+    "sha256": "c2f3d1398b7a37d22bcbe584ba224e38e08183404f11965102047f2609139e79",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "fpga.h",
+    "size": 1901,
+    "sha256": "6e5649b35aae9fcd8ce9a0f506783283c5e09e0132790ff5fee693a86ea28747",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/Ghidra/Processors/Atmel/data/languages/avr8.ldefs",
+    "size": 2900,
+    "sha256": "6b391c92b4673d27358144a7dc710948fa84fe4a79ba19b844559fa9b42c7c0c",
+    "format": "XML 1.0 document, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/Ghidra/Processors/Atmel/data/languages/avr8xmega.pspec",
+    "size": 73107,
+    "sha256": "5389cefad7e82e32d295bdc3d2cbcce5bf759c0091af29b264346040e91b66f9",
+    "format": "XML 1.0 document, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/Ghidra/Processors/Atmel/data/languages/avr8xmega128a3.pspec",
+    "size": 57205,
+    "sha256": "9ecdcfe5cc040c04f3a29c5fbc9b41dc0a1118bf5fdfdf60947986dd40f1443e",
+    "format": "XML 1.0 document, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.gpr",
+    "size": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "format": "empty",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/idata/00/00000001.prp",
+    "size": 481,
+    "sha256": "d54a9c24029d6acd3feeaa2156ded79c874f676fb5c9d2ec439c7bf24c5ea3e4",
+    "format": "XML 1.0 document, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/idata/00/~00000001.db/db.25.gbf",
+    "size": 1998848,
+    "sha256": "4dd27a196b502a8039055b111f6f4151201a8e69e7be15d66ef99a93525fbd45",
+    "format": "data",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/idata/~index.bak",
+    "size": 101,
+    "sha256": "31376bd0a1b047d6e56548ef6c3caddb1846c33b184ecd98920d2bec9578761a",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/idata/~index.dat",
+    "size": 101,
+    "sha256": "31376bd0a1b047d6e56548ef6c3caddb1846c33b184ecd98920d2bec9578761a",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/project.prp",
+    "size": 158,
+    "sha256": "740bbe288178df70a043fa30394e15c2a36cd380d2c500538bb4bb251645d993",
+    "format": "XML 1.0 document, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/projectState",
+    "size": 498,
+    "sha256": "faddab86feb665a1c0a5e597d8bd096317cc7efdd490f87150e1a7fa44624b57",
+    "format": "XML 1.0 document, ASCII text, with CRLF line terminators",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/user/00/00000001.prp",
+    "size": 510,
+    "sha256": "01dff771048291979d29356a053e0a79f149bb0bc44f80a207c2e5b8b0d51920",
+    "format": "XML 1.0 document, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/user/00/~00000001.db/db.22.gbf",
+    "size": 81920,
+    "sha256": "76950c42767d14a1cacc731b72010230b7cb66f605cdb2243ccbc47d4fc2b54d",
+    "format": "data",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/user/~index.bak",
+    "size": 122,
+    "sha256": "35c817c8aaa7c8dde7ac43aec122ff8e91e3bae47f002ce29a5432e214528733",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/user/~index.dat",
+    "size": 122,
+    "sha256": "6dbc9d241d4fac2bea4a0afe09a20f3946767d011f65409279a595bdc5be12f8",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/user/~journal.bak",
+    "size": 136,
+    "sha256": "195462bdf289952dc1e97442dc3439d842372b3ee515df5793e2f42eb67590bc",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/versioned/~index.bak",
+    "size": 59,
+    "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ghidra/PM_n.rep/versioned/~index.dat",
+    "size": 59,
+    "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5",
+    "format": "ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "io.c",
+    "size": 4357,
+    "sha256": "ab97cbe06ca15ad8aefb623dfa5d0da5297554b72f2af81ee359e37047d162ac",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "io.h",
+    "size": 1252,
+    "sha256": "fc3a5efedf82f36f33bc8ca9030cfc16257cc4c257574c5750f51939a25ea030",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "main.c",
+    "size": 2327,
+    "sha256": "0934f0dcc0816e9d57b2a429814c0db96b720ab72003ed6b8fa174d10b27e2d0",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "sch/FIT-PM12-1.PDF",
+    "size": 5645207,
+    "sha256": "0c90f12eee27cde1945e2a74fd3ac1a9cd9d443054f5c0d99e08953558f5cdf0",
+    "format": "PDF document, version 1.4, 110 page(s)",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "system.c",
+    "size": 2896,
+    "sha256": "dcbee7a52879bd384e4c65d0f580de52d0ec8ea55676897132e543979d3fb7d5",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "system.h",
+    "size": 1089,
+    "sha256": "849c6d14ec35bc2bd488ce3349ac00b302146297366b1b05193f9f0481eb0b47",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ths788.c",
+    "size": 473,
+    "sha256": "83248248347e6dbd4bb6c359c95f65d1b88aa5f3064d31be795462a71d371f41",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "ths788.h",
+    "size": 1287,
+    "sha256": "aedd054f4b1038b1462a1bc41ebfa47f1922a87e2634a1dbd423d33ad0e3696a",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "timer.c",
+    "size": 10768,
+    "sha256": "25cb79bc61fe3ebe1be15dc30dabb99d0850c63d0bce71e4638c1539dabadb24",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "timer.h",
+    "size": 281,
+    "sha256": "07de9cc9115227ae69a6915da433ddf22ed42b27a9f9ab0d38aa958b6bec5865",
+    "format": "C source, ASCII text",
+    "origin": "upstream git 152201f04d8aa6e04c36f70ec09e44567ef3bc0c; acquisition not independently attested"
+  },
+  {
+    "path": "reference/originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg",
+    "size": 106966,
+    "sha256": "f2b2db47f46416afd4b75d13c6778445d82f305eab0fa668bf8a7d197deed505",
+    "format": "JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 1280x1107, components 3",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)"
+  },
+  {
+    "path": "reference/originals/1-PM.hex",
+    "size": 391727,
+    "sha256": "334804bf1a52e564c106ef7ab5b3ea356846a1efe75ecac3829321e5a722159e",
+    "format": "ASCII text, with CRLF line terminators",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)",
+    "memory": "FLASH",
+    "records": {
+      "0": 8704,
+      "2": 2,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      139263
+    ],
+    "explicit_bytes": 139264,
+    "memory_payload_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0"
+  },
+  {
+    "path": "reference/originals/2-FIT_PM12-1-.PDF",
+    "size": 6851374,
+    "sha256": "8a33ca4d4325eea999347ee7f4c26173cb28356f5cb61e6d38a9852a0513de78",
+    "format": "PDF document, version 1.4, 46 page(s)",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)"
+  },
+  {
+    "path": "reference/originals/2-PM_Atxmega128.elf",
+    "size": 992,
+    "sha256": "c62bfd28b80441fd6ce854aa10a9491790bcb5a78b2542f36f52642ae5c62a4b",
+    "format": "ELF 32-bit LSB executable, Atmel AVR 8-bit, version 1 (GNU/Linux), statically linked, stripped",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)"
+  },
+  {
+    "path": "reference/originals/3-PM_sign.hex",
+    "size": 1453,
+    "sha256": "768d3bc5b3fdbb978b96180b7a9509dc49741cc742509ece97eb11e0f4a7dc5a",
+    "format": "ASCII text, with CRLF line terminators",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)",
+    "memory": "user signature",
+    "records": {
+      "0": 32,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      511
+    ],
+    "explicit_bytes": 512,
+    "memory_payload_sha256": "9f56cda75fefeab90f6fa5d5ddc9601544b121732c5ecccab32e631060453a5d"
+  },
+  {
+    "path": "reference/originals/4-PM.eep",
+    "size": 5773,
+    "sha256": "2bf9f5cf4b9784bbe5d8822758331599b316e819fedebfe2e7d250d7ef5fbde6",
+    "format": "ASCII text, with CRLF line terminators",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)",
+    "memory": "EEPROM",
+    "records": {
+      "0": 128,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      2047
+    ],
+    "explicit_bytes": 2048,
+    "memory_payload_sha256": "952d350415c8cc2469b85715fc58338628587aca436785cc7273fdfefdeffc30"
+  },
+  {
+    "path": "reference/originals/5-PM_sign.hex",
+    "size": 1453,
+    "sha256": "768d3bc5b3fdbb978b96180b7a9509dc49741cc742509ece97eb11e0f4a7dc5a",
+    "format": "ASCII text, with CRLF line terminators",
+    "origin": "user attachment; stated physical-device readout (PDF/screenshot documentary evidence)",
+    "memory": "user signature",
+    "records": {
+      "0": 32,
+      "1": 1
+    },
+    "address_range": [
+      0,
+      511
+    ],
+    "explicit_bytes": 512,
+    "memory_payload_sha256": "9f56cda75fefeab90f6fa5d5ddc9601544b121732c5ecccab32e631060453a5d"
+  }
+]
