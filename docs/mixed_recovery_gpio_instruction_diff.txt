@@ -1,0 +1,1459 @@
+ADDRESS GOLDEN_BYTES REBUILT_BYTES GOLDEN_INSTRUCTION | REBUILT_INSTRUCTION | CLASS
+0x000a9c 00935b21 0c94ea19 sts	0x215B, r16	;  0x80215b | jmp	0x33d4	;  0x33d4 | B wrong instruction (or O boundary ambiguity)
+0x000aa0 00e8 ffff ldi	r16, 0x80	; 128 | .word	0xffff	; ???? | A missing/erased region
+0x000aa2 00932606 ffff sts	0x0626, r16	;  0x800626 | .word	0xffff	; ???? | A missing/erased region
+0x000aa6 00915921 ffff lds	r16, 0x2159	;  0x802159 | .word	0xffff	; ???? | A missing/erased region
+0x000aaa 0023 ffff and	r16, r16 | .word	0xffff	; ???? | A missing/erased region
+0x000aac 19f0 ffff breq	.+6      	;  0xab4 | .word	0xffff	; ???? | A missing/erased region
+0x000aae 0530 ffff cpi	r16, 0x05	; 5 | .word	0xffff	; ???? | A missing/erased region
+0x000ab0 09f0 ffff breq	.+2      	;  0xab4 | .word	0xffff	; ???? | A missing/erased region
+0x000ab2 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x000ab4 04e0 ffff ldi	r16, 0x04	; 4 | .word	0xffff	; ???? | A missing/erased region
+0x000ab6 00935921 ffff sts	0x2159, r16	;  0x802159 | .word	0xffff	; ???? | A missing/erased region
+0x000aba 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x000c7e 0199 0c94101a sbic	0x00, 1	; 0 | jmp	0x3420	;  0x3420 | B wrong instruction (or O boundary ambiguity)
+0x000c80 05c0 101a rjmp	.+10     	;  0xc8c | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x000c82 0098 ffff cbi	0x00, 0	; 0 | .word	0xffff	; ???? | A missing/erased region
+0x000c84 01e0 ffff ldi	r16, 0x01	; 1 | .word	0xffff	; ???? | A missing/erased region
+0x000c86 00930506 ffff sts	0x0605, r16	;  0x800605 | .word	0xffff	; ???? | A missing/erased region
+0x000c8a 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x000c8c 01e0 ffff ldi	r16, 0x01	; 1 | .word	0xffff	; ???? | A missing/erased region
+0x000c8e 00930606 ffff sts	0x0606, r16	;  0x800606 | .word	0xffff	; ???? | A missing/erased region
+0x000c92 0098 ffff cbi	0x00, 0	; 0 | .word	0xffff	; ???? | A missing/erased region
+0x000c94 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x001664 02e0 0c944819 ldi	r16, 0x02	; 2 | jmp	0x3290	;  0x3290 | B wrong instruction (or O boundary ambiguity)
+0x001666 00936606 4819ffff sts	0x0666, r16	;  0x800666 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x00166a 00e1 ffff ldi	r16, 0x10	; 16 | .word	0xffff	; ???? | A missing/erased region
+0x00166c 00938506 ffff sts	0x0685, r16	;  0x800685 | .word	0xffff	; ???? | A missing/erased region
+0x001670 00eb ffff ldi	r16, 0xB0	; 176 | .word	0xffff	; ???? | A missing/erased region
+0x001672 00938106 ffff sts	0x0681, r16	;  0x800681 | .word	0xffff	; ???? | A missing/erased region
+0x001676 00e5 ffff ldi	r16, 0x50	; 80 | .word	0xffff	; ???? | A missing/erased region
+0x001678 0093c00a ffff sts	0x0AC0, r16	;  0x800ac0 | .word	0xffff	; ???? | A missing/erased region
+0x00167c 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x00171e 00e1 0c946d19 ldi	r16, 0x10	; 16 | jmp	0x32da	;  0x32da | B wrong instruction (or O boundary ambiguity)
+0x001720 00938606 6d19ffff sts	0x0686, r16	;  0x800686 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x001724 06e0 ffff ldi	r16, 0x06	; 6 | .word	0xffff	; ???? | A missing/erased region
+0x001726 0093c30a ffff sts	0x0AC3, r16	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x00172a 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x00172e 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x001730 fccf ffff rjmp	.-8      	;  0x172a | .word	0xffff	; ???? | A missing/erased region
+0x001732 00e1 ffff ldi	r16, 0x10	; 16 | .word	0xffff	; ???? | A missing/erased region
+0x001734 00938506 ffff sts	0x0685, r16	;  0x800685 | .word	0xffff	; ???? | A missing/erased region
+0x001738 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x001742 00e1 0c94b819 ldi	r16, 0x10	; 16 | jmp	0x3370	;  0x3370 | B wrong instruction (or O boundary ambiguity)
+0x001744 00938606 b819ffff sts	0x0686, r16	;  0x800686 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x001748 05e0 ffff ldi	r16, 0x05	; 5 | .word	0xffff	; ???? | A missing/erased region
+0x00174a 0093c30a ffff sts	0x0AC3, r16	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x00174e 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x001752 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x001754 fccf ffff rjmp	.-8      	;  0x174e | .word	0xffff	; ???? | A missing/erased region
+0x001756 8093c30a ffff sts	0x0AC3, r24	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x00175a 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x00175e 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x001760 fccf ffff rjmp	.-8      	;  0x175a | .word	0xffff	; ???? | A missing/erased region
+0x001762 8091c30a ffff lds	r24, 0x0AC3	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x001766 00e1 ffff ldi	r16, 0x10	; 16 | .word	0xffff	; ???? | A missing/erased region
+0x001768 00938506 ffff sts	0x0685, r16	;  0x800685 | .word	0xffff	; ???? | A missing/erased region
+0x00176c 80fd ffff sbrc	r24, 0 | .word	0xffff	; ???? | A missing/erased region
+0x00176e e5cf ffff rjmp	.-54     	;  0x173a | .word	0xffff	; ???? | A missing/erased region
+0x001770 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x0017e4 48e0 0c941819 ldi	r20, 0x08	; 8 | jmp	0x3230	;  0x3230 | B wrong instruction (or O boundary ambiguity)
+0x0017e6 220f 1819 add	r18, r18 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x0017e8 331f ffff adc	r19, r19 | .word	0xffff	; ???? | A missing/erased region
+0x0017ea 001f ffff adc	r16, r16 | .word	0xffff	; ???? | A missing/erased region
+0x0017ec 111f ffff adc	r17, r17 | .word	0xffff	; ???? | A missing/erased region
+0x0017ee 18f4 ffff brcc	.+6      	;  0x17f6 | .word	0xffff	; ???? | A missing/erased region
+0x0017f0 6695 ffff lsr	r22 | .word	0xffff	; ???? | A missing/erased region
+0x0017f2 38f0 ffff brcs	.+14     	;  0x1802 | .word	0xffff	; ???? | A missing/erased region
+0x0017f4 02c0 ffff rjmp	.+4      	;  0x17fa | .word	0xffff	; ???? | A missing/erased region
+0x0017f6 6695 ffff lsr	r22 | .word	0xffff	; ???? | A missing/erased region
+0x0017f8 20f4 ffff brcc	.+8      	;  0x1802 | .word	0xffff	; ???? | A missing/erased region
+0x0017fa 2727 ffff eor	r18, r23 | .word	0xffff	; ???? | A missing/erased region
+0x0017fc 3827 ffff eor	r19, r24 | .word	0xffff	; ???? | A missing/erased region
+0x0017fe 0927 ffff eor	r16, r25 | .word	0xffff	; ???? | A missing/erased region
+0x001800 1a27 ffff eor	r17, r26 | .word	0xffff	; ???? | A missing/erased region
+0x001802 4a95 ffff dec	r20 | .word	0xffff	; ???? | A missing/erased region
+0x001804 81f7 ffff brne	.-32     	;  0x17e6 | .word	0xffff	; ???? | A missing/erased region
+0x001806 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x001808 10e1 0c949119 ldi	r17, 0x10	; 16 | jmp	0x3322	;  0x3322 | B wrong instruction (or O boundary ambiguity)
+0x00180a 10938606 9119ffff sts	0x0686, r17	;  0x800686 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x00180e 0093c30a ffff sts	0x0AC3, r16	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x001812 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x001816 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x001818 fccf ffff rjmp	.-8      	;  0x1812 | .word	0xffff	; ???? | A missing/erased region
+0x00181a 6093c30a ffff sts	0x0AC3, r22	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x00181e 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x001822 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x001824 fccf ffff rjmp	.-8      	;  0x181e | .word	0xffff	; ???? | A missing/erased region
+0x001826 5093c30a ffff sts	0x0AC3, r21	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x00182a 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x00182e 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x001830 fccf ffff rjmp	.-8      	;  0x182a | .word	0xffff	; ???? | A missing/erased region
+0x001832 4093c30a ffff sts	0x0AC3, r20	;  0x800ac3 | .word	0xffff	; ???? | A missing/erased region
+0x001836 3091c20a ffff lds	r19, 0x0AC2	;  0x800ac2 | .word	0xffff	; ???? | A missing/erased region
+0x00183a 37ff ffff sbrs	r19, 7 | .word	0xffff	; ???? | A missing/erased region
+0x00183c fccf ffff rjmp	.-8      	;  0x1836 | .word	0xffff	; ???? | A missing/erased region
+0x00183e 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x0020a6 2f93 0c946f18 push	r18 | jmp	0x30de	;  0x30de | B wrong instruction (or O boundary ambiguity)
+0x0020a8 2ce0 6f18 ldi	r18, 0x0C	; 12 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x0020aa 32e0 ffff ldi	r19, 0x02	; 2 | .word	0xffff	; ???? | A missing/erased region
+0x0020ac 4fd0 ffff rcall	.+158    	;  0x214c | .word	0xffff	; ???? | A missing/erased region
+0x0020ae e3e6 ffff ldi	r30, 0x63	; 99 | .word	0xffff	; ???? | A missing/erased region
+0x0020b0 f1e2 ffff ldi	r31, 0x21	; 33 | .word	0xffff	; ???? | A missing/erased region
+0x0020b2 4427 ffff eor	r20, r20 | .word	0xffff	; ???? | A missing/erased region
+0x0020b4 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020b6 e60f ffff add	r30, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020b8 f41f ffff adc	r31, r20 | .word	0xffff	; ???? | A missing/erased region
+0x0020ba 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020bc 6360 ffff ori	r22, 0x03	; 3 | .word	0xffff	; ???? | A missing/erased region
+0x0020be 4191 ffff ld	r20, Z+ | .word	0xffff	; ???? | A missing/erased region
+0x0020c0 5081 ffff ld	r21, Z | .word	0xffff	; ???? | A missing/erased region
+0x0020c2 040f ffff add	r16, r20 | .word	0xffff	; ???? | A missing/erased region
+0x0020c4 151f ffff adc	r17, r21 | .word	0xffff	; ???? | A missing/erased region
+0x0020c6 0095 ffff com	r16 | .word	0xffff	; ???? | A missing/erased region
+0x0020c8 1095 ffff com	r17 | .word	0xffff	; ???? | A missing/erased region
+0x0020ca efd0 ffff rcall	.+478    	;  0x22aa | .word	0xffff	; ???? | A missing/erased region
+0x0020cc 2f91 ffff pop	r18 | .word	0xffff	; ???? | A missing/erased region
+0x0020ce 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x0020d0 2f93 0c945018 push	r18 | jmp	0x30a0	;  0x30a0 | B wrong instruction (or O boundary ambiguity)
+0x0020d2 20e2 5018 ldi	r18, 0x20	; 32 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x0020d4 3ee4 ffff ldi	r19, 0x4E	; 78 | .word	0xffff	; ???? | A missing/erased region
+0x0020d6 241b ffff sub	r18, r20 | .word	0xffff	; ???? | A missing/erased region
+0x0020d8 350b ffff sbc	r19, r21 | .word	0xffff	; ???? | A missing/erased region
+0x0020da a901 ffff movw	r20, r18 | .word	0xffff	; ???? | A missing/erased region
+0x0020dc 22e7 ffff ldi	r18, 0x72	; 114 | .word	0xffff	; ???? | A missing/erased region
+0x0020de 32e0 ffff ldi	r19, 0x02	; 2 | .word	0xffff	; ???? | A missing/erased region
+0x0020e0 35d0 ffff rcall	.+106    	;  0x214c | .word	0xffff	; ???? | A missing/erased region
+0x0020e2 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020e4 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020e6 e1d0 ffff rcall	.+450    	;  0x22aa | .word	0xffff	; ???? | A missing/erased region
+0x0020e8 2f91 ffff pop	r18 | .word	0xffff	; ???? | A missing/erased region
+0x0020ea 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x0020ec 2f93 0c949718 push	r18 | jmp	0x312e	;  0x312e | B wrong instruction (or O boundary ambiguity)
+0x0020ee 28e8 9718 ldi	r18, 0x88	; 136 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x0020f0 31e4 ffff ldi	r19, 0x41	; 65 | .word	0xffff	; ???? | A missing/erased region
+0x0020f2 1ed0 ffff rcall	.+60     	;  0x2130 | .word	0xffff	; ???? | A missing/erased region
+0x0020f4 20e8 ffff ldi	r18, 0x80	; 128 | .word	0xffff	; ???? | A missing/erased region
+0x0020f6 1227 ffff eor	r17, r18 | .word	0xffff	; ???? | A missing/erased region
+0x0020f8 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020fa 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x0020fc 6260 ffff ori	r22, 0x02	; 2 | .word	0xffff	; ???? | A missing/erased region
+0x0020fe d5d0 ffff rcall	.+426    	;  0x22aa | .word	0xffff	; ???? | A missing/erased region
+0x002100 2f91 ffff pop	r18 | .word	0xffff	; ???? | A missing/erased region
+0x002102 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x002104 2f93 0c94b718 push	r18 | jmp	0x316e	;  0x316e | B wrong instruction (or O boundary ambiguity)
+0x002106 28e8 b718 ldi	r18, 0x88	; 136 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x002108 31e4 ffff ldi	r19, 0x41	; 65 | .word	0xffff	; ???? | A missing/erased region
+0x00210a 12d0 ffff rcall	.+36     	;  0x2130 | .word	0xffff	; ???? | A missing/erased region
+0x00210c 20e8 ffff ldi	r18, 0x80	; 128 | .word	0xffff	; ???? | A missing/erased region
+0x00210e 1227 ffff eor	r17, r18 | .word	0xffff	; ???? | A missing/erased region
+0x002110 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x002112 660f ffff add	r22, r22 | .word	0xffff	; ???? | A missing/erased region
+0x002114 6160 ffff ori	r22, 0x01	; 1 | .word	0xffff	; ???? | A missing/erased region
+0x002116 c9d0 ffff rcall	.+402    	;  0x22aa | .word	0xffff	; ???? | A missing/erased region
+0x002118 2f91 ffff pop	r18 | .word	0xffff	; ???? | A missing/erased region
+0x00211a 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x00211c 8894 0c94d718 clc | jmp	0x31ae	;  0x31ae | B wrong instruction (or O boundary ambiguity)
+0x00211e 00915721 d718ffff lds	r16, 0x2157	;  0x802157 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x002122 04fd ffff sbrc	r16, 4 | .word	0xffff	; ???? | A missing/erased region
+0x002124 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x002126 e4eb ffff ldi	r30, 0xB4	; 180 | .word	0xffff	; ???? | A missing/erased region
+0x002128 fae2 ffff ldi	r31, 0x2A	; 42 | .word	0xffff	; ???? | A missing/erased region
+0x00212a 7dd3 ffff rcall	.+1786   	;  0x2826 | .word	0xffff	; ???? | A missing/erased region
+0x00212c 0894 ffff sec | .word	0xffff	; ???? | A missing/erased region
+0x00212e 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x002130 1127 0c940018 eor	r17, r17 | jmp	0x3000	;  0x3000 | B wrong instruction (or O boundary ambiguity)
+0x002132 249f 0018 mul	r18, r20 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x002134 07fc ffff sbrc	r0, 7 | .word	0xffff	; ???? | A missing/erased region
+0x002136 1394 ffff inc	r1 | .word	0xffff	; ???? | A missing/erased region
+0x002138 012d ffff mov	r16, r1 | .word	0xffff	; ???? | A missing/erased region
+0x00213a 349f ffff mul	r19, r20 | .word	0xffff	; ???? | A missing/erased region
+0x00213c 000d ffff add	r16, r0 | .word	0xffff	; ???? | A missing/erased region
+0x00213e 111d ffff adc	r17, r1 | .word	0xffff	; ???? | A missing/erased region
+0x002140 5203 ffff mulsu	r21, r18 | .word	0xffff	; ???? | A missing/erased region
+0x002142 000d ffff add	r16, r0 | .word	0xffff	; ???? | A missing/erased region
+0x002144 111d ffff adc	r17, r1 | .word	0xffff	; ???? | A missing/erased region
+0x002146 5303 ffff mulsu	r21, r19 | .word	0xffff	; ???? | A missing/erased region
+0x002148 100d ffff add	r17, r0 | .word	0xffff	; ???? | A missing/erased region
+0x00214a 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x00214c 1127 0c942618 eor	r17, r17 | jmp	0x304c	;  0x304c | B wrong instruction (or O boundary ambiguity)
+0x00214e 249f 2618 mul	r18, r20 | inside differently aligned instruction | B wrong instruction (or O boundary ambiguity)
+0x002150 07fc ffff sbrc	r0, 7 | .word	0xffff	; ???? | A missing/erased region
+0x002152 1394 ffff inc	r1 | .word	0xffff	; ???? | A missing/erased region
+0x002154 012d ffff mov	r16, r1 | .word	0xffff	; ???? | A missing/erased region
+0x002156 349f ffff mul	r19, r20 | .word	0xffff	; ???? | A missing/erased region
+0x002158 000d ffff add	r16, r0 | .word	0xffff	; ???? | A missing/erased region
+0x00215a 111d ffff adc	r17, r1 | .word	0xffff	; ???? | A missing/erased region
+0x00215c 259f ffff mul	r18, r21 | .word	0xffff	; ???? | A missing/erased region
+0x00215e 000d ffff add	r16, r0 | .word	0xffff	; ???? | A missing/erased region
+0x002160 111d ffff adc	r17, r1 | .word	0xffff	; ???? | A missing/erased region
+0x002162 359f ffff mul	r19, r21 | .word	0xffff	; ???? | A missing/erased region
+0x002164 1120 ffff and	r1, r1 | .word	0xffff	; ???? | A missing/erased region
+0x002166 19f4 ffff brne	.+6      	;  0x216e | .word	0xffff	; ???? | A missing/erased region
+0x002168 100d ffff add	r17, r0 | .word	0xffff	; ???? | A missing/erased region
+0x00216a 08f0 ffff brcs	.+2      	;  0x216e | .word	0xffff	; ???? | A missing/erased region
+0x00216c 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x00216e 0fef ffff ldi	r16, 0xFF	; 255 | .word	0xffff	; ???? | A missing/erased region
+0x002170 1fef ffff ldi	r17, 0xFF	; 255 | .word	0xffff	; ???? | A missing/erased region
+0x002172 0895 ffff ret | .word	0xffff	; ???? | A missing/erased region
+0x003000 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003002 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003004 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003006 ffff 3f93 .word	0xffff	; ???? | push	r19 | F new code placed in erased golden FLASH
+0x003008 ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x00300a ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x00300c ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x00300e ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x003010 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x003012 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x003014 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x003016 ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x003018 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x00301a ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x00301c ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00301e ffff c901 .word	0xffff	; ???? | movw	r24, r18 | F new code placed in erased golden FLASH
+0x003020 ffff ba01 .word	0xffff	; ???? | movw	r22, r20 | F new code placed in erased golden FLASH
+0x003022 ffff 0e940020 .word	0xffff	; ???? | call	0x4000	;  0x4000 | F new code placed in erased golden FLASH
+0x003024 ffff 0020 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x003026 ffff 8c01 .word	0xffff	; ???? | movw	r16, r24 | F new code placed in erased golden FLASH
+0x003028 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x00302a ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x00302c ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x00302e ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x003030 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x003032 ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x003034 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003036 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003038 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x00303a ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x00303c ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x00303e ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003040 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x003042 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x003044 ffff 5303 .word	0xffff	; ???? | mulsu	r21, r19 | F new code placed in erased golden FLASH
+0x003046 ffff 1019 .word	0xffff	; ???? | sub	r17, r0 | F new code placed in erased golden FLASH
+0x003048 ffff 100d .word	0xffff	; ???? | add	r17, r0 | F new code placed in erased golden FLASH
+0x00304a ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00304c ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x00304e ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003050 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003052 ffff 3f93 .word	0xffff	; ???? | push	r19 | F new code placed in erased golden FLASH
+0x003054 ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x003056 ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x003058 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x00305a ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x00305c ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x00305e ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x003060 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x003062 ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x003064 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x003066 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003068 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00306a ffff c901 .word	0xffff	; ???? | movw	r24, r18 | F new code placed in erased golden FLASH
+0x00306c ffff ba01 .word	0xffff	; ???? | movw	r22, r20 | F new code placed in erased golden FLASH
+0x00306e ffff 402d .word	0xffff	; ???? | mov	r20, r0 | F new code placed in erased golden FLASH
+0x003070 ffff 0e946020 .word	0xffff	; ???? | call	0x40c0	;  0x40c0 | F new code placed in erased golden FLASH
+0x003072 ffff 6020 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x003074 ffff 8b01 .word	0xffff	; ???? | movw	r16, r22 | F new code placed in erased golden FLASH
+0x003076 ffff 082e .word	0xffff	; ???? | mov	r0, r24 | F new code placed in erased golden FLASH
+0x003078 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x00307a ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x00307c ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x00307e ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x003080 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x003082 ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x003084 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003086 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003088 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x00308a ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x00308c ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x00308e ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003090 ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x003092 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003094 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003096 ffff 359f .word	0xffff	; ???? | mul	r19, r21 | F new code placed in erased golden FLASH
+0x003098 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x00309a ffff 2fbf .word	0xffff	; ???? | out	0x3f, r18	; 63 | F new code placed in erased golden FLASH
+0x00309c ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x00309e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0030a0 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0030a2 ffff 2fb7 .word	0xffff	; ???? | in	r18, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x0030a4 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0030a6 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x0030a8 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x0030aa ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x0030ac ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x0030ae ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x0030b0 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x0030b2 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x0030b4 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0030b6 ffff ca01 .word	0xffff	; ???? | movw	r24, r20 | F new code placed in erased golden FLASH
+0x0030b8 ffff 0e941721 .word	0xffff	; ???? | call	0x422e	;  0x422e | F new code placed in erased golden FLASH
+0x0030ba ffff 1721 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0030bc ffff 8901 .word	0xffff	; ???? | movw	r16, r18 | F new code placed in erased golden FLASH
+0x0030be ffff 0b01 .word	0xffff	; ???? | movw	r0, r22 | F new code placed in erased golden FLASH
+0x0030c0 ffff 682f .word	0xffff	; ???? | mov	r22, r24 | F new code placed in erased golden FLASH
+0x0030c2 ffff 32e0 .word	0xffff	; ???? | ldi	r19, 0x02	; 2 | F new code placed in erased golden FLASH
+0x0030c4 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x0030c6 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x0030c8 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x0030ca ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x0030cc ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x0030ce ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x0030d0 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x0030d2 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0030d4 ffff 2fbf .word	0xffff	; ???? | out	0x3f, r18	; 63 | F new code placed in erased golden FLASH
+0x0030d6 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0030d8 ffff 0e945511 .word	0xffff	; ???? | call	0x22aa	;  0x22aa | F new code placed in erased golden FLASH
+0x0030da ffff 5511 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0030dc ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0030de ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0030e0 ffff 2fb7 .word	0xffff	; ???? | in	r18, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x0030e2 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0030e4 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x0030e6 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x0030e8 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x0030ea ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x0030ec ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x0030ee ffff ca01 .word	0xffff	; ???? | movw	r24, r20 | F new code placed in erased golden FLASH
+0x0030f0 ffff 262f .word	0xffff	; ???? | mov	r18, r22 | F new code placed in erased golden FLASH
+0x0030f2 ffff 220f .word	0xffff	; ???? | add	r18, r18 | F new code placed in erased golden FLASH
+0x0030f4 ffff e3e6 .word	0xffff	; ???? | ldi	r30, 0x63	; 99 | F new code placed in erased golden FLASH
+0x0030f6 ffff f1e2 .word	0xffff	; ???? | ldi	r31, 0x21	; 33 | F new code placed in erased golden FLASH
+0x0030f8 ffff 0024 .word	0xffff	; ???? | eor	r0, r0 | F new code placed in erased golden FLASH
+0x0030fa ffff e20f .word	0xffff	; ???? | add	r30, r18 | F new code placed in erased golden FLASH
+0x0030fc ffff f01d .word	0xffff	; ???? | adc	r31, r0 | F new code placed in erased golden FLASH
+0x0030fe ffff 4191 .word	0xffff	; ???? | ld	r20, Z+ | F new code placed in erased golden FLASH
+0x003100 ffff 5081 .word	0xffff	; ???? | ld	r21, Z | F new code placed in erased golden FLASH
+0x003102 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x003104 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003106 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x003108 ffff 0e944421 .word	0xffff	; ???? | call	0x4288	;  0x4288 | F new code placed in erased golden FLASH
+0x00310a ffff 4421 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00310c ffff 8901 .word	0xffff	; ???? | movw	r16, r18 | F new code placed in erased golden FLASH
+0x00310e ffff 0b01 .word	0xffff	; ???? | movw	r0, r22 | F new code placed in erased golden FLASH
+0x003110 ffff 682f .word	0xffff	; ???? | mov	r22, r24 | F new code placed in erased golden FLASH
+0x003112 ffff 32e0 .word	0xffff	; ???? | ldi	r19, 0x02	; 2 | F new code placed in erased golden FLASH
+0x003114 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003116 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003118 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x00311a ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x00311c ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00311e ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x003120 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003122 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003124 ffff 2fbf .word	0xffff	; ???? | out	0x3f, r18	; 63 | F new code placed in erased golden FLASH
+0x003126 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003128 ffff 0e945511 .word	0xffff	; ???? | call	0x22aa	;  0x22aa | F new code placed in erased golden FLASH
+0x00312a ffff 5511 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00312c ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00312e ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003130 ffff 2fb7 .word	0xffff	; ???? | in	r18, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003132 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003134 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x003136 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x003138 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x00313a ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x00313c ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x00313e ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x003140 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003142 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x003144 ffff ca01 .word	0xffff	; ???? | movw	r24, r20 | F new code placed in erased golden FLASH
+0x003146 ffff 42e0 .word	0xffff	; ???? | ldi	r20, 0x02	; 2 | F new code placed in erased golden FLASH
+0x003148 ffff 0e947a21 .word	0xffff	; ???? | call	0x42f4	;  0x42f4 | F new code placed in erased golden FLASH
+0x00314a ffff 7a21 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00314c ffff 8901 .word	0xffff	; ???? | movw	r16, r18 | F new code placed in erased golden FLASH
+0x00314e ffff 0b01 .word	0xffff	; ???? | movw	r0, r22 | F new code placed in erased golden FLASH
+0x003150 ffff 682f .word	0xffff	; ???? | mov	r22, r24 | F new code placed in erased golden FLASH
+0x003152 ffff 31e4 .word	0xffff	; ???? | ldi	r19, 0x41	; 65 | F new code placed in erased golden FLASH
+0x003154 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003156 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003158 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x00315a ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x00315c ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00315e ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x003160 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003162 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003164 ffff 2fbf .word	0xffff	; ???? | out	0x3f, r18	; 63 | F new code placed in erased golden FLASH
+0x003166 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003168 ffff 0e945511 .word	0xffff	; ???? | call	0x22aa	;  0x22aa | F new code placed in erased golden FLASH
+0x00316a ffff 5511 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00316c ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00316e ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003170 ffff 2fb7 .word	0xffff	; ???? | in	r18, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003172 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x003174 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x003176 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x003178 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x00317a ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x00317c ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x00317e ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x003180 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003182 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x003184 ffff ca01 .word	0xffff	; ???? | movw	r24, r20 | F new code placed in erased golden FLASH
+0x003186 ffff 41e0 .word	0xffff	; ???? | ldi	r20, 0x01	; 1 | F new code placed in erased golden FLASH
+0x003188 ffff 0e947a21 .word	0xffff	; ???? | call	0x42f4	;  0x42f4 | F new code placed in erased golden FLASH
+0x00318a ffff 7a21 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00318c ffff 8901 .word	0xffff	; ???? | movw	r16, r18 | F new code placed in erased golden FLASH
+0x00318e ffff 0b01 .word	0xffff	; ???? | movw	r0, r22 | F new code placed in erased golden FLASH
+0x003190 ffff 682f .word	0xffff	; ???? | mov	r22, r24 | F new code placed in erased golden FLASH
+0x003192 ffff 31e4 .word	0xffff	; ???? | ldi	r19, 0x41	; 65 | F new code placed in erased golden FLASH
+0x003194 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003196 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003198 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x00319a ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x00319c ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00319e ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x0031a0 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x0031a2 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0031a4 ffff 2fbf .word	0xffff	; ???? | out	0x3f, r18	; 63 | F new code placed in erased golden FLASH
+0x0031a6 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0031a8 ffff 0e945511 .word	0xffff	; ???? | call	0x22aa	;  0x22aa | F new code placed in erased golden FLASH
+0x0031aa ffff 5511 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0031ac ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0031ae ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x0031b0 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x0031b2 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x0031b4 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x0031b6 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0031b8 ffff 3f93 .word	0xffff	; ???? | push	r19 | F new code placed in erased golden FLASH
+0x0031ba ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x0031bc ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x0031be ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x0031c0 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x0031c2 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x0031c4 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x0031c6 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x0031c8 ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x0031ca ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x0031cc ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x0031ce ffff 00915721 .word	0xffff	; ???? | lds	r16, 0x2157	;  0x802157 | F new code placed in erased golden FLASH
+0x0031d0 ffff 5721 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0031d2 ffff 802f .word	0xffff	; ???? | mov	r24, r16 | F new code placed in erased golden FLASH
+0x0031d4 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0031d6 ffff 0e94b521 .word	0xffff	; ???? | call	0x436a	;  0x436a | F new code placed in erased golden FLASH
+0x0031d8 ffff b521 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0031da ffff 8823 .word	0xffff	; ???? | and	r24, r24 | F new code placed in erased golden FLASH
+0x0031dc ffff 91f0 .word	0xffff	; ???? | breq	.+36     	;  0x3202 | F new code placed in erased golden FLASH
+0x0031de ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x0031e0 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x0031e2 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x0031e4 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x0031e6 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x0031e8 ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x0031ea ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x0031ec ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x0031ee ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x0031f0 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x0031f2 ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x0031f4 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0031f6 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0031f8 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x0031fa ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x0031fc ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0031fe ffff 8894 .word	0xffff	; ???? | clc | F new code placed in erased golden FLASH
+0x003200 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x003202 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003204 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003206 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x003208 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x00320a ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00320c ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x00320e ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003210 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003212 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x003214 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x003216 ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x003218 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x00321a ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x00321c ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x00321e ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x003220 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x003222 ffff 8894 .word	0xffff	; ???? | clc | F new code placed in erased golden FLASH
+0x003224 ffff e4eb .word	0xffff	; ???? | ldi	r30, 0xB4	; 180 | F new code placed in erased golden FLASH
+0x003226 ffff fae2 .word	0xffff	; ???? | ldi	r31, 0x2A	; 42 | F new code placed in erased golden FLASH
+0x003228 ffff 0e941314 .word	0xffff	; ???? | call	0x2826	;  0x2826 | F new code placed in erased golden FLASH
+0x00322a ffff 1314 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00322c ffff 0894 .word	0xffff	; ???? | sec | F new code placed in erased golden FLASH
+0x00322e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x003230 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003232 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x003234 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003236 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003238 ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x00323a ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x00323c ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x00323e ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x003240 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x003242 ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x003244 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x003246 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003248 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x00324a ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x00324c ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x00324e ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x003250 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x003252 ffff b901 .word	0xffff	; ???? | movw	r22, r18 | F new code placed in erased golden FLASH
+0x003254 ffff c801 .word	0xffff	; ???? | movw	r24, r16 | F new code placed in erased golden FLASH
+0x003256 ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x003258 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x00325a ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x00325c ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x00325e ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003260 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x003262 ffff 0e94b821 .word	0xffff	; ???? | call	0x4370	;  0x4370 | F new code placed in erased golden FLASH
+0x003264 ffff b821 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x003266 ffff 8a01 .word	0xffff	; ???? | movw	r16, r20 | F new code placed in erased golden FLASH
+0x003268 ffff 062e .word	0xffff	; ???? | mov	r0, r22 | F new code placed in erased golden FLASH
+0x00326a ffff 4427 .word	0xffff	; ???? | eor	r20, r20 | F new code placed in erased golden FLASH
+0x00326c ffff 6627 .word	0xffff	; ???? | eor	r22, r22 | F new code placed in erased golden FLASH
+0x00326e ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003270 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003272 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x003274 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x003276 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x003278 ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x00327a ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x00327c ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x00327e ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x003280 ffff 16fa .word	0xffff	; ???? | bst	r1, 6 | F new code placed in erased golden FLASH
+0x003282 ffff 06f8 .word	0xffff	; ???? | bld	r0, 6 | F new code placed in erased golden FLASH
+0x003284 ffff 17fa .word	0xffff	; ???? | bst	r1, 7 | F new code placed in erased golden FLASH
+0x003286 ffff 07f8 .word	0xffff	; ???? | bld	r0, 7 | F new code placed in erased golden FLASH
+0x003288 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x00328a ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x00328c ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x00328e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x003290 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003292 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x003294 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003296 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003298 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x00329a ffff 3f93 .word	0xffff	; ???? | push	r19 | F new code placed in erased golden FLASH
+0x00329c ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x00329e ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x0032a0 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x0032a2 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x0032a4 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x0032a6 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x0032a8 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x0032aa ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x0032ac ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x0032ae ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x0032b0 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0032b2 ffff 0e94fe21 .word	0xffff	; ???? | call	0x43fc	;  0x43fc | F new code placed in erased golden FLASH
+0x0032b4 ffff fe21 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0032b6 ffff 00e5 .word	0xffff	; ???? | ldi	r16, 0x50	; 80 | F new code placed in erased golden FLASH
+0x0032b8 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x0032ba ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x0032bc ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x0032be ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x0032c0 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x0032c2 ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x0032c4 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x0032c6 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x0032c8 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x0032ca ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x0032cc ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x0032ce ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0032d0 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0032d2 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x0032d4 ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x0032d6 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0032d8 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0032da ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x0032dc ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x0032de ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x0032e0 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x0032e2 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0032e4 ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x0032e6 ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x0032e8 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x0032ea ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x0032ec ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x0032ee ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x0032f0 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x0032f2 ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x0032f4 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x0032f6 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x0032f8 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0032fa ffff 0e940b22 .word	0xffff	; ???? | call	0x4416	;  0x4416 | F new code placed in erased golden FLASH
+0x0032fc ffff 0b22 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0032fe ffff 382f .word	0xffff	; ???? | mov	r19, r24 | F new code placed in erased golden FLASH
+0x003300 ffff 00e1 .word	0xffff	; ???? | ldi	r16, 0x10	; 16 | F new code placed in erased golden FLASH
+0x003302 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003304 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003306 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x003308 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x00330a ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00330c ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x00330e ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003310 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003312 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x003314 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x003316 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003318 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x00331a ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x00331c ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x00331e ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x003320 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x003322 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003324 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x003326 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003328 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x00332a ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x00332c ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x00332e ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x003330 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x003332 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x003334 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x003336 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x003338 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x00333a ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x00333c ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x00333e ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003340 ffff 242f .word	0xffff	; ???? | mov	r18, r20 | F new code placed in erased golden FLASH
+0x003342 ffff 452f .word	0xffff	; ???? | mov	r20, r21 | F new code placed in erased golden FLASH
+0x003344 ffff 802f .word	0xffff	; ???? | mov	r24, r16 | F new code placed in erased golden FLASH
+0x003346 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x003348 ffff 0e941922 .word	0xffff	; ???? | call	0x4432	;  0x4432 | F new code placed in erased golden FLASH
+0x00334a ffff 1922 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00334c ffff 382f .word	0xffff	; ???? | mov	r19, r24 | F new code placed in erased golden FLASH
+0x00334e ffff 10e1 .word	0xffff	; ???? | ldi	r17, 0x10	; 16 | F new code placed in erased golden FLASH
+0x003350 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003352 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003354 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x003356 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x003358 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00335a ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x00335c ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x00335e ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003360 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x003362 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x003364 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003366 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x003368 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x00336a ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x00336c ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x00336e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x003370 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003372 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x003374 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003376 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003378 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x00337a ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x00337c ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x00337e ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x003380 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x003382 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x003384 ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x003386 ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x003388 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x00338a ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00338c ffff 0e943522 .word	0xffff	; ???? | call	0x446a	;  0x446a | F new code placed in erased golden FLASH
+0x00338e ffff 3522 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x003390 ffff 392f .word	0xffff	; ???? | mov	r19, r25 | F new code placed in erased golden FLASH
+0x003392 ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x003394 ffff 00e1 .word	0xffff	; ???? | ldi	r16, 0x10	; 16 | F new code placed in erased golden FLASH
+0x003396 ffff 80fd .word	0xffff	; ???? | sbrc	r24, 0 | F new code placed in erased golden FLASH
+0x003398 ffff 0ec0 .word	0xffff	; ???? | rjmp	.+28     	;  0x33b6 | F new code placed in erased golden FLASH
+0x00339a ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x00339c ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x00339e ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x0033a0 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x0033a2 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x0033a4 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x0033a6 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x0033a8 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x0033aa ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0033ac ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0033ae ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x0033b0 ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x0033b2 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0033b4 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0033b6 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x0033b8 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x0033ba ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x0033bc ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x0033be ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x0033c0 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x0033c2 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x0033c4 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x0033c6 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x0033c8 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0033ca ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x0033cc ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x0033ce ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x0033d0 ffff 0c949d0b .word	0xffff	; ???? | jmp	0x173a	;  0x173a | F new code placed in erased golden FLASH
+0x0033d2 ffff 9d0b .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0033d4 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x0033d6 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x0033d8 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x0033da ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x0033dc ffff 3f93 .word	0xffff	; ???? | push	r19 | F new code placed in erased golden FLASH
+0x0033de ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x0033e0 ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x0033e2 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x0033e4 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x0033e6 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x0033e8 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x0033ea ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x0033ec ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x0033ee ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x0033f0 ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x0033f2 ffff 602d .word	0xffff	; ???? | mov	r22, r0 | F new code placed in erased golden FLASH
+0x0033f4 ffff 802f .word	0xffff	; ???? | mov	r24, r16 | F new code placed in erased golden FLASH
+0x0033f6 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0033f8 ffff 0e944e22 .word	0xffff	; ???? | call	0x449c	;  0x449c | F new code placed in erased golden FLASH
+0x0033fa ffff 4e22 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0033fc ffff 082f .word	0xffff	; ???? | mov	r16, r24 | F new code placed in erased golden FLASH
+0x0033fe ffff 092e .word	0xffff	; ???? | mov	r0, r25 | F new code placed in erased golden FLASH
+0x003400 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x003402 ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x003404 ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x003406 ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x003408 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x00340a ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x00340c ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x00340e ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003410 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x003412 ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x003414 ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x003416 ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003418 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x00341a ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x00341c ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x00341e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x003420 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003422 ffff 1f92 .word	0xffff	; ???? | push	r1 | F new code placed in erased golden FLASH
+0x003424 ffff 0fb6 .word	0xffff	; ???? | in	r0, 0x3f	; 63 | F new code placed in erased golden FLASH
+0x003426 ffff 0f92 .word	0xffff	; ???? | push	r0 | F new code placed in erased golden FLASH
+0x003428 ffff 2f93 .word	0xffff	; ???? | push	r18 | F new code placed in erased golden FLASH
+0x00342a ffff 3f93 .word	0xffff	; ???? | push	r19 | F new code placed in erased golden FLASH
+0x00342c ffff 4f93 .word	0xffff	; ???? | push	r20 | F new code placed in erased golden FLASH
+0x00342e ffff 5f93 .word	0xffff	; ???? | push	r21 | F new code placed in erased golden FLASH
+0x003430 ffff 6f93 .word	0xffff	; ???? | push	r22 | F new code placed in erased golden FLASH
+0x003432 ffff 7f93 .word	0xffff	; ???? | push	r23 | F new code placed in erased golden FLASH
+0x003434 ffff 8f93 .word	0xffff	; ???? | push	r24 | F new code placed in erased golden FLASH
+0x003436 ffff 9f93 .word	0xffff	; ???? | push	r25 | F new code placed in erased golden FLASH
+0x003438 ffff af93 .word	0xffff	; ???? | push	r26 | F new code placed in erased golden FLASH
+0x00343a ffff bf93 .word	0xffff	; ???? | push	r27 | F new code placed in erased golden FLASH
+0x00343c ffff ef93 .word	0xffff	; ???? | push	r30 | F new code placed in erased golden FLASH
+0x00343e ffff ff93 .word	0xffff	; ???? | push	r31 | F new code placed in erased golden FLASH
+0x003440 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x003442 ffff 0e949122 .word	0xffff	; ???? | call	0x4522	;  0x4522 | F new code placed in erased golden FLASH
+0x003444 ffff 9122 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x003446 ffff 01e0 .word	0xffff	; ???? | ldi	r16, 0x01	; 1 | F new code placed in erased golden FLASH
+0x003448 ffff ff91 .word	0xffff	; ???? | pop	r31 | F new code placed in erased golden FLASH
+0x00344a ffff ef91 .word	0xffff	; ???? | pop	r30 | F new code placed in erased golden FLASH
+0x00344c ffff bf91 .word	0xffff	; ???? | pop	r27 | F new code placed in erased golden FLASH
+0x00344e ffff af91 .word	0xffff	; ???? | pop	r26 | F new code placed in erased golden FLASH
+0x003450 ffff 9f91 .word	0xffff	; ???? | pop	r25 | F new code placed in erased golden FLASH
+0x003452 ffff 8f91 .word	0xffff	; ???? | pop	r24 | F new code placed in erased golden FLASH
+0x003454 ffff 7f91 .word	0xffff	; ???? | pop	r23 | F new code placed in erased golden FLASH
+0x003456 ffff 6f91 .word	0xffff	; ???? | pop	r22 | F new code placed in erased golden FLASH
+0x003458 ffff 5f91 .word	0xffff	; ???? | pop	r21 | F new code placed in erased golden FLASH
+0x00345a ffff 4f91 .word	0xffff	; ???? | pop	r20 | F new code placed in erased golden FLASH
+0x00345c ffff 3f91 .word	0xffff	; ???? | pop	r19 | F new code placed in erased golden FLASH
+0x00345e ffff 2f91 .word	0xffff	; ???? | pop	r18 | F new code placed in erased golden FLASH
+0x003460 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x003462 ffff 0fbe .word	0xffff	; ???? | out	0x3f, r0	; 63 | F new code placed in erased golden FLASH
+0x003464 ffff 1f90 .word	0xffff	; ???? | pop	r1 | F new code placed in erased golden FLASH
+0x003466 ffff 0f90 .word	0xffff	; ???? | pop	r0 | F new code placed in erased golden FLASH
+0x003468 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004000 ffff 9b01 .word	0xffff	; ???? | movw	r18, r22 | F new code placed in erased golden FLASH
+0x004002 ffff 50e0 .word	0xffff	; ???? | ldi	r21, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004004 ffff 40e0 .word	0xffff	; ???? | ldi	r20, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004006 ffff 77ff .word	0xffff	; ???? | sbrs	r23, 7 | F new code placed in erased golden FLASH
+0x004008 ffff 02c0 .word	0xffff	; ???? | rjmp	.+4      	;  0x400e | F new code placed in erased golden FLASH
+0x00400a ffff 4150 .word	0xffff	; ???? | subi	r20, 0x01	; 1 | F new code placed in erased golden FLASH
+0x00400c ffff 5109 .word	0xffff	; ???? | sbc	r21, r1 | F new code placed in erased golden FLASH
+0x00400e ffff dc01 .word	0xffff	; ???? | movw	r26, r24 | F new code placed in erased golden FLASH
+0x004010 ffff 0e949d22 .word	0xffff	; ???? | call	0x453a	;  0x453a | F new code placed in erased golden FLASH
+0x004012 ffff 9d22 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004014 ffff dc01 .word	0xffff	; ???? | movw	r26, r24 | F new code placed in erased golden FLASH
+0x004016 ffff cb01 .word	0xffff	; ???? | movw	r24, r22 | F new code placed in erased golden FLASH
+0x004018 ffff 8058 .word	0xffff	; ???? | subi	r24, 0x80	; 128 | F new code placed in erased golden FLASH
+0x00401a ffff 9f4f .word	0xffff	; ???? | sbci	r25, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x00401c ffff af4f .word	0xffff	; ???? | sbci	r26, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x00401e ffff bf4f .word	0xffff	; ???? | sbci	r27, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x004020 ffff 892f .word	0xffff	; ???? | mov	r24, r25 | F new code placed in erased golden FLASH
+0x004022 ffff 9a2f .word	0xffff	; ???? | mov	r25, r26 | F new code placed in erased golden FLASH
+0x004024 ffff ab2f .word	0xffff	; ???? | mov	r26, r27 | F new code placed in erased golden FLASH
+0x004026 ffff bb27 .word	0xffff	; ???? | eor	r27, r27 | F new code placed in erased golden FLASH
+0x004028 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00402a ffff 0f93 .word	0xffff	; ???? | push	r16 | F new code placed in erased golden FLASH
+0x00402c ffff 1f93 .word	0xffff	; ???? | push	r17 | F new code placed in erased golden FLASH
+0x00402e ffff cf93 .word	0xffff	; ???? | push	r28 | F new code placed in erased golden FLASH
+0x004030 ffff df93 .word	0xffff	; ???? | push	r29 | F new code placed in erased golden FLASH
+0x004032 ffff 092f .word	0xffff	; ???? | mov	r16, r25 | F new code placed in erased golden FLASH
+0x004034 ffff 1127 .word	0xffff	; ???? | eor	r17, r17 | F new code placed in erased golden FLASH
+0x004036 ffff c72f .word	0xffff	; ???? | mov	r28, r23 | F new code placed in erased golden FLASH
+0x004038 ffff dd27 .word	0xffff	; ???? | eor	r29, r29 | F new code placed in erased golden FLASH
+0x00403a ffff 0c9f .word	0xffff	; ???? | mul	r16, r28 | F new code placed in erased golden FLASH
+0x00403c ffff 9001 .word	0xffff	; ???? | movw	r18, r0 | F new code placed in erased golden FLASH
+0x00403e ffff 0d9f .word	0xffff	; ???? | mul	r16, r29 | F new code placed in erased golden FLASH
+0x004040 ffff 300d .word	0xffff	; ???? | add	r19, r0 | F new code placed in erased golden FLASH
+0x004042 ffff 1c9f .word	0xffff	; ???? | mul	r17, r28 | F new code placed in erased golden FLASH
+0x004044 ffff 300d .word	0xffff	; ???? | add	r19, r0 | F new code placed in erased golden FLASH
+0x004046 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004048 ffff 2f3f .word	0xffff	; ???? | cpi	r18, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x00404a ffff 3105 .word	0xffff	; ???? | cpc	r19, r1 | F new code placed in erased golden FLASH
+0x00404c ffff 09f0 .word	0xffff	; ???? | breq	.+2      	;  0x4050 | F new code placed in erased golden FLASH
+0x00404e ffff a8f5 .word	0xffff	; ???? | brcc	.+106    	;  0x40ba | F new code placed in erased golden FLASH
+0x004050 ffff fc01 .word	0xffff	; ???? | movw	r30, r24 | F new code placed in erased golden FLASH
+0x004052 ffff ff27 .word	0xffff	; ???? | eor	r31, r31 | F new code placed in erased golden FLASH
+0x004054 ffff 7727 .word	0xffff	; ???? | eor	r23, r23 | F new code placed in erased golden FLASH
+0x004056 ffff e69f .word	0xffff	; ???? | mul	r30, r22 | F new code placed in erased golden FLASH
+0x004058 ffff d001 .word	0xffff	; ???? | movw	r26, r0 | F new code placed in erased golden FLASH
+0x00405a ffff e79f .word	0xffff	; ???? | mul	r30, r23 | F new code placed in erased golden FLASH
+0x00405c ffff b00d .word	0xffff	; ???? | add	r27, r0 | F new code placed in erased golden FLASH
+0x00405e ffff f69f .word	0xffff	; ???? | mul	r31, r22 | F new code placed in erased golden FLASH
+0x004060 ffff b00d .word	0xffff	; ???? | add	r27, r0 | F new code placed in erased golden FLASH
+0x004062 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004064 ffff 609f .word	0xffff	; ???? | mul	r22, r16 | F new code placed in erased golden FLASH
+0x004066 ffff c001 .word	0xffff	; ???? | movw	r24, r0 | F new code placed in erased golden FLASH
+0x004068 ffff 619f .word	0xffff	; ???? | mul	r22, r17 | F new code placed in erased golden FLASH
+0x00406a ffff 900d .word	0xffff	; ???? | add	r25, r0 | F new code placed in erased golden FLASH
+0x00406c ffff 709f .word	0xffff	; ???? | mul	r23, r16 | F new code placed in erased golden FLASH
+0x00406e ffff 900d .word	0xffff	; ???? | add	r25, r0 | F new code placed in erased golden FLASH
+0x004070 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004072 ffff ec9f .word	0xffff	; ???? | mul	r30, r28 | F new code placed in erased golden FLASH
+0x004074 ffff b001 .word	0xffff	; ???? | movw	r22, r0 | F new code placed in erased golden FLASH
+0x004076 ffff ed9f .word	0xffff	; ???? | mul	r30, r29 | F new code placed in erased golden FLASH
+0x004078 ffff 700d .word	0xffff	; ???? | add	r23, r0 | F new code placed in erased golden FLASH
+0x00407a ffff fc9f .word	0xffff	; ???? | mul	r31, r28 | F new code placed in erased golden FLASH
+0x00407c ffff 700d .word	0xffff	; ???? | add	r23, r0 | F new code placed in erased golden FLASH
+0x00407e ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004080 ffff 860f .word	0xffff	; ???? | add	r24, r22 | F new code placed in erased golden FLASH
+0x004082 ffff 971f .word	0xffff	; ???? | adc	r25, r23 | F new code placed in erased golden FLASH
+0x004084 ffff 6b2f .word	0xffff	; ???? | mov	r22, r27 | F new code placed in erased golden FLASH
+0x004086 ffff 7727 .word	0xffff	; ???? | eor	r23, r23 | F new code placed in erased golden FLASH
+0x004088 ffff 860f .word	0xffff	; ???? | add	r24, r22 | F new code placed in erased golden FLASH
+0x00408a ffff 971f .word	0xffff	; ???? | adc	r25, r23 | F new code placed in erased golden FLASH
+0x00408c ffff a7fb .word	0xffff	; ???? | bst	r26, 7 | F new code placed in erased golden FLASH
+0x00408e ffff 4427 .word	0xffff	; ???? | eor	r20, r20 | F new code placed in erased golden FLASH
+0x004090 ffff 40f9 .word	0xffff	; ???? | bld	r20, 0 | F new code placed in erased golden FLASH
+0x004092 ffff 50e0 .word	0xffff	; ???? | ldi	r21, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004094 ffff 480f .word	0xffff	; ???? | add	r20, r24 | F new code placed in erased golden FLASH
+0x004096 ffff 591f .word	0xffff	; ???? | adc	r21, r25 | F new code placed in erased golden FLASH
+0x004098 ffff 852f .word	0xffff	; ???? | mov	r24, r21 | F new code placed in erased golden FLASH
+0x00409a ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x00409c ffff 820f .word	0xffff	; ???? | add	r24, r18 | F new code placed in erased golden FLASH
+0x00409e ffff 931f .word	0xffff	; ???? | adc	r25, r19 | F new code placed in erased golden FLASH
+0x0040a0 ffff 8f3f .word	0xffff	; ???? | cpi	r24, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x0040a2 ffff 9105 .word	0xffff	; ???? | cpc	r25, r1 | F new code placed in erased golden FLASH
+0x0040a4 ffff 09f0 .word	0xffff	; ???? | breq	.+2      	;  0x40a8 | F new code placed in erased golden FLASH
+0x0040a6 ffff 48f4 .word	0xffff	; ???? | brcc	.+18     	;  0x40ba | F new code placed in erased golden FLASH
+0x0040a8 ffff 922f .word	0xffff	; ???? | mov	r25, r18 | F new code placed in erased golden FLASH
+0x0040aa ffff 8827 .word	0xffff	; ???? | eor	r24, r24 | F new code placed in erased golden FLASH
+0x0040ac ffff 840f .word	0xffff	; ???? | add	r24, r20 | F new code placed in erased golden FLASH
+0x0040ae ffff 951f .word	0xffff	; ???? | adc	r25, r21 | F new code placed in erased golden FLASH
+0x0040b0 ffff df91 .word	0xffff	; ???? | pop	r29 | F new code placed in erased golden FLASH
+0x0040b2 ffff cf91 .word	0xffff	; ???? | pop	r28 | F new code placed in erased golden FLASH
+0x0040b4 ffff 1f91 .word	0xffff	; ???? | pop	r17 | F new code placed in erased golden FLASH
+0x0040b6 ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x0040b8 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0040ba ffff 8fef .word	0xffff	; ???? | ldi	r24, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x0040bc ffff 9fef .word	0xffff	; ???? | ldi	r25, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x0040be ffff f8cf .word	0xffff	; ???? | rjmp	.-16     	;  0x40b0 | F new code placed in erased golden FLASH
+0x0040c0 ffff ef92 .word	0xffff	; ???? | push	r14 | F new code placed in erased golden FLASH
+0x0040c2 ffff ff92 .word	0xffff	; ???? | push	r15 | F new code placed in erased golden FLASH
+0x0040c4 ffff 0f93 .word	0xffff	; ???? | push	r16 | F new code placed in erased golden FLASH
+0x0040c6 ffff 1f93 .word	0xffff	; ???? | push	r17 | F new code placed in erased golden FLASH
+0x0040c8 ffff cf93 .word	0xffff	; ???? | push	r28 | F new code placed in erased golden FLASH
+0x0040ca ffff df93 .word	0xffff	; ???? | push	r29 | F new code placed in erased golden FLASH
+0x0040cc ffff 9b01 .word	0xffff	; ???? | movw	r18, r22 | F new code placed in erased golden FLASH
+0x0040ce ffff fc01 .word	0xffff	; ???? | movw	r30, r24 | F new code placed in erased golden FLASH
+0x0040d0 ffff ff27 .word	0xffff	; ???? | eor	r31, r31 | F new code placed in erased golden FLASH
+0x0040d2 ffff 8b01 .word	0xffff	; ???? | movw	r16, r22 | F new code placed in erased golden FLASH
+0x0040d4 ffff 1127 .word	0xffff	; ???? | eor	r17, r17 | F new code placed in erased golden FLASH
+0x0040d6 ffff e09f .word	0xffff	; ???? | mul	r30, r16 | F new code placed in erased golden FLASH
+0x0040d8 ffff e001 .word	0xffff	; ???? | movw	r28, r0 | F new code placed in erased golden FLASH
+0x0040da ffff e19f .word	0xffff	; ???? | mul	r30, r17 | F new code placed in erased golden FLASH
+0x0040dc ffff d00d .word	0xffff	; ???? | add	r29, r0 | F new code placed in erased golden FLASH
+0x0040de ffff f09f .word	0xffff	; ???? | mul	r31, r16 | F new code placed in erased golden FLASH
+0x0040e0 ffff d00d .word	0xffff	; ???? | add	r29, r0 | F new code placed in erased golden FLASH
+0x0040e2 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0040e4 ffff 892f .word	0xffff	; ???? | mov	r24, r25 | F new code placed in erased golden FLASH
+0x0040e6 ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x0040e8 ffff 6d2f .word	0xffff	; ???? | mov	r22, r29 | F new code placed in erased golden FLASH
+0x0040ea ffff 7727 .word	0xffff	; ???? | eor	r23, r23 | F new code placed in erased golden FLASH
+0x0040ec ffff 089f .word	0xffff	; ???? | mul	r16, r24 | F new code placed in erased golden FLASH
+0x0040ee ffff 7001 .word	0xffff	; ???? | movw	r14, r0 | F new code placed in erased golden FLASH
+0x0040f0 ffff 099f .word	0xffff	; ???? | mul	r16, r25 | F new code placed in erased golden FLASH
+0x0040f2 ffff f00c .word	0xffff	; ???? | add	r15, r0 | F new code placed in erased golden FLASH
+0x0040f4 ffff 189f .word	0xffff	; ???? | mul	r17, r24 | F new code placed in erased golden FLASH
+0x0040f6 ffff f00c .word	0xffff	; ???? | add	r15, r0 | F new code placed in erased golden FLASH
+0x0040f8 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0040fa ffff 6e0d .word	0xffff	; ???? | add	r22, r14 | F new code placed in erased golden FLASH
+0x0040fc ffff 7f1d .word	0xffff	; ???? | adc	r23, r15 | F new code placed in erased golden FLASH
+0x0040fe ffff c7fb .word	0xffff	; ???? | bst	r28, 7 | F new code placed in erased golden FLASH
+0x004100 ffff aa27 .word	0xffff	; ???? | eor	r26, r26 | F new code placed in erased golden FLASH
+0x004102 ffff a0f9 .word	0xffff	; ???? | bld	r26, 0 | F new code placed in erased golden FLASH
+0x004104 ffff b0e0 .word	0xffff	; ???? | ldi	r27, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004106 ffff 6a0f .word	0xffff	; ???? | add	r22, r26 | F new code placed in erased golden FLASH
+0x004108 ffff 7b1f .word	0xffff	; ???? | adc	r23, r27 | F new code placed in erased golden FLASH
+0x00410a ffff 232f .word	0xffff	; ???? | mov	r18, r19 | F new code placed in erased golden FLASH
+0x00410c ffff 3327 .word	0xffff	; ???? | eor	r19, r19 | F new code placed in erased golden FLASH
+0x00410e ffff e29f .word	0xffff	; ???? | mul	r30, r18 | F new code placed in erased golden FLASH
+0x004110 ffff d001 .word	0xffff	; ???? | movw	r26, r0 | F new code placed in erased golden FLASH
+0x004112 ffff e39f .word	0xffff	; ???? | mul	r30, r19 | F new code placed in erased golden FLASH
+0x004114 ffff b00d .word	0xffff	; ???? | add	r27, r0 | F new code placed in erased golden FLASH
+0x004116 ffff f29f .word	0xffff	; ???? | mul	r31, r18 | F new code placed in erased golden FLASH
+0x004118 ffff b00d .word	0xffff	; ???? | add	r27, r0 | F new code placed in erased golden FLASH
+0x00411a ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00411c ffff 829f .word	0xffff	; ???? | mul	r24, r18 | F new code placed in erased golden FLASH
+0x00411e ffff f001 .word	0xffff	; ???? | movw	r30, r0 | F new code placed in erased golden FLASH
+0x004120 ffff 839f .word	0xffff	; ???? | mul	r24, r19 | F new code placed in erased golden FLASH
+0x004122 ffff f00d .word	0xffff	; ???? | add	r31, r0 | F new code placed in erased golden FLASH
+0x004124 ffff 929f .word	0xffff	; ???? | mul	r25, r18 | F new code placed in erased golden FLASH
+0x004126 ffff f00d .word	0xffff	; ???? | add	r31, r0 | F new code placed in erased golden FLASH
+0x004128 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00412a ffff 8f2f .word	0xffff	; ???? | mov	r24, r31 | F new code placed in erased golden FLASH
+0x00412c ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x00412e ffff 892b .word	0xffff	; ???? | or	r24, r25 | F new code placed in erased golden FLASH
+0x004130 ffff 51f1 .word	0xffff	; ???? | breq	.+84     	;  0x4186 | F new code placed in erased golden FLASH
+0x004132 ffff 272f .word	0xffff	; ???? | mov	r18, r23 | F new code placed in erased golden FLASH
+0x004134 ffff 3327 .word	0xffff	; ???? | eor	r19, r19 | F new code placed in erased golden FLASH
+0x004136 ffff 2f70 .word	0xffff	; ???? | andi	r18, 0x0F	; 15 | F new code placed in erased golden FLASH
+0x004138 ffff 3327 .word	0xffff	; ???? | eor	r19, r19 | F new code placed in erased golden FLASH
+0x00413a ffff 8b2f .word	0xffff	; ???? | mov	r24, r27 | F new code placed in erased golden FLASH
+0x00413c ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x00413e ffff 8f70 .word	0xffff	; ???? | andi	r24, 0x0F	; 15 | F new code placed in erased golden FLASH
+0x004140 ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x004142 ffff 280f .word	0xffff	; ???? | add	r18, r24 | F new code placed in erased golden FLASH
+0x004144 ffff 391f .word	0xffff	; ???? | adc	r19, r25 | F new code placed in erased golden FLASH
+0x004146 ffff a60f .word	0xffff	; ???? | add	r26, r22 | F new code placed in erased golden FLASH
+0x004148 ffff bb27 .word	0xffff	; ???? | eor	r27, r27 | F new code placed in erased golden FLASH
+0x00414a ffff bb1f .word	0xffff	; ???? | adc	r27, r27 | F new code placed in erased golden FLASH
+0x00414c ffff 81e0 .word	0xffff	; ???? | ldi	r24, 0x01	; 1 | F new code placed in erased golden FLASH
+0x00414e ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004150 ffff af3f .word	0xffff	; ???? | cpi	r26, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x004152 ffff b105 .word	0xffff	; ???? | cpc	r27, r1 | F new code placed in erased golden FLASH
+0x004154 ffff 09f0 .word	0xffff	; ???? | breq	.+2      	;  0x4158 | F new code placed in erased golden FLASH
+0x004156 ffff 10f4 .word	0xffff	; ???? | brcc	.+4      	;  0x415c | F new code placed in erased golden FLASH
+0x004158 ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x00415a ffff 80e0 .word	0xffff	; ???? | ldi	r24, 0x00	; 0 | F new code placed in erased golden FLASH
+0x00415c ffff 280f .word	0xffff	; ???? | add	r18, r24 | F new code placed in erased golden FLASH
+0x00415e ffff 391f .word	0xffff	; ???? | adc	r19, r25 | F new code placed in erased golden FLASH
+0x004160 ffff 81e0 .word	0xffff	; ???? | ldi	r24, 0x01	; 1 | F new code placed in erased golden FLASH
+0x004162 ffff 2031 .word	0xffff	; ???? | cpi	r18, 0x10	; 16 | F new code placed in erased golden FLASH
+0x004164 ffff 3105 .word	0xffff	; ???? | cpc	r19, r1 | F new code placed in erased golden FLASH
+0x004166 ffff 08f4 .word	0xffff	; ???? | brcc	.+2      	;  0x416a | F new code placed in erased golden FLASH
+0x004168 ffff 80e0 .word	0xffff	; ???? | ldi	r24, 0x00	; 0 | F new code placed in erased golden FLASH
+0x00416a ffff 8295 .word	0xffff	; ???? | swap	r24 | F new code placed in erased golden FLASH
+0x00416c ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x00416e ffff 807e .word	0xffff	; ???? | andi	r24, 0xE0	; 224 | F new code placed in erased golden FLASH
+0x004170 ffff 9f2f .word	0xffff	; ???? | mov	r25, r31 | F new code placed in erased golden FLASH
+0x004172 ffff 991f .word	0xffff	; ???? | adc	r25, r25 | F new code placed in erased golden FLASH
+0x004174 ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x004176 ffff 991f .word	0xffff	; ???? | adc	r25, r25 | F new code placed in erased golden FLASH
+0x004178 ffff 25e1 .word	0xffff	; ???? | ldi	r18, 0x15	; 21 | F new code placed in erased golden FLASH
+0x00417a ffff 929f .word	0xffff	; ???? | mul	r25, r18 | F new code placed in erased golden FLASH
+0x00417c ffff 800d .word	0xffff	; ???? | add	r24, r0 | F new code placed in erased golden FLASH
+0x00417e ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004180 ffff 6fef .word	0xffff	; ???? | ldi	r22, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x004182 ffff 7fef .word	0xffff	; ???? | ldi	r23, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x004184 ffff 49c0 .word	0xffff	; ???? | rjmp	.+146    	;  0x4218 | F new code placed in erased golden FLASH
+0x004186 ffff 6a0f .word	0xffff	; ???? | add	r22, r26 | F new code placed in erased golden FLASH
+0x004188 ffff 7b1f .word	0xffff	; ???? | adc	r23, r27 | F new code placed in erased golden FLASH
+0x00418a ffff 072f .word	0xffff	; ???? | mov	r16, r23 | F new code placed in erased golden FLASH
+0x00418c ffff 1127 .word	0xffff	; ???? | eor	r17, r17 | F new code placed in erased golden FLASH
+0x00418e ffff d801 .word	0xffff	; ???? | movw	r26, r16 | F new code placed in erased golden FLASH
+0x004190 ffff ae0f .word	0xffff	; ???? | add	r26, r30 | F new code placed in erased golden FLASH
+0x004192 ffff bf1f .word	0xffff	; ???? | adc	r27, r31 | F new code placed in erased golden FLASH
+0x004194 ffff 8a2f .word	0xffff	; ???? | mov	r24, r26 | F new code placed in erased golden FLASH
+0x004196 ffff 9a2f .word	0xffff	; ???? | mov	r25, r26 | F new code placed in erased golden FLASH
+0x004198 ffff 991f .word	0xffff	; ???? | adc	r25, r25 | F new code placed in erased golden FLASH
+0x00419a ffff 9927 .word	0xffff	; ???? | eor	r25, r25 | F new code placed in erased golden FLASH
+0x00419c ffff 991f .word	0xffff	; ???? | adc	r25, r25 | F new code placed in erased golden FLASH
+0x00419e ffff c02f .word	0xffff	; ???? | mov	r28, r16 | F new code placed in erased golden FLASH
+0x0041a0 ffff ce27 .word	0xffff	; ???? | eor	r28, r30 | F new code placed in erased golden FLASH
+0x0041a2 ffff d0e0 .word	0xffff	; ???? | ldi	r29, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0041a4 ffff c095 .word	0xffff	; ???? | com	r28 | F new code placed in erased golden FLASH
+0x0041a6 ffff d095 .word	0xffff	; ???? | com	r29 | F new code placed in erased golden FLASH
+0x0041a8 ffff 2a2f .word	0xffff	; ???? | mov	r18, r26 | F new code placed in erased golden FLASH
+0x0041aa ffff 2027 .word	0xffff	; ???? | eor	r18, r16 | F new code placed in erased golden FLASH
+0x0041ac ffff 30e0 .word	0xffff	; ???? | ldi	r19, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0041ae ffff 2c23 .word	0xffff	; ???? | and	r18, r28 | F new code placed in erased golden FLASH
+0x0041b0 ffff 3d23 .word	0xffff	; ???? | and	r19, r29 | F new code placed in erased golden FLASH
+0x0041b2 ffff 220f .word	0xffff	; ???? | add	r18, r18 | F new code placed in erased golden FLASH
+0x0041b4 ffff 232f .word	0xffff	; ???? | mov	r18, r19 | F new code placed in erased golden FLASH
+0x0041b6 ffff 221f .word	0xffff	; ???? | adc	r18, r18 | F new code placed in erased golden FLASH
+0x0041b8 ffff 330b .word	0xffff	; ???? | sbc	r19, r19 | F new code placed in erased golden FLASH
+0x0041ba ffff c1e0 .word	0xffff	; ???? | ldi	r28, 0x01	; 1 | F new code placed in erased golden FLASH
+0x0041bc ffff af3f .word	0xffff	; ???? | cpi	r26, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x0041be ffff b105 .word	0xffff	; ???? | cpc	r27, r1 | F new code placed in erased golden FLASH
+0x0041c0 ffff 09f0 .word	0xffff	; ???? | breq	.+2      	;  0x41c4 | F new code placed in erased golden FLASH
+0x0041c2 ffff 08f4 .word	0xffff	; ???? | brcc	.+2      	;  0x41c6 | F new code placed in erased golden FLASH
+0x0041c4 ffff c0e0 .word	0xffff	; ???? | ldi	r28, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0041c6 ffff 50e0 .word	0xffff	; ???? | ldi	r21, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0041c8 ffff 8111 .word	0xffff	; ???? | cpse	r24, r1 | F new code placed in erased golden FLASH
+0x0041ca ffff 01c0 .word	0xffff	; ???? | rjmp	.+2      	;  0x41ce | F new code placed in erased golden FLASH
+0x0041cc ffff 52e0 .word	0xffff	; ???? | ldi	r21, 0x02	; 2 | F new code placed in erased golden FLASH
+0x0041ce ffff 892f .word	0xffff	; ???? | mov	r24, r25 | F new code placed in erased golden FLASH
+0x0041d0 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0041d2 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0041d4 ffff 8c2b .word	0xffff	; ???? | or	r24, r28 | F new code placed in erased golden FLASH
+0x0041d6 ffff e901 .word	0xffff	; ???? | movw	r28, r18 | F new code placed in erased golden FLASH
+0x0041d8 ffff 33e0 .word	0xffff	; ???? | ldi	r19, 0x03	; 3 | F new code placed in erased golden FLASH
+0x0041da ffff cc0f .word	0xffff	; ???? | add	r28, r28 | F new code placed in erased golden FLASH
+0x0041dc ffff dd1f .word	0xffff	; ???? | adc	r29, r29 | F new code placed in erased golden FLASH
+0x0041de ffff 3a95 .word	0xffff	; ???? | dec	r19 | F new code placed in erased golden FLASH
+0x0041e0 ffff e1f7 .word	0xffff	; ???? | brne	.-8      	;  0x41da | F new code placed in erased golden FLASH
+0x0041e2 ffff 8c2b .word	0xffff	; ???? | or	r24, r28 | F new code placed in erased golden FLASH
+0x0041e4 ffff 2927 .word	0xffff	; ???? | eor	r18, r25 | F new code placed in erased golden FLASH
+0x0041e6 ffff 90e1 .word	0xffff	; ???? | ldi	r25, 0x10	; 16 | F new code placed in erased golden FLASH
+0x0041e8 ffff 299f .word	0xffff	; ???? | mul	r18, r25 | F new code placed in erased golden FLASH
+0x0041ea ffff 9001 .word	0xffff	; ???? | movw	r18, r0 | F new code placed in erased golden FLASH
+0x0041ec ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x0041ee ffff 822b .word	0xffff	; ???? | or	r24, r18 | F new code placed in erased golden FLASH
+0x0041f0 ffff 852b .word	0xffff	; ???? | or	r24, r21 | F new code placed in erased golden FLASH
+0x0041f2 ffff 9801 .word	0xffff	; ???? | movw	r18, r16 | F new code placed in erased golden FLASH
+0x0041f4 ffff 2f70 .word	0xffff	; ???? | andi	r18, 0x0F	; 15 | F new code placed in erased golden FLASH
+0x0041f6 ffff 3327 .word	0xffff	; ???? | eor	r19, r19 | F new code placed in erased golden FLASH
+0x0041f8 ffff ef70 .word	0xffff	; ???? | andi	r30, 0x0F	; 15 | F new code placed in erased golden FLASH
+0x0041fa ffff ff27 .word	0xffff	; ???? | eor	r31, r31 | F new code placed in erased golden FLASH
+0x0041fc ffff 2e0f .word	0xffff	; ???? | add	r18, r30 | F new code placed in erased golden FLASH
+0x0041fe ffff 3f1f .word	0xffff	; ???? | adc	r19, r31 | F new code placed in erased golden FLASH
+0x004200 ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004202 ffff 2031 .word	0xffff	; ???? | cpi	r18, 0x10	; 16 | F new code placed in erased golden FLASH
+0x004204 ffff 3105 .word	0xffff	; ???? | cpc	r19, r1 | F new code placed in erased golden FLASH
+0x004206 ffff 08f0 .word	0xffff	; ???? | brcs	.+2      	;  0x420a | F new code placed in erased golden FLASH
+0x004208 ffff 90e2 .word	0xffff	; ???? | ldi	r25, 0x20	; 32 | F new code placed in erased golden FLASH
+0x00420a ffff 892b .word	0xffff	; ???? | or	r24, r25 | F new code placed in erased golden FLASH
+0x00420c ffff 7a2f .word	0xffff	; ???? | mov	r23, r26 | F new code placed in erased golden FLASH
+0x00420e ffff af3f .word	0xffff	; ???? | cpi	r26, 0xFF	; 255 | F new code placed in erased golden FLASH
+0x004210 ffff b105 .word	0xffff	; ???? | cpc	r27, r1 | F new code placed in erased golden FLASH
+0x004212 ffff 11f0 .word	0xffff	; ???? | breq	.+4      	;  0x4218 | F new code placed in erased golden FLASH
+0x004214 ffff 08f0 .word	0xffff	; ???? | brcs	.+2      	;  0x4218 | F new code placed in erased golden FLASH
+0x004216 ffff b4cf .word	0xffff	; ???? | rjmp	.-152    	;  0x4180 | F new code placed in erased golden FLASH
+0x004218 ffff 407c .word	0xffff	; ???? | andi	r20, 0xC0	; 192 | F new code placed in erased golden FLASH
+0x00421a ffff 482b .word	0xffff	; ???? | or	r20, r24 | F new code placed in erased golden FLASH
+0x00421c ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x00421e ffff 842f .word	0xffff	; ???? | mov	r24, r20 | F new code placed in erased golden FLASH
+0x004220 ffff df91 .word	0xffff	; ???? | pop	r29 | F new code placed in erased golden FLASH
+0x004222 ffff cf91 .word	0xffff	; ???? | pop	r28 | F new code placed in erased golden FLASH
+0x004224 ffff 1f91 .word	0xffff	; ???? | pop	r17 | F new code placed in erased golden FLASH
+0x004226 ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x004228 ffff ff90 .word	0xffff	; ???? | pop	r15 | F new code placed in erased golden FLASH
+0x00422a ffff ef90 .word	0xffff	; ???? | pop	r14 | F new code placed in erased golden FLASH
+0x00422c ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00422e ffff ff92 .word	0xffff	; ???? | push	r15 | F new code placed in erased golden FLASH
+0x004230 ffff 0f93 .word	0xffff	; ???? | push	r16 | F new code placed in erased golden FLASH
+0x004232 ffff 1f93 .word	0xffff	; ???? | push	r17 | F new code placed in erased golden FLASH
+0x004234 ffff cf93 .word	0xffff	; ???? | push	r28 | F new code placed in erased golden FLASH
+0x004236 ffff df93 .word	0xffff	; ???? | push	r29 | F new code placed in erased golden FLASH
+0x004238 ffff cdb7 .word	0xffff	; ???? | in	r28, 0x3d	; 61 | F new code placed in erased golden FLASH
+0x00423a ffff deb7 .word	0xffff	; ???? | in	r29, 0x3e	; 62 | F new code placed in erased golden FLASH
+0x00423c ffff 2897 .word	0xffff	; ???? | sbiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x00423e ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x004240 ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x004242 ffff f62e .word	0xffff	; ???? | mov	r15, r22 | F new code placed in erased golden FLASH
+0x004244 ffff 00e2 .word	0xffff	; ???? | ldi	r16, 0x20	; 32 | F new code placed in erased golden FLASH
+0x004246 ffff 1ee4 .word	0xffff	; ???? | ldi	r17, 0x4E	; 78 | F new code placed in erased golden FLASH
+0x004248 ffff 081b .word	0xffff	; ???? | sub	r16, r24 | F new code placed in erased golden FLASH
+0x00424a ffff 190b .word	0xffff	; ???? | sbc	r17, r25 | F new code placed in erased golden FLASH
+0x00424c ffff b801 .word	0xffff	; ???? | movw	r22, r16 | F new code placed in erased golden FLASH
+0x00424e ffff 82e7 .word	0xffff	; ???? | ldi	r24, 0x72	; 114 | F new code placed in erased golden FLASH
+0x004250 ffff 92e0 .word	0xffff	; ???? | ldi	r25, 0x02	; 2 | F new code placed in erased golden FLASH
+0x004252 ffff 0e941520 .word	0xffff	; ???? | call	0x402a	;  0x402a | F new code placed in erased golden FLASH
+0x004254 ffff 1520 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004256 ffff 0b83 .word	0xffff	; ???? | std	Y+3, r16	; 0x03 | F new code placed in erased golden FLASH
+0x004258 ffff 1c83 .word	0xffff	; ???? | std	Y+4, r17	; 0x04 | F new code placed in erased golden FLASH
+0x00425a ffff 612f .word	0xffff	; ???? | mov	r22, r17 | F new code placed in erased golden FLASH
+0x00425c ffff 7727 .word	0xffff	; ???? | eor	r23, r23 | F new code placed in erased golden FLASH
+0x00425e ffff 660f .word	0xffff	; ???? | add	r22, r22 | F new code placed in erased golden FLASH
+0x004260 ffff 771f .word	0xffff	; ???? | adc	r23, r23 | F new code placed in erased golden FLASH
+0x004262 ffff 6d83 .word	0xffff	; ???? | std	Y+5, r22	; 0x05 | F new code placed in erased golden FLASH
+0x004264 ffff 7e83 .word	0xffff	; ???? | std	Y+6, r23	; 0x06 | F new code placed in erased golden FLASH
+0x004266 ffff 9c01 .word	0xffff	; ???? | movw	r18, r24 | F new code placed in erased golden FLASH
+0x004268 ffff 402f .word	0xffff	; ???? | mov	r20, r16 | F new code placed in erased golden FLASH
+0x00426a ffff 5c81 .word	0xffff	; ???? | ldd	r21, Y+4	; 0x04 | F new code placed in erased golden FLASH
+0x00426c ffff 7e81 .word	0xffff	; ???? | ldd	r23, Y+6	; 0x06 | F new code placed in erased golden FLASH
+0x00426e ffff 8f2d .word	0xffff	; ???? | mov	r24, r15 | F new code placed in erased golden FLASH
+0x004270 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x004272 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x004274 ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004276 ffff 2896 .word	0xffff	; ???? | adiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x004278 ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x00427a ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x00427c ffff df91 .word	0xffff	; ???? | pop	r29 | F new code placed in erased golden FLASH
+0x00427e ffff cf91 .word	0xffff	; ???? | pop	r28 | F new code placed in erased golden FLASH
+0x004280 ffff 1f91 .word	0xffff	; ???? | pop	r17 | F new code placed in erased golden FLASH
+0x004282 ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x004284 ffff ff90 .word	0xffff	; ???? | pop	r15 | F new code placed in erased golden FLASH
+0x004286 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004288 ffff ef92 .word	0xffff	; ???? | push	r14 | F new code placed in erased golden FLASH
+0x00428a ffff ff92 .word	0xffff	; ???? | push	r15 | F new code placed in erased golden FLASH
+0x00428c ffff 0f93 .word	0xffff	; ???? | push	r16 | F new code placed in erased golden FLASH
+0x00428e ffff 1f93 .word	0xffff	; ???? | push	r17 | F new code placed in erased golden FLASH
+0x004290 ffff cf93 .word	0xffff	; ???? | push	r28 | F new code placed in erased golden FLASH
+0x004292 ffff df93 .word	0xffff	; ???? | push	r29 | F new code placed in erased golden FLASH
+0x004294 ffff cdb7 .word	0xffff	; ???? | in	r28, 0x3d	; 61 | F new code placed in erased golden FLASH
+0x004296 ffff deb7 .word	0xffff	; ???? | in	r29, 0x3e	; 62 | F new code placed in erased golden FLASH
+0x004298 ffff 2897 .word	0xffff	; ???? | sbiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x00429a ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x00429c ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x00429e ffff e92e .word	0xffff	; ???? | mov	r14, r25 | F new code placed in erased golden FLASH
+0x0042a0 ffff f62e .word	0xffff	; ???? | mov	r15, r22 | F new code placed in erased golden FLASH
+0x0042a2 ffff 8a01 .word	0xffff	; ???? | movw	r16, r20 | F new code placed in erased golden FLASH
+0x0042a4 ffff 682f .word	0xffff	; ???? | mov	r22, r24 | F new code placed in erased golden FLASH
+0x0042a6 ffff 792f .word	0xffff	; ???? | mov	r23, r25 | F new code placed in erased golden FLASH
+0x0042a8 ffff 8ce0 .word	0xffff	; ???? | ldi	r24, 0x0C	; 12 | F new code placed in erased golden FLASH
+0x0042aa ffff 92e0 .word	0xffff	; ???? | ldi	r25, 0x02	; 2 | F new code placed in erased golden FLASH
+0x0042ac ffff 0e941520 .word	0xffff	; ???? | call	0x402a	;  0x402a | F new code placed in erased golden FLASH
+0x0042ae ffff 1520 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0042b0 ffff 9c01 .word	0xffff	; ???? | movw	r18, r24 | F new code placed in erased golden FLASH
+0x0042b2 ffff 200f .word	0xffff	; ???? | add	r18, r16 | F new code placed in erased golden FLASH
+0x0042b4 ffff 311f .word	0xffff	; ???? | adc	r19, r17 | F new code placed in erased golden FLASH
+0x0042b6 ffff 2095 .word	0xffff	; ???? | com	r18 | F new code placed in erased golden FLASH
+0x0042b8 ffff 3095 .word	0xffff	; ???? | com	r19 | F new code placed in erased golden FLASH
+0x0042ba ffff 2983 .word	0xffff	; ???? | std	Y+1, r18	; 0x01 | F new code placed in erased golden FLASH
+0x0042bc ffff 3a83 .word	0xffff	; ???? | std	Y+2, r19	; 0x02 | F new code placed in erased golden FLASH
+0x0042be ffff 0b83 .word	0xffff	; ???? | std	Y+3, r16	; 0x03 | F new code placed in erased golden FLASH
+0x0042c0 ffff 1c83 .word	0xffff	; ???? | std	Y+4, r17	; 0x04 | F new code placed in erased golden FLASH
+0x0042c2 ffff 6e2d .word	0xffff	; ???? | mov	r22, r14 | F new code placed in erased golden FLASH
+0x0042c4 ffff 70e0 .word	0xffff	; ???? | ldi	r23, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0042c6 ffff 660f .word	0xffff	; ???? | add	r22, r22 | F new code placed in erased golden FLASH
+0x0042c8 ffff 771f .word	0xffff	; ???? | adc	r23, r23 | F new code placed in erased golden FLASH
+0x0042ca ffff 6d83 .word	0xffff	; ???? | std	Y+5, r22	; 0x05 | F new code placed in erased golden FLASH
+0x0042cc ffff 7e83 .word	0xffff	; ???? | std	Y+6, r23	; 0x06 | F new code placed in erased golden FLASH
+0x0042ce ffff 8f2d .word	0xffff	; ???? | mov	r24, r15 | F new code placed in erased golden FLASH
+0x0042d0 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0042d2 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0042d4 ffff 3a81 .word	0xffff	; ???? | ldd	r19, Y+2	; 0x02 | F new code placed in erased golden FLASH
+0x0042d6 ffff 402f .word	0xffff	; ???? | mov	r20, r16 | F new code placed in erased golden FLASH
+0x0042d8 ffff 5c81 .word	0xffff	; ???? | ldd	r21, Y+4	; 0x04 | F new code placed in erased golden FLASH
+0x0042da ffff 7e81 .word	0xffff	; ???? | ldd	r23, Y+6	; 0x06 | F new code placed in erased golden FLASH
+0x0042dc ffff 8360 .word	0xffff	; ???? | ori	r24, 0x03	; 3 | F new code placed in erased golden FLASH
+0x0042de ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0042e0 ffff 2896 .word	0xffff	; ???? | adiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x0042e2 ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x0042e4 ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x0042e6 ffff df91 .word	0xffff	; ???? | pop	r29 | F new code placed in erased golden FLASH
+0x0042e8 ffff cf91 .word	0xffff	; ???? | pop	r28 | F new code placed in erased golden FLASH
+0x0042ea ffff 1f91 .word	0xffff	; ???? | pop	r17 | F new code placed in erased golden FLASH
+0x0042ec ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x0042ee ffff ff90 .word	0xffff	; ???? | pop	r15 | F new code placed in erased golden FLASH
+0x0042f0 ffff ef90 .word	0xffff	; ???? | pop	r14 | F new code placed in erased golden FLASH
+0x0042f2 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0042f4 ffff ef92 .word	0xffff	; ???? | push	r14 | F new code placed in erased golden FLASH
+0x0042f6 ffff ff92 .word	0xffff	; ???? | push	r15 | F new code placed in erased golden FLASH
+0x0042f8 ffff 0f93 .word	0xffff	; ???? | push	r16 | F new code placed in erased golden FLASH
+0x0042fa ffff 1f93 .word	0xffff	; ???? | push	r17 | F new code placed in erased golden FLASH
+0x0042fc ffff cf93 .word	0xffff	; ???? | push	r28 | F new code placed in erased golden FLASH
+0x0042fe ffff df93 .word	0xffff	; ???? | push	r29 | F new code placed in erased golden FLASH
+0x004300 ffff cdb7 .word	0xffff	; ???? | in	r28, 0x3d	; 61 | F new code placed in erased golden FLASH
+0x004302 ffff deb7 .word	0xffff	; ???? | in	r29, 0x3e	; 62 | F new code placed in erased golden FLASH
+0x004304 ffff 2897 .word	0xffff	; ???? | sbiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x004306 ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x004308 ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x00430a ffff f82e .word	0xffff	; ???? | mov	r15, r24 | F new code placed in erased golden FLASH
+0x00430c ffff 092f .word	0xffff	; ???? | mov	r16, r25 | F new code placed in erased golden FLASH
+0x00430e ffff 162f .word	0xffff	; ???? | mov	r17, r22 | F new code placed in erased golden FLASH
+0x004310 ffff e42e .word	0xffff	; ???? | mov	r14, r20 | F new code placed in erased golden FLASH
+0x004312 ffff 682f .word	0xffff	; ???? | mov	r22, r24 | F new code placed in erased golden FLASH
+0x004314 ffff 792f .word	0xffff	; ???? | mov	r23, r25 | F new code placed in erased golden FLASH
+0x004316 ffff 88e8 .word	0xffff	; ???? | ldi	r24, 0x88	; 136 | F new code placed in erased golden FLASH
+0x004318 ffff 91e4 .word	0xffff	; ???? | ldi	r25, 0x41	; 65 | F new code placed in erased golden FLASH
+0x00431a ffff 0e940020 .word	0xffff	; ???? | call	0x4000	;  0x4000 | F new code placed in erased golden FLASH
+0x00431c ffff 0020 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00431e ffff 9c01 .word	0xffff	; ???? | movw	r18, r24 | F new code placed in erased golden FLASH
+0x004320 ffff 3058 .word	0xffff	; ???? | subi	r19, 0x80	; 128 | F new code placed in erased golden FLASH
+0x004322 ffff 80e0 .word	0xffff	; ???? | ldi	r24, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004324 ffff 402f .word	0xffff	; ???? | mov	r20, r16 | F new code placed in erased golden FLASH
+0x004326 ffff 582f .word	0xffff	; ???? | mov	r21, r24 | F new code placed in erased golden FLASH
+0x004328 ffff 4038 .word	0xffff	; ???? | cpi	r20, 0x80	; 128 | F new code placed in erased golden FLASH
+0x00432a ffff 5105 .word	0xffff	; ???? | cpc	r21, r1 | F new code placed in erased golden FLASH
+0x00432c ffff 08f0 .word	0xffff	; ???? | brcs	.+2      	;  0x4330 | F new code placed in erased golden FLASH
+0x00432e ffff 5a95 .word	0xffff	; ???? | dec	r21 | F new code placed in erased golden FLASH
+0x004330 ffff 2983 .word	0xffff	; ???? | std	Y+1, r18	; 0x01 | F new code placed in erased golden FLASH
+0x004332 ffff 3a83 .word	0xffff	; ???? | std	Y+2, r19	; 0x02 | F new code placed in erased golden FLASH
+0x004334 ffff 81e4 .word	0xffff	; ???? | ldi	r24, 0x41	; 65 | F new code placed in erased golden FLASH
+0x004336 ffff 849f .word	0xffff	; ???? | mul	r24, r20 | F new code placed in erased golden FLASH
+0x004338 ffff b001 .word	0xffff	; ???? | movw	r22, r0 | F new code placed in erased golden FLASH
+0x00433a ffff 859f .word	0xffff	; ???? | mul	r24, r21 | F new code placed in erased golden FLASH
+0x00433c ffff 700d .word	0xffff	; ???? | add	r23, r0 | F new code placed in erased golden FLASH
+0x00433e ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004340 ffff 6d83 .word	0xffff	; ???? | std	Y+5, r22	; 0x05 | F new code placed in erased golden FLASH
+0x004342 ffff 7e83 .word	0xffff	; ???? | std	Y+6, r23	; 0x06 | F new code placed in erased golden FLASH
+0x004344 ffff 812f .word	0xffff	; ???? | mov	r24, r17 | F new code placed in erased golden FLASH
+0x004346 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x004348 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x00434a ffff 3a81 .word	0xffff	; ???? | ldd	r19, Y+2	; 0x02 | F new code placed in erased golden FLASH
+0x00434c ffff 7e81 .word	0xffff	; ???? | ldd	r23, Y+6	; 0x06 | F new code placed in erased golden FLASH
+0x00434e ffff 4f2d .word	0xffff	; ???? | mov	r20, r15 | F new code placed in erased golden FLASH
+0x004350 ffff 502f .word	0xffff	; ???? | mov	r21, r16 | F new code placed in erased golden FLASH
+0x004352 ffff 8e29 .word	0xffff	; ???? | or	r24, r14 | F new code placed in erased golden FLASH
+0x004354 ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x004356 ffff 2896 .word	0xffff	; ???? | adiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x004358 ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x00435a ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x00435c ffff df91 .word	0xffff	; ???? | pop	r29 | F new code placed in erased golden FLASH
+0x00435e ffff cf91 .word	0xffff	; ???? | pop	r28 | F new code placed in erased golden FLASH
+0x004360 ffff 1f91 .word	0xffff	; ???? | pop	r17 | F new code placed in erased golden FLASH
+0x004362 ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x004364 ffff ff90 .word	0xffff	; ???? | pop	r15 | F new code placed in erased golden FLASH
+0x004366 ffff ef90 .word	0xffff	; ???? | pop	r14 | F new code placed in erased golden FLASH
+0x004368 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00436a ffff 8295 .word	0xffff	; ???? | swap	r24 | F new code placed in erased golden FLASH
+0x00436c ffff 8170 .word	0xffff	; ???? | andi	r24, 0x01	; 1 | F new code placed in erased golden FLASH
+0x00436e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004370 ffff 8f92 .word	0xffff	; ???? | push	r8 | F new code placed in erased golden FLASH
+0x004372 ffff 9f92 .word	0xffff	; ???? | push	r9 | F new code placed in erased golden FLASH
+0x004374 ffff af92 .word	0xffff	; ???? | push	r10 | F new code placed in erased golden FLASH
+0x004376 ffff bf92 .word	0xffff	; ???? | push	r11 | F new code placed in erased golden FLASH
+0x004378 ffff 0f93 .word	0xffff	; ???? | push	r16 | F new code placed in erased golden FLASH
+0x00437a ffff cf93 .word	0xffff	; ???? | push	r28 | F new code placed in erased golden FLASH
+0x00437c ffff df93 .word	0xffff	; ???? | push	r29 | F new code placed in erased golden FLASH
+0x00437e ffff cdb7 .word	0xffff	; ???? | in	r28, 0x3d	; 61 | F new code placed in erased golden FLASH
+0x004380 ffff deb7 .word	0xffff	; ???? | in	r29, 0x3e	; 62 | F new code placed in erased golden FLASH
+0x004382 ffff 2897 .word	0xffff	; ???? | sbiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x004384 ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x004386 ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x004388 ffff a02f .word	0xffff	; ???? | mov	r26, r16 | F new code placed in erased golden FLASH
+0x00438a ffff aa1f .word	0xffff	; ???? | adc	r26, r26 | F new code placed in erased golden FLASH
+0x00438c ffff aa27 .word	0xffff	; ???? | eor	r26, r26 | F new code placed in erased golden FLASH
+0x00438e ffff aa1f .word	0xffff	; ???? | adc	r26, r26 | F new code placed in erased golden FLASH
+0x004390 ffff b8e0 .word	0xffff	; ???? | ldi	r27, 0x08	; 8 | F new code placed in erased golden FLASH
+0x004392 ffff e92f .word	0xffff	; ???? | mov	r30, r25 | F new code placed in erased golden FLASH
+0x004394 ffff 4b01 .word	0xffff	; ???? | movw	r8, r22 | F new code placed in erased golden FLASH
+0x004396 ffff 5c01 .word	0xffff	; ???? | movw	r10, r24 | F new code placed in erased golden FLASH
+0x004398 ffff 8824 .word	0xffff	; ???? | eor	r8, r8 | F new code placed in erased golden FLASH
+0x00439a ffff b7fc .word	0xffff	; ???? | sbrc	r11, 7 | F new code placed in erased golden FLASH
+0x00439c ffff 8394 .word	0xffff	; ???? | inc	r8 | F new code placed in erased golden FLASH
+0x00439e ffff 9924 .word	0xffff	; ???? | eor	r9, r9 | F new code placed in erased golden FLASH
+0x0043a0 ffff aa24 .word	0xffff	; ???? | eor	r10, r10 | F new code placed in erased golden FLASH
+0x0043a2 ffff bb24 .word	0xffff	; ???? | eor	r11, r11 | F new code placed in erased golden FLASH
+0x0043a4 ffff 660f .word	0xffff	; ???? | add	r22, r22 | F new code placed in erased golden FLASH
+0x0043a6 ffff 771f .word	0xffff	; ???? | adc	r23, r23 | F new code placed in erased golden FLASH
+0x0043a8 ffff 881f .word	0xffff	; ???? | adc	r24, r24 | F new code placed in erased golden FLASH
+0x0043aa ffff 991f .word	0xffff	; ???? | adc	r25, r25 | F new code placed in erased golden FLASH
+0x0043ac ffff f02f .word	0xffff	; ???? | mov	r31, r16 | F new code placed in erased golden FLASH
+0x0043ae ffff f170 .word	0xffff	; ???? | andi	r31, 0x01	; 1 | F new code placed in erased golden FLASH
+0x0043b0 ffff f815 .word	0xffff	; ???? | cp	r31, r8 | F new code placed in erased golden FLASH
+0x0043b2 ffff 21f0 .word	0xffff	; ???? | breq	.+8      	;  0x43bc | F new code placed in erased golden FLASH
+0x0043b4 ffff 6227 .word	0xffff	; ???? | eor	r22, r18 | F new code placed in erased golden FLASH
+0x0043b6 ffff 7327 .word	0xffff	; ???? | eor	r23, r19 | F new code placed in erased golden FLASH
+0x0043b8 ffff 8427 .word	0xffff	; ???? | eor	r24, r20 | F new code placed in erased golden FLASH
+0x0043ba ffff 9527 .word	0xffff	; ???? | eor	r25, r21 | F new code placed in erased golden FLASH
+0x0043bc ffff 0695 .word	0xffff	; ???? | lsr	r16 | F new code placed in erased golden FLASH
+0x0043be ffff b150 .word	0xffff	; ???? | subi	r27, 0x01	; 1 | F new code placed in erased golden FLASH
+0x0043c0 ffff 41f7 .word	0xffff	; ???? | brne	.-48     	;  0x4392 | F new code placed in erased golden FLASH
+0x0043c2 ffff 6983 .word	0xffff	; ???? | std	Y+1, r22	; 0x01 | F new code placed in erased golden FLASH
+0x0043c4 ffff 7a83 .word	0xffff	; ???? | std	Y+2, r23	; 0x02 | F new code placed in erased golden FLASH
+0x0043c6 ffff 8b83 .word	0xffff	; ???? | std	Y+3, r24	; 0x03 | F new code placed in erased golden FLASH
+0x0043c8 ffff 9c83 .word	0xffff	; ???? | std	Y+4, r25	; 0x04 | F new code placed in erased golden FLASH
+0x0043ca ffff ee0f .word	0xffff	; ???? | add	r30, r30 | F new code placed in erased golden FLASH
+0x0043cc ffff ee0f .word	0xffff	; ???? | add	r30, r30 | F new code placed in erased golden FLASH
+0x0043ce ffff e072 .word	0xffff	; ???? | andi	r30, 0x20	; 32 | F new code placed in erased golden FLASH
+0x0043d0 ffff 3a2f .word	0xffff	; ???? | mov	r19, r26 | F new code placed in erased golden FLASH
+0x0043d2 ffff 3260 .word	0xffff	; ???? | ori	r19, 0x02	; 2 | F new code placed in erased golden FLASH
+0x0043d4 ffff e32b .word	0xffff	; ???? | or	r30, r19 | F new code placed in erased golden FLASH
+0x0043d6 ffff 262f .word	0xffff	; ???? | mov	r18, r22 | F new code placed in erased golden FLASH
+0x0043d8 ffff 3a81 .word	0xffff	; ???? | ldd	r19, Y+2	; 0x02 | F new code placed in erased golden FLASH
+0x0043da ffff 4b81 .word	0xffff	; ???? | ldd	r20, Y+3	; 0x03 | F new code placed in erased golden FLASH
+0x0043dc ffff 5c81 .word	0xffff	; ???? | ldd	r21, Y+4	; 0x04 | F new code placed in erased golden FLASH
+0x0043de ffff 6e2f .word	0xffff	; ???? | mov	r22, r30 | F new code placed in erased golden FLASH
+0x0043e0 ffff 70e0 .word	0xffff	; ???? | ldi	r23, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0043e2 ffff 80e0 .word	0xffff	; ???? | ldi	r24, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0043e4 ffff 90e0 .word	0xffff	; ???? | ldi	r25, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0043e6 ffff 2896 .word	0xffff	; ???? | adiw	r28, 0x08	; 8 | F new code placed in erased golden FLASH
+0x0043e8 ffff cdbf .word	0xffff	; ???? | out	0x3d, r28	; 61 | F new code placed in erased golden FLASH
+0x0043ea ffff debf .word	0xffff	; ???? | out	0x3e, r29	; 62 | F new code placed in erased golden FLASH
+0x0043ec ffff df91 .word	0xffff	; ???? | pop	r29 | F new code placed in erased golden FLASH
+0x0043ee ffff cf91 .word	0xffff	; ???? | pop	r28 | F new code placed in erased golden FLASH
+0x0043f0 ffff 0f91 .word	0xffff	; ???? | pop	r16 | F new code placed in erased golden FLASH
+0x0043f2 ffff bf90 .word	0xffff	; ???? | pop	r11 | F new code placed in erased golden FLASH
+0x0043f4 ffff af90 .word	0xffff	; ???? | pop	r10 | F new code placed in erased golden FLASH
+0x0043f6 ffff 9f90 .word	0xffff	; ???? | pop	r9 | F new code placed in erased golden FLASH
+0x0043f8 ffff 8f90 .word	0xffff	; ???? | pop	r8 | F new code placed in erased golden FLASH
+0x0043fa ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x0043fc ffff 82e0 .word	0xffff	; ???? | ldi	r24, 0x02	; 2 | F new code placed in erased golden FLASH
+0x0043fe ffff 80936606 .word	0xffff	; ???? | sts	0x0666, r24	;  0x800666 | F new code placed in erased golden FLASH
+0x004400 ffff 6606 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004402 ffff 80e1 .word	0xffff	; ???? | ldi	r24, 0x10	; 16 | F new code placed in erased golden FLASH
+0x004404 ffff 80938506 .word	0xffff	; ???? | sts	0x0685, r24	;  0x800685 | F new code placed in erased golden FLASH
+0x004406 ffff 8506 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004408 ffff 80eb .word	0xffff	; ???? | ldi	r24, 0xB0	; 176 | F new code placed in erased golden FLASH
+0x00440a ffff 80938106 .word	0xffff	; ???? | sts	0x0681, r24	;  0x800681 | F new code placed in erased golden FLASH
+0x00440c ffff 8106 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00440e ffff 80e5 .word	0xffff	; ???? | ldi	r24, 0x50	; 80 | F new code placed in erased golden FLASH
+0x004410 ffff 8093c00a .word	0xffff	; ???? | sts	0x0AC0, r24	;  0x800ac0 | F new code placed in erased golden FLASH
+0x004412 ffff c00a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004414 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004416 ffff 80e1 .word	0xffff	; ???? | ldi	r24, 0x10	; 16 | F new code placed in erased golden FLASH
+0x004418 ffff 80938606 .word	0xffff	; ???? | sts	0x0686, r24	;  0x800686 | F new code placed in erased golden FLASH
+0x00441a ffff 8606 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00441c ffff 86e0 .word	0xffff	; ???? | ldi	r24, 0x06	; 6 | F new code placed in erased golden FLASH
+0x00441e ffff 8093c30a .word	0xffff	; ???? | sts	0x0AC3, r24	;  0x800ac3 | F new code placed in erased golden FLASH
+0x004420 ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004422 ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x004424 ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004426 ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x004428 ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x4422 | F new code placed in erased golden FLASH
+0x00442a ffff 90e1 .word	0xffff	; ???? | ldi	r25, 0x10	; 16 | F new code placed in erased golden FLASH
+0x00442c ffff 90938506 .word	0xffff	; ???? | sts	0x0685, r25	;  0x800685 | F new code placed in erased golden FLASH
+0x00442e ffff 8506 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004430 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004432 ffff 90e1 .word	0xffff	; ???? | ldi	r25, 0x10	; 16 | F new code placed in erased golden FLASH
+0x004434 ffff 90938606 .word	0xffff	; ???? | sts	0x0686, r25	;  0x800686 | F new code placed in erased golden FLASH
+0x004436 ffff 8606 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004438 ffff 8093c30a .word	0xffff	; ???? | sts	0x0AC3, r24	;  0x800ac3 | F new code placed in erased golden FLASH
+0x00443a ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00443c ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x00443e ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004440 ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x004442 ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x443c | F new code placed in erased golden FLASH
+0x004444 ffff 6093c30a .word	0xffff	; ???? | sts	0x0AC3, r22	;  0x800ac3 | F new code placed in erased golden FLASH
+0x004446 ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004448 ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x00444a ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00444c ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x00444e ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x4448 | F new code placed in erased golden FLASH
+0x004450 ffff 4093c30a .word	0xffff	; ???? | sts	0x0AC3, r20	;  0x800ac3 | F new code placed in erased golden FLASH
+0x004452 ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004454 ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x004456 ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004458 ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x00445a ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x4454 | F new code placed in erased golden FLASH
+0x00445c ffff 2093c30a .word	0xffff	; ???? | sts	0x0AC3, r18	;  0x800ac3 | F new code placed in erased golden FLASH
+0x00445e ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004460 ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x004462 ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004464 ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x004466 ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x4460 | F new code placed in erased golden FLASH
+0x004468 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00446a ffff 80e1 .word	0xffff	; ???? | ldi	r24, 0x10	; 16 | F new code placed in erased golden FLASH
+0x00446c ffff 80938606 .word	0xffff	; ???? | sts	0x0686, r24	;  0x800686 | F new code placed in erased golden FLASH
+0x00446e ffff 8606 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004470 ffff 85e0 .word	0xffff	; ???? | ldi	r24, 0x05	; 5 | F new code placed in erased golden FLASH
+0x004472 ffff 8093c30a .word	0xffff	; ???? | sts	0x0AC3, r24	;  0x800ac3 | F new code placed in erased golden FLASH
+0x004474 ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004476 ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x004478 ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00447a ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x00447c ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x4476 | F new code placed in erased golden FLASH
+0x00447e ffff 1092c30a .word	0xffff	; ???? | sts	0x0AC3, r1	;  0x800ac3 | F new code placed in erased golden FLASH
+0x004480 ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004482 ffff 8091c20a .word	0xffff	; ???? | lds	r24, 0x0AC2	;  0x800ac2 | F new code placed in erased golden FLASH
+0x004484 ffff c20a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004486 ffff 87ff .word	0xffff	; ???? | sbrs	r24, 7 | F new code placed in erased golden FLASH
+0x004488 ffff fccf .word	0xffff	; ???? | rjmp	.-8      	;  0x4482 | F new code placed in erased golden FLASH
+0x00448a ffff 9091c30a .word	0xffff	; ???? | lds	r25, 0x0AC3	;  0x800ac3 | F new code placed in erased golden FLASH
+0x00448c ffff c30a .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00448e ffff 20e1 .word	0xffff	; ???? | ldi	r18, 0x10	; 16 | F new code placed in erased golden FLASH
+0x004490 ffff 20938506 .word	0xffff	; ???? | sts	0x0685, r18	;  0x800685 | F new code placed in erased golden FLASH
+0x004492 ffff 8506 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004494 ffff 8927 .word	0xffff	; ???? | eor	r24, r25 | F new code placed in erased golden FLASH
+0x004496 ffff 9827 .word	0xffff	; ???? | eor	r25, r24 | F new code placed in erased golden FLASH
+0x004498 ffff 8927 .word	0xffff	; ???? | eor	r24, r25 | F new code placed in erased golden FLASH
+0x00449a ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00449c ffff 80935b21 .word	0xffff	; ???? | sts	0x215B, r24	;  0x80215b | F new code placed in erased golden FLASH
+0x00449e ffff 5b21 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0044a0 ffff 80e8 .word	0xffff	; ???? | ldi	r24, 0x80	; 128 | F new code placed in erased golden FLASH
+0x0044a2 ffff 80932606 .word	0xffff	; ???? | sts	0x0626, r24	;  0x800626 | F new code placed in erased golden FLASH
+0x0044a4 ffff 2606 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0044a6 ffff 90915921 .word	0xffff	; ???? | lds	r25, 0x2159	;  0x802159 | F new code placed in erased golden FLASH
+0x0044a8 ffff 5921 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0044aa ffff 9111 .word	0xffff	; ???? | cpse	r25, r1 | F new code placed in erased golden FLASH
+0x0044ac ffff 07c0 .word	0xffff	; ???? | rjmp	.+14     	;  0x44bc | F new code placed in erased golden FLASH
+0x0044ae ffff 617e .word	0xffff	; ???? | andi	r22, 0xE1	; 225 | F new code placed in erased golden FLASH
+0x0044b0 ffff 6260 .word	0xffff	; ???? | ori	r22, 0x02	; 2 | F new code placed in erased golden FLASH
+0x0044b2 ffff 84e0 .word	0xffff	; ???? | ldi	r24, 0x04	; 4 | F new code placed in erased golden FLASH
+0x0044b4 ffff 80935921 .word	0xffff	; ???? | sts	0x2159, r24	;  0x802159 | F new code placed in erased golden FLASH
+0x0044b6 ffff 5921 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x0044b8 ffff 94e0 .word	0xffff	; ???? | ldi	r25, 0x04	; 4 | F new code placed in erased golden FLASH
+0x0044ba ffff 2cc0 .word	0xffff	; ???? | rjmp	.+88     	;  0x4514 | F new code placed in erased golden FLASH
+0x0044bc ffff 4bef .word	0xffff	; ???? | ldi	r20, 0xFB	; 251 | F new code placed in erased golden FLASH
+0x0044be ffff 490f .word	0xffff	; ???? | add	r20, r25 | F new code placed in erased golden FLASH
+0x0044c0 ffff 242f .word	0xffff	; ???? | mov	r18, r20 | F new code placed in erased golden FLASH
+0x0044c2 ffff 221f .word	0xffff	; ???? | adc	r18, r18 | F new code placed in erased golden FLASH
+0x0044c4 ffff 2227 .word	0xffff	; ???? | eor	r18, r18 | F new code placed in erased golden FLASH
+0x0044c6 ffff 221f .word	0xffff	; ???? | adc	r18, r18 | F new code placed in erased golden FLASH
+0x0044c8 ffff 392f .word	0xffff	; ???? | mov	r19, r25 | F new code placed in erased golden FLASH
+0x0044ca ffff 3427 .word	0xffff	; ???? | eor	r19, r20 | F new code placed in erased golden FLASH
+0x0044cc ffff 3923 .word	0xffff	; ???? | and	r19, r25 | F new code placed in erased golden FLASH
+0x0044ce ffff 331f .word	0xffff	; ???? | adc	r19, r19 | F new code placed in erased golden FLASH
+0x0044d0 ffff 3327 .word	0xffff	; ???? | eor	r19, r19 | F new code placed in erased golden FLASH
+0x0044d2 ffff 331f .word	0xffff	; ???? | adc	r19, r19 | F new code placed in erased golden FLASH
+0x0044d4 ffff 862f .word	0xffff	; ???? | mov	r24, r22 | F new code placed in erased golden FLASH
+0x0044d6 ffff 807c .word	0xffff	; ???? | andi	r24, 0xC0	; 192 | F new code placed in erased golden FLASH
+0x0044d8 ffff 51e0 .word	0xffff	; ???? | ldi	r21, 0x01	; 1 | F new code placed in erased golden FLASH
+0x0044da ffff 9530 .word	0xffff	; ???? | cpi	r25, 0x05	; 5 | F new code placed in erased golden FLASH
+0x0044dc ffff 08f0 .word	0xffff	; ???? | brcs	.+2      	;  0x44e0 | F new code placed in erased golden FLASH
+0x0044de ffff 50e0 .word	0xffff	; ???? | ldi	r21, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0044e0 ffff 4423 .word	0xffff	; ???? | and	r20, r20 | F new code placed in erased golden FLASH
+0x0044e2 ffff d9f0 .word	0xffff	; ???? | breq	.+54     	;  0x451a | F new code placed in erased golden FLASH
+0x0044e4 ffff 40e0 .word	0xffff	; ???? | ldi	r20, 0x00	; 0 | F new code placed in erased golden FLASH
+0x0044e6 ffff 622f .word	0xffff	; ???? | mov	r22, r18 | F new code placed in erased golden FLASH
+0x0044e8 ffff 660f .word	0xffff	; ???? | add	r22, r22 | F new code placed in erased golden FLASH
+0x0044ea ffff 660f .word	0xffff	; ???? | add	r22, r22 | F new code placed in erased golden FLASH
+0x0044ec ffff 682b .word	0xffff	; ???? | or	r22, r24 | F new code placed in erased golden FLASH
+0x0044ee ffff 652b .word	0xffff	; ???? | or	r22, r21 | F new code placed in erased golden FLASH
+0x0044f0 ffff 832f .word	0xffff	; ???? | mov	r24, r19 | F new code placed in erased golden FLASH
+0x0044f2 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0044f4 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0044f6 ffff 880f .word	0xffff	; ???? | add	r24, r24 | F new code placed in erased golden FLASH
+0x0044f8 ffff 682b .word	0xffff	; ???? | or	r22, r24 | F new code placed in erased golden FLASH
+0x0044fa ffff 2327 .word	0xffff	; ???? | eor	r18, r19 | F new code placed in erased golden FLASH
+0x0044fc ffff 2295 .word	0xffff	; ???? | swap	r18 | F new code placed in erased golden FLASH
+0x0044fe ffff 207f .word	0xffff	; ???? | andi	r18, 0xF0	; 240 | F new code placed in erased golden FLASH
+0x004500 ffff 622b .word	0xffff	; ???? | or	r22, r18 | F new code placed in erased golden FLASH
+0x004502 ffff 642b .word	0xffff	; ???? | or	r22, r20 | F new code placed in erased golden FLASH
+0x004504 ffff 892f .word	0xffff	; ???? | mov	r24, r25 | F new code placed in erased golden FLASH
+0x004506 ffff 8f70 .word	0xffff	; ???? | andi	r24, 0x0F	; 15 | F new code placed in erased golden FLASH
+0x004508 ffff 8530 .word	0xffff	; ???? | cpi	r24, 0x05	; 5 | F new code placed in erased golden FLASH
+0x00450a ffff 48f0 .word	0xffff	; ???? | brcs	.+18     	;  0x451e | F new code placed in erased golden FLASH
+0x00450c ffff 80e0 .word	0xffff	; ???? | ldi	r24, 0x00	; 0 | F new code placed in erased golden FLASH
+0x00450e ffff 682b .word	0xffff	; ???? | or	r22, r24 | F new code placed in erased golden FLASH
+0x004510 ffff 9530 .word	0xffff	; ???? | cpi	r25, 0x05	; 5 | F new code placed in erased golden FLASH
+0x004512 ffff 79f2 .word	0xffff	; ???? | breq	.-98     	;  0x44b2 | F new code placed in erased golden FLASH
+0x004514 ffff 892f .word	0xffff	; ???? | mov	r24, r25 | F new code placed in erased golden FLASH
+0x004516 ffff 962f .word	0xffff	; ???? | mov	r25, r22 | F new code placed in erased golden FLASH
+0x004518 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00451a ffff 42e0 .word	0xffff	; ???? | ldi	r20, 0x02	; 2 | F new code placed in erased golden FLASH
+0x00451c ffff e4cf .word	0xffff	; ???? | rjmp	.-56     	;  0x44e6 | F new code placed in erased golden FLASH
+0x00451e ffff 80e2 .word	0xffff	; ???? | ldi	r24, 0x20	; 32 | F new code placed in erased golden FLASH
+0x004520 ffff f6cf .word	0xffff	; ???? | rjmp	.-20     	;  0x450e | F new code placed in erased golden FLASH
+0x004522 ffff 019b .word	0xffff	; ???? | sbis	0x00, 1	; 0 | F new code placed in erased golden FLASH
+0x004524 ffff 05c0 .word	0xffff	; ???? | rjmp	.+10     	;  0x4530 | F new code placed in erased golden FLASH
+0x004526 ffff 81e0 .word	0xffff	; ???? | ldi	r24, 0x01	; 1 | F new code placed in erased golden FLASH
+0x004528 ffff 80930606 .word	0xffff	; ???? | sts	0x0606, r24	;  0x800606 | F new code placed in erased golden FLASH
+0x00452a ffff 0606 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00452c ffff 0098 .word	0xffff	; ???? | cbi	0x00, 0	; 0 | F new code placed in erased golden FLASH
+0x00452e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004530 ffff 0098 .word	0xffff	; ???? | cbi	0x00, 0	; 0 | F new code placed in erased golden FLASH
+0x004532 ffff 81e0 .word	0xffff	; ???? | ldi	r24, 0x01	; 1 | F new code placed in erased golden FLASH
+0x004534 ffff 80930506 .word	0xffff	; ???? | sts	0x0605, r24	;  0x800605 | F new code placed in erased golden FLASH
+0x004536 ffff 0506 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x004538 ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x00453a ffff 0e94a822 .word	0xffff	; ???? | call	0x4550	;  0x4550 | F new code placed in erased golden FLASH
+0x00453c ffff a822 .word	0xffff	; ???? | inside differently aligned instruction | F new code placed in erased golden FLASH
+0x00453e ffff a59f .word	0xffff	; ???? | mul	r26, r21 | F new code placed in erased golden FLASH
+0x004540 ffff 900d .word	0xffff	; ???? | add	r25, r0 | F new code placed in erased golden FLASH
+0x004542 ffff b49f .word	0xffff	; ???? | mul	r27, r20 | F new code placed in erased golden FLASH
+0x004544 ffff 900d .word	0xffff	; ???? | add	r25, r0 | F new code placed in erased golden FLASH
+0x004546 ffff a49f .word	0xffff	; ???? | mul	r26, r20 | F new code placed in erased golden FLASH
+0x004548 ffff 800d .word	0xffff	; ???? | add	r24, r0 | F new code placed in erased golden FLASH
+0x00454a ffff 911d .word	0xffff	; ???? | adc	r25, r1 | F new code placed in erased golden FLASH
+0x00454c ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00454e ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+0x004550 ffff a29f .word	0xffff	; ???? | mul	r26, r18 | F new code placed in erased golden FLASH
+0x004552 ffff b001 .word	0xffff	; ???? | movw	r22, r0 | F new code placed in erased golden FLASH
+0x004554 ffff b39f .word	0xffff	; ???? | mul	r27, r19 | F new code placed in erased golden FLASH
+0x004556 ffff c001 .word	0xffff	; ???? | movw	r24, r0 | F new code placed in erased golden FLASH
+0x004558 ffff a39f .word	0xffff	; ???? | mul	r26, r19 | F new code placed in erased golden FLASH
+0x00455a ffff 700d .word	0xffff	; ???? | add	r23, r0 | F new code placed in erased golden FLASH
+0x00455c ffff 811d .word	0xffff	; ???? | adc	r24, r1 | F new code placed in erased golden FLASH
+0x00455e ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x004560 ffff 911d .word	0xffff	; ???? | adc	r25, r1 | F new code placed in erased golden FLASH
+0x004562 ffff b29f .word	0xffff	; ???? | mul	r27, r18 | F new code placed in erased golden FLASH
+0x004564 ffff 700d .word	0xffff	; ???? | add	r23, r0 | F new code placed in erased golden FLASH
+0x004566 ffff 811d .word	0xffff	; ???? | adc	r24, r1 | F new code placed in erased golden FLASH
+0x004568 ffff 1124 .word	0xffff	; ???? | eor	r1, r1 | F new code placed in erased golden FLASH
+0x00456a ffff 911d .word	0xffff	; ???? | adc	r25, r1 | F new code placed in erased golden FLASH
+0x00456c ffff 0895 .word	0xffff	; ???? | ret | F new code placed in erased golden FLASH
+Differing instruction/data windows: 1457

@@ -3,17 +3,17 @@
 Generated from the current mixed ELF/BIN and verified original listing.
 Regenerate with `make c-progress`; JSON is in mixed_c_asm/build/function_inventory.json.
 
-Application: **89 original entries; 12 integrated C; 77 not integrated**.
-Functional C recovery: **43 entries**, including 31 not yet integrated.
-Boot: **9 ASM procedures**, all untouched. Total not integrated including boot: **86**.
+Application: **89 original entries; 14 integrated C; 75 not integrated**.
+Functional C recovery: **45 entries**, including 31 not yet integrated.
+Boot: **9 ASM procedures**, all untouched. Total not integrated including boot: **84**.
 This counts entry points, including 10 application ISRs, main and shared formatter
 entries; it does not imply every entry requires or should receive a C replacement.
 All original direct CALL targets and vector destinations are included.
 
-Functional C corresponds to 2834 original routine-span bytes (26.15% of 10836),
+Functional C corresponds to 2890 original routine-span bytes (26.67% of 10836),
 including register/ISR scaffolding and eight retained timed ASM bytes. This broader
 metric includes the mixed project; the portable library's historical 2494-byte
-measure remains separate. Actual substituted entry spans cover 408 bytes (3.77%).
+measure remains separate. Actual substituted entry spans cover 464 bytes (4.28%).
 Timing-sensitive GPIO serializers and boot/NVM routines may remain ASM.
 Inherited function names are hypotheses; addresses are byte addressed.
 
@@ -26,13 +26,13 @@ Inherited function names are hypotheses; addresses are byte addressed.
 | 0x098A | fpga_settings_reset | Functional C recovered; ASM entry |
 | 0x09DE | FUN_code_0004ef | ASM; C not recovered |
 | 0x0A4C | PORTD_INT0_vect_isr | ASM; C not recovered |
-| 0x0A9C | FUN_code_00054e | ASM; C not recovered |
+| 0x0A9C | FUN_code_00054e | Integrated C |
 | 0x0ABC | PORTB_INT0_vect_isr | ASM; C not recovered |
 | 0x0AE0 | PORTF_INT1_vect_isr | ASM; C not recovered |
 | 0x0B68 | FUN_code_0005b4 | ASM; C not recovered |
 | 0x0B96 | PORTE_INT0_vect_isr | ASM; C not recovered |
 | 0x0C2A | PORTE_INT1_vect_isr | ASM; C not recovered |
-| 0x0C7E | set_status_and_vd8_led | ASM; C not recovered |
+| 0x0C7E | set_status_and_vd8_led | Integrated C |
 | 0x0C96 | system_deinit | Functional C recovered; ASM entry |
 | 0x0D10 | system_init | ASM; C not recovered |
 | 0x0DDC | CDCE62005_control_rst | ASM; C not recovered |

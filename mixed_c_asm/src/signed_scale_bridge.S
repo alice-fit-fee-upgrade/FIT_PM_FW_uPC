@@ -558,3 +558,86 @@ pm_flash_wait_bridge:
     pop r0
     jmp FUN_code_000b9d
 .size pm_flash_wait_bridge, .-pm_flash_wait_bridge
+
+.global pm_fpga_state_bridge
+.type pm_fpga_state_bridge,@function
+pm_fpga_state_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    mov r22, r0
+    mov r24, r16
+    clr r1
+    call pm_fpga_set_state
+    mov r16, r24
+    mov r0, r25
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_fpga_state_bridge, .-pm_fpga_state_bridge
+
+.global pm_status_led_bridge
+.type pm_status_led_bridge,@function
+pm_status_led_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_status_led
+    ldi r16, 1
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_status_led_bridge, .-pm_status_led_bridge

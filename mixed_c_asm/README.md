@@ -5,21 +5,21 @@ original firmware. `make exact-check` independently checks the unchanged golden
 assembly. `make c-check` retains the portable C recovery suite. `make c-progress`
 reports original entry-point counts and writes build/function_inventory.json.
 
-There are 89 recognized application entries: 12 now route to compiled C and 77
-remain ASM. Functional C exists for 43 entries, including 31 awaiting integration.
+There are 89 recognized application entries: 14 now route to compiled C and 75
+remain ASM. Functional C exists for 45 entries, including 31 awaiting integration.
 Boot has nine additional ASM procedures. See [inventory](../docs/function_inventory.md)
-and [current checkpoint](../docs/mixed_recovery_wave_checkpoint.md).
+and [current checkpoint](../docs/mixed_recovery_gpio_checkpoint.md).
 
 Current integrated entries include both scalers, four DAC preparations, the status
-guard, CRC byte update and four FLASH SPI functions. The FLASH status-wait entry
+guard, CRC byte update and four FLASH SPI functions, FPGA state transition and status/LED update. The FLASH status-wait entry
 retains its original eight-byte 1600-iteration timed prefix. All 806 original text
-symbols stay fixed. Bridges occupy 980 bytes at 0x3000; compiled C/GCC helpers use
-1232 bytes at 0x4000. No new static SRAM, BSS, initialized data or CRT is permitted.
+symbols stay fixed. Bridges occupy 1130 bytes at 0x3000; compiled C/GCC helpers use
+1390 bytes at 0x4000. No new static SRAM, BSS, initialized data or CRT is permitted.
 Original vectors, tables, strings, startup and boot remain unchanged. Exact ASM
-still has zero differing FLASH bytes; twelve mixed entry spans cover 408 original
+still has zero differing FLASH bytes; fourteen mixed entry spans cover 464 original
 bytes, including retained ASM and ABI scaffolding, not pure C byte coverage.
 
-The full clean mixed-check passes 2390880 compiled AVR comparisons; c-check passes
+The full clean mixed-check passes 2587488 compiled AVR comparisons; c-check passes
 390601 portable cases. Whole register/SREG contracts, nonzero incoming R1, ordered
 scripted MMIO/IRQ effects, three-byte return PCs and local stack frames are checked.
 Two clean builds reproduce identical ELF/HEX/BIN hashes. Outputs are build/mixed.elf,

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace twelve audited original routine bodies with anchored JMPs.
+"""Replace fourteen audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -112,5 +112,17 @@ for name,address in [('LAB_code_000ba7',0x174e),('LAB_code_000bad',0x175a)]:
  assert s[:start].count(name)+s[end:].count(name)==0,('external FLASH polling entry',name)
  replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
 s=s[:start]+replacement+s[end:]
+start=s.index('FUN_code_00054e:')
+end=s.index('.org (0x055e << 1)',start)
+body=s[start:end]
+assert 'sts         0x215b,R16' in body and 'cpi         R16,0x5' in body
+assert s[:start].count('LAB_code_00055a')+s[end:].count('LAB_code_00055a')==0
+s=s[:start]+"FUN_code_00054e:\n    jmp pm_fpga_state_bridge\n.org (0x055a << 1), 0xff\nLAB_code_00055a:\n"+s[end:]
+start=s.index('set_status_and_vd8_led:')
+end=s.index('.org (0x064b << 1)',start)
+body=s[start:end]
+assert 'sbic        GPIO_GPIOR0,0x1' in body and body.count('cbi         GPIO_GPIOR0,0x0')==2
+assert s[:start].count('LAB_code_000646')+s[end:].count('LAB_code_000646')==0
+s=s[:start]+"set_status_and_vd8_led:\n    jmp pm_status_led_bridge\n.org (0x0646 << 1), 0xff\nLAB_code_000646:\n"+s[end:]
 s='.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

@@ -33,6 +33,10 @@ class Machine:
     def io_write(self,a,value):
         assert a==0x3f
         self.f=[(value>>i)&1 for i in range(8)]
+    def io_bit_write(self,a,bit,value):
+        # Architectural atomic bit update; no asynchronous/timing model.
+        current=self.io_read(a)
+        self.io_write(a,(current | (1<<bit)) if value else (current & ~(1<<bit)))
     def reg(self,s): return int(s.strip()[1:])
     def ptr(self,p):
         n={'X':26,'Y':28,'Z':30}[p]; return self.r[n]|self.r[n+1]<<8
@@ -85,6 +89,12 @@ class Machine:
                 continue
             if op=='push': self.push_byte(self.r[self.reg(p[0])]); continue
             if op=='pop': self.r[self.reg(p[0])]=self.pop_byte(); continue
+            if op in ('sbic','sbis'):
+                skip=bool(self.io_read(int(p[0],0)) & (1<<int(p[1],0)))==(op=='sbis')
+                if skip: self.pc+=self.program[self.pc][2]
+                continue
+            if op in ('cbi','sbi'):
+                self.io_bit_write(int(p[0],0),int(p[1],0),op=='sbi'); continue
             if op in ('sbrc','sbrs','cpse'):
                 if op=='cpse': skip=self.r[self.reg(p[0])]==self.r[self.reg(p[1])]
                 else: skip=bool(self.r[self.reg(p[0])]&(1<<int(p[1],0)))==(op=='sbrs')

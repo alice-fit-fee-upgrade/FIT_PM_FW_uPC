@@ -1141,23 +1141,9 @@ LAB_code_00054a:
 ;undefined FUN_code_00054e(void)
 .org (0x054e << 1), 0xff
 FUN_code_00054e:
-	sts         0x215b,R16                   ;= ??
-	ldi         R16,0x80                                
-	sts         PORTB_OUTCLR,R16                ;= ??
-	lds         R16,0x2159                   ;= ??
-	and         R16,R16                                 
-	brbs        CPU_Z_bp, LAB_code_00055a                    
-	cpi         R16,0x5                                 
-	brbs        CPU_Z_bp, LAB_code_00055a                    
-	ret                                                 
-LAB_code_00055a:              
-	ldi         R16,0x4                                 
-	sts         0x2159,R16                   ;= ??
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_00055e(void)
+    jmp pm_fpga_state_bridge
+.org (0x055a << 1), 0xff
+LAB_code_00055a:
 .org (0x055e << 1), 0xff
 PORTB_INT0_vect_isr:		; ths788_ot_alarm
 	push        ZH                                     
@@ -1387,21 +1373,9 @@ LAB_code_000639:
 ;undefined FUN_code_00063f(void)
 .org (0x063f << 1), 0xff
 set_status_and_vd8_led:
-	sbic        GPIO_GPIOR0,0x1                 
-	rjmp        LAB_code_000646                         
-	cbi         GPIO_GPIOR0,0x0                 
-	ldi         R16,0x1                                 
-	sts         PORTA_OUTSET,R16                ;= ??
-	ret                                                 
-LAB_code_000646:              
-	ldi         R16,0x1                                 
-	sts         PORTA_OUTCLR,R16                ;= ??
-	cbi         GPIO_GPIOR0,0x0                 
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_00064b(void)
+    jmp pm_status_led_bridge
+.org (0x0646 << 1), 0xff
+LAB_code_000646:
 .org (0x064b << 1), 0xff
 system_deinit:
 	eor         R16,R16                                 
