@@ -1,31 +1,28 @@
 # Mixed C/ASM firmware development build
 
-`make mixed-check` performs a clean build, validates reference hashes and layout,
-executes linked AVR opcodes against the original full CPU/register contract, and
-compares DAC SPI traces. `make exact-check` separately checks the unchanged exact
-assembly baseline. `make c-check` runs the broader recovered portable C suite.
+`make mixed-check` clean-builds and compares actual linked AVR execution with
+original firmware. `make exact-check` independently checks the unchanged golden
+assembly. `make c-check` retains the portable C recovery suite. `make c-progress`
+reports original entry-point counts and writes build/function_inventory.json.
 
-Original addresses, vectors, boot and tables remain anchored. New bridges live
-at 0x3000; compiled C starts at 0x4000. Static SRAM, BSS and initialized data are
-forbidden by the linker. Outputs are build/mixed.elf, mixed.hex and flash_mixed.bin.
+There are 89 recognized application entries: 12 now route to compiled C and 77
+remain ASM. Functional C exists for 43 entries, including 31 awaiting integration.
+Boot has nine additional ASM procedures. See [inventory](../docs/function_inventory.md)
+and [current checkpoint](../docs/mixed_recovery_wave_checkpoint.md).
 
-Integrated original entries: signed scaler 0x2130, unsigned scaler 0x214C,
-inverse DAC preparation 0x20D0, and calibrated DAC preparation 0x20A6, and signed DAC command 2 at 0x20EC, and signed DAC command 1 at 0x2104. See [final validation checkpoint](../docs/mixed_dac_final_checkpoint.md),
-docs/mixed_dac_inverse_checkpoint.md
-and the earlier signed/unsigned checkpoint documents for ABI and test evidence.
-The original SPI sender stays in ASM. Incoming R1 may be nonzero; outgoing R1,
-SREG, all other registers and three-byte return PCs are checked against original
-execution. Compiler-local stack frames are supported by the test model.
+Current integrated entries include both scalers, four DAC preparations, the status
+guard, CRC byte update and four FLASH SPI functions. The FLASH status-wait entry
+retains its original eight-byte 1600-iteration timed prefix. All 806 original text
+symbols stay fixed. Bridges occupy 980 bytes at 0x3000; compiled C/GCC helpers use
+1232 bytes at 0x4000. No new static SRAM, BSS, initialized data or CRT is permitted.
+Original vectors, tables, strings, startup and boot remain unchanged. Exact ASM
+still has zero differing FLASH bytes; twelve mixed entry spans cover 408 original
+bytes, including retained ASM and ABI scaffolding, not pure C byte coverage.
 
-Tests use a bounded custom functional AVR interpreter, with scripted calibration
-RAM and SPI polling. Unsupported instructions fail closed. Asynchronous interrupts,
-cycle equivalence, total firmware stack budget and physical-device behavior remain
-unvalidated. No hardware programming is performed. Functional C recovery coverage
-and the count of entries actually substituted in this firmware are separate metrics.
-
-Final clean mixed-check passes 1,942,048 compiled AVR comparisons. The separate
-portable C regression passes 390,601 cases. All 806 original addresses stay fixed;
-no new static SRAM is introduced. The six substituted entries cover 186 original
-routine-span bytes; C/helpers take 926 bytes and bridges take 430 bytes. Maximum
-additional caller stack is 35 bytes. Two clean builds reproduce identical ELF,
-HEX and BIN hashes. Exact ASM still has zero differing FLASH bytes.
+The full clean mixed-check passes 2390880 compiled AVR comparisons; c-check passes
+390601 portable cases. Whole register/SREG contracts, nonzero incoming R1, ordered
+scripted MMIO/IRQ effects, three-byte return PCs and local stack frames are checked.
+Two clean builds reproduce identical ELF/HEX/BIN hashes. Outputs are build/mixed.elf,
+mixed.hex and flash_mixed.bin, plus map and JSON reports. Maximum extra tested stack
+is still 35 bytes through DAC callers. Hardware, asynchronous interrupts, SPL timing
+and total firmware stack budget remain unvalidated. No device is programmed.

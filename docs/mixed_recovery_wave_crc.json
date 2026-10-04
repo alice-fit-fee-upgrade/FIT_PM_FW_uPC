@@ -1,0 +1,14 @@
+{
+  "direct_cases": 77864,
+  "stream_caller_cases": 280,
+  "input_bytes": 256,
+  "state_and_polynomial_bits": 32,
+  "incoming_sreg_patterns": 256,
+  "checked_registers": 32,
+  "checked_sreg_bits": 8,
+  "direct_maximum_additional_stack": 29,
+  "stream_maximum_additional_stack": 32,
+  "spi_stream_address_wraps_tested": true,
+  "mixed_bin_sha256": "c04f73ed7748609d4941a92d0e2c3a7d9c44d0bc744c4a8e3ab107aadf9653a7",
+  "limits": "bounded functional interpreter; scripted SPI; no cycle/async interrupt/hardware validation"
+}

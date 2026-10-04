@@ -1,0 +1,9 @@
+{
+  "two_clean_builds_identical": true,
+  "sha256": {
+    "mixed.elf": "3bfee997e26444ba5103ec1cb4916f9f247233bd0a9a4b06a9b4100f737fd137",
+    "mixed.hex": "c4584c762a86def7db32c0bce5f5d5c95b10a6ebcaf6113c630997385fff912c",
+    "flash_mixed.bin": "c04f73ed7748609d4941a92d0e2c3a7d9c44d0bc744c4a8e3ab107aadf9653a7"
+  },
+  "compiled_avr_cases": 2390880
+}
