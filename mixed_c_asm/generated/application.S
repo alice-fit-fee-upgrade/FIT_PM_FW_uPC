@@ -2662,21 +2662,9 @@ FUN_code_000b88:
 ;undefined FUN_code_000b8f(void)
 .org (0x0b8f << 1), 0xff
 FUN_code_000b8f:
-	ldi         R16,0x10                                
-	sts         PORTE_OUTCLR,R16                ;= ??
-	ldi         R16,0x6                                 
-	sts         SPIE_DATA,R16                   ;= ??
-LAB_code_000b95:              
-	lds         R19,SPIE_STATUS                 ;= ??
-	sbrs        R19,0x7                                 
-	rjmp        LAB_code_000b95                         
-	ldi         R16,0x10                                
-	sts         PORTE_OUTSET,R16                ;= ??
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000b9d(void)
+    jmp pm_flash_enable_bridge
+.org (0x0b95 << 1), 0xff
+LAB_code_000b95:
 .org (0x0b9d << 1), 0xff
 FUN_code_000b9d:
 	ldi         R24,0x40                                

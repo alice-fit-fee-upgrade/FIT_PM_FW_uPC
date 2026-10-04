@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace nine audited original routine bodies with anchored JMPs.
+"""Replace ten audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -81,6 +81,16 @@ end=s.index('.org (0x0b3f << 1)',start)
 assert 'sts         SPIE_CTRL,R16' in s[start:end] and 'ldi         R16,0x50' in s[start:end]
 s=s[:start]+'''FUN_code_000b32:
     jmp pm_flash_init_bridge
+'''+s[end:]
+start=s.index('FUN_code_000b8f:')
+end=s.index('.org (0x0b9d << 1)',start)
+body=s[start:end]
+assert 'ldi         R16,0x6' in body and 'LAB_code_000b95:' in body
+assert s[:start].count('LAB_code_000b95')+s[end:].count('LAB_code_000b95')==0
+s=s[:start]+'''FUN_code_000b8f:
+    jmp pm_flash_enable_bridge
+.org (0x0b95 << 1), 0xff
+LAB_code_000b95:
 '''+s[end:]
 s='.global dac_send_value\n.global cli_send_msg\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

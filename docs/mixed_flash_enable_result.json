@@ -1,0 +1,14 @@
+{
+  "cases": 98304,
+  "entries": [
+    {
+      "entry": 5918,
+      "cases": 98304
+    }
+  ],
+  "registers_sreg_mmio_order_and_return_stack_equal": true,
+  "incoming_sreg_patterns": 256,
+  "maximum_additional_stack": 17,
+  "mixed_bin_sha256": "dbd4b78be9c606ba2e2ed17535a87102d1f5fe62da672e96d473e16223fa54f4",
+  "limits": "bounded functional interpreter; scripted hardware SPI polling; no cycle/async interrupt/hardware validation"
+}
