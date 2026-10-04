@@ -6,12 +6,12 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 `cmp` against reference/flash_golden.bin. There is no emulator acceptance step.
 `make c-progress` reports the three exact-source classifications.
 
-Current result: 89 application entries, 2 C_BINARY_EXACT, 12
-C_WITH_EXACT_ASM_HELPER, 75 ASM_EXACT. All nine boot procedures remain exact ASM.
+Current result: 89 application entries, 2 C_BINARY_EXACT, 31
+C_WITH_EXACT_ASM_HELPER, 56 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 548 of 10836 executable bytes (5.0572%);
-ASM occupies 10288 bytes (94.9428%), including 216 inline-helper bytes. Data and
-padding do not contribute to these percentages. Application-only C is 5.4484%.
+Compiler-generated instructions occupy 1016 of 10836 executable bytes (9.3762%);
+ASM occupies 9820 bytes (90.6238%), including 1082 inline-helper bytes. Data and
+padding do not contribute to these percentages. Application-only C is 10.1014%.
 The entry count includes main, ISRs and shared formatter entries, rather than
 89 independent C-style function bodies.
 
@@ -54,7 +54,8 @@ They are register contracts, not byte patches. Manifest helper ranges count ever
 emitted inline ASM instruction as ASM, including MOV captures and CS stores.
 
 ADT7311 wrappers use GNU C for sequencing and compiler-generated saves/restores;
-the original bit-banged byte primitive remains ASM. Ordinary C calls cannot silently
+the byte primitive combines C GPIO/loop setup with exact bit tests, shifts,
+sampling delay and flag-sensitive loop helpers. Ordinary C calls cannot silently
 replace these register interfaces. A change in generated instructions is rejected
 by the full-image gate, even if emulator behavior would agree.
 
@@ -70,3 +71,9 @@ Earlier mixed_c_asm and source_recovery trees and exhaustive tests remain useful
 historical evidence. They do not contribute C counts to this baseline.
 See [checkpoint](../docs/exact_c_checkpoint.md) and
 [inventory](../docs/function_inventory.md).
+
+GPIO interrupt entries keep a short exact register/SREG save and restore frame,
+with C status/GPIO updates. These entry points are called by the original vectors;
+do not call them as ordinary C functions. PORTD uses `-fno-reorder-blocks` to keep
+the original branch layout. The FLASH-string sender uses the same option and an
+exact terminator branch, with GCC generating its original R16 save/restore.

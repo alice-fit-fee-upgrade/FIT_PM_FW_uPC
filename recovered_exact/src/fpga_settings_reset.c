@@ -1,0 +1,36 @@
+#include <avr/io.h>
+#define RAM8(address) (*(volatile uint8_t *)(address))
+#define SEND_SETTING(lo, hi, address) \
+    asm volatile("cli\n\tcall fpga_msg_send_t2\n\tsei" \
+        : "+r" (lo), "+r" (hi), "+r" (address) : : "memory", "cc")
+
+void fpga_settings_reset(void)
+{
+    register uint8_t address asm("r18") = 0x80;
+    asm volatile("" : "+r" (address));
+    register const uint8_t *cursor asm("r28") = (const uint8_t *)0x21cf;
+    asm volatile("" : "+y" (cursor));
+first_bank:
+    {
+        register uint8_t lo asm("r16"), hi asm("r17");
+        asm volatile("ld %0, Y+\n\tld %1, Y+" : "=r" (lo), "=r" (hi), "+y" (cursor) : : "memory");
+        SEND_SETTING(lo, hi, address);
+    }
+    asm volatile("inc %0" : "+r" (address) : : "cc");
+    asm goto("cpi %0, 0xb0\n\tbrne %l[first_bank]" : : "r" (address) : "cc" : first_bank);
+    cursor = (const uint8_t *)0x2163;
+    asm volatile("" : "+y" (cursor));
+second_bank:
+    {
+        register uint8_t lo asm("r16"), hi asm("r17");
+        asm volatile("ld %0, Y+\n\tld %1, Y+" : "=r" (lo), "=r" (hi), "+y" (cursor) : : "memory");
+        SEND_SETTING(lo, hi, address);
+    }
+    asm volatile("inc %0" : "+r" (address) : : "cc");
+    asm goto("cpi %0, 0xbc\n\tbrne %l[second_bank]" : : "r" (address) : "cc" : second_bank);
+    register uint8_t lo asm("r16") = RAM8(0x2441);
+    register uint8_t hi asm("r17");
+    asm volatile("clr %0" : "=r" (hi) : "r" (lo) : "cc");
+    address = 0xbe;
+    SEND_SETTING(lo, hi, address);
+}

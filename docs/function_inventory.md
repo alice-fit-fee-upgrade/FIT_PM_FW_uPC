@@ -7,19 +7,19 @@ Regenerate the build report with `make c-progress`. `make exact-check` is the ac
 |---|---|
 | Application entries | 89 |
 | C_BINARY_EXACT | 2 |
-| C_WITH_EXACT_ASM_HELPER | 12 |
-| ASM_EXACT | 75 |
+| C_WITH_EXACT_ASM_HELPER | 31 |
+| ASM_EXACT | 56 |
 | Bootloader ASM procedures | 9 |
 
 Counts include 10 original ISRs, main and shared formatter entries. All 806 original
 code/data text symbols retain their addresses. Unconverted entries are verified exact
 ASM; their classification does not claim that further clean C recovery is impossible.
 
-Of 10836 executable bytes, compiler-generated C accounts for **548 (5.0572%)** and
-ASM for **10288 (94.9428%)**. The latter includes **216 inline ASM helper bytes**.
-For the 10058 application executable bytes alone, C is **5.4484%** and ASM **94.5516%**.
+Of 10836 executable bytes, compiler-generated C accounts for **1016 (9.3762%)** and
+ASM for **9820 (90.6238%)**. The latter includes **1082 inline ASM helper bytes**.
+For the 10058 application executable bytes alone, C is **10.1014%** and ASM **89.8986%**.
 All 778 boot executable bytes are ASM. Data (710 bytes) and erased/padding regions
-are excluded. C-hosted function regions total 764 bytes; this larger number includes
+are excluded. C-hosted function regions total 2098 bytes; this larger number includes
 helpers and is not reported as pure C coverage.
 
 Golden and rebuilt canonical SHA256:
@@ -28,14 +28,14 @@ Golden and rebuilt canonical SHA256:
 | Byte address | Original symbol | Classification |
 |---|---|---|
 | 0x01E2 | DMA_CH1_vect_isr | ASM_EXACT |
-| 0x046C | FUN_code_000236 | ASM_EXACT |
+| 0x046C | FUN_code_000236 | C_WITH_EXACT_ASM_HELPER |
 | 0x049E | TCC0_OVF_vect_isr | ASM_EXACT |
-| 0x08E4 | fpga_settings_init | ASM_EXACT |
-| 0x098A | fpga_settings_reset | ASM_EXACT |
+| 0x08E4 | fpga_settings_init | C_WITH_EXACT_ASM_HELPER |
+| 0x098A | fpga_settings_reset | C_WITH_EXACT_ASM_HELPER |
 | 0x09DE | FUN_code_0004ef | ASM_EXACT |
-| 0x0A4C | PORTD_INT0_vect_isr | ASM_EXACT |
-| 0x0A9C | FUN_code_00054e | ASM_EXACT |
-| 0x0ABC | PORTB_INT0_vect_isr | ASM_EXACT |
+| 0x0A4C | PORTD_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER |
+| 0x0A9C | FUN_code_00054e | C_WITH_EXACT_ASM_HELPER |
+| 0x0ABC | PORTB_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER |
 | 0x0AE0 | PORTF_INT1_vect_isr | ASM_EXACT |
 | 0x0B68 | FUN_code_0005b4 | C_WITH_EXACT_ASM_HELPER |
 | 0x0B96 | PORTE_INT0_vect_isr | ASM_EXACT |
@@ -43,7 +43,7 @@ Golden and rebuilt canonical SHA256:
 | 0x0C7E | set_status_and_vd8_led | C_BINARY_EXACT |
 | 0x0C96 | system_deinit | C_WITH_EXACT_ASM_HELPER |
 | 0x0D10 | system_init | C_WITH_EXACT_ASM_HELPER |
-| 0x0DDC | CDCE62005_control_rst | ASM_EXACT |
+| 0x0DDC | CDCE62005_control_rst | C_WITH_EXACT_ASM_HELPER |
 | 0x0E20 | PORTF_INT0_vect_isr | ASM_EXACT |
 | 0x0E88 | USARTF0_DRE_vect_isr | ASM_EXACT |
 | 0x0EE0 | USARTF0_RXC_vect_isr | ASM_EXACT |
@@ -61,7 +61,7 @@ Golden and rebuilt canonical SHA256:
 | 0x1772 | FUN_code_000bb9 | ASM_EXACT |
 | 0x17E4 | FUN_code_000bf2 | ASM_EXACT |
 | 0x1808 | FUN_code_000c04 | C_WITH_EXACT_ASM_HELPER |
-| 0x1840 | FUN_code_000c20 | ASM_EXACT |
+| 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER |
 | 0x188E | cli_send_ch_mean_amplitude | ASM_EXACT |
 | 0x18BE | cli_send_adc_baseline_dispersion | ASM_EXACT |
 | 0x1910 | cli_send_tdc_data | ASM_EXACT |
@@ -84,35 +84,35 @@ Golden and rebuilt canonical SHA256:
 | 0x204E | fpga_set_ch_cfd_zero | ASM_EXACT |
 | 0x20A6 | FUN_code_001053 | ASM_EXACT |
 | 0x20D0 | FUN_code_001068 | ASM_EXACT |
-| 0x20EC | dac_set_value_2 | ASM_EXACT |
-| 0x2104 | dac_set_value | ASM_EXACT |
+| 0x20EC | dac_set_value_2 | C_WITH_EXACT_ASM_HELPER |
+| 0x2104 | dac_set_value | C_WITH_EXACT_ASM_HELPER |
 | 0x211C | FUN_code_00108e | ASM_EXACT |
 | 0x2130 | fpga_is_ready | ASM_EXACT |
 | 0x214C | FUN_code_0010a6 | ASM_EXACT |
 | 0x2174 | ths788_write | ASM_EXACT |
 | 0x2208 | ths788_read | ASM_EXACT |
 | 0x22AA | dac_send_value | ASM_EXACT |
-| 0x230E | fpga_msg_send_t2 | ASM_EXACT |
-| 0x2368 | fpga_msg_read_t1 | ASM_EXACT |
-| 0x23CA | FUN_code_0011e5 | ASM_EXACT |
+| 0x230E | fpga_msg_send_t2 | C_WITH_EXACT_ASM_HELPER |
+| 0x2368 | fpga_msg_read_t1 | C_WITH_EXACT_ASM_HELPER |
+| 0x23CA | FUN_code_0011e5 | C_WITH_EXACT_ASM_HELPER |
 | 0x2486 | CDCE62005_send_control_settings | C_WITH_EXACT_ASM_HELPER |
-| 0x24CE | FUN_code_001267 | ASM_EXACT |
-| 0x2530 | fpga_send_mcu_ts | ASM_EXACT |
+| 0x24CE | FUN_code_001267 | C_WITH_EXACT_ASM_HELPER |
+| 0x2530 | fpga_send_mcu_ts | C_WITH_EXACT_ASM_HELPER |
 | 0x2598 | adt7311_8bit_rw | C_WITH_EXACT_ASM_HELPER |
 | 0x25BE | adt7311_16bit_rw | C_WITH_EXACT_ASM_HELPER |
 | 0x25EA | adt7311_faults_clr | C_WITH_EXACT_ASM_HELPER |
-| 0x2608 | adt7311_byte_rw | ASM_EXACT |
+| 0x2608 | adt7311_byte_rw | C_WITH_EXACT_ASM_HELPER |
 | 0x2634 | cli_get_integer | ASM_EXACT |
 | 0x26AC | cli_get_hex | ASM_EXACT |
-| 0x26F8 | cli_send_32bit_hex | ASM_EXACT |
-| 0x2720 | cli_send_digit_hex | ASM_EXACT |
+| 0x26F8 | cli_send_32bit_hex | C_WITH_EXACT_ASM_HELPER |
+| 0x2720 | cli_send_digit_hex | C_WITH_EXACT_ASM_HELPER |
 | 0x272E | FUN_code_001397 | ASM_EXACT |
 | 0x2736 | cli_send_temperature | ASM_EXACT |
 | 0x273E | FUN_code_00139f | ASM_EXACT |
 | 0x2746 | cli_send_int16 | ASM_EXACT |
 | 0x274E | cli_send_uint16 | ASM_EXACT |
 | 0x281E | cli_send_crlf | C_WITH_EXACT_ASM_HELPER |
-| 0x2826 | cli_send_msg | ASM_EXACT |
+| 0x2826 | cli_send_msg | C_WITH_EXACT_ASM_HELPER |
 | 0x2836 | cli_get_next_byte | ASM_EXACT |
 | 0x283C | cli_get_next_char | ASM_EXACT |
 | 0x28AC | cli_send_buf | ASM_EXACT |

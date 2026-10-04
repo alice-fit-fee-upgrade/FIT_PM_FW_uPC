@@ -399,6 +399,559 @@
           "reason": "Original SPI data store and R22 status polling"
         }
       ]
+    },
+    {
+      "address": 8974,
+      "end_exclusive": 9064,
+      "symbol": "fpga_msg_send_t2",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_word_write.c",
+      "section": ".text.fpga_msg_send_t2",
+      "compiler_profile": "r22_saved_fpga_legacy_inputs",
+      "meaning": "FPGA SPI packed address and word write",
+      "asm_helper_ranges": [
+        {
+          "start": 8982,
+          "end_exclusive": 8986,
+          "reason": "Exact R22 peripheral store"
+        },
+        {
+          "start": 8986,
+          "end_exclusive": 8996,
+          "reason": "Original address packing and flags"
+        },
+        {
+          "start": 8998,
+          "end_exclusive": 9002,
+          "reason": "Exact R22 chip select store"
+        },
+        {
+          "start": 9002,
+          "end_exclusive": 9050,
+          "reason": "Four exact SPI byte transfers"
+        },
+        {
+          "start": 9052,
+          "end_exclusive": 9056,
+          "reason": "Exact R22 chip select store"
+        }
+      ]
+    },
+    {
+      "address": 9064,
+      "end_exclusive": 9162,
+      "symbol": "fpga_msg_read_t1",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_word_read.c",
+      "section": ".text.fpga_msg_read_t1",
+      "compiler_profile": "r22_saved_fpga_legacy_inputs",
+      "meaning": "FPGA SPI packed address and word read",
+      "asm_helper_ranges": [
+        {
+          "start": 9072,
+          "end_exclusive": 9076,
+          "reason": "Exact R22 peripheral store"
+        },
+        {
+          "start": 9078,
+          "end_exclusive": 9148,
+          "reason": "Address packing, chip select, SPI transfers and legacy register results"
+        },
+        {
+          "start": 9150,
+          "end_exclusive": 9154,
+          "reason": "Exact R22 chip select store"
+        }
+      ]
+    },
+    {
+      "address": 9422,
+      "end_exclusive": 9520,
+      "symbol": "FUN_code_001267",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_control_read.c",
+      "section": ".text.FUN_code_001267",
+      "compiler_profile": "r22_r23_saved_pll_inputs",
+      "meaning": "PLL readback request and four-byte SPI read",
+      "asm_helper_ranges": [
+        {
+          "start": 9428,
+          "end_exclusive": 9436,
+          "reason": "Exact zero command registers and RCALL"
+        },
+        {
+          "start": 9438,
+          "end_exclusive": 9508,
+          "reason": "Exact chip select, zero dummy byte, SPI transfers and result registers"
+        },
+        {
+          "start": 9510,
+          "end_exclusive": 9514,
+          "reason": "Exact R22 chip select store"
+        }
+      ]
+    },
+    {
+      "address": 10016,
+      "end_exclusive": 10030,
+      "symbol": "cli_send_digit_hex",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_hex_digit.c",
+      "section": ".text.cli_send_digit_hex",
+      "compiler_profile": "r16_only",
+      "meaning": "Format and send one hexadecimal digit",
+      "asm_helper_ranges": [
+        {
+          "start": 10020,
+          "end_exclusive": 10024,
+          "reason": "Exact threshold comparison and branch for single-register ABI"
+        },
+        {
+          "start": 10026,
+          "end_exclusive": 10028,
+          "reason": "Exact RCALL with legacy R16 character ABI"
+        }
+      ]
+    },
+    {
+      "address": 9736,
+      "end_exclusive": 9780,
+      "symbol": "adt7311_byte_rw",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt_bit_transfer.c",
+      "section": ".text.adt7311_byte_rw",
+      "compiler_profile": "r16_r17_r18",
+      "meaning": "ADT7311 bit transfer with exact clock and sampling instructions",
+      "asm_helper_ranges": [
+        {
+          "start": 9740,
+          "end_exclusive": 9752,
+          "reason": "Exact conditional data line stores"
+        },
+        {
+          "start": 9758,
+          "end_exclusive": 9762,
+          "reason": "Exact shift and sampling delay"
+        },
+        {
+          "start": 9770,
+          "end_exclusive": 9778,
+          "reason": "Exact sampled bit and DEC/BRNE flag behavior"
+        }
+      ]
+    },
+    {
+      "address": 2716,
+      "end_exclusive": 2748,
+      "symbol": "FUN_code_00054e",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_state_request.c",
+      "section": ".text.FUN_code_00054e",
+      "compiler_profile": "r16_only",
+      "meaning": "Store requested state and conditionally transition SRAM state",
+      "asm_helper_ranges": [
+        {
+          "start": 2730,
+          "end_exclusive": 2740,
+          "reason": "Exact state comparisons and early return"
+        }
+      ]
+    },
+    {
+      "address": 1132,
+      "end_exclusive": 1182,
+      "symbol": "FUN_code_000236",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dma_gpio_handshake.c",
+      "section": ".text.FUN_code_000236",
+      "compiler_profile": "r16_r17_r18",
+      "meaning": "Original PORTD input bit / DMA channel enable handshake",
+      "asm_helper_ranges": [
+        {
+          "start": 1136,
+          "end_exclusive": 1148,
+          "reason": "Exact interrupt-toggle GPIO input wait"
+        },
+        {
+          "start": 1156,
+          "end_exclusive": 1158,
+          "reason": "Exact interrupt enable"
+        },
+        {
+          "start": 1162,
+          "end_exclusive": 1168,
+          "reason": "Exact DMA flag branch and R16 zeroing"
+        },
+        {
+          "start": 1176,
+          "end_exclusive": 1180,
+          "reason": "Exact final GPIO input branch"
+        }
+      ]
+    },
+    {
+      "address": 9976,
+      "end_exclusive": 10016,
+      "symbol": "cli_send_32bit_hex",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_hex_word.c",
+      "section": ".text.cli_send_32bit_hex",
+      "compiler_profile": "r16_r17_r18_saved",
+      "meaning": "Original four hexadecimal nibbles from R17:R16",
+      "asm_helper_ranges": [
+        {
+          "start": 9984,
+          "end_exclusive": 9986,
+          "reason": "Exact nibble swap"
+        },
+        {
+          "start": 9988,
+          "end_exclusive": 9992,
+          "reason": "Exact digit RCALL and next swap"
+        },
+        {
+          "start": 9994,
+          "end_exclusive": 9998,
+          "reason": "Exact digit RCALL and next swap"
+        },
+        {
+          "start": 10000,
+          "end_exclusive": 10004,
+          "reason": "Exact digit RCALL and next swap"
+        },
+        {
+          "start": 10006,
+          "end_exclusive": 10008,
+          "reason": "Exact digit RCALL"
+        }
+      ]
+    },
+    {
+      "address": 8428,
+      "end_exclusive": 8452,
+      "symbol": "dac_set_value_2",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_channels.c",
+      "section": ".text.dac_set_value_2",
+      "compiler_profile": "dac_legacy_inputs",
+      "meaning": "Scale DAC word, invert sign bit and select DAC channel",
+      "asm_helper_ranges": [
+        {
+          "start": 8434,
+          "end_exclusive": 8436,
+          "reason": "Exact multiplier RCALL and legacy ABI"
+        },
+        {
+          "start": 8438,
+          "end_exclusive": 8440,
+          "reason": "Exact sign-bit inversion on legacy R17"
+        },
+        {
+          "start": 8446,
+          "end_exclusive": 8448,
+          "reason": "Exact DAC serializer RCALL"
+        }
+      ]
+    },
+    {
+      "address": 8452,
+      "end_exclusive": 8476,
+      "symbol": "dac_set_value",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_channels.c",
+      "section": ".text.dac_set_value",
+      "compiler_profile": "dac_legacy_inputs",
+      "meaning": "Scale DAC word, invert sign bit and select DAC channel",
+      "asm_helper_ranges": [
+        {
+          "start": 8458,
+          "end_exclusive": 8460,
+          "reason": "Exact multiplier RCALL and legacy ABI"
+        },
+        {
+          "start": 8462,
+          "end_exclusive": 8464,
+          "reason": "Exact sign-bit inversion on legacy R17"
+        },
+        {
+          "start": 8470,
+          "end_exclusive": 8472,
+          "reason": "Exact DAC serializer RCALL"
+        }
+      ]
+    },
+    {
+      "address": 9162,
+      "end_exclusive": 9350,
+      "symbol": "FUN_code_0011e5",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_multiword_read.c",
+      "section": ".text.FUN_code_0011e5",
+      "compiler_profile": "r22_saved_fpga_legacy_inputs",
+      "meaning": "Eight-byte FPGA register response in original low register pairs",
+      "asm_helper_ranges": [
+        {
+          "start": 9170,
+          "end_exclusive": 9174,
+          "reason": "Exact R22 control store"
+        },
+        {
+          "start": 9176,
+          "end_exclusive": 9178,
+          "reason": "Exact zero dummy byte"
+        },
+        {
+          "start": 9180,
+          "end_exclusive": 9336,
+          "reason": "Exact chip select, unrolled SPI transfers and low result registers"
+        },
+        {
+          "start": 9338,
+          "end_exclusive": 9342,
+          "reason": "Exact R22 chip select store"
+        }
+      ]
+    },
+    {
+      "address": 9520,
+      "end_exclusive": 9624,
+      "symbol": "fpga_send_mcu_ts",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_timestamp_send.c",
+      "section": ".text.fpga_send_mcu_ts",
+      "compiler_profile": "fpga_saved_z_cursor",
+      "meaning": "Send original two timestamp words from FLASH to FPGA",
+      "asm_helper_ranges": [
+        {
+          "start": 9536,
+          "end_exclusive": 9540,
+          "reason": "Exact R22 control store"
+        },
+        {
+          "start": 9546,
+          "end_exclusive": 9606,
+          "reason": "Exact chip select, SPI transfers, LPM and low-byte loop test"
+        },
+        {
+          "start": 9608,
+          "end_exclusive": 9612,
+          "reason": "Exact R22 chip select store"
+        }
+      ]
+    },
+    {
+      "address": 6208,
+      "end_exclusive": 6286,
+      "symbol": "FUN_code_000c20",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_device_id.c",
+      "section": ".text.FUN_code_000c20",
+      "compiler_profile": "r16_only",
+      "meaning": "Read FLASH JEDEC identity in original register order",
+      "asm_helper_ranges": [
+        {
+          "start": 6220,
+          "end_exclusive": 6278,
+          "reason": "Exact zero dummy, SPI polling and three legacy result registers"
+        },
+        {
+          "start": 6280,
+          "end_exclusive": 6284,
+          "reason": "Exact R20 chip select release"
+        }
+      ]
+    },
+    {
+      "address": 3548,
+      "end_exclusive": 3616,
+      "symbol": "CDCE62005_control_rst",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_defaults_load.c",
+      "section": ".text.CDCE62005_control_rst",
+      "compiler_profile": "pll_saved_defaults_cursor",
+      "meaning": "Load ten original PLL default words and toggle original GPIOs",
+      "asm_helper_ranges": [
+        {
+          "start": 3568,
+          "end_exclusive": 3588,
+          "reason": "Exact FLASH reads, CALL/interrupt window and loop flag behavior"
+        }
+      ]
+    },
+    {
+      "address": 2748,
+      "end_exclusive": 2784,
+      "symbol": "PORTB_INT0_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_portb_interrupt.c",
+      "section": ".text.PORTB_INT0_vect_isr",
+      "compiler_profile": "r16_only_legacy_interrupt",
+      "meaning": "Original PORTB interrupt status and GPIO updates",
+      "asm_helper_ranges": [
+        {
+          "start": 2748,
+          "end_exclusive": 2758,
+          "reason": "Original ISR save and absolute SRAM read"
+        },
+        {
+          "start": 2776,
+          "end_exclusive": 2784,
+          "reason": "Original ISR register/SREG restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 2636,
+      "end_exclusive": 2716,
+      "symbol": "PORTD_INT0_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_portd_interrupt.c",
+      "section": ".text.PORTD_INT0_vect_isr",
+      "compiler_profile": "r16_only_legacy_interrupt_no_block_reorder",
+      "meaning": "Original PORTD input / SRAM status and state-request interrupt",
+      "asm_helper_ranges": [
+        {
+          "start": 2636,
+          "end_exclusive": 2642,
+          "reason": "Original ISR register/SREG save"
+        },
+        {
+          "start": 2646,
+          "end_exclusive": 2656,
+          "reason": "Exact T flag transfer, interrupt disable and SRAM read"
+        },
+        {
+          "start": 2660,
+          "end_exclusive": 2666,
+          "reason": "Exact interrupt enable, T branch and interrupt disable"
+        },
+        {
+          "start": 2668,
+          "end_exclusive": 2672,
+          "reason": "Exact state request RCALL and interrupt enable"
+        },
+        {
+          "start": 2680,
+          "end_exclusive": 2682,
+          "reason": "Exact R16 zero and flags"
+        },
+        {
+          "start": 2686,
+          "end_exclusive": 2690,
+          "reason": "Exact SRAM read"
+        },
+        {
+          "start": 2708,
+          "end_exclusive": 2716,
+          "reason": "Original ISR restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 10278,
+      "end_exclusive": 10294,
+      "symbol": "cli_send_msg",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_flash_message.c",
+      "section": ".text.cli_send_msg",
+      "compiler_profile": "r16_saved_flash_cursor",
+      "meaning": "Send zero-terminated FLASH message, preserving R16 and advancing Z",
+      "asm_helper_ranges": [
+        {
+          "start": 10280,
+          "end_exclusive": 10288,
+          "reason": "Exact LPM, terminator branch and character RCALL"
+        }
+      ]
+    },
+    {
+      "address": 2442,
+      "end_exclusive": 2526,
+      "symbol": "fpga_settings_reset",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_settings_reset.c",
+      "section": ".text.fpga_settings_reset",
+      "compiler_profile": "fpga_saved_y_settings",
+      "meaning": "Original two SRAM settings banks and final FPGA state word",
+      "asm_helper_ranges": [
+        {
+          "start": 2458,
+          "end_exclusive": 2476,
+          "reason": "Exact CALL/interrupt window and first address loop"
+        },
+        {
+          "start": 2480,
+          "end_exclusive": 2498,
+          "reason": "Exact CALL/interrupt window and second address loop"
+        },
+        {
+          "start": 2502,
+          "end_exclusive": 2504,
+          "reason": "Exact zero high byte"
+        },
+        {
+          "start": 2506,
+          "end_exclusive": 2514,
+          "reason": "Exact final CALL/interrupt window"
+        }
+      ]
+    },
+    {
+      "address": 2276,
+      "end_exclusive": 2442,
+      "symbol": "fpga_settings_init",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_settings_init.c",
+      "section": ".text.fpga_settings_init",
+      "compiler_profile": "fpga_legacy_asymmetric_frame",
+      "meaning": "Original FPGA SRAM settings banks and state words",
+      "asm_helper_ranges": [
+        {
+          "start": 2276,
+          "end_exclusive": 2286,
+          "reason": "Exact asymmetric register save frame"
+        },
+        {
+          "start": 2288,
+          "end_exclusive": 2300,
+          "reason": "Exact zero word and CALL/interrupt window"
+        },
+        {
+          "start": 2304,
+          "end_exclusive": 2316,
+          "reason": "Exact zero registers and CALL/interrupt window"
+        },
+        {
+          "start": 2320,
+          "end_exclusive": 2338,
+          "reason": "Exact word reads, increment and first loop"
+        },
+        {
+          "start": 2344,
+          "end_exclusive": 2364,
+          "reason": "Exact word reads, increment and second loop plus next increment"
+        },
+        {
+          "start": 2372,
+          "end_exclusive": 2380,
+          "reason": "Exact CALL/interrupt window"
+        },
+        {
+          "start": 2390,
+          "end_exclusive": 2398,
+          "reason": "Exact CALL/interrupt window"
+        },
+        {
+          "start": 2408,
+          "end_exclusive": 2416,
+          "reason": "Exact CALL/interrupt window"
+        },
+        {
+          "start": 2422,
+          "end_exclusive": 2442,
+          "reason": "Exact CALL/interrupt window and original register restore/RET"
+        }
+      ]
     }
   ],
   "asm_exports": [
@@ -406,6 +959,9 @@
     "FUN_code_00054e",
     "FUN_code_000c04",
     "CDCE62005_send_control_settings",
-    "adt7311_byte_rw"
+    "adt7311_byte_rw",
+    "cli_send_buf",
+    "fpga_is_ready",
+    "dac_send_value"
   ]
 }

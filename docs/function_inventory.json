@@ -4,8 +4,8 @@
   "count_measure": "verified original entries, including 10 ISRs, main and shared formatter entries",
   "all_original_direct_application_call_targets_and_vector_destinations_listed": true,
   "C_BINARY_EXACT": 2,
-  "C_WITH_EXACT_ASM_HELPER": 12,
-  "ASM_EXACT": 75,
+  "C_WITH_EXACT_ASM_HELPER": 31,
+  "ASM_EXACT": 56,
   "bootloader_asm_count": 9,
   "bootloader_function_addresses": [
     131554,
@@ -21,13 +21,13 @@
   "complete_executable_bytes": 10836,
   "application_executable_bytes": 10058,
   "boot_executable_bytes": 778,
-  "compiler_generated_c_bytes": 548,
-  "exact_asm_helper_bytes_inside_c_regions": 216,
-  "all_asm_bytes_including_helpers": 10288,
-  "C_percentage_all_executable": 5.057216685123662,
-  "ASM_percentage_all_executable": 94.94278331487634,
-  "C_percentage_application_executable": 5.448399284151919,
-  "ASM_percentage_application_executable": 94.55160071584808,
+  "compiler_generated_c_bytes": 1016,
+  "exact_asm_helper_bytes_inside_c_regions": 1082,
+  "all_asm_bytes_including_helpers": 9820,
+  "C_percentage_all_executable": 9.376153562200074,
+  "ASM_percentage_all_executable": 90.62384643779993,
+  "C_percentage_application_executable": 10.101411811493339,
+  "ASM_percentage_application_executable": 89.89858818850666,
   "coverage_measure": "instruction bytes; inline ASM helpers counted as ASM; data/padding excluded",
   "original_application_symbols_preserved": 459,
   "all_original_text_symbols_preserved": 806,
@@ -50,7 +50,25 @@
     "src/adt_fault_clear.c": "cca52b48d533e259a13fd280db7f56d445cab926dc6525cf0c90f7cfc06962d9",
     "src/adt16.c": "39e51f30615cc5a534e2471eeb36e65d2d59a08056f81d6f3aed282d723b01f6",
     "src/flash_address_send.c": "a0d9e7565059fdd346447ce9b320c153e86b3c9d3bd127bba97c46cc7b238d9a",
-    "src/pll_control_write.c": "db7a74464fa51cd97c8cf85ea7164696a508f35c552e32e5e6173001de5514b8"
+    "src/pll_control_write.c": "db7a74464fa51cd97c8cf85ea7164696a508f35c552e32e5e6173001de5514b8",
+    "src/fpga_word_write.c": "2a789ac299dacdec69bba4a3f0db5c9a3960a38779a89c9a875df8de0ace976f",
+    "src/fpga_word_read.c": "66c6fbadd2d180e7668cf078bd0e1c023da2c70479a177bda6e18bd0192cbcf5",
+    "src/pll_control_read.c": "db216991fb5df673250fcfd0b7fc9c4469cd4529405e6e5d876632629607a3b1",
+    "src/console_hex_digit.c": "3cb6bc058e990d24581b652d11f453c3e17fe058df169ebd7e7fd9e2ca277ecc",
+    "src/adt_bit_transfer.c": "05a24afe0a50ef496e3804d65972e36ca4b726e80aee9a027df1092a3e290cdb",
+    "src/power_state_request.c": "e014e63f9cea33b85f7d87b27413ef11a41c8e3e70abe9d4cece6c0204809916",
+    "src/dma_gpio_handshake.c": "e64fae02dce44f19422a1a4cb1a446dc76ac66d113ccfa06d3e0e320581f8c38",
+    "src/console_hex_word.c": "86c810c2e9ff758556d171a7739013d99205d77a7b15bf6cbef486f93999f174",
+    "src/dac_channels.c": "cf1fe7adadf723cb1380e09607d8495d0d19d97673001baa3d8c3991d6bbcc80",
+    "src/fpga_multiword_read.c": "b74f9f92b57b48f8ca721dbb79b0d42272f462ac6bc016c71f1e9d0917a67909",
+    "src/fpga_timestamp_send.c": "407e9e8b3cf21bc7a678345e4bd11ec41be8099ac81c3625b96cacf92dc39f88",
+    "src/flash_device_id.c": "4d80cd3c67ee72186cc67c4c61366969d4d7707ba1e97f785fa2122f6f5e445f",
+    "src/pll_defaults_load.c": "c81afc2ee61abd2518f3f0a1e2fa4ca2e6fcdf58ba7f095aae017c89a4706ba5",
+    "src/power_portb_interrupt.c": "7c89455195ed269e603acaa3d6199cebda4140d8cde1094c281cd58d5332927f",
+    "src/power_portd_interrupt.c": "34f72190fcc55251b7974a1582ea79c5dd89a7136edbe8d2a07b7457a3181380",
+    "src/console_flash_message.c": "0756351275ed4cbed0d00e5e1aea65547c10eab769ce7ca7c39adeefd5139a06",
+    "src/fpga_settings_reset.c": "801dbb294e12aa6a2c3e844dfeed8f797c3792cb3fa1443e6cd1f58942f3e3b0",
+    "src/fpga_settings_init.c": "6be9d4fb95cd603108ca3bde9ea59a381219d8e08d784fd39d1a63fe93a6876c"
   },
   "application": [
     {
@@ -63,7 +81,11 @@
       "address": 1132,
       "end_exclusive": 1182,
       "symbol": "FUN_code_000236",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dma_gpio_handshake.c",
+      "compiler_profile": "r16_r17_r18",
+      "compiler_generated_bytes": 26,
+      "exact_asm_helper_bytes": 24
     },
     {
       "address": 1182,
@@ -75,13 +97,21 @@
       "address": 2276,
       "end_exclusive": 2442,
       "symbol": "fpga_settings_init",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_settings_init.c",
+      "compiler_profile": "fpga_legacy_asymmetric_frame",
+      "compiler_generated_bytes": 50,
+      "exact_asm_helper_bytes": 116
     },
     {
       "address": 2442,
       "end_exclusive": 2526,
       "symbol": "fpga_settings_reset",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_settings_reset.c",
+      "compiler_profile": "fpga_saved_y_settings",
+      "compiler_generated_bytes": 38,
+      "exact_asm_helper_bytes": 46
     },
     {
       "address": 2526,
@@ -93,19 +123,31 @@
       "address": 2636,
       "end_exclusive": 2716,
       "symbol": "PORTD_INT0_vect_isr",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_portd_interrupt.c",
+      "compiler_profile": "r16_only_legacy_interrupt_no_block_reorder",
+      "compiler_generated_bytes": 40,
+      "exact_asm_helper_bytes": 40
     },
     {
       "address": 2716,
       "end_exclusive": 2748,
       "symbol": "FUN_code_00054e",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_state_request.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 22,
+      "exact_asm_helper_bytes": 10
     },
     {
       "address": 2748,
       "end_exclusive": 2784,
       "symbol": "PORTB_INT0_vect_isr",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_portb_interrupt.c",
+      "compiler_profile": "r16_only_legacy_interrupt",
+      "compiler_generated_bytes": 18,
+      "exact_asm_helper_bytes": 18
     },
     {
       "address": 2784,
@@ -169,7 +211,11 @@
       "address": 3548,
       "end_exclusive": 3616,
       "symbol": "CDCE62005_control_rst",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_defaults_load.c",
+      "compiler_profile": "pll_saved_defaults_cursor",
+      "compiler_generated_bytes": 48,
+      "exact_asm_helper_bytes": 20
     },
     {
       "address": 3616,
@@ -297,7 +343,11 @@
       "address": 6208,
       "end_exclusive": 6286,
       "symbol": "FUN_code_000c20",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_device_id.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 16,
+      "exact_asm_helper_bytes": 62
     },
     {
       "address": 6286,
@@ -435,13 +485,21 @@
       "address": 8428,
       "end_exclusive": 8452,
       "symbol": "dac_set_value_2",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_channels.c",
+      "compiler_profile": "dac_legacy_inputs",
+      "compiler_generated_bytes": 18,
+      "exact_asm_helper_bytes": 6
     },
     {
       "address": 8452,
       "end_exclusive": 8476,
       "symbol": "dac_set_value",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_channels.c",
+      "compiler_profile": "dac_legacy_inputs",
+      "compiler_generated_bytes": 18,
+      "exact_asm_helper_bytes": 6
     },
     {
       "address": 8476,
@@ -483,19 +541,31 @@
       "address": 8974,
       "end_exclusive": 9064,
       "symbol": "fpga_msg_send_t2",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_word_write.c",
+      "compiler_profile": "r22_saved_fpga_legacy_inputs",
+      "compiler_generated_bytes": 20,
+      "exact_asm_helper_bytes": 70
     },
     {
       "address": 9064,
       "end_exclusive": 9162,
       "symbol": "fpga_msg_read_t1",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_word_read.c",
+      "compiler_profile": "r22_saved_fpga_legacy_inputs",
+      "compiler_generated_bytes": 20,
+      "exact_asm_helper_bytes": 78
     },
     {
       "address": 9162,
       "end_exclusive": 9350,
       "symbol": "FUN_code_0011e5",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_multiword_read.c",
+      "compiler_profile": "r22_saved_fpga_legacy_inputs",
+      "compiler_generated_bytes": 22,
+      "exact_asm_helper_bytes": 166
     },
     {
       "address": 9350,
@@ -511,13 +581,21 @@
       "address": 9422,
       "end_exclusive": 9520,
       "symbol": "FUN_code_001267",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_control_read.c",
+      "compiler_profile": "r22_r23_saved_pll_inputs",
+      "compiler_generated_bytes": 16,
+      "exact_asm_helper_bytes": 82
     },
     {
       "address": 9520,
       "end_exclusive": 9624,
       "symbol": "fpga_send_mcu_ts",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_timestamp_send.c",
+      "compiler_profile": "fpga_saved_z_cursor",
+      "compiler_generated_bytes": 36,
+      "exact_asm_helper_bytes": 68
     },
     {
       "address": 9624,
@@ -553,7 +631,11 @@
       "address": 9736,
       "end_exclusive": 9780,
       "symbol": "adt7311_byte_rw",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/adt_bit_transfer.c",
+      "compiler_profile": "r16_r17_r18",
+      "compiler_generated_bytes": 20,
+      "exact_asm_helper_bytes": 24
     },
     {
       "address": 9780,
@@ -571,13 +653,21 @@
       "address": 9976,
       "end_exclusive": 10016,
       "symbol": "cli_send_32bit_hex",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_hex_word.c",
+      "compiler_profile": "r16_r17_r18_saved",
+      "compiler_generated_bytes": 24,
+      "exact_asm_helper_bytes": 16
     },
     {
       "address": 10016,
       "end_exclusive": 10030,
       "symbol": "cli_send_digit_hex",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_hex_digit.c",
+      "compiler_profile": "r16_only",
+      "compiler_generated_bytes": 8,
+      "exact_asm_helper_bytes": 6
     },
     {
       "address": 10030,
@@ -623,7 +713,11 @@
       "address": 10278,
       "end_exclusive": 10294,
       "symbol": "cli_send_msg",
-      "classification": "ASM_EXACT"
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_flash_message.c",
+      "compiler_profile": "r16_saved_flash_cursor",
+      "compiler_generated_bytes": 8,
+      "exact_asm_helper_bytes": 8
     },
     {
       "address": 10294,
