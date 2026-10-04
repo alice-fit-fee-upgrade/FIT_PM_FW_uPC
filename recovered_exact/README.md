@@ -6,12 +6,12 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 `cmp` against reference/flash_golden.bin. There is no emulator acceptance step.
 `make c-progress` reports the three exact-source classifications.
 
-Current result: 89 application entries, 2 C_BINARY_EXACT, 31
-C_WITH_EXACT_ASM_HELPER, 56 ASM_EXACT. All nine boot procedures remain exact ASM.
+Current result: 89 application entries, 2 C_BINARY_EXACT, 81
+C_WITH_EXACT_ASM_HELPER, 6 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 1016 of 10836 executable bytes (9.3762%);
-ASM occupies 9820 bytes (90.6238%), including 1082 inline-helper bytes. Data and
-padding do not contribute to these percentages. Application-only C is 10.1014%.
+Compiler-generated instructions occupy 3064 of 10836 executable bytes (28.2761%);
+ASM occupies 7772 bytes (71.7239%), including 4138 inline-helper bytes. Data and
+padding do not contribute to these percentages. Application-only C is 30.4633%.
 The entry count includes main, ISRs and shared formatter entries, rather than
 89 independent C-style function bodies.
 
@@ -77,3 +77,8 @@ with C status/GPIO updates. These entry points are called by the original vector
 do not call them as ordinary C functions. PORTD uses `-fno-reorder-blocks` to keep
 the original branch layout. The FLASH-string sender uses the same option and an
 exact terminator branch, with GCC generating its original R16 save/restore.
+
+Each exact-check also audits inline ASM byte ranges against GCC APP/NOAPP markers
+in assembly emitted with the actual per-file build flags. This independently
+checks the C/ASM coverage figures, including subsection tails and C-generated
+loop-back branches. See [remaining ASM review](../docs/easy_conversion_assessment.md).

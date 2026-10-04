@@ -952,6 +952,2431 @@
           "reason": "Exact CALL/interrupt window and original register restore/RET"
         }
       ]
+    },
+    {
+      "address": 8564,
+      "end_exclusive": 8712,
+      "symbol": "ths788_write",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/tdc_host_write.c",
+      "section": ".text.ths788_write",
+      "compiler_profile": "tdc_host_write_legacy",
+      "meaning": "Original TDC host write pulses and 24-bit carry serializer",
+      "asm_helper_ranges": [
+        {
+          "start": 8578,
+          "end_exclusive": 8600,
+          "reason": "Exact selection and scratch register mapping"
+        },
+        {
+          "start": 8618,
+          "end_exclusive": 8622,
+          "reason": "Exact command-bit test"
+        },
+        {
+          "start": 8636,
+          "end_exclusive": 8654,
+          "reason": "Exact data level and carry shifts"
+        },
+        {
+          "start": 8662,
+          "end_exclusive": 8666,
+          "reason": "Exact DEC loop preserving carry"
+        }
+      ]
+    },
+    {
+      "address": 8712,
+      "end_exclusive": 8874,
+      "symbol": "ths788_read",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/tdc_host_read.c",
+      "section": ".text.ths788_read",
+      "compiler_profile": "tdc_host_read_legacy",
+      "meaning": "Original TDC host read pulses, command byte and response sampling",
+      "asm_helper_ranges": [
+        {
+          "start": 8722,
+          "end_exclusive": 8726,
+          "reason": "Exact device validation"
+        },
+        {
+          "start": 8730,
+          "end_exclusive": 8738,
+          "reason": "Exact DEC selector loop"
+        },
+        {
+          "start": 8772,
+          "end_exclusive": 8786,
+          "reason": "Exact command-bit and carry shift"
+        },
+        {
+          "start": 8794,
+          "end_exclusive": 8798,
+          "reason": "Exact command loop"
+        },
+        {
+          "start": 8816,
+          "end_exclusive": 8820,
+          "reason": "Exact response carry shift"
+        },
+        {
+          "start": 8824,
+          "end_exclusive": 8828,
+          "reason": "Exact response bit test"
+        },
+        {
+          "start": 8832,
+          "end_exclusive": 8836,
+          "reason": "Exact response loop"
+        }
+      ]
+    },
+    {
+      "address": 8874,
+      "end_exclusive": 8974,
+      "symbol": "dac_send_value",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_spi_send.c",
+      "section": ".text.dac_send_value",
+      "compiler_profile": "dac_spi_send_legacy",
+      "meaning": "DAC header packing, device select and original SPI word transaction",
+      "asm_helper_ranges": [
+        {
+          "start": 8880,
+          "end_exclusive": 8882,
+          "reason": "Original interrupt disable"
+        },
+        {
+          "start": 8884,
+          "end_exclusive": 8904,
+          "reason": "Exact SPI register store and chip-select selection"
+        },
+        {
+          "start": 8906,
+          "end_exclusive": 8908,
+          "reason": "Exact nibble swap"
+        },
+        {
+          "start": 8922,
+          "end_exclusive": 8958,
+          "reason": "Exact three-byte SPI transfer and polling"
+        },
+        {
+          "start": 8964,
+          "end_exclusive": 8966,
+          "reason": "Original interrupt enable"
+        }
+      ]
+    },
+    {
+      "address": 5946,
+      "end_exclusive": 6002,
+      "symbol": "FUN_code_000b9d",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_wait_ready.c",
+      "section": ".text.FUN_code_000b9d",
+      "compiler_profile": "flash_wait_ready_legacy",
+      "meaning": "Read original FLASH busy status after original fixed delay",
+      "asm_helper_ranges": [
+        {
+          "start": 5950,
+          "end_exclusive": 5954,
+          "reason": "Original delay loop"
+        },
+        {
+          "start": 5966,
+          "end_exclusive": 5990,
+          "reason": "Exact SPI polling, dummy byte and result register"
+        },
+        {
+          "start": 5996,
+          "end_exclusive": 6000,
+          "reason": "Exact retry test"
+        }
+      ]
+    },
+    {
+      "address": 3114,
+      "end_exclusive": 3198,
+      "symbol": "PORTE_INT1_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_status_interrupt.c",
+      "section": ".text.PORTE_INT1_vect_isr",
+      "compiler_profile": "fpga_status_interrupt_legacy",
+      "meaning": "Original FPGA interrupt status nibble merge and alarm GPIO update",
+      "asm_helper_ranges": [
+        {
+          "start": 3114,
+          "end_exclusive": 3124,
+          "reason": "Original ISR frame"
+        },
+        {
+          "start": 3126,
+          "end_exclusive": 3134,
+          "reason": "Exact FPGA status read and bit branch"
+        },
+        {
+          "start": 3144,
+          "end_exclusive": 3146,
+          "reason": "Exact low nibble swap"
+        },
+        {
+          "start": 3148,
+          "end_exclusive": 3150,
+          "reason": "Exact high nibble swap"
+        },
+        {
+          "start": 3154,
+          "end_exclusive": 3158,
+          "reason": "Exact SRAM read"
+        },
+        {
+          "start": 3166,
+          "end_exclusive": 3174,
+          "reason": "Exact masked flag branch and SRAM read"
+        },
+        {
+          "start": 3186,
+          "end_exclusive": 3198,
+          "reason": "Original ISR restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 3720,
+      "end_exclusive": 3808,
+      "symbol": "USARTF0_DRE_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_tx_interrupt.c",
+      "section": ".text.USARTF0_DRE_vect_isr",
+      "compiler_profile": "console_tx_interrupt_legacy",
+      "meaning": "Original USART transmit-empty interrupt and ring buffer",
+      "asm_helper_ranges": [
+        {
+          "start": 3720,
+          "end_exclusive": 3736,
+          "reason": "Exact interrupt frame"
+        },
+        {
+          "start": 3740,
+          "end_exclusive": 3754,
+          "reason": "Exact ring load and flag tests"
+        },
+        {
+          "start": 3766,
+          "end_exclusive": 3770,
+          "reason": "Exact index increment and zero scratch"
+        },
+        {
+          "start": 3774,
+          "end_exclusive": 3778,
+          "reason": "Exact buffer pointer addition"
+        },
+        {
+          "start": 3790,
+          "end_exclusive": 3808,
+          "reason": "Original ISR restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 3616,
+      "end_exclusive": 3720,
+      "symbol": "PORTF_INT0_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_cts_interrupt.c",
+      "section": ".text.PORTF_INT0_vect_isr",
+      "compiler_profile": "console_cts_interrupt_legacy",
+      "meaning": "Original console CTS interrupt, immediate send and ring ready flag",
+      "asm_helper_ranges": [
+        {
+          "start": 3616,
+          "end_exclusive": 3632,
+          "reason": "Original ISR frame"
+        },
+        {
+          "start": 3636,
+          "end_exclusive": 3638,
+          "reason": "Exact ready zero"
+        },
+        {
+          "start": 3642,
+          "end_exclusive": 3656,
+          "reason": "Exact input branch, index reads and index comparison"
+        },
+        {
+          "start": 3660,
+          "end_exclusive": 3668,
+          "reason": "Exact UART ready branch and byte/index update"
+        },
+        {
+          "start": 3672,
+          "end_exclusive": 3676,
+          "reason": "Exact pointer arithmetic"
+        },
+        {
+          "start": 3702,
+          "end_exclusive": 3720,
+          "reason": "Original ISR restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 3808,
+      "end_exclusive": 3924,
+      "symbol": "USARTF0_RXC_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_rx_interrupt.c",
+      "section": ".text.USARTF0_RXC_vect_isr",
+      "compiler_profile": "console_rx_interrupt_legacy",
+      "meaning": "Original USART receive interrupt, watermark and character ring",
+      "asm_helper_ranges": [
+        {
+          "start": 3808,
+          "end_exclusive": 3824,
+          "reason": "Original ISR frame"
+        },
+        {
+          "start": 3828,
+          "end_exclusive": 3834,
+          "reason": "Exact index loads and increment"
+        },
+        {
+          "start": 3842,
+          "end_exclusive": 3846,
+          "reason": "Exact watermark comparison"
+        },
+        {
+          "start": 3870,
+          "end_exclusive": 3878,
+          "reason": "Exact receive-error and buffer-full branches"
+        },
+        {
+          "start": 3884,
+          "end_exclusive": 3890,
+          "reason": "Exact zero and pointer arithmetic"
+        },
+        {
+          "start": 3892,
+          "end_exclusive": 3896,
+          "reason": "Exact CR comparison"
+        },
+        {
+          "start": 3900,
+          "end_exclusive": 3902,
+          "reason": "Exact CR counter increment"
+        },
+        {
+          "start": 3906,
+          "end_exclusive": 3924,
+          "reason": "Original ISR restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 10300,
+      "end_exclusive": 10412,
+      "symbol": "cli_get_next_char",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_character_read.c",
+      "section": ".text.cli_get_next_char",
+      "compiler_profile": "console_character_read_legacy",
+      "meaning": "Original text/byte shared receiver with signed folding and RTS watermark",
+      "asm_helper_ranges": [
+        {
+          "start": 10300,
+          "end_exclusive": 10314,
+          "reason": "Original shared-entry register frame"
+        },
+        {
+          "start": 10318,
+          "end_exclusive": 10332,
+          "reason": "Exact interrupt window, ring loads, comparison and increment"
+        },
+        {
+          "start": 10338,
+          "end_exclusive": 10342,
+          "reason": "Exact flow-control branch"
+        },
+        {
+          "start": 10348,
+          "end_exclusive": 10352,
+          "reason": "Exact CPSE and conditional flow literal"
+        },
+        {
+          "start": 10356,
+          "end_exclusive": 10358,
+          "reason": "Exact zero scratch"
+        },
+        {
+          "start": 10362,
+          "end_exclusive": 10366,
+          "reason": "Exact buffer pointer addition"
+        },
+        {
+          "start": 10372,
+          "end_exclusive": 10376,
+          "reason": "Exact CR branch"
+        },
+        {
+          "start": 10380,
+          "end_exclusive": 10382,
+          "reason": "Exact CR count decrement"
+        },
+        {
+          "start": 10386,
+          "end_exclusive": 10396,
+          "reason": "Exact signed character folding"
+        },
+        {
+          "start": 10398,
+          "end_exclusive": 10412,
+          "reason": "Original restore and return"
+        }
+      ]
+    },
+    {
+      "address": 10412,
+      "end_exclusive": 10518,
+      "symbol": "cli_send_buf",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_character_send.c",
+      "section": ".text.cli_send_buf",
+      "compiler_profile": "console_character_send_legacy",
+      "meaning": "Original console queue/full retry and direct USART send",
+      "asm_helper_ranges": [
+        {
+          "start": 10412,
+          "end_exclusive": 10424,
+          "reason": "Original register save frame"
+        },
+        {
+          "start": 10428,
+          "end_exclusive": 10446,
+          "reason": "Exact interrupt/read window, index branches and increment"
+        },
+        {
+          "start": 10454,
+          "end_exclusive": 10460,
+          "reason": "Exact zero and pointer addition"
+        },
+        {
+          "start": 10468,
+          "end_exclusive": 10470,
+          "reason": "Exact enqueue interrupt enable"
+        },
+        {
+          "start": 10472,
+          "end_exclusive": 10474,
+          "reason": "Exact empty-ring increment"
+        },
+        {
+          "start": 10476,
+          "end_exclusive": 10480,
+          "reason": "Exact ready flag branch"
+        },
+        {
+          "start": 10484,
+          "end_exclusive": 10488,
+          "reason": "Exact UART ready branch"
+        },
+        {
+          "start": 10502,
+          "end_exclusive": 10518,
+          "reason": "Exact interrupt enable and restore/RET"
+        }
+      ]
+    },
+    {
+      "address": 2784,
+      "end_exclusive": 2920,
+      "symbol": "PORTF_INT1_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_status_interrupt.c",
+      "section": ".text.PORTF_INT1_vect_isr",
+      "compiler_profile": "pll_status_interrupt_legacy",
+      "meaning": "Original PLL interrupt control word, readback alarms and power state",
+      "asm_helper_ranges": [
+        {
+          "start": 2784,
+          "end_exclusive": 2796,
+          "reason": "Original ISR frame"
+        },
+        {
+          "start": 2800,
+          "end_exclusive": 2808,
+          "reason": "Exact T and input bit branches"
+        },
+        {
+          "start": 2816,
+          "end_exclusive": 2820,
+          "reason": "Exact PLL control CALL"
+        },
+        {
+          "start": 2826,
+          "end_exclusive": 2832,
+          "reason": "Exact PLL read CALL and nibble swap"
+        },
+        {
+          "start": 2834,
+          "end_exclusive": 2840,
+          "reason": "Exact T transfer and absolute SRAM read"
+        },
+        {
+          "start": 2848,
+          "end_exclusive": 2850,
+          "reason": "Exact change branch"
+        },
+        {
+          "start": 2852,
+          "end_exclusive": 2856,
+          "reason": "Exact first alarm bit branch"
+        },
+        {
+          "start": 2860,
+          "end_exclusive": 2862,
+          "reason": "Exact alarm GPIO bit clear"
+        },
+        {
+          "start": 2864,
+          "end_exclusive": 2874,
+          "reason": "Exact second/third alarm bit branches and GPIO bit set"
+        },
+        {
+          "start": 2880,
+          "end_exclusive": 2884,
+          "reason": "Exact GPIO clear and T state branch"
+        },
+        {
+          "start": 2898,
+          "end_exclusive": 2900,
+          "reason": "Exact fault RCALL"
+        },
+        {
+          "start": 2906,
+          "end_exclusive": 2920,
+          "reason": "Original ISR restore and RETI"
+        }
+      ]
+    },
+    {
+      "address": 2966,
+      "end_exclusive": 3114,
+      "symbol": "PORTE_INT0_vect_isr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/power_porte_interrupt.c",
+      "section": ".text.PORTE_INT0_vect_isr",
+      "compiler_profile": "power_porte_interrupt_legacy",
+      "meaning": "Original PSU/status interrupt, retry state and LED/deinit handling",
+      "asm_helper_ranges": [
+        {
+          "start": 2966,
+          "end_exclusive": 2980,
+          "reason": "Original ISR frame and zero scratch"
+        },
+        {
+          "start": 2984,
+          "end_exclusive": 2994,
+          "reason": "Exact input bits and T flag capture"
+        },
+        {
+          "start": 3010,
+          "end_exclusive": 3018,
+          "reason": "Exact edge branches"
+        },
+        {
+          "start": 3024,
+          "end_exclusive": 3028,
+          "reason": "Exact GPIO alarm and deinit RCALL"
+        },
+        {
+          "start": 3048,
+          "end_exclusive": 3050,
+          "reason": "Exact GPIO alarm clear"
+        },
+        {
+          "start": 3052,
+          "end_exclusive": 3060,
+          "reason": "Exact retry edge branches"
+        },
+        {
+          "start": 3064,
+          "end_exclusive": 3068,
+          "reason": "Exact state comparison"
+        },
+        {
+          "start": 3072,
+          "end_exclusive": 3078,
+          "reason": "Exact nonzero counter branch and DEC"
+        },
+        {
+          "start": 3094,
+          "end_exclusive": 3100,
+          "reason": "Exact deinit, T branch and alarm set"
+        },
+        {
+          "start": 3100,
+          "end_exclusive": 3114,
+          "reason": "Exact LED RCALL and ISR restore/RETI"
+        },
+        {
+          "start": 2994,
+          "end_exclusive": 2998,
+          "reason": "Exact absolute SRAM read"
+        },
+        {
+          "start": 3060,
+          "end_exclusive": 3064,
+          "reason": "Exact absolute SRAM read"
+        },
+        {
+          "start": 3068,
+          "end_exclusive": 3072,
+          "reason": "Exact absolute SRAM read"
+        },
+        {
+          "start": 3002,
+          "end_exclusive": 3004,
+          "reason": "Exact scratch register bit operation"
+        },
+        {
+          "start": 3008,
+          "end_exclusive": 3010,
+          "reason": "Exact scratch register bit operation"
+        }
+      ]
+    },
+    {
+      "address": 6670,
+      "end_exclusive": 6718,
+      "symbol": "FUN_code_000d07",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/eeprom_page_commit.c",
+      "section": ".text.FUN_code_000d07",
+      "compiler_profile": "eeprom_page_commit_legacy",
+      "meaning": "Original conditional EEPROM page commit and protected NVM execute",
+      "asm_helper_ranges": [
+        {
+          "start": 6670,
+          "end_exclusive": 6674,
+          "reason": "Exact dirty state branch"
+        },
+        {
+          "start": 6692,
+          "end_exclusive": 6694,
+          "reason": "Exact interrupt disable"
+        },
+        {
+          "start": 6702,
+          "end_exclusive": 6704,
+          "reason": "Exact interrupt enable"
+        },
+        {
+          "start": 6708,
+          "end_exclusive": 6714,
+          "reason": "Exact ready polling and dirty clear"
+        },
+        {
+          "start": 6716,
+          "end_exclusive": 6718,
+          "reason": "Original adjacent shared error jump"
+        },
+        {
+          "start": 6694,
+          "end_exclusive": 6698,
+          "reason": "Exact STS width for CCP unlock"
+        }
+      ]
+    },
+    {
+      "address": 6574,
+      "end_exclusive": 6670,
+      "symbol": "eeprom_settings_save",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/eeprom_settings_store.c",
+      "section": ".text.eeprom_settings_save",
+      "compiler_profile": "eeprom_settings_store_legacy",
+      "meaning": "Original EEPROM settings comparison, page-buffer writes and conditional commits",
+      "asm_helper_ranges": [
+        {
+          "start": 6574,
+          "end_exclusive": 6580,
+          "reason": "Exact console validation and shared error branch"
+        },
+        {
+          "start": 6584,
+          "end_exclusive": 6588,
+          "reason": "Exact NVM ready loop"
+        },
+        {
+          "start": 6598,
+          "end_exclusive": 6604,
+          "reason": "Exact interrupt disable and STS CCP unlock"
+        },
+        {
+          "start": 6608,
+          "end_exclusive": 6610,
+          "reason": "Exact interrupt enable"
+        },
+        {
+          "start": 6624,
+          "end_exclusive": 6638,
+          "reason": "Exact NVM polling, mapping, zero dirty and byte loads"
+        },
+        {
+          "start": 6640,
+          "end_exclusive": 6642,
+          "reason": "Exact changed-byte branch"
+        },
+        {
+          "start": 6646,
+          "end_exclusive": 6654,
+          "reason": "Exact end pointer comparison and low EEPROM address"
+        },
+        {
+          "start": 6656,
+          "end_exclusive": 6662,
+          "reason": "Exact page boundary branch and page commit RCALL"
+        },
+        {
+          "start": 6664,
+          "end_exclusive": 6670,
+          "reason": "Exact final commit, mapping restore and shared response jump"
+        },
+        {
+          "start": 6642,
+          "end_exclusive": 6644,
+          "reason": "Exact EEPROM-mapped Y store"
+        }
+      ]
+    },
+    {
+      "address": 7140,
+      "end_exclusive": 7266,
+      "symbol": "alarms_clear",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/alarm_state_clear.c",
+      "section": ".text.alarms_clear",
+      "compiler_profile": "alarm_state_clear_legacy",
+      "meaning": "Original alarm clear, guarded PSU restart and console response",
+      "asm_helper_ranges": [
+        {
+          "start": 7140,
+          "end_exclusive": 7152,
+          "reason": "Exact console validation, interrupt disable and status read"
+        },
+        {
+          "start": 7156,
+          "end_exclusive": 7162,
+          "reason": "Exact alarm branch and status read"
+        },
+        {
+          "start": 7168,
+          "end_exclusive": 7172,
+          "reason": "Exact absolute status read"
+        },
+        {
+          "start": 7178,
+          "end_exclusive": 7180,
+          "reason": "Exact interrupt enable"
+        },
+        {
+          "start": 7194,
+          "end_exclusive": 7200,
+          "reason": "Exact state branch and interrupt enable"
+        },
+        {
+          "start": 7206,
+          "end_exclusive": 7210,
+          "reason": "Exact absolute state read"
+        },
+        {
+          "start": 7216,
+          "end_exclusive": 7218,
+          "reason": "Exact zero and flags"
+        },
+        {
+          "start": 7246,
+          "end_exclusive": 7248,
+          "reason": "Exact alarm bit clear"
+        },
+        {
+          "start": 7254,
+          "end_exclusive": 7256,
+          "reason": "Exact interrupt enable"
+        },
+        {
+          "start": 7260,
+          "end_exclusive": 7262,
+          "reason": "Exact message RCALL"
+        },
+        {
+          "start": 7264,
+          "end_exclusive": 7266,
+          "reason": "Original adjacent shared error jump"
+        }
+      ]
+    },
+    {
+      "address": 6718,
+      "end_exclusive": 6756,
+      "symbol": "cdce62005_rst",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/pll_console_reset.c",
+      "section": ".text.cdce62005_rst",
+      "compiler_profile": "pll_console_reset_legacy",
+      "meaning": "Original console PLL reset sequence and nine default words",
+      "asm_helper_ranges": [
+        {
+          "start": 6718,
+          "end_exclusive": 6724,
+          "reason": "Exact console validation and shared error branch"
+        },
+        {
+          "start": 6730,
+          "end_exclusive": 6748,
+          "reason": "Exact interrupt window, FLASH reads, RCALL and DEC loop"
+        },
+        {
+          "start": 6752,
+          "end_exclusive": 6754,
+          "reason": "Exact response RCALL"
+        }
+      ]
+    },
+    {
+      "address": 8358,
+      "end_exclusive": 8400,
+      "symbol": "FUN_code_001053",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_offset_scale.c",
+      "section": ".text.FUN_code_001053",
+      "compiler_profile": "dac_offset_scale_legacy",
+      "meaning": "Original DAC scaling, SRAM correction and complemented output",
+      "asm_helper_ranges": [
+        {
+          "start": 8364,
+          "end_exclusive": 8366,
+          "reason": "Exact saturating multiplier RCALL"
+        },
+        {
+          "start": 8370,
+          "end_exclusive": 8372,
+          "reason": "Original zero scratch"
+        },
+        {
+          "start": 8374,
+          "end_exclusive": 8378,
+          "reason": "Exact table pointer arithmetic"
+        },
+        {
+          "start": 8382,
+          "end_exclusive": 8386,
+          "reason": "Exact two-byte table read"
+        },
+        {
+          "start": 8394,
+          "end_exclusive": 8396,
+          "reason": "Exact DAC serializer RCALL"
+        }
+      ]
+    },
+    {
+      "address": 8400,
+      "end_exclusive": 8428,
+      "symbol": "FUN_code_001068",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_gain_scale.c",
+      "section": ".text.FUN_code_001068",
+      "compiler_profile": "dac_gain_scale_legacy",
+      "meaning": "Original DAC 20000-minus-value scaling and channel packing",
+      "asm_helper_ranges": [
+        {
+          "start": 8416,
+          "end_exclusive": 8418,
+          "reason": "Exact saturating multiplier RCALL"
+        },
+        {
+          "start": 8422,
+          "end_exclusive": 8424,
+          "reason": "Exact DAC serializer RCALL"
+        }
+      ]
+    },
+    {
+      "address": 7522,
+      "end_exclusive": 7570,
+      "symbol": "fpga_set_trg_charge_lvls",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/trigger_charge_command.c",
+      "section": ".text.fpga_set_trg_charge_lvls",
+      "compiler_profile": "trigger_charge_command_legacy",
+      "meaning": "Original trigger charge command parse, SRAM word and FPGA write",
+      "asm_helper_ranges": [
+        {
+          "start": 7522,
+          "end_exclusive": 7550,
+          "reason": "Exact parsing, range test and FPGA-ready early return"
+        },
+        {
+          "start": 7562,
+          "end_exclusive": 7570,
+          "reason": "Exact protected FPGA send and shared response jump"
+        }
+      ]
+    },
+    {
+      "address": 7570,
+      "end_exclusive": 7606,
+      "symbol": "fpga_set_trg_settings",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/trigger_settings_command.c",
+      "section": ".text.fpga_set_trg_settings",
+      "compiler_profile": "trigger_settings_command_legacy",
+      "meaning": "Original trigger settings byte command and FPGA write",
+      "asm_helper_ranges": [
+        {
+          "start": 7570,
+          "end_exclusive": 7590,
+          "reason": "Exact parsing, byte range and FPGA guard"
+        },
+        {
+          "start": 7598,
+          "end_exclusive": 7606,
+          "reason": "Exact protected FPGA send and shared response jump"
+        }
+      ]
+    },
+    {
+      "address": 7994,
+      "end_exclusive": 8078,
+      "symbol": "fpga_set_ch_adc_delay",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_adc_delay_command.c",
+      "section": ".text.fpga_set_ch_adc_delay",
+      "compiler_profile": "channel_adc_delay_command_legacy",
+      "meaning": "Original channel ADC delay command and SRAM/DAC update",
+      "asm_helper_ranges": [
+        {
+          "start": 7994,
+          "end_exclusive": 8006,
+          "reason": "Exact channel parse and signed bounds"
+        },
+        {
+          "start": 8008,
+          "end_exclusive": 8038,
+          "reason": "Exact value parse, range and FPGA guard"
+        },
+        {
+          "start": 8050,
+          "end_exclusive": 8056,
+          "reason": "Exact protected FPGA write"
+        },
+        {
+          "start": 8064,
+          "end_exclusive": 8078,
+          "reason": "Exact SRAM pointer, ordered word store, DAC scaling and shared reply"
+        }
+      ]
+    },
+    {
+      "address": 8270,
+      "end_exclusive": 8358,
+      "symbol": "fpga_set_ch_cfd_zero",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_cfd_zero_command.c",
+      "section": ".text.fpga_set_ch_cfd_zero",
+      "compiler_profile": "channel_cfd_zero_command_legacy",
+      "meaning": "Original channel CFD zero command and SRAM/DAC update",
+      "asm_helper_ranges": [
+        {
+          "start": 8270,
+          "end_exclusive": 8282,
+          "reason": "Exact channel parse and signed bounds"
+        },
+        {
+          "start": 8284,
+          "end_exclusive": 8318,
+          "reason": "Exact value parse, signed range and FPGA guard"
+        },
+        {
+          "start": 8330,
+          "end_exclusive": 8336,
+          "reason": "Exact protected FPGA write"
+        },
+        {
+          "start": 8344,
+          "end_exclusive": 8358,
+          "reason": "Exact SRAM pointer/store, DAC scaling and shared reply"
+        }
+      ]
+    },
+    {
+      "address": 8172,
+      "end_exclusive": 8270,
+      "symbol": "fpga_set_adc_zero",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_adc_zero_command.c",
+      "section": ".text.fpga_set_adc_zero",
+      "compiler_profile": "channel_adc_zero_command_legacy",
+      "meaning": "Original channel ADC zero command, protected SRAM write and DAC update",
+      "asm_helper_ranges": [
+        {
+          "start": 8172,
+          "end_exclusive": 8184,
+          "reason": "Exact channel parse and signed bounds"
+        },
+        {
+          "start": 8186,
+          "end_exclusive": 8222,
+          "reason": "Exact value parse, signed range, FPGA guard and mapping enable"
+        },
+        {
+          "start": 8234,
+          "end_exclusive": 8240,
+          "reason": "Exact protected FPGA write"
+        },
+        {
+          "start": 8248,
+          "end_exclusive": 8270,
+          "reason": "Exact SRAM pointer/protected store, DAC scaling, mapping clear and shared error/reply"
+        }
+      ]
+    },
+    {
+      "address": 8078,
+      "end_exclusive": 8172,
+      "symbol": "fpga_set_ch_cfd_threshold",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_cfd_threshold_command.c",
+      "section": ".text.fpga_set_ch_cfd_threshold",
+      "compiler_profile": "channel_cfd_threshold_command_legacy",
+      "meaning": "Original CFD threshold command, low scratch registers, SRAM/DAC update and shared response",
+      "asm_helper_ranges": [
+        {
+          "start": 8078,
+          "end_exclusive": 8090,
+          "reason": "Exact channel parse and signed bounds"
+        },
+        {
+          "start": 8092,
+          "end_exclusive": 8126,
+          "reason": "Exact value parse, signed range and FPGA guard"
+        },
+        {
+          "start": 8128,
+          "end_exclusive": 8134,
+          "reason": "Exact low scratch register selection and shifts"
+        },
+        {
+          "start": 8138,
+          "end_exclusive": 8144,
+          "reason": "Exact protected FPGA write"
+        },
+        {
+          "start": 8148,
+          "end_exclusive": 8162,
+          "reason": "Exact SRAM pointer/store and DAC scaling"
+        },
+        {
+          "start": 8166,
+          "end_exclusive": 8168,
+          "reason": "Exact response RCALL"
+        },
+        {
+          "start": 8170,
+          "end_exclusive": 8172,
+          "reason": "Original shared error jump"
+        }
+      ]
+    },
+    {
+      "address": 7726,
+      "end_exclusive": 7804,
+      "symbol": "fpga_set_tdc_values",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_tdc_values_command.c",
+      "section": ".text.fpga_set_tdc_values",
+      "compiler_profile": "channel_tdc_values_command_legacy",
+      "meaning": "Original per-channel TDC setting, SRAM mirror and FPGA write",
+      "asm_helper_ranges": [
+        {
+          "start": 7726,
+          "end_exclusive": 7738,
+          "reason": "Exact channel parsing"
+        },
+        {
+          "start": 7740,
+          "end_exclusive": 7770,
+          "reason": "Exact value parse, signed bounds and FPGA guard"
+        },
+        {
+          "start": 7778,
+          "end_exclusive": 7788,
+          "reason": "Exact SRAM pointer and ordered word store"
+        },
+        {
+          "start": 7794,
+          "end_exclusive": 7804,
+          "reason": "Exact FPGA write, shared response and adjacent error entry"
+        }
+      ]
+    },
+    {
+      "address": 7804,
+      "end_exclusive": 7904,
+      "symbol": "fpga_set_threshold_calibration",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_threshold_calibration_command.c",
+      "section": ".text.fpga_set_threshold_calibration",
+      "compiler_profile": "channel_threshold_calibration_command_legacy",
+      "meaning": "Original threshold calibration, SRAM mirror and dependent DAC update",
+      "asm_helper_ranges": [
+        {
+          "start": 7804,
+          "end_exclusive": 7816,
+          "reason": "Exact channel parsing"
+        },
+        {
+          "start": 7818,
+          "end_exclusive": 7848,
+          "reason": "Exact value parse, signed bounds and FPGA guard"
+        },
+        {
+          "start": 7854,
+          "end_exclusive": 7860,
+          "reason": "Exact protected FPGA write"
+        },
+        {
+          "start": 7868,
+          "end_exclusive": 7878,
+          "reason": "Exact SRAM pointer and ordered word store"
+        },
+        {
+          "start": 7882,
+          "end_exclusive": 7904,
+          "reason": "Exact low scratch pointer, DAC source reads/scaling and shared reply"
+        }
+      ]
+    },
+    {
+      "address": 7606,
+      "end_exclusive": 7726,
+      "symbol": "fpga_set_adc_range_corr",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_adc_range_command.c",
+      "section": ".text.fpga_set_adc_range_corr",
+      "compiler_profile": "channel_adc_range_command_legacy",
+      "meaning": "Original paired ADC correction command, SRAM words and two FPGA writes",
+      "asm_helper_ranges": [
+        {
+          "start": 7606,
+          "end_exclusive": 7618,
+          "reason": "Exact channel parsing"
+        },
+        {
+          "start": 7620,
+          "end_exclusive": 7632,
+          "reason": "Exact first value and comma parsing"
+        },
+        {
+          "start": 7634,
+          "end_exclusive": 7676,
+          "reason": "Exact second value, paired signed bounds and FPGA guard"
+        },
+        {
+          "start": 7686,
+          "end_exclusive": 7700,
+          "reason": "Exact SRAM pointer and ordered four-byte store"
+        },
+        {
+          "start": 7706,
+          "end_exclusive": 7714,
+          "reason": "Exact protected first FPGA write and INC"
+        },
+        {
+          "start": 7716,
+          "end_exclusive": 7726,
+          "reason": "Exact second write, shared response and adjacent error entry"
+        }
+      ]
+    },
+    {
+      "address": 7904,
+      "end_exclusive": 7994,
+      "symbol": "FUN_code_000f70",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_tdc_adjust_command.c",
+      "section": ".text.FUN_code_000f70",
+      "compiler_profile": "channel_tdc_adjust_command_legacy",
+      "meaning": "Original signed per-channel adjustment, byte SRAM state and THS788 command",
+      "asm_helper_ranges": [
+        {
+          "start": 7904,
+          "end_exclusive": 7916,
+          "reason": "Exact channel parse"
+        },
+        {
+          "start": 7918,
+          "end_exclusive": 7952,
+          "reason": "Exact value parse, signed bounds and FPGA guard"
+        },
+        {
+          "start": 7956,
+          "end_exclusive": 7964,
+          "reason": "Exact SRAM pointer addition"
+        },
+        {
+          "start": 7970,
+          "end_exclusive": 7972,
+          "reason": "Exact hardware multiply and non-GNU R1 result"
+        },
+        {
+          "start": 7974,
+          "end_exclusive": 7976,
+          "reason": "Exact multiply result addition"
+        },
+        {
+          "start": 7982,
+          "end_exclusive": 7994,
+          "reason": "Exact high zero, protected TDC write, shared reply and adjacent error entry"
+        }
+      ]
+    },
+    {
+      "address": 6286,
+      "end_exclusive": 6334,
+      "symbol": "cli_send_ch_mean_amplitude",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_mean_amplitude_display.c",
+      "section": ".text.cli_send_ch_mean_amplitude",
+      "compiler_profile": "channel_mean_amplitude_display_legacy",
+      "meaning": "Display two FPGA mean-amplitude words per channel",
+      "asm_helper_ranges": [
+        {
+          "start": 6286,
+          "end_exclusive": 6298,
+          "reason": "Delimiter/readiness checks"
+        },
+        {
+          "start": 6300,
+          "end_exclusive": 6308,
+          "reason": "FPGA read and console word ABI"
+        },
+        {
+          "start": 6310,
+          "end_exclusive": 6334,
+          "reason": "Wide CALL, INC, read, carry loop and success tail"
+        }
+      ]
+    },
+    {
+      "address": 6334,
+      "end_exclusive": 6416,
+      "symbol": "cli_send_adc_baseline_dispersion",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_baseline_dispersion_display.c",
+      "section": ".text.cli_send_adc_baseline_dispersion",
+      "compiler_profile": "channel_baseline_dispersion_display_legacy",
+      "meaning": "Display four baseline/dispersion words per channel",
+      "asm_helper_ranges": [
+        {
+          "start": 6334,
+          "end_exclusive": 6348,
+          "reason": "Delimiter/readiness checks and flag-setting clear"
+        },
+        {
+          "start": 6352,
+          "end_exclusive": 6360,
+          "reason": "FPGA read and console word ABI"
+        },
+        {
+          "start": 6362,
+          "end_exclusive": 6374,
+          "reason": "Space, INC, second word"
+        },
+        {
+          "start": 6376,
+          "end_exclusive": 6378,
+          "reason": "Console ABI"
+        },
+        {
+          "start": 6382,
+          "end_exclusive": 6390,
+          "reason": "FPGA read and console ABI"
+        },
+        {
+          "start": 6392,
+          "end_exclusive": 6406,
+          "reason": "Space, INC, fourth word and CRLF"
+        },
+        {
+          "start": 6408,
+          "end_exclusive": 6416,
+          "reason": "Carry loop and shared command tails"
+        }
+      ]
+    },
+    {
+      "address": 7410,
+      "end_exclusive": 7522,
+      "symbol": "cli_send_channel_cdf_adc",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_cdf_adc_display.c",
+      "section": ".text.cli_send_channel_cdf_adc",
+      "compiler_profile": "channel_cdf_adc_display_legacy",
+      "meaning": "Display channel CFD/ADC settings and trigger charge words",
+      "asm_helper_ranges": [
+        {
+          "start": 7410,
+          "end_exclusive": 7416,
+          "reason": "Original delimiter branch"
+        },
+        {
+          "start": 7420,
+          "end_exclusive": 7422,
+          "reason": "Flag-setting clear"
+        },
+        {
+          "start": 7426,
+          "end_exclusive": 7428,
+          "reason": "Console message ABI"
+        },
+        {
+          "start": 7430,
+          "end_exclusive": 7490,
+          "reason": "High clear, formatting, atomic Y+ reads and INC loop"
+        },
+        {
+          "start": 7494,
+          "end_exclusive": 7496,
+          "reason": "Console message ABI"
+        },
+        {
+          "start": 7500,
+          "end_exclusive": 7506,
+          "reason": "High clear and console formatting ABI"
+        },
+        {
+          "start": 7514,
+          "end_exclusive": 7518,
+          "reason": "Console formatting ABI"
+        },
+        {
+          "start": 7520,
+          "end_exclusive": 7522,
+          "reason": "Shared error tail"
+        }
+      ]
+    },
+    {
+      "address": 8476,
+      "end_exclusive": 8496,
+      "symbol": "FUN_code_00108e",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_ready_guard.c",
+      "section": ".text.FUN_code_00108e",
+      "compiler_profile": "fpga_ready_guard_legacy",
+      "meaning": "Check FPGA status bit 4 and report unready FPGA",
+      "asm_helper_ranges": [
+        {
+          "start": 8476,
+          "end_exclusive": 8478,
+          "reason": "Private carry result initialization"
+        },
+        {
+          "start": 8482,
+          "end_exclusive": 8486,
+          "reason": "Exact skip/return"
+        },
+        {
+          "start": 8490,
+          "end_exclusive": 8494,
+          "reason": "Message call and private carry error"
+        }
+      ]
+    },
+    {
+      "address": 5498,
+      "end_exclusive": 5542,
+      "symbol": "unlock_programming",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/programming_unlock.c",
+      "section": ".text.unlock_programming",
+      "compiler_profile": "programming_unlock_legacy",
+      "meaning": "Validate original eight-byte programming password and return carry",
+      "asm_helper_ranges": [
+        {
+          "start": 5498,
+          "end_exclusive": 5506,
+          "reason": "Original wide CALL and delimiter check"
+        },
+        {
+          "start": 5510,
+          "end_exclusive": 5524,
+          "reason": "LPM password comparison and fixed-byte loop"
+        },
+        {
+          "start": 5528,
+          "end_exclusive": 5542,
+          "reason": "Wide message CALL, carry results and shared error tail"
+        }
+      ]
+    },
+    {
+      "address": 7266,
+      "end_exclusive": 7410,
+      "symbol": "channels_read",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/channel_settings_display.c",
+      "section": ".text.channels_read",
+      "compiler_profile": "channel_settings_display_legacy",
+      "meaning": "Display per-channel DAC, TDC and ADC correction settings",
+      "asm_helper_ranges": [
+        {
+          "start": 7266,
+          "end_exclusive": 7276,
+          "reason": "Delimiter and flag-setting zero registers"
+        },
+        {
+          "start": 7280,
+          "end_exclusive": 7282,
+          "reason": "Message ABI"
+        },
+        {
+          "start": 7284,
+          "end_exclusive": 7290,
+          "reason": "Clear high byte and console ABI"
+        },
+        {
+          "start": 7298,
+          "end_exclusive": 7310,
+          "reason": "Exact pointer addition, Y load and console ABI"
+        },
+        {
+          "start": 7316,
+          "end_exclusive": 7318,
+          "reason": "Hardware multiply with live R0:R1"
+        },
+        {
+          "start": 7320,
+          "end_exclusive": 7322,
+          "reason": "TDC address addition from R0"
+        },
+        {
+          "start": 7324,
+          "end_exclusive": 7334,
+          "reason": "Device shifts and atomic host read"
+        },
+        {
+          "start": 7336,
+          "end_exclusive": 7346,
+          "reason": "Original signed high-byte extension and formatter ABI"
+        },
+        {
+          "start": 7354,
+          "end_exclusive": 7366,
+          "reason": "Exact pointer addition, Y load and console ABI"
+        },
+        {
+          "start": 7376,
+          "end_exclusive": 7386,
+          "reason": "Exact pointer addition, Y load and console ABI"
+        },
+        {
+          "start": 7388,
+          "end_exclusive": 7406,
+          "reason": "Console calls, INC and long loop branch"
+        },
+        {
+          "start": 7408,
+          "end_exclusive": 7410,
+          "reason": "Shared error tail"
+        }
+      ]
+    },
+    {
+      "address": 9900,
+      "end_exclusive": 9976,
+      "symbol": "cli_get_hex",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_hex_parser.c",
+      "section": ".text.cli_get_hex",
+      "compiler_profile": "console_hex_parser_legacy",
+      "meaning": "Parse up to four uppercase hexadecimal digits into private R21:R20 result",
+      "asm_helper_ranges": [
+        {
+          "start": 9900,
+          "end_exclusive": 9912,
+          "reason": "Exact saved registers, zero flags and receiver ABI"
+        },
+        {
+          "start": 9914,
+          "end_exclusive": 9930,
+          "reason": "Original uppercase hex validation branches"
+        },
+        {
+          "start": 9952,
+          "end_exclusive": 9976,
+          "reason": "Digit count, receiver ABI, carry result and saved-register restore"
+        }
+      ]
+    },
+    {
+      "address": 5810,
+      "end_exclusive": 5904,
+      "symbol": "FUN_code_000b59",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_page_program.c",
+      "section": ".text.FUN_code_000b59",
+      "compiler_profile": "flash_page_program_legacy",
+      "meaning": "Program buffered flash page preserving original 24-bit counter and carry result",
+      "asm_helper_ranges": [
+        {
+          "start": 5810,
+          "end_exclusive": 5812,
+          "reason": "Write-enable ABI"
+        },
+        {
+          "start": 5814,
+          "end_exclusive": 5816,
+          "reason": "Address-send ABI"
+        },
+        {
+          "start": 5832,
+          "end_exclusive": 5834,
+          "reason": "Exact buffer load"
+        },
+        {
+          "start": 5842,
+          "end_exclusive": 5858,
+          "reason": "SPI polling and 24-bit equality"
+        },
+        {
+          "start": 5872,
+          "end_exclusive": 5886,
+          "reason": "Carry return and 24-bit page counter"
+        },
+        {
+          "start": 5900,
+          "end_exclusive": 5902,
+          "reason": "Private carry result"
+        }
+      ]
+    },
+    {
+      "address": 6002,
+      "end_exclusive": 6116,
+      "symbol": "FUN_code_000bb9",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_crc_stream_read.c",
+      "section": ".text.FUN_code_000bb9",
+      "compiler_profile": "flash_crc_stream_read_legacy",
+      "meaning": "Read SPI flash address range with original CRC streaming order",
+      "asm_helper_ranges": [
+        {
+          "start": 6014,
+          "end_exclusive": 6024,
+          "reason": "Original zero scratch and SPI poll"
+        },
+        {
+          "start": 6028,
+          "end_exclusive": 6036,
+          "reason": "SPI poll"
+        },
+        {
+          "start": 6040,
+          "end_exclusive": 6048,
+          "reason": "SPI poll"
+        },
+        {
+          "start": 6068,
+          "end_exclusive": 6076,
+          "reason": "SPI poll"
+        },
+        {
+          "start": 6080,
+          "end_exclusive": 6088,
+          "reason": "SPI poll"
+        },
+        {
+          "start": 6092,
+          "end_exclusive": 6100,
+          "reason": "24-bit inclusive end comparison"
+        },
+        {
+          "start": 6104,
+          "end_exclusive": 6110,
+          "reason": "CRC core call, 24-bit increment and shared result tail"
+        },
+        {
+          "start": 6112,
+          "end_exclusive": 6116,
+          "reason": "CRC core call and shared result tail"
+        }
+      ]
+    },
+    {
+      "address": 6116,
+      "end_exclusive": 6152,
+      "symbol": "FUN_code_000bf2",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/flash_crc_bit_core.c",
+      "section": ".text.FUN_code_000bf2",
+      "compiler_profile": "flash_crc_bit_core_legacy",
+      "meaning": "CRC byte update with C polynomial XOR and exact carry helpers",
+      "asm_helper_ranges": [
+        {
+          "start": 6118,
+          "end_exclusive": 6138,
+          "reason": "Carry-propagating state shift and bit/carry decisions"
+        },
+        {
+          "start": 6146,
+          "end_exclusive": 6150,
+          "reason": "Exact DEC/BRNE bit loop"
+        }
+      ]
+    },
+    {
+      "address": 6416,
+      "end_exclusive": 6574,
+      "symbol": "cli_send_tdc_data",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/tdc_channel_data_display.c",
+      "section": ".text.cli_send_tdc_data",
+      "compiler_profile": "tdc_channel_data_display_legacy",
+      "meaning": "Display raw/adjusted TDC readings and calibration per channel",
+      "asm_helper_ranges": [
+        {
+          "start": 6416,
+          "end_exclusive": 6428,
+          "reason": "Delimiter/readiness guard"
+        },
+        {
+          "start": 6430,
+          "end_exclusive": 6436,
+          "reason": "Atomic FPGA read"
+        },
+        {
+          "start": 6438,
+          "end_exclusive": 6446,
+          "reason": "Signed-byte formatter"
+        },
+        {
+          "start": 6448,
+          "end_exclusive": 6450,
+          "reason": "Console ABI"
+        },
+        {
+          "start": 6452,
+          "end_exclusive": 6460,
+          "reason": "Signed-byte formatter"
+        },
+        {
+          "start": 6462,
+          "end_exclusive": 6464,
+          "reason": "Console ABI"
+        },
+        {
+          "start": 6466,
+          "end_exclusive": 6482,
+          "reason": "Atomic FPGA read, signed formatter and CRLF"
+        },
+        {
+          "start": 6486,
+          "end_exclusive": 6488,
+          "reason": "Flag-setting channel clear"
+        },
+        {
+          "start": 6492,
+          "end_exclusive": 6528,
+          "reason": "FPGA read, exact coarse/fine rounding and saved low byte"
+        },
+        {
+          "start": 6530,
+          "end_exclusive": 6536,
+          "reason": "Space, saved low-byte restore and signed formatter"
+        },
+        {
+          "start": 6538,
+          "end_exclusive": 6556,
+          "reason": "Console ABI, calibration signed 7-bit load and formatter"
+        },
+        {
+          "start": 6558,
+          "end_exclusive": 6574,
+          "reason": "Console ABI, signed loop, success/error tails"
+        }
+      ]
+    },
+    {
+      "address": 2526,
+      "end_exclusive": 2636,
+      "symbol": "FUN_code_0004ef",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_stored_settings_apply.c",
+      "section": ".text.FUN_code_0004ef",
+      "compiler_profile": "dac_stored_settings_apply_legacy",
+      "meaning": "Apply all four DAC words for twelve channels with preserved private frame",
+      "asm_helper_ranges": [
+        {
+          "start": 2526,
+          "end_exclusive": 2556,
+          "reason": "Exact fourteen-register frame and channel clear"
+        },
+        {
+          "start": 2560,
+          "end_exclusive": 2564,
+          "reason": "Two-byte setting load"
+        },
+        {
+          "start": 2566,
+          "end_exclusive": 2574,
+          "reason": "Wide DAC call and next setting load"
+        },
+        {
+          "start": 2576,
+          "end_exclusive": 2584,
+          "reason": "Wide DAC call and next setting load"
+        },
+        {
+          "start": 2586,
+          "end_exclusive": 2594,
+          "reason": "Wide DAC call and next setting load"
+        },
+        {
+          "start": 2596,
+          "end_exclusive": 2636,
+          "reason": "Wide DAC call, channel loop and exact register restore"
+        }
+      ]
+    },
+    {
+      "address": 3924,
+      "end_exclusive": 4444,
+      "symbol": "main",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/application_main.c",
+      "section": ".text.main",
+      "compiler_profile": "application_main_legacy",
+      "meaning": "Original clock/GPIO/UART/timer/EEPROM startup and main dispatch loop",
+      "asm_helper_ranges": [
+        {
+          "start": 3926,
+          "end_exclusive": 3930,
+          "reason": "Wide oscillator store"
+        },
+        {
+          "start": 3932,
+          "end_exclusive": 3944,
+          "reason": "Wide store and oscillator wait"
+        },
+        {
+          "start": 3946,
+          "end_exclusive": 3950,
+          "reason": "Wide PLL store"
+        },
+        {
+          "start": 3952,
+          "end_exclusive": 3964,
+          "reason": "Wide PLL store and wait"
+        },
+        {
+          "start": 3968,
+          "end_exclusive": 3976,
+          "reason": "Exact CCP timing stores"
+        },
+        {
+          "start": 3978,
+          "end_exclusive": 3990,
+          "reason": "Wide oscillator store and exact stack reset"
+        },
+        {
+          "start": 4068,
+          "end_exclusive": 4070,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4086,
+          "end_exclusive": 4088,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4098,
+          "end_exclusive": 4100,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4122,
+          "end_exclusive": 4124,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4128,
+          "end_exclusive": 4130,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4212,
+          "end_exclusive": 4214,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4218,
+          "end_exclusive": 4220,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4224,
+          "end_exclusive": 4226,
+          "reason": "Original LDI zero (not GNU R1)"
+        },
+        {
+          "start": 4242,
+          "end_exclusive": 4244,
+          "reason": "Flag-setting scratch clear"
+        },
+        {
+          "start": 4252,
+          "end_exclusive": 4260,
+          "reason": "Exact RAM clearing pointer loop"
+        },
+        {
+          "start": 4270,
+          "end_exclusive": 4274,
+          "reason": "GPIO skip and increment"
+        },
+        {
+          "start": 4282,
+          "end_exclusive": 4288,
+          "reason": "T flag to original state bit"
+        },
+        {
+          "start": 4292,
+          "end_exclusive": 4296,
+          "reason": "T branch and GPIO SBI"
+        },
+        {
+          "start": 4352,
+          "end_exclusive": 4356,
+          "reason": "Wide ADT call"
+        },
+        {
+          "start": 4360,
+          "end_exclusive": 4364,
+          "reason": "Wide ADT call"
+        },
+        {
+          "start": 4366,
+          "end_exclusive": 4368,
+          "reason": "Original LDI zero"
+        },
+        {
+          "start": 4370,
+          "end_exclusive": 4374,
+          "reason": "Wide ADT call"
+        },
+        {
+          "start": 4376,
+          "end_exclusive": 4378,
+          "reason": "Original LDI zero"
+        },
+        {
+          "start": 4380,
+          "end_exclusive": 4384,
+          "reason": "Wide ADT call"
+        },
+        {
+          "start": 4388,
+          "end_exclusive": 4392,
+          "reason": "Original LDI zero in Y"
+        },
+        {
+          "start": 4394,
+          "end_exclusive": 4408,
+          "reason": "EEPROM copy, GPIO CBI and SEI"
+        },
+        {
+          "start": 4412,
+          "end_exclusive": 4416,
+          "reason": "Wide console call"
+        },
+        {
+          "start": 4426,
+          "end_exclusive": 4432,
+          "reason": "Flag check and private FPGA call"
+        },
+        {
+          "start": 4436,
+          "end_exclusive": 4442,
+          "reason": "Flag check and private CLI call"
+        }
+      ]
+    },
+    {
+      "address": 6756,
+      "end_exclusive": 7140,
+      "symbol": "cli_send_system_status",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/system_status_display.c",
+      "section": ".text.cli_send_system_status",
+      "compiler_profile": "system_status_display_legacy",
+      "meaning": "Display original power, temperature, PLL, FPGA and TDC status messages",
+      "asm_helper_ranges": [
+        {
+          "start": 6756,
+          "end_exclusive": 6762,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6766,
+          "end_exclusive": 6768,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6776,
+          "end_exclusive": 6778,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6782,
+          "end_exclusive": 6784,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6788,
+          "end_exclusive": 6798,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6800,
+          "end_exclusive": 6802,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6806,
+          "end_exclusive": 6810,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6826,
+          "end_exclusive": 6828,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6832,
+          "end_exclusive": 6836,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6840,
+          "end_exclusive": 6842,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6848,
+          "end_exclusive": 6852,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6858,
+          "end_exclusive": 6860,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6864,
+          "end_exclusive": 6868,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6874,
+          "end_exclusive": 6876,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6880,
+          "end_exclusive": 6882,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6886,
+          "end_exclusive": 6892,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6896,
+          "end_exclusive": 6900,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6904,
+          "end_exclusive": 6906,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6910,
+          "end_exclusive": 6914,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6918,
+          "end_exclusive": 6924,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6930,
+          "end_exclusive": 6932,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6936,
+          "end_exclusive": 6938,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6946,
+          "end_exclusive": 6950,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6954,
+          "end_exclusive": 6958,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6962,
+          "end_exclusive": 6964,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6968,
+          "end_exclusive": 6970,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6974,
+          "end_exclusive": 6978,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6982,
+          "end_exclusive": 6984,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6988,
+          "end_exclusive": 6992,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 6998,
+          "end_exclusive": 7000,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7004,
+          "end_exclusive": 7006,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7010,
+          "end_exclusive": 7014,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7018,
+          "end_exclusive": 7020,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7024,
+          "end_exclusive": 7030,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7034,
+          "end_exclusive": 7036,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7040,
+          "end_exclusive": 7042,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7046,
+          "end_exclusive": 7056,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7058,
+          "end_exclusive": 7060,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7064,
+          "end_exclusive": 7066,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7076,
+          "end_exclusive": 7086,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7088,
+          "end_exclusive": 7090,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7094,
+          "end_exclusive": 7096,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7104,
+          "end_exclusive": 7106,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7110,
+          "end_exclusive": 7118,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7122,
+          "end_exclusive": 7124,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7128,
+          "end_exclusive": 7132,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        },
+        {
+          "start": 7136,
+          "end_exclusive": 7140,
+          "reason": "Exact console/LPM ABI or original flag/skip/return control"
+        }
+      ]
+    },
+    {
+      "address": 5542,
+      "end_exclusive": 5732,
+      "symbol": "fpga_firmware_update",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/fpga_binary_programming_stream.c",
+      "section": ".text.fpga_firmware_update",
+      "compiler_profile": "fpga_binary_programming_stream_legacy",
+      "meaning": "Receive original binary FPGA programming stream and program SPI flash",
+      "asm_helper_ranges": [
+        {
+          "start": 5542,
+          "end_exclusive": 5548,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5552,
+          "end_exclusive": 5556,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5560,
+          "end_exclusive": 5576,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5578,
+          "end_exclusive": 5590,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5592,
+          "end_exclusive": 5596,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5598,
+          "end_exclusive": 5602,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5604,
+          "end_exclusive": 5624,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5626,
+          "end_exclusive": 5634,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5636,
+          "end_exclusive": 5658,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5674,
+          "end_exclusive": 5678,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5684,
+          "end_exclusive": 5688,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5696,
+          "end_exclusive": 5708,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5710,
+          "end_exclusive": 5718,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        },
+        {
+          "start": 5720,
+          "end_exclusive": 5732,
+          "reason": "Exact stream calls, private counter/flags or legacy SPI/CRC ABI"
+        }
+      ]
+    },
+    {
+      "address": 10030,
+      "end_exclusive": 10038,
+      "symbol": "FUN_code_001397",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_fixed2_entry.c",
+      "section": ".text.FUN_code_001397",
+      "compiler_profile": "console_fixed2_entry_legacy",
+      "meaning": "Signed fixed-point console value with two decimal places",
+      "asm_helper_ranges": [
+        {
+          "start": 10030,
+          "end_exclusive": 10032,
+          "reason": "Exact saved mode register"
+        },
+        {
+          "start": 10034,
+          "end_exclusive": 10038,
+          "reason": "Carry selector and shared tail jump"
+        }
+      ]
+    },
+    {
+      "address": 10038,
+      "end_exclusive": 10046,
+      "symbol": "cli_send_temperature",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_temperature_entry.c",
+      "section": ".text.cli_send_temperature",
+      "compiler_profile": "console_temperature_entry_legacy",
+      "meaning": "Signed temperature console value with one decimal place",
+      "asm_helper_ranges": [
+        {
+          "start": 10038,
+          "end_exclusive": 10040,
+          "reason": "Exact saved mode register"
+        },
+        {
+          "start": 10042,
+          "end_exclusive": 10046,
+          "reason": "Carry selector and shared tail jump"
+        }
+      ]
+    },
+    {
+      "address": 10046,
+      "end_exclusive": 10054,
+      "symbol": "FUN_code_00139f",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_fixed3_entry.c",
+      "section": ".text.FUN_code_00139f",
+      "compiler_profile": "console_fixed3_entry_legacy",
+      "meaning": "Signed fixed-point console value with three decimal places",
+      "asm_helper_ranges": [
+        {
+          "start": 10046,
+          "end_exclusive": 10048,
+          "reason": "Exact saved mode register"
+        },
+        {
+          "start": 10050,
+          "end_exclusive": 10054,
+          "reason": "Carry selector and shared tail jump"
+        }
+      ]
+    },
+    {
+      "address": 10294,
+      "end_exclusive": 10300,
+      "symbol": "cli_get_next_byte",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_raw_byte_entry.c",
+      "section": ".text.cli_get_next_byte",
+      "compiler_profile": "console_raw_byte_entry_legacy",
+      "meaning": "Select raw console byte mode and enter shared receiver",
+      "asm_helper_ranges": [
+        {
+          "start": 10294,
+          "end_exclusive": 10296,
+          "reason": "Exact saved mode register"
+        },
+        {
+          "start": 10298,
+          "end_exclusive": 10300,
+          "reason": "Shared receiver jump"
+        }
+      ]
+    },
+    {
+      "address": 8524,
+      "end_exclusive": 8564,
+      "symbol": "FUN_code_0010a6",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/dac_saturating_scaled_product.c",
+      "section": ".text.FUN_code_0010a6",
+      "compiler_profile": "dac_saturating_scaled_product_legacy",
+      "meaning": "Original unsigned scaled product with C saturation result",
+      "asm_helper_ranges": [
+        {
+          "start": 8524,
+          "end_exclusive": 8558,
+          "reason": "Exact multiply, rounding, overflow flags and early return"
+        }
+      ]
+    },
+    {
+      "address": 9780,
+      "end_exclusive": 9900,
+      "symbol": "cli_get_integer",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_integer_parser.c",
+      "section": ".text.cli_get_integer",
+      "compiler_profile": "console_integer_parser_legacy",
+      "meaning": "Parse original signed decimal value with C radix and digit decoding",
+      "asm_helper_ranges": [
+        {
+          "start": 9780,
+          "end_exclusive": 9794,
+          "reason": "Original frame, character/sign/overflow decisions and carry-result restoration"
+        },
+        {
+          "start": 9796,
+          "end_exclusive": 9816,
+          "reason": "Original frame, character/sign/overflow decisions and carry-result restoration"
+        },
+        {
+          "start": 9818,
+          "end_exclusive": 9828,
+          "reason": "Original frame, character/sign/overflow decisions and carry-result restoration"
+        },
+        {
+          "start": 9832,
+          "end_exclusive": 9882,
+          "reason": "Original frame, character/sign/overflow decisions and carry-result restoration"
+        },
+        {
+          "start": 9884,
+          "end_exclusive": 9900,
+          "reason": "Original frame, character/sign/overflow decisions and carry-result restoration"
+        }
+      ]
+    },
+    {
+      "address": 10062,
+      "end_exclusive": 10270,
+      "symbol": "cli_send_uint16",
+      "classification": "C_WITH_EXACT_ASM_HELPER",
+      "source": "src/console_decimal_formatter.c",
+      "section": ".text.cli_send_uint16",
+      "compiler_profile": "console_decimal_formatter_legacy",
+      "meaning": "Original integer/fixed-point formatter with C digit masks and character setup",
+      "asm_helper_ranges": [
+        {
+          "start": 10062,
+          "end_exclusive": 10106,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10110,
+          "end_exclusive": 10114,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10116,
+          "end_exclusive": 10142,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10144,
+          "end_exclusive": 10148,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10150,
+          "end_exclusive": 10152,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10156,
+          "end_exclusive": 10164,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10166,
+          "end_exclusive": 10180,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10182,
+          "end_exclusive": 10194,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10198,
+          "end_exclusive": 10200,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10202,
+          "end_exclusive": 10204,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10206,
+          "end_exclusive": 10212,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10214,
+          "end_exclusive": 10220,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10222,
+          "end_exclusive": 10224,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10226,
+          "end_exclusive": 10234,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10238,
+          "end_exclusive": 10246,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        },
+        {
+          "start": 10248,
+          "end_exclusive": 10270,
+          "reason": "Exact shared frame, divide/flag loop, predecrement stores or console ABI"
+        }
+      ]
     }
   ],
   "asm_exports": [
@@ -962,6 +3387,32 @@
     "adt7311_byte_rw",
     "cli_send_buf",
     "fpga_is_ready",
-    "dac_send_value"
+    "dac_send_value",
+    "LAB_code_0009e4",
+    "LAB_code_000cd6",
+    "LAB_code_000ff1",
+    "FUN_code_0010a6",
+    "LAB_code_000eb0",
+    "LAB_code_000e78",
+    "FUN_code_00108e",
+    "cli_get_integer",
+    "LAB_code_000f9c",
+    "LAB_code_000ff5",
+    "LAB_code_001026",
+    "LAB_code_000f3d",
+    "LAB_code_000f16",
+    "LAB_code_000c87",
+    "cli_send_uint16",
+    "FUN_code_001397",
+    "FUN_code_00139f",
+    "cli_get_next_byte",
+    "cli_send_int16",
+    "FUN_code_000bf2",
+    "LAB_code_000c43",
+    "fpga_data_exchange",
+    "cli_prompt_parse",
+    "cli_send_temperature",
+    "LAB_code_0013aa",
+    "LAB_code_001420"
   ]
 }

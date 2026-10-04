@@ -12,22 +12,63 @@ are no longer acceptance evidence for C integration.
 | 0x046C | FUN_code_000236 | C_WITH_EXACT_ASM_HELPER | 26 | 24 |
 | 0x08E4 | fpga_settings_init | C_WITH_EXACT_ASM_HELPER | 50 | 116 |
 | 0x098A | fpga_settings_reset | C_WITH_EXACT_ASM_HELPER | 38 | 46 |
+| 0x09DE | FUN_code_0004ef | C_WITH_EXACT_ASM_HELPER | 12 | 98 |
 | 0x0A4C | PORTD_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 40 | 40 |
 | 0x0A9C | FUN_code_00054e | C_WITH_EXACT_ASM_HELPER | 22 | 10 |
 | 0x0ABC | PORTB_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 18 | 18 |
+| 0x0AE0 | PORTF_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 62 | 74 |
 | 0x0B68 | FUN_code_0005b4 | C_WITH_EXACT_ASM_HELPER | 40 | 6 |
+| 0x0B96 | PORTE_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 56 | 92 |
+| 0x0C2A | PORTE_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 38 | 46 |
 | 0x0C7E | set_status_and_vd8_led | C_BINARY_EXACT | 24 | 0 |
 | 0x0C96 | system_deinit | C_WITH_EXACT_ASM_HELPER | 108 | 14 |
 | 0x0D10 | system_init | C_WITH_EXACT_ASM_HELPER | 168 | 36 |
 | 0x0DDC | CDCE62005_control_rst | C_WITH_EXACT_ASM_HELPER | 48 | 20 |
+| 0x0E20 | PORTF_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 42 | 62 |
+| 0x0E88 | USARTF0_DRE_vect_isr | C_WITH_EXACT_ASM_HELPER | 32 | 56 |
+| 0x0EE0 | USARTF0_RXC_vect_isr | C_WITH_EXACT_ASM_HELPER | 52 | 64 |
+| 0x0F54 | main | C_WITH_EXACT_ASM_HELPER | 374 | 146 |
+| 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER | 8 | 36 |
+| 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 54 | 136 |
 | 0x1664 | FUN_code_000b32 | C_BINARY_EXACT | 26 | 0 |
 | 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 42 | 10 |
+| 0x16B2 | FUN_code_000b59 | C_WITH_EXACT_ASM_HELPER | 56 | 38 |
 | 0x1710 | FUN_code_000b88 | C_WITH_EXACT_ASM_HELPER | 10 | 4 |
 | 0x171E | FUN_code_000b8f | C_WITH_EXACT_ASM_HELPER | 20 | 8 |
+| 0x173A | FUN_code_000b9d | C_WITH_EXACT_ASM_HELPER | 24 | 32 |
+| 0x1772 | FUN_code_000bb9 | C_WITH_EXACT_ASM_HELPER | 54 | 60 |
+| 0x17E4 | FUN_code_000bf2 | C_WITH_EXACT_ASM_HELPER | 12 | 24 |
 | 0x1808 | FUN_code_000c04 | C_WITH_EXACT_ASM_HELPER | 8 | 48 |
 | 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER | 16 | 62 |
+| 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER | 4 | 44 |
+| 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER | 16 | 66 |
+| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 26 | 132 |
+| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 40 | 56 |
+| 0x1A0E | FUN_code_000d07 | C_WITH_EXACT_ASM_HELPER | 28 | 20 |
+| 0x1A3E | cdce62005_rst | C_WITH_EXACT_ASM_HELPER | 12 | 26 |
+| 0x1A64 | cli_send_system_status | C_WITH_EXACT_ASM_HELPER | 218 | 166 |
+| 0x1BE4 | alarms_clear | C_WITH_EXACT_ASM_HELPER | 82 | 44 |
+| 0x1C62 | channels_read | C_WITH_EXACT_ASM_HELPER | 48 | 96 |
+| 0x1CF2 | cli_send_channel_cdf_adc | C_WITH_EXACT_ASM_HELPER | 28 | 84 |
+| 0x1D62 | fpga_set_trg_charge_lvls | C_WITH_EXACT_ASM_HELPER | 12 | 36 |
+| 0x1D92 | fpga_set_trg_settings | C_WITH_EXACT_ASM_HELPER | 8 | 28 |
+| 0x1DB6 | fpga_set_adc_range_corr | C_WITH_EXACT_ASM_HELPER | 22 | 98 |
+| 0x1E2E | fpga_set_tdc_values | C_WITH_EXACT_ASM_HELPER | 16 | 62 |
+| 0x1E7C | fpga_set_threshold_calibration | C_WITH_EXACT_ASM_HELPER | 20 | 80 |
+| 0x1EE0 | FUN_code_000f70 | C_WITH_EXACT_ASM_HELPER | 20 | 70 |
+| 0x1F3A | fpga_set_ch_adc_delay | C_WITH_EXACT_ASM_HELPER | 22 | 62 |
+| 0x1F8E | fpga_set_ch_cfd_threshold | C_WITH_EXACT_ASM_HELPER | 18 | 76 |
+| 0x1FEC | fpga_set_adc_zero | C_WITH_EXACT_ASM_HELPER | 22 | 76 |
+| 0x204E | fpga_set_ch_cfd_zero | C_WITH_EXACT_ASM_HELPER | 22 | 66 |
+| 0x20A6 | FUN_code_001053 | C_WITH_EXACT_ASM_HELPER | 28 | 14 |
+| 0x20D0 | FUN_code_001068 | C_WITH_EXACT_ASM_HELPER | 24 | 4 |
 | 0x20EC | dac_set_value_2 | C_WITH_EXACT_ASM_HELPER | 18 | 6 |
 | 0x2104 | dac_set_value | C_WITH_EXACT_ASM_HELPER | 18 | 6 |
+| 0x211C | FUN_code_00108e | C_WITH_EXACT_ASM_HELPER | 10 | 10 |
+| 0x214C | FUN_code_0010a6 | C_WITH_EXACT_ASM_HELPER | 6 | 34 |
+| 0x2174 | ths788_write | C_WITH_EXACT_ASM_HELPER | 100 | 48 |
+| 0x2208 | ths788_read | C_WITH_EXACT_ASM_HELPER | 120 | 42 |
+| 0x22AA | dac_send_value | C_WITH_EXACT_ASM_HELPER | 38 | 62 |
 | 0x230E | fpga_msg_send_t2 | C_WITH_EXACT_ASM_HELPER | 20 | 70 |
 | 0x2368 | fpga_msg_read_t1 | C_WITH_EXACT_ASM_HELPER | 20 | 78 |
 | 0x23CA | FUN_code_0011e5 | C_WITH_EXACT_ASM_HELPER | 22 | 166 |
@@ -38,19 +79,27 @@ are no longer acceptance evidence for C integration.
 | 0x25BE | adt7311_16bit_rw | C_WITH_EXACT_ASM_HELPER | 26 | 18 |
 | 0x25EA | adt7311_faults_clr | C_WITH_EXACT_ASM_HELPER | 22 | 8 |
 | 0x2608 | adt7311_byte_rw | C_WITH_EXACT_ASM_HELPER | 20 | 24 |
+| 0x2634 | cli_get_integer | C_WITH_EXACT_ASM_HELPER | 10 | 110 |
+| 0x26AC | cli_get_hex | C_WITH_EXACT_ASM_HELPER | 24 | 52 |
 | 0x26F8 | cli_send_32bit_hex | C_WITH_EXACT_ASM_HELPER | 24 | 16 |
 | 0x2720 | cli_send_digit_hex | C_WITH_EXACT_ASM_HELPER | 8 | 6 |
+| 0x272E | FUN_code_001397 | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
+| 0x2736 | cli_send_temperature | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
+| 0x273E | FUN_code_00139f | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
+| 0x274E | cli_send_uint16 | C_WITH_EXACT_ASM_HELPER | 38 | 170 |
 | 0x281E | cli_send_crlf | C_WITH_EXACT_ASM_HELPER | 6 | 2 |
 | 0x2826 | cli_send_msg | C_WITH_EXACT_ASM_HELPER | 8 | 8 |
+| 0x2836 | cli_get_next_byte | C_WITH_EXACT_ASM_HELPER | 2 | 4 |
+| 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 40 | 72 |
+| 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 42 | 64 |
 
-Every accepted replacement was compiled and checked against the complete FLASH.
-The two DAC entry points share one translation unit and one complete-image check.
-Final totals are **89 application entries: 2 C_BINARY_EXACT, 31
-C_WITH_EXACT_ASM_HELPER, 56 ASM_EXACT**, plus **9 boot ASM procedures**.
-Compiler-generated instructions cover **1016/10836 executable bytes (9.3762%)**;
-ASM covers **9820/10836 (90.6238%)**, including **1082 helper bytes**. Application-only
-C coverage is **10.1014%**, excluding all data, padding and erased FLASH. The 2098 bytes
-hosted in C function regions include helpers and are not pure C coverage.
+Every accepted replacement was compiled and checked against complete FLASH.
+Final totals: **89 application entries: 2 C_BINARY_EXACT,
+81 C_WITH_EXACT_ASM_HELPER, 6 ASM_EXACT**, plus **9 boot ASM procedures**.
+Compiler-generated instructions cover **3064/10836 bytes (28.2761%)**;
+ASM covers **7772/10836 (71.7239%)**, including **4138 helper bytes**.
+Application-only C coverage is **30.4633%**. Data, padding and erased FLASH are
+excluded. The 7202 bytes hosted in C regions include helpers and are not pure C.
 
 ## Accepted implementation choices
 
@@ -90,9 +139,9 @@ with the compiler-sensitive transfer mechanism in one reusable helper.
 A clean FLASH-string sender trial at 0x2826 failed register allocation in the
 constrained profile: GCC needed a general-register spill for its zero comparison.
 That trial was rejected; the later exact terminator-branch helper now permits a
-C/ASM implementation with the original 16 bytes. The byte-mode console entry at 0x2836 also remains ASM:
-it enters a shared receiver with an existing partial stack frame, rather than
-making a normal C call. No behavioral tests were used to justify either entry.
+C/ASM implementation with the original 16 bytes. The byte-mode console entry at 0x2836 now has C mode selection with exact PUSH
+and shared-tail jump helpers. Its partial stack contract remains unchanged.
+No behavioral test was used as binary acceptance evidence.
 
 ## Retained candidates
 
@@ -100,10 +149,10 @@ A direct clean C trial of HEX digit formatting under the R16 profile produced
 34 bytes instead of the original 14: GCC combined the two ASCII additions and
 introduced a frame/spill to preserve the nibble. It was not admitted. A later four-byte exact threshold branch and zero-byte
 register boundary now permit C arithmetic with the original 14 bytes. No behavioral
-test was used to accept the differing trial. Complex scaling, interrupt, parser, serializer and formatter
-entries also remain their exact symbolic ASM implementations. This is an exact
-source classification, not a claim that every remaining function has been exhausted
-under all possible reasonable compiler profiles.
+test was used to accept the differing trial. Later conversions admitted exact C/ASM scaling, GPIO/UART interrupts, parsers,
+serializers and the shared decimal formatter. The six remaining ASM entries are
+reviewed in easy_conversion_assessment.md. No exhaustive compiler-profile search
+or emulator campaign was used to justify a differing image.
 
 No altered protocol, timeout, peripheral configuration, startup order or bug fix was
 introduced. The full-image match preserves original behavior without emulation as
@@ -128,7 +177,7 @@ was programmed.
 
 ## Continued recovery with small exact helpers
 
-Nineteen additional entries were accepted in this wave (steps 15–33). Every
+The previous wave accepted nineteen additional entries (steps 15–33). Every
 complete-image comparison reported zero differences. `exact_c_steps/23_24_dac_channels.log`
 validates both entries compiled from the shared DAC source.
 
@@ -173,3 +222,43 @@ register and flag contracts. Reset uses the compiler-generated original save fra
 initialization keeps its asymmetric original frame, including the unused R30 save
 and the absence of a YL save. Reserving Y registers (rather than declaring R28
 call-used, which AVR GCC rejects) permits that frame without added GNU saves.
+
+## Function-by-function continuation: steps 34–83
+
+Fifty additional application entries were accepted. Every retained source passes
+whole-image exact-check; the step logs record full clean compilation and canonical
+comparison. The mean-amplitude and baseline display helpers first passed together;
+step 62 also has a final independent complete-image check. Historical log byte
+counts are snapshots; final totals include audited helper-range corrections.
+
+The added C covers THS788 host transactions, DAC SPI/scaling, GPIO/UART interrupts,
+console queues, EEPROM page/storage commands, PLL/trigger/channel commands, status
+and channel displays, FLASH page programming/read/CRC, main startup/dispatch,
+FPGA programming-stream reception, decimal/HEX parsers and decimal formatting.
+
+Main preserves low-I/O STS width, CCP timing, stack reset, literal LDI-zero values,
+RAM clearing and memory-mapped EEPROM copy. A section attribute prevents GCC from
+placing main into .text.startup.main. The rest of its peripheral constants and
+ordered stores are ordinary C. No oscillator, PLL, timer or GPIO value changed.
+
+EEPROM retains the original CCP STS instruction rather than the shorter OUT chosen
+by ordinary GCC MMIO. Shared error tails use symbolic .subsection 1 regions so their
+addresses remain intact after C bodies. UART send disables cross-jumping because
+GCC otherwise merges the original distinct SEI paths. Receive/scaling helpers
+preserve exact scratch registers and carry-sensitive widths and increments.
+
+FLASH and CRC helpers retain the live R2:R0 24-bit state, inclusive-end comparison,
+bit order and original R1 contents. Separate C byte initializers preserve the four
+CRC LDI instructions instead of GCC's shorter MOVW. The signed multiply core stays
+in ASM; the unsigned saturating product combines exact MUL/flags with a C result.
+
+Decimal/HEX parser and formatter helpers preserve their original delimiter, sign,
+rounding, division and carry-result logic. Short shared-entry C wrappers keep exact
+PUSH/SEC/RJMP helpers. Pure ASM wrappers with no compiler-generated C instructions
+are not counted as C conversions.
+
+Both final clean ELF/HEX/BIN builds are identical. Fresh normalization of original
+PM.hex equals rebuilt FLASH. All 806 original symbols retain their byte addresses.
+Every inline-ASM range also matches independent GCC assembly provenance; C loop
+jumps are counted as C, while predecrement stores and all inline instructions are
+counted as ASM. The immutable reference project and images are unchanged.

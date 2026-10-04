@@ -30,3 +30,11 @@ equal mnemonics alone do not prove semantic equality. Code/data ambiguities are 
 Coverage: 10,836 symbolic ASM bytes; 0 literal code bytes; 710 data bytes; 127,718 erased/padding bytes.
 The separate used-byte metric is 11,354 original non-FF bytes, all matching. This includes data;
 FF-valued instruction/data bytes count toward coverage but not toward non-erased byte metrics.
+
+## Accepted recovered C/ASM baseline
+
+The coverage above describes the immutable exact_asm reference. The current mixed
+recovered_exact baseline also has zero differences; its C/ASM counts, independent
+GCC provenance audit and remaining-ASM review are recorded in function_inventory.md,
+exact_c_provenance.json and easy_conversion_assessment.md. Literal code bytes remain
+zero. Compiler layout/register adjustments are documented in exact_c_checkpoint.md.

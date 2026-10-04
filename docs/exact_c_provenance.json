@@ -1,0 +1,424 @@
+{
+  "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
+  "accepted_entries": 83,
+  "translation_units": 82,
+  "inline_asm_bytes": 4138,
+  "mismatches": [],
+  "application": [
+    {
+      "symbol": "FUN_code_000b32",
+      "inline_asm_bytes": 0,
+      "compiler_bytes": 26
+    },
+    {
+      "symbol": "cli_send_crlf",
+      "inline_asm_bytes": 2,
+      "compiler_bytes": 6
+    },
+    {
+      "symbol": "FUN_code_000b8f",
+      "inline_asm_bytes": 8,
+      "compiler_bytes": 20
+    },
+    {
+      "symbol": "system_deinit",
+      "inline_asm_bytes": 14,
+      "compiler_bytes": 108
+    },
+    {
+      "symbol": "FUN_code_0005b4",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 40
+    },
+    {
+      "symbol": "FUN_code_000b3f",
+      "inline_asm_bytes": 10,
+      "compiler_bytes": 42
+    },
+    {
+      "symbol": "FUN_code_000b88",
+      "inline_asm_bytes": 4,
+      "compiler_bytes": 10
+    },
+    {
+      "symbol": "system_init",
+      "inline_asm_bytes": 36,
+      "compiler_bytes": 168
+    },
+    {
+      "symbol": "set_status_and_vd8_led",
+      "inline_asm_bytes": 0,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "adt7311_8bit_rw",
+      "inline_asm_bytes": 14,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "adt7311_faults_clr",
+      "inline_asm_bytes": 8,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "adt7311_16bit_rw",
+      "inline_asm_bytes": 18,
+      "compiler_bytes": 26
+    },
+    {
+      "symbol": "FUN_code_000c04",
+      "inline_asm_bytes": 48,
+      "compiler_bytes": 8
+    },
+    {
+      "symbol": "CDCE62005_send_control_settings",
+      "inline_asm_bytes": 48,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "fpga_msg_send_t2",
+      "inline_asm_bytes": 70,
+      "compiler_bytes": 20
+    },
+    {
+      "symbol": "fpga_msg_read_t1",
+      "inline_asm_bytes": 78,
+      "compiler_bytes": 20
+    },
+    {
+      "symbol": "FUN_code_001267",
+      "inline_asm_bytes": 82,
+      "compiler_bytes": 16
+    },
+    {
+      "symbol": "cli_send_digit_hex",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 8
+    },
+    {
+      "symbol": "adt7311_byte_rw",
+      "inline_asm_bytes": 24,
+      "compiler_bytes": 20
+    },
+    {
+      "symbol": "FUN_code_00054e",
+      "inline_asm_bytes": 10,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "FUN_code_000236",
+      "inline_asm_bytes": 24,
+      "compiler_bytes": 26
+    },
+    {
+      "symbol": "cli_send_32bit_hex",
+      "inline_asm_bytes": 16,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "dac_set_value_2",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 18
+    },
+    {
+      "symbol": "dac_set_value",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 18
+    },
+    {
+      "symbol": "FUN_code_0011e5",
+      "inline_asm_bytes": 166,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "fpga_send_mcu_ts",
+      "inline_asm_bytes": 68,
+      "compiler_bytes": 36
+    },
+    {
+      "symbol": "FUN_code_000c20",
+      "inline_asm_bytes": 62,
+      "compiler_bytes": 16
+    },
+    {
+      "symbol": "CDCE62005_control_rst",
+      "inline_asm_bytes": 20,
+      "compiler_bytes": 48
+    },
+    {
+      "symbol": "PORTB_INT0_vect_isr",
+      "inline_asm_bytes": 18,
+      "compiler_bytes": 18
+    },
+    {
+      "symbol": "PORTD_INT0_vect_isr",
+      "inline_asm_bytes": 40,
+      "compiler_bytes": 40
+    },
+    {
+      "symbol": "cli_send_msg",
+      "inline_asm_bytes": 8,
+      "compiler_bytes": 8
+    },
+    {
+      "symbol": "fpga_settings_reset",
+      "inline_asm_bytes": 46,
+      "compiler_bytes": 38
+    },
+    {
+      "symbol": "fpga_settings_init",
+      "inline_asm_bytes": 116,
+      "compiler_bytes": 50
+    },
+    {
+      "symbol": "ths788_write",
+      "inline_asm_bytes": 48,
+      "compiler_bytes": 100
+    },
+    {
+      "symbol": "ths788_read",
+      "inline_asm_bytes": 42,
+      "compiler_bytes": 120
+    },
+    {
+      "symbol": "dac_send_value",
+      "inline_asm_bytes": 62,
+      "compiler_bytes": 38
+    },
+    {
+      "symbol": "FUN_code_000b9d",
+      "inline_asm_bytes": 32,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "PORTE_INT1_vect_isr",
+      "inline_asm_bytes": 46,
+      "compiler_bytes": 38
+    },
+    {
+      "symbol": "USARTF0_DRE_vect_isr",
+      "inline_asm_bytes": 56,
+      "compiler_bytes": 32
+    },
+    {
+      "symbol": "PORTF_INT0_vect_isr",
+      "inline_asm_bytes": 62,
+      "compiler_bytes": 42
+    },
+    {
+      "symbol": "USARTF0_RXC_vect_isr",
+      "inline_asm_bytes": 64,
+      "compiler_bytes": 52
+    },
+    {
+      "symbol": "cli_get_next_char",
+      "inline_asm_bytes": 72,
+      "compiler_bytes": 40
+    },
+    {
+      "symbol": "cli_send_buf",
+      "inline_asm_bytes": 64,
+      "compiler_bytes": 42
+    },
+    {
+      "symbol": "PORTF_INT1_vect_isr",
+      "inline_asm_bytes": 74,
+      "compiler_bytes": 62
+    },
+    {
+      "symbol": "PORTE_INT0_vect_isr",
+      "inline_asm_bytes": 92,
+      "compiler_bytes": 56
+    },
+    {
+      "symbol": "FUN_code_000d07",
+      "inline_asm_bytes": 20,
+      "compiler_bytes": 28
+    },
+    {
+      "symbol": "eeprom_settings_save",
+      "inline_asm_bytes": 56,
+      "compiler_bytes": 40
+    },
+    {
+      "symbol": "alarms_clear",
+      "inline_asm_bytes": 44,
+      "compiler_bytes": 82
+    },
+    {
+      "symbol": "cdce62005_rst",
+      "inline_asm_bytes": 26,
+      "compiler_bytes": 12
+    },
+    {
+      "symbol": "FUN_code_001053",
+      "inline_asm_bytes": 14,
+      "compiler_bytes": 28
+    },
+    {
+      "symbol": "FUN_code_001068",
+      "inline_asm_bytes": 4,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "fpga_set_trg_charge_lvls",
+      "inline_asm_bytes": 36,
+      "compiler_bytes": 12
+    },
+    {
+      "symbol": "fpga_set_trg_settings",
+      "inline_asm_bytes": 28,
+      "compiler_bytes": 8
+    },
+    {
+      "symbol": "fpga_set_ch_adc_delay",
+      "inline_asm_bytes": 62,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "fpga_set_ch_cfd_zero",
+      "inline_asm_bytes": 66,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "fpga_set_adc_zero",
+      "inline_asm_bytes": 76,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "fpga_set_ch_cfd_threshold",
+      "inline_asm_bytes": 76,
+      "compiler_bytes": 18
+    },
+    {
+      "symbol": "fpga_set_tdc_values",
+      "inline_asm_bytes": 62,
+      "compiler_bytes": 16
+    },
+    {
+      "symbol": "fpga_set_threshold_calibration",
+      "inline_asm_bytes": 80,
+      "compiler_bytes": 20
+    },
+    {
+      "symbol": "fpga_set_adc_range_corr",
+      "inline_asm_bytes": 98,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "FUN_code_000f70",
+      "inline_asm_bytes": 70,
+      "compiler_bytes": 20
+    },
+    {
+      "symbol": "cli_send_ch_mean_amplitude",
+      "inline_asm_bytes": 44,
+      "compiler_bytes": 4
+    },
+    {
+      "symbol": "cli_send_adc_baseline_dispersion",
+      "inline_asm_bytes": 66,
+      "compiler_bytes": 16
+    },
+    {
+      "symbol": "cli_send_channel_cdf_adc",
+      "inline_asm_bytes": 84,
+      "compiler_bytes": 28
+    },
+    {
+      "symbol": "FUN_code_00108e",
+      "inline_asm_bytes": 10,
+      "compiler_bytes": 10
+    },
+    {
+      "symbol": "unlock_programming",
+      "inline_asm_bytes": 36,
+      "compiler_bytes": 8
+    },
+    {
+      "symbol": "channels_read",
+      "inline_asm_bytes": 96,
+      "compiler_bytes": 48
+    },
+    {
+      "symbol": "cli_get_hex",
+      "inline_asm_bytes": 52,
+      "compiler_bytes": 24
+    },
+    {
+      "symbol": "FUN_code_000b59",
+      "inline_asm_bytes": 38,
+      "compiler_bytes": 56
+    },
+    {
+      "symbol": "FUN_code_000bb9",
+      "inline_asm_bytes": 60,
+      "compiler_bytes": 54
+    },
+    {
+      "symbol": "FUN_code_000bf2",
+      "inline_asm_bytes": 24,
+      "compiler_bytes": 12
+    },
+    {
+      "symbol": "cli_send_tdc_data",
+      "inline_asm_bytes": 132,
+      "compiler_bytes": 26
+    },
+    {
+      "symbol": "FUN_code_0004ef",
+      "inline_asm_bytes": 98,
+      "compiler_bytes": 12
+    },
+    {
+      "symbol": "main",
+      "inline_asm_bytes": 146,
+      "compiler_bytes": 374
+    },
+    {
+      "symbol": "cli_send_system_status",
+      "inline_asm_bytes": 166,
+      "compiler_bytes": 218
+    },
+    {
+      "symbol": "fpga_firmware_update",
+      "inline_asm_bytes": 136,
+      "compiler_bytes": 54
+    },
+    {
+      "symbol": "FUN_code_001397",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 2
+    },
+    {
+      "symbol": "cli_send_temperature",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 2
+    },
+    {
+      "symbol": "FUN_code_00139f",
+      "inline_asm_bytes": 6,
+      "compiler_bytes": 2
+    },
+    {
+      "symbol": "cli_get_next_byte",
+      "inline_asm_bytes": 4,
+      "compiler_bytes": 2
+    },
+    {
+      "symbol": "FUN_code_0010a6",
+      "inline_asm_bytes": 34,
+      "compiler_bytes": 6
+    },
+    {
+      "symbol": "cli_get_integer",
+      "inline_asm_bytes": 110,
+      "compiler_bytes": 10
+    },
+    {
+      "symbol": "cli_send_uint16",
+      "inline_asm_bytes": 170,
+      "compiler_bytes": 38
+    }
+  ]
+}
