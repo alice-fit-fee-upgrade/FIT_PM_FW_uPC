@@ -2777,32 +2777,14 @@ LAB_code_000bf0:
 ;undefined FUN_code_000bf2()
 .org (0x0bf2 << 1), 0xff
 FUN_code_000bf2:
-	ldi         R20,0x8                             
-LAB_code_000bf3:              
-	add         R18,R18
-	adc         R19,R19
-	adc         R16,R16
-	adc         R17,R17
-	brbc        CPU_C_bp, LAB_code_000bfb                    
-	lsr         R22                                 
-	brbs        CPU_C_bp, LAB_code_000c01                    
-	rjmp        LAB_code_000bfd                         
-LAB_code_000bfb:              
-	lsr         R22
-	brbc        CPU_C_bp, LAB_code_000c01                    
-LAB_code_000bfd:              
-	eor         R18,R23
-	eor         R19,R24
-	eor         R16,R25
-	eor         R17,XL                             
-LAB_code_000c01:              
-	dec         R20
-	brbc        CPU_Z_bp, LAB_code_000bf3                    
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000c04()
+    jmp pm_crc_byte_bridge
+.set LAB_code_000bf3, FUN_code_000bf2 + 2
+.org 0x17f6, 0xff
+LAB_code_000bfb:
+.org 0x17fa, 0xff
+LAB_code_000bfd:
+.org 0x1802, 0xff
+LAB_code_000c01:
 .org (0x0c04 << 1), 0xff
 FUN_code_000c04:                  
 	ldi         R17,0x10                                

@@ -18,8 +18,10 @@ build/dac_prepare.o: src/dac_prepare.c ../source_recovery/include/pm_recovered.h
 	$(CC) $(CFLAGS) -I../source_recovery/include -c $< -o $@
 build/status_gate.o: src/status_gate.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
-build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o linker/mixed.ld
-	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o -lgcc -o $@
+build/crc_byte.o: src/crc_byte.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o linker/mixed.ld
+	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o -lgcc -o $@
 build/mixed.hex: build/mixed.elf
 	avr-objcopy -O ihex $< $@
 build/flash_mixed.bin: build/mixed.hex
@@ -36,6 +38,7 @@ check:
 	$(PYTHON) tests/check_callers.py
 	$(PYTHON) tests/check_dac_edges.py
 	$(PYTHON) tests/check_status_gate.py
+	$(PYTHON) tests/check_crc_byte.py
 clean:
 	rm -rf build
 	rm -f generated/application.S

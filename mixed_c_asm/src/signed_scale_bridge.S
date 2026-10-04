@@ -323,3 +323,58 @@ pm_status_gate_bridge:
     sec
     ret
 .size pm_status_gate_bridge, .-pm_status_gate_bridge
+
+/* CRC byte at 0x17E4. State order: R18,R19,R16,R17 (low to high).
+ * Polynomial: R23,R24,R25,R26. Input R22 is consumed to zero; R20=0.
+ * Every other register is preserved, including original R0/R1. */
+.global pm_crc_byte_bridge
+.type pm_crc_byte_bridge,@function
+pm_crc_byte_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r21
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    push r23
+    push r24
+    push r25
+    push r26
+    push r22
+    movw r22, r18
+    movw r24, r16
+    pop r16
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    clr r1
+    call pm_crc_byte_abi
+    movw r16, r20
+    mov r0, r22
+    clr r20
+    clr r22
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r21
+    pop r1
+    bst r1, 6
+    bld r0, 6
+    bst r1, 7
+    bld r0, 7
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_crc_byte_bridge, .-pm_crc_byte_bridge

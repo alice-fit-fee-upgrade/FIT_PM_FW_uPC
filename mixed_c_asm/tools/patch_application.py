@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace seven audited original routine bodies with anchored JMPs.
+"""Replace eight audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -63,5 +63,18 @@ assert 'lds         R16,0x2157' in s[start:end] and 'sbrc        R16,0x4' in s[s
 s=s[:start]+'''FUN_code_00108e:
     jmp pm_status_gate_bridge
 '''+s[end:]
+start=s.index('FUN_code_000bf2:')
+end=s.index('.org (0x0c04 << 1)',start)
+body=s[start:end]
+assert 'eor         R18,R23' in body and 'adc         R17,R17' in body
+labels=[('LAB_code_000bf3',0x17e6),('LAB_code_000bfb',0x17f6),('LAB_code_000bfd',0x17fa),('LAB_code_000c01',0x1802)]
+for name,address in labels:
+ assert s[:start].count(name)+s[end:].count(name)==0,('external CRC entry',name)
+replacement='FUN_code_000bf2:\n    jmp pm_crc_byte_bridge\n'
+# Preserve original internal label addresses as non-callable padding markers.
+for name,address in labels:
+ if address==0x17e6: replacement+=f'.set {name}, FUN_code_000bf2 + 2\n'
+ else: replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
+s=s[:start]+replacement+s[end:]
 s='.global dac_send_value\n.global cli_send_msg\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)
