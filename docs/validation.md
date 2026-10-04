@@ -18,3 +18,11 @@
 Software evidence only. No programming/debugger access or physical execution was performed.
 No claim of complete recovered C, dynamic EEPROM path coverage, or hardware protocol validation.
 GNU AVR toolchain reused from /home/codex-hil/.local/opt/avr (GCC 7.3.0 / binutils 2.26).
+
+## Subsequent C-recovery checkpoint
+
+390,601 functional differential cases passed against original FLASH instruction execution,
+including MMIO/IRQ traces, parser partial-error states, formatting and settings/shutdown.
+AVR library compilation and whole-library link check passed with warnings treated as errors.
+Exact FLASH check was repeated after C development: still 0 differing bytes.
+See c_recovery.md, c_recovery_validation.json and c_recovery_coverage.json for scope and limits.

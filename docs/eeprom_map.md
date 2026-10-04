@@ -15,10 +15,10 @@ RAM 0x2000..0x2442 inclusive is cleared beforehand; this is not an EEPROM defaul
 | 0x024..0x053 | 48 | Startup read; save write | FPGA range corrections, RAM 0x2187..0x21B6 | Medium | Setting routine 0x1DB6; register hypothesis 25..3C |
 | 0x054..0x06B | 24 | Startup read; save write | Channel TDC settings, RAM 0x21B7..0x21CE | Medium | Setting routine 0x1E2E; README's 0x22CE end is a typo/hypothesis error |
 | 0x06C..0x0CB | 96 | Startup read; save write | FPGA channel settings, RAM 0x21CF..0x222E | Medium | ADC-zero updates near word 0x100E, 8-byte/channel stride; FPGA register 80..AF hypothesis |
-| 0x0CC..0x0CD | 2 | Startup read; save write | Trigger gate/window setting, RAM 0x222F..0x2230 | Medium | Trigger-setting routine 0x1D92; register 00 hypothesis |
-| 0x0CE..0x0CF | 2 | Startup read; save write | Trigger saturation setting, RAM 0x2231..0x2232 | Medium | Charge-level routine 0x1D62; register 3D hypothesis; earlier README start 0x2230 was off by one |
-| 0x0D0..0x0D1 | 2 | Startup read; save write; D1 independent write | Board identifier hypothesis at RAM 0x2233..0x2234; high byte overlaps power-state byte | Low/medium meaning; high overlap | Copy arithmetic, prior Board S/N interpretation, explicit mapped 0x10D1 write |
-| 0x0D1 | 1 | Explicit command write; startup read | Persisted board power/configuration flag in RAM 0x2234 | Medium | Byte 0x13EA onwards sets RAM 0x2234, writes Y=0x10D1; value tested to choose power behavior |
+| 0x0CC | 1 | Startup read; save write | Gate byte, RAM 0x222F | High access/size; medium semantic | fpga_settings_init loads only R16 at 0x222F and clears R17 before FPGA register 00 write |
+| 0x0CD..0x0CE | 2 | Startup read; save write | Trigger saturation word, RAM 0x2230..0x2231 | High access/size; medium semantic | Original LDS pair in fpga_settings_init before register 3D write |
+| 0x0CF..0x0D0 | 2 | Startup read; save write | Board identifier word, RAM 0x2232..0x2233 | High access/size; medium semantic | Original LDS pair before register BD write |
+| 0x0D1 | 1 | Explicit command write; startup read | Persisted power/configuration flag, RAM 0x2234 | Medium meaning; high access | Original mapped 0x10D1 write and subsequent value test |
 | 0x0D2..0x7FF | 1838 | No direct access proved | Unassigned state | Low | Whole dump preserved; indirect/boot behavior not exhaustively path-proven |
 
 Save path begins near word 0x0CD6 (byte 0x19AC): NVM_CMD 0x36 clears EEPROM page buffer,
@@ -35,3 +35,10 @@ THS/FPGA configuration inference is stronger than PLL inference but needs transa
 No proven EEPROM validity checksum or comprehensive default-on-erased-EEPROM path is established.
 Protocol names WR/ON/OF are inherited hypotheses: dispatcher/dataflow corroborate settings-save and
 power control paths; full command grammar and physical timing are not yet independently validated.
+
+C-recovery correction: the earlier map inherited an incorrect two-byte gate assumption.
+Tracing original settings initialization proves a one-byte gate and the word pairs above.
+Consequently the D1 power-state byte does NOT overlap the actual board-ID word consumed by
+FPGA settings initialization. It overlapped only the earlier unverified Board S/N hypothesis.
+Original code remains untouched. Independently verified C in src/settings.c preserves these accesses
+and the final 0x0FFF value written to register 7C (older README said 0xFFFF).

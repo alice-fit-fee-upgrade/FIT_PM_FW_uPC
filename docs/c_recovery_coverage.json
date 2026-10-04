@@ -1,0 +1,206 @@
+{
+  "coverage_measure": "original routine spans represented by functional C, INCLUDING original register/ISR scaffolding; NOT bytes replaced in running firmware",
+  "original_routine_bytes": 2494,
+  "original_symbolic_code_bytes": 10836,
+  "percentage": 23.015873015873016,
+  "original_entry_points": 33,
+  "replaced_in_exact_firmware_bytes": 0,
+  "regions": [
+    {
+      "start": 2276,
+      "end_exclusive": 2442,
+      "original_bytes": 166,
+      "c_function": "pm_fpga_settings_init",
+      "notes": "Settings initialization, 0x0FFF final unlock value"
+    },
+    {
+      "start": 2442,
+      "end_exclusive": 2526,
+      "original_bytes": 84,
+      "c_function": "pm_fpga_settings_reset",
+      "notes": "Channels and restart reason"
+    },
+    {
+      "start": 3222,
+      "end_exclusive": 3344,
+      "original_bytes": 122,
+      "c_function": "pm_system_deinit",
+      "notes": "Shutdown register/memory sequence"
+    },
+    {
+      "start": 3720,
+      "end_exclusive": 3808,
+      "original_bytes": 88,
+      "c_function": "pm_console_dre",
+      "notes": "DRE ISR body; prologue/epilogue ABI not recovered"
+    },
+    {
+      "start": 3808,
+      "end_exclusive": 3924,
+      "original_bytes": 116,
+      "c_function": "pm_console_rxc",
+      "notes": "RXC ISR body; prologue/epilogue ABI not recovered"
+    },
+    {
+      "start": 8496,
+      "end_exclusive": 8524,
+      "original_bytes": 28,
+      "c_function": "pm_scale_signed",
+      "notes": "Signed fixed-point scaling (old misleading fpga_is_ready label)"
+    },
+    {
+      "start": 8524,
+      "end_exclusive": 8564,
+      "original_bytes": 40,
+      "c_function": "pm_scale_unsigned",
+      "notes": "Staged unsigned saturation"
+    },
+    {
+      "start": 8564,
+      "end_exclusive": 8712,
+      "original_bytes": 148,
+      "c_function": "pm_ths_write24",
+      "notes": "THS write wire trace"
+    },
+    {
+      "start": 8712,
+      "end_exclusive": 8874,
+      "original_bytes": 162,
+      "c_function": "pm_ths_read16",
+      "notes": "THS read, selector handling"
+    },
+    {
+      "start": 8874,
+      "end_exclusive": 8974,
+      "original_bytes": 100,
+      "c_function": "pm_dac_send",
+      "notes": "DAC SPI control/header"
+    },
+    {
+      "start": 8974,
+      "end_exclusive": 9064,
+      "original_bytes": 90,
+      "c_function": "pm_fpga_write16",
+      "notes": "FPGA SPI write"
+    },
+    {
+      "start": 9064,
+      "end_exclusive": 9162,
+      "original_bytes": 98,
+      "c_function": "pm_fpga_read16",
+      "notes": "FPGA SPI read, incoming R21 bits"
+    },
+    {
+      "start": 9162,
+      "end_exclusive": 9350,
+      "original_bytes": 188,
+      "c_function": "pm_fpga_read_bc",
+      "notes": "Eight-byte read"
+    },
+    {
+      "start": 9350,
+      "end_exclusive": 9422,
+      "original_bytes": 72,
+      "c_function": "pm_pll_write32",
+      "notes": "LSB-first PLL write"
+    },
+    {
+      "start": 9422,
+      "end_exclusive": 9520,
+      "original_bytes": 98,
+      "c_function": "pm_pll_read32",
+      "notes": "PLL read request"
+    },
+    {
+      "start": 9624,
+      "end_exclusive": 9662,
+      "original_bytes": 38,
+      "c_function": "pm_adt7311_write8",
+      "notes": "ADT command + one byte"
+    },
+    {
+      "start": 9662,
+      "end_exclusive": 9706,
+      "original_bytes": 44,
+      "c_function": "pm_adt7311_exchange16",
+      "notes": "ADT command + MSB-first word"
+    },
+    {
+      "start": 9706,
+      "end_exclusive": 9736,
+      "original_bytes": 30,
+      "c_function": "pm_adt7311_clear",
+      "notes": "Four FF reset bytes"
+    },
+    {
+      "start": 9736,
+      "end_exclusive": 9780,
+      "original_bytes": 44,
+      "c_function": "pm_adt7311_byte",
+      "notes": "Bitwise exchange"
+    },
+    {
+      "start": 9780,
+      "end_exclusive": 9900,
+      "original_bytes": 120,
+      "c_function": "pm_parse_integer",
+      "notes": "16-bit decimal parser"
+    },
+    {
+      "start": 9900,
+      "end_exclusive": 9976,
+      "original_bytes": 76,
+      "c_function": "pm_parse_hex",
+      "notes": "1..4 uppercase hexadecimal digits"
+    },
+    {
+      "start": 9976,
+      "end_exclusive": 10016,
+      "original_bytes": 40,
+      "c_function": "pm_send_hex16",
+      "notes": "Four hex digits; historical name said 32bit"
+    },
+    {
+      "start": 10016,
+      "end_exclusive": 10030,
+      "original_bytes": 14,
+      "c_function": "pm_send_hex_digit",
+      "notes": "Full digit + send"
+    },
+    {
+      "start": 10030,
+      "end_exclusive": 10270,
+      "original_bytes": 240,
+      "c_function": "pm_send_decimal",
+      "notes": "Five entry points and shared formatter"
+    },
+    {
+      "start": 10270,
+      "end_exclusive": 10278,
+      "original_bytes": 8,
+      "c_function": "pm_send_crlf",
+      "notes": "CR LF"
+    },
+    {
+      "start": 10278,
+      "end_exclusive": 10294,
+      "original_bytes": 16,
+      "c_function": "pm_send_flash_string",
+      "notes": "NUL-terminated LPM string"
+    },
+    {
+      "start": 10294,
+      "end_exclusive": 10412,
+      "original_bytes": 118,
+      "c_function": "pm_console_next",
+      "notes": "Two entry points: raw/folded receive"
+    },
+    {
+      "start": 10412,
+      "end_exclusive": 10518,
+      "original_bytes": 106,
+      "c_function": "pm_console_send",
+      "notes": "UART direct/queued send"
+    }
+  ]
+}

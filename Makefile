@@ -213,3 +213,7 @@ clear_eeprom_save_fuse: fuses
 .PHONY: exact-check
 exact-check:
 	$(MAKE) -C exact_asm exact-check
+
+.PHONY: c-check
+c-check:
+	$(MAKE) -C source_recovery check
