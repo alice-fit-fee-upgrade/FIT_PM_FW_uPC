@@ -1,3 +1,4 @@
+.global dac_send_value
 #include "ATxmega128A3Udef.inc"
 
 .section .application,"ax",@progbits
@@ -4068,25 +4069,8 @@ FUN_code_001053:
 ;************************************************************************************************
 ;undefined4 FUN_code_001068()
 .org (0x1068 << 1), 0xff
-FUN_code_001068:    
-	push        R18                              
-	ldi         R18,0x20                            
-	ldi         R19,0x4e                            
-	sub         R18,R20
-	sbc         R19,R21
-	movw        R20,R18
-	ldi         R18,0x72                            
-	ldi         R19,0x2                             
-	rcall       FUN_code_0010a6                         ;undefined FUN_code_0010a6(undefined2...
-	add         R22,R22
-	add         R22,R22
-	rcall       dac_send_value                         ;undefined3 FUN_code_001155(undefined...
-	pop         R18                                 
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined3 FUN_code_001076(void)
+FUN_code_001068:
+    jmp pm_dac_inverse_bridge
 .org (0x1076 << 1), 0xff
 dac_set_value_2:
 	push        R18                                     

@@ -27,6 +27,12 @@ class Machine:
     def enter_call(self,address): self.calls.append(address)
     def leave_call(self): return self.calls.pop()
     def finish_root_return(self): pass
+    def io_read(self,a):
+        assert a==0x3f
+        return sum(v<<i for i,v in enumerate(self.f))
+    def io_write(self,a,value):
+        assert a==0x3f
+        self.f=[(value>>i)&1 for i in range(8)]
     def reg(self,s): return int(s.strip()[1:])
     def ptr(self,p):
         n={'X':26,'Y':28,'Z':30}[p]; return self.r[n]|self.r[n+1]<<8
@@ -90,11 +96,9 @@ class Machine:
                 self.f[6 if op in ('set','clt') else 0]=int(op in ('sec','set')); continue
             if op=='nop': continue
             if op=='in':
-                assert int(p[1],0)==0x3f
-                self.r[self.reg(p[0])]=sum(v<<i for i,v in enumerate(self.f)); continue
+                self.r[self.reg(p[0])]=self.io_read(int(p[1],0)); continue
             if op=='out':
-                assert int(p[0],0)==0x3f
-                value=self.r[self.reg(p[1])]; self.f=[(value>>i)&1 for i in range(8)]; continue
+                self.io_write(int(p[0],0),self.r[self.reg(p[1])]); continue
             if op in ('lds','ld','ldd','lpm'):
                 d=self.reg(p[0]); a=int(p[1],0) if op=='lds' else self.addr(p[1])
                 self.r[d]=FLASH[a] if op=='lpm' else self.read(a); continue

@@ -14,8 +14,10 @@ build/bridge.o: src/signed_scale_bridge.S | build
 	$(CC) $(CFLAGS) -c $< -o $@
 build/scaling.o: ../source_recovery/src/scaling.c ../source_recovery/include/pm_recovered.h | build
 	$(CC) $(CFLAGS) -I../source_recovery/include -c $< -o $@
-build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o linker/mixed.ld
-	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o -lgcc -o $@
+build/dac_prepare.o: src/dac_prepare.c ../source_recovery/include/pm_recovered.h | build
+	$(CC) $(CFLAGS) -I../source_recovery/include -c $< -o $@
+build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o linker/mixed.ld
+	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o -lgcc -o $@
 build/mixed.hex: build/mixed.elf
 	avr-objcopy -O ihex $< $@
 build/flash_mixed.bin: build/mixed.hex
@@ -26,7 +28,7 @@ check:
 	$(MAKE) all
 	$(MAKE) -C ../exact_asm exact-check
 	$(PYTHON) tests/check_layout.py
-	$(PYTHON) ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_mixed.bin --code-range 0x3000:0x3100 --code-range 0x3100:0x1e000 > build/instruction_diff.txt
+	$(PYTHON) ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_mixed.bin --code-range 0x3000:0x4000 --code-range 0x4000:0x1e000 > build/instruction_diff.txt
 	$(PYTHON) tests/check_abi.py
 	$(PYTHON) tests/check_unsigned_abi.py
 	$(PYTHON) tests/check_callers.py

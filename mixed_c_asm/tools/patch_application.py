@@ -31,4 +31,12 @@ s=s[:start]+'''FUN_code_0010a6:
 LAB_code_0010b7:
     /* Internal original saturation label retained for address audit. */
 '''+s[end:]
+start=s.index('FUN_code_001068:')
+end=s.index('.org (0x1076 << 1)',start)
+body=s[start:end]
+assert 'ldi         R18,0x72' in body and 'movw        R20,R18' in body
+s=s[:start]+'''FUN_code_001068:
+    jmp pm_dac_inverse_bridge
+'''+s[end:]
+s='.global dac_send_value\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

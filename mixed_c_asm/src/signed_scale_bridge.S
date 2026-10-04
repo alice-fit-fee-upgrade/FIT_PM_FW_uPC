@@ -98,3 +98,41 @@ pm_scale_unsigned_bridge:
     pop r18
     ret
 .size pm_scale_unsigned_bridge, .-pm_scale_unsigned_bridge
+
+/* Original inverse-DAC entry 0x20D0. Preserve all registers outside the
+ * documented outputs and retain T before invoking the original SPI sender.
+ * Its final OR/ORI sets Z/N/V/S, ADD sets C/H, and SEI sets I, independently
+ * of arithmetic flags produced by preparation. */
+.global pm_dac_inverse_bridge
+.type pm_dac_inverse_bridge,@function
+pm_dac_inverse_bridge:
+    push r18
+    in r18, 0x3f
+    push r18
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    movw r24, r20
+    call pm_dac_prepare_inverse
+    movw r16, r18
+    movw r0, r22
+    mov r22, r24
+    ldi r19, 2
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r18
+    out 0x3f, r18
+    pop r18
+    call dac_send_value
+    ret
+.size pm_dac_inverse_bridge, .-pm_dac_inverse_bridge

@@ -11,10 +11,27 @@ class CPU(Machine):
   super().__init__(self.invalid_read,self.invalid_write,self.invalid_irq,program=program)
   self.sp=0x3fff; self.mem={}; self._push_return(CALLER)
   self.entry_sp=self.sp; self.minimum_sp=self.sp; self.writes=0
+ def io_read(self,a):
+  if a==0x3d: return self.sp & 255
+  if a==0x3e: return self.sp >> 8
+  return super().io_read(a)
+ def io_write(self,a,v):
+  if a in (0x3d,0x3e):
+   self.sp=((self.sp & 0xff00)|v) if a==0x3d else ((v<<8)|(self.sp & 255))
+   assert 0x3f00 < self.sp <= 0x3fff,('invalid SP write',a,v,self.sp)
+   self.minimum_sp=min(self.minimum_sp,self.sp)
+   return
+  super().io_write(a,v)
  def invalid_read(self,a):
+  if 0x3f00 < a <= 0x3fff:
+   assert a > self.sp and a in self.mem,('uninitialized/outside active stack read',hex(a),hex(self.sp))
+   return self.mem[a]
   if self.io is not None: return self.io.read(a)
   raise AssertionError(('unexpected nonstack read',hex(a)))
  def invalid_write(self,a,v):
+  if 0x3f00 < a <= 0x3fff:
+   assert a > self.sp,('outside allocated stack write',hex(a),hex(self.sp))
+   self.mem[a]=v; self.writes+=1; return
   if self.io is not None: return self.io.write(a,v)
   raise AssertionError(('unexpected nonstack write',hex(a),v))
  def invalid_irq(self,v):
