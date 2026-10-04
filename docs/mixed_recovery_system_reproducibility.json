@@ -1,0 +1,14 @@
+{
+  "two_clean_builds_identical": true,
+  "sha256": {
+    "mixed.elf": "21fb59acf1ece69832b9b31a11ea7fc0a4a5b12016ad7b312d78aeeca937c20a",
+    "mixed.hex": "313936cb9ea24c9ac71723bbe9bc499afd84e55e4056a378d5b0e30bba9b36a1",
+    "flash_mixed.bin": "2383f98d1a2fd5432290ccf50aeb2ca125e92ecf5e9e919bd4bd4107b6f7beb2"
+  },
+  "compiled_avr_cases": 2730848,
+  "system_deinit_cases": 65536,
+  "system_init_cases": 36864,
+  "pll_reset_cases": 32768,
+  "golden_only_settings_audit_cases": 2048,
+  "synthetic_gpio_architecture_cases": 16392
+}

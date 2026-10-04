@@ -1,0 +1,18 @@
+{
+  "cases": 5120,
+  "incoming_sreg_patterns": 256,
+  "ready_flash_status_bytes": 128,
+  "ready_spi_status_bytes": 128,
+  "busy_retry_counts": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "original_timed_delay_bytes_unchanged": true,
+  "original_delay_iterations": 1600,
+  "registers_flags_spi_and_return_stack_equal": true,
+  "maximum_additional_stack": 15,
+  "mixed_bin_sha256": "2383f98d1a2fd5432290ccf50aeb2ca125e92ecf5e9e919bd4bd4107b6f7beb2",
+  "limits": "bounded functional interpreter; original delay encoding retained but no cycle/async interrupt/hardware validation"
+}

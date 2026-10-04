@@ -1,0 +1,99 @@
+{
+  "image_size": 139264,
+  "changed_bytes": 4634,
+  "original_code_replaced": [
+    {
+      "start": 3548,
+      "size": 68
+    },
+    {
+      "start": 3344,
+      "size": 204
+    },
+    {
+      "start": 3222,
+      "size": 122
+    },
+    {
+      "start": 2276,
+      "size": 166
+    },
+    {
+      "start": 2442,
+      "size": 84
+    },
+    {
+      "start": 3198,
+      "size": 24
+    },
+    {
+      "start": 2716,
+      "size": 32
+    },
+    {
+      "start": 8496,
+      "size": 28
+    },
+    {
+      "start": 8524,
+      "size": 40
+    },
+    {
+      "start": 8400,
+      "size": 28
+    },
+    {
+      "start": 8358,
+      "size": 42
+    },
+    {
+      "start": 8428,
+      "size": 24
+    },
+    {
+      "start": 8452,
+      "size": 24
+    },
+    {
+      "start": 8476,
+      "size": 20
+    },
+    {
+      "start": 6116,
+      "size": 36
+    },
+    {
+      "start": 5732,
+      "size": 26
+    },
+    {
+      "start": 5918,
+      "size": 28
+    },
+    {
+      "start": 6152,
+      "size": 56
+    },
+    {
+      "start": 5946,
+      "size": 56,
+      "retained_timed_asm_bytes": 8
+    }
+  ],
+  "additions": [
+    {
+      "section": ".bridges",
+      "start": 12288,
+      "size": 1600
+    },
+    {
+      "section": ".text",
+      "start": 16384,
+      "size": 2004
+    }
+  ],
+  "original_text_symbols_preserved": 806,
+  "boot_vectors_data_unchanged": true,
+  "new_data_bss_bytes": 0,
+  "permitted_changes_only": true
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace sixteen audited original routine bodies with anchored JMPs.
+"""Replace nineteen audited original routine bodies with anchored JMPs.
 No golden data is embedded. All upstream and exact-source files stay untouched.
 """
 from pathlib import Path
@@ -142,5 +142,22 @@ for name,address in [('LAB_code_000488',0x910),('LAB_code_000494',0x928)]:
  assert s[:start].count(name)+s[end:].count(name)==0,('external settings entry',name)
  replacement+=f'.org 0x{address:x}, 0xff\n{name}:\n'
 s=s[:start]+replacement+s[end:]
-s='.global fpga_msg_send_t2\n.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
+start=s.index('system_deinit:')
+end=s.index('.org (0x0688 << 1)',start)
+body=s[start:end]
+assert 'andi        R16,0xef' in body and 'sts         DMA_CTRL,R16' in body
+s=s[:start]+'system_deinit:\n    jmp pm_system_deinit_bridge\n'+s[end:]
+start=s.index('system_init:')
+end=s.index('.org (0x06ee << 1)',start)
+body=s[start:end]
+assert 'sts         DMA_CH1_CTRLA,R16' in body and 'ldi         R16,0x8' in body
+assert s[:start].count('LAB_code_0006a6')+s[end:].count('LAB_code_0006a6')==0
+s=s[:start]+'system_init:\n    jmp pm_system_init_bridge\n.org (0x06a6 << 1), 0xff\nLAB_code_0006a6:\n'+s[end:]
+start=s.index('CDCE62005_control_rst:')
+end=s.index('.org (0x0710 << 1)',start)
+body=s[start:end]
+assert body.count('lpm         R')==4 and 'dec         R20' in body
+assert s[:start].count('LAB_code_0006f8')+s[end:].count('LAB_code_0006f8')==0
+s=s[:start]+'CDCE62005_control_rst:\n    jmp pm_pll_control_reset_bridge\n.org (0x06f8 << 1), 0xff\nLAB_code_0006f8:\n'+s[end:]
+s='.global CDCE62005_send_control_settings\n.global fpga_msg_send_t2\n.global dac_send_value\n.global cli_send_msg\n.global FUN_code_000b9d\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

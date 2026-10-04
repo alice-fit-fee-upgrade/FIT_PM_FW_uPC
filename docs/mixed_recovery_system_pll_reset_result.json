@@ -1,0 +1,20 @@
+{
+  "cases": 32768,
+  "all_sreg_patterns": 256,
+  "spi_ready_values": 128,
+  "poll_delays": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "table_byte_range": [
+    10518,
+    10558
+  ],
+  "transactions": 10,
+  "all_registers_sreg_table_values_spi_irq_and_return_stack_equal": true,
+  "maximum_additional_stack": 31,
+  "mixed_bin_sha256": "2383f98d1a2fd5432290ccf50aeb2ca125e92ecf5e9e919bd4bd4107b6f7beb2",
+  "limits": "bounded functional interpreter; LPM uses unchanged golden data; no cycle/asynchronous IRQ/hardware validation"
+}

@@ -1,3 +1,4 @@
+.global CDCE62005_send_control_settings
 .global fpga_msg_send_t2
 .global dac_send_value
 .global cli_send_msg
@@ -1271,163 +1272,17 @@ set_status_and_vd8_led:
 LAB_code_000646:
 .org (0x064b << 1), 0xff
 system_deinit:
-	eor         R16,R16                                 
-	sts         0x215c,R16                   ;= ??
-	sts         0x215d,R16                   ;= ??
-	sts         0x215b,R16                   ;= ??
-	sts         0x2159,R16                   ;= ??
-	sts         0x2441,R16                   ;= ??
-	sts         0x2006,R16                   ;= ??
-	sts         0x2162,R16                   ;= ??
-	ldi         R16,0x1                                 
-	sts         PORTE_INTCTRL,R16               ;= ??
-	ldi         R16,0x2                                 
-	sts         PORTF_INTCTRL,R16               ;= ??
-	ldi         R16,0x0                                 
-	sts         PORTB_INTCTRL,R16               ;= ??
-	sts         PORTD_INTCTRL,R16               ;= ??
-	ldi         R16,0xbf                                
-	sts         PORTB_DIRCLR,R16                ;= ??
-	eor         R16,R16                                 
-	sts         SPIC_CTRL,R16                        ;= ??
-	ser         R16                                     
-	sts         PORTC_DIRCLR,R16                ;= ??
-	ldi         R16,0x41                                
-	sts         PORTD_DIRCLR,R16                ;= ??
-	ldi         R16,0x4                                 
-	sts         PORTD_OUTCLR,R16                ;= ??
-	ldi         R16,0x20                                
-	sts         PORTF_OUTCLR,R16                ;= ??
-	ldi         R16,0x20                                
-	sts         PORTF_DIRCLR,R16                ;= ??
-	lds         R16,0x2157                   ;= ??
-	andi        R16,0xef                                
-	sts         0x2157,R16                   ;= ??
-	ldi         R16,0xa0                                
-	sts         PORTA_OUTSET,R16                ;= ??
-	eor         R16,R16                                 
-	sts         SPID_CTRL,R16                        ;= ??
-	sts         DMA_CTRL,R16                         ;= ??
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000688(void)
+    jmp pm_system_deinit_bridge
 .org (0x0688 << 1), 0xff
 system_init:
-	ldi         R16,0xbc                                
-	sts         PORTB_OUT,R16                   ;= ??
-	ldi         R16,0xbf                                
-	sts         PORTB_DIRSET,R16                ;= ??
-	ldi         R16,0x7                                 
-	sts         PORTC_OUT,R16                   ;= ??
-	ldi         R16,0xbf                                
-	sts         PORTC_DIRSET,R16                ;= ??
-	ldi         R16,0x1                                 
-	sts         PORTD_OUTSET,R16                ;= ??
-	ldi         R16,0x41                                
-	sts         PORTD_DIRSET,R16                ;= ??
-	ldi         R16,0x10                                
-	sts         PORTF_OUTSET,R16                ;= ??
-	ldi         R16,0x30                                
-	sts         PORTF_DIRSET,R16                ;= ??
-	ldi         R16,0xd1                                
-	sts         SPIC_CTRL,R16                        ;= ??
-	ldi         R16,0x40                                
-	sts         DMA_CTRL,R16                         ;= ??
-LAB_code_0006a6:              
-	lds         R16,DMA_CTRL                         ;= ??
-	sbrc        R16,0x6                                 
-	rjmp        LAB_code_0006a6                         
-	ldi         R16,0x44                                
-	sts         SPID_CTRL,R16                        ;= ??
-	ldi         R16,0x83                                
-	sts         DMA_CTRL,R16                         ;= ??
-	ldi         R16,0x6a                                
-	sts         DMA_CH0_TRIGSRC,R16             ;= ??
-	ldi         R16,0xc3                                
-	sts         DMA_CH0_DESTADDR0,R16           ;= ??
-	ldi         R16,0x9                                 
-	sts         DMA_CH0_DESTADDR1,R16           ;= ??
-	eor         R16,R16                                 
-	sts         DMA_CH0_DESTADDR2,R16           ;= ??
-	ldi         R16,0x50                                
-	sts         DMA_CH0_ADDRCTRL,R16            ;= ??
-	ldi         R16,0x6a                                
-	sts         DMA_CH1_TRIGSRC,R16             ;= ??
-	ldi         R16,0x39                                
-	sts         DMA_CH1_DESTADDR0,R16           ;= ??
-	ldi         R16,0x24                                
-	sts         DMA_CH1_DESTADDR1,R16           ;= ??
-	eor         R16,R16                                 
-	sts         DMA_CH1_DESTADDR2,R16           ;= ??
-	ldi         R16,0xc3                                
-	sts         DMA_CH1_SRCADDR0,R16            ;= ??
-	ldi         R16,0x9                                 
-	sts         DMA_CH1_SRCADDR1,R16            ;= ??
-	eor         R16,R16                                 
-	sts         DMA_CH1_SRCADDR2,R16            ;= ??
-	sts         DMA_CH1_REPCNT,R16              ;= ??
-	ldi         R16,0x8                                 
-	sts         DMA_CH1_TRFCNT,R16              ;= ??
-	eor         R16,R16                                 
-	sts         0x0125,R16                ;= ??
-	ldi         R16,0x5                                 
-	sts         DMA_CH1_ADDRCTRL,R16            ;= ??
-	ldi         R16,0xa4                                
-	sts         DMA_CH1_CTRLA,R16               ;= ??
-	ldi         R16,0x1                                 
-	sts         DMA_CH1_CTRLB,R16               ;= ??
-	ldi         R16,0x8                                 
-	ldi         R17,0x10                                
-	eor         R18,R18                                 
-	eor         R19,R19                                 
-	cli                                                 
-	call        CDCE62005_send_control_settings                         ;undefined FUN_code_001243(void)
-	bset        CPU_I_bp                                    
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_0006ee(void)
+    jmp pm_system_init_bridge
+.org (0x06a6 << 1), 0xff
+LAB_code_0006a6:
 .org (0x06ee << 1), 0xff
 CDCE62005_control_rst:
-	push        R16                                     
-	push        R17                                     
-	push        R18                                     
-	push        R19                                     
-	push        R20                                     
-	push        ZL                                     
-	push        ZH                                     
-	ldi         ZL,0x16                                
-	ldi         ZH,0x29                                
-	ldi         R20,0xa                                 
-LAB_code_0006f8:              
-	lpm         R16,Z+                                  
-	lpm         R17,Z+                                  
-	lpm         R18,Z+                                  
-	lpm         R19,Z+                                  
-	cli                                                 
-	call        CDCE62005_send_control_settings                         ;undefined FUN_code_001243(void)
-	bset        CPU_I_bp                                    
-	dec         R20                                     
-	brbc        CPU_Z_bp, LAB_code_0006f8                    
-	ldi         R16,0xa                                 
-	sts         PORTF_INTCTRL,R16               ;= ??
-	ldi         R16,0x20                                
-	sts         PORTB_OUTCLR,R16                ;= ??
-	pop         ZH                                     
-	pop         ZL                                     
-	pop         R20                                     
-	pop         R19                                     
-	pop         R18                                     
-	pop         R17                                     
-	pop         R16                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000710(void)
+    jmp pm_pll_control_reset_bridge
+.org (0x06f8 << 1), 0xff
+LAB_code_0006f8:
 .org (0x0710 << 1), 0xff
 PORTF_INT0_vect_isr:
 	push        ZH                                     

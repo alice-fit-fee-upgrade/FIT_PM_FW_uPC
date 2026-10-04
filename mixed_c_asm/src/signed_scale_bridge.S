@@ -752,3 +752,158 @@ pm_fpga_settings_init_bridge:
     pop r0
     ret
 .size pm_fpga_settings_init_bridge, .-pm_fpga_settings_init_bridge
+
+.global pm_system_deinit_bridge
+.type pm_system_deinit_bridge,@function
+pm_system_deinit_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_system_deinit_c
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    out 0x3f, r0
+    eor r16, r16 /* Original final EOR, not status-mask flags. */
+    pop r1
+    pop r0
+    ret
+.size pm_system_deinit_bridge, .-pm_system_deinit_bridge
+
+/* C uint32_t argument low to high: R22,R23,R24,R25. */
+.global pm_pll_write_c
+.type pm_pll_write_c,@function
+pm_pll_write_c:
+    push r16
+    push r17
+    push r18
+    push r19
+    mov r16, r22
+    mov r17, r23
+    mov r18, r24
+    mov r19, r25
+    cli
+    call CDCE62005_send_control_settings
+    sei
+    pop r19
+    pop r18
+    pop r17
+    pop r16
+    ret
+.size pm_pll_write_c, .-pm_pll_write_c
+
+.global pm_system_init_bridge
+.type pm_system_init_bridge,@function
+pm_system_init_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_system_init_c
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    mov r18, r0
+    andi r18, 0x61 /* Preserve original C/H/T; final I=1, Z=1. */
+    ori r18, 0x82
+    out 0x3f, r18
+    eor r18, r18
+    eor r19, r19
+    ldi r16, 8
+    ldi r17, 0x10
+    pop r1
+    pop r0
+    ret
+.size pm_system_init_bridge, .-pm_system_init_bridge
+
+.global pm_pll_control_reset_bridge
+.type pm_pll_control_reset_bridge,@function
+pm_pll_control_reset_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_pll_control_reset_c
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    push r18
+    mov r18, r0
+    andi r18, 0x61 /* Original final DEC preserves C/H/T; I=1. */
+    ori r18, 0x82
+    out 0x3f, r18
+    pop r18
+    pop r1
+    pop r0
+    ret
+.size pm_pll_control_reset_bridge, .-pm_pll_control_reset_bridge
