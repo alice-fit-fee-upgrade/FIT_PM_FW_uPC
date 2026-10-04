@@ -20,8 +20,10 @@ build/status_gate.o: src/status_gate.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
 build/crc_byte.o: src/crc_byte.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
-build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o linker/mixed.ld
-	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o -lgcc -o $@
+build/flash_spi.o: src/flash_spi.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+build/mixed.elf: build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o linker/mixed.ld
+	$(CC) -mmcu=atxmega128a3u -nostdlib -Wl,--gc-sections,-T,linker/mixed.ld,-Map,build/mixed.map build/application.o build/boot.o build/bridge.o build/scaling.o build/dac_prepare.o build/status_gate.o build/crc_byte.o build/flash_spi.o -lgcc -o $@
 build/mixed.hex: build/mixed.elf
 	avr-objcopy -O ihex $< $@
 build/flash_mixed.bin: build/mixed.hex

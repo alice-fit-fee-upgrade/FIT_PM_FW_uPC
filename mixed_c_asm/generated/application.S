@@ -2576,19 +2576,7 @@ LAB_code_000b27:
 ;undefined FUN_code_000b32(void)
 .org (0x0b32 << 1), 0xff
 FUN_code_000b32:
-	ldi         R16,0x2                                 
-	sts         PORTD_OUTCLR,R16                ;= ??
-	ldi         R16,0x10                                
-	sts         PORTE_OUTSET,R16                ;= ??
-	ldi         R16,0xb0                                
-	sts         PORTE_DIRSET,R16                ;= ??
-	ldi         R16,0x50                                
-	sts         SPIE_CTRL,R16                        ;= ??
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined FUN_code_000b3f(void)
+    jmp pm_flash_init_bridge
 .org (0x0b3f << 1), 0xff
 FUN_code_000b3f:
 	cli                                                 

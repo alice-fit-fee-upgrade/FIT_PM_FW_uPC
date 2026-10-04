@@ -378,3 +378,127 @@ pm_crc_byte_bridge:
     pop r0
     ret
 .size pm_crc_byte_bridge, .-pm_crc_byte_bridge
+
+.global pm_flash_init_bridge
+.type pm_flash_init_bridge,@function
+pm_flash_init_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r19
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_flash_spi_init
+    ldi r16, 0x50
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r19
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_flash_init_bridge, .-pm_flash_init_bridge
+
+.global pm_flash_enable_bridge
+.type pm_flash_enable_bridge,@function
+pm_flash_enable_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    call pm_flash_write_enable
+    mov r19, r24
+    ldi r16, 0x10
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_flash_enable_bridge, .-pm_flash_enable_bridge
+
+.global pm_flash_address_bridge
+.type pm_flash_address_bridge,@function
+pm_flash_address_bridge:
+    push r0
+    push r1
+    in r0, 0x3f
+    push r0
+    push r18
+    push r20
+    push r21
+    push r22
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    mov r18, r20
+    mov r20, r21
+    mov r24, r16
+    clr r1
+    call pm_flash_send_address
+    mov r19, r24
+    ldi r17, 0x10
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r22
+    pop r21
+    pop r20
+    pop r18
+    pop r0
+    out 0x3f, r0
+    pop r1
+    pop r0
+    ret
+.size pm_flash_address_bridge, .-pm_flash_address_bridge
