@@ -45,5 +45,11 @@ assert 'ldi         R18,0xc' in body and 'com         R17' in body
 s=s[:start]+'''FUN_code_001053:
     jmp pm_dac_calibrated_bridge
 '''+s[end:]
+start=s.index('dac_set_value_2:')
+end=s.index('.org (0x1082 << 1)',start)
+assert 'ori         R22,0x2' in s[start:end]
+s=s[:start]+'''dac_set_value_2:
+    jmp pm_dac_signed2_bridge
+'''+s[end:]
 s='.global dac_send_value\n'+s
 (root/'mixed_c_asm/generated/application.S').write_text(s)

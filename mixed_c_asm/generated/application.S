@@ -4049,22 +4049,7 @@ FUN_code_001068:
     jmp pm_dac_inverse_bridge
 .org (0x1076 << 1), 0xff
 dac_set_value_2:
-	push        R18                                     
-	ldi         R18,0x88                                
-	ldi         R19,0x41                                
-	rcall       fpga_is_ready                         ;undefined FUN_code_001098(void)
-	ldi         R18,0x80                                
-	eor         R17,R18                                 
-	add         R22,R22                                 
-	add         R22,R22                                 
-	ori         R22,0x2                                 
-	rcall       dac_send_value                         ;undefined3 FUN_code_001155(undefined...
-	pop         R18                                     
-	ret                                                 
-;************************************************************************************************
-;*                                           FUNCTION                                           *
-;************************************************************************************************
-;undefined3 FUN_code_001082(void)
+    jmp pm_dac_signed2_bridge
 .org (0x1082 << 1), 0xff
 dac_set_value:
 	push        R18                                     

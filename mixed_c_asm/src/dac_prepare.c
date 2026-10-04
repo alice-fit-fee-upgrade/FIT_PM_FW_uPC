@@ -34,3 +34,18 @@ pm_dac_packet pm_dac_prepare_calibrated(uint16_t input, uint8_t channel,
     p.reserved = 0;
     return p;
 }
+
+/* Original entries 0x20EC/0x2104 differ only in command bits. */
+pm_dac_packet pm_dac_prepare_signed(uint16_t input, uint8_t channel,
+                                    uint8_t command)
+{
+    pm_dac_packet p;
+    p.value = (uint16_t)(pm_scale_signed(0x4188u, input) ^ 0x8000u);
+    p.input = input;
+    int16_t high = (int16_t)(input >> 8);
+    if (high >= 128) high -= 256;
+    p.product = (uint16_t)(high * 65);
+    p.control = (uint8_t)((uint8_t)(channel * 4u) | command);
+    p.reserved = 0;
+    return p;
+}

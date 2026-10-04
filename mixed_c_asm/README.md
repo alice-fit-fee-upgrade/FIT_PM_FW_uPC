@@ -10,7 +10,7 @@ at 0x3000; compiled C starts at 0x4000. Static SRAM, BSS and initialized data ar
 forbidden by the linker. Outputs are build/mixed.elf, mixed.hex and flash_mixed.bin.
 
 Integrated original entries: signed scaler 0x2130, unsigned scaler 0x214C,
-inverse DAC preparation 0x20D0, and calibrated DAC preparation 0x20A6. See docs/mixed_dac_inverse_checkpoint.md
+inverse DAC preparation 0x20D0, and calibrated DAC preparation 0x20A6, and signed DAC command 2 at 0x20EC. See docs/mixed_dac_inverse_checkpoint.md
 and the earlier signed/unsigned checkpoint documents for ABI and test evidence.
 The original SPI sender stays in ASM. Incoming R1 may be nonzero; outgoing R1,
 SREG, all other registers and three-byte return PCs are checked against original

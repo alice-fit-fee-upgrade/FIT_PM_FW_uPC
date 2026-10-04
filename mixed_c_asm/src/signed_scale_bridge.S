@@ -181,3 +181,73 @@ pm_dac_calibrated_bridge:
     call dac_send_value
     ret
 .size pm_dac_calibrated_bridge, .-pm_dac_calibrated_bridge
+
+.global pm_dac_signed2_bridge
+.type pm_dac_signed2_bridge,@function
+pm_dac_signed2_bridge:
+    push r18
+    in r18, 0x3f
+    push r18
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    movw r24, r20
+    ldi r20, 2
+    call pm_dac_prepare_signed
+    movw r16, r18
+    movw r0, r22
+    mov r22, r24
+    ldi r19, 0x41
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r18
+    out 0x3f, r18
+    pop r18
+    call dac_send_value
+    ret
+.size pm_dac_signed2_bridge, .-pm_dac_signed2_bridge
+
+.global pm_dac_signed1_bridge
+.type pm_dac_signed1_bridge,@function
+pm_dac_signed1_bridge:
+    push r18
+    in r18, 0x3f
+    push r18
+    push r23
+    push r24
+    push r25
+    push r26
+    push r27
+    push r30
+    push r31
+    clr r1
+    movw r24, r20
+    ldi r20, 1
+    call pm_dac_prepare_signed
+    movw r16, r18
+    movw r0, r22
+    mov r22, r24
+    ldi r19, 0x41
+    pop r31
+    pop r30
+    pop r27
+    pop r26
+    pop r25
+    pop r24
+    pop r23
+    pop r18
+    out 0x3f, r18
+    pop r18
+    call dac_send_value
+    ret
+.size pm_dac_signed1_bridge, .-pm_dac_signed1_bridge

@@ -1,0 +1,21 @@
+{
+  "cases": 65536,
+  "caller_entries": [
+    8428
+  ],
+  "signed_scaler_call_sites": [
+    8434,
+    8458
+  ],
+  "unsigned_scaler_call_sites": [
+    8364,
+    8416
+  ],
+  "all_input_words_per_caller": 65536,
+  "cycled_channels": 12,
+  "registers_and_sreg_identical": true,
+  "dac_spi_polling_write_irq_traces_identical": true,
+  "maximum_additional_stack_below_caller_entry": 35,
+  "return_address_bytes": 3,
+  "limits": "scripted SPI-ready polling; no hardware/cycle/asynchronous interrupt validation"
+}
