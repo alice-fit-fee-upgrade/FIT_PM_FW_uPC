@@ -65,10 +65,14 @@ next_channel:
     SEND_SPACE(low);
     asm volatile("pop r16\n\trcall cli_send_int16" : "=r" (low) : : "memory", "cc");
     SEND_SPACE(low);
-    asm volatile("clr r24\n\tld r16, Y+\n\tadd r16, r16\n\tasr r16"
+    asm volatile("clr r24\n\tld r16, Y+"
                  : "=r" (low), "+y" (calibration) : : "r24", "memory", "cc");
+    low += low; asm volatile("" : "+r" (low));
+    low = (uint8_t)((int8_t)low >> 1); asm volatile("" : "+r" (low));
     PRINT_SIGNED_BYTE(low);
     SEND_SPACE(low);
+    /* C equivalent: cli_send_crlf(); ++channel; trial439 changed layout.
+     * Unvalidated standalone; private call ABI and INC flags remain exact. */
     asm volatile("rcall cli_send_crlf\n\tinc %0" : "+r" (channel) : : "memory", "cc");
     asm goto("cpi %0, 12\n\tbrlt %l[next_channel]" : : "r" (channel) : "cc" : next_channel);
     asm volatile("rcall cli_send_crlf\n\trjmp LAB_code_000ff1" : : : "memory", "cc");

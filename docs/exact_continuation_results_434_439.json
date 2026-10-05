@@ -1,0 +1,56 @@
+[
+  {
+    "step": 434,
+    "source": "console_hex_parser.c",
+    "change": "Native C return after exact hex parser carry and frame restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_434.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 435,
+    "source": "programming_unlock.c",
+    "change": "Native C success return preserving ASM carry clear",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_435.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 436,
+    "source": "console_hex_parser.c",
+    "change": "Native C hex digit counter increment",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_436_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 437,
+    "source": "tdc_channel_data_display.c",
+    "change": "C wrapping calibration double and signed arithmetic right shift",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_437.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 438,
+    "source": "console_character_read.c",
+    "change": "C carriage return queue counter decrement",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_438_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 439,
+    "source": "tdc_channel_data_display.c",
+    "change": "C TDC display channel increment",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_439_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

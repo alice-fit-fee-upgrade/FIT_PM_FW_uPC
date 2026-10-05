@@ -30,11 +30,13 @@ decode:
     result += result; asm volatile("" : "+r" (result));
     result += result; asm volatile("" : "+r" (result));
     result |= digit; asm volatile("" : "+r" (result));
+    /* C equivalent: ++count; trial436 changed the exact encoding/layout.
+     * Unvalidated standalone; retain original INC and its flags. */
     asm volatile("inc %0" : "+r" (count) : : "cc");
     if (count != 4) goto next_digit;
     asm volatile("rcall cli_get_next_char" : "=r" (character) : : "memory", "cc");
 done:
     asm volatile("tst r18\n\tbreq 1f\n\tclc\n\trjmp 2f\n1:\n\tsec\n2:\n"
-                 "pop r18\n\tpop r22\n\tret" : : "r" (count), "r" (result) : "memory", "cc");
-    __builtin_unreachable();
+                 "pop r18\n\tpop r22" : : "r" (count), "r" (result) : "memory", "cc");
+    return;
 }

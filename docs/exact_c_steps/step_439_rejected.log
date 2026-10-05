@@ -1,25 +1,4 @@
-make -C recovered_exact exact-check
-make[1]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
-cd ../reference && sha256sum -c SHA256SUMS
-eeprom_golden.bin: OK
-flash_golden.bin: OK
-originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
-originals/1-PM.hex: OK
-originals/2-FIT_PM12-1-.PDF: OK
-originals/2-PM_Atxmega128.elf: OK
-originals/3-PM_sign.hex: OK
-originals/4-PM.eep: OK
-originals/5-PM_sign.hex: OK
-usersig_golden.bin: OK
-make clean
-make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
-rm -rf build
-rm -f generated/stamp
-make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
-make all
-make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
-python3 tools/prepare_sources.py
-touch generated/stamp
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
 avr-gcc -mmcu=atxmega128a3u -I../asm_analysis -c generated/application.S -o build/application.o
 avr-gcc -mmcu=atxmega128a3u -c ../exact_asm/src/boot.S -o build/boot.o
 avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fno-crossjumping -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-used-r20 -fcall-used-r21 -fcall-used-r22 -fcall-used-r23 -fcall-used-r24 -fcall-used-r25 -fcall-used-r30 -fcall-used-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -c src/timer_overflow_interrupt.c -o build/timer_overflow_interrupt.o
@@ -113,29 +92,6 @@ avr-gcc -mmcu=atxmega128a3u -nostdlib -Wl,-T,linker/exact.ld,-Map,build/reconstr
 avr-objcopy -O ihex build/reconstructed.elf build/reconstructed.hex
 python3 ../tools/memory_image.py build/reconstructed.hex build/flash_rebuilt.bin
 cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
-make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
-python3 ../tools/compare_flash.py ../reference/flash_golden.bin build/flash_rebuilt.bin --report build/comparison.txt --report-only
-Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
-Rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
-FLASH size: 139264
-Used address range (golden non-FF): 0x0 .. 0x204e5
-Identical bytes: 139264
-Differing bytes: 0
-ALL FLASH identical percentage: 100.000000%
-PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 0 differing, 100.000000% identical
-PROGRAMMED UNION (golden or rebuilt non-FF): 11354 bytes, 0 differing, 100.000000% identical
-USED EXTENT (includes internal erased holes): 132326 bytes, 0 differing, 100.000000% identical
-First mismatch: none
-Last mismatch: none
-Number of mismatch regions: 0
-START       END         LENGTH      TYPE
-0x000000    0x021FFF    139264      MATCH
-cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
-avr-objdump -D build/reconstructed.elf > build/rebuilt.dis
-python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_rebuilt.bin > build/instruction_diff.txt
-python3 tools/inventory.py
-Application 89: C_BINARY_EXACT=5, C_WITH_EXACT_ASM_HELPER=83, ASM_EXACT=1
-Boot ASM: 9; C instruction bytes: 6350/10836 (58.6010%); differing bytes: 0
-python3 tools/audit_c_provenance.py
-C/ASM provenance: 88 entries, 3678 inline ASM bytes; manifest matches GCC assembly
-make[1]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+../reference/flash_golden.bin build/flash_rebuilt.bin differ: byte 6563, line 60
+make: *** [Makefile:8: all] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

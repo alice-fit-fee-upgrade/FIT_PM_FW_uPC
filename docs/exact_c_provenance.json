@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3686,
+  "inline_asm_bytes": 3678,
   "compiler_generated_avr_primitive_bytes": 394,
   "avr_primitive_mnemonics": [
     "bld",
@@ -406,9 +406,9 @@
     },
     {
       "symbol": "unlock_programming",
-      "inline_asm_bytes": 24,
+      "inline_asm_bytes": 22,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 20
+      "compiler_bytes": 22
     },
     {
       "symbol": "channels_read",
@@ -418,9 +418,9 @@
     },
     {
       "symbol": "cli_get_hex",
-      "inline_asm_bytes": 48,
+      "inline_asm_bytes": 46,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 28
+      "compiler_bytes": 30
     },
     {
       "symbol": "FUN_code_000b59",
@@ -442,9 +442,9 @@
     },
     {
       "symbol": "cli_send_tdc_data",
-      "inline_asm_bytes": 104,
+      "inline_asm_bytes": 100,
       "compiler_generated_avr_primitive_bytes": 12,
-      "compiler_bytes": 54
+      "compiler_bytes": 58
     },
     {
       "symbol": "FUN_code_0004ef",

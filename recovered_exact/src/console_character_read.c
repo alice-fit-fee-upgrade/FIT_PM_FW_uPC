@@ -51,6 +51,8 @@ fetch:
     RAM8(0x2000) = index;
     if (data != 13) goto case_fold;
     index = RAM8(0x2005);
+    /* C equivalent: --index; trial438 failed binary matching.
+     * No standalone functional validation; preserve exact DEC flags. */
     asm volatile("dec %0" : "+r" (index) : : "cc");
     RAM8(0x2005) = index;
 case_fold:

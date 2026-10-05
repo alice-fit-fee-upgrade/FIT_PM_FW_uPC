@@ -6,9 +6,9 @@ verified original FLASH index. It does not infer new code/data boundaries or cou
 whole C-hosted functions as pure C. Byte addresses, 32-bit instructions and GNU AVR
 mnemonic aliases are handled by the existing original instruction index.
 
-3686 executable bytes are inline helpers in C regions. Remaining pure application
+3678 executable bytes are inline helpers in C regions. Remaining pure application
 ASM contributes another 30 bytes (signed formatter entry and startup/vector code),
-and boot contributes 778. C is 6342/10836 executable bytes. All original FLASH bytes
+and boot contributes 778. C is 6350/10836 executable bytes. All original FLASH bytes
 remain unchanged. JSON includes per-function counts and original byte/instruction
 examples for each opcode.
 
@@ -58,3 +58,20 @@ register_control_assessment.md; retained constraints are not an impossibility pr
 Steps387–433 additionally resolved direct memory accesses using typed pointer
 operands. Their final acceptance and restored candidates are documented in
 exact_pointer_continuation_assessment.md. Current helpers total 3686 bytes.
+
+## Continuation steps 434–439
+
+Three of six candidates accepted, adding eight compiler-generated instruction
+bytes: cli_get_hex return (2), unlock_programming return (2), and TDC calibration
+wrapping double plus signed right shift (4). Carry-result status and original
+stack restoration remain exact ASM. Each accepted candidate passed full clean
+make exact-check. C increments/decrement in steps436/438/439 failed exact
+encoding/layout and were restored with unvalidated C-equivalent comments.
+No emulator tests were run; no behavioral equivalence is claimed for rejections.
+
+Current executable coverage: C6350/10836 bytes (58.6010% overall),
+63.1338% of application bytes; ASM4486 including3678 inline helper bytes.
+Classes:5 C_BINARY_EXACT,83 C_WITH_EXACT_ASM_HELPER,1 ASM_EXACT; boot9 ASM.
+Canonical golden/rebuilt SHA256:
+e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
+Differing bytes:0. Two clean final ELF/HEX/BIN builds agree.

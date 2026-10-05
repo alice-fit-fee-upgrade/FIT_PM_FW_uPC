@@ -29,8 +29,8 @@ next_byte:;
     cli_send_msg();
     /* C status equivalent: return_success_with_carry_clear();
      * The private carry-result entry cannot use a normal C return value. */
-    asm volatile("clc\n\tret" : : : "memory", "cc");
-    __builtin_unreachable();
+    asm volatile("clc" : : : "memory", "cc");
+    return;
 }
 asm(".pushsection .text.unlock_programming,\"ax\",@progbits\n"
     ".subsection 1\nsec\nret\nrjmp LAB_code_0009e4\n.popsection");

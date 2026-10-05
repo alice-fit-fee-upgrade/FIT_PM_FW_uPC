@@ -32,7 +32,7 @@ are no longer acceptance evidence for C integration.
 | 0x0F54 | main | C_WITH_EXACT_ASM_HELPER | 428 | 92 |
 | 0x115C | fpga_data_exchange | C_WITH_EXACT_ASM_HELPER | 248 | 150 |
 | 0x12EA | cli_prompt_parse | C_WITH_EXACT_ASM_HELPER | 346 | 310 |
-| 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER | 20 | 24 |
+| 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER | 22 | 22 |
 | 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 124 | 66 |
 | 0x1664 | FUN_code_000b32 | C_BINARY_EXACT | 26 | 0 |
 | 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 48 | 4 |
@@ -46,7 +46,7 @@ are no longer acceptance evidence for C integration.
 | 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER | 76 | 2 |
 | 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER | 16 | 32 |
 | 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER | 32 | 50 |
-| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 54 | 104 |
+| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 58 | 100 |
 | 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 60 | 36 |
 | 0x1A0E | FUN_code_000d07 | C_WITH_EXACT_ASM_HELPER | 36 | 12 |
 | 0x1A3E | cdce62005_rst | C_WITH_EXACT_ASM_HELPER | 16 | 22 |
@@ -85,7 +85,7 @@ are no longer acceptance evidence for C integration.
 | 0x25EA | adt7311_faults_clr | C_WITH_EXACT_ASM_HELPER | 22 | 8 |
 | 0x2608 | adt7311_byte_rw | C_WITH_EXACT_ASM_HELPER | 28 | 16 |
 | 0x2634 | cli_get_integer | C_WITH_EXACT_ASM_HELPER | 24 | 96 |
-| 0x26AC | cli_get_hex | C_WITH_EXACT_ASM_HELPER | 28 | 48 |
+| 0x26AC | cli_get_hex | C_WITH_EXACT_ASM_HELPER | 30 | 46 |
 | 0x26F8 | cli_send_32bit_hex | C_WITH_EXACT_ASM_HELPER | 32 | 8 |
 | 0x2720 | cli_send_digit_hex | C_WITH_EXACT_ASM_HELPER | 8 | 6 |
 | 0x272E | FUN_code_001397 | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
@@ -97,8 +97,6 @@ are no longer acceptance evidence for C integration.
 | 0x2836 | cli_get_next_byte | C_WITH_EXACT_ASM_HELPER | 2 | 4 |
 | 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 64 | 48 |
 | 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 54 | 52 |
-
-Current C coverage is 6342/10836 executable bytes (58.5271%), or 63.0543% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
 
 ## Accepted implementation choices
 
@@ -516,3 +514,20 @@ Two clean final ELF/HEX/BIN builds agree. Golden/rebuilt FLASH SHA256:
 e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
 Differing bytes: 0. No emulator runs or firmware/reference changes outside the
 accepted recovered tree. See exact_pointer_continuation_assessment.md for details.
+
+## Continuation steps 434–439
+
+Three of six candidates accepted, adding eight compiler-generated instruction
+bytes: cli_get_hex return (2), unlock_programming return (2), and TDC calibration
+wrapping double plus signed right shift (4). Carry-result status and original
+stack restoration remain exact ASM. Each accepted candidate passed full clean
+make exact-check. C increments/decrement in steps436/438/439 failed exact
+encoding/layout and were restored with unvalidated C-equivalent comments.
+No emulator tests were run; no behavioral equivalence is claimed for rejections.
+
+Current executable coverage: C6350/10836 bytes (58.6010% overall),
+63.1338% of application bytes; ASM4486 including3678 inline helper bytes.
+Classes:5 C_BINARY_EXACT,83 C_WITH_EXACT_ASM_HELPER,1 ASM_EXACT; boot9 ASM.
+Canonical golden/rebuilt SHA256:
+e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
+Differing bytes:0. Two clean final ELF/HEX/BIN builds agree.
