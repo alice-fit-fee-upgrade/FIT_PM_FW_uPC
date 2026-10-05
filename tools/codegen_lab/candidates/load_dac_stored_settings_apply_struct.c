@@ -1,0 +1,7 @@
+#include <stdint.h>
+struct bytes { uint8_t lo,hi; };
+void probe(void) {
+register struct bytes *p asm("r28"); register uint8_t lo asm("r20"), hi asm("r21");
+asm volatile("" : "=y" (p)); lo=p->lo; hi=p->hi; ++p;
+asm volatile("" : "+y" (p) : "r" (lo), "r" (hi));
+}

@@ -1,0 +1,545 @@
+{
+  "candidates": [
+    {
+      "name": "load_fpga_settings_init_uint16_t",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_fpga_settings_init_uint16_t.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_fpga_settings_init_int16_t",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_fpga_settings_init_int16_t.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_fpga_settings_init_bytes",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_fpga_settings_init_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_fpga_settings_init_bytes_volatile",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_fpga_settings_init_bytes_volatile.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "LAB_ONLY: exploration of access ordering; no claim that configuration RAM requires volatile"
+    },
+    {
+      "name": "load_fpga_settings_init_struct",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_fpga_settings_init_struct.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_dac_stored_settings_apply_uint16_t",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_uint16_t.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_dac_stored_settings_apply_int16_t",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_int16_t.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_dac_stored_settings_apply_bytes",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_dac_stored_settings_apply_bytes_volatile",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_bytes_volatile.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_dac_stored_settings_apply_struct",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_struct.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_console_tx_interrupt_uint16_t",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_uint16_t.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_console_tx_interrupt_int16_t",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_int16_t.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_console_tx_interrupt_bytes",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_console_tx_interrupt_bytes_volatile",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_bytes_volatile.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_console_tx_interrupt_struct",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_struct.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_fpga_data_exchange_uint16_t",
+      "profile": "src/fpga_data_exchange.c",
+      "address": "0x11d8",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_uint16_t.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_fpga_data_exchange_int16_t",
+      "profile": "src/fpga_data_exchange.c",
+      "address": "0x11d8",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_int16_t.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_fpga_data_exchange_bytes",
+      "profile": "src/fpga_data_exchange.c",
+      "address": "0x11d8",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_fpga_data_exchange_struct",
+      "profile": "src/fpga_data_exchange.c",
+      "address": "0x11d8",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_struct.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_dma_channel_interrupt_uint16_t",
+      "profile": "src/dma_channel_interrupt.c",
+      "address": "0x42a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_uint16_t.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_dma_channel_interrupt_int16_t",
+      "profile": "src/dma_channel_interrupt.c",
+      "address": "0x42a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_int16_t.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_dma_channel_interrupt_bytes",
+      "profile": "src/dma_channel_interrupt.c",
+      "address": "0x42a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_dma_channel_interrupt_struct",
+      "profile": "src/dma_channel_interrupt.c",
+      "address": "0x42a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_struct.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_console_dispatch_uint16_t",
+      "profile": "src/console_dispatch.c",
+      "address": "0x14a2",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_console_dispatch_uint16_t.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_console_dispatch_int16_t",
+      "profile": "src/console_dispatch.c",
+      "address": "0x14a2",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_console_dispatch_int16_t.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_console_dispatch_bytes",
+      "profile": "src/console_dispatch.c",
+      "address": "0x14a2",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_console_dispatch_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_console_dispatch_struct",
+      "profile": "src/console_dispatch.c",
+      "address": "0x14a2",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_console_dispatch_struct.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_fill_bytes",
+      "profile": "src/fpga_binary_programming_stream.c",
+      "address": "0x15b8",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/store_fill_bytes.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_byte_uint8_t_eq",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2002",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/compare_byte_uint8_t_eq.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_BRNE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_byte_uint8_t_ne",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2002",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/compare_byte_uint8_t_ne.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_BRNE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_byte_int8_t_eq",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2002",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/compare_byte_int8_t_eq.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_BRNE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_byte_int8_t_ne",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2002",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/compare_byte_int8_t_ne.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_BRNE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_signed_ge",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_ge.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_signed_lt",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_lt.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_signed_le",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_le.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_signed_gt",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_gt.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_fpga_settings_init",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_fpga_settings_init.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_fpga_settings_init_const",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_fpga_settings_init_const.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_word_fpga_settings_init",
+      "profile": "src/fpga_settings_init.c",
+      "address": "0x910",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_word_fpga_settings_init.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_fpga_settings_reset",
+      "profile": "src/fpga_settings_reset.c",
+      "address": "0x99a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_fpga_settings_reset.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_fpga_settings_reset_const",
+      "profile": "src/fpga_settings_reset.c",
+      "address": "0x99a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_fpga_settings_reset_const.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_word_fpga_settings_reset",
+      "profile": "src/fpga_settings_reset.c",
+      "address": "0x99a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_word_fpga_settings_reset.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_dac_stored_settings_apply",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_dac_stored_settings_apply.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_dac_stored_settings_apply_const",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_dac_stored_settings_apply_const.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_word_dac_stored_settings_apply",
+      "profile": "src/dac_stored_settings_apply.c",
+      "address": "0xa00",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_word_dac_stored_settings_apply.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_console_tx_interrupt",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_console_tx_interrupt.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_console_tx_interrupt_const",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_console_tx_interrupt_const.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "load_global_word_console_tx_interrupt",
+      "profile": "src/console_tx_interrupt.c",
+      "address": "0xe9c",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/load_global_word_console_tx_interrupt.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_global_fpga_data_exchange",
+      "profile": "src/fpga_data_exchange.c",
+      "address": "0x11d8",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_global_fpga_data_exchange.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_global_dma_channel_interrupt",
+      "profile": "src/dma_channel_interrupt.c",
+      "address": "0x42a",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_global_dma_channel_interrupt.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "store_global_console_dispatch",
+      "profile": "src/console_dispatch.c",
+      "address": "0x14a2",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/store_global_console_dispatch.c",
+      "strip_final_ret": true,
+      "idiom": "ST_ST",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "queue_predecrement",
+      "profile": "src/console_cts_interrupt.c",
+      "address": "0xe40",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/queue_predecrement.c",
+      "strip_final_ret": true,
+      "idiom": "LD_LD",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "compare_enum_ne",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2002",
+      "length": 4,
+      "source": "tools/codegen_lab/candidates/compare_enum_ne.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_BRNE",
+      "volatility_reason": "original accesses shared queue bytes"
+    },
+    {
+      "name": "positive_control_native_mmio",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2000",
+      "length": 6,
+      "desired_bytes": "0de000935721",
+      "source": "tools/codegen_lab/candidates/positive_control_native_mmio.c",
+      "strip_final_ret": true,
+      "idiom": "CONTROL",
+      "volatility_reason": "hardware/shared-state write, explicit MMIO lvalue"
+    }
+  ]
+}
