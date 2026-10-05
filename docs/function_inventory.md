@@ -13,13 +13,13 @@ Regenerate with `make c-progress`; root `make exact-check` is the acceptance gat
 
 Counts include 10 original ISRs, main and shared formatter entries. All 806 original
 text symbols retain their addresses. Remaining ASM is reviewed in
-[easy_conversion_assessment.md](easy_conversion_assessment.md); its classification
+[idiom_elimination_report.md](idiom_elimination_report.md); its classification
 does not claim that larger further C recovery is impossible.
 
-Of 10836 executable bytes, compiler-generated C accounts for **6680 (61.6464%)** and
-ASM for **4156 (38.3536%)**, including **3348 inline ASM helper bytes**.
-For the 10058 application executable bytes, C is **66.4148%** and ASM **33.5852%**.
-Of C bytes, 402 are compiler-generated AVR primitives; 6278 are other C
+Of 10836 executable bytes, compiler-generated C accounts for **6954 (64.1750%)** and
+ASM for **3882 (35.8250%)**, including **3074 inline ASM helper bytes**.
+For the 10058 application executable bytes, C is **69.1390%** and ASM **30.8610%**.
+Of C bytes, 402 are compiler-generated AVR primitives; 6552 are other C
 operations. This subset is checked independently using the original instruction
 index and GCC assembly provenance. All 778 boot executable bytes are ASM. Data (710 bytes) and erased/padding regions
 are excluded. C-hosted function regions total 10028 bytes; this includes helpers

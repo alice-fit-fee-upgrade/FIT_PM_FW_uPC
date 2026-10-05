@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3148,
+  "inline_asm_bytes": 3074,
   "compiler_generated_avr_primitive_bytes": 402,
   "avr_primitive_mnemonics": [
     "bld",
@@ -406,9 +406,9 @@
     },
     {
       "symbol": "unlock_programming",
-      "inline_asm_bytes": 18,
+      "inline_asm_bytes": 12,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 26
+      "compiler_bytes": 32
     },
     {
       "symbol": "channels_read",
@@ -526,21 +526,21 @@
     },
     {
       "symbol": "cli_prompt_parse",
-      "inline_asm_bytes": 146,
+      "inline_asm_bytes": 138,
       "compiler_generated_avr_primitive_bytes": 38,
-      "compiler_bytes": 510
+      "compiler_bytes": 518
     },
     {
       "symbol": "DMA_CH1_vect_isr",
-      "inline_asm_bytes": 244,
+      "inline_asm_bytes": 236,
       "compiler_generated_avr_primitive_bytes": 6,
-      "compiler_bytes": 406
+      "compiler_bytes": 414
     },
     {
       "symbol": "TCC0_OVF_vect_isr",
-      "inline_asm_bytes": 390,
+      "inline_asm_bytes": 338,
       "compiler_generated_avr_primitive_bytes": 84,
-      "compiler_bytes": 704
+      "compiler_bytes": 756
     }
   ]
 }
