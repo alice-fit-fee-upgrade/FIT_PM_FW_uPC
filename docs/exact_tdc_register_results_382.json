@@ -1,0 +1,11 @@
+[
+  {
+    "step": 382,
+    "source": "tdc_channel_data_display.c",
+    "change": "Bound-register conditional complement with explicit low-byte input dependency",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_382_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

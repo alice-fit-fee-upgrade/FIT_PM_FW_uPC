@@ -28,7 +28,8 @@
  */
 
 /* Fragment C equivalent: scaled_high ^= sign_mask;
- * Corrected trials357/358 changed fixed region sizes and were restored.
+ * Corrected trials357/358 changed region sizes. Step372 passed exact-check
+ * with a read/write R18 barrier preventing constant-folding of the mask.
  * Functional evidence above applies to the historical complete alternative
  * with its bridge, not to this independently compiled fragment. */
 #define DAC_CHANNEL(name, selector) \
@@ -37,7 +38,10 @@ void name(void) { \
     asm volatile("rcall fpga_is_ready" : "+r" (scale) : \
                  : "r0", "r1", "r16", "r17", "memory", "cc"); \
     register uint8_t sign_mask asm("r18") = 0x80; \
-    asm volatile("eor r17, %0" : : "r" (sign_mask) : "r17", "cc"); \
+    register uint8_t scaled_high asm("r17"); \
+    asm volatile("" : "=r" (scaled_high), "+r" (sign_mask)); \
+    scaled_high ^= sign_mask; \
+    asm volatile("" : "+r" (scaled_high)); \
     register uint8_t channel asm("r22"); \
     asm volatile("" : "=r" (channel)); \
     channel += channel; \

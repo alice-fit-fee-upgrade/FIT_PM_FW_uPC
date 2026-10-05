@@ -9,8 +9,17 @@
 /* Rejected step356 C fragment: sign_high = 0;
  * if (low & 0x80u) sign_high = (uint8_t)~sign_high;
  * The separate C conditional/complement changed full FLASH bytes.
- * This fragment has no independent successful functional-test claim. */
-#define PRINT_SIGNED_BYTE(low) asm volatile("clr r17\n\tsbrc r16, 7\n\tcom r17\n\trcall cli_send_int16" : "+r" (low) : : "r17", "memory", "cc")
+ * Step383 subsequently reproduced the original SBRC/COM in C by making
+ * low a read/write R16 operand; this passed whole-image exact-check.
+ * No standalone behavioral-test claim is made. */
+#define PRINT_SIGNED_BYTE(low) do { \
+    register uint8_t sign_high asm("r17"); \
+    /* C zero value retained as flag-setting CLR; low must be ready first. */ \
+    asm volatile("clr %0" : "=r" (sign_high), "+r" (low) : : "cc", "memory"); \
+    if ((low) & 0x80u) { sign_high = (uint8_t)~sign_high; \
+    asm volatile("" : "+r" (sign_high)); } \
+    asm volatile("rcall cli_send_int16" : "+r" (low), "+r" (sign_high) : : "memory", "cc"); \
+    } while (0)
 #define SEND_SPACE(low) do { (low) = ' '; asm volatile("rcall cli_send_buf" : "+r" (low) : : "memory", "cc"); } while (0)
 
 /* Preserve the original signed byte display and unusual TDC coarse/fine

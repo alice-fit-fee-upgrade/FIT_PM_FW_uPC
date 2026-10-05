@@ -1,0 +1,29 @@
+[
+  {
+    "step": 378,
+    "source": "dma_channel_interrupt.c",
+    "change": "C private X cursor increment with global register-pair reservation",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_378.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 379,
+    "source": "console_integer_parser.c",
+    "change": "C negation of private result low byte with exact carry chain",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_379.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 380,
+    "source": "console_integer_parser.c",
+    "change": "C negation of private result high byte preserving BRPL flags",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_380.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

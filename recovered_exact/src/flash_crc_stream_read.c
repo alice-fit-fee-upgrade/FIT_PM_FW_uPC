@@ -1,4 +1,5 @@
 #include <stdint.h>
+register uint16_t pm_crc_address asm("r28");
 #define RAM8(address) (*(volatile uint8_t *)(address))
 #define WAIT_READY(reg) do { \
  register uint8_t status asm(reg); \
@@ -52,9 +53,14 @@ next_byte:
     asm volatile("" : "+r" (received));
     asm goto("cp r0, r28\n\tcpc r1, r29\n\tcpc r2, r30\n\tbreq %l[last_byte]" : : : "cc" : last_byte);
     RAM8(0x0ac3) = dummy;
-    asm volatile("rcall FUN_code_000bf2\n\tadiw r28, 1\n\tadc r30, r10"
+    asm volatile("rcall FUN_code_000bf2"
                  : "+r" (crc), "+r" (low), "+r" (middle), "+r" (high), "+r" (received)
                  : "r" (dummy), "r" (polynomial0), "r" (polynomial1), "r" (polynomial2), "r" (polynomial3) : "r20", "memory", "cc");
+    asm volatile("" : "=r" (pm_crc_address) : : "memory");
+    pm_crc_address += 1;
+    asm volatile("" : "+r" (pm_crc_address) : : "memory");
+    /* C 24-bit carry equivalent: high += carry_out; exact ADC retains flags. */
+    asm volatile("adc r30, r10" : "+r" (high) : "r" (dummy) : "cc");
     goto next_byte;
 last_byte:
     asm volatile("rcall FUN_code_000bf2\n\trjmp LAB_code_000c43"

@@ -12,15 +12,15 @@ PUSH/SEC/shared-entry RJMP need the private formatter frame. An all-ASM C wrappe
 would contribute zero compiler-generated instruction bytes and is not counted
 as a C conversion. It remains exact GNU AVR assembly.
 
-The application still has 3838 inline ASM bytes inside 83 mixed functions.
+The application still has 3792 inline ASM bytes inside 83 mixed functions.
 These are live-flag operations, ISR frames, carry chains, private calls, pointer
 accesses and exact encodings. Moving an entry into a C file does not make these
 bytes C: independent GCC APP/NOAPP provenance counts every emitted ASM byte.
 Further work can replace individual helpers when clean C emits the same bytes.
 Boot remains 9 ASM procedures, 778 executable bytes.
 
-Of 10836 executable bytes, C accounts for 6190 (57.1244%) and ASM for 4646
-(42.8756%). Application-only C coverage is 61.5431%. All original 806 symbols
+Of 10836 executable bytes, C accounts for 6236 (57.5489%) and ASM for 4600
+(42.4511%). Application-only C coverage is 62.0004%. All original 806 symbols
 retain their addresses and complete canonical FLASH has zero differences.
 
 Further steps 93–190 accepted 67 changes across 41 translation units and
@@ -91,3 +91,9 @@ conditional encodings retain exact ASM and explanatory C comments.
 Steps365–370 verified UART TX/RX/CTS pointer-read alternatives and one local Z
 profile retry each. All were restored; register allocation or exact code layout
 prevents accepting these clean replacements with the current compiler.
+
+Steps371–386 revisited register-sensitive fragments with stronger global pair
+reservations and explicit opaque operands. Twelve candidates passed full exact
+checks, adding46 C bytes. This supersedes earlier local pair/DAC/TDC blockers
+for the accepted fragments; UART and parser branch candidates still failed.
+Current C is 6236 bytes / 62.0004% application. See register_control_assessment.md.

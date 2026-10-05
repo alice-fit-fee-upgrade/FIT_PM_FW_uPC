@@ -11,6 +11,10 @@ extern void FUN_code_000bb9(void);
 extern void FUN_code_000c20(void);
 #include "legacy_cpu.h"
 #include <stdint.h>
+/* Exact private word pairs; no SRAM objects or GNU save/restore frames. */
+register uint16_t pm_dma_address asm("r28");
+register uint16_t pm_dma_current asm("r20");
+register uint16_t pm_dma_buffer_cursor asm("r26");
 
 /* Original DMA channel interrupt and original byte range 0x01e2..0x046b.
  * C owns constants, SRAM/MMIO access and internal jumps. Exact ASM
@@ -99,7 +103,9 @@ L_000116:
     asm volatile("inc         r17" : : : "memory", "cc");
     asm volatile("cpi         r28,0x41" : : : "memory", "cc");
     asm goto("brbc 1, .Ldma_L_00011c" : : : "memory", "cc" : L_00011c);
-    asm volatile("sbiw        Y,0x8" : : : "memory", "cc");
+    asm volatile("" : "=r" (pm_dma_address) : : "memory");
+    pm_dma_address -= 8;
+    asm volatile("" : "+r" (pm_dma_address) : : "memory");
 L_00011c:
     asm volatile(".Ldma_L_00011c:" : : : "memory");
     asm volatile("ld          r16,Y+" : : : "memory", "cc");
@@ -134,7 +140,9 @@ L_000130:
     asm volatile(".Ldma_L_000130:" : : : "memory");
     asm volatile("cpi         r28,0x41" : : : "memory", "cc");
     asm goto("brbc 1, .Ldma_L_000133" : : : "memory", "cc" : L_000133);
-    asm volatile("sbiw        Y,0x8" : : : "memory", "cc");
+    asm volatile("" : "=r" (pm_dma_address) : : "memory");
+    pm_dma_address -= 8;
+    asm volatile("" : "+r" (pm_dma_address) : : "memory");
 L_000133:
     asm volatile(".Ldma_L_000133:" : : : "memory");
     asm volatile("ld          r16,Y+" : : : "memory", "cc");
@@ -237,11 +245,15 @@ L_000182:
     asm volatile("ld          r28,X+" : : : "memory", "cc");
     asm volatile("ld          r29,X+" : : : "memory", "cc");
     asm volatile("ld          r30,X+" : : : "memory", "cc");
-    asm volatile("adiw        X,0x1" : : : "memory", "cc");
+    asm volatile("" : "=r" (pm_dma_buffer_cursor) : : "memory");
+    pm_dma_buffer_cursor += 1;
+    asm volatile("" : "+r" (pm_dma_buffer_cursor) : : "memory");
     asm volatile("ld          r0,X+" : : : "memory", "cc");
     asm volatile("ld          r1,X+" : : : "memory", "cc");
     asm volatile("ld          r2,X" : : : "memory", "cc");
-    asm volatile("movw        r20,Y" : : : "memory", "cc");
+    asm volatile("" : "=r" (pm_dma_address));
+    pm_dma_current = pm_dma_address;
+    asm volatile("" : "+r" (pm_dma_current));
     asm volatile("" : "=r" (r30));
     r22 = r30;
     asm volatile("" : "+r" (r22));

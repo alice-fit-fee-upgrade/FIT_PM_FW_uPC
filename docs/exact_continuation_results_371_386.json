@@ -1,0 +1,150 @@
+[
+  {
+    "step": 371,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "Global register-pair C assignment reproducing private MOVW",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_371.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 372,
+    "source": "dac_channels.c",
+    "change": "Constrained C XOR with opaque R18 input prevents immediate folding",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_372.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 373,
+    "source": "dma_channel_interrupt.c",
+    "change": "Global word-pair reservation reproducing private DMA MOVW",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_373.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 374,
+    "source": "dma_channel_interrupt.c",
+    "change": "C DMA ring-pointer wraps using globally reserved Y word",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_374.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 375,
+    "source": "fpga_data_exchange.c",
+    "change": "C FPGA word-cursor advance with global Y reservation",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_375.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 376,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM cursor increment with globally reserved Y pointer",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_376.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 377,
+    "source": "flash_crc_stream_read.c",
+    "change": "C lower address-word increment with global Y and exact upper carry",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_377.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 378,
+    "source": "dma_channel_interrupt.c",
+    "change": "C private X cursor increment with global register-pair reservation",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_378.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 379,
+    "source": "console_integer_parser.c",
+    "change": "C negation of private result low byte with exact carry chain",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_379.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 380,
+    "source": "console_integer_parser.c",
+    "change": "C negation of private result high byte preserving BRPL flags",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_380.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 381,
+    "source": "console_decimal_formatter.c",
+    "change": "Bound-register C byte negations within exact signed formatter frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_381.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 382,
+    "source": "tdc_channel_data_display.c",
+    "change": "Bound-register conditional complement with explicit low-byte input dependency",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_382_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "wrong instruction operand: SBRC R20 instead of R16 at 0x1936; fixed by trial383"
+  },
+  {
+    "step": 383,
+    "source": "tdc_channel_data_display.c",
+    "change": "Bound-register conditional complement with read/write R16 dependency preventing copied-value substitution",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_383.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 384,
+    "source": "console_tx_interrupt.c",
+    "change": "Function-local O1 pragma and forced Z allocation for UART reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_384_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation; O1 pragma does not repair fixed-register restrictions"
+  },
+  {
+    "step": 385,
+    "source": "console_integer_parser.c",
+    "change": "Separate C signed digit bounds with read/write R16 register barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_385_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation; O1 pragma does not repair fixed-register restrictions"
+  },
+  {
+    "step": 386,
+    "source": "console_integer_parser.c",
+    "change": "Function-local O1 pragma for fixed-register digit bounds",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_386_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation; O1 pragma does not repair fixed-register restrictions"
+  }
+]

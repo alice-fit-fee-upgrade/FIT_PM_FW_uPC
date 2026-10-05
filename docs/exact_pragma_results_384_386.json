@@ -1,0 +1,29 @@
+[
+  {
+    "step": 384,
+    "source": "console_tx_interrupt.c",
+    "change": "Function-local O1 pragma and forced Z allocation for UART reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_384_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 385,
+    "source": "console_integer_parser.c",
+    "change": "Separate C signed digit bounds with read/write R16 register barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_385_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 386,
+    "source": "console_integer_parser.c",
+    "change": "Function-local O1 pragma for fixed-register digit bounds",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_386_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

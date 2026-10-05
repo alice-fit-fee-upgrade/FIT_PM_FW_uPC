@@ -3,6 +3,8 @@
  * the original protected-write window; the comment is explanatory only. */
 #include "legacy_cpu.h"
 #include <avr/io.h>
+#include <stdint.h>
+register uint8_t *eeprom asm("r28");
 #define SET_VALUE(constant) do { value=(constant); asm volatile("" : "+r" (value)); } while (0)
 
 void eeprom_settings_save(void)
@@ -22,7 +24,7 @@ wait_nvm:
     pm_cpu_enable_irq();
     register const uint8_t *settings asm("r30") = (const uint8_t *)0x2163;
     asm volatile("" : "+z" (settings));
-    register uint8_t *eeprom asm("r28") = (uint8_t *)0x0fff;
+    eeprom = (uint8_t *)0x0fff;
     asm volatile("" : "+y" (eeprom));
     end_high = 0x22; asm volatile("" : "+r" (end_high));
 wait_buffer:
@@ -32,7 +34,9 @@ wait_buffer:
     /* C value: dirty = 0; retain flag-setting CLR rather than LDI/MOV zero. */
     asm volatile("clr %0" : "=r" (dirty) : : "cc");
 next_byte:
-    asm volatile("adiw %0, 1\n\tld %1, Z+\n\tld %2, Y"
+    eeprom += 1;
+    asm volatile("" : "+y" (eeprom) : : "memory");
+    asm volatile("ld %1, Z+\n\tld %2, Y"
         : "+y" (eeprom), "=r" (value), "=r" (previous), "+z" (settings) : : "memory", "cc");
     previous ^= value; asm volatile("" : "+r" (previous));
     asm goto("breq %l[unchanged]" : : "r" (previous) : : unchanged);

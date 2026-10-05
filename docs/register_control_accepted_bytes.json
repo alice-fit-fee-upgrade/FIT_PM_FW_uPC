@@ -1,0 +1,62 @@
+[
+  {
+    "symbol": "DMA_CH1_vect_isr",
+    "source": "src/dma_channel_interrupt.c",
+    "address": 482,
+    "added_c_bytes": 8
+  },
+  {
+    "symbol": "fpga_data_exchange",
+    "source": "src/fpga_data_exchange.c",
+    "address": 4444,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "fpga_firmware_update",
+    "source": "src/fpga_binary_programming_stream.c",
+    "address": 5542,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "FUN_code_000bb9",
+    "source": "src/flash_crc_stream_read.c",
+    "address": 6002,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "cli_send_tdc_data",
+    "source": "src/tdc_channel_data_display.c",
+    "address": 6416,
+    "added_c_bytes": 16
+  },
+  {
+    "symbol": "eeprom_settings_save",
+    "source": "src/eeprom_settings_store.c",
+    "address": 6574,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "dac_set_value_2",
+    "source": "src/dac_channels.c",
+    "address": 8428,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "dac_set_value",
+    "source": "src/dac_channels.c",
+    "address": 8452,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "cli_get_integer",
+    "source": "src/console_integer_parser.c",
+    "address": 9780,
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "cli_send_uint16",
+    "source": "src/console_decimal_formatter.c",
+    "address": 10062,
+    "added_c_bytes": 6
+  }
+]

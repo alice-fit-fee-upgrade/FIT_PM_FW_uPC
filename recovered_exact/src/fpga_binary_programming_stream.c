@@ -4,6 +4,10 @@ extern void cli_get_next_byte(void);
 extern void cli_send_32bit_hex(void);
 extern void cli_send_crlf(void);
 #include <stdint.h>
+/* Register objects exist only in this translation unit, with no SRAM storage.
+ * They reserve the original word pairs and suppress GNU save/restore frames. */
+register uint16_t pm_stream_start_address asm("r28");
+register uint16_t current asm("r20");
 #define RAM8(address) (*(volatile uint8_t *)(address))
 #define RECEIVE(byte) do { \
  cli_get_next_byte(); \
@@ -57,10 +61,12 @@ void fpga_firmware_update(void)
         register uint8_t limit_byte asm("r2") = byte;
         asm volatile("" : "+r" (limit_byte) : : "memory");
     }
-    register uint16_t current asm("r20");
-    /* C value: current = starting_address; step361/364 changed region size.
-     * Retain the original MOVW; no successful functional test is claimed. */
-    asm volatile("movw r20, r28" : "=r" (current) : "r" (address_low), "r" (address_middle));
+
+    /* Earlier local bindings (361/364) changed region size. Global pair
+     * reservations reproduce the original MOVW in C (accepted step371). */
+    asm volatile("" : "+r" (pm_stream_start_address) : "r" (address_low), "r" (address_middle));
+    current = pm_stream_start_address;
+    asm volatile("" : "+r" (current));
     register uint8_t current_high asm("r22") = address_high;
     asm volatile("" : "+r" (current_high));
 next_page:

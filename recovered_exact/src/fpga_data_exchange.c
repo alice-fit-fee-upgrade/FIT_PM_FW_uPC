@@ -8,6 +8,7 @@ extern void fpga_msg_send_t2(void);
 #include "legacy_cpu.h"
 #include <avr/io.h>
 #include <stdint.h>
+register uint16_t pm_exchange_cursor asm("r28");
 
 /* Original byte range 0x115c..0x12e9. C expresses the register values,
  * MMIO reads, masks and channel derivation. Exact helpers preserve live carry,
@@ -64,7 +65,9 @@ L_0008be:
     asm volatile("ror         r9" : : : "memory", "cc");
     asm volatile("ror         r8" : : : "memory", "cc");
     asm goto("brbs 0, %l[L_0008c9]" : : : "memory", "cc" : L_0008c9);
-    asm volatile("adiw        Y,0x2" : : : "memory", "cc");
+    asm volatile("" : "=r" (pm_exchange_cursor) : : "memory");
+    pm_exchange_cursor += 2;
+    asm volatile("" : "+r" (pm_exchange_cursor) : : "memory");
     goto L_00096b;
 L_0008c9:
     pm_cpu_disable_irq();

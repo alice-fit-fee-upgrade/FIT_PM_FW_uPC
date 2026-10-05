@@ -1,0 +1,11 @@
+[
+  {
+    "step": 381,
+    "source": "console_decimal_formatter.c",
+    "change": "Bound-register C byte negations within exact signed formatter frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_381.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

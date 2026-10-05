@@ -8,9 +8,30 @@
 void cli_send_uint16(void)
 {
     asm volatile("push r20\n\tclr r20\n\tclc" : : : "memory", "cc");
-    asm volatile("push r14\n\tpush r15\n\tpush r16\n\tpush r17\n\tpush r18\n\tpush r19\n\tpush r25\n\tpush r30\n\tpush r31\n"
-                 "clr r15\n\tbrcc 1f\n\tinc r15\n\ttst r17\n\tbrpl 1f\n\tneg r15\n\tneg r16\n"
-                 "brcc 2f\n\tinc r17\n2:\n\tneg r17\n1:" : : : "memory", "cc");
+    asm volatile("push r14\n\tpush r15\n\tpush r16\n\tpush r17\n\tpush r18\n\tpush r19\n\tpush r25\n\tpush r30\n\tpush r31" : : : "memory");
+    asm goto("clr r15\n\tbrcc %l[frame_ready]\n\tinc r15\n\ttst r17\n\tbrpl %l[frame_ready]" : : : "cc" : frame_ready);
+    {
+        register uint8_t magnitude asm("r15");
+        asm volatile("" : "=r" (magnitude));
+        magnitude = (uint8_t)-magnitude;
+        asm volatile("" : "+r" (magnitude));
+    }
+    {
+        register uint8_t magnitude asm("r16");
+        asm volatile("" : "=r" (magnitude));
+        magnitude = (uint8_t)-magnitude;
+        asm volatile("" : "+r" (magnitude));
+    }
+    asm goto("brcc %l[negate_high]" : : : : negate_high);
+    asm volatile("inc r17" : : : "cc");
+negate_high:
+    {
+        register uint8_t magnitude asm("r17");
+        asm volatile("" : "=r" (magnitude));
+        magnitude = (uint8_t)-magnitude;
+        asm volatile("" : "+r" (magnitude));
+    }
+frame_ready:;
     register uint8_t *cursor asm("r30") = (uint8_t *)0x2156;
     asm volatile("" : "+z" (cursor));
     register uint8_t count asm("r19");

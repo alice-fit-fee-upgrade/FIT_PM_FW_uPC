@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3838,
+  "inline_asm_bytes": 3792,
   "compiler_generated_avr_primitive_bytes": 394,
   "avr_primitive_mnemonics": [
     "bld",
@@ -148,15 +148,15 @@
     },
     {
       "symbol": "dac_set_value_2",
-      "inline_asm_bytes": 6,
+      "inline_asm_bytes": 4,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 18
+      "compiler_bytes": 20
     },
     {
       "symbol": "dac_set_value",
-      "inline_asm_bytes": 6,
+      "inline_asm_bytes": 4,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 18
+      "compiler_bytes": 20
     },
     {
       "symbol": "FUN_code_0011e5",
@@ -292,9 +292,9 @@
     },
     {
       "symbol": "eeprom_settings_save",
-      "inline_asm_bytes": 46,
+      "inline_asm_bytes": 44,
       "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 50
+      "compiler_bytes": 52
     },
     {
       "symbol": "alarms_clear",
@@ -430,9 +430,9 @@
     },
     {
       "symbol": "FUN_code_000bb9",
-      "inline_asm_bytes": 20,
+      "inline_asm_bytes": 18,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 94
+      "compiler_bytes": 96
     },
     {
       "symbol": "FUN_code_000bf2",
@@ -442,9 +442,9 @@
     },
     {
       "symbol": "cli_send_tdc_data",
-      "inline_asm_bytes": 120,
+      "inline_asm_bytes": 104,
       "compiler_generated_avr_primitive_bytes": 12,
-      "compiler_bytes": 38
+      "compiler_bytes": 54
     },
     {
       "symbol": "FUN_code_0004ef",
@@ -466,9 +466,9 @@
     },
     {
       "symbol": "fpga_firmware_update",
-      "inline_asm_bytes": 72,
+      "inline_asm_bytes": 70,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 118
+      "compiler_bytes": 120
     },
     {
       "symbol": "FUN_code_001397",
@@ -502,15 +502,15 @@
     },
     {
       "symbol": "cli_get_integer",
-      "inline_asm_bytes": 110,
+      "inline_asm_bytes": 106,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 10
+      "compiler_bytes": 14
     },
     {
       "symbol": "cli_send_uint16",
-      "inline_asm_bytes": 168,
+      "inline_asm_bytes": 162,
       "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 40
+      "compiler_bytes": 46
     },
     {
       "symbol": "fpga_is_ready",
@@ -520,9 +520,9 @@
     },
     {
       "symbol": "fpga_data_exchange",
-      "inline_asm_bytes": 158,
+      "inline_asm_bytes": 156,
       "compiler_generated_avr_primitive_bytes": 30,
-      "compiler_bytes": 240
+      "compiler_bytes": 242
     },
     {
       "symbol": "cli_prompt_parse",
@@ -532,9 +532,9 @@
     },
     {
       "symbol": "DMA_CH1_vect_isr",
-      "inline_asm_bytes": 290,
+      "inline_asm_bytes": 282,
       "compiler_generated_avr_primitive_bytes": 6,
-      "compiler_bytes": 360
+      "compiler_bytes": 368
     },
     {
       "symbol": "TCC0_OVF_vect_isr",

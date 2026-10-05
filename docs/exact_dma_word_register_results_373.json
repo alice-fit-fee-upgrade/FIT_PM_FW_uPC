@@ -1,0 +1,11 @@
+[
+  {
+    "step": 373,
+    "source": "dma_channel_interrupt.c",
+    "change": "Global word-pair reservation reproducing private DMA MOVW",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_373.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -41,7 +41,20 @@ validate:
 done:
     asm goto("cpi r18, 1\n\tbreq %l[error]\n\ttst r19\n\tbreq %l[success]\n\tcpi r18, 2\n\tbreq %l[error]"
              : : "r" (count), "r" (negative) : "cc" : error, success);
-    asm volatile("clr r19\n\tneg r20\n\tadc r21, r19\n\tneg r21" : "+r" (negative) : : "cc");
+    asm volatile("clr r19" : "+r" (negative) : : "cc");
+    {
+        register uint8_t result_low asm("r20");
+        asm volatile("" : "=r" (result_low));
+        result_low = (uint8_t)-result_low;
+        asm volatile("" : "+r" (result_low));
+    }
+    asm volatile("adc r21, r19" : : "r" (negative) : "cc");
+    {
+        register uint8_t result_high asm("r21");
+        asm volatile("" : "=r" (result_high));
+        result_high = (uint8_t)-result_high;
+        asm volatile("" : "+r" (result_high));
+    }
     asm goto("brpl %l[error]" : : : : error);
 success:
     asm volatile("clc" : : : "cc");

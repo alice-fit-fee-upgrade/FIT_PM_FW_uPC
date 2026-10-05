@@ -1,0 +1,124 @@
+{
+  "compiler": "avr-gcc (GCC) 7.3.0",
+  "flags": [
+    "-mmcu=atxmega128a3u",
+    "-Os",
+    "-Wall",
+    "-Wextra",
+    "-Werror"
+  ],
+  "scope": "isolated compiler support/encoding probes; not full-image conversion acceptance",
+  "cases": [
+    {
+      "name": "target_fixed",
+      "source": "#include <stdint.h>\n#pragma GCC target(\"fixed-r18\")\nvoid test(void) {}\n",
+      "extra_flags": [],
+      "exit_code": 1,
+      "diagnostics": "<probe>/target_fixed.c:2:9: error: #pragma GCC target is not supported for this machine [-Werror=pragmas]\n #pragma GCC target(\"fixed-r18\")\n         ^~~\ncc1: all warnings being treated as errors\n"
+    },
+    {
+      "name": "optimize_fixed",
+      "source": "#include <stdint.h>\n#pragma GCC optimize(\"fixed-r18\")\nvoid test(void) {}\n",
+      "extra_flags": [],
+      "exit_code": 1,
+      "diagnostics": "<probe>/optimize_fixed.c:2:9: error: bad option \u2018-ffixed-r18\u2019 to pragma \u2018optimize\u2019 [-Werror=pragmas]\n #pragma GCC optimize(\"fixed-r18\")\n         ^~~\n<probe>/optimize_fixed.c:3:1: error: bad option \u2018-ffixed-r18\u2019 to attribute \u2018optimize\u2019 [-Werror=attributes]\n void test(void) {}\n ^~~~\ncc1: all warnings being treated as errors\n"
+    },
+    {
+      "name": "attribute_fixed",
+      "source": "#include <stdint.h>\n__attribute__((optimize(\"fixed-r18\"))) void test(void) {}\n",
+      "extra_flags": [],
+      "exit_code": 1,
+      "diagnostics": "<probe>/attribute_fixed.c:2:1: error: bad option \u2018-ffixed-r18\u2019 to attribute \u2018optimize\u2019 [-Werror=attributes]\n __attribute__((optimize(\"fixed-r18\"))) void test(void) {}\n ^~~~~~~~~~~~~\ncc1: all warnings being treated as errors\n"
+    },
+    {
+      "name": "target_short_calls",
+      "source": "#include <stdint.h>\n#pragma GCC target(\"short-calls\")\nvoid test(void) {}\n",
+      "extra_flags": [],
+      "exit_code": 1,
+      "diagnostics": "<probe>/target_short_calls.c:2:9: error: #pragma GCC target is not supported for this machine [-Werror=pragmas]\n #pragma GCC target(\"short-calls\")\n         ^~~\ncc1: all warnings being treated as errors\n"
+    },
+    {
+      "name": "pragma_O1",
+      "source": "#include <stdint.h>\n#pragma GCC push_options\n#pragma GCC optimize(\"O1\")\nvoid test(void) {}\n#pragma GCC pop_options\n",
+      "extra_flags": [],
+      "exit_code": 0,
+      "diagnostics": "",
+      "assembly": "/* prologue: function */\n/* frame size = 0 */\n/* stack size = 0 */\n.L__stack_usage = 0\n/* epilogue start */\n\tret"
+    },
+    {
+      "name": "global_word_copy",
+      "source": "#include <stdint.h>\nregister uint16_t source asm(\"r28\"); register uint16_t dest asm(\"r20\"); void test(void) { dest = source; }\n",
+      "extra_flags": [
+        "-fcall-saved-r16",
+        "-fcall-saved-r17",
+        "-fcall-saved-r18",
+        "-fcall-saved-r20",
+        "-fcall-saved-r21",
+        "-fcall-saved-r30",
+        "-fcall-saved-r31"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "assembly": "/* prologue: function */\n/* frame size = 0 */\n/* stack size = 0 */\n.L__stack_usage = 0\n\tmovw r20,r28\n/* epilogue start */\n\tret"
+    },
+    {
+      "name": "global_word_add",
+      "source": "#include <stdint.h>\nregister uint16_t cursor asm(\"r28\"); void test(void) { cursor += 2; }\n",
+      "extra_flags": [
+        "-fcall-saved-r16",
+        "-fcall-saved-r17",
+        "-fcall-saved-r18",
+        "-fcall-saved-r20",
+        "-fcall-saved-r21",
+        "-fcall-saved-r30",
+        "-fcall-saved-r31"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "assembly": "/* prologue: function */\n/* frame size = 0 */\n/* stack size = 0 */\n.L__stack_usage = 0\n\tadiw r28,2\n/* epilogue start */\n\tret"
+    },
+    {
+      "name": "global_word_subtract",
+      "source": "#include <stdint.h>\nregister uint16_t cursor asm(\"r28\"); void test(void) { cursor -= 8; }\n",
+      "extra_flags": [
+        "-fcall-saved-r16",
+        "-fcall-saved-r17",
+        "-fcall-saved-r18",
+        "-fcall-saved-r20",
+        "-fcall-saved-r21",
+        "-fcall-saved-r30",
+        "-fcall-saved-r31"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "assembly": "/* prologue: function */\n/* frame size = 0 */\n/* stack size = 0 */\n.L__stack_usage = 0\n\tsbiw r28,8\n/* epilogue start */\n\tret"
+    },
+    {
+      "name": "local_opaque_mask",
+      "source": "#include <stdint.h>\nvoid test(void) { register uint8_t data asm(\"r17\"), mask asm(\"r18\") = 0x80; asm volatile(\"\" : \"=r\"(data), \"+r\"(mask)); data ^= mask; asm volatile(\"\" : \"+r\"(data)); }\n",
+      "extra_flags": [
+        "-fcall-used-r17",
+        "-fcall-used-r18"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "assembly": "/* prologue: function */\n/* frame size = 0 */\n/* stack size = 0 */\n.L__stack_usage = 0\n\tldi r18,lo8(-128)\n\teor r17,r18\n/* epilogue start */\n\tret"
+    },
+    {
+      "name": "global_pointer_postincrement",
+      "source": "#include <stdint.h>\nregister uint8_t *cursor asm(\"r30\"); register uint8_t data asm(\"r16\"); void test(void) { data = *cursor++; }\n",
+      "extra_flags": [
+        "-fcall-saved-r16",
+        "-fcall-saved-r17",
+        "-fcall-saved-r18",
+        "-fcall-saved-r20",
+        "-fcall-saved-r21",
+        "-fcall-saved-r30",
+        "-fcall-saved-r31"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "assembly": "/* prologue: function */\n/* frame size = 0 */\n/* stack size = 0 */\n.L__stack_usage = 0\n\tmovw r26,r30\n\tmovw r24,r30\n\tadiw r24,1\n\tmovw r30,r24\n\tld r16,X\n/* epilogue start */\n\tret"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "step": 374,
+    "source": "dma_channel_interrupt.c",
+    "change": "C DMA ring-pointer wraps using globally reserved Y word",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_374.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 375,
+    "source": "fpga_data_exchange.c",
+    "change": "C FPGA word-cursor advance with global Y reservation",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_375.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 376,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM cursor increment with globally reserved Y pointer",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_376.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 377,
+    "source": "flash_crc_stream_read.c",
+    "change": "C lower address-word increment with global Y and exact upper carry",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_377.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "step": 371,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "Global register-pair C assignment reproducing private MOVW",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_371.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

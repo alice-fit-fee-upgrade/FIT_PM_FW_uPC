@@ -1,0 +1,11 @@
+[
+  {
+    "step": 372,
+    "source": "dac_channels.c",
+    "change": "Constrained C XOR with opaque R18 input prevents immediate folding",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_372.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -135,7 +135,7 @@ avr-objdump -D build/reconstructed.elf > build/rebuilt.dis
 python3 ../tools/instruction_diff.py ../reference/flash_golden.bin build/flash_rebuilt.bin > build/instruction_diff.txt
 python3 tools/inventory.py
 Application 89: C_BINARY_EXACT=5, C_WITH_EXACT_ASM_HELPER=83, ASM_EXACT=1
-Boot ASM: 9; C instruction bytes: 6236/10836 (57.5489%); differing bytes: 0
+Boot ASM: 9; C instruction bytes: 6212/10836 (57.3274%); differing bytes: 0
 python3 tools/audit_c_provenance.py
-C/ASM provenance: 88 entries, 3792 inline ASM bytes; manifest matches GCC assembly
+C/ASM provenance: 88 entries, 3816 inline ASM bytes; manifest matches GCC assembly
 make[1]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

@@ -9,7 +9,7 @@ are no longer acceptance evidence for C integration.
 
 | Byte address | Original entry | Classification | Compiler bytes | ASM helper bytes |
 |---|---|---|---|---|
-| 0x01E2 | DMA_CH1_vect_isr | C_WITH_EXACT_ASM_HELPER | 360 | 290 |
+| 0x01E2 | DMA_CH1_vect_isr | C_WITH_EXACT_ASM_HELPER | 368 | 282 |
 | 0x046C | FUN_code_000236 | C_WITH_EXACT_ASM_HELPER | 48 | 2 |
 | 0x049E | TCC0_OVF_vect_isr | C_WITH_EXACT_ASM_HELPER | 638 | 456 |
 | 0x08E4 | fpga_settings_init | C_WITH_EXACT_ASM_HELPER | 122 | 44 |
@@ -30,24 +30,24 @@ are no longer acceptance evidence for C integration.
 | 0x0E88 | USARTF0_DRE_vect_isr | C_WITH_EXACT_ASM_HELPER | 36 | 52 |
 | 0x0EE0 | USARTF0_RXC_vect_isr | C_WITH_EXACT_ASM_HELPER | 64 | 52 |
 | 0x0F54 | main | C_WITH_EXACT_ASM_HELPER | 428 | 92 |
-| 0x115C | fpga_data_exchange | C_WITH_EXACT_ASM_HELPER | 240 | 158 |
+| 0x115C | fpga_data_exchange | C_WITH_EXACT_ASM_HELPER | 242 | 156 |
 | 0x12EA | cli_prompt_parse | C_WITH_EXACT_ASM_HELPER | 346 | 310 |
 | 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER | 20 | 24 |
-| 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 118 | 72 |
+| 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 120 | 70 |
 | 0x1664 | FUN_code_000b32 | C_BINARY_EXACT | 26 | 0 |
 | 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 48 | 4 |
 | 0x16B2 | FUN_code_000b59 | C_WITH_EXACT_ASM_HELPER | 70 | 24 |
 | 0x1710 | FUN_code_000b88 | C_WITH_EXACT_ASM_HELPER | 10 | 4 |
 | 0x171E | FUN_code_000b8f | C_BINARY_EXACT | 28 | 0 |
 | 0x173A | FUN_code_000b9d | C_WITH_EXACT_ASM_HELPER | 52 | 4 |
-| 0x1772 | FUN_code_000bb9 | C_WITH_EXACT_ASM_HELPER | 94 | 20 |
+| 0x1772 | FUN_code_000bb9 | C_WITH_EXACT_ASM_HELPER | 96 | 18 |
 | 0x17E4 | FUN_code_000bf2 | C_WITH_EXACT_ASM_HELPER | 14 | 22 |
 | 0x1808 | FUN_code_000c04 | C_BINARY_EXACT | 56 | 0 |
 | 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER | 76 | 2 |
 | 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER | 16 | 32 |
 | 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER | 32 | 50 |
-| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 38 | 120 |
-| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 50 | 46 |
+| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 54 | 104 |
+| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 52 | 44 |
 | 0x1A0E | FUN_code_000d07 | C_WITH_EXACT_ASM_HELPER | 36 | 12 |
 | 0x1A3E | cdce62005_rst | C_WITH_EXACT_ASM_HELPER | 16 | 22 |
 | 0x1A64 | cli_send_system_status | C_WITH_EXACT_ASM_HELPER | 262 | 122 |
@@ -66,8 +66,8 @@ are no longer acceptance evidence for C integration.
 | 0x204E | fpga_set_ch_cfd_zero | C_WITH_EXACT_ASM_HELPER | 30 | 58 |
 | 0x20A6 | FUN_code_001053 | C_WITH_EXACT_ASM_HELPER | 28 | 14 |
 | 0x20D0 | FUN_code_001068 | C_WITH_EXACT_ASM_HELPER | 24 | 4 |
-| 0x20EC | dac_set_value_2 | C_WITH_EXACT_ASM_HELPER | 18 | 6 |
-| 0x2104 | dac_set_value | C_WITH_EXACT_ASM_HELPER | 18 | 6 |
+| 0x20EC | dac_set_value_2 | C_WITH_EXACT_ASM_HELPER | 20 | 4 |
+| 0x2104 | dac_set_value | C_WITH_EXACT_ASM_HELPER | 20 | 4 |
 | 0x211C | FUN_code_00108e | C_WITH_EXACT_ASM_HELPER | 10 | 10 |
 | 0x2130 | fpga_is_ready | C_WITH_EXACT_ASM_HELPER | 10 | 18 |
 | 0x214C | FUN_code_0010a6 | C_WITH_EXACT_ASM_HELPER | 14 | 26 |
@@ -84,21 +84,21 @@ are no longer acceptance evidence for C integration.
 | 0x25BE | adt7311_16bit_rw | C_WITH_EXACT_ASM_HELPER | 38 | 6 |
 | 0x25EA | adt7311_faults_clr | C_WITH_EXACT_ASM_HELPER | 22 | 8 |
 | 0x2608 | adt7311_byte_rw | C_WITH_EXACT_ASM_HELPER | 28 | 16 |
-| 0x2634 | cli_get_integer | C_WITH_EXACT_ASM_HELPER | 10 | 110 |
+| 0x2634 | cli_get_integer | C_WITH_EXACT_ASM_HELPER | 14 | 106 |
 | 0x26AC | cli_get_hex | C_WITH_EXACT_ASM_HELPER | 28 | 48 |
 | 0x26F8 | cli_send_32bit_hex | C_WITH_EXACT_ASM_HELPER | 32 | 8 |
 | 0x2720 | cli_send_digit_hex | C_WITH_EXACT_ASM_HELPER | 8 | 6 |
 | 0x272E | FUN_code_001397 | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
 | 0x2736 | cli_send_temperature | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
 | 0x273E | FUN_code_00139f | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
-| 0x274E | cli_send_uint16 | C_WITH_EXACT_ASM_HELPER | 40 | 168 |
+| 0x274E | cli_send_uint16 | C_WITH_EXACT_ASM_HELPER | 46 | 162 |
 | 0x281E | cli_send_crlf | C_WITH_EXACT_ASM_HELPER | 6 | 2 |
 | 0x2826 | cli_send_msg | C_WITH_EXACT_ASM_HELPER | 8 | 8 |
 | 0x2836 | cli_get_next_byte | C_WITH_EXACT_ASM_HELPER | 2 | 4 |
 | 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 52 | 60 |
 | 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 50 | 56 |
 
-Current C coverage is 6190/10836 executable bytes (57.1244%), or 61.5431% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
+Current C coverage is 6236/10836 executable bytes (57.5489%), or 62.0004% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
 
 ## Accepted implementation choices
 
@@ -471,3 +471,24 @@ One reasonable local Z-allocation profile retry per ISR also failed exact layout
 byte matching. All six candidates were restored. The retained helpers now carry C
 equivalent comments with no new behavioral-test claim. Current totals are unchanged:
 6190 C executable bytes, 4646 ASM, zero differing FLASH bytes. Two clean builds agree.
+
+## Register-control investigation: steps 371–386
+
+12 of 16 candidates accepted, nine translation units, 46 more compiler-generated
+instruction bytes. Global word-register reservations recovered original MOVW,
+ADIW/SBIW; explicit read/write operands recovered the original DAC EOR and TDC
+SBRC/COM operands. Bound-register byte NEG operations passed in parser/formatter.
+AVR GCC7.3 does not support target pragmas; optimize("fixed-rN") is rejected.
+O1 optimize pragmas compile but did not repair the UART/parser candidates.
+
+The TDC rejected trial382 differed in exactly one instruction: original SBRC
+R16,7 versus rebuilt SBRC R20,7 at byte0x1936. A read/write R16 operand prevents
+copied-value substitution; trial383 passed complete exact-check. No behavior
+substitution or new emulator test was used. See register_control_assessment.md
+and register_control_probes.json for reproducible compiler evidence.
+
+C: 6236 executable bytes, 57.5489% overall / 62.0004% application. ASM: 4600,
+including 3792 inline helper bytes. Classes remain 5 / 83 / 1; boot 9 ASM.
+Two clean ELF/HEX/BIN builds agree. SHA256 golden=rebuilt remains
+e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
+Differing bytes: 0. References and exact_asm remain unchanged.

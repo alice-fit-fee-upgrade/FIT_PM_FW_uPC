@@ -1,0 +1,11 @@
+[
+  {
+    "step": 383,
+    "source": "tdc_channel_data_display.c",
+    "change": "Bound-register conditional complement with read/write R16 dependency preventing copied-value substitution",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_383.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

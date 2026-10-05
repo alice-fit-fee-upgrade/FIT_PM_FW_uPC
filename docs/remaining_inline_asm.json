@@ -1,9 +1,9 @@
 {
   "scope": "inline ASM inside accepted C regions; pure ASM/boot excluded",
   "address_units": "FLASH bytes",
-  "manifest_sha256": "841f2629831dc7999f8e05984052ae4dccec2ff535bc45b796c5b28402bd495f",
-  "inline_asm_bytes": 3838,
-  "instructions": 1894,
+  "manifest_sha256": "144759a72c133cdc5e789d8646abc33acec5e63a8e3000bf9a029c9bd3cd7ca3",
+  "inline_asm_bytes": 3792,
+  "instructions": 1871,
   "opcodes": [
     {
       "mnemonic": "rcall",
@@ -132,8 +132,8 @@
     },
     {
       "mnemonic": "eor",
-      "bytes": 256,
-      "instructions": 128,
+      "bytes": 252,
+      "instructions": 126,
       "examples": [
         {
           "address": 536,
@@ -481,31 +481,6 @@
       ]
     },
     {
-      "mnemonic": "sbrc",
-      "bytes": 54,
-      "instructions": 27,
-      "examples": [
-        {
-          "address": 506,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "04fd",
-          "instruction": "sbrc\tr16, 4"
-        },
-        {
-          "address": 1486,
-          "source": "src/timer_overflow_interrupt.c",
-          "golden_bytes": "06fd",
-          "instruction": "sbrc\tr16, 6"
-        },
-        {
-          "address": 1670,
-          "source": "src/timer_overflow_interrupt.c",
-          "golden_bytes": "03fd",
-          "instruction": "sbrc\tr16, 3"
-        }
-      ]
-    },
-    {
       "mnemonic": "add",
       "bytes": 54,
       "instructions": 27,
@@ -552,6 +527,31 @@
           "source": "src/fpga_data_exchange.c",
           "golden_bytes": "3cf4",
           "instruction": "brge\t.+14     \t;  0x1204"
+        }
+      ]
+    },
+    {
+      "mnemonic": "sbrc",
+      "bytes": 46,
+      "instructions": 23,
+      "examples": [
+        {
+          "address": 506,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "04fd",
+          "instruction": "sbrc\tr16, 4"
+        },
+        {
+          "address": 1486,
+          "source": "src/timer_overflow_interrupt.c",
+          "golden_bytes": "06fd",
+          "instruction": "sbrc\tr16, 6"
+        },
+        {
+          "address": 1670,
+          "source": "src/timer_overflow_interrupt.c",
+          "golden_bytes": "03fd",
+          "instruction": "sbrc\tr16, 3"
         }
       ]
     },
@@ -1031,56 +1031,6 @@
       ]
     },
     {
-      "mnemonic": "neg",
-      "bytes": 10,
-      "instructions": 5,
-      "examples": [
-        {
-          "address": 9872,
-          "source": "src/console_integer_parser.c",
-          "golden_bytes": "4195",
-          "instruction": "neg\tr20"
-        },
-        {
-          "address": 9876,
-          "source": "src/console_integer_parser.c",
-          "golden_bytes": "5195",
-          "instruction": "neg\tr21"
-        },
-        {
-          "address": 10096,
-          "source": "src/console_decimal_formatter.c",
-          "golden_bytes": "f194",
-          "instruction": "neg\tr15"
-        }
-      ]
-    },
-    {
-      "mnemonic": "adiw",
-      "bytes": 8,
-      "instructions": 4,
-      "examples": [
-        {
-          "address": 792,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "1196",
-          "instruction": "adiw\tr26, 0x01\t; 1"
-        },
-        {
-          "address": 4494,
-          "source": "src/fpga_data_exchange.c",
-          "golden_bytes": "2296",
-          "instruction": "adiw\tr28, 0x02\t; 2"
-        },
-        {
-          "address": 6106,
-          "source": "src/flash_crc_stream_read.c",
-          "golden_bytes": "2196",
-          "instruction": "adiw\tr28, 0x01\t; 1"
-        }
-      ]
-    },
-    {
       "mnemonic": "sbis",
       "bytes": 8,
       "instructions": 4,
@@ -1127,56 +1077,6 @@
           "source": "src/pll_status_interrupt.c",
           "golden_bytes": "3ef4",
           "instruction": "brtc\t.+14     \t;  0xb52"
-        }
-      ]
-    },
-    {
-      "mnemonic": "com",
-      "bytes": 8,
-      "instructions": 4,
-      "examples": [
-        {
-          "address": 6442,
-          "source": "src/tdc_channel_data_display.c",
-          "golden_bytes": "1095",
-          "instruction": "com\tr17"
-        },
-        {
-          "address": 6456,
-          "source": "src/tdc_channel_data_display.c",
-          "golden_bytes": "1095",
-          "instruction": "com\tr17"
-        },
-        {
-          "address": 6476,
-          "source": "src/tdc_channel_data_display.c",
-          "golden_bytes": "1095",
-          "instruction": "com\tr17"
-        }
-      ]
-    },
-    {
-      "mnemonic": "sbiw",
-      "bytes": 6,
-      "instructions": 3,
-      "examples": [
-        {
-          "address": 566,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "2897",
-          "instruction": "sbiw\tr28, 0x08\t; 8"
-        },
-        {
-          "address": 612,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "2897",
-          "instruction": "sbiw\tr28, 0x08\t; 8"
-        },
-        {
-          "address": 5950,
-          "source": "src/flash_wait_ready.c",
-          "golden_bytes": "0197",
-          "instruction": "sbiw\tr24, 0x01\t; 1"
         }
       ]
     },
@@ -1277,25 +1177,6 @@
           "source": "src/console_decimal_formatter.c",
           "golden_bytes": "0af4",
           "instruction": "brpl\t.+2      \t;  0x27ee"
-        }
-      ]
-    },
-    {
-      "mnemonic": "movw",
-      "bytes": 4,
-      "instructions": 2,
-      "examples": [
-        {
-          "address": 800,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "ae01",
-          "instruction": "movw\tr20, r28"
-        },
-        {
-          "address": 5622,
-          "source": "src/fpga_binary_programming_stream.c",
-          "golden_bytes": "ae01",
-          "instruction": "movw\tr20, r28"
         }
       ]
     },
@@ -1543,6 +1424,19 @@
       ]
     },
     {
+      "mnemonic": "sbiw",
+      "bytes": 2,
+      "instructions": 1,
+      "examples": [
+        {
+          "address": 5950,
+          "source": "src/flash_wait_ready.c",
+          "golden_bytes": "0197",
+          "instruction": "sbiw\tr24, 0x01\t; 1"
+        }
+      ]
+    },
+    {
       "mnemonic": "cpse",
       "bytes": 2,
       "instructions": 1,
@@ -1559,8 +1453,8 @@
   "functions": {
     "DMA_CH1_vect_isr": {
       "source": "src/dma_channel_interrupt.c",
-      "inline_asm_bytes": 290,
-      "instructions": 145
+      "inline_asm_bytes": 282,
+      "instructions": 141
     },
     "FUN_code_000236": {
       "source": "src/dma_gpio_handshake.c",
@@ -1659,8 +1553,8 @@
     },
     "fpga_data_exchange": {
       "source": "src/fpga_data_exchange.c",
-      "inline_asm_bytes": 158,
-      "instructions": 79
+      "inline_asm_bytes": 156,
+      "instructions": 78
     },
     "cli_prompt_parse": {
       "source": "src/console_dispatch.c",
@@ -1674,8 +1568,8 @@
     },
     "fpga_firmware_update": {
       "source": "src/fpga_binary_programming_stream.c",
-      "inline_asm_bytes": 72,
-      "instructions": 36
+      "inline_asm_bytes": 70,
+      "instructions": 35
     },
     "FUN_code_000b3f": {
       "source": "src/flash_interface_deinit.c",
@@ -1699,8 +1593,8 @@
     },
     "FUN_code_000bb9": {
       "source": "src/flash_crc_stream_read.c",
-      "inline_asm_bytes": 20,
-      "instructions": 10
+      "inline_asm_bytes": 18,
+      "instructions": 9
     },
     "FUN_code_000bf2": {
       "source": "src/flash_crc_bit_core.c",
@@ -1724,13 +1618,13 @@
     },
     "cli_send_tdc_data": {
       "source": "src/tdc_channel_data_display.c",
-      "inline_asm_bytes": 120,
-      "instructions": 60
+      "inline_asm_bytes": 104,
+      "instructions": 52
     },
     "eeprom_settings_save": {
       "source": "src/eeprom_settings_store.c",
-      "inline_asm_bytes": 46,
-      "instructions": 22
+      "inline_asm_bytes": 44,
+      "instructions": 21
     },
     "FUN_code_000d07": {
       "source": "src/eeprom_page_commit.c",
@@ -1824,13 +1718,13 @@
     },
     "dac_set_value_2": {
       "source": "src/dac_channels.c",
-      "inline_asm_bytes": 6,
-      "instructions": 3
+      "inline_asm_bytes": 4,
+      "instructions": 2
     },
     "dac_set_value": {
       "source": "src/dac_channels.c",
-      "inline_asm_bytes": 6,
-      "instructions": 3
+      "inline_asm_bytes": 4,
+      "instructions": 2
     },
     "FUN_code_00108e": {
       "source": "src/fpga_ready_guard.c",
@@ -1909,8 +1803,8 @@
     },
     "cli_get_integer": {
       "source": "src/console_integer_parser.c",
-      "inline_asm_bytes": 110,
-      "instructions": 55
+      "inline_asm_bytes": 106,
+      "instructions": 53
     },
     "cli_get_hex": {
       "source": "src/console_hex_parser.c",
@@ -1944,8 +1838,8 @@
     },
     "cli_send_uint16": {
       "source": "src/console_decimal_formatter.c",
-      "inline_asm_bytes": 168,
-      "instructions": 84
+      "inline_asm_bytes": 162,
+      "instructions": 81
     },
     "cli_send_crlf": {
       "source": "src/console_crlf.c",
