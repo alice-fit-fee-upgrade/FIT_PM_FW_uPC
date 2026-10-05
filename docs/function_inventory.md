@@ -16,10 +16,10 @@ text symbols retain their addresses. Remaining ASM is reviewed in
 [easy_conversion_assessment.md](easy_conversion_assessment.md); its classification
 does not claim that larger further C recovery is impossible.
 
-Of 10836 executable bytes, compiler-generated C accounts for **6086 (56.1646%)** and
-ASM for **4750 (43.8354%)**, including **3942 inline ASM helper bytes**.
-For the 10058 application executable bytes, C is **60.5090%** and ASM **39.4910%**.
-Of C bytes, 380 are compiler-generated AVR primitives; 5706 are other C
+Of 10836 executable bytes, compiler-generated C accounts for **6178 (57.0137%)** and
+ASM for **4658 (42.9863%)**, including **3850 inline ASM helper bytes**.
+For the 10058 application executable bytes, C is **61.4237%** and ASM **38.5763%**.
+Of C bytes, 394 are compiler-generated AVR primitives; 5784 are other C
 operations. This subset is checked independently using the original instruction
 index and GCC assembly provenance. All 778 boot executable bytes are ASM. Data (710 bytes) and erased/padding regions
 are excluded. C-hosted function regions total 10028 bytes; this includes helpers

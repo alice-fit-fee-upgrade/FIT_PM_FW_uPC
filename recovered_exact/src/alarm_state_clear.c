@@ -1,3 +1,4 @@
+#include <avr/io.h>
 #include "legacy_cpu.h"
 #include "legacy_interrupt.h"
 #include "legacy_r16_c.h"
@@ -7,8 +8,9 @@ void alarms_clear(void)
 {
     register uint8_t value asm("r16"), alarms asm("r17");
     register const uint8_t *message asm("r30");
-    asm volatile("rcall cli_get_next_char\n\tcpi r16, 13\n\tbrne LAB_code_000e30\n\tcli"
+    asm volatile("rcall cli_get_next_char\n\tcpi r16, 13\n\tbrne LAB_code_000e30"
                  : "=r" (value) : : "memory", "cc");
+    pm_cpu_disable_irq();
     value = pm_read_absolute(0x2157);
     alarms = GPIOR0;
     alarms &= 3; asm volatile("" : "+r" (alarms));
@@ -40,7 +42,7 @@ restart:
     SET_VALUE(4); PORTE_OUTCLR = value;
     SET_VALUE(0xd0); PM_RAM8(0x215c) = value;
     SET_VALUE(7); PM_RAM8(0x215d) = value;
-    asm volatile("cbi 0, 1" : : : "memory");
+    GPIOR0 &= (uint8_t)~(1u << 1);
     SET_VALUE(0x41); PORTA_OUTSET = value;
     pm_cpu_enable_irq();
     message = (const uint8_t *)0x2998;

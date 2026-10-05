@@ -28,7 +28,9 @@ wait_nvm:
 wait_buffer:
     value = NVM_STATUS;
     asm goto("sbrc %0, 7\n\trjmp %l[wait_buffer]" : : "r" (value) : : wait_buffer);
-    asm volatile("sbi 0, 3\n\tclr %0" : "=r" (dirty) : : "memory", "cc");
+    GPIOR0 |= (1u << 3);
+    /* C value: dirty = 0; retain flag-setting CLR rather than LDI/MOV zero. */
+    asm volatile("clr %0" : "=r" (dirty) : : "cc");
 next_byte:
     asm volatile("adiw %0, 1\n\tld %1, Z+\n\tld %2, Y"
         : "+y" (eeprom), "=r" (value), "=r" (previous), "+z" (settings) : : "memory", "cc");

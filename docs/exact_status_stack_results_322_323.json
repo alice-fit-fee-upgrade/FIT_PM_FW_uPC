@@ -1,0 +1,20 @@
+[
+  {
+    "step": 322,
+    "source": "fpga_status_interrupt.c",
+    "change": "C FPGA response status mask with exact flag branch",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_322.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 323,
+    "source": "application_main.c",
+    "change": "C startup stack byte constants and ordered SP writes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_323.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

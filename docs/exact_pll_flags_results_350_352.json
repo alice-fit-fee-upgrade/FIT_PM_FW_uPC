@@ -1,0 +1,29 @@
+[
+  {
+    "step": 350,
+    "source": "pll_status_interrupt.c",
+    "change": "Individual C atomic PLL flag update 0",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_350.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 351,
+    "source": "pll_status_interrupt.c",
+    "change": "Individual C atomic PLL flag update 1",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_351_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 352,
+    "source": "pll_status_interrupt.c",
+    "change": "Individual C atomic PLL flag update 2",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_352.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

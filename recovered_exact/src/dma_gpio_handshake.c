@@ -9,19 +9,26 @@ void pm_dma_gpio_handshake(void)
     register uint8_t state asm("r16") = 0x80;
     register uint8_t enable asm("r17") = 0x10;
     /* The original briefly enables interrupts on every first-loop iteration. */
-    asm volatile("1: sei\n\tcli\n\tlds r18, %2\n\tsbrs r18, 4\n\trjmp 1b"
-        : "+r" (state), "+r" (enable) : "n" (_SFR_MEM_ADDR(PORTD_IN))
-        : "r18", "memory");
+    asm volatile("" : "+r" (state), "+r" (enable) : : "memory");
+    register uint8_t ready_pins asm("r18");
+    do {
+        pm_cpu_enable_irq();
+        pm_cpu_disable_irq();
+        ready_pins = PORTD_IN;
+        asm volatile("" : "+r" (ready_pins));
+    } while (!(ready_pins & 0x10u));
     RAM8(0x243c) = state;
     DMA_CH0_CTRLB = enable;
     pm_cpu_enable_irq();
 wait_dma:
     state = DMA_CH0_CTRLB;
-    asm goto("sbrs %0, 4\n\trjmp %l[wait_dma]" : : "r" (state) : : wait_dma);
+    asm volatile("" : "+r" (state));
+    if (!(state & 0x10u)) goto wait_dma;
     RAM8(0x243c) = pm_scratch_zero();
 wait_gpio:
     {
         register uint8_t pins asm("r18") = PORTD_IN;
-        asm goto("sbrs %0, 4\n\trjmp %l[wait_gpio]" : : "r" (pins) : : wait_gpio);
+        asm volatile("" : "+r" (pins));
+        if (!(pins & 0x10u)) goto wait_gpio;
     }
 }

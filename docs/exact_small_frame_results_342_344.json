@@ -1,0 +1,29 @@
+[
+  {
+    "step": 342,
+    "source": "power_portd_interrupt.c",
+    "change": "C SREG transfers in original small ISR frame; R31 enabled locally",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_342_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 343,
+    "source": "power_portb_interrupt.c",
+    "change": "C SREG transfers in original small ISR frame; R31 enabled locally",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_343_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 344,
+    "source": "power_portb_interrupt.c",
+    "change": "C absolute status read with adjusted small ISR profile; R31 enabled locally",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_344_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

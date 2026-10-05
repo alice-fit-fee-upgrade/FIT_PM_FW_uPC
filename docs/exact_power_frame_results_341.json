@@ -1,0 +1,11 @@
+[
+  {
+    "step": 341,
+    "source": "power_porte_interrupt.c",
+    "change": "C SREG snapshot/restore within retained PORTE interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_341.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

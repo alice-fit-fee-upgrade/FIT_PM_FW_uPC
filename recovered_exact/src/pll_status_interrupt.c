@@ -1,3 +1,4 @@
+#include <avr/io.h>
 /* Calls retain private fixed-register inputs/results through zero-byte
  * barriers. Void declarations deliberately introduce no GNU arguments/results;
  * recapture after each call observes the original registers. Every conversion
@@ -12,7 +13,12 @@ extern void FUN_code_001267(void);
 
 void PORTF_INT1_vect_isr(void)
 {
-    asm volatile("push r31\n\tin r31, 0x3f\n\tpush r16\n\tpush r17\n\tpush r18\n\tpush r19" : : : "memory");
+    asm volatile("push r31" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31") = SREG;
+        asm volatile("" : "+r" (saved_status) : : "memory");
+    }
+    asm volatile("push r16\n\tpush r17\n\tpush r18\n\tpush r19" : : : "memory");
     register uint8_t value asm("r16") = PORTF_IN;
     register uint8_t b1 asm("r17"), b2 asm("r18"), status asm("r19");
     asm goto("bst %0, 6\n\tbrtc %l[read_status]\n\tsbrc %0, 5\n\trjmp %l[read_status]" : : "r" (value) : "cc" : read_status);
@@ -44,16 +50,18 @@ read_status:
     value = 0x20; asm volatile("" : "+r" (value));
     if (!(status & (1u << 1))) goto second_alarm;
     PORTA_OUTCLR = value;
-    asm volatile("cbi 0, 2" : : : "memory");
+    GPIOR0 &= (uint8_t)~(1u << 2);
     goto power_state;
 second_alarm:
     if (!(status & (1u << 2))) goto third_alarm;
+    /* C equivalent: GPIOR0 |= (1u << 2);
+     * Step351 changed the full-image encoding/layout; no functional test claim. */
     asm volatile("sbi 0, 2" : : : "memory");
 third_alarm:
     if (!(status & (1u << 3))) goto power_state;
     value = 0x20; asm volatile("" : "+r" (value));
     PORTA_OUTSET = value;
-    asm volatile("cbi 0, 2" : : : "memory");
+    GPIOR0 &= (uint8_t)~(1u << 2);
 power_state:
     asm goto("brtc %l[fault]" : : : : fault);
     WRITE_STATE(0x215a, 10);
@@ -63,6 +71,13 @@ fault:
     asm volatile("rcall FUN_code_0005b4" : "=r" (value) : : "memory", "cc");
     WRITE_STATE(0x2441, 2);
 finished:
-    asm volatile("pop r19\n\tpop r18\n\tpop r17\n\tpop r16\n\tout 0x3f, r31\n\tpop r31\n\treti" : : : "memory");
+    asm volatile("pop r19\n\tpop r18\n\tpop r17\n\tpop r16" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31");
+        asm volatile("" : "=r" (saved_status) : : "memory");
+        SREG = saved_status;
+    }
+    /* Restore the private frame; ordinary C returns cannot express RETI. */
+    asm volatile("pop r31\n\treti" : : : "memory");
     __builtin_unreachable();
 }

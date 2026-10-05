@@ -820,5 +820,291 @@
     "log": "docs/exact_c_steps/step_321_rejected.log",
     "differing_bytes": null,
     "functional_validation_claimed": false
+  },
+  {
+    "step": 322,
+    "source": "fpga_status_interrupt.c",
+    "change": "C FPGA response status mask with exact flag branch",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_322.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 323,
+    "source": "application_main.c",
+    "change": "C startup stack byte constants and ordered SP writes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_323.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 324,
+    "source": "channel_adc_zero_command.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_324.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 325,
+    "source": "console_dispatch.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_325.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 326,
+    "source": "pll_status_interrupt.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_326_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 327,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_327.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 328,
+    "source": "eeprom_settings_store.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_328.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 329,
+    "source": "application_main.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_329.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 330,
+    "source": "power_porte_interrupt.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_330.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 331,
+    "source": "flash_interface_deinit.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_331.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 332,
+    "source": "alarm_state_clear.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_332.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 333,
+    "source": "power_portd_interrupt.c",
+    "change": "C IRQ enable after exact power-state call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_333.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 334,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C IRQ window around exact TDC adjustment call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_334.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 335,
+    "source": "application_main.c",
+    "change": "C GPIOR and IRQ controls after original EEPROM startup copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_335_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 336,
+    "source": "power_porte_interrupt.c",
+    "change": "C IRQ disable inside exact power fault save frame",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_336_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 337,
+    "source": "alarm_state_clear.c",
+    "change": "C IRQ disable after original alarm command guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_337.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 338,
+    "source": "dma_gpio_handshake.c",
+    "change": "C handshake polling with original per-iteration SEI/CLI window",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_338.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 339,
+    "source": "dma_gpio_handshake.c",
+    "change": "C DMA control readiness condition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_339.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 340,
+    "source": "dma_gpio_handshake.c",
+    "change": "C final GPIO handshake readiness condition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_340.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 341,
+    "source": "power_porte_interrupt.c",
+    "change": "C SREG snapshot/restore within retained PORTE interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_341.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 342,
+    "source": "power_portd_interrupt.c",
+    "change": "C SREG transfers in original small ISR frame; R31 enabled locally",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_342_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 343,
+    "source": "power_portb_interrupt.c",
+    "change": "C SREG transfers in original small ISR frame; R31 enabled locally",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_343_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 344,
+    "source": "power_portb_interrupt.c",
+    "change": "C absolute status read with adjusted small ISR profile; R31 enabled locally",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_344_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 345,
+    "source": "fpga_status_interrupt.c",
+    "change": "C SREG transfer in exact private FPGA status frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_345.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 346,
+    "source": "console_cts_interrupt.c",
+    "change": "C SREG transfer in exact private console CTS frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_346.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 347,
+    "source": "pll_status_interrupt.c",
+    "change": "C SREG transfers in exact private interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_347.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 348,
+    "source": "console_tx_interrupt.c",
+    "change": "C SREG transfers in exact private interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_348.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 349,
+    "source": "console_rx_interrupt.c",
+    "change": "C SREG transfers in exact private interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_349.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 350,
+    "source": "pll_status_interrupt.c",
+    "change": "Individual C atomic PLL flag update 0",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_350.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 351,
+    "source": "pll_status_interrupt.c",
+    "change": "Individual C atomic PLL flag update 1",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_351_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 352,
+    "source": "pll_status_interrupt.c",
+    "change": "Individual C atomic PLL flag update 2",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_352.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
   }
 ]

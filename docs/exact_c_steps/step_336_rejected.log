@@ -1,0 +1,9 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fno-crossjumping -fcall-used-r16 -fcall-used-r17 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/power_porte_interrupt.c -o build/power_porte_interrupt.o
+src/power_porte_interrupt.c: In function ‘PORTE_INT0_vect_isr’:
+src/power_porte_interrupt.c:11:5: error: implicit declaration of function ‘pm_cpu_disable_irq’ [-Werror=implicit-function-declaration]
+     pm_cpu_disable_irq();
+     ^~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:85: build/power_porte_interrupt.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

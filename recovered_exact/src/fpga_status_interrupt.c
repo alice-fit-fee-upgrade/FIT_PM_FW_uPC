@@ -1,3 +1,4 @@
+#include <avr/io.h>
 /* Calls retain private fixed-register inputs/results through zero-byte
  * barriers. Void declarations deliberately introduce no GNU arguments/results;
  * recapture after each call observes the original registers. Every conversion
@@ -9,7 +10,12 @@ extern void fpga_msg_read_t1(void);
 
 void PORTE_INT1_vect_isr(void)
 {
-    asm volatile("push r31\n\tin r31, 0x3f\n\tpush r16\n\tpush r17\n\tpush r18" : : : "memory");
+    asm volatile("push r31" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31") = SREG;
+        asm volatile("" : "+r" (saved_status) : : "memory");
+    }
+    asm volatile("push r16\n\tpush r17\n\tpush r18" : : : "memory");
     register uint8_t lo asm("r16"), hi asm("r17"), address asm("r18") = 0x7f;
     do {
         asm volatile("" : "+r" (address) :  : "memory");
@@ -37,7 +43,11 @@ merge_status:
     asm volatile("" : "+r" (lo));
     PM_RAM8(0x2158) = lo;
     /* Original ANDI both masks the scratch byte and produces the branch flags. */
-    asm goto("andi %0, 0x1c\n\tbreq %l[finished]" : : "r" (hi) : "cc" : finished);
+    hi &= 0x1c;
+    asm volatile("" : "+r" (hi));
+    /* C branch value: if (hi == 0) goto finished;
+     * The retained BREQ consumes the original ANDI flags. */
+    asm goto("breq %l[finished]" : : "r" (hi) : : finished);
     lo = pm_read_absolute(0x2157);
     lo |= 0x80;
     asm volatile("" : "+r" (lo));
@@ -46,6 +56,13 @@ merge_status:
     asm volatile("" : "+r" (lo));
     PORTA_OUTCLR = lo;
 finished:
-    asm volatile("pop r18\n\tpop r17\n\tpop r16\n\tout 0x3f, r31\n\tpop r31\n\treti" : : : "memory");
+    asm volatile("pop r18\n\tpop r17\n\tpop r16" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31");
+        asm volatile("" : "=r" (saved_status) : : "memory");
+        SREG = saved_status;
+    }
+    /* Restore the private frame; ordinary C returns cannot express RETI. */
+    asm volatile("pop r31\n\treti" : : : "memory");
     __builtin_unreachable();
 }

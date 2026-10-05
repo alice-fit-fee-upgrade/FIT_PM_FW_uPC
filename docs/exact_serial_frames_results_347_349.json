@@ -1,0 +1,29 @@
+[
+  {
+    "step": 347,
+    "source": "pll_status_interrupt.c",
+    "change": "C SREG transfers in exact private interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_347.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 348,
+    "source": "console_tx_interrupt.c",
+    "change": "C SREG transfers in exact private interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_348.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 349,
+    "source": "console_rx_interrupt.c",
+    "change": "C SREG transfers in exact private interrupt frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_349.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

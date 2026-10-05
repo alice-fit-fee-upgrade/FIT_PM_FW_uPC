@@ -6,9 +6,9 @@ verified original FLASH index. It does not infer new code/data boundaries or cou
 whole C-hosted functions as pure C. Byte addresses, 32-bit instructions and GNU AVR
 mnemonic aliases are handled by the existing original instruction index.
 
-3942 executable bytes are inline helpers in C regions. Remaining pure application
+3850 executable bytes are inline helpers in C regions. Remaining pure application
 ASM contributes another 30 bytes (signed formatter entry and startup/vector code),
-and boot contributes 778. C is 6086/10836 executable bytes. All original FLASH bytes
+and boot contributes 778. C is 6178/10836 executable bytes. All original FLASH bytes
 remain unchanged. JSON includes per-function counts and original byte/instruction
 examples for each opcode.
 
@@ -20,7 +20,7 @@ examples for each opcode.
 | pop | 134 | 268 |
 | push | 130 | 260 |
 | eor | 129 | 258 |
-| rjmp | 116 | 232 |
+| rjmp | 113 | 226 |
 | st | 77 | 154 |
 | ld | 67 | 134 |
 | breq | 52 | 104 |

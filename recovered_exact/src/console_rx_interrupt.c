@@ -3,7 +3,12 @@
 
 void USARTF0_RXC_vect_isr(void)
 {
-    asm volatile("push r31\n\tin r31, 0x3f\n\tpush r31\n\tpush r30\n\tpush r19\n\tpush r18\n\tpush r17\n\tpush r16" : : : "memory");
+    asm volatile("push r31" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31") = SREG;
+        asm volatile("" : "+r" (saved_status) : : "memory");
+    }
+    asm volatile("push r31\n\tpush r30\n\tpush r19\n\tpush r18\n\tpush r17\n\tpush r16" : : : "memory");
     register uint8_t *cursor asm("r30") = (uint8_t *)0x2000;
     register uint8_t read_index asm("r16"), write_index asm("r17"), data asm("r18"), status asm("r19");
     asm volatile("ld %0, Z+\n\tld %1, Z" : "=r" (read_index), "=r" (write_index), "+z" (cursor) : : "memory");
@@ -42,6 +47,13 @@ receive:
     asm volatile("inc %0" : "+r" (read_index) : : "cc");
     RAM8(0x2005) = read_index;
 finished:
-    asm volatile("pop r16\n\tpop r17\n\tpop r18\n\tpop r19\n\tpop r30\n\tpop r31\n\tout 0x3f, r31\n\tpop r31\n\treti" : : : "memory");
+    asm volatile("pop r16\n\tpop r17\n\tpop r18\n\tpop r19\n\tpop r30\n\tpop r31" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31");
+        asm volatile("" : "=r" (saved_status) : : "memory");
+        SREG = saved_status;
+    }
+    /* Restore the private frame; ordinary C returns cannot express RETI. */
+    asm volatile("pop r31\n\treti" : : : "memory");
     __builtin_unreachable();
 }

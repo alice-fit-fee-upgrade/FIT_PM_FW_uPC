@@ -1,10 +1,18 @@
+#include "legacy_cpu.h"
+#include <avr/io.h>
 #include "legacy_interrupt.h"
 #include "legacy_r16_c.h"
 #define SET_VALUE(constant) do { value=(constant); asm volatile("" : "+r" (value)); } while (0)
 
 void PORTE_INT0_vect_isr(void)
 {
-    asm volatile("push r31\n\tin r31, 0x3f\n\tcli\n\tpush r16\n\tpush r17\n\tpush r18" : : : "memory");
+    asm volatile("push r31" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31") = SREG;
+        asm volatile("" : "+r" (saved_status) : : "memory");
+    }
+    pm_cpu_disable_irq();
+    asm volatile("push r16\n\tpush r17\n\tpush r18" : : : "memory");
     register uint8_t value asm("r16"), flags asm("r17"), changed asm("r18");
     asm volatile("clr %0" : "=r" (flags) : : "cc");
     value = PORTE_IN;
@@ -20,7 +28,8 @@ void PORTE_INT0_vect_isr(void)
     if (flags & (1u << 0)) goto power_on;
     SET_VALUE(4);
     PORTE_OUTCLR = value;
-    asm volatile("sbi 0, 1\n\trcall system_deinit" : "=r" (value) : : "memory", "cc");
+    GPIOR0 |= (1u << 1);
+    asm volatile("rcall system_deinit" : "=r" (value) : : "memory", "cc");
     goto update_led;
 power_on:
     flags = 0xd0; asm volatile("" : "+r" (flags));
@@ -30,7 +39,7 @@ store_retry:
     PM_RAM8(0x215b) = value;
     PM_RAM8(0x215c) = flags;
     PM_RAM8(0x215d) = changed;
-    asm volatile("cbi 0, 1" : : : "memory");
+    GPIOR0 &= (uint8_t)~(1u << 1);
     goto update_led;
 watch_retry:
     if (!(changed & (1u << 3))) goto finished;
@@ -49,10 +58,18 @@ watch_retry:
 deinitialize:
     asm volatile("rcall system_deinit" : "=r" (value) : : "memory", "cc");
     asm goto("brtc %l[finished]" : : : : finished);
-    asm volatile("sbi 0, 1" : : : "memory");
+    GPIOR0 |= (1u << 1);
 update_led:
     asm volatile("rcall set_status_and_vd8_led" : "=r" (value) : : "memory", "cc");
 finished:
-    asm volatile("pop r18\n\tpop r17\n\tpop r16\n\tout 0x3f, r31\n\tpop r31\n\treti" : : : "memory");
+    asm volatile("pop r18\n\tpop r17\n\tpop r16" : : : "memory");
+    {
+        register uint8_t saved_status asm("r31");
+        asm volatile("" : "=r" (saved_status) : : "memory");
+        SREG = saved_status;
+    }
+    /* C operation: restore_private_frame_and_return_from_interrupt();
+     * POP/RETI retain the original interrupt frame and return contract. */
+    asm volatile("pop r31\n\treti" : : : "memory");
     __builtin_unreachable();
 }

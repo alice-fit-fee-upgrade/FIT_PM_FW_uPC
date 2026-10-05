@@ -1,3 +1,4 @@
+#include <avr/io.h>
 /* Private entry calls below intentionally have no GNU argument/result ABI.
  * Adjacent fixed-register setup/capture preserves each historical contract;
  * these declarations emit the original wide CALL, not a new C API. The whole
@@ -308,7 +309,7 @@ L_000a25:
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x215d = r16;
-    asm volatile("cbi         0,0x1" : : : "memory", "cc");
+    GPIOR0 &= (uint8_t)~(1u << 1);
     r16 = 0x41;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));

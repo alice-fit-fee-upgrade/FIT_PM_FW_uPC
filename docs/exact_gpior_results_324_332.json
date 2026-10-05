@@ -1,0 +1,83 @@
+[
+  {
+    "step": 324,
+    "source": "channel_adc_zero_command.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_324.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 325,
+    "source": "console_dispatch.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_325.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 326,
+    "source": "pll_status_interrupt.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_326_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 327,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_327.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 328,
+    "source": "eeprom_settings_store.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_328.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 329,
+    "source": "application_main.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_329.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 330,
+    "source": "power_porte_interrupt.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_330.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 331,
+    "source": "flash_interface_deinit.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_331.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 332,
+    "source": "alarm_state_clear.c",
+    "change": "C GPIOR0 flag updates preserving original atomic SBI/CBI instructions",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_332.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

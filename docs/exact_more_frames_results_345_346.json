@@ -1,0 +1,20 @@
+[
+  {
+    "step": 345,
+    "source": "fpga_status_interrupt.c",
+    "change": "C SREG transfer in exact private FPGA status frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_345.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 346,
+    "source": "console_cts_interrupt.c",
+    "change": "C SREG transfer in exact private console CTS frame; local R31 compiler allocation enabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_346.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,3 +1,4 @@
+#include <avr/io.h>
 /* Private entry calls below intentionally have no GNU argument/result ABI.
  * Adjacent fixed-register setup/capture preserves each historical contract;
  * these declarations emit the original wide CALL, not a new C API. The whole
@@ -401,7 +402,7 @@ L_00033d:
     *(volatile uint8_t *)0x686 = r16;
 L_000349:
     asm volatile(".Ltimer_L_000349:" : : : "memory");
-    asm volatile("sbi         0,0x1" : : : "memory", "cc");
+    GPIOR0 |= (1u << 1);
     asm volatile("rcall       set_status_and_vd8_led" : : : "memory", "cc");
     pm_cpu_enable_irq();
     asm volatile("eor         r16,r16" : : : "memory", "cc");
@@ -625,13 +626,13 @@ L_0003d0:
     asm goto("sbic        0,0x1\n\trjmp .Ltimer_L_0003e6" : : : "memory", "cc" : L_0003e6);
     asm volatile("cpi         r17,0x6" : : : "memory", "cc");
     asm goto("brbc 1, .Ltimer_L_0003e1" : : : "memory", "cc" : L_0003e1);
-    asm volatile("sbi         0,0x1" : : : "memory", "cc");
+    GPIOR0 |= (1u << 1);
     goto L_0003e5;
 L_0003e1:
     asm volatile(".Ltimer_L_0003e1:" : : : "memory");
     asm volatile("and         r17,r17" : : : "memory", "cc");
     asm goto("brbs 1, .Ltimer_L_0003e5" : : : "memory", "cc" : L_0003e5);
-    asm volatile("sbi         0,0x0" : : : "memory", "cc");
+    GPIOR0 |= (1u << 0);
     goto L_0003e6;
 L_0003e5:
     asm volatile(".Ltimer_L_0003e5:" : : : "memory");

@@ -1,0 +1,74 @@
+[
+  {
+    "step": 333,
+    "source": "power_portd_interrupt.c",
+    "change": "C IRQ enable after exact power-state call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_333.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 334,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C IRQ window around exact TDC adjustment call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_334.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 335,
+    "source": "application_main.c",
+    "change": "C GPIOR and IRQ controls after original EEPROM startup copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_335_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 336,
+    "source": "power_porte_interrupt.c",
+    "change": "C IRQ disable inside exact power fault save frame",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_336_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 337,
+    "source": "alarm_state_clear.c",
+    "change": "C IRQ disable after original alarm command guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_337.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 338,
+    "source": "dma_gpio_handshake.c",
+    "change": "C handshake polling with original per-iteration SEI/CLI window",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_338.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 339,
+    "source": "dma_gpio_handshake.c",
+    "change": "C DMA control readiness condition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_339.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 340,
+    "source": "dma_gpio_handshake.c",
+    "change": "C final GPIO handshake readiness condition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_340.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

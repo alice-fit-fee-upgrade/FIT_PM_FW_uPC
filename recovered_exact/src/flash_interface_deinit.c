@@ -9,7 +9,7 @@ void pm_flash_interface_deinit(void)
     uint8_t zero=pm_scratch_zero();
     PORTD_INTCTRL=zero; SPIE_CTRL=zero;
     PORTE_DIRCLR=0xb0;
-    asm volatile ("cbi 0, 1" : : : "memory");
+    GPIOR0 &= (uint8_t)~(1u << 1);
     PORTA_OUTSET=1; PORTD_OUTSET=2;
     RAM(0x215c)=0x88; RAM(0x215d)=0x13;
     register uint8_t state asm("r16")=4;

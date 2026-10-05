@@ -17,7 +17,8 @@ void PORTD_INT0_vect_isr(void)
     asm goto("brtc %l[cleared]" : : : : cleared);
     pm_cpu_disable_irq();
     value = 5;
-    asm volatile("rcall FUN_code_00054e\n\tsei" : "+r" (value) : : "memory", "cc");
+    asm volatile("rcall FUN_code_00054e" : "+r" (value) : : "memory", "cc");
+    pm_cpu_enable_irq();
     goto leave;
 cleared:
     PORTE_INTCTRL = 1;

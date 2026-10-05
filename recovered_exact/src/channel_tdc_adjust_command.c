@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void pm_channel_tdc_adjust(void) asm("FUN_code_000f70");
@@ -40,8 +41,12 @@ asm volatile("cpi r20, 0xc0\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (re
     channel >>= 2; asm volatile("" : "+r" (channel));
     register uint8_t data asm("r17") = (uint8_t)requested;
     register uint8_t high asm("r18");
-    asm volatile("clr %0\n\tcli\n\trcall ths788_write\n\tsei\n\trjmp LAB_code_000ff1"
-                 : "=r" (high) : "r" (command), "r" (data), "r" (channel) : "memory", "cc");
+    /* C value: high = 0; retain CLR's original flags and exact short call. */
+    asm volatile("clr %0" : "=r" (high) : "r" (command), "r" (data), "r" (channel) : "cc");
+    pm_cpu_disable_irq();
+    asm volatile("rcall ths788_write" : : "r" (high), "r" (command), "r" (data), "r" (channel) : "memory", "cc");
+    pm_cpu_enable_irq();
+    asm volatile("rjmp LAB_code_000ff1" : : : "memory");
     __builtin_unreachable();
 }
 asm(".pushsection .text.FUN_code_000f70,\"ax\",@progbits\n"

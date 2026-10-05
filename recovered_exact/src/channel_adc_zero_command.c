@@ -1,3 +1,4 @@
+#include <avr/io.h>
 #include "legacy_cpu.h"
 #include "legacy_cli.h"
 
@@ -23,7 +24,7 @@ asm volatile("cpi r20, 0xf5\n\tcpc r21, r24\n\tbrge LAB_code_000ff5\n" : : "r" (
      * has no separate successful functional-test claim. */
 asm volatile("cpi r20, 0x0c\n\tcpc r21, r24\n\tbrlt LAB_code_000ff5" : : "r" (requested), "r" (limit_high) : "cc");
     PM_FPGA_GUARD(requested);
-    asm volatile("sbi 0, 3" : : : "memory");
+    GPIOR0 |= (1u << 3);
     register uint16_t word asm("r16") = requested;
     asm volatile("" : "+r" (word));
     register uint8_t offset asm("r23") = channel;

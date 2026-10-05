@@ -1,3 +1,4 @@
+#include <avr/io.h>
 /* Calls retain private fixed-register inputs/results through zero-byte
  * barriers. Void declarations deliberately introduce no GNU arguments/results;
  * recapture after each call observes the original registers. Every conversion
@@ -31,7 +32,14 @@ int __attribute__((section(".text.main"))) main(void)
     SET_VALUE(4);
     asm volatile("sts 0x34, r17\n\tsts 0x40, r16" : : "r" (key), "r" (value) : "memory");
     SET_VALUE(0x18); CLOCK_WRITE(0x50);
-    asm volatile("ldi r25, 0xff\n\tout 0x3d, r25\n\tldi r25, 0x3f\n\tout 0x3e, r25" : : : "memory");
+    {
+        register uint8_t stack_byte asm("r25") = 0xff;
+        asm volatile("" : "+r" (stack_byte) : : "memory");
+        RAM8(0x3d) = stack_byte;
+        stack_byte = 0x3f;
+        asm volatile("" : "+r" (stack_byte) : : "memory");
+        RAM8(0x3e) = stack_byte;
+    }
     SET_VALUE(0xfb);
     RAM8(0x0601) = value;
     SET_VALUE(0xf3);
@@ -130,7 +138,7 @@ int __attribute__((section(".text.main"))) main(void)
     asm volatile("bst r16, 1\n\tclr r16\n\tbld r16, 0" : "+r" (value) : : "cc");
     RAM8(0x2157) = value;
     asm goto("brts %l[power_present]" : : : : power_present);
-    asm volatile("sbi 0, 1" : : : "memory");
+    GPIOR0 |= (1u << 1);
     SET_VALUE(1); RAM8(0x0606) = value;
     goto power_initialized;
 power_present:
