@@ -44,7 +44,8 @@
  */
 
 /* Exact scaled product uses MUL and live R1, including its original rounding.
- * C represents the overflow result; the arithmetic/flag helper is unchanged. */
+ * C represents overflow and low partial-product sums; MUL and upper carry
+ * helpers retain the exact private register/flag contract. */
 void FUN_code_0010a6(void)
 {
     register uint16_t result asm("r16");
@@ -68,6 +69,10 @@ void FUN_code_0010a6(void)
     asm volatile("" : "+r" (low));
     asm volatile("adc %0, r1" : "+r" (high) : : "cc");
     asm volatile("mul r19, r21" : "=r" (cross_low) : : "r1", "cc");
+    /* C value for the final ADD: high += cross_low;
+     * Trials412/414/415 changed region size, even with local tail merging
+     * disabled. No new standalone functional-test claim; the complete
+     * historical alternative with its bridge is documented above. */
     asm goto("tst r1\n\tbrne %l[overflow]\n\tadd r17, r0\n\tbrcs %l[overflow]" : : : "cc" : overflow);
     return;
 overflow:

@@ -1,0 +1,20 @@
+[
+  {
+    "step": 430,
+    "source": "console_character_read.c",
+    "change": "C conditional case-fold mask with exact signed threshold branches",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_430.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 431,
+    "source": "dac_spi_send.c",
+    "change": "C DAC header copy leaving exact selection constant in ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_431_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

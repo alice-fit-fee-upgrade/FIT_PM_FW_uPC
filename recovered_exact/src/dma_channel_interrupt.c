@@ -181,7 +181,12 @@ L_000133:
     asm volatile("st          Y+,r18" : : : "memory", "cc");
     asm volatile("st          Y+,r19" : : : "memory", "cc");
     asm volatile("st          Y+,r16" : : : "memory", "cc");
-    asm volatile("st          Y,r20" : : : "memory", "cc");
+    {
+        register uint8_t *destination asm("r28");
+        asm volatile("" : "=y" (destination), "=r" (r20) : : "memory");
+        *destination = r20;
+        asm volatile("" : : : "memory");
+    }
     r16 = 0x4;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -250,7 +255,12 @@ L_000182:
     asm volatile("" : "+r" (pm_dma_buffer_cursor) : : "memory");
     asm volatile("ld          r0,X+" : : : "memory", "cc");
     asm volatile("ld          r1,X+" : : : "memory", "cc");
-    asm volatile("ld          r2,X" : : : "memory", "cc");
+    {
+        register uint8_t *source asm("r26");
+        asm volatile("" : "=x" (source) : : "memory");
+        r2 = *source;
+        asm volatile("" : "+r" (r2) : : "memory");
+    }
     asm volatile("" : "=r" (pm_dma_address));
     pm_dma_current = pm_dma_address;
     asm volatile("" : "+r" (pm_dma_current));
@@ -269,7 +279,12 @@ L_000182:
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r16" : : : "memory", "cc");
-    asm volatile("st          X,r16" : : : "memory", "cc");
+    {
+        register uint8_t *destination asm("r26");
+        asm volatile("" : "=x" (destination), "=r" (r16) : : "memory");
+        *destination = r16;
+        asm volatile("" : : : "memory");
+    }
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x11a = r16;
     r16 = 0x4;
@@ -298,7 +313,12 @@ L_0001a7:
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r16" : : : "memory", "cc");
-    asm volatile("st          X,r16" : : : "memory", "cc");
+    {
+        register uint8_t *destination asm("r26");
+        asm volatile("" : "=x" (destination), "=r" (r16) : : "memory");
+        *destination = r16;
+        asm volatile("" : : : "memory");
+    }
 L_0001b5:
     asm volatile(".Ldma_L_0001b5:" : : : "memory");
     FUN_code_000b88();

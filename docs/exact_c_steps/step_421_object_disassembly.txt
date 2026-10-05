@@ -1,0 +1,22 @@
+
+recovered_exact/build/power_portb_interrupt.o:     file format elf32-avr
+
+
+Disassembly of section .text.PORTB_INT0_vect_isr:
+
+00000000 <PORTB_INT0_vect_isr>:
+   0:	ff 93       	push	r31
+   2:	0f b7       	in	r16, 0x3f	; 63
+   4:	f0 2f       	mov	r31, r16
+   6:	0f 93       	push	r16
+   8:	00 91 57 21 	lds	r16, 0x2157	; 0x802157 <__SREG__+0x802118>
+   c:	00 66       	ori	r16, 0x60	; 96
+   e:	00 93 57 21 	sts	0x2157, r16	; 0x802157 <__SREG__+0x802118>
+  12:	00 e4       	ldi	r16, 0x40	; 64
+  14:	00 93 06 06 	sts	0x0606, r16	; 0x800606 <__SREG__+0x8005c7>
+  18:	04 e0       	ldi	r16, 0x04	; 4
+  1a:	00 93 86 06 	sts	0x0686, r16	; 0x800686 <__SREG__+0x800647>
+  1e:	0f 91       	pop	r16
+  20:	ff bf       	out	0x3f, r31	; 63
+  22:	ff 91       	pop	r31
+  24:	18 95       	reti

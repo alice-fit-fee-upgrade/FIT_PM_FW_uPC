@@ -38,8 +38,7 @@ void fpga_data_exchange(void)
     asm goto("sbrc        r16,0x7\n\trjmp %l[L_0008b8]" : : : "memory", "cc" : L_0008b8);
 L_0008b6:
     pm_cpu_enable_irq();
-    asm volatile("ret");
-    __builtin_unreachable();
+    return;
 L_0008b8:
     FUN_code_0011e5();
     pm_cpu_enable_irq();
@@ -333,7 +332,13 @@ L_00095a:
     asm volatile("" : "+r" (r30));
     asm volatile("adc         r31,r24" : : : "memory", "cc");
     asm volatile("ld          r20,Z+" : : : "memory", "cc");
-    asm volatile("ld          r21,Z" : : : "memory", "cc");
+    {
+        register uint8_t *cursor asm("r30");
+        register uint8_t high asm("r21");
+        asm volatile("" : "=z" (cursor));
+        high = *cursor;
+        asm volatile("" : "+r" (high) : : "memory");
+    }
     asm volatile("rcall       FUN_code_001053" : : : "memory", "cc");
     /* Original deliberate jump to the immediately following instruction. */
     asm volatile("rjmp 1f\n1:");
@@ -351,6 +356,5 @@ L_000971:
     asm goto("brbs 1, %l[L_000974]" : : : "memory", "cc" : L_000974);
     goto L_0008be;
 L_000974:
-    asm volatile("ret");
-    __builtin_unreachable();
+    return;
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "step": 414,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C existing DAC high-byte addition with native R0/R17 operands",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_414_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 415,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C DAC carry addition with local tail-merging disabled",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_415_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

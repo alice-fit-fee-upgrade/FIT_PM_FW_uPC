@@ -32,11 +32,38 @@ validate:
     register uint8_t digit asm("r22") = character;
     asm volatile("" : "+r" (digit));
     digit -= '0'; asm volatile("" : "+r" (digit));
-    asm volatile("mul r20, r17\n\tadd r0, r22\n\tclr r22\n\tadc r1, r22\n"
-                 "mov r22, r21\n\tmov r21, r1\n\tmov r20, r0\n\tmul r17, r22"
-                 : "+r" (result), "+r" (digit) : "r" (radix) : "r0", "r1", "cc");
-    asm goto("tst r1\n\tbrne %l[error]\n\tadd r21, r0\n\tbrcc %l[next_digit]\n\trjmp %l[error]"
-             : : : "cc" : error, next_digit);
+    asm volatile("mul r20, r17" : "+r" (result) : "r" (radix) : "r0", "r1", "cc");
+    {
+        register uint8_t partial asm("r0");
+        asm volatile("" : "=r" (partial));
+        partial += digit;
+        asm volatile("" : "+r" (partial));
+    }
+    asm volatile("clr r22\n\tadc r1, r22" : "+r" (digit) : : "r1", "cc");
+    {
+        register uint8_t old_high asm("r21");
+        asm volatile("" : "=r" (old_high));
+        digit = old_high;
+        asm volatile("" : "+r" (digit));
+    }
+    /* R1 is a live nonzero product byte; keep this private copy in ASM. */
+    asm volatile("mov r21, r1" : : : "cc");
+    {
+        register uint8_t partial asm("r0"), low asm("r20");
+        asm volatile("" : "=r" (partial));
+        low = partial;
+        asm volatile("" : "+r" (low));
+    }
+    asm volatile("mul r17, r22" : : "r" (radix), "r" (digit) : "r0", "r1", "cc");
+    asm volatile("" : "=r" (result), "=r" (digit));
+    asm goto("tst r1\n\tbrne %l[error]" : : : "cc" : error);
+    {
+        register uint8_t high asm("r21"), partial asm("r0");
+        asm volatile("" : "=r" (high), "=r" (partial));
+        high += partial;
+        asm volatile("" : "+r" (high));
+    }
+    asm goto("brcc %l[next_digit]\n\trjmp %l[error]" : : : : error, next_digit);
     __builtin_unreachable();
 done:
     asm goto("cpi r18, 1\n\tbreq %l[error]\n\ttst r19\n\tbreq %l[success]\n\tcpi r18, 2\n\tbreq %l[error]"
@@ -62,6 +89,6 @@ success:
 error:
     asm volatile("sec" : : : "cc");
 restore:
-    asm volatile("pop r0\n\tpop r1\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r22\n\tret" : : : "memory");
-    __builtin_unreachable();
+    asm volatile("pop r0\n\tpop r1\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r22" : : : "memory");
+    return;
 }

@@ -216,6 +216,7 @@ L_0009e4:
     r31 = 0x29;
     asm volatile("" : "+r" (r31));
     cli_send_msg();
+    /* C equivalent: return; trial429 changed fixed layout; unvalidated. */
     asm volatile("ret" : : : "memory", "cc");
     __builtin_unreachable();
 L_0009eb:
@@ -333,6 +334,7 @@ L_000a3c:
     asm goto("brbc 1, .Lcli_L_000a3b" : : : "memory", "cc" : L_000a3b);
     asm volatile("rcall       FUN_code_00108e" : : : "memory", "cc");
     asm goto("brbc 0, .Lcli_L_000a43" : : : "memory", "cc" : L_000a43);
+    /* C equivalent: return; trial429 changed fixed layout; unvalidated. */
     asm volatile("ret" : : : "memory", "cc");
     __builtin_unreachable();
 L_000a43:
@@ -397,6 +399,7 @@ L_000a6c:
     asm goto("brbc 1, .Lcli_L_000a6b" : : : "memory", "cc" : L_000a6b);
     asm volatile("rcall       FUN_code_00108e" : : : "memory", "cc");
     asm goto("brbc 0, .Lcli_L_000a78" : : : "memory", "cc" : L_000a78);
+    /* C equivalent: return; trial429 changed fixed layout; unvalidated. */
     asm volatile("ret" : : : "memory", "cc");
     __builtin_unreachable();
 L_000a78:

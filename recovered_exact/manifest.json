@@ -623,12 +623,17 @@
         {
           "start": 2748,
           "end_exclusive": 2758,
-          "reason": "Original ISR save and absolute SRAM read"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 2776,
+          "end_exclusive": 2778,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 2780,
           "end_exclusive": 2784,
-          "reason": "Original ISR register/SREG restore and RETI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -644,6 +649,11 @@
       "asm_helper_ranges": [
         {
           "start": 2636,
+          "end_exclusive": 2638,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 2640,
           "end_exclusive": 2642,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -674,6 +684,11 @@
         },
         {
           "start": 2708,
+          "end_exclusive": 2710,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 2712,
           "end_exclusive": 2716,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
@@ -947,6 +962,11 @@
         },
         {
           "start": 3740,
+          "end_exclusive": 3744,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 3746,
           "end_exclusive": 3754,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -956,7 +976,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 3774,
+          "start": 3776,
           "end_exclusive": 3778,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1008,7 +1028,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 3672,
+          "start": 3674,
           "end_exclusive": 3676,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1046,6 +1066,11 @@
         },
         {
           "start": 3828,
+          "end_exclusive": 3830,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 3832,
           "end_exclusive": 3834,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1061,6 +1086,11 @@
         },
         {
           "start": 3884,
+          "end_exclusive": 3886,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 3888,
           "end_exclusive": 3890,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1097,11 +1127,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 10320,
-          "end_exclusive": 10324,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 10330,
           "end_exclusive": 10332,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -1122,7 +1147,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 10362,
+          "start": 10364,
           "end_exclusive": 10366,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1133,12 +1158,12 @@
         },
         {
           "start": 10386,
-          "end_exclusive": 10396,
+          "end_exclusive": 10392,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 10398,
-          "end_exclusive": 10412,
+          "end_exclusive": 10410,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -1165,6 +1190,11 @@
         },
         {
           "start": 10454,
+          "end_exclusive": 10456,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 10458,
           "end_exclusive": 10460,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1185,7 +1215,7 @@
         },
         {
           "start": 10504,
-          "end_exclusive": 10518,
+          "end_exclusive": 10516,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -1368,17 +1398,17 @@
         },
         {
           "start": 6634,
-          "end_exclusive": 6638,
+          "end_exclusive": 6636,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6640,
-          "end_exclusive": 6644,
+          "end_exclusive": 6642,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6646,
-          "end_exclusive": 6654,
+          "end_exclusive": 6652,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -1388,6 +1418,11 @@
         },
         {
           "start": 6664,
+          "end_exclusive": 6666,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6668,
           "end_exclusive": 6670,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
@@ -2331,11 +2366,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 5832,
-          "end_exclusive": 5834,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 5850,
           "end_exclusive": 5858,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -2895,7 +2925,12 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 5640,
+          "start": 5642,
+          "end_exclusive": 5652,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 5654,
           "end_exclusive": 5658,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3068,6 +3103,26 @@
         },
         {
           "start": 9832,
+          "end_exclusive": 9834,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 9836,
+          "end_exclusive": 9840,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 9842,
+          "end_exclusive": 9844,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 9846,
+          "end_exclusive": 9852,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 9854,
           "end_exclusive": 9872,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3083,7 +3138,7 @@
         },
         {
           "start": 9884,
-          "end_exclusive": 9900,
+          "end_exclusive": 9898,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -3110,7 +3165,7 @@
         },
         {
           "start": 10110,
-          "end_exclusive": 10114,
+          "end_exclusive": 10112,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3175,7 +3230,7 @@
         },
         {
           "start": 10248,
-          "end_exclusive": 10270,
+          "end_exclusive": 10268,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -3230,11 +3285,6 @@
         {
           "start": 4456,
           "end_exclusive": 4460,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 4462,
-          "end_exclusive": 4464,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3384,17 +3434,17 @@
         },
         {
           "start": 4812,
+          "end_exclusive": 4816,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 4818,
           "end_exclusive": 4828,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 4834,
           "end_exclusive": 4838,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 4840,
-          "end_exclusive": 4842,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -3693,7 +3743,7 @@
         },
         {
           "start": 680,
-          "end_exclusive": 688,
+          "end_exclusive": 686,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3733,12 +3783,12 @@
         },
         {
           "start": 794,
-          "end_exclusive": 800,
+          "end_exclusive": 798,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 816,
-          "end_exclusive": 826,
+          "end_exclusive": 824,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3758,7 +3808,7 @@
         },
         {
           "start": 866,
-          "end_exclusive": 874,
+          "end_exclusive": 872,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3864,7 +3914,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1222,
+          "start": 1224,
           "end_exclusive": 1228,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3894,11 +3944,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1320,
-          "end_exclusive": 1322,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 1324,
           "end_exclusive": 1326,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -3919,11 +3964,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1362,
-          "end_exclusive": 1364,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 1368,
           "end_exclusive": 1370,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -3935,7 +3975,7 @@
         },
         {
           "start": 1412,
-          "end_exclusive": 1416,
+          "end_exclusive": 1414,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3954,18 +3994,8 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1446,
-          "end_exclusive": 1448,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 1450,
           "end_exclusive": 1456,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1460,
-          "end_exclusive": 1462,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -3999,7 +4029,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1592,
+          "start": 1594,
           "end_exclusive": 1602,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -4024,13 +4054,8 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1646,
-          "end_exclusive": 1648,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 1652,
-          "end_exclusive": 1656,
+          "end_exclusive": 1654,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -4055,7 +4080,7 @@
         },
         {
           "start": 1688,
-          "end_exclusive": 1692,
+          "end_exclusive": 1690,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -4064,7 +4089,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1708,
+          "start": 1710,
           "end_exclusive": 1714,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -4079,11 +4104,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1744,
-          "end_exclusive": 1746,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 1752,
           "end_exclusive": 1756,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -4091,11 +4111,6 @@
         {
           "start": 1760,
           "end_exclusive": 1764,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1766,
-          "end_exclusive": 1768,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -4120,7 +4135,7 @@
         },
         {
           "start": 1822,
-          "end_exclusive": 1830,
+          "end_exclusive": 1828,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -4280,6 +4295,11 @@
         },
         {
           "start": 2172,
+          "end_exclusive": 2174,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 2176,
           "end_exclusive": 2178,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -4299,7 +4319,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 2208,
+          "start": 2210,
           "end_exclusive": 2212,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },

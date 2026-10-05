@@ -26,7 +26,14 @@ void PORTF_INT0_vect_isr(void)
     asm goto("sbrs %0, 5\n\trjmp %l[enable_tx]" : : "r" (control) : : enable_tx);
     asm volatile("clr %0\n\tinc %1" : "=r" (data), "+r" (read_index) : : "cc");
     cursor = (uint8_t *)0x2047;
-    asm volatile("add r30, %1\n\tadc r31, %2" : "+z" (cursor) : "r" (read_index), "r" (data) : "cc");
+    {
+        register uint8_t address_low asm("r30");
+        asm volatile("" : "=r" (address_low) : "z" (cursor));
+        address_low += read_index;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Upper-byte carry remains the original ADC; capture the full result. */
+    asm volatile("adc r31, %1" : "=z" (cursor) : "r" (data) : "cc");
     data = *cursor;
     asm volatile("" : "+r" (data));
     USARTF0_DATA = data;

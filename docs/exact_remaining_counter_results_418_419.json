@@ -1,0 +1,20 @@
+[
+  {
+    "step": 418,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C remaining-length low-byte subtraction with retained upper borrow chain",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_418.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 419,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C odd-start remaining-length 24-bit increment using global triple reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_419_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

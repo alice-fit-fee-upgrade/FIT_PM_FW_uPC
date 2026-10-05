@@ -1,0 +1,38 @@
+[
+  {
+    "step": 399,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer stores via local pointer explicitly constrained to Z",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_399.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 400,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer loads via local pointer explicitly constrained to Z",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_400.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 401,
+    "source": "dma_channel_interrupt.c",
+    "change": "C DMA stores through explicit X/Y pointer operands instead of integer casts",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_401.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 402,
+    "source": "dma_channel_interrupt.c",
+    "change": "C DMA limit-byte load via explicit X pointer operand",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_402.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

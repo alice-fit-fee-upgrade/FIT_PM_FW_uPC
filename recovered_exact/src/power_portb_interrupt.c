@@ -1,4 +1,5 @@
-#include "legacy_interrupt.h"
+#define PM_ISR_EXACT_SREG_READ
+#include "legacy_interrupt_register_c.h"
 #include "legacy_r16.h"
 
 void PORTB_INT0_vect_isr(void)

@@ -55,7 +55,8 @@ read_status:
 second_alarm:
     if (!(status & (1u << 2))) goto third_alarm;
     /* C equivalent: GPIOR0 |= (1u << 2);
-     * Step351 changed the full-image encoding/layout; no functional test claim. */
+     * Steps351/405 changed encoding/layout, including an opaque status retry.
+     * No new standalone functional test is claimed. */
     asm volatile("sbi 0, 2" : : : "memory");
 third_alarm:
     if (!(status & (1u << 3))) goto power_state;

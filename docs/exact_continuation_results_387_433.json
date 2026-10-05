@@ -1,0 +1,439 @@
+[
+  {
+    "step": 387,
+    "source": "eeprom_settings_store.c",
+    "change": "C current EEPROM byte read from globally reserved Y",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_387.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 388,
+    "source": "eeprom_settings_store.c",
+    "change": "C changed EEPROM byte store through reserved Y",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_388.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 389,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM page-offset byte extraction",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_389.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 390,
+    "source": "console_tx_interrupt.c",
+    "change": "C UART TX final readiness read preserving first postincrement helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_390.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 391,
+    "source": "console_rx_interrupt.c",
+    "change": "C UART RX write-index read preserving initial postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_391.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 392,
+    "source": "flash_page_program.c",
+    "change": "C FLASH programming buffer-byte read through forced X",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_392.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 393,
+    "source": "dma_channel_interrupt.c",
+    "change": "C direct X/Y buffer stores through reserved word pairs",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_393_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 394,
+    "source": "dma_channel_interrupt.c",
+    "change": "C private limit high-byte read through reserved X",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_394_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 395,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer direct Z stores with full-pair reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_395_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 396,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer direct Z loads with full-pair reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_396_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 397,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer direct Y calibration read/store through reserved pair",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_397.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 398,
+    "source": "fpga_data_exchange.c",
+    "change": "C FPGA final pointer high-byte read with exact low postincrement helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_398.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 399,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer stores via local pointer explicitly constrained to Z",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_399.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 400,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer loads via local pointer explicitly constrained to Z",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_400.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 401,
+    "source": "dma_channel_interrupt.c",
+    "change": "C DMA stores through explicit X/Y pointer operands instead of integer casts",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_401.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 402,
+    "source": "dma_channel_interrupt.c",
+    "change": "C DMA limit-byte load via explicit X pointer operand",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_402.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 403,
+    "source": "dac_spi_send.c",
+    "change": "C DAC selection scratch copy and constant initialization",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_403_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 404,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM write-in-progress flag clear between exact short call and tail",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_404.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 405,
+    "source": "pll_status_interrupt.c",
+    "change": "C PLL alarm flag set with opaque status operand prevents merging following bit tests",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_405_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 406,
+    "source": "console_tx_interrupt.c",
+    "change": "C TX buffer-address low-byte addition with exact ADC carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_406.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 407,
+    "source": "console_cts_interrupt.c",
+    "change": "C CTS buffer-address low-byte addition with exact ADC carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_407.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 408,
+    "source": "console_rx_interrupt.c",
+    "change": "C RX buffer-address low-byte addition with exact CLR/ADC helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_408.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 409,
+    "source": "console_character_send.c",
+    "change": "C console send queue-address low-byte addition with exact carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_409.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 410,
+    "source": "console_character_read.c",
+    "change": "C console read queue-address low-byte addition with exact carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_410.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 411,
+    "source": "console_integer_parser.c",
+    "change": "C final decimal-parser partial-product byte addition preserving carry branches",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_411.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 412,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C DAC final product-byte addition preserving original overflow carry branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_412_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 413,
+    "source": "console_integer_parser.c",
+    "change": "C product input/result byte copies retaining MUL and live-R1 helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_413.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 414,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C existing DAC high-byte addition with native R0/R17 operands",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_414_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 415,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C DAC carry addition with local tail-merging disabled",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_415_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 416,
+    "source": "console_integer_parser.c",
+    "change": "C low product-byte accumulation in R0 with exact MUL/ADC helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_416.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 417,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C upper remaining-length OR preserving original BREQ and CLR semantics",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_417.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 418,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C remaining-length low-byte subtraction with retained upper borrow chain",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_418.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 419,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C odd-start remaining-length 24-bit increment using global triple reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_419_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 420,
+    "source": "power_portd_interrupt.c",
+    "change": "C small PORTD ISR SREG transfers through globally reserved R31",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_420.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 421,
+    "source": "power_portb_interrupt.c",
+    "change": "C small PORTB ISR SREG transfers through globally reserved R31",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_421_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "C SREG read emitted IN R16 / MOV R31,R16 before original PUSH R16; region expanded by2 bytes"
+  },
+  {
+    "step": 422,
+    "source": "power_portb_interrupt.c",
+    "change": "C PORTB SREG transfers with interrupted R16 held live until PUSH",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_422_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 423,
+    "source": "power_portb_interrupt.c",
+    "change": "C PORTB SREG restore with original exact snapshot helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_423.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 424,
+    "source": "fpga_data_exchange.c",
+    "change": "C void returns at both exact FPGA exchange exits",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_424.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 425,
+    "source": "console_character_read.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_425.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 426,
+    "source": "console_character_send.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_426.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 427,
+    "source": "console_integer_parser.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_427.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 428,
+    "source": "console_decimal_formatter.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_428.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 429,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher exit returns preserving exact saved-frame helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_429_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 430,
+    "source": "console_character_read.c",
+    "change": "C conditional case-fold mask with exact signed threshold branches",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_430.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 431,
+    "source": "dac_spi_send.c",
+    "change": "C DAC header copy leaving exact selection constant in ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_431_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 432,
+    "source": "console_decimal_formatter.c",
+    "change": "C initial decimal formatter buffer terminator store",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_432.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 433,
+    "source": "console_character_read.c",
+    "change": "C volatile console queue-index reads via exact Z and Z+1 addressing",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_433.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

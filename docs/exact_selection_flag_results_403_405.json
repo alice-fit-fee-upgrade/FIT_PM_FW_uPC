@@ -1,0 +1,29 @@
+[
+  {
+    "step": 403,
+    "source": "dac_spi_send.c",
+    "change": "C DAC selection scratch copy and constant initialization",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_403_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 404,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM write-in-progress flag clear between exact short call and tail",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_404.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 405,
+    "source": "pll_status_interrupt.c",
+    "change": "C PLL alarm flag set with opaque status operand prevents merging following bit tests",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_405_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

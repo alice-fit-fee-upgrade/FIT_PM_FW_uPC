@@ -27,8 +27,15 @@ retry:
     goto retry;
 enqueue:
     cursor = (uint8_t *)0x2047;
-    asm volatile("clr %1\n\tadd r30, %2\n\tadc r31, %1"
-        : "+z" (cursor), "=r" (read_index) : "r" (write_index) : "cc");
+    asm volatile("clr %0" : "=r" (read_index) : "z" (cursor) : "cc");
+    {
+        register uint8_t address_low asm("r30");
+        asm volatile("" : "=r" (address_low) : "z" (cursor));
+        address_low += write_index;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Upper-byte carry remains the original ADC; capture the full result. */
+    asm volatile("adc r31, %1" : "=z" (cursor) : "r" (read_index) : "cc");
     *cursor = character;
     cursor = (uint8_t *)0x2003;
     asm volatile("" : "+z" (cursor));
@@ -48,6 +55,6 @@ direct_send:
     USARTF0_CTRLA = control;
     pm_cpu_enable_irq();
 finished:
-    asm volatile("pop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r30\n\tpop r31\n\tret" : : : "memory");
-    __builtin_unreachable();
+    asm volatile("pop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r30\n\tpop r31" : : : "memory");
+    return;
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "step": 416,
+    "source": "console_integer_parser.c",
+    "change": "C low product-byte accumulation in R0 with exact MUL/ADC helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_416.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 417,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C upper remaining-length OR preserving original BREQ and CLR semantics",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_417.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

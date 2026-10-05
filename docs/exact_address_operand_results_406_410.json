@@ -1,0 +1,47 @@
+[
+  {
+    "step": 406,
+    "source": "console_tx_interrupt.c",
+    "change": "C TX buffer-address low-byte addition with exact ADC carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_406.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 407,
+    "source": "console_cts_interrupt.c",
+    "change": "C CTS buffer-address low-byte addition with exact ADC carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_407.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 408,
+    "source": "console_rx_interrupt.c",
+    "change": "C RX buffer-address low-byte addition with exact CLR/ADC helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_408.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 409,
+    "source": "console_character_send.c",
+    "change": "C console send queue-address low-byte addition with exact carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_409.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 410,
+    "source": "console_character_read.c",
+    "change": "C console read queue-address low-byte addition with exact carry helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_410.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

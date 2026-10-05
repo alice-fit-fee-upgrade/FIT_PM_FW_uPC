@@ -6,9 +6,9 @@ verified original FLASH index. It does not infer new code/data boundaries or cou
 whole C-hosted functions as pure C. Byte addresses, 32-bit instructions and GNU AVR
 mnemonic aliases are handled by the existing original instruction index.
 
-3792 executable bytes are inline helpers in C regions. Remaining pure application
+3686 executable bytes are inline helpers in C regions. Remaining pure application
 ASM contributes another 30 bytes (signed formatter entry and startup/vector code),
-and boot contributes 778. C is 6236/10836 executable bytes. All original FLASH bytes
+and boot contributes 778. C is 6342/10836 executable bytes. All original FLASH bytes
 remain unchanged. JSON includes per-function counts and original byte/instruction
 examples for each opcode.
 
@@ -21,8 +21,8 @@ examples for each opcode.
 | push | 130 | 260 |
 | eor | 126 | 252 |
 | rjmp | 113 | 226 |
-| st | 77 | 154 |
-| ld | 67 | 134 |
+| st | 59 | 118 |
+| ld | 57 | 114 |
 | breq | 52 | 104 |
 | inc | 44 | 88 |
 | and | 43 | 86 |
@@ -54,3 +54,7 @@ remains complete canonical FLASH equality in root `make exact-check`.
 Global register-pair reservations resolved several prior local-allocation
 failures in steps371–386. The current detailed evidence is in
 register_control_assessment.md; retained constraints are not an impossibility proof.
+
+Steps387–433 additionally resolved direct memory accesses using typed pointer
+operands. Their final acceptance and restored candidates are documented in
+exact_pointer_continuation_assessment.md. Current helpers total 3686 bytes.

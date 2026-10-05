@@ -12,7 +12,14 @@ void cli_get_next_char(void)
     asm volatile("" : "=r" (mode));
 wait_character:
     pm_cpu_disable_irq();
-    asm volatile("ld %0, Z\n\tldd %1, Z+1" : "=r" (index), "=r" (value) : "z" (cursor) : "memory");
+    {
+        register volatile uint8_t *queue asm("r30");
+        asm volatile("" : "=z" (queue) : "z" (cursor) : "memory");
+        index = queue[0];
+        asm volatile("" : "+r" (index) : "z" (queue) : "memory");
+        value = queue[1];
+        asm volatile("" : "+r" (value) : : "memory");
+    }
     pm_cpu_enable_irq();
     if (value == index) goto wait_character;
     asm volatile("inc %0" : "+r" (index) : : "cc");
@@ -31,7 +38,14 @@ wait_character:
 fetch:
     asm volatile("clr %0" : "=r" (data) : : "cc");
     cursor = (uint8_t *)0x2007;
-    asm volatile("add r30, %1\n\tadc r31, %2" : "+z" (cursor) : "r" (index), "r" (data) : "cc");
+    {
+        register uint8_t address_low asm("r30");
+        asm volatile("" : "=r" (address_low) : "z" (cursor));
+        address_low += index;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Upper-byte carry remains the original ADC; capture the full result. */
+    asm volatile("adc r31, %1" : "=z" (cursor) : "r" (data) : "cc");
     data = *cursor;
     asm volatile("" : "+r" (data));
     RAM8(0x2000) = index;
@@ -41,10 +55,14 @@ fetch:
     RAM8(0x2005) = index;
 case_fold:
     /* Retain signed BRLT, mode bit and original mask rather than libc folding. */
-    asm volatile("cpi %0, 0x60\n\tbrlt 1f\n\tbreq 1f\n\tsbrs %1, 0\n\tandi %0, 0x5f\n1:"
-                 : "+r" (data) : "r" (mode) : "cc");
+    asm goto("cpi %0, 0x60\n\tbrlt %l[fold_done]\n\tbreq %l[fold_done]" : : "r" (data) : "cc" : fold_done);
+    if (!(mode & 1u)) {
+        data &= 0x5f;
+        asm volatile("" : "+r" (data));
+    }
+fold_done:;
     value = data;
     asm volatile("" : : "r" (value));
-    asm volatile("pop r31\n\tpop r30\n\tpop r20\n\tpop r18\n\tpop r17\n\tpop r19\n\tret" : : : "memory");
-    __builtin_unreachable();
+    asm volatile("pop r31\n\tpop r30\n\tpop r20\n\tpop r18\n\tpop r17\n\tpop r19" : : : "memory");
+    return;
 }

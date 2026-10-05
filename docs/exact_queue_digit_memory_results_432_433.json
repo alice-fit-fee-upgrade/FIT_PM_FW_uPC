@@ -1,0 +1,20 @@
+[
+  {
+    "step": 432,
+    "source": "console_decimal_formatter.c",
+    "change": "C initial decimal formatter buffer terminator store",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_432.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 433,
+    "source": "console_character_read.c",
+    "change": "C volatile console queue-index reads via exact Z and Z+1 addressing",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_433.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

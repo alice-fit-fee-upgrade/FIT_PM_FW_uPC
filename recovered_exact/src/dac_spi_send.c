@@ -9,7 +9,14 @@ void dac_send_value(void)
     scratch = 0xd5;
     asm volatile("" : "+r" (scratch));
     SPIC_CTRL = scratch;
-    /* Preserve original selection ordering and its flags. */
+    /* C value equivalent of selection (not an accepted replacement):
+     * scratch = header; select = 1; scratch &= 0x30;
+     * if (scratch != 0) {
+     *     select <<= 1; scratch -= 0x10;
+     *     if (scratch != 0) select <<= 1;
+     * }
+     * Split C copy/constant trials403/431 expanded the fixed region. Keep
+     * exact ordering/flags; no standalone functional test is claimed. */
     asm volatile("mov %0, %2\n\tldi %1, 1\n\tandi %0, 0x30\n\tbreq 1f\n"
                  "\tlsl %1\n\tsubi %0, 0x10\n\tbreq 1f\n\tlsl %1\n1:"
                  : "=r" (scratch), "=r" (select) : "r" (header) : "cc");

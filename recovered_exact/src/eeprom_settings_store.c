@@ -36,23 +36,27 @@ wait_buffer:
 next_byte:
     eeprom += 1;
     asm volatile("" : "+y" (eeprom) : : "memory");
-    asm volatile("ld %1, Z+\n\tld %2, Y"
-        : "+y" (eeprom), "=r" (value), "=r" (previous), "+z" (settings) : : "memory", "cc");
+    asm volatile("ld %0, Z+" : "=r" (value), "+z" (settings) : : "memory");
+    previous = *eeprom;
+    asm volatile("" : "+r" (previous) : : "memory");
     previous ^= value; asm volatile("" : "+r" (previous));
     asm goto("breq %l[unchanged]" : : "r" (previous) : : unchanged);
-    asm volatile("st Y, %0" : : "r" (value), "y" (eeprom) : "memory");
+    *eeprom = value;
+    asm volatile("" : : : "memory");
     dirty = 1; asm volatile("" : "+r" (dirty));
 unchanged:
     asm goto("cpi r30, 0x35\n\tcpc r31, %1\n\tbreq %l[finished]"
         : : "z" (settings), "r" (end_high) : "cc" : finished);
-    asm volatile("mov %0, r28" : "=r" (offset) : "y" (eeprom));
+    offset = (uint8_t)(uintptr_t)eeprom;
+    asm volatile("" : "+r" (offset));
     offset &= 0x1f; asm volatile("" : "+r" (offset));
     if (offset != 0x1f) goto next_byte;
     asm volatile("rcall FUN_code_000d07" : "+r" (dirty), "=r" (value), "=r" (previous)
         : "y" (eeprom) : "memory", "cc");
     goto next_byte;
 finished:
-    asm volatile("rcall FUN_code_000d07\n\tcbi 0, 3\n\trjmp LAB_code_000ff1"
-        : : "y" (eeprom), "r" (dirty) : "memory", "cc");
+    asm volatile("rcall FUN_code_000d07" : : "y" (eeprom), "r" (dirty) : "memory", "cc");
+    GPIOR0 &= (uint8_t)~(1u << 3);
+    asm volatile("rjmp LAB_code_000ff1" : : : "memory");
     __builtin_unreachable();
 }

@@ -9,13 +9,13 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 Current result: 89 application entries, 5 C_BINARY_EXACT, 83
 C_WITH_EXACT_ASM_HELPER, 1 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 6236 of 10836 executable bytes (57.5489%);
-ASM occupies 4600 bytes (42.4511%), including 3792 inline-helper bytes. Of C bytes,
+Compiler-generated instructions occupy 6342 of 10836 executable bytes (58.5271%);
+ASM occupies 4494 bytes (41.4729%), including 3686 inline-helper bytes. Of C bytes,
 394 are compiler-generated AVR primitives (CLI/SEI/NOP/SWAP/BST/BLD); the other
-5842 are other C operations. GNU AVR built-ins are counted as compiler output,
+5948 are other C operations. GNU AVR built-ins are counted as compiler output,
 not as inline assembly. Instruction-index and GCC-provenance counts agree.
 Data and padding do not contribute to these percentages. Application-only C is
-62.0004%. The entry count includes main, ISRs and shared formatter entries,
+63.0543%. The entry count includes main, ISRs and shared formatter entries,
 rather than 89 independent C-style function bodies.
 
 ## Build and source layout

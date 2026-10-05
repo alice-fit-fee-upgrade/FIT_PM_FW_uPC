@@ -1,0 +1,56 @@
+[
+  {
+    "step": 393,
+    "source": "dma_channel_interrupt.c",
+    "change": "C direct X/Y buffer stores through reserved word pairs",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_393_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 394,
+    "source": "dma_channel_interrupt.c",
+    "change": "C private limit high-byte read through reserved X",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_394_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 395,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer direct Z stores with full-pair reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_395_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 396,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer direct Z loads with full-pair reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_396_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 397,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C timer direct Y calibration read/store through reserved pair",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_397.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 398,
+    "source": "fpga_data_exchange.c",
+    "change": "C FPGA final pointer high-byte read with exact low postincrement helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_398.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -92,9 +92,28 @@ next_chunk:
     asm volatile("" : "=r" (byte) : : "memory");
     /* C value equivalent: remaining_limit -= current_address;
      * Keep original SUB/SBC flags and 24-bit private register ordering. */
-    asm volatile("sub r17, r20\n\tsbc r18, r21\n\tsbc r19, r22\n"
-                 "subi r17, 0xff\n\tsbci r18, 0xff\n\tsbci r19, 0xff\n\tor r18, r19\n\tbreq 1f\n\tclr r17\n1:"
+    {
+        register uint8_t remaining_low asm("r17"), current_low asm("r20");
+        asm volatile("" : "=r" (remaining_low), "=r" (current_low) : : "memory");
+        remaining_low -= current_low;
+        asm volatile("" : "+r" (remaining_low));
+    }
+    /* Upper bytes consume the exact borrow from the C-generated SUB. */
+    asm volatile("sbc r18, r21\n\tsbc r19, r22\n"
+                 /* C value: ++remaining_count; trial419 with global R17:R19
+                  * changed layout. No successful functional test is claimed. */
+                 "subi r17, 0xff\n\tsbci r18, 0xff\n\tsbci r19, 0xff"
                  : "+r" (byte) : : "r17", "r18", "r19", "memory", "cc");
+    {
+        register uint8_t middle asm("r18"), high asm("r19");
+        asm volatile("" : "=r" (middle), "=r" (high));
+        middle |= high;
+        asm volatile("" : "+r" (middle));
+    }
+    asm goto("breq %l[remaining_ready]" : : : : remaining_ready);
+    /* C value: remaining = 0; retain the original flag-setting CLR. */
+    asm volatile("clr r17" : : : "r17", "cc");
+remaining_ready:;
     register uint8_t remaining asm("r17");
     asm volatile("" : "=r" (remaining));
     register uint16_t write_index asm("r24") = *(volatile uint16_t *)0x2435;

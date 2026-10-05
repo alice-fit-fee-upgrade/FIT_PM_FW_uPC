@@ -52,7 +52,7 @@ build/fpga_timestamp_send.o: src/fpga_timestamp_send.c src/legacy_spi.h src/lega
 build/pll_defaults_load.o: src/pll_defaults_load.c Makefile | build
 	$(CC) $(CFLAGS) -fcall-saved-r18 -fcall-saved-r19 -fcall-saved-r20 -fcall-saved-r30 -fcall-saved-r31 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 21 22 23 24 25 26 27 28 29,-ffixed-r$(n)) -c $< -o $@
 build/power_portd_interrupt.o: src/power_portd_interrupt.c src/legacy_interrupt.h src/legacy_r16.h src/legacy_r16_c.h Makefile | build
-	$(CC) $(CFLAGS) -fno-reorder-blocks $(R16_ONLY) -c $< -o $@
+	$(CC) $(CFLAGS) -fno-reorder-blocks $(R16_ONLY) -fcall-saved-r31 -c $< -o $@
 build/console_flash_message.o: src/console_flash_message.c Makefile | build
 	$(CC) $(CFLAGS) -fno-reorder-blocks $(R16_ONLY) -fcall-saved-r16 -c $< -o $@
 build/fpga_settings_reset.o: src/fpga_settings_reset.c Makefile | build
@@ -194,3 +194,6 @@ build/dma_channel_interrupt.o: src/dma_channel_interrupt.c Makefile | build
 
 build/timer_overflow_interrupt.o: src/timer_overflow_interrupt.c Makefile | build
 	$(CC) $(CFLAGS) -fno-reorder-blocks -fno-crossjumping -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-used-r20 -fcall-used-r21 -fcall-used-r22 -fcall-used-r23 -fcall-used-r24 -fcall-used-r25 -fcall-used-r30 -fcall-used-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -c $< -o $@
+
+# Private PORTB frame retains exact IN but restores SREG from C.
+build/power_portb_interrupt.o: CFLAGS += -fcall-saved-r31

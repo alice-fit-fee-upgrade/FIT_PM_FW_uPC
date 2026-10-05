@@ -1,0 +1,92 @@
+[
+  {
+    "symbol": "DMA_CH1_vect_isr",
+    "source": "src/dma_channel_interrupt.c",
+    "address": 482,
+    "added_c_bytes": 8
+  },
+  {
+    "symbol": "TCC0_OVF_vect_isr",
+    "source": "src/timer_overflow_interrupt.c",
+    "address": 1182,
+    "added_c_bytes": 32
+  },
+  {
+    "symbol": "PORTD_INT0_vect_isr",
+    "source": "src/power_portd_interrupt.c",
+    "address": 2636,
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "PORTB_INT0_vect_isr",
+    "source": "src/power_portb_interrupt.c",
+    "address": 2748,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "PORTF_INT0_vect_isr",
+    "source": "src/console_cts_interrupt.c",
+    "address": 3616,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "USARTF0_DRE_vect_isr",
+    "source": "src/console_tx_interrupt.c",
+    "address": 3720,
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "USARTF0_RXC_vect_isr",
+    "source": "src/console_rx_interrupt.c",
+    "address": 3808,
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_data_exchange",
+    "source": "src/fpga_data_exchange.c",
+    "address": 4444,
+    "added_c_bytes": 6
+  },
+  {
+    "symbol": "fpga_firmware_update",
+    "source": "src/fpga_binary_programming_stream.c",
+    "address": 5542,
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "FUN_code_000b59",
+    "source": "src/flash_page_program.c",
+    "address": 5810,
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "eeprom_settings_save",
+    "source": "src/eeprom_settings_store.c",
+    "address": 6574,
+    "added_c_bytes": 8
+  },
+  {
+    "symbol": "cli_get_integer",
+    "source": "src/console_integer_parser.c",
+    "address": 9780,
+    "added_c_bytes": 10
+  },
+  {
+    "symbol": "cli_send_uint16",
+    "source": "src/console_decimal_formatter.c",
+    "address": 10062,
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "cli_get_next_char",
+    "source": "src/console_character_read.c",
+    "address": 10300,
+    "added_c_bytes": 12
+  },
+  {
+    "symbol": "cli_send_buf",
+    "source": "src/console_character_send.c",
+    "address": 10412,
+    "added_c_bytes": 4
+  }
+]

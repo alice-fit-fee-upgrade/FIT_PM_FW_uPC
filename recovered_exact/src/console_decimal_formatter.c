@@ -36,7 +36,8 @@ frame_ready:;
     asm volatile("" : "+z" (cursor));
     register uint8_t count asm("r19");
     asm volatile("clr %0" : "=r" (count) : : "cc");
-    asm volatile("st Z, r19" : : "z" (cursor), "r" (count) : "memory");
+    *cursor = count;
+    asm volatile("" : : : "memory");
 next_digit:;
     register uint8_t digit asm("r18") = 13;
     asm volatile("clr r14" : : "r" (digit) : "cc");
@@ -94,6 +95,6 @@ next_character:
     asm volatile("rcall cli_send_buf" : "+r" (character) : : "memory", "cc");
     goto next_character;
 restore:
-    asm volatile("pop r31\n\tpop r30\n\tpop r25\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r16\n\tpop r15\n\tpop r14\n\tpop r20\n\tret" : : : "memory");
-    __builtin_unreachable();
+    asm volatile("pop r31\n\tpop r30\n\tpop r25\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r16\n\tpop r15\n\tpop r14\n\tpop r20" : : : "memory");
+    return;
 }

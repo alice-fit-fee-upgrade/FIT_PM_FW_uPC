@@ -1,0 +1,56 @@
+[
+  {
+    "step": 424,
+    "source": "fpga_data_exchange.c",
+    "change": "C void returns at both exact FPGA exchange exits",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_424.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 425,
+    "source": "console_character_read.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_425.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 426,
+    "source": "console_character_send.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_426.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 427,
+    "source": "console_integer_parser.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_427.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 428,
+    "source": "console_decimal_formatter.c",
+    "change": "Native C return after original private stack restoration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_428.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 429,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher exit returns preserving exact saved-frame helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_429_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

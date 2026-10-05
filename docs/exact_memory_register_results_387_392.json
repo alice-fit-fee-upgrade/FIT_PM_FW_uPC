@@ -1,0 +1,56 @@
+[
+  {
+    "step": 387,
+    "source": "eeprom_settings_store.c",
+    "change": "C current EEPROM byte read from globally reserved Y",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_387.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 388,
+    "source": "eeprom_settings_store.c",
+    "change": "C changed EEPROM byte store through reserved Y",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_388.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 389,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM page-offset byte extraction",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_389.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 390,
+    "source": "console_tx_interrupt.c",
+    "change": "C UART TX final readiness read preserving first postincrement helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_390.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 391,
+    "source": "console_rx_interrupt.c",
+    "change": "C UART RX write-index read preserving initial postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_391.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 392,
+    "source": "flash_page_program.c",
+    "change": "C FLASH programming buffer-byte read through forced X",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_392.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

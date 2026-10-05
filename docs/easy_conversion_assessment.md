@@ -12,15 +12,15 @@ PUSH/SEC/shared-entry RJMP need the private formatter frame. An all-ASM C wrappe
 would contribute zero compiler-generated instruction bytes and is not counted
 as a C conversion. It remains exact GNU AVR assembly.
 
-The application still has 3792 inline ASM bytes inside 83 mixed functions.
+The application still has 3686 inline ASM bytes inside 83 mixed functions.
 These are live-flag operations, ISR frames, carry chains, private calls, pointer
 accesses and exact encodings. Moving an entry into a C file does not make these
 bytes C: independent GCC APP/NOAPP provenance counts every emitted ASM byte.
 Further work can replace individual helpers when clean C emits the same bytes.
 Boot remains 9 ASM procedures, 778 executable bytes.
 
-Of 10836 executable bytes, C accounts for 6236 (57.5489%) and ASM for 4600
-(42.4511%). Application-only C coverage is 62.0004%. All original 806 symbols
+Of 10836 executable bytes, C accounts for 6342 (58.5271%) and ASM for 4494
+(41.4729%). Application-only C coverage is 63.0543%. All original 806 symbols
 retain their addresses and complete canonical FLASH has zero differences.
 
 Further steps 93–190 accepted 67 changes across 41 translation units and
@@ -97,3 +97,9 @@ reservations and explicit opaque operands. Twelve candidates passed full exact
 checks, adding46 C bytes. This supersedes earlier local pair/DAC/TDC blockers
 for the accepted fragments; UART and parser branch candidates still failed.
 Current C is 6236 bytes / 62.0004% application. See register_control_assessment.md.
+
+Steps387–433 accepted 33 of 47 candidates, adding 106 C bytes. Explicit pointer
+operands enabled ordinary LD/ST in timer, DMA, EEPROM and queues; low address
+ADD and partial-product sums/copies also matched. Exact auto-inc, upper carry,
+private frames and sensitive branches remain ASM. PORTD uses C SREG transfers;
+PORTB retains exact IN and uses C OUT. See exact_pointer_continuation_assessment.md.

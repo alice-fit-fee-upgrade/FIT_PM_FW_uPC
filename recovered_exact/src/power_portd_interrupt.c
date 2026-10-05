@@ -1,5 +1,5 @@
 #include "legacy_cpu.h"
-#include "legacy_interrupt.h"
+#include "legacy_interrupt_register_c.h"
 #include "legacy_r16_c.h"
 
 void PORTD_INT0_vect_isr(void)

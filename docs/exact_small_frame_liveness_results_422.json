@@ -1,0 +1,11 @@
+[
+  {
+    "step": 422,
+    "source": "power_portb_interrupt.c",
+    "change": "C PORTB SREG transfers with interrupted R16 held live until PUSH",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_422_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]
