@@ -15,6 +15,7 @@ extern void fpga_send_mcu_ts(void);
 extern void ths788_read(void);
 extern void ths788_write(void);
 #include "legacy_cpu.h"
+#include "legacy_flag_ops.h"
 #include <stdint.h>
 register uint16_t pm_timer_settings_cursor asm("r28");
 
@@ -74,21 +75,21 @@ void TCC0_OVF_vect_isr(void)
         r16 = *source;
         asm volatile("" : "+r" (r16) : : "memory");
     }
-    asm volatile("and         r16,r16" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_000267" : : : "memory", "cc" : L_000267);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0) goto L_000267;
     goto L_00031b;
 L_000267:
     asm volatile(".Ltimer_L_000267:" : : : "memory");
-    asm volatile("dec         r16" : : : "memory", "cc");
+    PM_DECREMENT_LEGACY_BYTE("r16");
     asm goto("brbc 1, .Ltimer_L_00026a" : : : "memory", "cc" : L_00026a);
     goto L_0002d5;
 L_00026a:
     asm volatile(".Ltimer_L_00026a:" : : : "memory");
-    asm volatile("dec         r16" : : : "memory", "cc");
+    PM_DECREMENT_LEGACY_BYTE("r16");
     asm goto("brbs 1, .Ltimer_L_0002ab" : : : "memory", "cc" : L_0002ab);
-    asm volatile("dec         r16" : : : "memory", "cc");
+    PM_DECREMENT_LEGACY_BYTE("r16");
     asm goto("brbs 1, .Ltimer_L_000298" : : : "memory", "cc" : L_000298);
-    asm volatile("dec         r16" : : : "memory", "cc");
+    PM_DECREMENT_LEGACY_BYTE("r16");
     asm goto("brbs 1, .Ltimer_L_00028c" : : : "memory", "cc" : L_00028c);
     r18 = 0x7f;
     asm volatile("" : "+r" (r18));
@@ -98,10 +99,15 @@ L_00026a:
     asm volatile("" : "=r" (r16));
     r16 &= 0xf;
     asm volatile("" : "+r" (r16));
-    asm volatile("cpi         r16,0xf" : : : "memory", "cc");
-    asm goto("brbs 1, .Ltimer_L_00027c" : : : "memory", "cc" : L_00027c);
-    asm volatile("ldd         r17,Z+0x1" : : : "memory", "cc");
-    asm volatile("dec         r17" : : : "memory", "cc");
+    asm volatile("" : "=r" (r16));
+    if (r16 == 0xf) goto L_00027c;
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r17 = cursor[0x1];
+        asm volatile("" : "+r" (r17) : : "memory");
+    }
+    PM_DECREMENT_LEGACY_BYTE("r17");
     asm goto("brbs 1, .Ltimer_L_0002b8" : : : "memory", "cc" : L_0002b8);
     goto L_00031a;
 L_00027c:
@@ -151,8 +157,8 @@ L_00028c:
     goto L_00031b;
 L_000298:
     asm volatile(".Ltimer_L_000298:" : : : "memory");
-    asm volatile("eor         r20,r20" : : : "memory", "cc");
-    asm volatile("eor         r19,r19" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r20");
+    PM_CLEAR_LEGACY_BYTE("r19");
     pm_cpu_disable_irq();
 L_00029b:
     asm volatile(".Ltimer_L_00029b:" : : : "memory");
@@ -172,7 +178,7 @@ L_00029c:
     }
     asm volatile("" : "=r" (r16));
     if (r16 != 0xc4) goto L_00029c;
-    asm volatile("inc         r19" : : : "memory", "cc");
+    PM_INCREMENT_LEGACY_BYTE("r19");
     asm volatile("" : "=r" (r19));
     if (r19 != 0x3) goto L_00029b;
     pm_cpu_enable_irq();
@@ -193,7 +199,7 @@ L_0002ab:
     asm volatile(".Ltimer_L_0002ab:" : : : "memory");
     r16 = 0x82;
     asm volatile("" : "+r" (r16));
-    asm volatile("eor         r19,r19" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r19");
 L_0002ad:
     asm volatile(".Ltimer_L_0002ad:" : : : "memory");
     pm_cpu_disable_irq();
@@ -204,7 +210,7 @@ L_0002ad:
     asm volatile("" : "+r" (r17));
     asm volatile("" : "=r" (r17));
     if (r17 != 0x1) goto L_0002b8;
-    asm volatile("inc         r19" : : : "memory", "cc");
+    PM_INCREMENT_LEGACY_BYTE("r19");
     asm volatile("" : "=r" (r19));
     if (r19 != 0x3) goto L_0002ad;
     goto L_0002c5;
@@ -225,7 +231,7 @@ L_0002c0:
     asm volatile(".Ltimer_L_0002c0:" : : : "memory");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x606 = r16;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     {
         register uint8_t *destination asm("r30");
         asm volatile("" : "=z" (destination), "=r" (r16) : : "memory");
@@ -235,18 +241,18 @@ L_0002c0:
     goto L_00031b;
 L_0002c5:
     asm volatile(".Ltimer_L_0002c5:" : : : "memory");
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     r17 = 0x3;
     asm volatile("" : "+r" (r17));
-    asm volatile("eor         r18,r18" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r18");
     r19 = 0x7;
     asm volatile("" : "+r" (r19));
     pm_cpu_disable_irq();
     ths788_write();
     r16 = 0x1;
     asm volatile("" : "+r" (r16));
-    asm volatile("eor         r17,r17" : : : "memory", "cc");
-    asm volatile("eor         r18,r18" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r17");
+    PM_CLEAR_LEGACY_BYTE("r18");
     ths788_write();
     pm_cpu_enable_irq();
     r16 = 0x3;
@@ -260,8 +266,13 @@ L_0002c5:
     goto L_00031b;
 L_0002d5:
     asm volatile(".Ltimer_L_0002d5:" : : : "memory");
-    asm volatile("ldd         r17,Z+0x1" : : : "memory", "cc");
-    asm volatile("dec         r17" : : : "memory", "cc");
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r17 = cursor[0x1];
+        asm volatile("" : "+r" (r17) : : "memory");
+    }
+    PM_DECREMENT_LEGACY_BYTE("r17");
     asm goto("brbs 1, .Ltimer_L_0002d9" : : : "memory", "cc" : L_0002d9);
     goto L_00031a;
 L_0002d9:
@@ -332,7 +343,7 @@ L_0002f7:
     asm volatile("" : "+r" (r16));
     r17 = 0x2;
     asm volatile("" : "+r" (r17));
-    asm volatile("eor         r18,r18" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r18");
     ths788_write();
     r16 = 0xc;
     asm volatile("" : "+r" (r16));
@@ -340,11 +351,11 @@ L_0002f7:
     asm volatile("" : "+r" (r28));
     r29 = 0x21;
     asm volatile("" : "+r" (r29));
-    asm volatile("eor         r19,r19" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r19");
 L_00030d:
     asm volatile(".Ltimer_L_00030d:" : : : "memory");
     asm volatile("ld          r17,Y+" : : : "memory", "cc");
-    asm volatile("eor         r18,r18" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r18");
     ths788_write();
     {
         register uint8_t scratch_r16 asm("r16");
@@ -356,7 +367,7 @@ L_00030d:
     if (r16 != 0x8c) goto L_00030d;
     r16 = 0xc;
     asm volatile("" : "+r" (r16));
-    asm volatile("inc         r19" : : : "memory", "cc");
+    PM_INCREMENT_LEGACY_BYTE("r19");
     asm volatile("" : "=r" (r19));
     if (r19 != 0x3) goto L_00030d;
     pm_cpu_enable_irq();
@@ -378,10 +389,20 @@ L_00031b:
         r16 = *source;
         asm volatile("" : "+r" (r16) : : "memory");
     }
-    asm volatile("ldd         r24,Z+0x1" : : : "memory", "cc");
-    asm volatile("ldd         r25,Z+0x2" : : : "memory", "cc");
-    asm volatile("and         r16,r16" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_000322" : : : "memory", "cc" : L_000322);
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r24 = cursor[0x1];
+        asm volatile("" : "+r" (r24) : : "memory");
+    }
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r25 = cursor[0x2];
+        asm volatile("" : "+r" (r25) : : "memory");
+    }
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0) goto L_000322;
     goto L_000398;
 L_000322:
     asm volatile(".Ltimer_L_000322:" : : : "memory");
@@ -427,7 +448,7 @@ L_000322:
 L_000339:
     asm volatile(".Ltimer_L_000339:" : : : "memory");
     pm_cpu_enable_irq();
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     {
         register uint8_t *destination asm("r30");
         asm volatile("" : "=z" (destination), "=r" (r16) : : "memory");
@@ -460,7 +481,7 @@ L_000349:
     GPIOR0 |= (1u << 1);
     asm volatile("rcall       set_status_and_vd8_led" : : : "memory", "cc");
     pm_cpu_enable_irq();
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     {
         register uint8_t *destination asm("r30");
         asm volatile("" : "=z" (destination), "=r" (r16) : : "memory");
@@ -589,7 +610,7 @@ L_000383:
     asm volatile("" : "+r" (r16));
     asm volatile("and         r16,r16" : : : "memory", "cc");
     asm goto("brbc 1, .Ltimer_L_000398" : : : "memory", "cc" : L_000398);
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     {
         register uint8_t *destination asm("r30");
         asm volatile("" : "=z" (destination), "=r" (r16) : : "memory");
@@ -602,8 +623,18 @@ L_000383:
     asm volatile("rcall       fpga_settings_init" : : : "memory", "cc");
 L_000398:
     asm volatile(".Ltimer_L_000398:" : : : "memory");
-    asm volatile("ldd         r24,Z+0x3" : : : "memory", "cc");
-    asm volatile("ldd         r25,Z+0x4" : : : "memory", "cc");
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r24 = cursor[0x3];
+        asm volatile("" : "+r" (r24) : : "memory");
+    }
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r25 = cursor[0x4];
+        asm volatile("" : "+r" (r25) : : "memory");
+    }
     r16 = 0x1;
     asm volatile("" : "+r" (r16));
     asm volatile("cpi         r24,0xf4" : : : "memory", "cc");
@@ -666,7 +697,7 @@ L_0003ba:
     asm volatile("ser         r17" : : : "memory", "cc");
     asm volatile("ser         r18" : : : "memory", "cc");
     adt7311_16bit_rw();
-    asm volatile("eor         r17,r17" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r17");
     asm volatile("" : "=r" (r20));
     if (!(r20 & (1u << 2))) goto L_0003c9;
     r17 = 0x6;
@@ -714,8 +745,8 @@ L_0003d0:
     goto L_0003e5;
 L_0003e1:
     asm volatile(".Ltimer_L_0003e1:" : : : "memory");
-    asm volatile("and         r17,r17" : : : "memory", "cc");
-    asm goto("brbs 1, .Ltimer_L_0003e5" : : : "memory", "cc" : L_0003e5);
+    asm volatile("" : "=r" (r17));
+    if (r17 == 0) goto L_0003e5;
     GPIOR0 |= (1u << 0);
     goto L_0003e6;
 L_0003e5:
@@ -735,14 +766,24 @@ L_0003e7:
     asm volatile("" : "=r" (r1));
     r16 = r1;
     asm volatile("" : "+r" (r16));
-    asm volatile("eor         r17,r17" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r17");
     asm volatile("mulsu       r21,r18" : : : "memory", "cc");
     asm volatile("" : "=r" (r0), "=r" (r16));
     r16 += r0;
     asm volatile("" : "+r" (r16));
     asm volatile("adc         r17,r1" : : : "memory", "cc");
-    asm volatile("ldd         r18,Z+0x5" : : : "memory", "cc");
-    asm volatile("ldd         r19,Z+0x6" : : : "memory", "cc");
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r18 = cursor[0x5];
+        asm volatile("" : "+r" (r18) : : "memory");
+    }
+    {
+        register const uint8_t *cursor asm("r30");
+        asm volatile("" : "=z" (cursor) : : "memory");
+        r19 = cursor[0x6];
+        asm volatile("" : "+r" (r19) : : "memory");
+    }
     asm volatile("std         Z+0x5,r16" : : : "memory", "cc");
     asm volatile("std         Z+0x6,r17" : : : "memory", "cc");
     r20 = *(volatile uint8_t *)0x689;
@@ -779,7 +820,7 @@ L_0003ff:
     goto L_00045f;
 L_00040a:
     asm volatile(".Ltimer_L_00040a:" : : : "memory");
-    asm volatile("eor         r23,r23" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r23");
 L_00040b:
     asm volatile(".Ltimer_L_00040b:" : : : "memory");
     asm volatile("" : "=r" (r31));
@@ -812,7 +853,7 @@ L_00040f:
         destination_word = copied_word;
         asm volatile("" : "+r" (destination_word) : : "memory");
     }
-    asm volatile("inc         r18" : : : "memory", "cc");
+    PM_INCREMENT_LEGACY_BYTE("r18");
     pm_cpu_disable_irq();
     fpga_msg_read_t1();
     pm_cpu_enable_irq();
@@ -875,7 +916,7 @@ L_00042f:
     }
     r16 = 0x96;
     asm volatile("" : "+r" (r16));
-    asm volatile("eor         r17,r17" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r17");
     {
         register uint8_t destination asm("r16");
         register uint8_t operand asm("r20");
@@ -911,7 +952,7 @@ L_000434:
         scratch_r20 -= 252;
         asm volatile("" : "+r" (scratch_r20) : : "memory");
     }
-    asm volatile("eor         r21,r21" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r21");
     asm volatile("" : "=r" (r20), "=r" (r28));
     r28 += r20;
     asm volatile("" : "+r" (r28));
@@ -919,7 +960,12 @@ L_000434:
     asm volatile("" : "=r" (pm_timer_settings_cursor) : : "memory");
     r20 = *(volatile uint8_t *)(uintptr_t)pm_timer_settings_cursor;
     asm volatile("" : "+r" (r20) : : "memory");
-    asm volatile("ldd         r21,Y+0x1" : : : "memory", "cc");
+    {
+        register const uint8_t *cursor asm("r28");
+        asm volatile("" : "=y" (cursor) : : "memory");
+        r21 = cursor[0x1];
+        asm volatile("" : "+r" (r21) : : "memory");
+    }
     asm volatile("" : "=r" (r16), "=r" (r20));
     r20 += r16;
     asm volatile("" : "+r" (r20));
@@ -972,9 +1018,9 @@ L_000450:
     dac_set_value();
 L_00045b:
     asm volatile(".Ltimer_L_00045b:" : : : "memory");
-    asm volatile("inc         r23" : : : "memory", "cc");
-    asm volatile("cpi         r23,0xc" : : : "memory", "cc");
-    asm goto("brbs 1, .Ltimer_L_00045f" : : : "memory", "cc" : L_00045f);
+    PM_INCREMENT_LEGACY_BYTE("r23");
+    asm volatile("" : "=r" (r23));
+    if (r23 == 0xc) goto L_00045f;
     goto L_00040b;
 L_00045f:
     asm volatile(".Ltimer_L_00045f:" : : : "memory");

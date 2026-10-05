@@ -14,6 +14,7 @@ extern void FUN_code_000b9d(void);
 extern void FUN_code_000bb9(void);
 extern void FUN_code_000c20(void);
 #include "legacy_cpu.h"
+#include "legacy_flag_ops.h"
 #include <stdint.h>
 /* Exact private word pairs; no SRAM objects or GNU save/restore frames. */
 register uint16_t pm_dma_address asm("r28");
@@ -62,7 +63,7 @@ L_0000fb:
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     if ((r16 & (1u << 4))) goto L_000101;
-    asm volatile("dec         r17" : : : "memory", "cc");
+    PM_DECREMENT_LEGACY_BYTE("r17");
     asm goto("brbc 1, .Ldma_L_0000fb" : : : "memory", "cc" : L_0000fb);
 L_000101:
     asm volatile(".Ldma_L_000101:" : : : "memory");
@@ -89,7 +90,7 @@ L_000101:
         destination -= operand;
         asm volatile("" : "+r" (destination) : "r" (operand) : "memory");
     }
-    asm volatile("eor         r17,r17" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r17");
     asm volatile("" : "=r" (r16), "=r" (r28));
     r28 += r16;
     asm volatile("" : "+r" (r28));
@@ -105,9 +106,9 @@ L_000112:
     goto L_00022c;
 L_000116:
     asm volatile(".Ldma_L_000116:" : : : "memory");
-    asm volatile("cpi         r17,0x7" : : : "memory", "cc");
-    asm goto("brbs 1, .Ldma_L_000120" : : : "memory", "cc" : L_000120);
-    asm volatile("inc         r17" : : : "memory", "cc");
+    asm volatile("" : "=r" (r17));
+    if (r17 == 0x7) goto L_000120;
+    PM_INCREMENT_LEGACY_BYTE("r17");
     asm volatile("" : "=r" (r28));
     if (r28 != 0x41) goto L_00011c;
     asm volatile("" : "=r" (pm_dma_address) : : "memory");
@@ -155,7 +156,7 @@ L_000133:
     asm volatile("ld          r16,Y+" : : : "memory", "cc");
     asm volatile("cpi         r30,0x7e" : : : "memory", "cc");
     asm goto("brbc 1, .Ldma_L_000112" : : : "memory", "cc" : L_000112);
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x120 = r16;
     pm_cpu_enable_irq();
@@ -182,7 +183,7 @@ L_000133:
     *(volatile uint8_t *)0x118 = r28;
     asm volatile("" : "=r" (r29));
     *(volatile uint8_t *)0x119 = r29;
-    asm volatile("eor         r20,r20" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r20");
     asm volatile("" : "=r" (r20));
     *(volatile uint8_t *)0x11a = r20;
     asm volatile("st          Y+,r18" : : : "memory", "cc");
@@ -198,7 +199,7 @@ L_000133:
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x114 = r16;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x115 = r16;
     r16 = 0x94;
@@ -223,14 +224,14 @@ L_000161:
     *(volatile uint8_t *)0x12c = r26;
     asm volatile("" : "=r" (r27));
     *(volatile uint8_t *)0x12d = r27;
-    asm volatile("eor         r20,r20" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r20");
     asm volatile("" : "=r" (r20));
     *(volatile uint8_t *)0x12e = r20;
     r16 = 0x8;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x124 = r16;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x125 = r16;
 L_000177:
@@ -285,7 +286,7 @@ L_000182:
     *(volatile uint8_t *)0x118 = r26;
     asm volatile("" : "=r" (r27));
     *(volatile uint8_t *)0x119 = r27;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r16" : : : "memory", "cc");
@@ -301,7 +302,7 @@ L_000182:
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x114 = r16;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x115 = r16;
     asm volatile("" : "=r" (r16));
@@ -316,7 +317,7 @@ L_0001a7:
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x110 = r16;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     r26 = 0x35;
     asm volatile("" : "+r" (r26));
     r27 = 0x24;
@@ -372,10 +373,10 @@ L_0001b7:
     goto L_0001ca;
 L_0001c7:
     asm volatile(".Ldma_L_0001c7:" : : : "memory");
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     r17 = 0x1;
     asm volatile("" : "+r" (r17));
-    asm volatile("eor         r31,r31" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r31");
 L_0001ca:
     asm volatile(".Ldma_L_0001ca:" : : : "memory");
     r26 = 0x35;
@@ -398,7 +399,7 @@ L_0001ca:
     *(volatile uint8_t *)0x12c = r26;
     asm volatile("" : "=r" (r27));
     *(volatile uint8_t *)0x12d = r27;
-    asm volatile("eor         r20,r20" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r20");
     asm volatile("" : "=r" (r20));
     *(volatile uint8_t *)0x12e = r20;
     asm volatile("" : "=r" (r16));
@@ -420,15 +421,15 @@ L_0001e2:
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x121 = r16;
-    asm volatile("and         r31,r31" : : : "memory", "cc");
-    asm goto("brbs 1, .Ldma_L_000204" : : : "memory", "cc" : L_000204);
+    asm volatile("" : "=r" (r31));
+    if (r31 == 0) goto L_000204;
 L_0001eb:
     asm volatile(".Ldma_L_0001eb:" : : : "memory");
     r18 = *(volatile uint8_t *)0x668;
     asm volatile("" : "+r" (r18));
     asm volatile("" : "=r" (r18));
     if (!(r18 & (1u << 4))) goto L_0001eb;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x110 = r16;
     r26 = 0x39;
@@ -439,14 +440,14 @@ L_0001eb:
     *(volatile uint8_t *)0x118 = r26;
     asm volatile("" : "=r" (r27));
     *(volatile uint8_t *)0x119 = r27;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x11a = r16;
     r16 = 0x8;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x114 = r16;
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x115 = r16;
     r16 = 0xb4;
@@ -478,7 +479,7 @@ L_00020f:
     asm volatile("st          X+,r16" : : : "memory", "cc");
     asm volatile("st          X+,r17" : : : "memory", "cc");
     asm volatile("rcall       FUN_code_000236" : : : "memory", "cc");
-    asm volatile("eor         r16,r16" : : : "memory", "cc");
+    PM_CLEAR_LEGACY_BYTE("r16");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x100 = r16;
     FUN_code_000b3f();

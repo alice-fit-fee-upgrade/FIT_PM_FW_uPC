@@ -3697,7 +3697,7 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 556,
+          "start": 560,
           "end_exclusive": 562,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
@@ -3822,11 +3822,6 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 978,
-          "end_exclusive": 982,
-          "reason": "Exact retained instruction; codegen idiom pass"
-        },
-        {
           "start": 990,
           "end_exclusive": 992,
           "reason": "Exact retained instruction; codegen idiom pass"
@@ -3879,11 +3874,6 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 1224,
-          "end_exclusive": 1228,
-          "reason": "Exact retained instruction; codegen idiom pass"
-        },
-        {
           "start": 1230,
           "end_exclusive": 1234,
           "reason": "Exact retained instruction; codegen idiom pass"
@@ -3894,7 +3884,7 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 1260,
+          "start": 1266,
           "end_exclusive": 1270,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
@@ -3954,7 +3944,7 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 1450,
+          "start": 1452,
           "end_exclusive": 1456,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
@@ -3976,11 +3966,6 @@
         {
           "start": 1588,
           "end_exclusive": 1590,
-          "reason": "Exact retained instruction; codegen idiom pass"
-        },
-        {
-          "start": 1594,
-          "end_exclusive": 1602,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
@@ -4045,7 +4030,7 @@
         },
         {
           "start": 1838,
-          "end_exclusive": 1844,
+          "end_exclusive": 1840,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
@@ -4109,11 +4094,6 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 1986,
-          "end_exclusive": 1990,
-          "reason": "Exact retained instruction; codegen idiom pass"
-        },
-        {
           "start": 1994,
           "end_exclusive": 1996,
           "reason": "Exact retained instruction; codegen idiom pass"
@@ -4130,6 +4110,11 @@
         },
         {
           "start": 2012,
+          "end_exclusive": 2014,
+          "reason": "Exact retained instruction; codegen idiom pass"
+        },
+        {
+          "start": 2018,
           "end_exclusive": 2022,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
@@ -4199,11 +4184,6 @@
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 2176,
-          "end_exclusive": 2178,
-          "reason": "Exact retained instruction; codegen idiom pass"
-        },
-        {
           "start": 2180,
           "end_exclusive": 2182,
           "reason": "Exact retained instruction; codegen idiom pass"
@@ -4225,7 +4205,7 @@
         },
         {
           "start": 2230,
-          "end_exclusive": 2236,
+          "end_exclusive": 2232,
           "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
