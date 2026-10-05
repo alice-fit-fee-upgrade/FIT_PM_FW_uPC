@@ -1,0 +1,11 @@
+[
+  {
+    "step": 356,
+    "source": "tdc_channel_data_display.c",
+    "change": "C conditional complement in private signed-byte display macro",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_356_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

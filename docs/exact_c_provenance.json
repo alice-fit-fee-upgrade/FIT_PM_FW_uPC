@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3850,
+  "inline_asm_bytes": 3838,
   "compiler_generated_avr_primitive_bytes": 394,
   "avr_primitive_mnemonics": [
     "bld",
@@ -280,9 +280,9 @@
     },
     {
       "symbol": "PORTE_INT0_vect_isr",
-      "inline_asm_bytes": 44,
+      "inline_asm_bytes": 40,
       "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 104
+      "compiler_bytes": 108
     },
     {
       "symbol": "FUN_code_000d07",
@@ -466,9 +466,9 @@
     },
     {
       "symbol": "fpga_firmware_update",
-      "inline_asm_bytes": 80,
+      "inline_asm_bytes": 72,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 110
+      "compiler_bytes": 118
     },
     {
       "symbol": "FUN_code_001397",

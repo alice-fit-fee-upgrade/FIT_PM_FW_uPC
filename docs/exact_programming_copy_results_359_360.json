@@ -1,0 +1,20 @@
+[
+  {
+    "step": 359,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private limit-byte copy to R0",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_359.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 360,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private limit-byte copy to R2",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_360.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "step": 353,
+    "source": "power_porte_interrupt.c",
+    "change": "C OR of power state bytes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_353.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 354,
+    "source": "power_porte_interrupt.c",
+    "change": "C XOR of changed power flags",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_354.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 355,
+    "source": "dac_channels.c",
+    "change": "C DAC sign-bit conversion for both channel entries",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_355_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

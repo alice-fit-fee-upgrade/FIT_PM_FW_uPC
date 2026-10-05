@@ -1106,5 +1106,119 @@
     "log": "docs/exact_c_steps/step_352.log",
     "differing_bytes": 0,
     "functional_validation_claimed": false
+  },
+  {
+    "step": 353,
+    "source": "power_porte_interrupt.c",
+    "change": "C OR of power state bytes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_353.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 354,
+    "source": "power_porte_interrupt.c",
+    "change": "C XOR of changed power flags",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_354.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 355,
+    "source": "dac_channels.c",
+    "change": "C DAC sign-bit conversion for both channel entries",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_355_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "candidate macro syntax error; corrected trial357 retained separately"
+  },
+  {
+    "step": 356,
+    "source": "tdc_channel_data_display.c",
+    "change": "C conditional complement in private signed-byte display macro",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_356_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 357,
+    "source": "dac_channels.c",
+    "change": "C DAC sign-bit conversion with corrected macro continuations",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_357_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 358,
+    "source": "dac_channels.c",
+    "change": "C DAC sign-bit conversion with corrected macro continuations",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_358_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 359,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private limit-byte copy to R0",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_359.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 360,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private limit-byte copy to R2",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_360.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 361,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private starting-address word copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_361_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 362,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C low limit-byte copy into remaining-length scratch",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_362.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 363,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C high limit-byte copy into remaining-length scratch",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_363.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 364,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private starting-address word copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_364_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
   }
 ]

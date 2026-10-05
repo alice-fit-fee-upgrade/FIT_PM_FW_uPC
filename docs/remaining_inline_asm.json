@@ -1,9 +1,9 @@
 {
   "scope": "inline ASM inside accepted C regions; pure ASM/boot excluded",
   "address_units": "FLASH bytes",
-  "manifest_sha256": "6a2f3954bfdc22e72285b9102ebc53c82ab604f69c49b6398728ae87ddd4e4f6",
-  "inline_asm_bytes": 3850,
-  "instructions": 1900,
+  "manifest_sha256": "841f2629831dc7999f8e05984052ae4dccec2ff535bc45b796c5b28402bd495f",
+  "inline_asm_bytes": 3838,
+  "instructions": 1894,
   "opcodes": [
     {
       "mnemonic": "rcall",
@@ -132,8 +132,8 @@
     },
     {
       "mnemonic": "eor",
-      "bytes": 258,
-      "instructions": 129,
+      "bytes": 256,
+      "instructions": 128,
       "examples": [
         {
           "address": 536,
@@ -756,31 +756,6 @@
       ]
     },
     {
-      "mnemonic": "mov",
-      "bytes": 22,
-      "instructions": 11,
-      "examples": [
-        {
-          "address": 5608,
-          "source": "src/fpga_binary_programming_stream.c",
-          "golden_bytes": "002e",
-          "instruction": "mov\tr0, r16"
-        },
-        {
-          "address": 5614,
-          "source": "src/fpga_binary_programming_stream.c",
-          "golden_bytes": "102e",
-          "instruction": "mov\tr1, r16"
-        },
-        {
-          "address": 5620,
-          "source": "src/fpga_binary_programming_stream.c",
-          "golden_bytes": "202e",
-          "instruction": "mov\tr2, r16"
-        }
-      ]
-    },
-    {
       "mnemonic": "brlt",
       "bytes": 22,
       "instructions": 11,
@@ -902,6 +877,31 @@
           "source": "src/fpga_ready_guard.c",
           "golden_bytes": "8894",
           "instruction": "clc"
+        }
+      ]
+    },
+    {
+      "mnemonic": "mov",
+      "bytes": 14,
+      "instructions": 7,
+      "examples": [
+        {
+          "address": 5614,
+          "source": "src/fpga_binary_programming_stream.c",
+          "golden_bytes": "102e",
+          "instruction": "mov\tr1, r16"
+        },
+        {
+          "address": 5630,
+          "source": "src/fpga_binary_programming_stream.c",
+          "golden_bytes": "212d",
+          "instruction": "mov\tr18, r1"
+        },
+        {
+          "address": 6652,
+          "source": "src/eeprom_settings_store.c",
+          "golden_bytes": "2c2f",
+          "instruction": "mov\tr18, r28"
         }
       ]
     },
@@ -1357,25 +1357,6 @@
       ]
     },
     {
-      "mnemonic": "or",
-      "bytes": 4,
-      "instructions": 2,
-      "examples": [
-        {
-          "address": 3002,
-          "source": "src/power_porte_interrupt.c",
-          "golden_bytes": "012b",
-          "instruction": "or\tr16, r17"
-        },
-        {
-          "address": 5652,
-          "source": "src/fpga_binary_programming_stream.c",
-          "golden_bytes": "232b",
-          "instruction": "or\tr18, r19"
-        }
-      ]
-    },
-    {
       "mnemonic": "call",
       "bytes": 4,
       "instructions": 1,
@@ -1549,6 +1530,19 @@
       ]
     },
     {
+      "mnemonic": "or",
+      "bytes": 2,
+      "instructions": 1,
+      "examples": [
+        {
+          "address": 5652,
+          "source": "src/fpga_binary_programming_stream.c",
+          "golden_bytes": "232b",
+          "instruction": "or\tr18, r19"
+        }
+      ]
+    },
+    {
       "mnemonic": "cpse",
       "bytes": 2,
       "instructions": 1,
@@ -1620,8 +1614,8 @@
     },
     "PORTE_INT0_vect_isr": {
       "source": "src/power_porte_interrupt.c",
-      "inline_asm_bytes": 44,
-      "instructions": 22
+      "inline_asm_bytes": 40,
+      "instructions": 20
     },
     "PORTE_INT1_vect_isr": {
       "source": "src/fpga_status_interrupt.c",
@@ -1680,8 +1674,8 @@
     },
     "fpga_firmware_update": {
       "source": "src/fpga_binary_programming_stream.c",
-      "inline_asm_bytes": 80,
-      "instructions": 40
+      "inline_asm_bytes": 72,
+      "instructions": 36
     },
     "FUN_code_000b3f": {
       "source": "src/flash_interface_deinit.c",

@@ -1,0 +1,121 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -fcall-used-r17 -fcall-saved-r18 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r16 -ffixed-r17 -ffixed-r20 -ffixed-r21 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/dac_channels.c -o build/dac_channels.o
+src/dac_channels.c: In function ‘dac_set_value_2’:
+src/dac_channels.c:36:46: error: stray ‘\’ in program
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                              ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:47: error: ‘n’ undeclared (first use in this function)
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                               ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:47: note: each undeclared identifier is reported only once for each function it appears in
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                               ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:52: error: expected ‘;’ before ‘asm’
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                    ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:91: error: stray ‘\’ in program
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                           ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:97: error: expected ‘;’ before ‘scaled_high’
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                                 ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:123: error: stray ‘\’ in program
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                                                           ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:129: error: expected ‘;’ before ‘asm’
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                                                                 ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:22: error: unused variable ‘scaled_high’ [-Werror=unused-variable]
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                      ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c:35:22: error: unused variable ‘sign_mask’ [-Werror=unused-variable]
+     register uint8_t sign_mask asm("r18") = 0x80; \
+                      ^
+src/dac_channels.c:48:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value_2, 2)
+ ^~~~~~~~~~~
+src/dac_channels.c: In function ‘dac_set_value’:
+src/dac_channels.c:36:46: error: stray ‘\’ in program
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                              ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:47: error: ‘n’ undeclared (first use in this function)
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                               ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:52: error: expected ‘;’ before ‘asm’
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                    ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:91: error: stray ‘\’ in program
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                           ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:97: error: expected ‘;’ before ‘scaled_high’
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                                 ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:123: error: stray ‘\’ in program
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                                                           ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:129: error: expected ‘;’ before ‘asm’
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                                                                                                                                 ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:36:22: error: unused variable ‘scaled_high’ [-Werror=unused-variable]
+     register uint8_t scaled_high asm("r17"); \n    asm volatile("" : "=r" (scaled_high)); \n    scaled_high ^= sign_mask; \n    asm volatile("" : "+r" (scaled_high)); \
+                      ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+src/dac_channels.c:35:22: error: unused variable ‘sign_mask’ [-Werror=unused-variable]
+     register uint8_t sign_mask asm("r18") = 0x80; \
+                      ^
+src/dac_channels.c:49:1: note: in expansion of macro ‘DAC_CHANNEL’
+ DAC_CHANNEL(dac_set_value, 1)
+ ^~~~~~~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:49: build/dac_channels.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

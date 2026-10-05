@@ -1,0 +1,11 @@
+[
+  {
+    "step": 357,
+    "source": "dac_channels.c",
+    "change": "C DAC sign-bit conversion with corrected macro continuations",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_357_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

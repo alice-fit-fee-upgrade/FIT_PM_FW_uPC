@@ -1,0 +1,11 @@
+[
+  {
+    "step": 364,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C private starting-address word copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_364_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

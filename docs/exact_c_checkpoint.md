@@ -20,7 +20,7 @@ are no longer acceptance evidence for C integration.
 | 0x0ABC | PORTB_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 18 | 18 |
 | 0x0AE0 | PORTF_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 96 | 40 |
 | 0x0B68 | FUN_code_0005b4 | C_WITH_EXACT_ASM_HELPER | 40 | 6 |
-| 0x0B96 | PORTE_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 104 | 44 |
+| 0x0B96 | PORTE_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 108 | 40 |
 | 0x0C2A | PORTE_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 64 | 20 |
 | 0x0C7E | set_status_and_vd8_led | C_BINARY_EXACT | 24 | 0 |
 | 0x0C96 | system_deinit | C_WITH_EXACT_ASM_HELPER | 108 | 14 |
@@ -33,7 +33,7 @@ are no longer acceptance evidence for C integration.
 | 0x115C | fpga_data_exchange | C_WITH_EXACT_ASM_HELPER | 240 | 158 |
 | 0x12EA | cli_prompt_parse | C_WITH_EXACT_ASM_HELPER | 346 | 310 |
 | 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER | 20 | 24 |
-| 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 110 | 80 |
+| 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 118 | 72 |
 | 0x1664 | FUN_code_000b32 | C_BINARY_EXACT | 26 | 0 |
 | 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 48 | 4 |
 | 0x16B2 | FUN_code_000b59 | C_WITH_EXACT_ASM_HELPER | 70 | 24 |
@@ -98,7 +98,7 @@ are no longer acceptance evidence for C integration.
 | 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 52 | 60 |
 | 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 50 | 56 |
 
-Current C coverage is 6178/10836 executable bytes (57.0137%), or 61.4237% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
+Current C coverage is 6190/10836 executable bytes (57.1244%), or 61.5431% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
 
 ## Accepted implementation choices
 
@@ -443,3 +443,23 @@ Nine boot procedures remain ASM. Inline helpers: 3850 bytes, 1900 instructions.
 Two fresh clean ELF/HEX/BIN builds agree. Golden/rebuilt canonical SHA256 remains
 e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0;
 differing bytes: 0. No emulator runs were added.
+
+## Further exact continuation: steps 353–364
+
+Six of twelve trials were accepted, replacing twelve more ASM instruction bytes:
+two power-state logic operations and four private FPGA programming limit copies.
+The R1 copies remain ASM because the original keeps a nonzero byte outside GNU's
+zero-register ABI. Signed-byte complement and register-pair copies changed bytes
+or region sizes. Step355 was a malformed generated macro and was corrected in
+step357; its syntax failure is not evidence that C cannot reproduce that fragment.
+The corrected candidate and one reasonable register-profile adjustment failed
+layout checking and were restored. No behavioral emulator runs were used.
+
+Final current C coverage: 6190/10836 = 57.1244%, application-only 61.5431%.
+ASM: 4646 bytes (42.8756%), including 3838 inline helpers / 1894 instructions.
+Classes remain 5 C_BINARY_EXACT, 83 C_WITH_EXACT_ASM_HELPER, 1 ASM_EXACT;
+boot remains nine ASM procedures. Two fresh clean builds agree for ELF/HEX/BIN.
+Golden/rebuilt FLASH SHA256:
+e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
+Differing bytes: 0. Rejected fragments retain explanatory C comments and explicit
+scope; historical tested complete alternatives keep their original evidence.

@@ -42,21 +42,44 @@ void fpga_firmware_update(void)
     asm volatile("" : "+r" (address_high));
     /* The original limit lives in R2:R0, including a nonzero R1. */
     cli_get_next_byte();
-    asm volatile("mov r0, r16" : : : "r0", "memory");
+    asm volatile("" : "=r" (byte) : : "memory");
+    {
+        register uint8_t limit_byte asm("r0") = byte;
+        asm volatile("" : "+r" (limit_byte) : : "memory");
+    }
     cli_get_next_byte();
     /* C value equivalent: limit_middle = received;
      * Keep the original live nonzero R1 limit byte, outside GNU zero ABI. */
     asm volatile("mov r1, r16" : : : "r1", "memory");
     cli_get_next_byte();
-    asm volatile("mov r2, r16" : : : "r2", "memory");
+    asm volatile("" : "=r" (byte) : : "memory");
+    {
+        register uint8_t limit_byte asm("r2") = byte;
+        asm volatile("" : "+r" (limit_byte) : : "memory");
+    }
     register uint16_t current asm("r20");
+    /* C value: current = starting_address; step361/364 changed region size.
+     * Retain the original MOVW; no successful functional test is claimed. */
     asm volatile("movw r20, r28" : "=r" (current) : "r" (address_low), "r" (address_middle));
     register uint8_t current_high asm("r22") = address_high;
     asm volatile("" : "+r" (current_high));
 next_page:
     asm volatile("rcall FUN_code_000b88" : : : "memory", "cc");
 next_chunk:
-    asm volatile("mov r17, r0\n\tmov r18, r1\n\tmov r19, r2" : : : "r17", "r18", "r19");
+    /* Capture the private low limit; R1 remains outside the GNU zero ABI. */
+    {
+        register uint8_t limit_low asm("r0");
+        asm volatile("" : "=r" (limit_low));
+        register uint8_t remaining_low asm("r17") = limit_low;
+        asm volatile("" : "+r" (remaining_low));
+    }
+    asm volatile("mov r18, r1" : : : "r18");
+    {
+        register uint8_t limit_high asm("r2");
+        asm volatile("" : "=r" (limit_high));
+        register uint8_t remaining_high asm("r19") = limit_high;
+        asm volatile("" : "+r" (remaining_high));
+    }
     byte = 1;
     asm volatile("" : "+r" (byte) : : "memory");
     cli_send_buf();

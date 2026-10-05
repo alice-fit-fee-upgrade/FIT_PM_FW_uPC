@@ -27,6 +27,10 @@
  * }
  */
 
+/* Fragment C equivalent: scaled_high ^= sign_mask;
+ * Corrected trials357/358 changed fixed region sizes and were restored.
+ * Functional evidence above applies to the historical complete alternative
+ * with its bridge, not to this independently compiled fragment. */
 #define DAC_CHANNEL(name, selector) \
 void name(void) { \
     register uint16_t scale asm("r18") = 0x4188; \

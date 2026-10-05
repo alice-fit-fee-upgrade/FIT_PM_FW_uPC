@@ -21,9 +21,9 @@ void PORTE_INT0_vect_isr(void)
     value = pm_read_absolute(0x2157);
     changed = value; asm volatile("" : "+r" (changed));
     value &= 0xf6; asm volatile("" : "+r" (value));
-    asm volatile("or %0, %1" : "+r" (value) : "r" (flags) : "cc");
+    value |= flags; asm volatile("" : "+r" (value));
     PM_RAM8(0x2157) = value;
-    asm volatile("eor %0, %1" : "+r" (changed) : "r" (flags) : "cc");
+    changed ^= flags; asm volatile("" : "+r" (changed));
     if (!(changed & (1u << 0))) goto watch_retry;
     if (flags & (1u << 0)) goto power_on;
     SET_VALUE(4);
