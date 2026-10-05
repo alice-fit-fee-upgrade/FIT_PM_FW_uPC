@@ -1,0 +1,13 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fno-crossjumping -fcall-used-r2 -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-saved-r20 -fcall-saved-r21 -fcall-used-r22 -fcall-saved-r26 -fcall-saved-r27 -fcall-used-r30  -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r21 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r28 -ffixed-r29 -fcall-saved-r31 -fno-ipa-pure-const -c src/dma_channel_interrupt.c -o build/dma_channel_interrupt.o
+src/dma_channel_interrupt.c: In function ‘DMA_CH1_vect_isr’:
+src/dma_channel_interrupt.c:461:29: error: ‘r21’ undeclared (first use in this function); did you mean ‘r31’?
+     asm volatile("" : "=r" (r21));
+                             ^~~
+                             r31
+src/dma_channel_interrupt.c:461:29: note: each undeclared identifier is reported only once for each function it appears in
+src/dma_channel_interrupt.c:461:5: error: invalid lvalue in asm output 0
+     asm volatile("" : "=r" (r21));
+     ^~~
+make: *** [Makefile:193: build/dma_channel_interrupt.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

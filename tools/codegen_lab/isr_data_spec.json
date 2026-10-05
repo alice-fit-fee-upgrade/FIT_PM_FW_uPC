@@ -1,0 +1,92 @@
+{
+  "candidates": [
+    {
+      "name": "timer_overflow_interrupt_ldd_0",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r17,Z+0x1\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r17 = cursor[0x1];\n        asm volatile(\"\" : \"+r\" (r17) : : \"memory\");\n    }",
+          "expected_count": 2
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_14",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r24,Z+0x1\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r24 = cursor[0x1];\n        asm volatile(\"\" : \"+r\" (r24) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_15",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r25,Z+0x2\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r25 = cursor[0x2];\n        asm volatile(\"\" : \"+r\" (r25) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_21",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r24,Z+0x3\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r24 = cursor[0x3];\n        asm volatile(\"\" : \"+r\" (r24) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_22",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r25,Z+0x4\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r25 = cursor[0x4];\n        asm volatile(\"\" : \"+r\" (r25) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_25",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r18,Z+0x5\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r18 = cursor[0x5];\n        asm volatile(\"\" : \"+r\" (r18) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_26",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r19,Z+0x6\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r30\");\n        asm volatile(\"\" : \"=z\" (cursor) : : \"memory\");\n        r19 = cursor[0x6];\n        asm volatile(\"\" : \"+r\" (r19) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_ldd_32",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"ldd         r21,Y+0x1\" : : : \"memory\", \"cc\");",
+          "new": "    {\n        register const uint8_t *cursor asm(\"r28\");\n        asm volatile(\"\" : \"=y\" (cursor) : : \"memory\");\n        r21 = cursor[0x1];\n        asm volatile(\"\" : \"+r\" (r21) : : \"memory\");\n    }",
+          "expected_count": 1
+        }
+      ]
+    }
+  ]
+}

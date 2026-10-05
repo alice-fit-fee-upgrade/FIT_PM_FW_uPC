@@ -1,0 +1,355 @@
+{
+  "candidates": [
+    {
+      "name": "timer_overflow_interrupt_and_branch_0",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r16,r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_000267\" : : : \"memory\", \"cc\" : L_000267);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0) goto L_000267;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_dec_branch_1",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00026a\" : : : \"memory\", \"cc\" : L_00026a);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    --r16;\n    if (r16 != 0) goto L_00026a;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_dec_branch_2",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_0002ab\" : : : \"memory\", \"cc\" : L_0002ab);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    --r16;\n    if (r16 == 0) goto L_0002ab;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_dec_branch_3",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_000298\" : : : \"memory\", \"cc\" : L_000298);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    --r16;\n    if (r16 == 0) goto L_000298;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_dec_branch_4",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_00028c\" : : : \"memory\", \"cc\" : L_00028c);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    --r16;\n    if (r16 == 0) goto L_00028c;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_cpi_branch_5",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"cpi         r16,0xf\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_00027c\" : : : \"memory\", \"cc\" : L_00027c);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 == 0xf) goto L_00027c;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_dec_branch_6",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r17\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_0002b8\" : : : \"memory\", \"cc\" : L_0002b8);",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    --r17;\n    if (r17 == 0) goto L_0002b8;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_dec_branch_7",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r17\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_0002d9\" : : : \"memory\", \"cc\" : L_0002d9);",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    --r17;\n    if (r17 == 0) goto L_0002d9;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_and_branch_8",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r16,r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_000322\" : : : \"memory\", \"cc\" : L_000322);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0) goto L_000322;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_and_branch_9",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r16,r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_000359\" : : : \"memory\", \"cc\" : L_000359);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 == 0) goto L_000359;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_and_branch_10",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r16,r16\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_000398\" : : : \"memory\", \"cc\" : L_000398);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0) goto L_000398;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_and_branch_11",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r17,r17\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_0003e5\" : : : \"memory\", \"cc\" : L_0003e5);",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    if (r17 == 0) goto L_0003e5;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_and_branch_12",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r17,r17\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00042b\" : : : \"memory\", \"cc\" : L_00042b);",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    if (r17 != 0) goto L_00042b;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_and_branch_15",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r21,r21\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_00042f\" : : : \"memory\", \"cc\" : L_00042f);",
+          "new": "    asm volatile(\"\" : \"=r\" (r21));\n    if (r21 == 0) goto L_00042f;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_cpi_branch_17",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"cpi         r23,0xc\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ltimer_L_00045f\" : : : \"memory\", \"cc\" : L_00045f);",
+          "new": "    asm volatile(\"\" : \"=r\" (r23));\n    if (r23 == 0xc) goto L_00045f;"
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r16",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r16,r16\" : : : \"memory\", \"cc\");",
+          "new": "    r16 = 0;\n    asm volatile(\"\" : \"+r\" (r16) : : \"memory\");",
+          "expected_count": 5
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r17",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r17,r17\" : : : \"memory\", \"cc\");",
+          "new": "    r17 = 0;\n    asm volatile(\"\" : \"+r\" (r17) : : \"memory\");",
+          "expected_count": 4
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r18",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r18,r18\" : : : \"memory\", \"cc\");",
+          "new": "    r18 = 0;\n    asm volatile(\"\" : \"+r\" (r18) : : \"memory\");",
+          "expected_count": 4
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r19",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r19,r19\" : : : \"memory\", \"cc\");",
+          "new": "    r19 = 0;\n    asm volatile(\"\" : \"+r\" (r19) : : \"memory\");",
+          "expected_count": 3
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r20",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r20,r20\" : : : \"memory\", \"cc\");",
+          "new": "    r20 = 0;\n    asm volatile(\"\" : \"+r\" (r20) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r21",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r21,r21\" : : : \"memory\", \"cc\");",
+          "new": "    r21 = 0;\n    asm volatile(\"\" : \"+r\" (r21) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_clear_r23",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r23,r23\" : : : \"memory\", \"cc\");",
+          "new": "    r23 = 0;\n    asm volatile(\"\" : \"+r\" (r23) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_dec_branch_0",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"dec         r17\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ldma_L_0000fb\" : : : \"memory\", \"cc\" : L_0000fb);",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    --r17;\n    if (r17 != 0) goto L_0000fb;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_cpi_branch_1",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"cpi         r16,0xaa\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ldma_L_000116\" : : : \"memory\", \"cc\" : L_000116);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 == 0xaa) goto L_000116;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_cpi_branch_2",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"cpi         r17,0x7\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ldma_L_000120\" : : : \"memory\", \"cc\" : L_000120);",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    if (r17 == 0x7) goto L_000120;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_cpi_branch_3",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"cpi         r16,0xaa\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ldma_L_000116\" : : : \"memory\", \"cc\" : L_000116);",
+          "new": "    asm volatile(\"\" : \"=r\" (r16));\n    if (r16 == 0xaa) goto L_000116;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_cpi_branch_4",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"cpi         r30,0x7e\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ldma_L_000112\" : : : \"memory\", \"cc\" : L_000112);",
+          "new": "    asm volatile(\"\" : \"=r\" (r30));\n    if (r30 != 0x7e) goto L_000112;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_and_branch_5",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r18,r18\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ldma_L_0001c7\" : : : \"memory\", \"cc\" : L_0001c7);",
+          "new": "    asm volatile(\"\" : \"=r\" (r18));\n    if (r18 != 0) goto L_0001c7;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_and_branch_6",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r31,r31\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ldma_L_000204\" : : : \"memory\", \"cc\" : L_000204);",
+          "new": "    asm volatile(\"\" : \"=r\" (r31));\n    if (r31 == 0) goto L_000204;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_and_branch_7",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"and         r21,r21\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 1, .Ldma_L_00020c\" : : : \"memory\", \"cc\" : L_00020c);",
+          "new": "    asm volatile(\"\" : \"=r\" (r21));\n    if (r21 == 0) goto L_00020c;"
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_clear_r16",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r16,r16\" : : : \"memory\", \"cc\");",
+          "new": "    r16 = 0;\n    asm volatile(\"\" : \"+r\" (r16) : : \"memory\");",
+          "expected_count": 11
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_clear_r17",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r17,r17\" : : : \"memory\", \"cc\");",
+          "new": "    r17 = 0;\n    asm volatile(\"\" : \"+r\" (r17) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_clear_r20",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r20,r20\" : : : \"memory\", \"cc\");",
+          "new": "    r20 = 0;\n    asm volatile(\"\" : \"+r\" (r20) : : \"memory\");",
+          "expected_count": 3
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_clear_r31",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    asm volatile(\"eor         r31,r31\" : : : \"memory\", \"cc\");",
+          "new": "    r31 = 0;\n    asm volatile(\"\" : \"+r\" (r31) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    }
+  ]
+}

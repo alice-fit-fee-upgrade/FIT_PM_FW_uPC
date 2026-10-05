@@ -1,0 +1,48 @@
+{
+  "candidates": [
+    {
+      "name": "timer_overflow_interrupt_increment_r23",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    PM_INCREMENT_LEGACY_BYTE(\"r23\");",
+          "new": "    asm volatile(\"\" : \"=r\" (r23));\n    ++r23;\n    asm volatile(\"\" : \"+r\" (r23) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_increment_r19",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    PM_INCREMENT_LEGACY_BYTE(\"r19\");",
+          "new": "    asm volatile(\"\" : \"=r\" (r19));\n    ++r19;\n    asm volatile(\"\" : \"+r\" (r19) : : \"memory\");",
+          "expected_count": 3
+        }
+      ]
+    },
+    {
+      "name": "timer_overflow_interrupt_increment_r18",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "    PM_INCREMENT_LEGACY_BYTE(\"r18\");",
+          "new": "    asm volatile(\"\" : \"=r\" (r18));\n    ++r18;\n    asm volatile(\"\" : \"+r\" (r18) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_increment_r17",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "    PM_INCREMENT_LEGACY_BYTE(\"r17\");",
+          "new": "    asm volatile(\"\" : \"=r\" (r17));\n    ++r17;\n    asm volatile(\"\" : \"+r\" (r17) : : \"memory\");",
+          "expected_count": 1
+        }
+      ]
+    }
+  ]
+}

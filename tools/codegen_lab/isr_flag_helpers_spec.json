@@ -1,0 +1,114 @@
+{
+  "candidates": [
+    {
+      "name": "timer_overflow_interrupt_named_flag_primitives",
+      "source": "src/timer_overflow_interrupt.c",
+      "edits": [
+        {
+          "old": "#include \"legacy_cpu.h\"",
+          "new": "#include \"legacy_cpu.h\"\n#include \"legacy_flag_ops.h\""
+        },
+        {
+          "old": "    asm volatile(\"eor         r20,r20\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r20\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"eor         r19,r19\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r19\");",
+          "expected_count": 3
+        },
+        {
+          "old": "    asm volatile(\"eor         r16,r16\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r16\");",
+          "expected_count": 5
+        },
+        {
+          "old": "    asm volatile(\"eor         r18,r18\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r18\");",
+          "expected_count": 4
+        },
+        {
+          "old": "    asm volatile(\"eor         r17,r17\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r17\");",
+          "expected_count": 4
+        },
+        {
+          "old": "    asm volatile(\"eor         r23,r23\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r23\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"eor         r21,r21\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r21\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"inc         r19\" : : : \"memory\", \"cc\");",
+          "new": "    PM_INCREMENT_LEGACY_BYTE(\"r19\");",
+          "expected_count": 3
+        },
+        {
+          "old": "    asm volatile(\"inc         r18\" : : : \"memory\", \"cc\");",
+          "new": "    PM_INCREMENT_LEGACY_BYTE(\"r18\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"inc         r23\" : : : \"memory\", \"cc\");",
+          "new": "    PM_INCREMENT_LEGACY_BYTE(\"r23\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"dec         r16\" : : : \"memory\", \"cc\");",
+          "new": "    PM_DECREMENT_LEGACY_BYTE(\"r16\");",
+          "expected_count": 4
+        },
+        {
+          "old": "    asm volatile(\"dec         r17\" : : : \"memory\", \"cc\");",
+          "new": "    PM_DECREMENT_LEGACY_BYTE(\"r17\");",
+          "expected_count": 2
+        }
+      ]
+    },
+    {
+      "name": "dma_channel_interrupt_named_flag_primitives",
+      "source": "src/dma_channel_interrupt.c",
+      "edits": [
+        {
+          "old": "#include \"legacy_cpu.h\"",
+          "new": "#include \"legacy_cpu.h\"\n#include \"legacy_flag_ops.h\""
+        },
+        {
+          "old": "    asm volatile(\"eor         r17,r17\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r17\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"eor         r16,r16\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r16\");",
+          "expected_count": 11
+        },
+        {
+          "old": "    asm volatile(\"eor         r20,r20\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r20\");",
+          "expected_count": 3
+        },
+        {
+          "old": "    asm volatile(\"eor         r31,r31\" : : : \"memory\", \"cc\");",
+          "new": "    PM_CLEAR_LEGACY_BYTE(\"r31\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"inc         r17\" : : : \"memory\", \"cc\");",
+          "new": "    PM_INCREMENT_LEGACY_BYTE(\"r17\");",
+          "expected_count": 1
+        },
+        {
+          "old": "    asm volatile(\"dec         r17\" : : : \"memory\", \"cc\");",
+          "new": "    PM_DECREMENT_LEGACY_BYTE(\"r17\");",
+          "expected_count": 1
+        }
+      ]
+    }
+  ]
+}
