@@ -108,8 +108,8 @@ L_000116:
     asm volatile("cpi         r17,0x7" : : : "memory", "cc");
     asm goto("brbs 1, .Ldma_L_000120" : : : "memory", "cc" : L_000120);
     asm volatile("inc         r17" : : : "memory", "cc");
-    asm volatile("cpi         r28,0x41" : : : "memory", "cc");
-    asm goto("brbc 1, .Ldma_L_00011c" : : : "memory", "cc" : L_00011c);
+    asm volatile("" : "=r" (r28));
+    if (r28 != 0x41) goto L_00011c;
     asm volatile("" : "=r" (pm_dma_address) : : "memory");
     pm_dma_address -= 8;
     asm volatile("" : "+r" (pm_dma_address) : : "memory");
@@ -145,8 +145,8 @@ L_000120:
     __builtin_unreachable();
 L_000130:
     asm volatile(".Ldma_L_000130:" : : : "memory");
-    asm volatile("cpi         r28,0x41" : : : "memory", "cc");
-    asm goto("brbc 1, .Ldma_L_000133" : : : "memory", "cc" : L_000133);
+    asm volatile("" : "=r" (r28));
+    if (r28 != 0x41) goto L_000133;
     asm volatile("" : "=r" (pm_dma_address) : : "memory");
     pm_dma_address -= 8;
     asm volatile("" : "+r" (pm_dma_address) : : "memory");

@@ -1,3 +1,4 @@
+#include "legacy_carry.h"
 /* Retained exact call/load helpers: a C call such as
  * value = fpga_read(address); or fpga_write(address, word); expresses the
  * operation, but these entries use private bound registers, original CALL/RCALL
@@ -17,7 +18,7 @@ void fpga_set_trg_charge_lvls(void)
 {
     register uint16_t requested asm("r20");
     asm volatile("rcall cli_get_next_char\n\tcpi r16, 0x20\n\tbrne LAB_code_000eb0\n"
-                 "rcall cli_get_integer\n\tbrcs LAB_code_000e78\n\ttst r21\n\tbrmi LAB_code_000e78\n"
+                 PM_INTEGER_PARSE_OR_BRANCH_ASM("LAB_code_000e78") "\n\ttst r21\n\tbrmi LAB_code_000e78\n"
                  "ldi r26, 0x10\n\tcpi r20, 0\n\tcpc r21, r26\n\tbrge LAB_code_000eb0"
         : "=r" (requested) : : "r16", "r26", "memory", "cc");
     PM_FPGA_GUARD(requested);

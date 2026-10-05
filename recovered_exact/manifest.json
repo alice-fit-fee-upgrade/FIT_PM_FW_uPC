@@ -1865,57 +1865,57 @@
         {
           "start": 7606,
           "end_exclusive": 7618,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7620,
           "end_exclusive": 7632,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7634,
           "end_exclusive": 7642,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7644,
           "end_exclusive": 7656,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7658,
           "end_exclusive": 7674,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7686,
           "end_exclusive": 7688,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7690,
           "end_exclusive": 7698,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7708,
           "end_exclusive": 7710,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7712,
           "end_exclusive": 7714,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7718,
           "end_exclusive": 7720,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 7722,
           "end_exclusive": 7726,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         }
       ]
     },
@@ -2240,29 +2240,29 @@
       "meaning": "Validate original eight-byte programming password and return carry",
       "asm_helper_ranges": [
         {
-          "start": 5502,
-          "end_exclusive": 5506,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 5510,
           "end_exclusive": 5512,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5516,
           "end_exclusive": 5520,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5532,
           "end_exclusive": 5534,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5536,
+          "end_exclusive": 5538,
+          "reason": "Exact retained instruction; codegen idiom pass"
+        },
+        {
+          "start": 5540,
           "end_exclusive": 5542,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         }
       ]
     },
@@ -2942,62 +2942,62 @@
         {
           "start": 5542,
           "end_exclusive": 5548,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5552,
           "end_exclusive": 5556,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5560,
           "end_exclusive": 5566,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5568,
           "end_exclusive": 5572,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5626,
           "end_exclusive": 5628,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5642,
           "end_exclusive": 5646,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5648,
           "end_exclusive": 5652,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5654,
           "end_exclusive": 5658,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5684,
           "end_exclusive": 5688,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5696,
           "end_exclusive": 5708,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5710,
           "end_exclusive": 5714,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5728,
           "end_exclusive": 5732,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         }
       ]
     },
@@ -3452,212 +3452,217 @@
         {
           "start": 4864,
           "end_exclusive": 4870,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4910,
           "end_exclusive": 4912,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4916,
           "end_exclusive": 4918,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4930,
           "end_exclusive": 4932,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4936,
           "end_exclusive": 4938,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4942,
           "end_exclusive": 4944,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4948,
           "end_exclusive": 4950,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4954,
           "end_exclusive": 4956,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4960,
           "end_exclusive": 4962,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4964,
           "end_exclusive": 4968,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4984,
           "end_exclusive": 4986,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4990,
           "end_exclusive": 4992,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 4996,
           "end_exclusive": 4998,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5002,
           "end_exclusive": 5004,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5008,
           "end_exclusive": 5010,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5014,
           "end_exclusive": 5016,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5020,
           "end_exclusive": 5022,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5026,
           "end_exclusive": 5028,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5032,
           "end_exclusive": 5034,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5044,
           "end_exclusive": 5046,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5058,
           "end_exclusive": 5060,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5092,
           "end_exclusive": 5098,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5122,
           "end_exclusive": 5126,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5166,
           "end_exclusive": 5170,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5184,
           "end_exclusive": 5188,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5232,
           "end_exclusive": 5236,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5248,
           "end_exclusive": 5252,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5254,
           "end_exclusive": 5256,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5272,
           "end_exclusive": 5274,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5282,
-          "end_exclusive": 5290,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "end_exclusive": 5286,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5296,
           "end_exclusive": 5298,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5306,
+          "end_exclusive": 5310,
+          "reason": "Exact retained instruction; codegen idiom pass"
+        },
+        {
+          "start": 5314,
           "end_exclusive": 5316,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5332,
           "end_exclusive": 5334,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5348,
           "end_exclusive": 5350,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5354,
           "end_exclusive": 5358,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5374,
           "end_exclusive": 5376,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5378,
           "end_exclusive": 5384,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5424,
           "end_exclusive": 5436,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5438,
           "end_exclusive": 5446,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5464,
           "end_exclusive": 5468,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5484,
           "end_exclusive": 5488,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 5494,
           "end_exclusive": 5498,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         }
       ]
     },
@@ -3674,187 +3679,187 @@
         {
           "start": 486,
           "end_exclusive": 500,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 510,
           "end_exclusive": 514,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 536,
           "end_exclusive": 538,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 540,
           "end_exclusive": 554,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 556,
-          "end_exclusive": 566,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "end_exclusive": 562,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 568,
           "end_exclusive": 574,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 578,
           "end_exclusive": 580,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 588,
           "end_exclusive": 602,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 604,
-          "end_exclusive": 612,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "end_exclusive": 608,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 614,
           "end_exclusive": 622,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 628,
           "end_exclusive": 654,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 674,
           "end_exclusive": 676,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 680,
           "end_exclusive": 686,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 694,
           "end_exclusive": 696,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 732,
           "end_exclusive": 734,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 744,
           "end_exclusive": 746,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 786,
           "end_exclusive": 792,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 794,
           "end_exclusive": 798,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 816,
           "end_exclusive": 824,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 836,
           "end_exclusive": 838,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 860,
           "end_exclusive": 862,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 866,
           "end_exclusive": 872,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 884,
           "end_exclusive": 888,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 894,
           "end_exclusive": 898,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 900,
           "end_exclusive": 906,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 910,
           "end_exclusive": 912,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 914,
           "end_exclusive": 916,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 942,
           "end_exclusive": 944,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 956,
           "end_exclusive": 958,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 978,
           "end_exclusive": 982,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 990,
           "end_exclusive": 992,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1008,
           "end_exclusive": 1010,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1020,
           "end_exclusive": 1022,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1040,
           "end_exclusive": 1046,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1066,
           "end_exclusive": 1078,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1086,
           "end_exclusive": 1126,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1128,
           "end_exclusive": 1132,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         }
       ]
     },
@@ -3871,402 +3876,367 @@
         {
           "start": 1186,
           "end_exclusive": 1218,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1224,
           "end_exclusive": 1228,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1230,
           "end_exclusive": 1234,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1236,
           "end_exclusive": 1248,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1260,
           "end_exclusive": 1270,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1272,
           "end_exclusive": 1274,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1324,
           "end_exclusive": 1326,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1328,
           "end_exclusive": 1332,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 1344,
-          "end_exclusive": 1354,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "start": 1348,
+          "end_exclusive": 1350,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1358,
           "end_exclusive": 1360,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1368,
           "end_exclusive": 1370,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
-          "start": 1380,
-          "end_exclusive": 1390,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "start": 1384,
+          "end_exclusive": 1386,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1412,
           "end_exclusive": 1414,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1418,
           "end_exclusive": 1420,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1422,
           "end_exclusive": 1424,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1434,
           "end_exclusive": 1438,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1450,
           "end_exclusive": 1456,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1548,
           "end_exclusive": 1550,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1560,
           "end_exclusive": 1566,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1572,
-          "end_exclusive": 1576,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1578,
-          "end_exclusive": 1584,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "end_exclusive": 1580,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1588,
           "end_exclusive": 1590,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1594,
           "end_exclusive": 1602,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1604,
-          "end_exclusive": 1608,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1610,
           "end_exclusive": 1612,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1616,
           "end_exclusive": 1620,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1628,
-          "end_exclusive": 1632,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1652,
           "end_exclusive": 1654,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1658,
-          "end_exclusive": 1662,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1664,
           "end_exclusive": 1666,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1684,
           "end_exclusive": 1686,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1688,
           "end_exclusive": 1690,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1704,
           "end_exclusive": 1706,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1710,
           "end_exclusive": 1714,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1716,
-          "end_exclusive": 1720,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1722,
           "end_exclusive": 1726,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1752,
-          "end_exclusive": 1756,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1782,
           "end_exclusive": 1784,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1788,
           "end_exclusive": 1790,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 1794,
-          "end_exclusive": 1798,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1822,
           "end_exclusive": 1828,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1838,
           "end_exclusive": 1844,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1846,
           "end_exclusive": 1852,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1854,
           "end_exclusive": 1858,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1864,
           "end_exclusive": 1868,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1878,
           "end_exclusive": 1884,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1888,
           "end_exclusive": 1892,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1898,
           "end_exclusive": 1902,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1914,
           "end_exclusive": 1918,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1920,
           "end_exclusive": 1924,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1928,
           "end_exclusive": 1930,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1946,
           "end_exclusive": 1950,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1964,
           "end_exclusive": 1966,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1974,
-          "end_exclusive": 1982,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "end_exclusive": 1978,
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1986,
           "end_exclusive": 1990,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 1994,
           "end_exclusive": 1996,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2002,
           "end_exclusive": 2004,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2006,
           "end_exclusive": 2010,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2012,
           "end_exclusive": 2022,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2030,
           "end_exclusive": 2036,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2046,
           "end_exclusive": 2050,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2064,
           "end_exclusive": 2066,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2068,
           "end_exclusive": 2070,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2072,
           "end_exclusive": 2076,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2094,
           "end_exclusive": 2096,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2104,
           "end_exclusive": 2110,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2116,
           "end_exclusive": 2128,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2134,
           "end_exclusive": 2142,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2146,
           "end_exclusive": 2148,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2150,
           "end_exclusive": 2152,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2168,
           "end_exclusive": 2170,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2172,
           "end_exclusive": 2174,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2176,
           "end_exclusive": 2178,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2180,
           "end_exclusive": 2182,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2184,
           "end_exclusive": 2190,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2192,
           "end_exclusive": 2198,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2210,
           "end_exclusive": 2212,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2230,
           "end_exclusive": 2236,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2238,
           "end_exclusive": 2270,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         },
         {
           "start": 2272,
           "end_exclusive": 2276,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
+          "reason": "Exact retained instruction; codegen idiom pass"
         }
       ]
     }

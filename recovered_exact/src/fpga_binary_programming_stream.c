@@ -1,3 +1,4 @@
+#include "legacy_carry.h"
 extern void cli_send_buf(void);
 /* Private entries: capture R16/R17 after calls; no GNU result ABI is used. */
 extern void cli_get_next_byte(void);
@@ -24,7 +25,7 @@ register uint16_t current asm("r20");
 void fpga_firmware_update(void)
 {
     register uint8_t byte asm("r16");
-    asm volatile("rcall unlock_programming\n\tbrcs LAB_code_000ad2\n\tclr r16" : "=r" (byte) : : "memory", "cc");
+    asm volatile(PM_CALL_BRANCH_CARRY_SET_ASM("unlock_programming", "LAB_code_000ad2") "\n\tclr r16" : "=r" (byte) : : "memory", "cc");
     RAM8(0x0100) = byte;
     asm volatile("rcall FUN_code_000b32\n\tclr r16" : "=r" (byte) : : "memory", "cc");
     register uint8_t *pointer asm("r26") = (uint8_t *)0x2435;
@@ -140,8 +141,9 @@ receive_chunk:
     asm goto("brne %l[receive_chunk]" : : : : receive_chunk);
     RAM8(0x2435) = (uint8_t)write_index;
     RAM8(0x2436) = write_index >> 8;
-    asm volatile("rcall FUN_code_000b9d\n\trcall FUN_code_000b59" : : : "memory", "cc");
-    asm goto("brcs %l[finished]" : : : : finished);
+    asm goto("rcall FUN_code_000b9d\n\t"
+        PM_CALL_BRANCH_CARRY_SET_ASM("FUN_code_000b59", "%l[finished]")
+        : : : "memory", "cc" : finished);
     asm goto("tst r21\n\tbrne %l[next_chunk]" : : : "cc" : next_chunk);
     asm volatile("rcall FUN_code_000b9d" : : : "memory", "cc");
     goto next_page;

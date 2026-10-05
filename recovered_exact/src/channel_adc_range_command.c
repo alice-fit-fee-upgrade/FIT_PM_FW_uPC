@@ -1,3 +1,4 @@
+#include "legacy_carry.h"
 /* Retained exact call/load helpers: a C call such as
  * value = fpga_read(address); or fpga_write(address, word); expresses the
  * operation, but these entries use private bound registers, original CALL/RCALL
@@ -19,11 +20,9 @@ void fpga_set_adc_range_corr(void)
     PM_PARSE_CHANNEL(requested, "LAB_code_000f16");
     register uint8_t channel asm("r22") = (uint8_t)requested;
     asm volatile("" : "+r" (channel));
-    asm volatile("cpi r16, 0x20\n\tbrne LAB_code_000f16\n\trcall cli_get_integer\n"
-                 "brcs LAB_code_000f16\n\tcpi r16, 0x2c\n\tbrne LAB_code_000f16"
-                 : "=r" (requested) : : "r16", "memory", "cc");
+    asm volatile("cpi r16, 0x20\n\tbrne LAB_code_000f16\n\t" PM_INTEGER_PARSE_OR_BRANCH_ASM("LAB_code_000f16") "\n\tcpi r16, 0x2c\n\tbrne LAB_code_000f16": "=r" (requested) : : "r16", "memory", "cc");
     first = requested; asm volatile("" : "+r" (first));
-    asm volatile("rcall cli_get_integer\n\tbrcs LAB_code_000f16\n\tcpi r16, 13\n\tbrne LAB_code_000f16"
+    asm volatile(PM_INTEGER_PARSE_OR_BRANCH_ASM("LAB_code_000f16") "\n\tcpi r16, 13\n\tbrne LAB_code_000f16"
                  : "=r" (requested) : : "r16", "memory", "cc");
     /* Original signed lower/upper checks for both correction words. */
     register uint8_t limit_high asm("r26") = 0x0c;

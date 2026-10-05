@@ -1,3 +1,4 @@
+#include "legacy_carry.h"
 #include <avr/io.h>
 /* Private entry calls below intentionally have no GNU argument/result ABI.
  * Adjacent fixed-register setup/capture preserves each historical contract;
@@ -385,8 +386,8 @@ L_000a4c:
     pm_cpu_enable_irq();
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
-    asm volatile("cpi         r18,0xc" : : : "memory", "cc");
-    asm goto("brbc 1, .Lcli_L_000a4c" : : : "memory", "cc" : L_000a4c);
+    asm volatile("" : "=r" (r18));
+    if (r18 != 0xc) goto L_000a4c;
     r18 = 0x24;
     asm volatile("" : "+r" (r18));
     r28 = 0x87;
@@ -401,8 +402,8 @@ L_000a58:
     pm_cpu_enable_irq();
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
-    asm volatile("cpi         r18,0x3c" : : : "memory", "cc");
-    asm goto("brbc 1, .Lcli_L_000a58" : : : "memory", "cc" : L_000a58);
+    asm volatile("" : "=r" (r18));
+    if (r18 != 0x3c) goto L_000a58;
     asm volatile("inc         r18" : : : "memory", "cc");
     pm_cpu_disable_irq();
     fpga_msg_read_t1();
@@ -453,8 +454,8 @@ L_000a78:
     __builtin_unreachable();
 L_000a82:
     asm volatile(".Lcli_L_000a82:" : : : "memory");
-    asm volatile("rcall       unlock_programming" : : : "memory", "cc");
-    asm goto("brbs 0, .Lcli_L_000a6b" : : : "memory", "cc" : L_000a6b);
+    asm goto(PM_CALL_BRANCH_CARRY_SET_ASM("unlock_programming", "%l[L_000a6b]")
+        : : : "memory", "cc" : L_000a6b);
     cli_get_next_byte();
     asm volatile("" : "=r" (r16));
     r30 = r16;

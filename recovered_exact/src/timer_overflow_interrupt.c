@@ -170,11 +170,11 @@ L_00029c:
         scratch_r16 -= 224;
         asm volatile("" : "+r" (scratch_r16) : : "memory");
     }
-    asm volatile("cpi         r16,0xc4" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00029c" : : : "memory", "cc" : L_00029c);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0xc4) goto L_00029c;
     asm volatile("inc         r19" : : : "memory", "cc");
-    asm volatile("cpi         r19,0x3" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00029b" : : : "memory", "cc" : L_00029b);
+    asm volatile("" : "=r" (r19));
+    if (r19 != 0x3) goto L_00029b;
     pm_cpu_enable_irq();
     asm volatile("" : "=r" (r20));
     r20 &= 0x1;
@@ -202,11 +202,11 @@ L_0002ad:
     asm volatile("" : "=r" (r17));
     r17 &= 0xf;
     asm volatile("" : "+r" (r17));
-    asm volatile("cpi         r17,0x1" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_0002b8" : : : "memory", "cc" : L_0002b8);
+    asm volatile("" : "=r" (r17));
+    if (r17 != 0x1) goto L_0002b8;
     asm volatile("inc         r19" : : : "memory", "cc");
-    asm volatile("cpi         r19,0x3" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_0002ad" : : : "memory", "cc" : L_0002ad);
+    asm volatile("" : "=r" (r19));
+    if (r19 != 0x3) goto L_0002ad;
     goto L_0002c5;
 L_0002b8:
     asm volatile(".Ltimer_L_0002b8:" : : : "memory");
@@ -352,13 +352,13 @@ L_00030d:
         scratch_r16 -= 224;
         asm volatile("" : "+r" (scratch_r16) : : "memory");
     }
-    asm volatile("cpi         r16,0x8c" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00030d" : : : "memory", "cc" : L_00030d);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x8c) goto L_00030d;
     r16 = 0xc;
     asm volatile("" : "+r" (r16));
     asm volatile("inc         r19" : : : "memory", "cc");
-    asm volatile("cpi         r19,0x3" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00030d" : : : "memory", "cc" : L_00030d);
+    asm volatile("" : "=r" (r19));
+    if (r19 != 0x3) goto L_00030d;
     pm_cpu_enable_irq();
     goto L_00031b;
 L_00031a:
@@ -385,8 +385,8 @@ L_00031b:
     goto L_000398;
 L_000322:
     asm volatile(".Ltimer_L_000322:" : : : "memory");
-    asm volatile("cpi         r16,0x1" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00033d" : : : "memory", "cc" : L_00033d);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x1) goto L_00033d;
     {
         register uint16_t word_counter asm("r24");
         asm volatile("" : "=r" (word_counter) : : "memory");
@@ -404,8 +404,8 @@ L_000322:
     asm volatile("" : "=r" (r16));
     r16 &= 0x7;
     asm volatile("" : "+r" (r16));
-    asm volatile("cpi         r16,0x1" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_000339" : : : "memory", "cc" : L_000339);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x1) goto L_000339;
     r16 = 0x4;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -437,8 +437,8 @@ L_000339:
     goto L_000357;
 L_00033d:
     asm volatile(".Ltimer_L_00033d:" : : : "memory");
-    asm volatile("cpi         r16,0x2" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00035a" : : : "memory", "cc" : L_00035a);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x2) goto L_00035a;
     {
         register uint16_t word_counter asm("r24");
         asm volatile("" : "=r" (word_counter) : : "memory");
@@ -496,8 +496,8 @@ L_000359:
     goto L_000398;
 L_00035a:
     asm volatile(".Ltimer_L_00035a:" : : : "memory");
-    asm volatile("cpi         r16,0x3" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_00036c" : : : "memory", "cc" : L_00036c);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x3) goto L_00036c;
     {
         register uint16_t word_counter asm("r24");
         asm volatile("" : "=r" (word_counter) : : "memory");
@@ -531,8 +531,8 @@ L_00035a:
     goto L_000357;
 L_00036c:
     asm volatile(".Ltimer_L_00036c:" : : : "memory");
-    asm volatile("cpi         r16,0x4" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_000381" : : : "memory", "cc" : L_000381);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x4) goto L_000381;
     r16 = *(volatile uint8_t *)0x668;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -569,8 +569,8 @@ L_00037d:
     goto L_000349;
 L_000381:
     asm volatile(".Ltimer_L_000381:" : : : "memory");
-    asm volatile("cpi         r16,0x5" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_000398" : : : "memory", "cc" : L_000398);
+    asm volatile("" : "=r" (r16));
+    if (r16 != 0x5) goto L_000398;
 L_000383:
     asm volatile(".Ltimer_L_000383:" : : : "memory");
     r16 = *(volatile uint8_t *)0x624;
@@ -708,8 +708,8 @@ L_0003d0:
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x2157 = r16;
     asm goto("sbic        0,0x1\n\trjmp .Ltimer_L_0003e6" : : : "memory", "cc" : L_0003e6);
-    asm volatile("cpi         r17,0x6" : : : "memory", "cc");
-    asm goto("brbc 1, .Ltimer_L_0003e1" : : : "memory", "cc" : L_0003e1);
+    asm volatile("" : "=r" (r17));
+    if (r17 != 0x6) goto L_0003e1;
     GPIOR0 |= (1u << 1);
     goto L_0003e5;
 L_0003e1:

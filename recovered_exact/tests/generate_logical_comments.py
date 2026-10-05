@@ -90,6 +90,7 @@ def generate(write=True):
     manifest=json.loads((ROOT/'recovered_exact/manifest.json').read_text()); by_source={}
     for f in manifest['accepted']:by_source.setdefault(f['source'],[]).append(f)
     header_ops = {
+        'legacy_carry.h': {'rcall', 'brcs'},
         'legacy_word_ops.h': {'cpi', 'cpc', 'brge', 'brlt', 'st'},
         'legacy_console_call_c.h': {'rcall'},
         'legacy_cpu.h': {'cli', 'sei', 'nop', 'bst', 'bld'},

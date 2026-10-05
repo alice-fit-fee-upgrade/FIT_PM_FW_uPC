@@ -10,9 +10,8 @@ void unlock_programming(void)
     register uint8_t received asm("r16");
     cli_get_next_char();
     asm volatile("" : "=r" (received) : : "memory");
-    /* C value equivalent: if (received != 13) goto original_error;
-     * Keep its exact conditional branch into the shared error tail. */
-    asm volatile("cpi r16, 13\n\tbrne LAB_code_000ad0" : : "r" (received) : "cc");
+    /* Native C comparison; the password_error tail retains the Carry ABI. */
+    if (received != 13) goto password_error;
     register const uint8_t *password asm("r30") = (const uint8_t *)0x2b76;
     asm volatile("" : "+z" (password));
 next_byte:;
@@ -33,9 +32,12 @@ next_byte:;
      * The private carry-result entry cannot use a normal C return value. */
     asm volatile("clc" : : : "memory", "cc");
     return;
+password_error:
+    asm volatile("sec" : : : "memory", "cc");
+    return;
 }
 asm(".pushsection .text.unlock_programming,\"ax\",@progbits\n"
-    ".subsection 1\nsec\nret\nrjmp LAB_code_0009e4\n.popsection");
+    ".subsection 1\nrjmp LAB_code_0009e4\n.popsection");
 
 /* BEGIN COMPILED LOGICAL C EQUIVALENT
  * Validation: PASS_INSTRUCTION_TRANSITIONS: 304 file cases; shared exhaustive operand tests also passed.
