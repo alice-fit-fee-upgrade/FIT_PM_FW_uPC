@@ -1,6 +1,10 @@
 #include <stdint.h>
 #define RAM8(address) (*(volatile uint8_t *)(address))
-#define WAIT_READY(reg) asm volatile("1: lds " reg ", 0x0ac2\n\tsbrs " reg ", 7\n\trjmp 1b" : : : "memory")
+#define WAIT_READY(reg) do { \
+ register uint8_t status asm(reg); \
+ do { status = RAM8(0x0ac2); asm volatile("" : "+r" (status)); } \
+ while (!(status & 0x80u)); \
+} while (0)
 /* Read the original 24-bit inclusive address range and stream bytes to the
  * exact CRC core. Its unusual byte ordering and live R2:R0 are preserved. */
 void FUN_code_000bb9(void)

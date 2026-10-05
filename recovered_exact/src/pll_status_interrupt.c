@@ -1,3 +1,9 @@
+/* Calls retain private fixed-register inputs/results through zero-byte
+ * barriers. Void declarations deliberately introduce no GNU arguments/results;
+ * recapture after each call observes the original registers. Every conversion
+ * is accepted only if GNU CALL, frames and the entire FLASH remain identical. */
+extern void CDCE62005_send_control_settings(void);
+extern void FUN_code_001267(void);
 #include "legacy_cpu.h"
 #include "legacy_interrupt.h"
 #include "legacy_r16_c.h"
@@ -14,11 +20,19 @@ void PORTF_INT1_vect_isr(void)
     b1 = 0x0f; asm volatile("" : "+r" (b1));
     b2 = 4; asm volatile("" : "+r" (b2));
     status = 0x40;
-    asm volatile("call CDCE62005_send_control_settings" : "+r" (value), "+r" (b1), "+r" (b2), "+r" (status) : : "memory", "cc");
+    do {
+        asm volatile("" : "+r" (value), "+r" (b1), "+r" (b2), "+r" (status) :  : "memory");
+        CDCE62005_send_control_settings();
+        asm volatile("" : "=r" (value), "=r" (b1), "=r" (b2), "=r" (status) : : "memory");
+    } while (0);
     value = 0x20; asm volatile("" : "+r" (value));
     PORTF_OUTSET = value;
 read_status:
-    asm volatile("call FUN_code_001267" : "=r" (value), "=r" (b1), "=r" (b2), "=r" (status) : : "memory", "cc");
+    do {
+
+        FUN_code_001267();
+        asm volatile("" : "=r" (value), "=r" (b1), "=r" (b2), "=r" (status) : : "memory");
+    } while (0);
     status = __builtin_avr_swap(status); asm volatile("" : "+r" (status));
     status &= 0x0e; asm volatile("" : "+r" (status));
     asm volatile("bld %0, 0" : "+r" (status) : : "cc");

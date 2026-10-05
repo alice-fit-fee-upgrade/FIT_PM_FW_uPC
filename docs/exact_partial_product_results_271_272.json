@@ -1,0 +1,20 @@
+[
+  {
+    "step": 271,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C 16-bit partial-product additions with exact MUL/MULSU helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_271_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 272,
+    "source": "dac_signed_scaled_product.c",
+    "change": "C 16-bit partial-product additions with exact MUL/MULSU helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_272_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

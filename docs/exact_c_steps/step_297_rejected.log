@@ -1,0 +1,9 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fno-crossjumping -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-used-r20 -fcall-used-r21 -fcall-used-r22 -fcall-used-r23 -fcall-used-r24 -fcall-used-r30 -fcall-used-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -c src/fpga_data_exchange.c -o build/fpga_data_exchange.o
+src/fpga_data_exchange.c: In function ‘fpga_data_exchange’:
+src/fpga_data_exchange.c:19:22: error: unused variable ‘r15’ [-Werror=unused-variable]
+     register uint8_t r15 asm("r15");
+                      ^~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:187: build/fpga_data_exchange.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

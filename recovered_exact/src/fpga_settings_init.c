@@ -1,3 +1,5 @@
+/* Private void entry; bound-register barriers preserve the original ABI. */
+extern void fpga_msg_send_t2(void);
 #include "legacy_cpu.h"
 #include <avr/io.h>
 /* Archived C alternative for the exact ASM helpers below (not compiled).
@@ -33,8 +35,8 @@
 #define SEND_SETTING(lo, hi, address) do { \
     asm volatile("" : "+r" (lo), "+r" (hi), "+r" (address) : : "memory"); \
     pm_cpu_disable_irq(); \
-    asm volatile("call fpga_msg_send_t2" \
-        : "+r" (lo), "+r" (hi), "+r" (address) : : "memory", "cc"); \
+    fpga_msg_send_t2(); \
+    asm volatile("" : "=r" (lo), "=r" (hi), "=r" (address) : : "memory"); \
     pm_cpu_enable_irq(); \
 } while (0)
 #define READ_WORD(lo, hi, cursor) \

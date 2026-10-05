@@ -29,3 +29,8 @@ The steps 209–233 continuation additionally comments retained ADC carry chains
 DEC counters, queue/calibration pointer loads and private call wrappers. These
 new value equivalents explicitly state when they lack independent functional
 validation. The historical index still contains the same 25 tested alternatives.
+
+Steps 234–317 add explanatory C versions beside parser range checks, LPM pointer
+reads, carry-dependent products, 64-bit bitmap shifts, offset pointer helpers
+and shared error tails. Newly rejected snippets explicitly carry no functional
+test claim; the 25 historically tested alternatives remain indexed separately.

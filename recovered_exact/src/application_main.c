@@ -1,8 +1,16 @@
+/* Calls retain private fixed-register inputs/results through zero-byte
+ * barriers. Void declarations deliberately introduce no GNU arguments/results;
+ * recapture after each call observes the original registers. Every conversion
+ * is accepted only if GNU CALL, frames and the entire FLASH remain identical. */
+extern void adt7311_16bit_rw(void);
+extern void adt7311_8bit_rw(void);
+extern void adt7311_faults_clr(void);
+extern void cli_send_msg(void);
+extern void adt7311_faults_clr(void);
 #include <stdint.h>
 #define RAM8(address) (*(volatile uint8_t *)(address))
 #define SET_VALUE(constant) do { \
- if ((constant) == 0) asm volatile("ldi r16, 0" : "=r" (value)); \
- else { value = (constant); asm volatile("" : "+r" (value)); } \
+ value = (constant); asm volatile("" : "+r" (value)); \
 } while (0)
 #define CLOCK_WRITE(address) asm volatile("sts %1, %0" : : "r" (value), "n" (address) : "memory")
 #define CLOCK_WAIT(bit) asm volatile("1: lds r17, 0x51\n\tsbrs r17, " bit "\n\trjmp 1b" : : : "r17", "memory")
@@ -135,26 +143,49 @@ power_initialized:
     SET_VALUE(1); RAM8(0x0689) = value;
     SET_VALUE(2); RAM8(0x06a9) = value;
     SET_VALUE(3); RAM8(0x00a2) = value;
-    asm volatile("call adt7311_faults_clr" : : : "memory", "cc");
+    do {
+
+        adt7311_faults_clr();
+
+    } while (0);
     SET_VALUE(8); key = 0x50;
-    asm volatile("call adt7311_8bit_rw" : "+r" (value), "+r" (key) : : "memory", "cc");
+    do {
+        asm volatile("" : "+r" (value), "+r" (key) :  : "memory");
+        adt7311_8bit_rw();
+        asm volatile("" : "=r" (value), "=r" (key) : : "memory");
+    } while (0);
     SET_VALUE(0x20);
-    asm volatile("ldi r17, 0" : "=r" (key));
+    key = 0;
+    asm volatile("" : "+r" (key));
     register uint8_t high asm("r18") = 0x23;
-    asm volatile("call adt7311_16bit_rw" : "+r" (value), "+r" (key), "+r" (high) : : "memory", "cc");
+    do {
+        asm volatile("" : "+r" (value), "+r" (key), "+r" (high) :  : "memory");
+        adt7311_16bit_rw();
+        asm volatile("" : "=r" (value), "=r" (key), "=r" (high) : : "memory");
+    } while (0);
     SET_VALUE(0x30);
-    asm volatile("ldi r17, 0" : "=r" (key));
+    key = 0;
+    asm volatile("" : "+r" (key));
     high = 0x1e;
-    asm volatile("call adt7311_16bit_rw" : "+r" (value), "+r" (key), "+r" (high) : : "memory", "cc");
+    do {
+        asm volatile("" : "+r" (value), "+r" (key), "+r" (high) :  : "memory");
+        adt7311_16bit_rw();
+        asm volatile("" : "=r" (value), "=r" (key), "=r" (high) : : "memory");
+    } while (0);
     destination = (uint8_t *)0x2163;
     asm volatile("" : "+z" (destination));
     register uint8_t *eeprom asm("r28");
-    asm volatile("ldi r28, 0\n\tldi r29, 0x10" : "=y" (eeprom));
+    eeprom = (uint8_t *)0x1000;
+    asm volatile("" : "+y" (eeprom));
     key = 0x22;
     asm volatile("1: ld r16, Y+\n\tst Z+, r16\n\tcpi r30, 0x35\n\tcpc r31, r17\n\tbrne 1b\n\tcbi 0, 3\n\tsei"
                  : "+y" (eeprom), "+z" (destination), "=r" (value) : "r" (key) : "memory", "cc");
     destination = (uint8_t *)0x2962;
-    asm volatile("call cli_send_msg" : "+z" (destination) : : "memory", "cc");
+    do {
+        asm volatile("" : "+z" (destination) :  : "memory");
+        cli_send_msg();
+        asm volatile("" : "=z" (destination) : : "memory");
+    } while (0);
     SET_VALUE(1); RAM8(0x06a6) = value;
 main_loop:
     value = RAM8(0x2006);

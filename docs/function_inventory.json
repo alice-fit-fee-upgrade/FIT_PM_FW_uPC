@@ -21,9 +21,9 @@
   "complete_executable_bytes": 10836,
   "application_executable_bytes": 10058,
   "boot_executable_bytes": 778,
-  "compiler_generated_c_bytes": 5386,
-  "compiler_generated_avr_primitive_bytes": 290,
-  "compiler_generated_other_c_bytes": 5096,
+  "compiler_generated_c_bytes": 6086,
+  "compiler_generated_avr_primitive_bytes": 380,
+  "compiler_generated_other_c_bytes": 5706,
   "avr_primitive_mnemonics": [
     "bld",
     "bst",
@@ -32,12 +32,12 @@
     "sei",
     "swap"
   ],
-  "exact_asm_helper_bytes_inside_c_regions": 4642,
-  "all_asm_bytes_including_helpers": 5450,
-  "C_percentage_all_executable": 49.7046880767811,
-  "ASM_percentage_all_executable": 50.2953119232189,
-  "C_percentage_application_executable": 53.54941340226685,
-  "ASM_percentage_application_executable": 46.45058659773315,
+  "exact_asm_helper_bytes_inside_c_regions": 3942,
+  "all_asm_bytes_including_helpers": 4750,
+  "C_percentage_all_executable": 56.164636397194535,
+  "ASM_percentage_all_executable": 43.835363602805465,
+  "C_percentage_application_executable": 60.50904752435872,
+  "ASM_percentage_application_executable": 39.49095247564128,
   "coverage_measure": "instruction bytes; inline ASM helpers counted as ASM; data/padding excluded",
   "original_application_symbols_preserved": 459,
   "all_original_text_symbols_preserved": 806,
@@ -68,28 +68,28 @@
     "src/adt_bit_transfer.c": "dcc8f229fe1bff9333ae0c22afb87038ca5172c8814ac888b5b936f0c76d7987",
     "src/power_state_request.c": "0b84de74acaf012ac8087b5ba8a6f90ecba8b77204f8adf4a16fd840634c3079",
     "src/dma_gpio_handshake.c": "f57230af57836d2c47cfac2e97061a843106b9acf7085b70858845c05570ef93",
-    "src/console_hex_word.c": "12624ef3b51edba57cb377f6c8036f5828921704f1a066eb7300b4eab7e27057",
+    "src/console_hex_word.c": "cd1c8ea5e32603b40b6c002ffb3db3faad61eacb2a4ea4948ae06e9cf93fc0e5",
     "src/dac_channels.c": "1217d595015f1d8dcb8d0ee4dfe7df08331d8a40f96c36f7a853033bef31e895",
     "src/fpga_multiword_read.c": "1df48bc6fe848d8755f66171ac16d39c46b8557384474bb42d9f548e026c04b8",
-    "src/fpga_timestamp_send.c": "ffcece8ce3e8c9058e3a4f2d4730d2cc0b35a762c5d1bf20d437ec87b32b070e",
+    "src/fpga_timestamp_send.c": "662dc89c334574a6159a635baf52e1588f22b515e4e7c24f0158acec3e7a4f6c",
     "src/flash_device_id.c": "e3aa229f9bd4d2bef00ed98c6dab5726b79d1d1c3862e3d821e18bb0c5ea4cf0",
-    "src/pll_defaults_load.c": "5c2a5b16eaa3e36f385510113eaa86f95372c618bc66819658980e030e0cc93d",
+    "src/pll_defaults_load.c": "8bbf988beddcd2c122a94a515c12a6066621d43654f07f132202098bfedf8961",
     "src/power_portb_interrupt.c": "7c89455195ed269e603acaa3d6199cebda4140d8cde1094c281cd58d5332927f",
-    "src/power_portd_interrupt.c": "b1363b6efa170a72d909b4f610dd721dd61f606c1888d4c8e7f2ca0d34ccf11f",
-    "src/console_flash_message.c": "0756351275ed4cbed0d00e5e1aea65547c10eab769ce7ca7c39adeefd5139a06",
-    "src/fpga_settings_reset.c": "0ba353c19c558b9b2faa6b5fcb943fb574133804c993c1a99c193e9ecbc08a6f",
-    "src/fpga_settings_init.c": "4a0cf4bf4130bb04c6f2c5c7f692316e54a6ad6331c963c4afe8d05ef864f267",
-    "src/tdc_host_write.c": "68bf392edbee48f167f6ae584e053127327c5c53c794d7f58c1b6da7709da4c4",
-    "src/tdc_host_read.c": "dc3a7ab94bbd1d86fac061588a9768d16470c2299de39f035e85bc4d6bf495b7",
+    "src/power_portd_interrupt.c": "1ba1ff3fcc8fd18141367dac76e08f84baef83ef8e414669968bcb4307cabbd2",
+    "src/console_flash_message.c": "05bfb51eeaa8261acf33c5963b60cb409874e100edbf431c3fa71681bef99f8b",
+    "src/fpga_settings_reset.c": "b7ffb8f713b5668aed223e583a9df6fa950f9435beb9af2ef4335bc0e2c1782c",
+    "src/fpga_settings_init.c": "87c714453340c7a0202b8225359aa60575e0c8335818cdbde9625ba47b2778e0",
+    "src/tdc_host_write.c": "abc808198011fac1bdd98a83af848fbd6d3cfcd5ac98b10d22903d7e7fb6ffc9",
+    "src/tdc_host_read.c": "7a579c03e5797dbf781dc6b3f0faa9e0e08fa241b01f5075f3661035f9acc0df",
     "src/dac_spi_send.c": "6269dd1b927f10bc80fff297a63a540c172ca1c961eac07cc86e75153d23bce9",
     "src/flash_wait_ready.c": "18ee638c3887e489b2cc04aba373141c107cb4d96dac96d09b393771aaa306a0",
-    "src/fpga_status_interrupt.c": "b63009d516d7fc53b27d82e8982fc423be751d557eeb68c806c9c9ac6545c8b4",
+    "src/fpga_status_interrupt.c": "e503ff957601ad688ce1ff093011df62f9cc1571eb1b597d8750c56639b477f2",
     "src/console_tx_interrupt.c": "5a9e9c6049142981d9045357d99f81c2098060506097e1d55f44882cc2d4a788",
     "src/console_cts_interrupt.c": "0ae195397848c09ac9bc981e7e10a8cc411ea9a902f29cdec56d0290f3cc16f8",
     "src/console_rx_interrupt.c": "277ce06c394cb1f3e91ecd943fa8835624ecc01d10bc1837167315fec62f2d06",
     "src/console_character_read.c": "917212221fa86fa45113dc0132c11cc713773defff4542de4dc60fbc686550d8",
     "src/console_character_send.c": "b9cdce6cfcc410252c7cde1da64e31e9c926037f722c830bba72ebb593f998cd",
-    "src/pll_status_interrupt.c": "fa0731e9f8720bc5c6b48c9ad2c5398c4cc2a9d4148155148b1b81e615ecbd89",
+    "src/pll_status_interrupt.c": "f942da60cfaa51196e10e403ee0ad0b1a8a3135913668a7655350fcbb059adbf",
     "src/power_porte_interrupt.c": "c37060c772203adc5048941ce747faa7cf345adb0b42fa4249badd31a9d95760",
     "src/eeprom_page_commit.c": "d1b05c44382becd7a5f60f1625f5e42d7be328e21e7c3668007bf7454f5ed32d",
     "src/eeprom_settings_store.c": "e3f1c8443d6cd3fa17f569b84da662095c7692b5d1a4ce72e97167a1784635e0",
@@ -100,40 +100,40 @@
     "src/trigger_charge_command.c": "b7a0bb67aec331474be09e58b3cd5a4d2521248007c43102dc17b9392fee1241",
     "src/trigger_settings_command.c": "69b5b6eed455f04eec15fa00afe77f818b4e7300173ff46d75ecbd7fedce1480",
     "src/channel_adc_delay_command.c": "7bdc28a5d1aa8ec6a36d6099998c8e4ab280ddb4cb54e059e1b8e865537666a7",
-    "src/channel_cfd_zero_command.c": "2f9d395b7d64f5927797267a6cdbc18f461766693803995d08d79e79862b491c",
-    "src/channel_adc_zero_command.c": "0ffa1bfb8dfbf5627f6eab5a59d2a07cd0aa6dc8e045c027baf6adc4edc7fead",
-    "src/channel_cfd_threshold_command.c": "259facd5540445d4b09170b12b43180a377fc74587abe47cde263b93b98c3c52",
+    "src/channel_cfd_zero_command.c": "c6bca709fc5434880750a0c09f189ef445344f941f7e2315c740c72a326f4997",
+    "src/channel_adc_zero_command.c": "5292e4e59ffc9278b02484b82291da33fa9e720c890e0277b6847f6dfa3de572",
+    "src/channel_cfd_threshold_command.c": "7fdcfa4faa6339f961338ded1735aec5a6d7e8f7e612c8365e9a9b946e9fb0c0",
     "src/channel_tdc_values_command.c": "df34862e9bb8834339188ee7ecab2a7706c8fc29fd11817333a9fa9fe9838a9e",
-    "src/channel_threshold_calibration_command.c": "d8d5403ac868c43cfbca5a012c62140cd58cb398de30f02501474d0633627654",
-    "src/channel_adc_range_command.c": "1cb22f43fe46ec705671f908c5cebe534f1c565c08f4e2280544206c3acbb355",
-    "src/channel_tdc_adjust_command.c": "341663da24526dd64592d65f4567b933ea5be93159a4906f4361901c42c4fdfb",
-    "src/channel_mean_amplitude_display.c": "29af6f03378bb9f021655cb972de2bb614ea4e47ef98930f995b0ea57badacec",
+    "src/channel_threshold_calibration_command.c": "b6c7452991eb0e93397fc9e632c3006fb14fd9a69c3602ebd41422b0b7ad5fa0",
+    "src/channel_adc_range_command.c": "3c5e1db59b801bf108c7f6b490149fd7a09b98494a430c2dcf0c0d3b143e6f87",
+    "src/channel_tdc_adjust_command.c": "b1ad1b7c14b97cf962c84676dd6a4bea7a59e45b1129fbfceec32c396c6e6c96",
+    "src/channel_mean_amplitude_display.c": "a78d8e404c37478eba622f165a65603be4811c6e160766aa2ea749ec4be277e4",
     "src/channel_baseline_dispersion_display.c": "c5ef7a270d12fe60125a68a7690f21ea070964c640ef42bb1483b4cf8274244e",
     "src/channel_cdf_adc_display.c": "0a4987b2555a6e99049c061d383d6874a9d76afdca58d9616c8338f0322a48a2",
     "src/fpga_ready_guard.c": "9142504c76bd980372a9e5a5334afde82a46d69b7a98a6411062da799ef7aabc",
-    "src/programming_unlock.c": "195dc9602e001ab94ace9cee7133a8b00fe0aba3ddc7cfaef4aebf9276f29440",
+    "src/programming_unlock.c": "b8fca09a6189e5d0b4cb2e14787d4fa050ae7d2c94b365ab4949fc35851091ee",
     "src/channel_settings_display.c": "8d7619a6210cbd51ae0f00d000bb43c356279af709de9aaa5ff949c249417427",
-    "src/console_hex_parser.c": "c76b9d44e1aec9823131cecf906a564385460862e06086ee06c32e0aa9b3208c",
-    "src/flash_page_program.c": "8e52c4a80fe0482de69f746b546967cd2ac1c1566130b750ac4d7ed3f683f4f3",
-    "src/flash_crc_stream_read.c": "4d67a2ebe1e3eeac64edf201fc1fe0bf3ac4ddf571f6ea73475d190adfa83936",
+    "src/console_hex_parser.c": "6944502a5da50e1e89edb4e477a2b49836602021bb8cc1b78c07ff4a98e3a210",
+    "src/flash_page_program.c": "a0051563c288d0da2858850ce6fdf7746cb3caa851f61716e94ee7ed48a2b235",
+    "src/flash_crc_stream_read.c": "3a0c187f43173b7d05d79c4530713931333950e546d3fef248034ad15bdc5daa",
     "src/flash_crc_bit_core.c": "0573bf20206a4bf2bc434916c8f1139b66e18bfc913057e8fa21af2f6ebe729f",
     "src/tdc_channel_data_display.c": "5598b3bd4cfba1830c100429d6b5355c26107c6ee13c795563ea4626fb58e899",
-    "src/dac_stored_settings_apply.c": "ce56cb4b33cc1dc90cca17fb6aa1665a3ac5fe6b3fd9cf90afdc1fc64932423b",
-    "src/application_main.c": "85cb1fc0f6432293f70def8897f7900409cdec6f7137dc07bc9db6a7cd85b1d1",
-    "src/system_status_display.c": "ae6d7ef6de962323539fee09ded5b193763a56e1746690ff5656ff7cbb07b7fa",
-    "src/fpga_binary_programming_stream.c": "7a7c5ba2fa70cf3682c7df579cf4d7600a0aca02ab376a76dc061392ff044cd8",
+    "src/dac_stored_settings_apply.c": "e665df604d76e0341bec8353e9af77f50d0e1162f4d0078db8f2c722879b5cfb",
+    "src/application_main.c": "3835345d6c3116308643ad334acba1a1bdcbf2874977d072b7da6dcab14ffd0c",
+    "src/system_status_display.c": "0670059abddffbf13f0a8c1c134760adc38461c37a161b9d944a533dcdd16373",
+    "src/fpga_binary_programming_stream.c": "7f7f34097699eec3e4e4f04cf119c38fad8b021b0180073effb50d82503411e3",
     "src/console_fixed2_entry.c": "9b44b586d514dce7c52031d01545e00364d4688b36635cd0ffd59fee42d1430d",
     "src/console_temperature_entry.c": "a9cfab65799e6fc24ea6c6b440da931c81b0ce7ab32bc6784150f7151cf74185",
     "src/console_fixed3_entry.c": "a86b029349ddc78a10b1ec68736834634fa3b532783b2e7e8604d6c28193b3ae",
     "src/console_raw_byte_entry.c": "87e8d95c37a9f29c4c1ca97aee762d930b4bd94173455a9dc41160a22441c446",
-    "src/dac_saturating_scaled_product.c": "4bb0c169a518c4d2f10659ef0d390959c3198707a90d2afd59b1f718e6564c80",
-    "src/console_integer_parser.c": "e893abd875038edcd5ab4228c5c6eb4e496b746a62bf1abb7dc53c89a68ecbc9",
+    "src/dac_saturating_scaled_product.c": "5fc10f390b9246dfe93f7e5b851d35865ecf665de47813bb1d7fc7409c7ae0ce",
+    "src/console_integer_parser.c": "f4778602f70107e406ac315819d74b5a43e855d50594dd3da94e3031de97f39a",
     "src/console_decimal_formatter.c": "8e1206b7323e372693958d042c351ec76fbffa0ed3428b564ba99729d8f4d798",
-    "src/dac_signed_scaled_product.c": "dddc3aa97fe240a6494326081de1d34e14fddd773eb1b115898901f67976099c",
-    "src/fpga_data_exchange.c": "60bc448be623a8b8436407c760945a540ade616dc83605745c937b5d21755836",
-    "src/console_dispatch.c": "814865118cec171ac250d3a42f62f9df3a14c8324ab1448bd71947f62759a8fc",
-    "src/dma_channel_interrupt.c": "a2caf6d1531c7aa1bc08ca28d30b42b752898dead7719f8d8be2f335aac0dd35",
-    "src/timer_overflow_interrupt.c": "676b6fce410edf50ef7a39909bebe93033d7b82beca5894d8c5084ea3a0d4db4"
+    "src/dac_signed_scaled_product.c": "7bd783ed10d5abc3bc13ca38021cbcc8ce367fd2263d0ed1923d57a16dd5801c",
+    "src/fpga_data_exchange.c": "299ac081856c62a54fd567791713e02e34c767ea661a778572083dfd3c450a88",
+    "src/console_dispatch.c": "5f0be6c9d8db8644622b25ee817a7609e54c4565d37ea226771ed92ea604a6e1",
+    "src/dma_channel_interrupt.c": "4eba80f2ce53b04d6edfcf058bd896409b874ca56292085b274547fcc7cc52ba",
+    "src/timer_overflow_interrupt.c": "648bbb98280045730a86807f423198f66c4bea4c27125396117e46b5f18bc63e"
   },
   "application": [
     {
@@ -143,8 +143,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/dma_channel_interrupt.c",
       "compiler_profile": "dma_interrupt_private_registers",
-      "compiler_generated_bytes": 308,
-      "exact_asm_helper_bytes": 342
+      "compiler_generated_bytes": 360,
+      "exact_asm_helper_bytes": 290
     },
     {
       "address": 1132,
@@ -163,8 +163,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/timer_overflow_interrupt.c",
       "compiler_profile": "timer_interrupt_private_registers",
-      "compiler_generated_bytes": 492,
-      "exact_asm_helper_bytes": 602
+      "compiler_generated_bytes": 632,
+      "exact_asm_helper_bytes": 462
     },
     {
       "address": 2276,
@@ -173,8 +173,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/fpga_settings_init.c",
       "compiler_profile": "fpga_legacy_asymmetric_frame",
-      "compiler_generated_bytes": 90,
-      "exact_asm_helper_bytes": 76
+      "compiler_generated_bytes": 122,
+      "exact_asm_helper_bytes": 44
     },
     {
       "address": 2442,
@@ -183,8 +183,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/fpga_settings_reset.c",
       "compiler_profile": "fpga_saved_y_settings",
-      "compiler_generated_bytes": 58,
-      "exact_asm_helper_bytes": 26
+      "compiler_generated_bytes": 70,
+      "exact_asm_helper_bytes": 14
     },
     {
       "address": 2526,
@@ -193,8 +193,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/dac_stored_settings_apply.c",
       "compiler_profile": "dac_stored_settings_apply_legacy",
-      "compiler_generated_bytes": 16,
-      "exact_asm_helper_bytes": 94
+      "compiler_generated_bytes": 32,
+      "exact_asm_helper_bytes": 78
     },
     {
       "address": 2636,
@@ -203,8 +203,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/power_portd_interrupt.c",
       "compiler_profile": "r16_only_legacy_interrupt_no_block_reorder",
-      "compiler_generated_bytes": 52,
-      "exact_asm_helper_bytes": 28
+      "compiler_generated_bytes": 54,
+      "exact_asm_helper_bytes": 26
     },
     {
       "address": 2716,
@@ -233,8 +233,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/pll_status_interrupt.c",
       "compiler_profile": "pll_status_interrupt_legacy",
-      "compiler_generated_bytes": 80,
-      "exact_asm_helper_bytes": 56
+      "compiler_generated_bytes": 88,
+      "exact_asm_helper_bytes": 48
     },
     {
       "address": 2920,
@@ -263,8 +263,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/fpga_status_interrupt.c",
       "compiler_profile": "fpga_status_interrupt_legacy",
-      "compiler_generated_bytes": 54,
-      "exact_asm_helper_bytes": 30
+      "compiler_generated_bytes": 58,
+      "exact_asm_helper_bytes": 26
     },
     {
       "address": 3198,
@@ -303,8 +303,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/pll_defaults_load.c",
       "compiler_profile": "pll_saved_defaults_cursor",
-      "compiler_generated_bytes": 52,
-      "exact_asm_helper_bytes": 16
+      "compiler_generated_bytes": 56,
+      "exact_asm_helper_bytes": 12
     },
     {
       "address": 3616,
@@ -343,8 +343,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/application_main.c",
       "compiler_profile": "application_main_legacy",
-      "compiler_generated_bytes": 374,
-      "exact_asm_helper_bytes": 146
+      "compiler_generated_bytes": 418,
+      "exact_asm_helper_bytes": 102
     },
     {
       "address": 4444,
@@ -353,8 +353,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/fpga_data_exchange.c",
       "compiler_profile": "fpga_exchange_original_registers",
-      "compiler_generated_bytes": 182,
-      "exact_asm_helper_bytes": 216
+      "compiler_generated_bytes": 240,
+      "exact_asm_helper_bytes": 158
     },
     {
       "address": 4842,
@@ -363,8 +363,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/console_dispatch.c",
       "compiler_profile": "cli_dispatch_private_registers",
-      "compiler_generated_bytes": 228,
-      "exact_asm_helper_bytes": 428
+      "compiler_generated_bytes": 344,
+      "exact_asm_helper_bytes": 312
     },
     {
       "address": 5498,
@@ -373,8 +373,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/programming_unlock.c",
       "compiler_profile": "programming_unlock_legacy",
-      "compiler_generated_bytes": 8,
-      "exact_asm_helper_bytes": 36
+      "compiler_generated_bytes": 20,
+      "exact_asm_helper_bytes": 24
     },
     {
       "address": 5542,
@@ -383,8 +383,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/fpga_binary_programming_stream.c",
       "compiler_profile": "fpga_binary_programming_stream_legacy",
-      "compiler_generated_bytes": 54,
-      "exact_asm_helper_bytes": 136
+      "compiler_generated_bytes": 110,
+      "exact_asm_helper_bytes": 80
     },
     {
       "address": 5732,
@@ -413,8 +413,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/flash_page_program.c",
       "compiler_profile": "flash_page_program_legacy",
-      "compiler_generated_bytes": 56,
-      "exact_asm_helper_bytes": 38
+      "compiler_generated_bytes": 70,
+      "exact_asm_helper_bytes": 24
     },
     {
       "address": 5904,
@@ -453,8 +453,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/flash_crc_stream_read.c",
       "compiler_profile": "flash_crc_stream_read_legacy",
-      "compiler_generated_bytes": 54,
-      "exact_asm_helper_bytes": 60
+      "compiler_generated_bytes": 94,
+      "exact_asm_helper_bytes": 20
     },
     {
       "address": 6116,
@@ -493,8 +493,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_mean_amplitude_display.c",
       "compiler_profile": "channel_mean_amplitude_display_legacy",
-      "compiler_generated_bytes": 12,
-      "exact_asm_helper_bytes": 36
+      "compiler_generated_bytes": 16,
+      "exact_asm_helper_bytes": 32
     },
     {
       "address": 6334,
@@ -553,8 +553,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/system_status_display.c",
       "compiler_profile": "system_status_display_legacy",
-      "compiler_generated_bytes": 256,
-      "exact_asm_helper_bytes": 128
+      "compiler_generated_bytes": 262,
+      "exact_asm_helper_bytes": 122
     },
     {
       "address": 7140,
@@ -613,8 +613,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_adc_range_command.c",
       "compiler_profile": "channel_adc_range_command_legacy",
-      "compiler_generated_bytes": 30,
-      "exact_asm_helper_bytes": 90
+      "compiler_generated_bytes": 34,
+      "exact_asm_helper_bytes": 86
     },
     {
       "address": 7726,
@@ -633,8 +633,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_threshold_calibration_command.c",
       "compiler_profile": "channel_threshold_calibration_command_legacy",
-      "compiler_generated_bytes": 24,
-      "exact_asm_helper_bytes": 76
+      "compiler_generated_bytes": 32,
+      "exact_asm_helper_bytes": 68
     },
     {
       "address": 7904,
@@ -643,8 +643,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_tdc_adjust_command.c",
       "compiler_profile": "channel_tdc_adjust_command_legacy",
-      "compiler_generated_bytes": 22,
-      "exact_asm_helper_bytes": 68
+      "compiler_generated_bytes": 26,
+      "exact_asm_helper_bytes": 64
     },
     {
       "address": 7994,
@@ -663,8 +663,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_cfd_threshold_command.c",
       "compiler_profile": "channel_cfd_threshold_command_legacy",
-      "compiler_generated_bytes": 28,
-      "exact_asm_helper_bytes": 66
+      "compiler_generated_bytes": 34,
+      "exact_asm_helper_bytes": 60
     },
     {
       "address": 8172,
@@ -673,8 +673,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_adc_zero_command.c",
       "compiler_profile": "channel_adc_zero_command_legacy",
-      "compiler_generated_bytes": 30,
-      "exact_asm_helper_bytes": 68
+      "compiler_generated_bytes": 34,
+      "exact_asm_helper_bytes": 64
     },
     {
       "address": 8270,
@@ -683,8 +683,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/channel_cfd_zero_command.c",
       "compiler_profile": "channel_cfd_zero_command_legacy",
-      "compiler_generated_bytes": 26,
-      "exact_asm_helper_bytes": 62
+      "compiler_generated_bytes": 30,
+      "exact_asm_helper_bytes": 58
     },
     {
       "address": 8358,
@@ -743,8 +743,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/dac_signed_scaled_product.c",
       "compiler_profile": "signed_partial_product_private_r16_r17",
-      "compiler_generated_bytes": 6,
-      "exact_asm_helper_bytes": 22
+      "compiler_generated_bytes": 10,
+      "exact_asm_helper_bytes": 18
     },
     {
       "address": 8524,
@@ -753,8 +753,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/dac_saturating_scaled_product.c",
       "compiler_profile": "dac_saturating_scaled_product_legacy",
-      "compiler_generated_bytes": 6,
-      "exact_asm_helper_bytes": 34
+      "compiler_generated_bytes": 14,
+      "exact_asm_helper_bytes": 26
     },
     {
       "address": 8564,
@@ -763,8 +763,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/tdc_host_write.c",
       "compiler_profile": "tdc_host_write_legacy",
-      "compiler_generated_bytes": 100,
-      "exact_asm_helper_bytes": 48
+      "compiler_generated_bytes": 118,
+      "exact_asm_helper_bytes": 30
     },
     {
       "address": 8712,
@@ -773,8 +773,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/tdc_host_read.c",
       "compiler_profile": "tdc_host_read_legacy",
-      "compiler_generated_bytes": 126,
-      "exact_asm_helper_bytes": 36
+      "compiler_generated_bytes": 138,
+      "exact_asm_helper_bytes": 24
     },
     {
       "address": 8874,
@@ -913,8 +913,8 @@
       "classification": "C_WITH_EXACT_ASM_HELPER",
       "source": "src/console_hex_word.c",
       "compiler_profile": "r16_r17_r18_saved",
-      "compiler_generated_bytes": 24,
-      "exact_asm_helper_bytes": 16
+      "compiler_generated_bytes": 32,
+      "exact_asm_helper_bytes": 8
     },
     {
       "address": 10016,

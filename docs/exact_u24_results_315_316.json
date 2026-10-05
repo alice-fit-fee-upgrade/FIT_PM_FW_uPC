@@ -1,0 +1,20 @@
+[
+  {
+    "step": 315,
+    "source": "dma_channel_interrupt.c",
+    "change": "C 24-bit DMA remaining-length increment",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_315.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 316,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C 24-bit programming stream remaining-length increment",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_316_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

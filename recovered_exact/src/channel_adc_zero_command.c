@@ -1,5 +1,4 @@
 #include "legacy_cpu.h"
-#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void fpga_set_adc_zero(void)
@@ -9,9 +8,20 @@ void fpga_set_adc_zero(void)
     register uint8_t channel asm("r22") = (uint8_t)requested;
     asm volatile("" : "+r" (channel));
     PM_PARSE_VALUE(requested, "LAB_code_000ff5");
-    asm volatile("ldi r24, 1\n\tcpi r20, 0xf5\n\tcpc r21, r24\n\tbrge LAB_code_000ff5\n"
-                 "ldi r24, 0xfe\n\tcpi r20, 0x0c\n\tcpc r21, r24\n\tbrlt LAB_code_000ff5"
-                 : : "r" (requested) : "r24", "cc");
+    register uint8_t limit_high asm("r24") = 1;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested >= 501) goto LAB_code_000ff5;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0xf5\n\tcpc r21, r24\n\tbrge LAB_code_000ff5\n" : : "r" (requested), "r" (limit_high) : "cc");
+    limit_high = 0xfe;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested < -500) goto LAB_code_000ff5;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0x0c\n\tcpc r21, r24\n\tbrlt LAB_code_000ff5" : : "r" (requested), "r" (limit_high) : "cc");
     PM_FPGA_GUARD(requested);
     asm volatile("sbi 0, 3" : : : "memory");
     register uint16_t word asm("r16") = requested;

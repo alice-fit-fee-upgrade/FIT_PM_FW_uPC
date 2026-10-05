@@ -13,6 +13,14 @@ void cli_get_integer(void)
 next_digit:;
     register uint8_t character asm("r16");
     asm volatile("rcall cli_get_next_char" : "=r" (character) : : "memory", "cc");
+    /* Rejected C selection/range alternatives (steps 236-238):
+     * if (count != 0 || character != '-') goto validate;
+     * if ((int8_t)character < '0' || (int8_t)character >= ':') goto done;
+     * if (count == 1) goto error;
+     * if (negative == 0) goto success;
+     * if (count == 2) goto error;
+     * These alternatives changed complete binary/layout matching. They have
+     * no independent successful functional-test claim. Retain exact branches. */
     asm goto("tst r18\n\tbrne %l[validate]\n\tcpi r16, 0x2d\n\tbrne %l[validate]"
              : : "r" (count), "r" (character) : "cc" : validate);
     asm volatile("inc r19\n\tinc r18" : "+r" (negative), "+r" (count) : : "cc");

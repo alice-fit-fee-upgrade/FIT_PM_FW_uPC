@@ -1,0 +1,20 @@
+[
+  {
+    "step": 245,
+    "source": "console_hex_word.c",
+    "change": "GNU C nibble swaps in four-digit console formatting",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_245.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 246,
+    "source": "flash_crc_stream_read.c",
+    "change": "C SPI ready polling in FLASH CRC stream",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_246.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

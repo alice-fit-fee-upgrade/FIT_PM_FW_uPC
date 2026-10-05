@@ -1,6 +1,15 @@
+/* Private register entries; value/channel barriers preserve the original ABI. */
+extern void FUN_code_001053(void);
+extern void dac_set_value_2(void);
+extern void dac_set_value(void);
+extern void FUN_code_001068(void);
 #include <stdint.h>
 #define LOAD_SETTING(value, cursor) asm volatile("ld r20, Y+\n\tld r21, Y+" : "=r" (value), "+y" (cursor) : : "memory")
-#define DAC_CALL(name, value, channel) asm volatile("call " name : "+r" (value), "+r" (channel) : : "memory", "cc")
+#define DAC_CALL(name, value, channel) do { \
+ asm volatile("" : "+r" (value), "+r" (channel) : : "memory"); \
+ name(); \
+ asm volatile("" : "=r" (value), "=r" (channel) : : "memory"); \
+} while (0)
 
 /* Apply the four stored words for each channel. The exact save frame is
  * required because callers expect all fourteen original registers restored. */
@@ -16,16 +25,16 @@ next_channel:;
     register uint8_t selected asm("r22");
     LOAD_SETTING(word, settings);
     selected = channel; asm volatile("" : "+r" (selected), "+r" (channel));
-    DAC_CALL("FUN_code_001053", word, selected);
+    DAC_CALL(FUN_code_001053, word, selected);
     LOAD_SETTING(word, settings);
     selected = channel; asm volatile("" : "+r" (selected), "+r" (channel));
-    DAC_CALL("dac_set_value_2", word, selected);
+    DAC_CALL(dac_set_value_2, word, selected);
     LOAD_SETTING(word, settings);
     selected = channel; asm volatile("" : "+r" (selected), "+r" (channel));
-    DAC_CALL("dac_set_value", word, selected);
+    DAC_CALL(dac_set_value, word, selected);
     LOAD_SETTING(word, settings);
     selected = channel; asm volatile("" : "+r" (selected), "+r" (channel));
-    DAC_CALL("FUN_code_001068", word, selected);
+    DAC_CALL(FUN_code_001068, word, selected);
     asm volatile("inc %0" : "+r" (channel) : : "cc");
     if (channel != 12) goto next_channel;
     asm volatile("pop r0\n\tpop r1\n\tpop r16\n\tpop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r21\n\tpop r22\n\tpop r23\n\tpop r28\n\tpop r29\n\tpop r30\n\tpop r31\n\tret" : : : "memory");

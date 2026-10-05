@@ -1,0 +1,38 @@
+[
+  {
+    "step": 275,
+    "source": "console_dispatch.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_275.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 276,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_276.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 277,
+    "source": "dma_channel_interrupt.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_277.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 278,
+    "source": "fpga_data_exchange.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_278.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

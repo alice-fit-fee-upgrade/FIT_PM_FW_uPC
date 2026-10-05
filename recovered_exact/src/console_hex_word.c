@@ -21,7 +21,10 @@
  * }
  */
 
-#define SWAP_NIBBLES(value) asm volatile("swap %0" : "+r" (value))
+#define SWAP_NIBBLES(value) do { \
+ (value) = __builtin_avr_swap(value); \
+ asm volatile("" : "+r" (value)); \
+} while (0)
 #define SEND_DIGIT(value) asm volatile("rcall cli_send_digit_hex" : "+r" (value) : : "memory", "cc")
 
 /* Historical symbol says 32bit; the original emits four nibbles of R17:R16. */

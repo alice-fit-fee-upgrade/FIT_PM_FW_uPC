@@ -8,9 +8,20 @@ void fpga_set_ch_cfd_threshold(void)
     register uint8_t channel asm("r22") = (uint8_t)requested;
     asm volatile("" : "+r" (channel));
     PM_PARSE_VALUE(requested, "LAB_code_000f9c");
-    asm volatile("ldi r24, 0x75\n\tcpi r20, 0x31\n\tcpc r21, r24\n\tbrge LAB_code_000f9c\n"
-                 "ldi r24, 1\n\tcpi r20, 0x2c\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c"
-                 : : "r" (requested) : "r24", "cc");
+    register uint8_t limit_high asm("r24") = 0x75;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested >= 30001) goto LAB_code_000f9c;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0x31\n\tcpc r21, r24\n\tbrge LAB_code_000f9c\n" : : "r" (requested), "r" (limit_high) : "cc");
+    limit_high = 1;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested < 300) goto LAB_code_000f9c;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0x2c\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (requested), "r" (limit_high) : "cc");
     PM_FPGA_GUARD(requested);
     register uint16_t word asm("r16") = requested;
     asm volatile("" : "+r" (word));
@@ -30,7 +41,10 @@ void fpga_set_ch_cfd_threshold(void)
     pm_cpu_enable_irq();
     register uint8_t *settings asm("r28") = (uint8_t *)0x21cf;
     asm volatile("" : "+y" (settings));
-    asm volatile("lsl %0\n\tclr r11\n\tadd r28, %0\n\tadc r29, r11"
+    offset += offset;
+    asm volatile("" : "+r" (offset), "+y" (settings));
+    /* C pointer value: settings += offset; CLR/ADC retain live flags. */
+    asm volatile("clr r11\n\tadd r28, %0\n\tadc r29, r11"
         : "+r" (offset), "+y" (settings) : : "r11", "cc");
     asm volatile("st Y+, r20\n\tst Y, r21" : "+y" (settings) : "r" (requested) : "memory");
     asm volatile("rcall FUN_code_001053" : : "r" (requested), "r" (channel) : "memory", "cc");

@@ -1,0 +1,8 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fcall-used-r16 -fcall-used-r17 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/fpga_binary_programming_stream.c -o build/fpga_binary_programming_stream.o
+src/fpga_binary_programming_stream.c: In function ‘fpga_firmware_update’:
+src/fpga_binary_programming_stream.c:67:23: error: register specified for ‘remaining_length’ isn’t suitable for data type
+     register __uint24 remaining_length asm("r17");
+                       ^~~~~~~~~~~~~~~~
+make: *** [Makefile:147: build/fpga_binary_programming_stream.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

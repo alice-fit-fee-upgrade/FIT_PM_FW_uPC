@@ -25,9 +25,12 @@ selected:
     PORTB_OUTCLR = clock;
     count = 8;
 next_command_bit:
-    asm volatile("sbrs %0, 7\n\tsts %2, %1\n\tsbrc %0, 7\n\tsts %3, %1\n\tadc %0, %0"
-        : "+r" (command) : "r" (data_mask), "n" (_SFR_MEM_ADDR(PORTB_OUTCLR)),
-          "n" (_SFR_MEM_ADDR(PORTB_OUTSET)), "r" (count) : "memory", "cc");
+    if (!(command & 0x80u)) PORTB_OUTCLR = data_mask;
+    asm volatile("" : "+r" (command) : "r" (data_mask), "r" (count) : "memory");
+    if (command & 0x80u) PORTB_OUTSET = data_mask;
+    /* C value equivalent: command = (command << 1) + carry;
+     * ADC preserves the input carry and exact flag state. */
+    asm volatile("adc %0, %0" : "+r" (command) : : "cc");
     PORTB_OUTSET = clock;
     PORTB_OUTCLR = clock;
     /* C counter value: --count; if (count != 0) goto loop_start;

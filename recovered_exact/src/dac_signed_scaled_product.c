@@ -24,9 +24,18 @@ void fpga_is_ready(void)
                  : "=r" (high), "=r" (product_high) : : "r0", "cc");
     low = product_high;
     asm volatile("" : "+r" (low));
-    asm volatile("mul r19, r20\n\tadd r16, r0\n\tadc r17, r1\n"
-                 "mulsu r21, r18\n\tadd r16, r0\n\tadc r17, r1\n\tmulsu r21, r19"
-                 : "+r" (low), "+r" (high), "=r" (product_low) : : "r1", "cc");
+    register uint8_t cross_low asm("r0");
+    asm volatile("mul r19, r20" : "=r" (cross_low) : : "r1", "cc");
+    low += cross_low;
+    asm volatile("" : "+r" (low));
+    /* C high-byte value: high += product_high + carry;
+     * ADC preserves the exact live SREG.C and dirty R1 contract. */
+    asm volatile("adc %0, r1" : "+r" (high) : : "cc");
+    asm volatile("mulsu r21, r18" : "=r" (cross_low) : : "r1", "cc");
+    low += cross_low;
+    asm volatile("" : "+r" (low));
+    asm volatile("adc %0, r1" : "+r" (high) : : "cc");
+    asm volatile("mulsu r21, r19" : "=r" (product_low) : : "r1", "cc");
     high += product_low;
     asm volatile("" : : "r" (low), "r" (high));
 }

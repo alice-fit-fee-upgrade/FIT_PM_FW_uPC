@@ -1,3 +1,8 @@
+/* Calls retain private fixed-register inputs/results through zero-byte
+ * barriers. Void declarations deliberately introduce no GNU arguments/results;
+ * recapture after each call observes the original registers. Every conversion
+ * is accepted only if GNU CALL, frames and the entire FLASH remain identical. */
+extern void fpga_msg_read_t1(void);
 #include "legacy_cpu.h"
 #include "legacy_interrupt.h"
 #include "legacy_r16_c.h"
@@ -6,7 +11,11 @@ void PORTE_INT1_vect_isr(void)
 {
     asm volatile("push r31\n\tin r31, 0x3f\n\tpush r16\n\tpush r17\n\tpush r18" : : : "memory");
     register uint8_t lo asm("r16"), hi asm("r17"), address asm("r18") = 0x7f;
-    asm volatile("call fpga_msg_read_t1" : "=r" (lo), "=r" (hi), "+r" (address) : : "memory", "cc");
+    do {
+        asm volatile("" : "+r" (address) :  : "memory");
+        fpga_msg_read_t1();
+        asm volatile("" : "=r" (lo), "=r" (hi), "=r" (address) : : "memory");
+    } while (0);
     if (!(hi & (1u << 1))) goto merge_status;
     address = PM_RAM8(0x2006);
     address |= 1;

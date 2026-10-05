@@ -17,7 +17,13 @@ next_byte:;
     read_index += 1; asm volatile("" : "+r" (read_index));
     read_index &= 0x01ff; asm volatile("" : "+r" (read_index));
     RAM8(0x0ac3) = byte;
-    asm volatile("1: lds r19, 0x0ac2\n\tsbrs r19, 7\n\trjmp 1b" : : : "r19", "memory");
+    {
+        register uint8_t spi_status asm("r19");
+        do {
+            spi_status = RAM8(0x0ac2);
+            asm volatile("" : "+r" (spi_status));
+        } while (!(spi_status & 0x80u));
+    }
     asm goto("cp r0, r20\n\tcpc r1, r21\n\tcpc r2, r22\n\tbrne %l[continue_page]" : : : "cc" : continue_page);
     RAM8(0x2437) = (uint8_t)read_index;
     RAM8(0x2438) = read_index >> 8;
@@ -27,7 +33,12 @@ next_byte:;
     asm volatile("sec\n\tret" : : : "cc");
     __builtin_unreachable();
 continue_page:
-    asm volatile("subi r20, 0xff\n\tsbci r21, 0xff\n\tsbci r22, 0xff" : : : "memory", "cc");
+    {
+        register __uint24 current_address asm("r20");
+        asm volatile("" : "=r" (current_address) : : "memory");
+        ++current_address;
+        asm volatile("" : "+r" (current_address) : : "memory");
+    }
     asm goto("tst r20\n\tbrne %l[next_byte]" : : : "cc" : next_byte);
     RAM8(0x2437) = (uint8_t)read_index;
     RAM8(0x2438) = read_index >> 8;

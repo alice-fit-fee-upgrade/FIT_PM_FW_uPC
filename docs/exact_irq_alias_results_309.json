@@ -1,0 +1,11 @@
+[
+  {
+    "step": 309,
+    "source": "console_dispatch.c",
+    "accepted": true,
+    "change": "GNU IRQ enable primitive for BSET 7 alias",
+    "differing_bytes": 0,
+    "infrastructure_retry": "Initial clean build stopped with No space left on device; recovered space and passed full clean exact-check",
+    "log": "docs/exact_c_steps/step_309.log"
+  }
+]

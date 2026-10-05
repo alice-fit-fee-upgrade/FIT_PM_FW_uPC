@@ -1,0 +1,29 @@
+[
+  {
+    "step": 239,
+    "source": "console_flash_message.c",
+    "change": "C __flash message-byte read with pointer increment",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_239_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 240,
+    "source": "fpga_timestamp_send.c",
+    "change": "C __flash timestamp-byte reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_240_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 241,
+    "source": "pll_defaults_load.c",
+    "change": "C __flash four-byte PLL default reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_241_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

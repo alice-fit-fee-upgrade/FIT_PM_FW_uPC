@@ -1,0 +1,47 @@
+[
+  {
+    "step": 262,
+    "source": "channel_adc_zero_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_262.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 263,
+    "source": "channel_cfd_zero_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_263.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 264,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_264.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 265,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_265.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 266,
+    "source": "channel_adc_range_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_266.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

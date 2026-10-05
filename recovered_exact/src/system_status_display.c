@@ -58,7 +58,7 @@ thermal_state:
     SET_MESSAGE(0x2a02);
 message_and_return:
     SEND_MESSAGE();
-    asm volatile("ret"); __builtin_unreachable();
+    return;
 pll_powered:
     SET_MESSAGE(0x29fc); SEND_MESSAGE();
     SET_MESSAGE(0x2998);
@@ -135,7 +135,7 @@ tdc_inactive:
      * exact_status_branch_results.json. No functional-test claim. */
     asm goto("sbrc r20, 0\n\trjmp %l[tdc_powered]" : : "r" (power) : : tdc_powered);
     SEND_MESSAGE();
-    asm volatile("ret"); __builtin_unreachable();
+    return;
 tdc_powered:
     SET_MESSAGE(0x29fc); SEND_MESSAGE();
     SET_MESSAGE(0x2b4e);
@@ -147,5 +147,5 @@ tdc_powered:
 tdc_configuration:
     SEND_MESSAGE();
 finished:
-    asm volatile("ret"); __builtin_unreachable();
+    return;
 }

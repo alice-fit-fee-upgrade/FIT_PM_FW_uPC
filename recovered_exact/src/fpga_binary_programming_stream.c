@@ -1,7 +1,19 @@
+extern void cli_send_buf(void);
+/* Private entries: capture R16/R17 after calls; no GNU result ABI is used. */
+extern void cli_get_next_byte(void);
+extern void cli_send_32bit_hex(void);
+extern void cli_send_crlf(void);
 #include <stdint.h>
 #define RAM8(address) (*(volatile uint8_t *)(address))
-#define RECEIVE(byte) asm volatile("call cli_get_next_byte" : "=r" (byte) : : "memory", "cc")
-#define PRINT_HEX(word) asm volatile("call cli_send_32bit_hex" : "+r" (word) : : "memory", "cc")
+#define RECEIVE(byte) do { \
+ cli_get_next_byte(); \
+ asm volatile("" : "=r" (byte) : : "memory"); \
+} while (0)
+#define PRINT_HEX(word) do { \
+ asm volatile("" : "+r" (word) : : "memory"); \
+ cli_send_32bit_hex(); \
+ asm volatile("" : "=r" (word) : : "memory"); \
+} while (0)
 
 /* Original binary programming stream: two page-address bytes, an upper byte,
  * three limit bytes, then chunks in the existing 512-byte circular buffer. */
@@ -18,7 +30,7 @@ void fpga_firmware_update(void)
     asm volatile("" : "=r" (word), "=r" (second));
     PRINT_HEX(word);
     word = second; PRINT_HEX(word);
-    asm volatile("call cli_send_crlf" : : : "memory", "cc");
+    cli_send_crlf();
     RECEIVE(byte);
     register uint8_t address_low asm("r28") = byte;
     asm volatile("" : "+r" (address_low));
@@ -29,8 +41,14 @@ void fpga_firmware_update(void)
     register uint8_t address_high asm("r30") = byte;
     asm volatile("" : "+r" (address_high));
     /* The original limit lives in R2:R0, including a nonzero R1. */
-    asm volatile("call cli_get_next_byte\n\tmov r0, r16\n\tcall cli_get_next_byte\n\tmov r1, r16\n"
-                 "call cli_get_next_byte\n\tmov r2, r16" : : : "r0", "r1", "r2", "memory", "cc");
+    cli_get_next_byte();
+    asm volatile("mov r0, r16" : : : "r0", "memory");
+    cli_get_next_byte();
+    /* C value equivalent: limit_middle = received;
+     * Keep the original live nonzero R1 limit byte, outside GNU zero ABI. */
+    asm volatile("mov r1, r16" : : : "r1", "memory");
+    cli_get_next_byte();
+    asm volatile("mov r2, r16" : : : "r2", "memory");
     register uint16_t current asm("r20");
     asm volatile("movw r20, r28" : "=r" (current) : "r" (address_low), "r" (address_middle));
     register uint8_t current_high asm("r22") = address_high;
@@ -40,7 +58,12 @@ next_page:
 next_chunk:
     asm volatile("mov r17, r0\n\tmov r18, r1\n\tmov r19, r2" : : : "r17", "r18", "r19");
     byte = 1;
-    asm volatile("call cli_send_buf\n\tsub r17, r20\n\tsbc r18, r21\n\tsbc r19, r22\n"
+    asm volatile("" : "+r" (byte) : : "memory");
+    cli_send_buf();
+    asm volatile("" : "=r" (byte) : : "memory");
+    /* C value equivalent: remaining_limit -= current_address;
+     * Keep original SUB/SBC flags and 24-bit private register ordering. */
+    asm volatile("sub r17, r20\n\tsbc r18, r21\n\tsbc r19, r22\n"
                  "subi r17, 0xff\n\tsbci r18, 0xff\n\tsbci r19, 0xff\n\tor r18, r19\n\tbreq 1f\n\tclr r17\n1:"
                  : "+r" (byte) : : "r17", "r18", "r19", "memory", "cc");
     register uint8_t remaining asm("r17");
@@ -68,6 +91,9 @@ finished:
     asm volatile("rcall FUN_code_000b9d\n\trcall FUN_code_000bb9" : "=r" (word), "=r" (second) : : "memory", "cc");
     PRINT_HEX(word);
     word = second; PRINT_HEX(word);
-    asm volatile("call cli_send_crlf\n\trcall FUN_code_000b3f\n\trjmp LAB_code_000ff1" : : : "memory", "cc");
+    cli_send_crlf();
+    /* C operation equivalent: flash_deinit(); return_to_prompt();
+     * Keep the short RCALL and shared absolute tail exactly encoded. */
+    asm volatile("rcall FUN_code_000b3f\n\trjmp LAB_code_000ff1" : : : "memory", "cc");
     __builtin_unreachable();
 }

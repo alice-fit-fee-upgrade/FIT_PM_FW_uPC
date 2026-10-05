@@ -6,7 +6,10 @@ void PORTD_INT0_vect_isr(void)
 {
     PM_ISR_ENTER_R16();
     register uint8_t value asm("r16") = PORTD_IN;
-    asm volatile("bst %0, 3\n\tcli" : : "r" (value) : "memory", "cc");
+    /* C flags equivalent: saved_t = (value >> 3) & 1; disable_irq();
+     * Keep BST because the later BLD consumes CPU T across this IRQ window. */
+    asm volatile("bst %0, 3" : : "r" (value) : "cc");
+    pm_cpu_disable_irq();
     value = pm_read_absolute(0x2157);
     asm volatile("bld %0, 4" : "+r" (value) : : "cc");
     PM_RAM8(0x2157) = value;

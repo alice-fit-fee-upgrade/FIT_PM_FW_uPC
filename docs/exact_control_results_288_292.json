@@ -1,0 +1,47 @@
+[
+  {
+    "step": 288,
+    "source": "system_status_display.c",
+    "change": "C return at existing standalone RET entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_288.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 289,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C return at existing standalone RET entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_289.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 290,
+    "source": "programming_unlock.c",
+    "change": "C wide calls in programming password handshake",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_290.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 291,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C receive calls for three-byte programming limit",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_291.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 292,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C final console newline in programming stream",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_292.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

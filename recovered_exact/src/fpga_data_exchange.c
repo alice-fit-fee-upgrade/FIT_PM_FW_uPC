@@ -1,3 +1,10 @@
+/* Private entry calls below intentionally have no GNU argument/result ABI.
+ * Adjacent fixed-register setup/capture preserves each historical contract;
+ * these declarations emit the original wide CALL, not a new C API. The whole
+ * image check verifies CALL width, register moves and every saved frame. */
+extern void FUN_code_0011e5(void);
+extern void fpga_msg_read_t1(void);
+extern void fpga_msg_send_t2(void);
 #include "legacy_cpu.h"
 #include <avr/io.h>
 #include <stdint.h>
@@ -9,7 +16,6 @@
  * independent functional tests of rejected C alternatives are claimed. */
 void fpga_data_exchange(void)
 {
-    register uint8_t r15 asm("r15");
     register uint8_t r16 asm("r16");
     register uint8_t r17 asm("r17");
     register uint8_t r18 asm("r18");
@@ -30,12 +36,12 @@ void fpga_data_exchange(void)
     asm volatile("" : "+r" (r16));
     asm goto("sbrc        r16,0x7\n\trjmp %l[L_0008b8]" : : : "memory", "cc" : L_0008b8);
 L_0008b6:
-    asm volatile("bset        7" : : : "memory", "cc");
+    pm_cpu_enable_irq();
     asm volatile("ret");
     __builtin_unreachable();
 L_0008b8:
-    asm volatile("call        FUN_code_0011e5" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    FUN_code_0011e5();
+    pm_cpu_enable_irq();
     r18 = 0x80;
     asm volatile("" : "+r" (r18));
     r28 = 0xcf;
@@ -43,12 +49,16 @@ L_0008b8:
     r29 = 0x21;
     asm volatile("" : "+r" (r29));
 L_0008be:
-    asm volatile("" : "=r" (r15));
-    r15 >>= 1;
-    asm volatile("" : "+r" (r15));
-    asm volatile("ror         r14" : : : "memory", "cc");
-    asm volatile("ror         r13" : : : "memory", "cc");
-    asm volatile("ror         r12" : : : "memory", "cc");
+    {
+        register uint32_t upper_bitmap asm("r12");
+        asm volatile("" : "=r" (upper_bitmap) : : "memory");
+        upper_bitmap >>= 1;
+        asm volatile("" : "+r" (upper_bitmap) : : "memory");
+    }
+    /* C full value: bitmap >>= 1; lower RORs inject upper-word carry.
+     * GNU uint64_t shifting calls __lshrdi3 and moves the private R8:R15
+     * packet through GNU argument registers. Keep the lower exact carry chain;
+     * no independent functional-test claim for this explanatory alternative. */
     asm volatile("ror         r11" : : : "memory", "cc");
     asm volatile("ror         r10" : : : "memory", "cc");
     asm volatile("ror         r9" : : : "memory", "cc");
@@ -61,8 +71,8 @@ L_0008c9:
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
     asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
-    asm volatile("call        fpga_msg_read_t1" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    fpga_msg_read_t1();
+    pm_cpu_enable_irq();
     asm volatile("cpi         r18,0xb0" : : : "memory", "cc");
     asm goto("brbs 0, %l[L_0008d4]" : : : "memory", "cc" : L_0008d4);
     goto L_00094c;
@@ -99,12 +109,18 @@ L_0008e4:
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
     asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
-    asm volatile("call        fpga_msg_send_t2" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    fpga_msg_send_t2();
+    pm_cpu_enable_irq();
 L_0008ec:
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
-    asm volatile("movw        r20,r16" : : : "memory", "cc");
+    {
+        register uint16_t copied_word asm("r16");
+        register uint16_t destination_word asm("r20");
+        asm volatile("" : "=r" (copied_word) : : "memory");
+        destination_word = copied_word;
+        asm volatile("" : "+r" (destination_word) : : "memory");
+    }
     asm volatile("" : "=r" (r18));
     r22 = r18;
     asm volatile("" : "+r" (r22));
@@ -147,12 +163,18 @@ L_000904:
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
     asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
-    asm volatile("call        fpga_msg_send_t2" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    fpga_msg_send_t2();
+    pm_cpu_enable_irq();
 L_00090c:
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
-    asm volatile("movw        r20,r16" : : : "memory", "cc");
+    {
+        register uint16_t copied_word asm("r16");
+        register uint16_t destination_word asm("r20");
+        asm volatile("" : "=r" (copied_word) : : "memory");
+        destination_word = copied_word;
+        asm volatile("" : "+r" (destination_word) : : "memory");
+    }
     asm volatile("" : "=r" (r18));
     r22 = r18;
     asm volatile("" : "+r" (r22));
@@ -195,12 +217,18 @@ L_000924:
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
     asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
-    asm volatile("call        fpga_msg_send_t2" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    fpga_msg_send_t2();
+    pm_cpu_enable_irq();
 L_00092c:
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
-    asm volatile("movw        r20,r16" : : : "memory", "cc");
+    {
+        register uint16_t copied_word asm("r16");
+        register uint16_t destination_word asm("r20");
+        asm volatile("" : "=r" (copied_word) : : "memory");
+        destination_word = copied_word;
+        asm volatile("" : "+r" (destination_word) : : "memory");
+    }
     asm volatile("" : "=r" (r18));
     r22 = r18;
     asm volatile("" : "+r" (r22));
@@ -230,11 +258,17 @@ L_00093b:
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
     asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
-    asm volatile("call        fpga_msg_send_t2" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    fpga_msg_send_t2();
+    pm_cpu_enable_irq();
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
-    asm volatile("movw        r20,r16" : : : "memory", "cc");
+    {
+        register uint16_t copied_word asm("r16");
+        register uint16_t destination_word asm("r20");
+        asm volatile("" : "=r" (copied_word) : : "memory");
+        destination_word = copied_word;
+        asm volatile("" : "+r" (destination_word) : : "memory");
+    }
     asm volatile("" : "=r" (r18));
     r22 = r18;
     asm volatile("" : "+r" (r22));
@@ -263,8 +297,8 @@ L_00094c:
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
     asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
-    asm volatile("call        fpga_msg_send_t2" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    fpga_msg_send_t2();
+    pm_cpu_enable_irq();
 L_00095a:
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");

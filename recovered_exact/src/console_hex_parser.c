@@ -12,6 +12,13 @@ next_digit:;
     asm volatile("rcall cli_get_next_char" : "=r" (character) : : "memory", "cc");
     register uint8_t digit asm("r22") = character;
     asm volatile("" : "+r" (digit), "+r" (character));
+    /* Rejected C range alternative (step_235_rejected.log):
+     * if (character < '0') goto done;
+     * if (character < ':') goto decode;
+     * if (character < 'A') goto done;
+     * if (character >= 'G') goto done;
+     * It changed complete binary/layout matching. No independent functional
+     * test is claimed for this fragment; retain original branches below. */
     asm goto("cpi r16, 0x30\n\tbrcs %l[done]\n\tcpi r16, 0x3a\n\tbrcs %l[decode]\n"
              "cpi r16, 0x41\n\tbrcs %l[done]\n\tcpi r16, 0x47\n\tbrcc %l[done]"
              : : "r" (character) : "cc" : done, decode);

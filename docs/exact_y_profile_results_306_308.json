@@ -1,0 +1,29 @@
+[
+  {
+    "step": 306,
+    "source": "dma_channel_interrupt.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW; allow Y in local private profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_306_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 307,
+    "source": "fpga_data_exchange.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW; allow Y in local private profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_307_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 308,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM mapped-address increment before exact loads; allow Y in local private profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_308_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

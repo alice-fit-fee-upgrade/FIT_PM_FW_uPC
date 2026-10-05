@@ -1,0 +1,47 @@
+[
+  {
+    "step": 250,
+    "source": "console_dispatch.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_250.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 251,
+    "source": "fpga_data_exchange.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_251.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 252,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_252.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 253,
+    "source": "dma_channel_interrupt.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_253_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 254,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C programming-stream address pair copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_254_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,3 +1,8 @@
+/* Calls retain private fixed-register inputs/results through zero-byte
+ * barriers. Void declarations deliberately introduce no GNU arguments/results;
+ * recapture after each call observes the original registers. Every conversion
+ * is accepted only if GNU CALL, frames and the entire FLASH remain identical. */
+extern void cli_send_buf(void);
 /* Retained exact call/load helpers: a C call such as
  * value = fpga_read(address); or fpga_write(address, word); expresses the
  * operation, but these entries use private bound registers, original CALL/RCALL
@@ -28,7 +33,11 @@ void cli_send_ch_mean_amplitude(void)
 next_channel:
     READ_PRINT(value, address);
     register uint8_t separator asm("r16") = ' ';
-    asm volatile("call cli_send_buf" : "+r" (separator) : : "memory", "cc");
+    do {
+        asm volatile("" : "+r" (separator) :  : "memory");
+        cli_send_buf();
+        asm volatile("" : "=r" (separator) : : "memory");
+    } while (0);
     asm volatile("inc %0" : "+r" (address) : : "cc");
     READ_PRINT(value, address);
     asm volatile("rcall cli_send_crlf\n\tinc %0" : "+r" (address) : : "memory", "cc");

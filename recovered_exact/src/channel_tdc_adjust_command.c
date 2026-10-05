@@ -8,9 +8,20 @@ void pm_channel_tdc_adjust(void)
     register uint8_t channel asm("r19") = (uint8_t)requested;
     asm volatile("" : "+r" (channel));
     PM_PARSE_VALUE(requested, "LAB_code_000f9c");
-    asm volatile("ldi r24, 0\n\tcpi r20, 0x40\n\tcpc r21, r24\n\tbrge LAB_code_000f9c\n"
-                 "ldi r24, 0xff\n\tcpi r20, 0xc0\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c"
-                 : : "r" (requested) : "r24", "cc");
+    register uint8_t limit_high asm("r24") = 0;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested >= 64) goto LAB_code_000f9c;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0x40\n\tcpc r21, r24\n\tbrge LAB_code_000f9c\n" : : "r" (requested), "r" (limit_high) : "cc");
+    limit_high = 0xff;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested < -64) goto LAB_code_000f9c;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0xc0\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (requested), "r" (limit_high) : "cc");
     PM_FPGA_GUARD(requested);
     register uint8_t *settings asm("r28") = (uint8_t *)0x217b;
     asm volatile("clr r11\n\tadd r28, %1\n\tadc r29, r11"

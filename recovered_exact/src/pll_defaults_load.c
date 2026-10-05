@@ -1,3 +1,8 @@
+/* Calls retain private fixed-register inputs/results through zero-byte
+ * barriers. Void declarations deliberately introduce no GNU arguments/results;
+ * recapture after each call observes the original registers. Every conversion
+ * is accepted only if GNU CALL, frames and the entire FLASH remain identical. */
+extern void CDCE62005_send_control_settings(void);
 #include "legacy_cpu.h"
 #include <avr/io.h>
 
@@ -38,14 +43,23 @@ void CDCE62005_control_rst(void)
 next_setting:
     {
         register uint8_t b0 asm("r16"), b1 asm("r17"), b2 asm("r18"), b3 asm("r19");
+        /* C FLASH read equivalent with const __flash uint8_t *cursor:
+         * b0 = *cursor++; b1 = *cursor++; b2 = *cursor++; b3 = *cursor++;
+         * Trials 239-249 could not reproduce the private pointer/register layout;
+         * keep exact LPM Z+ instructions. This is explanatory, with no new
+         * independent functional-test claim. Existing historical test scope,
+         * when available, is documented above. */
         asm volatile("lpm %0, Z+\n\tlpm %1, Z+\n\tlpm %2, Z+\n\tlpm %3, Z+"
             : "=r" (b0), "=r" (b1), "=r" (b2), "=r" (b3), "+z" (cursor)
             : "r" (remaining) : "memory");
         /* Retain CALL rather than RCALL and the original interrupt window. */
         asm volatile("" : "+r" (b0), "+r" (b1), "+r" (b2), "+r" (b3) : : "memory");
         pm_cpu_disable_irq();
-        asm volatile("call CDCE62005_send_control_settings"
-            : "+r" (b0), "+r" (b1), "+r" (b2), "+r" (b3) : : "memory", "cc");
+        do {
+        asm volatile("" : "+r" (b0), "+r" (b1), "+r" (b2), "+r" (b3) :  : "memory");
+        CDCE62005_send_control_settings();
+        asm volatile("" : "=r" (b0), "=r" (b1), "=r" (b2), "=r" (b3) : : "memory");
+    } while (0);
         pm_cpu_enable_irq();
     }
     asm volatile("dec %0" : "+r" (remaining) : : "cc");

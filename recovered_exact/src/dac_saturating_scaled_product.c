@@ -48,12 +48,28 @@
 void FUN_code_0010a6(void)
 {
     register uint16_t result asm("r16");
-    asm volatile("clr r17\n\tmul r18, r20\n\tsbrc r0, 7\n\tinc r1\n\tmov r16, r1\n"
-                 "mul r19, r20\n\tadd r16, r0\n\tadc r17, r1\n"
-                 "mul r18, r21\n\tadd r16, r0\n\tadc r17, r1\n\tmul r19, r21"
-                 : "=r" (result) : : "r0", "r1", "cc");
+    register uint8_t low asm("r16"), high asm("r17"), product_high asm("r1");
+    asm volatile("clr r17\n\tmul r18, r20\n\tsbrc r0, 7\n\tinc r1"
+                 : "=r" (high), "=r" (product_high) : : "r0", "cc");
+    low = product_high;
+    asm volatile("" : "+r" (low));
+    /* C value equivalent: add each partial product into low/high with carry.
+     * The historically tested complete C alternative and bridge are above;
+     * this exact helper also preserves dirty R1 and live arithmetic flags. */
+    register uint8_t cross_low asm("r0");
+    asm volatile("mul r19, r20" : "=r" (cross_low) : : "r1", "cc");
+    low += cross_low;
+    asm volatile("" : "+r" (low));
+    /* C high-byte value: high += product_high + carry;
+     * ADC preserves the exact live SREG.C and dirty R1 contract. */
+    asm volatile("adc %0, r1" : "+r" (high) : : "cc");
+    asm volatile("mul r18, r21" : "=r" (cross_low) : : "r1", "cc");
+    low += cross_low;
+    asm volatile("" : "+r" (low));
+    asm volatile("adc %0, r1" : "+r" (high) : : "cc");
+    asm volatile("mul r19, r21" : "=r" (cross_low) : : "r1", "cc");
     asm goto("tst r1\n\tbrne %l[overflow]\n\tadd r17, r0\n\tbrcs %l[overflow]" : : : "cc" : overflow);
-    asm volatile("ret"); __builtin_unreachable();
+    return;
 overflow:
     result = UINT16_MAX;
     asm volatile("" : : "r" (result));

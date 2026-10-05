@@ -1,0 +1,56 @@
+[
+  {
+    "step": 300,
+    "source": "fpga_data_exchange.c",
+    "change": "C upper bitmap shift; remove unused old byte binding",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_300.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 301,
+    "source": "dma_channel_interrupt.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_301_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 302,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_302.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 303,
+    "source": "fpga_data_exchange.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_303_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 304,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM mapped-address increment before exact loads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_304_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 305,
+    "source": "flash_crc_stream_read.c",
+    "change": "C low-word increment in 24-bit FLASH CRC cursor",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_305_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

@@ -40,6 +40,12 @@ void fpga_send_mcu_ts(void)
     PM_SPI_SEND_VALUE(SPIC, "r22", address);
     PM_SPI_SEND_VALUE(SPIC, "r22", offset);
 next_word:
+    /* C FLASH read equivalent with const __flash uint8_t *cursor:
+     * address = *cursor++; offset = *cursor++;
+     * Trials 239-249 could not reproduce the private pointer/register layout;
+     * keep exact LPM Z+ instructions. This is explanatory, with no new
+     * independent functional-test claim. Existing historical test scope,
+     * when available, is documented above. */
     asm volatile("lpm %0, Z+\n\tlpm %1, Z+"
                  : "=r" (address), "=r" (offset), "+z" (cursor) : : "memory");
     PM_SPI_SEND_VALUE(SPIC, "r22", offset);

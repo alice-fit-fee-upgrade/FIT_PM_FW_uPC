@@ -1,0 +1,47 @@
+[
+  {
+    "step": 310,
+    "source": "fpga_data_exchange.c",
+    "change": "GNU C IRQ enable primitive for original BSET 7 alias",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_310.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 311,
+    "source": "timer_overflow_interrupt.c",
+    "change": "GNU C IRQ enable primitive for original BSET 7 alias",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_311.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 312,
+    "source": "dma_channel_interrupt.c",
+    "change": "GNU C IRQ enable primitive for original BSET 7 alias",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_312.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 313,
+    "source": "power_portd_interrupt.c",
+    "change": "C IRQ disable after retained live T-bit snapshot",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_313.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 314,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C UART send call before original 24-bit limit arithmetic",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_314.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

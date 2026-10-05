@@ -1,0 +1,38 @@
+[
+  {
+    "step": 293,
+    "source": "adt_bit_transfer.c",
+    "change": "C conditional ADT output-bit GPIO writes",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_293_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 294,
+    "source": "tdc_host_read.c",
+    "change": "C conditional TDC command-bit GPIO writes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_294.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 295,
+    "source": "tdc_host_read.c",
+    "change": "C TDC sampled response-bit insertion",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_295_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 296,
+    "source": "tdc_host_write.c",
+    "change": "C conditional TDC payload-bit GPIO writes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_296.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

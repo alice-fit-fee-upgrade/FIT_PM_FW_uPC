@@ -1,0 +1,11 @@
+[
+  {
+    "step": 317,
+    "source": "dma_channel_interrupt.c",
+    "change": "C complete 24-bit DMA remaining-length subtraction",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_317_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

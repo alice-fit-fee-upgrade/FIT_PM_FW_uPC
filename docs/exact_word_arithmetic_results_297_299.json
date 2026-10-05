@@ -1,0 +1,29 @@
+[
+  {
+    "step": 297,
+    "source": "fpga_data_exchange.c",
+    "change": "C upper 32-bit shift in FPGA update bitmap",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_297_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 298,
+    "source": "flash_page_program.c",
+    "change": "GNU C 24-bit FLASH programming address increment",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_298.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 299,
+    "source": "flash_page_program.c",
+    "change": "C SPI polling in FLASH page programming",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_299.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

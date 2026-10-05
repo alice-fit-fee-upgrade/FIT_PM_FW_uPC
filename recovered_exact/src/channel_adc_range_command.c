@@ -21,11 +21,22 @@ void fpga_set_adc_range_corr(void)
     asm volatile("rcall cli_get_integer\n\tbrcs LAB_code_000f16\n\tcpi r16, 13\n\tbrne LAB_code_000f16"
                  : "=r" (requested) : : "r16", "memory", "cc");
     /* Original signed lower/upper checks for both correction words. */
-    asm volatile("ldi r26, 0x0c\n\tcpi r20, 0\n\tcpc r21, r26\n\tbrge LAB_code_000f16\n"
-                 "cpi r24, 0\n\tcpc r25, r26\n\tbrge LAB_code_000f16\n"
-                 "ldi r26, 5\n\tcpi r20, 0x55\n\tcpc r21, r26\n\tbrlt LAB_code_000f16\n"
-                 "cpi r24, 0x55\n\tcpc r25, r26\n\tbrlt LAB_code_000f16"
-                 : : "r" (requested), "r" (first) : "r26", "cc");
+    register uint8_t limit_high asm("r26") = 0x0c;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested >= 3072) goto LAB_code_000f16;
+     * if ((int16_t)first >= 3072) goto LAB_code_000f16;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0\n\tcpc r21, r26\n\tbrge LAB_code_000f16\ncpi r24, 0\n\tcpc r25, r26\n\tbrge LAB_code_000f16\n" : : "r" (requested), "r" (first), "r" (limit_high) : "cc");
+    limit_high = 5;
+    asm volatile("" : "+r" (limit_high));
+    /* C value equivalent (not compiled):
+     * if ((int16_t)requested < 1365) goto LAB_code_000f16;
+     * if ((int16_t)first < 1365) goto LAB_code_000f16;
+     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
+     * has no separate successful functional-test claim. */
+asm volatile("cpi r20, 0x55\n\tcpc r21, r26\n\tbrlt LAB_code_000f16\ncpi r24, 0x55\n\tcpc r25, r26\n\tbrlt LAB_code_000f16" : : "r" (requested), "r" (first), "r" (limit_high) : "cc");
     PM_FPGA_GUARD(requested);
     register uint8_t *settings asm("r28") = (uint8_t *)0x2187;
     asm volatile("" : "+y" (settings));

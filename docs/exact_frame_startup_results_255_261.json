@@ -1,0 +1,65 @@
+[
+  {
+    "step": 255,
+    "source": "dma_channel_interrupt.c",
+    "change": "Independent C copy Y to r20",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_255_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 256,
+    "source": "dma_channel_interrupt.c",
+    "change": "Independent C copy r0 to r16",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_256.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 257,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C SREG snapshot and restore in exact ISR frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_257.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 258,
+    "source": "dma_channel_interrupt.c",
+    "change": "C SREG snapshot and restore in exact ISR frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_258.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 259,
+    "source": "application_main.c",
+    "change": "C initialization of startup zero values",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_259.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 260,
+    "source": "application_main.c",
+    "change": "C startup zero key initialization",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_260.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 261,
+    "source": "application_main.c",
+    "change": "C EEPROM mapping base pointer initialization",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_261.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

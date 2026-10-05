@@ -1,0 +1,29 @@
+[
+  {
+    "step": 242,
+    "source": "console_flash_message.c",
+    "change": "C __flash message-byte read with pointer increment; allow compiler allocation of Z",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_242_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 243,
+    "source": "fpga_timestamp_send.c",
+    "change": "C __flash timestamp-byte reads; allow compiler allocation of Z",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_243_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 244,
+    "source": "pll_defaults_load.c",
+    "change": "C __flash four-byte PLL default reads; allow compiler allocation of Z",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_244_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

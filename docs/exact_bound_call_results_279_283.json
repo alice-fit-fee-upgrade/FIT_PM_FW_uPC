@@ -1,0 +1,47 @@
+[
+  {
+    "step": 279,
+    "source": "fpga_status_interrupt.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_279.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 280,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_280.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 281,
+    "source": "pll_status_interrupt.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_281.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 282,
+    "source": "pll_defaults_load.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_282.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 283,
+    "source": "application_main.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_283.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

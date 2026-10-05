@@ -1,0 +1,29 @@
+[
+  {
+    "step": 247,
+    "source": "console_flash_message.c",
+    "change": "C __flash message-byte read with pointer increment; actual available Z with call-used ABI",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_247_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 248,
+    "source": "fpga_timestamp_send.c",
+    "change": "C __flash timestamp-byte reads; actual available Z with call-used ABI",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_248_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 249,
+    "source": "pll_defaults_load.c",
+    "change": "C __flash four-byte PLL default reads; actual available Z with call-used ABI",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_249_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

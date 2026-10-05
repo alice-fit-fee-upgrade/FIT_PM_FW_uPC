@@ -1,3 +1,14 @@
+/* Private entry calls below intentionally have no GNU argument/result ABI.
+ * Adjacent fixed-register setup/capture preserves each historical contract;
+ * these declarations emit the original wide CALL, not a new C API. The whole
+ * image check verifies CALL width, register moves and every saved frame. */
+extern void FUN_code_000b32(void);
+extern void FUN_code_000b3f(void);
+extern void FUN_code_000b59(void);
+extern void FUN_code_000b88(void);
+extern void FUN_code_000b9d(void);
+extern void FUN_code_000bb9(void);
+extern void FUN_code_000c20(void);
 #include "legacy_cpu.h"
 #include <stdint.h>
 
@@ -22,7 +33,10 @@ void DMA_CH1_vect_isr(void)
     register uint8_t r30 asm("r30");
     register uint8_t r31 asm("r31");
     asm volatile("push        r31" : : : "memory", "cc");
-    asm volatile("in          r31,63" : : : "memory", "cc");
+    {
+        register uint8_t saved_status asm("r31") = *(volatile uint8_t *)0x3f;
+        asm volatile("" : "+r" (saved_status) : : "memory");
+    }
     asm volatile("push        r16" : : : "memory", "cc");
     asm volatile("push        r17" : : : "memory", "cc");
     asm volatile("push        r18" : : : "memory", "cc");
@@ -96,7 +110,7 @@ L_000120:
     asm volatile(".Ldma_L_000120:" : : : "memory");
     pm_cpu_disable_irq();
     asm volatile("rcall       FUN_code_0005b4" : : : "memory", "cc");
-    asm volatile("bset        7" : : : "memory", "cc");
+    pm_cpu_enable_irq();
     r16 = 0x3;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -108,7 +122,11 @@ L_000120:
     asm volatile("pop         r18" : : : "memory", "cc");
     asm volatile("pop         r17" : : : "memory", "cc");
     asm volatile("pop         r16" : : : "memory", "cc");
-    asm volatile("out         63,r31" : : : "memory", "cc");
+    {
+        register uint8_t saved_status asm("r31");
+        asm volatile("" : "=r" (saved_status) : : "memory");
+        *(volatile uint8_t *)0x3f = saved_status;
+    }
     asm volatile("pop         r31" : : : "memory", "cc");
     asm volatile("rjmp        PORTF_INT1_vect_isr" : : : "memory", "cc");
     __builtin_unreachable();
@@ -125,7 +143,7 @@ L_000133:
     asm volatile("eor         r16,r16" : : : "memory", "cc");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x120 = r16;
-    asm volatile("bset        7" : : : "memory", "cc");
+    pm_cpu_enable_irq();
     asm volatile("push        r0" : : : "memory", "cc");
     asm volatile("push        r1" : : : "memory", "cc");
     asm volatile("push        r2" : : : "memory", "cc");
@@ -139,8 +157,8 @@ L_000133:
     asm volatile("push        r25" : : : "memory", "cc");
     asm volatile("push        r26" : : : "memory", "cc");
     asm volatile("push        r27" : : : "memory", "cc");
-    asm volatile("call        FUN_code_000b32" : : : "memory", "cc");
-    asm volatile("call        FUN_code_000c20" : : : "memory", "cc");
+    FUN_code_000b32();
+    FUN_code_000c20();
     r28 = 0x39;
     asm volatile("" : "+r" (r28));
     r29 = 0x24;
@@ -271,10 +289,16 @@ L_0001a7:
     asm volatile("st          X,r16" : : : "memory", "cc");
 L_0001b5:
     asm volatile(".Ldma_L_0001b5:" : : : "memory");
-    asm volatile("call        FUN_code_000b88" : : : "memory", "cc");
+    FUN_code_000b88();
 L_0001b7:
     asm volatile(".Ldma_L_0001b7:" : : : "memory");
-    asm volatile("movw        r16,r0" : : : "memory", "cc");
+    {
+        register uint16_t copied_word asm("r0");
+        register uint16_t destination_word asm("r16");
+        asm volatile("" : "=r" (copied_word) : : "memory");
+        destination_word = copied_word;
+        asm volatile("" : "+r" (destination_word) : : "memory");
+    }
     asm volatile("" : "=r" (r2));
     r18 = r2;
     asm volatile("" : "+r" (r18));
@@ -288,13 +312,11 @@ L_0001b7:
     asm volatile("sbc         r17,r21" : : : "memory", "cc");
     asm volatile("sbc         r18,r22" : : : "memory", "cc");
     {
-        register uint8_t scratch_r16 asm("r16");
-        asm volatile("" : "=r" (scratch_r16) : : "memory");
-        scratch_r16 -= 255;
-        asm volatile("" : "+r" (scratch_r16) : : "memory");
+        register __uint24 remaining_bytes asm("r16");
+        asm volatile("" : "=r" (remaining_bytes) : : "memory");
+        ++remaining_bytes;
+        asm volatile("" : "+r" (remaining_bytes) : : "memory");
     }
-    asm volatile("sbci        r17,0xff" : : : "memory", "cc");
-    asm volatile("sbci        r18,0xff" : : : "memory", "cc");
     asm volatile("and         r18,r18" : : : "memory", "cc");
     asm goto("brbc 1, .Ldma_L_0001c7" : : : "memory", "cc" : L_0001c7);
     r18 = 0x1;
@@ -388,20 +410,20 @@ L_0001eb:
     *(volatile uint8_t *)0x110 = r16;
 L_000204:
     asm volatile(".Ldma_L_000204:" : : : "memory");
-    asm volatile("call        FUN_code_000b9d" : : : "memory", "cc");
-    asm volatile("call        FUN_code_000b59" : : : "memory", "cc");
+    FUN_code_000b9d();
+    FUN_code_000b59();
     asm goto("brbs 0, .Ldma_L_00020f" : : : "memory", "cc" : L_00020f);
     asm volatile("and         r21,r21" : : : "memory", "cc");
     asm goto("brbs 1, .Ldma_L_00020c" : : : "memory", "cc" : L_00020c);
     goto L_0001b7;
 L_00020c:
     asm volatile(".Ldma_L_00020c:" : : : "memory");
-    asm volatile("call        FUN_code_000b9d" : : : "memory", "cc");
+    FUN_code_000b9d();
     goto L_0001b5;
 L_00020f:
     asm volatile(".Ldma_L_00020f:" : : : "memory");
-    asm volatile("call        FUN_code_000b9d" : : : "memory", "cc");
-    asm volatile("call        FUN_code_000bb9" : : : "memory", "cc");
+    FUN_code_000b9d();
+    FUN_code_000bb9();
     r26 = 0x3d;
     asm volatile("" : "+r" (r26));
     r27 = 0x24;
@@ -414,7 +436,7 @@ L_00020f:
     asm volatile("eor         r16,r16" : : : "memory", "cc");
     asm volatile("" : "=r" (r16));
     *(volatile uint8_t *)0x100 = r16;
-    asm volatile("call        FUN_code_000b3f" : : : "memory", "cc");
+    FUN_code_000b3f();
     asm volatile("pop         r27" : : : "memory", "cc");
     asm volatile("pop         r26" : : : "memory", "cc");
     asm volatile("pop         r25" : : : "memory", "cc");
@@ -437,7 +459,11 @@ L_00022c:
     asm volatile("pop         r18" : : : "memory", "cc");
     asm volatile("pop         r17" : : : "memory", "cc");
     asm volatile("pop         r16" : : : "memory", "cc");
-    asm volatile("out         63,r31" : : : "memory", "cc");
+    {
+        register uint8_t saved_status asm("r31");
+        asm volatile("" : "=r" (saved_status) : : "memory");
+        *(volatile uint8_t *)0x3f = saved_status;
+    }
     asm volatile("pop         r31" : : : "memory", "cc");
     asm volatile("reti" : : : "memory", "cc");
     __builtin_unreachable();

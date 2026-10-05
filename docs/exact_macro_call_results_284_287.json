@@ -1,0 +1,38 @@
+[
+  {
+    "step": 284,
+    "source": "fpga_settings_init.c",
+    "change": "C wide calls in FPGA settings send macro",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_284.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 285,
+    "source": "fpga_settings_reset.c",
+    "change": "C wide calls in FPGA settings send macro",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_285.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 286,
+    "source": "dac_stored_settings_apply.c",
+    "change": "C wide DAC calls with original register capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_286.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 287,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C receive/print macro calls in FPGA programming stream",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_287.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

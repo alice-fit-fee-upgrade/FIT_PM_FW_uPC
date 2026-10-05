@@ -1,0 +1,38 @@
+[
+  {
+    "step": 267,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration channel offset copy and three shifts",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_267.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 268,
+    "source": "tdc_host_write.c",
+    "change": "C TDC selector copy and mask before exact selection loop",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_268.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 269,
+    "source": "tdc_host_write.c",
+    "change": "C optional TDC command-bit mask",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_269.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 270,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C final threshold settings offset shift",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_270.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

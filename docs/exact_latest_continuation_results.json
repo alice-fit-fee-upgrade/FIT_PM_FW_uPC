@@ -1,227 +1,788 @@
 [
   {
-    "step": 209,
-    "source": "system_status_display.c",
-    "change": "Compiler SEI with existing power snapshot ordering",
+    "step": 234,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C copy of rounded unsigned product byte",
     "accepted": true,
-    "log": "docs/exact_c_steps/step_209.log",
+    "log": "docs/exact_c_steps/step_234.log",
     "differing_bytes": 0,
     "functional_validation_claimed": false
   },
   {
-    "step": 210,
-    "source": "system_status_display.c",
-    "change": "C alarm bitmap shift; retain flag-sensitive device increment",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_210.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 211,
-    "source": "tdc_host_read.c",
-    "change": "C response low-byte shift with exact carry propagation",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_211.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 212,
-    "source": "console_character_send.c",
-    "change": "Compiler CLI around original queue reads",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_212.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 213,
-    "source": "eeprom_settings_store.c",
-    "change": "Compiler CLI with exact protected CCP STS window",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_213.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 214,
-    "source": "channel_mean_amplitude_display.c",
-    "change": "Compiler IRQ primitives between original FPGA read and console print",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_214.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 215,
-    "source": "channel_baseline_dispersion_display.c",
-    "change": "Compiler IRQ primitives between original FPGA read and console print",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_215.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 216,
-    "source": "channel_cdf_adc_display.c",
-    "change": "Compiler IRQ primitives around exact calibration SRAM reads",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_216.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 217,
-    "source": "flash_crc_bit_core.c",
-    "change": "C CRC low-byte shift with remaining exact carry chain",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_217.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 218,
-    "source": "tdc_host_read.c",
-    "change": "Trial explicit C high-byte carry arithmetic; reject any layout difference",
+    "step": 235,
+    "source": "console_hex_parser.c",
+    "change": "C hex character range tests",
     "accepted": false,
-    "log": "docs/exact_c_steps/step_218_rejected.log",
+    "log": "docs/exact_c_steps/step_235_rejected.log",
     "differing_bytes": null,
-    "functional_validation_claimed": false
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
   },
   {
-    "step": 219,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for power_state",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_219.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 220,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for pll_powered",
+    "step": 236,
+    "source": "console_integer_parser.c",
+    "change": "C signed decimal digit range tests",
     "accepted": false,
-    "log": "docs/exact_c_steps/step_220_rejected.log",
+    "log": "docs/exact_c_steps/step_236_rejected.log",
     "differing_bytes": null,
-    "functional_validation_claimed": false
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
   },
   {
-    "step": 221,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for pll_locked",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_221.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 222,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for pll_configuration",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_222.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 223,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for pll_configuration",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_223.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 224,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for pll_control",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_224.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 225,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for fpga_ready",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_225.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 226,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for tdc_inactive",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_226.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 227,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for next_tdc",
-    "accepted": true,
-    "log": "docs/exact_c_steps/step_227.log",
-    "differing_bytes": 0,
-    "functional_validation_claimed": false
-  },
-  {
-    "step": 228,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for tdc_powered",
+    "step": 237,
+    "source": "console_integer_parser.c",
+    "change": "C leading minus/count selection",
     "accepted": false,
-    "log": "docs/exact_c_steps/step_228_rejected.log",
+    "log": "docs/exact_c_steps/step_237_rejected.log",
     "differing_bytes": null,
-    "functional_validation_claimed": false
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
   },
   {
-    "step": 229,
-    "source": "system_status_display.c",
-    "change": "C status bit condition for tdc_configuration",
+    "step": 238,
+    "source": "console_integer_parser.c",
+    "change": "C decimal parser completion conditions",
     "accepted": false,
-    "log": "docs/exact_c_steps/step_229_rejected.log",
+    "log": "docs/exact_c_steps/step_238_rejected.log",
     "differing_bytes": null,
-    "functional_validation_claimed": false
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
   },
   {
-    "step": 230,
-    "source": "trigger_charge_command.c",
-    "change": "Compiler IRQ primitives before exact shared command tail",
+    "step": 239,
+    "source": "console_flash_message.c",
+    "change": "C __flash message-byte read with pointer increment",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_239_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 240,
+    "source": "fpga_timestamp_send.c",
+    "change": "C __flash timestamp-byte reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_240_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 241,
+    "source": "pll_defaults_load.c",
+    "change": "C __flash four-byte PLL default reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_241_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 242,
+    "source": "console_flash_message.c",
+    "change": "C __flash message-byte read with pointer increment; allow compiler allocation of Z",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_242_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "unsupported compiler profile option"
+  },
+  {
+    "step": 243,
+    "source": "fpga_timestamp_send.c",
+    "change": "C __flash timestamp-byte reads; allow compiler allocation of Z",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_243_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "unsupported compiler profile option"
+  },
+  {
+    "step": 244,
+    "source": "pll_defaults_load.c",
+    "change": "C __flash four-byte PLL default reads; allow compiler allocation of Z",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_244_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "unsupported compiler profile option"
+  },
+  {
+    "step": 245,
+    "source": "console_hex_word.c",
+    "change": "GNU C nibble swaps in four-digit console formatting",
     "accepted": true,
-    "log": "docs/exact_c_steps/step_230.log",
+    "log": "docs/exact_c_steps/step_245.log",
     "differing_bytes": 0,
     "functional_validation_claimed": false
   },
   {
-    "step": 231,
-    "source": "trigger_settings_command.c",
-    "change": "Compiler IRQ primitives before exact shared command tail",
+    "step": 246,
+    "source": "flash_crc_stream_read.c",
+    "change": "C SPI ready polling in FLASH CRC stream",
     "accepted": true,
-    "log": "docs/exact_c_steps/step_231.log",
+    "log": "docs/exact_c_steps/step_246.log",
     "differing_bytes": 0,
     "functional_validation_claimed": false
   },
   {
-    "step": 232,
-    "source": "channel_tdc_values_command.c",
-    "change": "Compiler IRQ primitives before exact shared command tail",
+    "step": 247,
+    "source": "console_flash_message.c",
+    "change": "C __flash message-byte read with pointer increment; actual available Z with call-used ABI",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_247_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 248,
+    "source": "fpga_timestamp_send.c",
+    "change": "C __flash timestamp-byte reads; actual available Z with call-used ABI",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_248_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 249,
+    "source": "pll_defaults_load.c",
+    "change": "C __flash four-byte PLL default reads; actual available Z with call-used ABI",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_249_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 250,
+    "source": "console_dispatch.c",
+    "change": "C copies of original MOVW register pairs",
     "accepted": true,
-    "log": "docs/exact_c_steps/step_232.log",
+    "log": "docs/exact_c_steps/step_250.log",
     "differing_bytes": 0,
     "functional_validation_claimed": false
   },
   {
-    "step": 233,
+    "step": 251,
+    "source": "fpga_data_exchange.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_251.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 252,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_252.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 253,
+    "source": "dma_channel_interrupt.c",
+    "change": "C copies of original MOVW register pairs",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_253_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 254,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C programming-stream address pair copy",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_254_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 255,
+    "source": "dma_channel_interrupt.c",
+    "change": "Independent C copy Y to r20",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_255_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 256,
+    "source": "dma_channel_interrupt.c",
+    "change": "Independent C copy r0 to r16",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_256.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 257,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C SREG snapshot and restore in exact ISR frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_257.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 258,
+    "source": "dma_channel_interrupt.c",
+    "change": "C SREG snapshot and restore in exact ISR frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_258.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 259,
+    "source": "application_main.c",
+    "change": "C initialization of startup zero values",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_259.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 260,
+    "source": "application_main.c",
+    "change": "C startup zero key initialization",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_260.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 261,
+    "source": "application_main.c",
+    "change": "C EEPROM mapping base pointer initialization",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_261.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 262,
+    "source": "channel_adc_zero_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_262.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 263,
+    "source": "channel_cfd_zero_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_263.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 264,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_264.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 265,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C boundary-byte constants around exact signed range checks",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_265.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 266,
     "source": "channel_adc_range_command.c",
-    "change": "Compiler IRQ primitives before exact shared command tail",
+    "change": "C boundary-byte constants around exact signed range checks",
     "accepted": true,
-    "log": "docs/exact_c_steps/step_233.log",
+    "log": "docs/exact_c_steps/step_266.log",
     "differing_bytes": 0,
     "functional_validation_claimed": false
+  },
+  {
+    "step": 267,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration channel offset copy and three shifts",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_267.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 268,
+    "source": "tdc_host_write.c",
+    "change": "C TDC selector copy and mask before exact selection loop",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_268.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 269,
+    "source": "tdc_host_write.c",
+    "change": "C optional TDC command-bit mask",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_269.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 270,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C final threshold settings offset shift",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_270.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 271,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C 16-bit partial-product additions with exact MUL/MULSU helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_271_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 272,
+    "source": "dac_signed_scaled_product.c",
+    "change": "C 16-bit partial-product additions with exact MUL/MULSU helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_272_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 273,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C byte partial-product additions with exact carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_273.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 274,
+    "source": "dac_signed_scaled_product.c",
+    "change": "C byte partial-product additions with exact carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_274.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 275,
+    "source": "console_dispatch.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_275.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 276,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_276.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 277,
+    "source": "dma_channel_interrupt.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_277.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 278,
+    "source": "fpga_data_exchange.c",
+    "change": "C calls to existing wide-CALL private entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_278.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 279,
+    "source": "fpga_status_interrupt.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_279.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 280,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_280.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 281,
+    "source": "pll_status_interrupt.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_281.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 282,
+    "source": "pll_defaults_load.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_282.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 283,
+    "source": "application_main.c",
+    "change": "C wide calls with zero-byte private-register capture barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_283.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 284,
+    "source": "fpga_settings_init.c",
+    "change": "C wide calls in FPGA settings send macro",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_284.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 285,
+    "source": "fpga_settings_reset.c",
+    "change": "C wide calls in FPGA settings send macro",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_285.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 286,
+    "source": "dac_stored_settings_apply.c",
+    "change": "C wide DAC calls with original register capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_286.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 287,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C receive/print macro calls in FPGA programming stream",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_287.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 288,
+    "source": "system_status_display.c",
+    "change": "C return at existing standalone RET entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_288.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 289,
+    "source": "dac_saturating_scaled_product.c",
+    "change": "C return at existing standalone RET entries",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_289.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 290,
+    "source": "programming_unlock.c",
+    "change": "C wide calls in programming password handshake",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_290.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 291,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C receive calls for three-byte programming limit",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_291.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 292,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C final console newline in programming stream",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_292.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 293,
+    "source": "adt_bit_transfer.c",
+    "change": "C conditional ADT output-bit GPIO writes",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_293_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 294,
+    "source": "tdc_host_read.c",
+    "change": "C conditional TDC command-bit GPIO writes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_294.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 295,
+    "source": "tdc_host_read.c",
+    "change": "C TDC sampled response-bit insertion",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_295_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 296,
+    "source": "tdc_host_write.c",
+    "change": "C conditional TDC payload-bit GPIO writes",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_296.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 297,
+    "source": "fpga_data_exchange.c",
+    "change": "C upper 32-bit shift in FPGA update bitmap",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_297_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "unused obsolete binding"
+  },
+  {
+    "step": 298,
+    "source": "flash_page_program.c",
+    "change": "GNU C 24-bit FLASH programming address increment",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_298.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 299,
+    "source": "flash_page_program.c",
+    "change": "C SPI polling in FLASH page programming",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_299.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 300,
+    "source": "fpga_data_exchange.c",
+    "change": "C upper bitmap shift; remove unused old byte binding",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_300.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 301,
+    "source": "dma_channel_interrupt.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_301_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 302,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_302.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 303,
+    "source": "fpga_data_exchange.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_303_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 304,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM mapped-address increment before exact loads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_304_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 305,
+    "source": "flash_crc_stream_read.c",
+    "change": "C low-word increment in 24-bit FLASH CRC cursor",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_305_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
+  },
+  {
+    "step": 306,
+    "source": "dma_channel_interrupt.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW; allow Y in local private profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_306_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 307,
+    "source": "fpga_data_exchange.c",
+    "change": "C 16-bit pointer/counter updates for ADIW/SBIW; allow Y in local private profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_307_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 308,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM mapped-address increment before exact loads; allow Y in local private profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_308_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 309,
+    "source": "console_dispatch.c",
+    "accepted": true,
+    "change": "GNU IRQ enable primitive for BSET 7 alias",
+    "differing_bytes": 0,
+    "infrastructure_retry": "Initial clean build stopped with No space left on device; recovered space and passed full clean exact-check",
+    "log": "docs/exact_c_steps/step_309.log"
+  },
+  {
+    "step": 310,
+    "source": "fpga_data_exchange.c",
+    "change": "GNU C IRQ enable primitive for original BSET 7 alias",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_310.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 311,
+    "source": "timer_overflow_interrupt.c",
+    "change": "GNU C IRQ enable primitive for original BSET 7 alias",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_311.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 312,
+    "source": "dma_channel_interrupt.c",
+    "change": "GNU C IRQ enable primitive for original BSET 7 alias",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_312.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 313,
+    "source": "power_portd_interrupt.c",
+    "change": "C IRQ disable after retained live T-bit snapshot",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_313.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 314,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C UART send call before original 24-bit limit arithmetic",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_314.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 315,
+    "source": "dma_channel_interrupt.c",
+    "change": "C 24-bit DMA remaining-length increment",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_315.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 316,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C 24-bit programming stream remaining-length increment",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_316_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "fixed region/layout or byte mismatch"
+  },
+  {
+    "step": 317,
+    "source": "dma_channel_interrupt.c",
+    "change": "C complete 24-bit DMA remaining-length subtraction",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_317_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "rejection_reason": "register allocation"
   }
 ]
