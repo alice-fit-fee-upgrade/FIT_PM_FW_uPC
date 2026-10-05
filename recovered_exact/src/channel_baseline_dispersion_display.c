@@ -1,9 +1,21 @@
+/* Retained exact call/load helpers: a C call such as
+ * value = fpga_read(address); or fpga_write(address, word); expresses the
+ * operation, but these entries use private bound registers, original CALL/RCALL
+ * widths and shared error tails. These illustrative names are not compiled
+ * interfaces and are not independently functionally validated alternatives.
+ * Where a historically tested complete C alternative exists, its evidence
+ * and bridge scope remain documented beside that helper. */
+#include "legacy_cpu.h"
 #include <stdint.h>
 /* Private console/FPGA ABI: payload in R17:R16, register address in R18.
  * Carry, interrupt windows and the original wide CALL remain exact helpers. */
-#define READ_PRINT(value, address) \
- asm volatile("cli\n\trcall fpga_msg_read_t1\n\tsei\n\trcall cli_send_uint16" \
- : "=r" (value), "+r" (address) : : "memory", "cc")
+#define READ_PRINT(value, address) do { \
+ asm volatile("" : "+r" (address) : : "memory"); \
+ pm_cpu_disable_irq(); \
+ asm volatile("rcall fpga_msg_read_t1" : "=r" (value), "+r" (address) : : "memory", "cc"); \
+ pm_cpu_enable_irq(); \
+ asm volatile("rcall cli_send_uint16" : "+r" (value) : : "memory", "cc"); \
+} while (0)
 
 void cli_send_adc_baseline_dispersion(void)
 {

@@ -1,0 +1,20 @@
+[
+  {
+    "step": 217,
+    "source": "flash_crc_bit_core.c",
+    "change": "C CRC low-byte shift with remaining exact carry chain",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_217.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 218,
+    "source": "tdc_host_read.c",
+    "change": "Trial explicit C high-byte carry arithmetic; reject any layout difference",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_218_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

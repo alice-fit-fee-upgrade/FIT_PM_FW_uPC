@@ -42,7 +42,20 @@ void FUN_code_000bf2(void)
     register uint8_t bits asm("r20") = 8;
     asm volatile("" : "+r" (bits));
 next_bit:
-    asm volatile("add r18, r18\n\tadc r19, r19\n\tadc r16, r16\n\tadc r17, r17"
+    state0 += state0;
+    asm volatile("" : "+r" (state0));
+    /* C value equivalent of the remaining carry chain, using pre-shift bytes:
+     * uint8_t carry = old_state0 >> 7;
+     * uint8_t next = state1 >> 7;
+     * state1 = (uint8_t)((state1 << 1) | carry); carry = next;
+     * next = state2 >> 7;
+     * state2 = (uint8_t)((state2 << 1) | carry); carry = next;
+     * next = state3 >> 7;
+     * state3 = (uint8_t)((state3 << 1) | carry); carry = next;
+     * The following branch consumes the final CPU carry. This comment is
+     * explanatory; the tested complete C alternative and its bridge scope
+     * are documented above (mixed_crc_byte_checkpoint.md). */
+    asm volatile("adc r19, r19\n\tadc r16, r16\n\tadc r17, r17"
                  : "+r" (state0), "+r" (state1), "+r" (state2), "+r" (state3) : : "cc");
     asm goto("brcc 1f\n\tlsr r22\n\tbrcs %l[finished_bit]\n\trjmp %l[xor_polynomial]\n1:\n"
              "lsr r22\n\tbrcc %l[finished_bit]" : : : "r22", "cc" : finished_bit, xor_polynomial);

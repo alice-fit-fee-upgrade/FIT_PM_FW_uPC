@@ -1,0 +1,101 @@
+[
+  {
+    "step": 219,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for power_state",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_219.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 220,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for pll_powered",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_220_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 221,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for pll_locked",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_221.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 222,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for pll_configuration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_222.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 223,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for pll_configuration",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_223.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 224,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for pll_control",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_224.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 225,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for fpga_ready",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_225.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 226,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for tdc_inactive",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_226.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 227,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for next_tdc",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_227.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 228,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for tdc_powered",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_228_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 229,
+    "source": "system_status_display.c",
+    "change": "C status bit condition for tdc_configuration",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_229_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

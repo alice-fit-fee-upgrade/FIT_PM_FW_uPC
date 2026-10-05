@@ -928,7 +928,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 8816,
+          "start": 8818,
           "end_exclusive": 8820,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1214,7 +1214,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 10428,
+          "start": 10430,
           "end_exclusive": 10444,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1412,7 +1412,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6598,
+          "start": 6600,
           "end_exclusive": 6604,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1584,12 +1584,17 @@
         {
           "start": 7522,
           "end_exclusive": 7550,
-          "reason": "Exact parsing, range test and FPGA-ready early return"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7562,
+          "start": 7564,
+          "end_exclusive": 7566,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7568,
           "end_exclusive": 7570,
-          "reason": "Exact protected FPGA send and shared response jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1606,12 +1611,17 @@
         {
           "start": 7570,
           "end_exclusive": 7590,
-          "reason": "Exact parsing, byte range and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7598,
+          "start": 7600,
+          "end_exclusive": 7602,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7604,
           "end_exclusive": 7606,
-          "reason": "Exact protected FPGA send and shared response jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1776,22 +1786,27 @@
         {
           "start": 7726,
           "end_exclusive": 7738,
-          "reason": "Exact channel parsing"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7740,
           "end_exclusive": 7770,
-          "reason": "Exact value parse, signed bounds and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7778,
           "end_exclusive": 7788,
-          "reason": "Exact SRAM pointer and ordered word store"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7794,
+          "start": 7796,
+          "end_exclusive": 7798,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7800,
           "end_exclusive": 7804,
-          "reason": "Exact FPGA write, shared response and adjacent error entry"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1873,7 +1888,12 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7716,
+          "start": 7718,
+          "end_exclusive": 7720,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7722,
           "end_exclusive": 7726,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
@@ -1929,17 +1949,32 @@
         {
           "start": 6286,
           "end_exclusive": 6298,
-          "reason": "Delimiter/readiness checks"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6300,
+          "start": 6302,
+          "end_exclusive": 6304,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6306,
           "end_exclusive": 6308,
-          "reason": "FPGA read and console word ABI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6310,
+          "end_exclusive": 6316,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6318,
+          "end_exclusive": 6320,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6322,
           "end_exclusive": 6334,
-          "reason": "Wide CALL, INC, read, carry loop and success tail"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1956,37 +1991,67 @@
         {
           "start": 6334,
           "end_exclusive": 6348,
-          "reason": "Delimiter/readiness checks and flag-setting clear"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6352,
+          "start": 6354,
+          "end_exclusive": 6356,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6358,
           "end_exclusive": 6360,
-          "reason": "FPGA read and console word ABI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6362,
+          "end_exclusive": 6366,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6368,
+          "end_exclusive": 6370,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6372,
           "end_exclusive": 6374,
-          "reason": "Space, INC, second word"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6376,
           "end_exclusive": 6378,
-          "reason": "Console ABI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6382,
+          "start": 6384,
+          "end_exclusive": 6386,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6388,
           "end_exclusive": 6390,
-          "reason": "FPGA read and console ABI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6392,
+          "end_exclusive": 6396,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6398,
+          "end_exclusive": 6400,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6402,
           "end_exclusive": 6406,
-          "reason": "Space, INC, fourth word and CRLF"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6408,
           "end_exclusive": 6416,
-          "reason": "Carry loop and shared command tails"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -2017,6 +2082,46 @@
         },
         {
           "start": 7430,
+          "end_exclusive": 7436,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7438,
+          "end_exclusive": 7442,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7444,
+          "end_exclusive": 7448,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7450,
+          "end_exclusive": 7454,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7456,
+          "end_exclusive": 7460,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7462,
+          "end_exclusive": 7466,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7468,
+          "end_exclusive": 7472,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7474,
+          "end_exclusive": 7478,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7480,
           "end_exclusive": 7486,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -2300,14 +2405,14 @@
       "meaning": "CRC byte update with C polynomial XOR and exact carry helpers",
       "asm_helper_ranges": [
         {
-          "start": 6118,
+          "start": 6120,
           "end_exclusive": 6138,
-          "reason": "Carry-propagating state shift and bit/carry decisions"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6146,
           "end_exclusive": 6150,
-          "reason": "Exact DEC/BRNE bit loop"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -2648,16 +2753,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6826,
-          "end_exclusive": 6828,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 6832,
-          "end_exclusive": 6836,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 6840,
           "end_exclusive": 6842,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -2703,11 +2798,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6910,
-          "end_exclusive": 6914,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 6918,
           "end_exclusive": 6924,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -2723,16 +2813,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6946,
-          "end_exclusive": 6950,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 6954,
-          "end_exclusive": 6958,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 6962,
           "end_exclusive": 6964,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -2743,18 +2823,8 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6974,
-          "end_exclusive": 6978,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 6982,
           "end_exclusive": 6984,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
-          "start": 6988,
-          "end_exclusive": 6992,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -2768,18 +2838,13 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7010,
-          "end_exclusive": 7014,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 7018,
           "end_exclusive": 7020,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7024,
-          "end_exclusive": 7030,
+          "end_exclusive": 7026,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -2794,7 +2859,7 @@
         },
         {
           "start": 7046,
-          "end_exclusive": 7056,
+          "end_exclusive": 7054,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {

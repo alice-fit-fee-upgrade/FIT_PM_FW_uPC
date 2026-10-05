@@ -1,3 +1,6 @@
+/* C store equivalent of the retained protected instruction: CCP = previous;
+ * GCC may choose OUT instead of the original four-byte STS. Keep STS and
+ * the original protected-write window; the comment is explanatory only. */
 #include "legacy_cpu.h"
 #include <avr/io.h>
 #define SET_VALUE(constant) do { value=(constant); asm volatile("" : "+r" (value)); } while (0)
@@ -12,7 +15,9 @@ wait_nvm:
     SET_VALUE(0x36); NVM_CMD = value;
     SET_VALUE(1);
     previous = 0xd8; asm volatile("" : "+r" (previous));
-    asm volatile("cli\n\tsts %0, %1" : : "n" (_SFR_MEM_ADDR(CCP)), "r" (previous) : "memory");
+    asm volatile("" : : "r" (previous), "r" (value) : "memory");
+    pm_cpu_disable_irq();
+    asm volatile("sts %0, %1" : : "n" (_SFR_MEM_ADDR(CCP)), "r" (previous) : "memory");
     NVM_CTRLA = value;
     pm_cpu_enable_irq();
     register const uint8_t *settings asm("r30") = (const uint8_t *)0x2163;

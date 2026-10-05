@@ -32,3 +32,7 @@ Reference the archived implementation, test evidence and scope, including requir
 ASM bridges/callees. Do not claim tests that were never run. See
 `docs/asm_c_alternatives.md` and its JSON index. These comments are explanatory;
 only whole-FLASH zero-difference exact-check accepts a baseline implementation.
+
+For newly retained fragments also include an explanatory C value equivalent when
+there is no historical successful test evidence. Label it as unvalidated and
+state relevant live flags/private ABI; never present it as a tested alternative.

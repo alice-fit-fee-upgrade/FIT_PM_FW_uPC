@@ -1,0 +1,29 @@
+[
+  {
+    "step": 231,
+    "source": "trigger_settings_command.c",
+    "change": "Compiler IRQ primitives before exact shared command tail",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_231.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 232,
+    "source": "channel_tdc_values_command.c",
+    "change": "Compiler IRQ primitives before exact shared command tail",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_232.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 233,
+    "source": "channel_adc_range_command.c",
+    "change": "Compiler IRQ primitives before exact shared command tail",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_233.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

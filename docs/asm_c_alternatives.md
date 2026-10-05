@@ -24,3 +24,8 @@ of duplicating it for each register constraint or ASM fragment.
 Acceptance remains `make exact-check`: complete canonical FLASH must match the
 original PM.hex with zero differing bytes. Historical functional tests are
 retained; no expensive emulator suite was rerun for this documentation change.
+
+The steps 209–233 continuation additionally comments retained ADC carry chains,
+DEC counters, queue/calibration pointer loads and private call wrappers. These
+new value equivalents explicitly state when they lack independent functional
+validation. The historical index still contains the same 25 tested alternatives.

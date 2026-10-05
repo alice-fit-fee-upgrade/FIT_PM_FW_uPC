@@ -1,3 +1,8 @@
+/* C value equivalent of the retained queue loads:
+ * read_index = *cursor++; write_index = *cursor++;
+ * Exact LD Z+ encodings and the private register/frame contract remain ASM.
+ * Earlier pointer trials changed the generated code; this comment describes
+ * the values only, with no independent functional-test claim. */
 #include "legacy_cpu.h"
 #include <avr/io.h>
 
@@ -10,7 +15,8 @@ void cli_send_buf(void)
     asm volatile("" : "+z" (cursor));
     register uint8_t read_index asm("r17"), write_index asm("r18"), ready asm("r19"), control asm("r20");
 retry:
-    asm volatile("cli\n\tld %0, Z+\n\tld %1, Z+"
+    pm_cpu_disable_irq();
+    asm volatile("ld %0, Z+\n\tld %1, Z+"
         : "=r" (read_index), "=r" (write_index), "+z" (cursor) : : "memory");
     asm goto("cp %0, %1\n\tbreq %l[direct_send]" : : "r" (read_index), "r" (write_index) : "cc" : direct_send);
     asm volatile("inc %0" : "+r" (write_index) : : "cc");

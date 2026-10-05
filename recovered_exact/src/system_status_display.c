@@ -28,9 +28,10 @@ void cli_send_system_status(void)
     word = *(volatile uint16_t *)0x2160;
     asm volatile("" : "+r" (word));
     register uint8_t power asm("r20") = RAM8(0x0688);
-    asm volatile("sei" : : "r" (power) : "memory");
+    asm volatile("" : : "r" (power) : "memory");
+    pm_cpu_enable_irq();
     SET_MESSAGE(0x2998);
-    asm goto("sbrc r18, 0\n\trjmp %l[power_state]" : : "r" (status) : : power_state);
+    if ((status & (1u << 0))) goto power_state;
     SET_MESSAGE(0x299e);
 power_state:
     SEND_MESSAGE();
@@ -50,6 +51,9 @@ power_state:
 thermal_state:
     SEND_MESSAGE();
     SET_MESSAGE(0x29ec); SEND_MESSAGE();
+    /* C alternative: if ((power & (1u << 2))) goto pll_powered;
+     * Trial changed the exact layout/encoding; retained ASM. See
+     * exact_status_branch_results.json. No functional-test claim. */
     asm goto("sbrc r20, 2\n\trjmp %l[pll_powered]" : : "r" (power) : : pll_powered);
     SET_MESSAGE(0x2a02);
 message_and_return:
@@ -58,7 +62,7 @@ message_and_return:
 pll_powered:
     SET_MESSAGE(0x29fc); SEND_MESSAGE();
     SET_MESSAGE(0x2998);
-    asm goto("sbrc r18, 3\n\trjmp %l[pll_locked]" : : "r" (status) : : pll_locked);
+    if ((status & (1u << 3))) goto pll_locked;
     SET_MESSAGE(0x299e); SEND_MESSAGE();
     asm volatile("sbrs r18, 6\n\tret" : : "r" (status));
     SET_MESSAGE(0x2af2);
@@ -69,33 +73,33 @@ pll_locked:
     thermal = RAM8(0x2162);
     asm volatile("" : "+r" (thermal));
     SET_MESSAGE(0x2a36);
-    asm goto("sbrc r19, 1\n\trjmp %l[pll_configuration]" : : "r" (thermal) : : pll_configuration);
+    if ((thermal & (1u << 1))) goto pll_configuration;
     SET_MESSAGE(0x2a3e);
-    asm goto("sbrc r19, 2\n\trjmp %l[pll_configuration]" : : "r" (thermal) : : pll_configuration);
+    if ((thermal & (1u << 2))) goto pll_configuration;
     SET_MESSAGE(0x2a48);
 pll_configuration:
     SEND_MESSAGE();
     SET_MESSAGE(0x2a52); SEND_MESSAGE();
     SET_MESSAGE(0x2a5a);
-    asm goto("sbrs r19, 0\n\trjmp %l[pll_control]" : : "r" (thermal) : : pll_control);
+    if (!(thermal & (1u << 0))) goto pll_control;
     SET_MESSAGE(0x2a5e);
 pll_control:
     SEND_MESSAGE();
     SET_MESSAGE(0x2b04);
-    asm goto("sbrc r18, 4\n\trjmp %l[fpga_ready]" : : "r" (status) : : fpga_ready);
+    if ((status & (1u << 4))) goto fpga_ready;
     SET_MESSAGE(0x2ab4);
     goto message_and_return;
 fpga_ready:
     SEND_MESSAGE();
     SET_MESSAGE(0x2b12); SEND_MESSAGE();
     SET_MESSAGE(0x2998);
-    asm goto("sbrs r18, 7\n\trjmp %l[tdc_inactive]" : : "r" (status) : : tdc_inactive);
+    if (!(status & (1u << 7))) goto tdc_inactive;
     SET_MESSAGE(0x2b20); SEND_MESSAGE();
     power = RAM8(0x2158);
     register uint8_t device asm("r17");
     asm volatile("clr r17" : "=r" (device) : : "cc");
 tdc_alarm:
-    asm goto("sbrs r20, 2\n\trjmp %l[next_tdc]" : : "r" (power) : : next_tdc);
+    if (!(power & (1u << 2))) goto next_tdc;
     SET_MESSAGE(0x2b28); SEND_MESSAGE();
     register uint8_t character asm("r16") = '0';
     asm volatile("" : "+r" (character));
@@ -104,7 +108,10 @@ tdc_alarm:
     SET_MESSAGE(0x2b2e); SEND_MESSAGE();
 next_tdc:
     asm goto("cpi r17, 2\n\tbrcc %l[finished]" : : "r" (device) : "cc" : finished);
-    asm volatile("inc r17\n\tlsr r20" : "+r" (device), "+r" (power) : : "cc");
+    /* C value equivalent: ++device; INC keeps the original carry flag. */
+    asm volatile("inc %0" : "+r" (device) : : "cc");
+    power >>= 1;
+    asm volatile("" : "+r" (power));
     goto tdc_alarm;
 tdc_inactive:
     SEND_MESSAGE();
@@ -123,12 +130,18 @@ tdc_inactive:
     power = RAM8(0x2158);
     SET_MESSAGE(0x2b44); SEND_MESSAGE();
     SET_MESSAGE(0x2a02);
+    /* C alternative: if ((power & (1u << 0))) goto tdc_powered;
+     * Trial changed the exact layout/encoding; retained ASM. See
+     * exact_status_branch_results.json. No functional-test claim. */
     asm goto("sbrc r20, 0\n\trjmp %l[tdc_powered]" : : "r" (power) : : tdc_powered);
     SEND_MESSAGE();
     asm volatile("ret"); __builtin_unreachable();
 tdc_powered:
     SET_MESSAGE(0x29fc); SEND_MESSAGE();
     SET_MESSAGE(0x2b4e);
+    /* C alternative: if (!(power & (1u << 1))) goto tdc_configuration;
+     * Trial changed the exact layout/encoding; retained ASM. See
+     * exact_status_branch_results.json. No functional-test claim. */
     asm goto("sbrs r20, 1\n\trjmp %l[tdc_configuration]" : : "r" (power) : : tdc_configuration);
     SET_MESSAGE(0x2b5c);
 tdc_configuration:

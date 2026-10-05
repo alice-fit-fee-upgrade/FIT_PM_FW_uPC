@@ -1,3 +1,10 @@
+/* Retained exact call/load helpers: a C call such as
+ * value = fpga_read(address); or fpga_write(address, word); expresses the
+ * operation, but these entries use private bound registers, original CALL/RCALL
+ * widths and shared error tails. These illustrative names are not compiled
+ * interfaces and are not independently functionally validated alternatives.
+ * Where a historically tested complete C alternative exists, its evidence
+ * and bridge scope remain documented beside that helper. */
 #include "legacy_cpu.h"
 #include "legacy_cli.h"
 
@@ -39,8 +46,11 @@ void fpga_set_adc_range_corr(void)
     pm_cpu_enable_irq();
     asm volatile("inc %0" : "+r" (address) : : "cc");
     word = requested;
-    asm volatile("cli\n\trcall fpga_msg_send_t2\n\tsei\n\trjmp LAB_code_000ff1"
-                 : : "r" (word), "r" (address) : "memory", "cc");
+    asm volatile("" : : "r" (word), "r" (address) : "memory");
+    pm_cpu_disable_irq();
+    asm volatile("rcall fpga_msg_send_t2" : : "r" (word), "r" (address) : "memory", "cc");
+    pm_cpu_enable_irq();
+    asm volatile("rjmp LAB_code_000ff1" : : : "memory");
     __builtin_unreachable();
 }
 asm(".pushsection .text.fpga_set_adc_range_corr,\"ax\",@progbits\n"

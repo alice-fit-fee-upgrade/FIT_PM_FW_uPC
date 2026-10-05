@@ -1,0 +1,74 @@
+[
+  {
+    "step": 209,
+    "source": "system_status_display.c",
+    "change": "Compiler SEI with existing power snapshot ordering",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_209.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 210,
+    "source": "system_status_display.c",
+    "change": "C alarm bitmap shift; retain flag-sensitive device increment",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_210.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 211,
+    "source": "tdc_host_read.c",
+    "change": "C response low-byte shift with exact carry propagation",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_211.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 212,
+    "source": "console_character_send.c",
+    "change": "Compiler CLI around original queue reads",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_212.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 213,
+    "source": "eeprom_settings_store.c",
+    "change": "Compiler CLI with exact protected CCP STS window",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_213.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 214,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "Compiler IRQ primitives between original FPGA read and console print",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_214.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 215,
+    "source": "channel_baseline_dispersion_display.c",
+    "change": "Compiler IRQ primitives between original FPGA read and console print",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_215.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 216,
+    "source": "channel_cdf_adc_display.c",
+    "change": "Compiler IRQ primitives around exact calibration SRAM reads",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_216.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

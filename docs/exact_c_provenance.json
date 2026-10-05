@@ -2,8 +2,8 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 4742,
-  "compiler_generated_avr_primitive_bytes": 228,
+  "inline_asm_bytes": 4642,
+  "compiler_generated_avr_primitive_bytes": 290,
   "avr_primitive_mnemonics": [
     "bld",
     "bst",
@@ -220,9 +220,9 @@
     },
     {
       "symbol": "ths788_read",
-      "inline_asm_bytes": 38,
+      "inline_asm_bytes": 36,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 124
+      "compiler_bytes": 126
     },
     {
       "symbol": "dac_send_value",
@@ -268,9 +268,9 @@
     },
     {
       "symbol": "cli_send_buf",
-      "inline_asm_bytes": 58,
-      "compiler_generated_avr_primitive_bytes": 6,
-      "compiler_bytes": 48
+      "inline_asm_bytes": 56,
+      "compiler_generated_avr_primitive_bytes": 8,
+      "compiler_bytes": 50
     },
     {
       "symbol": "PORTF_INT1_vect_isr",
@@ -292,9 +292,9 @@
     },
     {
       "symbol": "eeprom_settings_save",
-      "inline_asm_bytes": 50,
-      "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 46
+      "inline_asm_bytes": 48,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 48
     },
     {
       "symbol": "alarms_clear",
@@ -322,15 +322,15 @@
     },
     {
       "symbol": "fpga_set_trg_charge_lvls",
-      "inline_asm_bytes": 36,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 12
+      "inline_asm_bytes": 32,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 16
     },
     {
       "symbol": "fpga_set_trg_settings",
-      "inline_asm_bytes": 28,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 8
+      "inline_asm_bytes": 24,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 12
     },
     {
       "symbol": "fpga_set_ch_adc_delay",
@@ -358,9 +358,9 @@
     },
     {
       "symbol": "fpga_set_tdc_values",
-      "inline_asm_bytes": 62,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 16
+      "inline_asm_bytes": 58,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 20
     },
     {
       "symbol": "fpga_set_threshold_calibration",
@@ -370,9 +370,9 @@
     },
     {
       "symbol": "fpga_set_adc_range_corr",
-      "inline_asm_bytes": 94,
-      "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 26
+      "inline_asm_bytes": 90,
+      "compiler_generated_avr_primitive_bytes": 8,
+      "compiler_bytes": 30
     },
     {
       "symbol": "FUN_code_000f70",
@@ -382,21 +382,21 @@
     },
     {
       "symbol": "cli_send_ch_mean_amplitude",
-      "inline_asm_bytes": 44,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 4
+      "inline_asm_bytes": 36,
+      "compiler_generated_avr_primitive_bytes": 8,
+      "compiler_bytes": 12
     },
     {
       "symbol": "cli_send_adc_baseline_dispersion",
-      "inline_asm_bytes": 66,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 16
+      "inline_asm_bytes": 50,
+      "compiler_generated_avr_primitive_bytes": 16,
+      "compiler_bytes": 32
     },
     {
       "symbol": "cli_send_channel_cdf_adc",
-      "inline_asm_bytes": 80,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 32
+      "inline_asm_bytes": 64,
+      "compiler_generated_avr_primitive_bytes": 16,
+      "compiler_bytes": 48
     },
     {
       "symbol": "FUN_code_00108e",
@@ -436,9 +436,9 @@
     },
     {
       "symbol": "FUN_code_000bf2",
-      "inline_asm_bytes": 24,
+      "inline_asm_bytes": 22,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 12
+      "compiler_bytes": 14
     },
     {
       "symbol": "cli_send_tdc_data",
@@ -460,9 +460,9 @@
     },
     {
       "symbol": "cli_send_system_status",
-      "inline_asm_bytes": 164,
-      "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 220
+      "inline_asm_bytes": 128,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 256
     },
     {
       "symbol": "fpga_firmware_update",

@@ -41,23 +41,23 @@ are no longer acceptance evidence for C integration.
 | 0x171E | FUN_code_000b8f | C_BINARY_EXACT | 28 | 0 |
 | 0x173A | FUN_code_000b9d | C_WITH_EXACT_ASM_HELPER | 52 | 4 |
 | 0x1772 | FUN_code_000bb9 | C_WITH_EXACT_ASM_HELPER | 54 | 60 |
-| 0x17E4 | FUN_code_000bf2 | C_WITH_EXACT_ASM_HELPER | 12 | 24 |
+| 0x17E4 | FUN_code_000bf2 | C_WITH_EXACT_ASM_HELPER | 14 | 22 |
 | 0x1808 | FUN_code_000c04 | C_BINARY_EXACT | 56 | 0 |
 | 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER | 76 | 2 |
-| 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER | 4 | 44 |
-| 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER | 16 | 66 |
+| 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER | 12 | 36 |
+| 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER | 32 | 50 |
 | 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 38 | 120 |
-| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 46 | 50 |
+| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 48 | 48 |
 | 0x1A0E | FUN_code_000d07 | C_WITH_EXACT_ASM_HELPER | 36 | 12 |
 | 0x1A3E | cdce62005_rst | C_WITH_EXACT_ASM_HELPER | 16 | 22 |
-| 0x1A64 | cli_send_system_status | C_WITH_EXACT_ASM_HELPER | 220 | 164 |
+| 0x1A64 | cli_send_system_status | C_WITH_EXACT_ASM_HELPER | 256 | 128 |
 | 0x1BE4 | alarms_clear | C_WITH_EXACT_ASM_HELPER | 108 | 18 |
 | 0x1C62 | channels_read | C_WITH_EXACT_ASM_HELPER | 58 | 86 |
-| 0x1CF2 | cli_send_channel_cdf_adc | C_WITH_EXACT_ASM_HELPER | 32 | 80 |
-| 0x1D62 | fpga_set_trg_charge_lvls | C_WITH_EXACT_ASM_HELPER | 12 | 36 |
-| 0x1D92 | fpga_set_trg_settings | C_WITH_EXACT_ASM_HELPER | 8 | 28 |
-| 0x1DB6 | fpga_set_adc_range_corr | C_WITH_EXACT_ASM_HELPER | 26 | 94 |
-| 0x1E2E | fpga_set_tdc_values | C_WITH_EXACT_ASM_HELPER | 16 | 62 |
+| 0x1CF2 | cli_send_channel_cdf_adc | C_WITH_EXACT_ASM_HELPER | 48 | 64 |
+| 0x1D62 | fpga_set_trg_charge_lvls | C_WITH_EXACT_ASM_HELPER | 16 | 32 |
+| 0x1D92 | fpga_set_trg_settings | C_WITH_EXACT_ASM_HELPER | 12 | 24 |
+| 0x1DB6 | fpga_set_adc_range_corr | C_WITH_EXACT_ASM_HELPER | 30 | 90 |
+| 0x1E2E | fpga_set_tdc_values | C_WITH_EXACT_ASM_HELPER | 20 | 58 |
 | 0x1E7C | fpga_set_threshold_calibration | C_WITH_EXACT_ASM_HELPER | 24 | 76 |
 | 0x1EE0 | FUN_code_000f70 | C_WITH_EXACT_ASM_HELPER | 22 | 68 |
 | 0x1F3A | fpga_set_ch_adc_delay | C_WITH_EXACT_ASM_HELPER | 26 | 58 |
@@ -72,7 +72,7 @@ are no longer acceptance evidence for C integration.
 | 0x2130 | fpga_is_ready | C_WITH_EXACT_ASM_HELPER | 6 | 22 |
 | 0x214C | FUN_code_0010a6 | C_WITH_EXACT_ASM_HELPER | 6 | 34 |
 | 0x2174 | ths788_write | C_WITH_EXACT_ASM_HELPER | 100 | 48 |
-| 0x2208 | ths788_read | C_WITH_EXACT_ASM_HELPER | 124 | 38 |
+| 0x2208 | ths788_read | C_WITH_EXACT_ASM_HELPER | 126 | 36 |
 | 0x22AA | dac_send_value | C_WITH_EXACT_ASM_HELPER | 84 | 16 |
 | 0x230E | fpga_msg_send_t2 | C_WITH_EXACT_ASM_HELPER | 84 | 6 |
 | 0x2368 | fpga_msg_read_t1 | C_WITH_EXACT_ASM_HELPER | 94 | 4 |
@@ -96,9 +96,9 @@ are no longer acceptance evidence for C integration.
 | 0x2826 | cli_send_msg | C_WITH_EXACT_ASM_HELPER | 8 | 8 |
 | 0x2836 | cli_get_next_byte | C_WITH_EXACT_ASM_HELPER | 2 | 4 |
 | 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 52 | 60 |
-| 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 48 | 58 |
+| 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 50 | 56 |
 
-Current C coverage is 5286/10836 executable bytes (48.7818%), or 52.5552% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
+Current C coverage is 5386/10836 executable bytes (49.7047%), or 53.5494% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
 
 ## Accepted implementation choices
 
@@ -348,3 +348,27 @@ ASM: 5550 bytes (51.2182%), including 4742 inline helpers. Application-only C:
 Golden and rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
 Differing bytes: 0. Two final clean ELF/HEX/BIN builds are identical.
 Machine-readable changes and per-step logs: exact_latest_continuation_results.json.
+
+## Further exact continuation: steps 209–233
+
+21 of 25 candidates were accepted, replacing 100 ASM bytes with C. Every accepted
+candidate independently passed a clean whole-image exact-check. The four rejected
+candidates (218, 220, 228, 229) were restored: explicit TDC carry capture enlarged
+its fixed region; three status-bit conditions changed layout/encoding. No emulator
+runs or behavioral equivalence were used to accept these changes.
+
+New C expresses status bits, the TDC low-byte shift, a CRC low-byte shift and
+IRQ controls around exact queue/calibration loads, protected EEPROM writes and
+FPGA read/print/command paths. Remaining ADC, DEC, pointer and private-call helpers
+now include nearby explanatory C equivalents. Comments explicitly distinguish
+historical functionally tested alternatives from unvalidated value descriptions;
+they do not claim equivalence of the complete CPU flags, frame or hardware timing.
+
+Application: 89 entries; C_BINARY_EXACT 5, C_WITH_EXACT_ASM_HELPER 83, ASM_EXACT 1.
+Boot: 9 ASM procedures. C: 5386/10836 executable bytes (49.7047%); ASM: 5450
+(50.2953%), including 4642 inline helpers. Application-only C: 53.5494%.
+GNU AVR primitive subset: 290 bytes; other C instructions: 5096 bytes.
+Golden/rebuilt canonical SHA256:
+e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
+Differing bytes: 0. Two final clean ELF/HEX/BIN builds are identical.
+See exact_latest_continuation_results.json for individual logs.

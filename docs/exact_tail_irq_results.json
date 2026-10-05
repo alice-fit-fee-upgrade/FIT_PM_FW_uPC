@@ -1,0 +1,11 @@
+[
+  {
+    "step": 230,
+    "source": "trigger_charge_command.c",
+    "change": "Compiler IRQ primitives before exact shared command tail",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_230.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

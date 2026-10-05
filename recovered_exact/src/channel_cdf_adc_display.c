@@ -1,10 +1,22 @@
+/* C value equivalent of the retained setting loads and calls:
+ * value = (uint16_t)settings[0] | ((uint16_t)settings[1] << 8);
+ * settings += 2;
+ * print_setting(value); print_message(message);
+ * The illustrative calls require the original private register ABI and
+ * exact RCALL encoding. The loads keep the two original LD Y+ instructions.
+ * This is an explanation, not an independently tested compiled alternative. */
+#include "legacy_cpu.h"
 #include <stdint.h>
 #define RAM8(address) (*(volatile uint8_t *)(address))
 #define PRINT_MESSAGE(cursor) asm volatile("rcall cli_send_msg" : "+z" (cursor) : : "memory", "cc")
 /* Two volatile Y+ loads must remain between the original CLI/SEI pair. */
-#define PRINT_SETTING(format, tail) \
- asm volatile("cli\n\tld r16, Y+\n\tld r17, Y+\n\tsei\n\trcall " format "\n\trcall " tail \
- : "+y" (settings), "=r" (value), "+z" (message) : : "memory", "cc")
+#define PRINT_SETTING(format, tail) do { \
+ asm volatile("" : "+y" (settings), "+z" (message) : : "memory"); \
+ pm_cpu_disable_irq(); \
+ asm volatile("ld r16, Y+\n\tld r17, Y+" : "+y" (settings), "=r" (value) : : "memory"); \
+ pm_cpu_enable_irq(); \
+ asm volatile("rcall " format "\n\trcall " tail : "+r" (value), "+z" (message) : : "memory", "cc"); \
+} while (0)
 
 void cli_send_channel_cdf_adc(void)
 {
