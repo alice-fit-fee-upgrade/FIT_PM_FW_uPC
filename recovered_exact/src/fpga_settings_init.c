@@ -47,7 +47,7 @@ extern void fpga_msg_send_t2(void);
 void fpga_settings_init(void)
 {
     /* Original asymmetric frame saves R30 but not YL; preserve it as recorded. */
-    asm volatile("push r18\n\tpush r17\n\tpush r16\n\tpush r29\n\tpush r30" : : : "memory");
+    asm volatile("push r17\n\tpush r16\n\tpush r29\n\tpush r30" : : : "memory");
     register uint8_t address asm("r18") = 0x7c;
     register uint8_t lo asm("r16"), hi asm("r17");
     asm volatile("clr %0\n\tclr %1" : "=r" (lo), "=r" (hi) : "r" (address) : "cc");
@@ -83,7 +83,7 @@ second_bank:
     address = 0x7c;
     lo = 0xff; hi = 0x0f;
     SEND_SETTING(lo, hi, address);
-    asm volatile("pop r30\n\tpop r29\n\tpop r16\n\tpop r17\n\tpop r18" : : : "memory");
+    asm volatile("pop r30\n\tpop r29\n\tpop r16\n\tpop r17" : : : "memory");
     return;
 }
 

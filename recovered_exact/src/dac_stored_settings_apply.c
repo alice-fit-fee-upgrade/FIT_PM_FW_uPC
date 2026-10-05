@@ -15,7 +15,9 @@ extern void FUN_code_001068(void);
  * required because callers expect all fourteen original registers restored. */
 void FUN_code_0004ef(void)
 {
-    asm volatile("push r31\n\tpush r30\n\tpush r29\n\tpush r28\n\tpush r23\n\tpush r22\n\tpush r21\n\tpush r20\n\tpush r19\n\tpush r18\n\tpush r17\n\tpush r16\n\tpush r1\n\tpush r0" : : : "memory");
+    asm volatile("push r30\n\tpush r29\n\tpush r28\n\tpush r23\n\tpush r22\n\tpush r21\n\tpush r20\n\tpush r19\n\tpush r18\n\tpush r17\n\tpush r16\n\tpush r1\n\tpush r0" : : : "memory");
+    /* Expose the original caller-facing R31 save contract to GCC. */
+    asm volatile("" : : : "r31");
     register uint8_t channel asm("r23");
     asm volatile("clr %0" : "=r" (channel) : : "cc");
     register uint8_t *settings asm("r28") = (uint8_t *)0x21cf;
@@ -37,7 +39,7 @@ next_channel:;
     DAC_CALL(FUN_code_001068, word, selected);
     asm volatile("inc %0" : "+r" (channel) : : "cc");
     if (channel != 12) goto next_channel;
-    asm volatile("pop r0\n\tpop r1\n\tpop r16\n\tpop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r21\n\tpop r22\n\tpop r23\n\tpop r28\n\tpop r29\n\tpop r30\n\tpop r31" : : : "memory");
+    asm volatile("pop r0\n\tpop r1\n\tpop r16\n\tpop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r21\n\tpop r22\n\tpop r23\n\tpop r28\n\tpop r29\n\tpop r30" : : : "memory");
     return;
 }
 

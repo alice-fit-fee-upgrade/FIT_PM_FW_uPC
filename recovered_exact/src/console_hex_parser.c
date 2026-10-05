@@ -1,3 +1,4 @@
+#include "legacy_console_call_c.h"
 #include <stdint.h>
 
 /* Legacy result is R21:R20, delimiter R16, validity in carry.
@@ -6,10 +7,10 @@ void cli_get_hex(void)
 {
     register uint8_t count asm("r18"), character asm("r16");
     register uint16_t result asm("r20");
-    asm volatile("push r22\n\tpush r18\n\tclr r18\n\tclr r20\n\tclr r21"
+    asm volatile("push r18\n\tclr r18\n\tclr r20\n\tclr r21"
                  : "=r" (count), "=r" (result) : : "memory", "cc");
 next_digit:;
-    asm volatile("rcall cli_get_next_char" : "=r" (character) : : "memory", "cc");
+    character = pm_console_read_character();
     register uint8_t digit asm("r22") = character;
     asm volatile("" : "+r" (digit), "+r" (character));
     /* Rejected C range alternative (step_235_rejected.log):
@@ -40,10 +41,10 @@ decode:
  * This does not claim the historical value-only candidate preserved all flags. */
     asm volatile("inc %0" : "+r" (count) : : "cc");
     if (count != 4) goto next_digit;
-    asm volatile("rcall cli_get_next_char" : "=r" (character) : : "memory", "cc");
+    character = pm_console_read_character();
 done:
     asm volatile("tst r18\n\tbreq 1f\n\tclc\n\trjmp 2f\n1:\n\tsec\n2:\n"
-                 "pop r18\n\tpop r22" : : "r" (count), "r" (result) : "memory", "cc");
+                 "pop r18" : : "r" (count), "r" (result) : "memory", "cc");
     return;
 }
 

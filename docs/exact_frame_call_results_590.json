@@ -1,0 +1,218 @@
+[
+  {
+    "step": 590,
+    "source": "console_decimal_formatter.c",
+    "change": "Compiler emits original outer PUSH/POP R20; nine inner saves remain ASM",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_590.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 591,
+    "source": "console_integer_parser.c",
+    "change": "Compiler emits original outer PUSH/POP R22 around exact inner parser frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_591.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 592,
+    "source": "console_hex_parser.c",
+    "change": "Compiler emits outer R22 save/restore around hexadecimal parser",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_592.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 593,
+    "source": "console_character_read.c",
+    "change": "Compiler emits outer R19 save/restore around shared raw/folded receiver frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_593.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 594,
+    "source": "console_character_send.c",
+    "change": "Compiler emits outer R31 save/restore around original descending sender frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_594.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 595,
+    "source": "dac_stored_settings_apply.c",
+    "change": "Compiler emits outer R31 save/restore around exact DAC settings frame",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_595_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 596,
+    "source": "fpga_settings_init.c",
+    "change": "Compiler emits outer R18 save/restore around exact settings initialization frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_596.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 597,
+    "source": "console_fixed2_entry.c",
+    "change": "Compiler emits original PUSH at shared formatter/receiver tail entry",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_597_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 598,
+    "source": "console_fixed3_entry.c",
+    "change": "Compiler emits original PUSH at shared formatter/receiver tail entry",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_598_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 599,
+    "source": "console_temperature_entry.c",
+    "change": "Compiler emits original PUSH at shared formatter/receiver tail entry",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_599_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 600,
+    "source": "console_raw_byte_entry.c",
+    "change": "Compiler emits original PUSH at shared formatter/receiver tail entry",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_600_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 601,
+    "source": "fpga_status_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_601_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 602,
+    "source": "pll_status_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_602_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 603,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_603_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 604,
+    "source": "console_cts_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_604_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 605,
+    "source": "console_rx_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_605_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 606,
+    "source": "console_tx_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_606_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 607,
+    "source": "timer_overflow_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_607_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 608,
+    "source": "dma_channel_interrupt.c",
+    "change": "Compiler emits outer R31 PUSH; RETI and its restoring tail remain ASM",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_608_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 609,
+    "source": "dac_stored_settings_apply.c",
+    "change": "Native R31 frame with explicit private save-contract clobber",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_609.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 610,
+    "source": "console_fixed2_entry.c",
+    "change": "Shared-entry PUSH with noreturn inference disabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_610.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 611,
+    "source": "console_raw_byte_entry.c",
+    "change": "Shared-entry PUSH with noreturn inference disabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_611.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 612,
+    "source": "power_porte_interrupt.c",
+    "change": "ISR outer save with noreturn inference disabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_612.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 613,
+    "source": "application_main.c",
+    "change": "OS_main documents reset entry and suppresses automatic callee-save frame",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_613.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  }
+]

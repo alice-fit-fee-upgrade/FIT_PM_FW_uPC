@@ -18,7 +18,7 @@ extern void adt7311_faults_clr(void);
 
 /* Original reset sequence, including wide low-I/O stores and its stack reset.
  * GPIO/peripheral values and the unusual timer/default states are unchanged. */
-int __attribute__((section(".text.main"))) main(void)
+int __attribute__((OS_main, section(".text.main"))) main(void)
 {
     register uint8_t value asm("r16");
     SET_VALUE(0xcb); CLOCK_WRITE(0x52);

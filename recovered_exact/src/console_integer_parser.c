@@ -6,7 +6,7 @@ void cli_get_integer(void)
 {
     register uint8_t count asm("r18"), negative asm("r19");
     register uint16_t result asm("r20");
-    asm volatile("push r22\n\tpush r17\n\tpush r18\n\tpush r19\n\tpush r1\n\tpush r0\n\tclr r18"
+    asm volatile("push r17\n\tpush r18\n\tpush r19\n\tpush r1\n\tpush r0\n\tclr r18"
                  : "=r" (count) : : "memory", "cc");
     register uint8_t radix asm("r17") = 10;
     asm volatile("clr r19\n\tclr r20\n\tclr r21" : "=r" (negative), "=r" (result) : "r" (radix) : "cc");
@@ -92,7 +92,7 @@ success:
 error:
     asm volatile("sec" : : : "cc");
 restore:
-    asm volatile("pop r0\n\tpop r1\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r22" : : : "memory");
+    asm volatile("pop r0\n\tpop r1\n\tpop r19\n\tpop r18\n\tpop r17" : : : "memory");
     return;
 }
 

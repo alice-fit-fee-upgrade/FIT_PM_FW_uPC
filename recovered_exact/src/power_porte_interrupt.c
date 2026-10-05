@@ -6,7 +6,6 @@
 
 void PORTE_INT0_vect_isr(void)
 {
-    asm volatile("push r31" : : : "memory");
     {
         register uint8_t saved_status asm("r31") = SREG;
         asm volatile("" : "+r" (saved_status) : : "memory");

@@ -1,0 +1,17 @@
+{
+  "accepted": [
+    "console_hex_digit",
+    "console_hex_word",
+    "console_decimal_formatter",
+    "console_flash_message",
+    "console_hex_parser"
+  ],
+  "restored": [
+    "console_integer_parser"
+  ],
+  "differing_bytes": 0,
+  "native_c_bytes": 6714,
+  "total_executable_bytes": 10836,
+  "canonical_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "logical_transition_cases": 387840
+}

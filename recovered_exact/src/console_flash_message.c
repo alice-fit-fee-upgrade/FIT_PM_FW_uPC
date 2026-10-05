@@ -1,3 +1,4 @@
+#include "legacy_console_call_c.h"
 #include <stdint.h>
 
 void cli_send_msg(void)
@@ -20,7 +21,7 @@ next_character:
  * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
  * This does not claim the historical value-only candidate preserved all flags. */
         asm goto("tst %0\n\tbreq %l[finished]" : : "r" (byte) : "cc" : finished);
-        asm volatile("rcall cli_send_buf" : "+r" (byte) : : "memory", "cc");
+        byte = pm_console_send_character(byte);
     }
     goto next_character;
 finished:

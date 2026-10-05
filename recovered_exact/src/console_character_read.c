@@ -5,7 +5,7 @@
 void cli_get_next_char(void)
 {
     /* The byte-mode entry jumps past the first two instructions with R19=1. */
-    asm volatile("push r19\n\tclr r19\n\tpush r17\n\tpush r18\n\tpush r20\n\tpush r30\n\tpush r31" : : : "memory", "cc");
+    asm volatile("clr r19\n\tpush r17\n\tpush r18\n\tpush r20\n\tpush r30\n\tpush r31" : : : "r19", "memory", "cc");
     register uint8_t *cursor asm("r30") = (uint8_t *)0x2000;
     asm volatile("" : "+z" (cursor));
     register uint8_t value asm("r16"), index asm("r17"), data asm("r18"), flow asm("r20"), mode asm("r19");
@@ -68,7 +68,7 @@ case_fold:
 fold_done:;
     value = data;
     asm volatile("" : : "r" (value));
-    asm volatile("pop r31\n\tpop r30\n\tpop r20\n\tpop r18\n\tpop r17\n\tpop r19" : : : "memory");
+    asm volatile("pop r31\n\tpop r30\n\tpop r20\n\tpop r18\n\tpop r17" : : : "memory");
     return;
 }
 

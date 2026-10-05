@@ -11,7 +11,7 @@
 
 void cli_send_buf(void)
 {
-    asm volatile("push r31\n\tpush r30\n\tpush r20\n\tpush r19\n\tpush r18\n\tpush r17" : : : "memory");
+    asm volatile("push r30\n\tpush r20\n\tpush r19\n\tpush r18\n\tpush r17" : : : "memory");
     register uint8_t character asm("r16");
     asm volatile("" : "=r" (character));
     register uint8_t *cursor asm("r30") = (uint8_t *)0x2002;
@@ -58,7 +58,7 @@ direct_send:
     USARTF0_CTRLA = control;
     pm_cpu_enable_irq();
 finished:
-    asm volatile("pop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r30\n\tpop r31" : : : "memory");
+    asm volatile("pop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r30" : : : "memory");
     return;
 }
 

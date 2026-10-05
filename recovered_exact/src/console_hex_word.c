@@ -1,3 +1,4 @@
+#include "legacy_console_call_c.h"
 #include <stdint.h>
 /* Archived C alternative for the exact ASM helpers below (not compiled).
  * This implementation, with its historical private-ABI ASM bridge and callees,
@@ -25,7 +26,7 @@
  (value) = __builtin_avr_swap(value); \
  asm volatile("" : "+r" (value)); \
 } while (0)
-#define SEND_DIGIT(value) asm volatile("rcall cli_send_digit_hex" : "+r" (value) : : "memory", "cc")
+#define SEND_DIGIT(value) ((value) = pm_console_send_hex_digit(value))
 
 /* Historical symbol says 32bit; the original emits four nibbles of R17:R16. */
 void cli_send_32bit_hex(void)

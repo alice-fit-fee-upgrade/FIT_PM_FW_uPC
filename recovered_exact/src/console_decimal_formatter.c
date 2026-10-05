@@ -1,3 +1,4 @@
+#include "legacy_console_call_c.h"
 #include "legacy_cpu.h"
 #include <stdint.h>
 /* Unvalidated C equivalents: *--cursor = digit; *--cursor = character;
@@ -13,7 +14,7 @@
  * The historical divide-by-ten bit loop remains an exact small ASM core. */
 void cli_send_uint16(void)
 {
-    asm volatile("push r20\n\tclr r20\n\tclc" : : : "memory", "cc");
+    asm volatile("clr r20\n\tclc" : : : "r20", "memory", "cc");
     asm volatile("push r14\n\tpush r15\n\tpush r16\n\tpush r17\n\tpush r18\n\tpush r19\n\tpush r25\n\tpush r30\n\tpush r31" : : : "memory");
     asm goto("clr r15\n\tbrcc %l[frame_ready]\n\tinc r15\n\ttst r17\n\tbrpl %l[frame_ready]" : : : "cc" : frame_ready);
     {
@@ -98,10 +99,10 @@ begin_output:
 next_character:
     asm volatile("ld r16, Z+" : "=r" (character), "+z" (cursor) : : "memory");
     asm goto("tst r16\n\tbreq %l[restore]" : : "r" (character) : "cc" : restore);
-    asm volatile("rcall cli_send_buf" : "+r" (character) : : "memory", "cc");
+    character = pm_console_send_character(character);
     goto next_character;
 restore:
-    asm volatile("pop r31\n\tpop r30\n\tpop r25\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r16\n\tpop r15\n\tpop r14\n\tpop r20" : : : "memory");
+    asm volatile("pop r31\n\tpop r30\n\tpop r25\n\tpop r19\n\tpop r18\n\tpop r17\n\tpop r16\n\tpop r15\n\tpop r14" : : : "memory");
     return;
 }
 

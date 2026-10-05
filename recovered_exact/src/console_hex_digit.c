@@ -1,3 +1,4 @@
+#include "legacy_console_call_c.h"
 #include <stdint.h>
 
 /* Archived C alternative for the exact ASM helpers below (not compiled).
@@ -36,7 +37,7 @@ void cli_send_digit_hex(void)
     asm goto("cpi %0, 0x3a\n\tbrlo %l[send]" : : "r" (digit) : "cc" : send);
     digit += 'A' - '0' - 10;
 send:
-    asm volatile("rcall cli_send_buf" : "+r" (digit) : : "memory", "cc");
+    digit = pm_console_send_character(digit);
 }
 
 /* BEGIN COMPILED LOGICAL C EQUIVALENT

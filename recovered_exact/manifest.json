@@ -754,7 +754,7 @@
       "meaning": "Original FPGA SRAM settings banks and state words",
       "asm_helper_ranges": [
         {
-          "start": 2276,
+          "start": 2278,
           "end_exclusive": 2286,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -785,7 +785,7 @@
         },
         {
           "start": 2430,
-          "end_exclusive": 2440,
+          "end_exclusive": 2438,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -1112,7 +1112,7 @@
       "meaning": "Original text/byte shared receiver with signed folding and RTS watermark",
       "asm_helper_ranges": [
         {
-          "start": 10300,
+          "start": 10302,
           "end_exclusive": 10314,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1153,7 +1153,7 @@
         },
         {
           "start": 10398,
-          "end_exclusive": 10410,
+          "end_exclusive": 10408,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -1169,7 +1169,7 @@
       "meaning": "Original console queue/full retry and direct USART send",
       "asm_helper_ranges": [
         {
-          "start": 10412,
+          "start": 10414,
           "end_exclusive": 10424,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -1205,7 +1205,7 @@
         },
         {
           "start": 10504,
-          "end_exclusive": 10516,
+          "end_exclusive": 10514,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -1282,11 +1282,6 @@
       "compiler_profile": "power_porte_interrupt_legacy",
       "meaning": "Original PSU/status interrupt, retry state and LED/deinit handling",
       "asm_helper_ranges": [
-        {
-          "start": 2966,
-          "end_exclusive": 2968,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
         {
           "start": 2972,
           "end_exclusive": 2980,
@@ -2389,7 +2384,7 @@
       "meaning": "Parse up to four uppercase hexadecimal digits into private R21:R20 result",
       "asm_helper_ranges": [
         {
-          "start": 9900,
+          "start": 9902,
           "end_exclusive": 9912,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -2405,7 +2400,7 @@
         },
         {
           "start": 9958,
-          "end_exclusive": 9974,
+          "end_exclusive": 9972,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -2634,7 +2629,7 @@
       "meaning": "Apply all four DAC words for twelve channels with preserved private frame",
       "asm_helper_ranges": [
         {
-          "start": 2526,
+          "start": 2528,
           "end_exclusive": 2556,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -2665,7 +2660,7 @@
         },
         {
           "start": 2606,
-          "end_exclusive": 2634,
+          "end_exclusive": 2632,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -3047,14 +3042,9 @@
       "meaning": "Signed fixed-point console value with two decimal places",
       "asm_helper_ranges": [
         {
-          "start": 10030,
-          "end_exclusive": 10032,
-          "reason": "Exact saved mode register"
-        },
-        {
           "start": 10034,
           "end_exclusive": 10038,
-          "reason": "Carry selector and shared tail jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -3113,14 +3103,9 @@
       "meaning": "Select raw console byte mode and enter shared receiver",
       "asm_helper_ranges": [
         {
-          "start": 10294,
-          "end_exclusive": 10296,
-          "reason": "Exact saved mode register"
-        },
-        {
           "start": 10298,
           "end_exclusive": 10300,
-          "reason": "Shared receiver jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -3167,7 +3152,7 @@
       "meaning": "Parse original signed decimal value with C radix and digit decoding",
       "asm_helper_ranges": [
         {
-          "start": 9780,
+          "start": 9782,
           "end_exclusive": 9794,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3218,7 +3203,7 @@
         },
         {
           "start": 9884,
-          "end_exclusive": 9898,
+          "end_exclusive": 9896,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
@@ -3234,7 +3219,7 @@
       "meaning": "Original integer/fixed-point formatter with C digit masks and character setup",
       "asm_helper_ranges": [
         {
-          "start": 10062,
+          "start": 10064,
           "end_exclusive": 10096,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3310,7 +3295,7 @@
         },
         {
           "start": 10248,
-          "end_exclusive": 10268,
+          "end_exclusive": 10266,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
