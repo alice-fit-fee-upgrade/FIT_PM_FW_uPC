@@ -92,3 +92,6 @@ ASM absolute load or pointer operation because GCC cannot allocate another
 register without changing the original frame. Those helpers remain ASM.
 See [continuation results](../docs/exact_continuation_results.json) for all
 98 attempts, including rejected candidates, and the complete-image logs.
+
+The remaining inline helper inventory is in [remaining_inline_asm.md](../docs/remaining_inline_asm.md).
+Regenerate with `python3 tools/remaining_asm.py --output ../docs/remaining_inline_asm.json`.

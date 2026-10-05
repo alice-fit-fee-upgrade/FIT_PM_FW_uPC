@@ -784,5 +784,41 @@
     "differing_bytes": null,
     "functional_validation_claimed": false,
     "rejection_reason": "register allocation"
+  },
+  {
+    "step": 318,
+    "source": "console_hex_parser.c",
+    "change": "C hex character range tests; locally preserve non-folded branch profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_318_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 319,
+    "source": "console_integer_parser.c",
+    "change": "C signed decimal digit range tests; locally preserve non-folded branch profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_319_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 320,
+    "source": "console_integer_parser.c",
+    "change": "C leading minus/count selection; locally preserve non-folded branch profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_320_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 321,
+    "source": "console_integer_parser.c",
+    "change": "C decimal parser completion conditions; locally preserve non-folded branch profile",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_321_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
   }
 ]

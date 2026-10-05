@@ -413,3 +413,15 @@ Golden/rebuilt canonical SHA256:
 e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
 Differing bytes: 0. Two final clean ELF/HEX/BIN builds are identical.
 See exact_latest_continuation_results.json for individual logs and reasons.
+
+## Additional parser profile audit: steps 318–321
+
+Four local parser candidates also disabled peephole2, tree-VRP and forward
+propagation to test whether clean C branches could retain the original encoding.
+All four failed fixed-region sizing or register allocation and were restored.
+No source/compiler profile changes were retained. Existing C alternatives remain
+in comments. A final clean exact-check revalidated the restored baseline.
+
+remaining_inline_asm.json/.md now inventory all 3942 inline helper bytes against
+complete original instructions, with per-function totals and opcode examples.
+The tool is read-only with respect to firmware sources and reference files.

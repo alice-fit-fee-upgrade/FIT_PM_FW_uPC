@@ -124,7 +124,8 @@
     "src/trigger_settings_command.c": "69b5b6eed455f04eec15fa00afe77f818b4e7300173ff46d75ecbd7fedce1480",
     "tools/audit_c_provenance.py": "3eb3acdb8ef909554ee0d2557dcece74876ae8c9b80dc5c31e6fe19d0fb0bbc9",
     "tools/inventory.py": "6057b0fb12d54686e23c2aabab73e9e9b9ce8312893d4b729bed56565f4f168b",
-    "tools/prepare_sources.py": "5632fe4bb803f121fafad54b647ae18f6e1d560a0a5223dffe949241d4d0adc3"
+    "tools/prepare_sources.py": "5632fe4bb803f121fafad54b647ae18f6e1d560a0a5223dffe949241d4d0adc3",
+    "tools/remaining_asm.py": "489c1b05fe4cc452ead4fffd5d1bbbc85257dd11fb51d38c8f078924afba7aa3"
   },
   "reference_source_sha256": {
     "asm_analysis/main.S": "aa99daadd2705460e4134f5e71bf3eaf600ca81160b0698254589307c7682232",
@@ -147,7 +148,9 @@
   "compiler_generated_avr_primitive_bytes": 380,
   "compiler_generated_other_c_bytes": 5706,
   "accepted_changes_this_wave": 54,
-  "rejected_attempts_this_wave": 30,
+  "rejected_attempts_this_wave": 34,
   "changed_translation_units_this_wave": 29,
-  "behavioral_emulator_runs_this_wave": 0
+  "behavioral_emulator_runs_this_wave": 0,
+  "remaining_inline_asm_inventory_checked": true,
+  "additional_parser_profile_attempts_restored": 4
 }
