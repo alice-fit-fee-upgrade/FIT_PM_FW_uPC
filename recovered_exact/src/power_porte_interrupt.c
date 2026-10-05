@@ -1,5 +1,5 @@
 #include "legacy_interrupt.h"
-#include "legacy_r16.h"
+#include "legacy_r16_c.h"
 #define SET_VALUE(constant) do { value=(constant); asm volatile("" : "+r" (value)); } while (0)
 
 void PORTE_INT0_vect_isr(void)
@@ -16,8 +16,8 @@ void PORTE_INT0_vect_isr(void)
     asm volatile("or %0, %1" : "+r" (value) : "r" (flags) : "cc");
     PM_RAM8(0x2157) = value;
     asm volatile("eor %0, %1" : "+r" (changed) : "r" (flags) : "cc");
-    asm goto("sbrs %0, 0\n\trjmp %l[watch_retry]" : : "r" (changed) : : watch_retry);
-    asm goto("sbrc %0, 0\n\trjmp %l[power_on]" : : "r" (flags) : : power_on);
+    if (!(changed & (1u << 0))) goto watch_retry;
+    if (flags & (1u << 0)) goto power_on;
     SET_VALUE(4);
     PORTE_OUTCLR = value;
     asm volatile("sbi 0, 1\n\trcall system_deinit" : "=r" (value) : : "memory", "cc");
@@ -33,12 +33,12 @@ store_retry:
     asm volatile("cbi 0, 1" : : : "memory");
     goto update_led;
 watch_retry:
-    asm goto("sbrs %0, 3\n\trjmp %l[finished]" : : "r" (changed) : : finished);
-    asm goto("sbrc %0, 3\n\trjmp %l[finished]" : : "r" (flags) : : finished);
+    if (!(changed & (1u << 3))) goto finished;
+    if (flags & (1u << 3)) goto finished;
     value = pm_read_absolute(0x215b);
-    asm goto("cpi %0, 2\n\tbrne %l[deinitialize]" : : "r" (value) : "cc" : deinitialize);
+    if (value != 2) goto deinitialize;
     value = pm_read_absolute(0x2442);
-    asm goto("tst %0\n\tbreq %l[deinitialize]" : : "r" (value) : "cc" : deinitialize);
+    if (value == 0) goto deinitialize;
     asm volatile("dec %0" : "+r" (value) : : "cc");
     PM_RAM8(0x2442) = value;
     SET_VALUE(4);

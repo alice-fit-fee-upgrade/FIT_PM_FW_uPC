@@ -1,5 +1,34 @@
 #include <avr/io.h>
 
+/* Archived C alternative for the exact ASM helpers below (not compiled).
+ * This implementation, with its historical private-ABI ASM bridge and callees,
+ * passed the functional comparisons recorded in docs/mixed_recovery_system_checkpoint.md.
+ * The historical integrated FLASH differed from PM.hex; it is NOT an accepted
+ * baseline implementation. Tests do not establish timing/async IRQ/hardware
+ * equivalence. Full register/SREG restoration belongs to the archived bridge.
+ * Dependencies (types, MMIO definitions, helper functions and bridge contracts):
+ * mixed_c_asm/src/system_control.c; see that source and the checkpoint for the full context.
+ * Scope is the archived function shown; wrappers/callees in that tree cover
+ * additional behavior. Individual ASM fragments were not independently
+ * validated as standalone plain C implementations.
+ *
+ * void pm_pll_control_reset_c(void)
+ * {
+ *     uint16_t address=0x2916;
+ *     for (uint8_t remaining=10; remaining!=0; --remaining) {
+ *         uint8_t b0=pgm_read_byte(address++);
+ *         uint8_t b1=pgm_read_byte(address++);
+ *         uint8_t b2=pgm_read_byte(address++);
+ *         uint8_t b3=pgm_read_byte(address++);
+ *         uint32_t value=(uint32_t)b0 | ((uint32_t)b1<<8)
+ *                      | ((uint32_t)b2<<16) | ((uint32_t)b3<<24);
+ *         pm_pll_write_c(value);
+ *     }
+ *     PORTF_INTCTRL=0x0a;
+ *     PORTB_OUTCLR=0x20;
+ * }
+ */
+
 void CDCE62005_control_rst(void)
 {
     register const uint8_t *cursor asm("r30") = (const uint8_t *)0x2916;

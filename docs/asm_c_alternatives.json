@@ -1,0 +1,227 @@
+[
+  {
+    "accepted_source": "recovered_exact/src/console_hex_digit.c",
+    "commented_function": "pm_hex_digit_c",
+    "archived_source": "mixed_c_asm/src/console_output.c",
+    "archived_source_sha256": "1ac580cbd49b01ed8d801002c358c88a44923a5364b8e5e925d2dd1734e1c7ab",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/console_hex_word.c",
+    "commented_function": "pm_hex16_c",
+    "archived_source": "mixed_c_asm/src/console_output.c",
+    "archived_source_sha256": "1ac580cbd49b01ed8d801002c358c88a44923a5364b8e5e925d2dd1734e1c7ab",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/console_crlf.c",
+    "commented_function": "pm_crlf_c",
+    "archived_source": "mixed_c_asm/src/console_output.c",
+    "archived_source_sha256": "1ac580cbd49b01ed8d801002c358c88a44923a5364b8e5e925d2dd1734e1c7ab",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/pll_control_read.c",
+    "commented_function": "pm_pll_read_c",
+    "archived_source": "mixed_c_asm/src/device_reads.c",
+    "archived_source_sha256": "1b7b6864cfdc2a56292ffbd657b1ac46b17bf868ae56b5f9760c46ea1d84e8f5",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/adt8.c",
+    "commented_function": "pm_adt8_c",
+    "archived_source": "mixed_c_asm/src/device_reads.c",
+    "archived_source_sha256": "1b7b6864cfdc2a56292ffbd657b1ac46b17bf868ae56b5f9760c46ea1d84e8f5",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/adt16.c",
+    "commented_function": "pm_adt16_c",
+    "archived_source": "mixed_c_asm/src/device_reads.c",
+    "archived_source_sha256": "1b7b6864cfdc2a56292ffbd657b1ac46b17bf868ae56b5f9760c46ea1d84e8f5",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/adt_fault_clear.c",
+    "commented_function": "pm_adt_faults_c",
+    "archived_source": "mixed_c_asm/src/device_reads.c",
+    "archived_source_sha256": "1b7b6864cfdc2a56292ffbd657b1ac46b17bf868ae56b5f9760c46ea1d84e8f5",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/fpga_timestamp_send.c",
+    "commented_function": "pm_fpga_stamp_c",
+    "archived_source": "mixed_c_asm/src/device_reads.c",
+    "archived_source_sha256": "1b7b6864cfdc2a56292ffbd657b1ac46b17bf868ae56b5f9760c46ea1d84e8f5",
+    "evidence": "docs/mixed_recovery_reads_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/fpga_settings_init.c",
+    "commented_function": "pm_fpga_settings_init_c",
+    "archived_source": "mixed_c_asm/src/fpga_settings.c",
+    "archived_source_sha256": "9494907cea8db11846e256dec77f3bafb4370c2bb7271c3cc3d9377c3600e6f2",
+    "evidence": "docs/mixed_recovery_settings_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/fpga_settings_reset.c",
+    "commented_function": "pm_fpga_settings_reset_c",
+    "archived_source": "mixed_c_asm/src/fpga_settings.c",
+    "archived_source_sha256": "9494907cea8db11846e256dec77f3bafb4370c2bb7271c3cc3d9377c3600e6f2",
+    "evidence": "docs/mixed_recovery_settings_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/system_deinit.c",
+    "commented_function": "pm_system_deinit_c",
+    "archived_source": "mixed_c_asm/src/system_control.c",
+    "archived_source_sha256": "da8739f9730c9e9a618ddcc650b042daf775c297b718f1d5835d6a89be8702cb",
+    "evidence": "docs/mixed_recovery_system_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/system_init.c",
+    "commented_function": "pm_system_init_c",
+    "archived_source": "mixed_c_asm/src/system_control.c",
+    "archived_source_sha256": "da8739f9730c9e9a618ddcc650b042daf775c297b718f1d5835d6a89be8702cb",
+    "evidence": "docs/mixed_recovery_system_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/pll_defaults_load.c",
+    "commented_function": "pm_pll_control_reset_c",
+    "archived_source": "mixed_c_asm/src/system_control.c",
+    "archived_source_sha256": "da8739f9730c9e9a618ddcc650b042daf775c297b718f1d5835d6a89be8702cb",
+    "evidence": "docs/mixed_recovery_system_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/power_state_request.c",
+    "commented_function": "pm_fpga_set_state",
+    "archived_source": "mixed_c_asm/src/fpga_state.c",
+    "archived_source_sha256": "a9f6b43d849b34456a4c2415ae0c690f58aae2a7109a1c631e03bcf68f4f0049",
+    "evidence": "docs/mixed_recovery_gpio_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/fpga_ready_guard.c",
+    "commented_function": "pm_status_gate_allowed",
+    "archived_source": "mixed_c_asm/src/status_gate.c",
+    "archived_source_sha256": "bb0614654452457851e2a3285ed870ac40e56a1cbf5ce5735b274fbc42ffa5a0",
+    "evidence": "docs/mixed_status_gate_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/flash_crc_bit_core.c",
+    "commented_function": "pm_crc_byte_abi",
+    "archived_source": "mixed_c_asm/src/crc_byte.c",
+    "archived_source_sha256": "e8cda5166bee6b15658f46c40795690bc50d913bdf886c7859b798f74d5af021",
+    "evidence": "docs/mixed_crc_byte_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/flash_interface_init.c",
+    "commented_function": "pm_flash_spi_init",
+    "archived_source": "mixed_c_asm/src/flash_spi.c",
+    "archived_source_sha256": "b458b9db6422f0daa5057efc783aaa20086bc9fdcf881089014ac09fc4884c1e",
+    "evidence": "docs/mixed_flash_init_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/flash_write_enable.c",
+    "commented_function": "pm_flash_write_enable",
+    "archived_source": "mixed_c_asm/src/flash_spi.c",
+    "archived_source_sha256": "b458b9db6422f0daa5057efc783aaa20086bc9fdcf881089014ac09fc4884c1e",
+    "evidence": "docs/mixed_flash_enable_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/flash_address_send.c",
+    "commented_function": "pm_flash_send_address",
+    "archived_source": "mixed_c_asm/src/flash_spi.c",
+    "archived_source_sha256": "b458b9db6422f0daa5057efc783aaa20086bc9fdcf881089014ac09fc4884c1e",
+    "evidence": "docs/mixed_flash_address_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/flash_wait_ready.c",
+    "commented_function": "pm_flash_read_status_transaction",
+    "archived_source": "mixed_c_asm/src/flash_spi.c",
+    "archived_source_sha256": "b458b9db6422f0daa5057efc783aaa20086bc9fdcf881089014ac09fc4884c1e",
+    "evidence": "docs/mixed_flash_wait_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/dac_offset_scale.c",
+    "commented_function": "pm_dac_prepare_inverse",
+    "archived_source": "mixed_c_asm/src/dac_prepare.c",
+    "archived_source_sha256": "f011fe8df728ca6b2836052e0d9ce2816f6971ffb32989e2a454f4e4c93f601e",
+    "evidence": "docs/mixed_dac_final_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/dac_gain_scale.c",
+    "commented_function": "pm_dac_prepare_calibrated",
+    "archived_source": "mixed_c_asm/src/dac_prepare.c",
+    "archived_source_sha256": "f011fe8df728ca6b2836052e0d9ce2816f6971ffb32989e2a454f4e4c93f601e",
+    "evidence": "docs/mixed_dac_final_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/dac_channels.c",
+    "commented_function": "pm_dac_prepare_signed",
+    "archived_source": "mixed_c_asm/src/dac_prepare.c",
+    "archived_source_sha256": "f011fe8df728ca6b2836052e0d9ce2816f6971ffb32989e2a454f4e4c93f601e",
+    "evidence": "docs/mixed_dac_final_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/dac_saturating_scaled_product.c",
+    "commented_function": "pm_scale_unsigned_abi",
+    "archived_source": "source_recovery/src/scaling.c",
+    "archived_source_sha256": "d7bed3de76b8a3e863f747d6565468402394cf116ad9f9514e8d5f4dc05bc554",
+    "evidence": "docs/mixed_unsigned_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  },
+  {
+    "accepted_source": "recovered_exact/src/dac_signed_scaled_product.c",
+    "commented_function": "pm_scale_signed",
+    "archived_source": "source_recovery/src/scaling.c",
+    "archived_source_sha256": "d7bed3de76b8a3e863f747d6565468402394cf116ad9f9514e8d5f4dc05bc554",
+    "evidence": "docs/mixed_c_asm_checkpoint.md",
+    "status": "ARCHIVED_BINARY_DIFFERENT_FUNCTIONAL_TESTED",
+    "test_results_reused": true
+  }
+]

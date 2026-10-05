@@ -12,7 +12,7 @@ void PORTF_INT0_vect_isr(void)
     asm goto("sbrc %0, 1\n\trjmp %l[store_ready]" : : "r" (read_index) : : store_ready);
     asm volatile("inc %0\n\tld %1, -Z\n\tld %2, -Z"
         : "+r" (ready), "=r" (data), "=r" (read_index), "+z" (cursor) : : "memory", "cc");
-    asm goto("cp %0, %1\n\tbreq %l[advance_ready]" : : "r" (read_index), "r" (data) : "cc" : advance_ready);
+    if (read_index == data) goto advance_ready;
     control = USARTF0_STATUS;
     asm goto("sbrs %0, 5\n\trjmp %l[enable_tx]" : : "r" (control) : : enable_tx);
     asm volatile("clr %0\n\tinc %1" : "=r" (data), "+r" (read_index) : : "cc");

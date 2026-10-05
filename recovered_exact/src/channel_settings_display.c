@@ -31,7 +31,10 @@ next_channel:;
     register uint8_t spacing asm("r24") = 0x20;
     asm volatile("mul %0, %1" : : "r" (tdc_channel), "r" (spacing) : "r0", "r1", "cc");
     low = 0x0c;
-    asm volatile("add %0, r0" : "+r" (low) : : "cc");
+    register uint8_t product_low asm("r0");
+    asm volatile("" : "=r" (product_low));
+    low += product_low;
+    asm volatile("" : "+r" (low));
     register uint8_t device asm("r19") = channel;
     asm volatile("" : "+r" (device), "+r" (channel));
     asm volatile("lsr %0\n\tlsr %0\n\tcli\n\trcall ths788_read\n\tsei"

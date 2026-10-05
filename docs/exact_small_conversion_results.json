@@ -1,0 +1,38 @@
+[
+  {
+    "step": 146,
+    "source": "fpga_word_read.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 147,
+    "source": "power_porte_interrupt.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 148,
+    "source": "eeprom_settings_store.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 149,
+    "source": "channel_tdc_adjust_command.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 150,
+    "source": "channel_settings_display.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 151,
+    "source": "dac_channels.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "step": 113,
+    "source": "recovered_exact/src/alarm_state_clear.c",
+    "accepted": true,
+    "symbols": [
+      "alarms_clear"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 114,
+    "source": "recovered_exact/src/fpga_status_interrupt.c",
+    "accepted": true,
+    "symbols": [
+      "PORTE_INT1_vect_isr"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 115,
+    "source": "recovered_exact/src/pll_status_interrupt.c",
+    "accepted": true,
+    "symbols": [
+      "PORTF_INT1_vect_isr"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 116,
+    "source": "recovered_exact/src/power_fault_state.c",
+    "accepted": false,
+    "reason": "GNU C R16 candidate failed complete binary build/compare; prior source restored",
+    "functional_test_claim": false
+  },
+  {
+    "step": 117,
+    "source": "recovered_exact/src/power_portb_interrupt.c",
+    "accepted": false,
+    "reason": "GNU C R16 candidate failed complete binary build/compare; prior source restored",
+    "functional_test_claim": false
+  },
+  {
+    "step": 118,
+    "source": "recovered_exact/src/power_portd_interrupt.c",
+    "accepted": true,
+    "symbols": [
+      "PORTD_INT0_vect_isr"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 119,
+    "source": "recovered_exact/src/power_porte_interrupt.c",
+    "accepted": true,
+    "symbols": [
+      "PORTE_INT0_vect_isr"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 120,
+    "source": "recovered_exact/src/system_deinit.c",
+    "accepted": false,
+    "reason": "GNU C R16 candidate failed complete binary build/compare; prior source restored",
+    "functional_test_claim": false
+  }
+]

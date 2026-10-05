@@ -1,5 +1,6 @@
+#include "legacy_cpu.h"
 #include "legacy_interrupt.h"
-#include "legacy_r16.h"
+#include "legacy_r16_c.h"
 #define WRITE_STATE(address, constant) do { value = (constant); \
     asm volatile("" : "+r" (value)); PM_RAM8(address) = value; } while (0)
 
@@ -18,7 +19,7 @@ void PORTF_INT1_vect_isr(void)
     PORTF_OUTSET = value;
 read_status:
     asm volatile("call FUN_code_001267" : "=r" (value), "=r" (b1), "=r" (b2), "=r" (status) : : "memory", "cc");
-    asm volatile("swap %0" : "+r" (status));
+    status = __builtin_avr_swap(status); asm volatile("" : "+r" (status));
     status &= 0x0e; asm volatile("" : "+r" (status));
     asm volatile("bld %0, 0" : "+r" (status) : : "cc");
     value = pm_read_absolute(0x2162);
@@ -27,15 +28,15 @@ read_status:
     value ^= status; asm volatile("" : "+r" (value));
     asm goto("breq %l[power_state]" : : "r" (value) : : power_state);
     value = 0x20; asm volatile("" : "+r" (value));
-    asm goto("sbrs %0, 1\n\trjmp %l[second_alarm]" : : "r" (status) : : second_alarm);
+    if (!(status & (1u << 1))) goto second_alarm;
     PORTA_OUTCLR = value;
     asm volatile("cbi 0, 2" : : : "memory");
     goto power_state;
 second_alarm:
-    asm goto("sbrs %0, 2\n\trjmp %l[third_alarm]" : : "r" (status) : : third_alarm);
+    if (!(status & (1u << 2))) goto third_alarm;
     asm volatile("sbi 0, 2" : : : "memory");
 third_alarm:
-    asm goto("sbrs %0, 3\n\trjmp %l[power_state]" : : "r" (status) : : power_state);
+    if (!(status & (1u << 3))) goto power_state;
     value = 0x20; asm volatile("" : "+r" (value));
     PORTA_OUTSET = value;
     asm volatile("cbi 0, 2" : : : "memory");

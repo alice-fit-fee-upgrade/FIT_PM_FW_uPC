@@ -1,5 +1,6 @@
+#include "legacy_cpu.h"
 #include "legacy_interrupt.h"
-#include "legacy_r16.h"
+#include "legacy_r16_c.h"
 
 void PORTD_INT0_vect_isr(void)
 {
@@ -9,9 +10,9 @@ void PORTD_INT0_vect_isr(void)
     value = pm_read_absolute(0x2157);
     asm volatile("bld %0, 4" : "+r" (value) : : "cc");
     PM_RAM8(0x2157) = value;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     asm goto("brtc %l[cleared]" : : : : cleared);
-    asm volatile("cli" : : : "memory");
+    pm_cpu_disable_irq();
     value = 5;
     asm volatile("rcall FUN_code_00054e\n\tsei" : "+r" (value) : : "memory", "cc");
     goto leave;

@@ -61,6 +61,14 @@ for n,(address,name) in enumerate(entries):
                   compiler_generated_bytes=len(region)-len(helper),exact_asm_helper_bytes=len(helper))
  functions.append(function)
 compiler_code-=helpers
+# Expose target-specific compiler operations as a subset of C, rather than
+# implying all compiler-generated source is portable C arithmetic/control flow.
+avr_primitives={'cli','sei','nop','swap','bst','bld'}
+primitive_code=set()
+for instruction in index:
+ if instruction['instruction'].split()[0] in avr_primitives:
+  instruction_bytes=set(range(instruction['address'],instruction['address']+len(bytes.fromhex(instruction['bytes']))))
+  if instruction_bytes<=compiler_code:primitive_code.update(instruction_bytes)
 boot_rows=[row for row in index if row['address']>=0x20000]
 boot_targets=set()
 for row in boot_rows:
@@ -102,7 +110,10 @@ result={'acceptance':'canonical complete FLASH equality only','application_funct
  'bootloader_asm_count':len(boot_targets),'bootloader_function_addresses':sorted(boot_targets),
  'complete_executable_bytes':len(code),'application_executable_bytes':len(app_code),
  'boot_executable_bytes':len(code)-len(app_code),
- 'compiler_generated_c_bytes':len(compiler_code),'exact_asm_helper_bytes_inside_c_regions':len(helpers),
+ 'compiler_generated_c_bytes':len(compiler_code),
+ 'compiler_generated_avr_primitive_bytes':len(primitive_code),
+ 'compiler_generated_other_c_bytes':len(compiler_code)-len(primitive_code),
+ 'avr_primitive_mnemonics':sorted(avr_primitives),'exact_asm_helper_bytes_inside_c_regions':len(helpers),
  'all_asm_bytes_including_helpers':len(code)-len(compiler_code),
  'C_percentage_all_executable':100*len(compiler_code)/len(code),
  'ASM_percentage_all_executable':100*(len(code)-len(compiler_code))/len(code),

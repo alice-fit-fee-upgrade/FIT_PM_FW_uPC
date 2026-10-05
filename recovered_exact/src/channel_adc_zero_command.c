@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void fpga_set_adc_zero(void)
@@ -27,9 +28,9 @@ void fpga_set_adc_zero(void)
     offset += offset; asm volatile("" : "+r" (offset));
     offset += 4; asm volatile("" : "+r" (offset));
     asm volatile("clr r11\n\tadd r28, %1\n\tadc r29, r11" : "+y" (settings) : "r" (offset) : "r11", "cc");
-    asm volatile("cli" : : : "memory");
+    pm_cpu_disable_irq();
     asm volatile("st Y+, r20\n\tst Y, r21" : "+y" (settings) : "r" (requested) : "memory");
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     asm volatile("rcall dac_set_value\n\tcbi 0, 3\n\trjmp LAB_code_000ff1" : : "r" (requested), "r" (channel) : "memory", "cc");
     __builtin_unreachable();
 }

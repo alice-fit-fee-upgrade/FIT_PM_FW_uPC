@@ -25,3 +25,10 @@ second toolchain without checking the workspace toolchain notes.
 Once compiled bytes are identical, do not spend substantial compute on exhaustive
 emulator comparisons. Preserve existing suites as auxiliary historical tools.
 No bugs, clocks, timeouts, protocol, GPIO or startup semantics are changed here.
+
+When retaining exact ASM after a binary-different C attempt, include the C
+equivalent as a nearby comment if successful functional validation is recorded.
+Reference the archived implementation, test evidence and scope, including required
+ASM bridges/callees. Do not claim tests that were never run. See
+`docs/asm_c_alternatives.md` and its JSON index. These comments are explanatory;
+only whole-FLASH zero-difference exact-check accepts a baseline implementation.

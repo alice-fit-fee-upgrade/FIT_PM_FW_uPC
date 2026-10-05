@@ -22,7 +22,10 @@ void pm_channel_tdc_adjust(void)
     register uint8_t stride asm("r22") = 0x20;
     asm volatile("mul %0, %1" : : "r" (command_index), "r" (stride) : "r0", "r1", "cc");
     register uint8_t command asm("r16") = 0x0c;
-    asm volatile("add %0, r0" : "+r" (command) : : "cc");
+    register uint8_t product_low asm("r0");
+    asm volatile("" : "=r" (product_low));
+    command += product_low;
+    asm volatile("" : "+r" (command));
     channel >>= 2; asm volatile("" : "+r" (channel));
     register uint8_t data asm("r17") = (uint8_t)requested;
     register uint8_t high asm("r18");

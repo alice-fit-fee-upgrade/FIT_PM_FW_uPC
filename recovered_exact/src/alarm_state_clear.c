@@ -1,5 +1,6 @@
+#include "legacy_cpu.h"
 #include "legacy_interrupt.h"
-#include "legacy_r16.h"
+#include "legacy_r16_c.h"
 #define SET_VALUE(constant) do { value=(constant); asm volatile("" : "+r" (value)); } while (0)
 
 void alarms_clear(void)
@@ -18,15 +19,15 @@ void alarms_clear(void)
     value = pm_read_absolute(0x2158);
     value &= 0xe1; asm volatile("" : "+r" (value));
     PM_RAM8(0x2158) = value;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     SET_VALUE(0x40); PORTA_OUTSET = value;
     message = (const uint8_t *)0x2a08;
     asm volatile("" : "+z" (message));
     goto send;
 fault_present:
     value &= 7; asm volatile("" : "+r" (value));
-    asm goto("cpi %0, 1\n\tbreq %l[restart]" : : "r" (value) : "cc" : restart);
-    asm volatile("sei" : : : "memory");
+    if (value == 1) goto restart;
+    pm_cpu_enable_irq();
     message = (const uint8_t *)0x299e;
     asm volatile("" : "+z" (message));
     goto send;
@@ -41,7 +42,7 @@ restart:
     SET_VALUE(7); PM_RAM8(0x215d) = value;
     asm volatile("cbi 0, 1" : : : "memory");
     SET_VALUE(0x41); PORTA_OUTSET = value;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     message = (const uint8_t *)0x2998;
 send:
     asm volatile("rcall cli_send_msg" : "+z" (message) : : "memory", "cc");

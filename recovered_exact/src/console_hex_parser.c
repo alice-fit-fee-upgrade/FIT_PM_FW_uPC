@@ -24,7 +24,7 @@ decode:
     result += result; asm volatile("" : "+r" (result));
     result |= digit; asm volatile("" : "+r" (result));
     asm volatile("inc %0" : "+r" (count) : : "cc");
-    asm goto("cpi %0, 4\n\tbrne %l[next_digit]" : : "r" (count) : "cc" : next_digit);
+    if (count != 4) goto next_digit;
     asm volatile("rcall cli_get_next_char" : "=r" (character) : : "memory", "cc");
 done:
     asm volatile("tst r18\n\tbreq 1f\n\tclc\n\trjmp 2f\n1:\n\tsec\n2:\n"

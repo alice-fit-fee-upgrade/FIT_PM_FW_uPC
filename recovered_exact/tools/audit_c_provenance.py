@@ -82,9 +82,12 @@ def main():
     sources = compile_assembly()
     parsed = {source: instruction_provenance(path) for source, path in sources.items()}
     report, helper_bytes, mismatches = [], 0, []
+    primitive_bytes = 0
+    avr_primitives = {"cli", "sei", "nop", "swap", "bst", "bld"}
     for entry in manifest['accepted']:
         rows = parsed[entry['source']][entry['section']]
         address = entry['address']
+        entry_primitives = 0
         expected, actual, differences = set(), set(), []
         for region in entry.get('asm_helper_ranges', []):
             expected.update(range(region['start'], region['end_exclusive']))
@@ -92,6 +95,8 @@ def main():
             instruction_bytes = set(range(address, address + width))
             if inline:
                 actual.update(instruction_bytes)
+            elif mnemonic in avr_primitives:
+                entry_primitives += width
             if (instruction_bytes & expected) != (instruction_bytes if inline else set()):
                 differences.append({'address': address, 'instruction': mnemonic,
                                     'gcc_inline_asm': inline})
@@ -100,14 +105,22 @@ def main():
         if expected != actual:
             mismatches.append({'symbol': entry['symbol'], 'differences': differences})
         helper_bytes += len(actual)
+        primitive_bytes += entry_primitives
         report.append({'symbol': entry['symbol'], 'inline_asm_bytes': len(actual),
+                       'compiler_generated_avr_primitive_bytes': entry_primitives,
                        'compiler_bytes': address - entry['address'] - len(actual)})
     output = {'method': 'GCC APP/NOAPP instruction provenance with GNU subsection ordering',
               'accepted_entries': len(report), 'translation_units': len(sources),
-              'inline_asm_bytes': helper_bytes, 'mismatches': mismatches,
+              'inline_asm_bytes': helper_bytes,
+              'compiler_generated_avr_primitive_bytes': primitive_bytes,
+              'avr_primitive_mnemonics': sorted(avr_primitives),
+              'mismatches': mismatches,
               'application': report}
     (BUILD / 'c_provenance.json').write_text(json.dumps(output, indent=2) + '\n')
     assert not mismatches, mismatches
+    inventory = json.loads((BUILD / 'function_inventory.json').read_text())
+    assert inventory['compiler_generated_avr_primitive_bytes'] == primitive_bytes, (
+        'instruction-index and GCC primitive-byte accounting disagree', primitive_bytes)
     print(f'C/ASM provenance: {len(report)} entries, {helper_bytes} inline ASM bytes; '
           'manifest matches GCC assembly')
 

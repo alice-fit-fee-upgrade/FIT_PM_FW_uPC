@@ -6,14 +6,17 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 `cmp` against reference/flash_golden.bin. There is no emulator acceptance step.
 `make c-progress` reports the three exact-source classifications.
 
-Current result: 89 application entries, 2 C_BINARY_EXACT, 81
-C_WITH_EXACT_ASM_HELPER, 6 ASM_EXACT. All nine boot procedures remain exact ASM.
+Current result: 89 application entries, 5 C_BINARY_EXACT, 83
+C_WITH_EXACT_ASM_HELPER, 1 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 3064 of 10836 executable bytes (28.2761%);
-ASM occupies 7772 bytes (71.7239%), including 4138 inline-helper bytes. Data and
-padding do not contribute to these percentages. Application-only C is 30.4633%.
-The entry count includes main, ISRs and shared formatter entries, rather than
-89 independent C-style function bodies.
+Compiler-generated instructions occupy 5190 of 10836 executable bytes (47.8959%);
+ASM occupies 5646 bytes (52.1041%), including 4838 inline-helper bytes. Of C bytes,
+184 are compiler-generated AVR primitives (CLI/SEI/NOP/SWAP/BST/BLD); the other
+5006 are other C operations. GNU AVR built-ins are counted as compiler output,
+not as inline assembly. Instruction-index and GCC-provenance counts agree.
+Data and padding do not contribute to these percentages. Application-only C is
+51.6007%. The entry count includes main, ISRs and shared formatter entries,
+rather than 89 independent C-style function bodies.
 
 ## Build and source layout
 
@@ -82,3 +85,10 @@ Each exact-check also audits inline ASM byte ranges against GCC APP/NOAPP marker
 in assembly emitted with the actual per-file build flags. This independently
 checks the C/ASM coverage figures, including subsection tails and C-generated
 loop-back branches. See [remaining ASM review](../docs/easy_conversion_assessment.md).
+
+Exact C helpers for SPI polling, absolute SRAM reads and AVR CPU primitives are
+opted into only after individual whole-image checks. Some entry profiles need an
+ASM absolute load or pointer operation because GCC cannot allocate another
+register without changing the original frame. Those helpers remain ASM.
+See [continuation results](../docs/exact_continuation_results.json) for all
+98 attempts, including rejected candidates, and the complete-image logs.

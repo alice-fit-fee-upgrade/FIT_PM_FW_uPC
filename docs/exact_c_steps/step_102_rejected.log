@@ -1,0 +1,15 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fcall-used-r16 -fcall-used-r17 -fcall-saved-r22 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r16 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/pll_control_write.c -o build/pll_control_write.o
+src/pll_control_write.c: In function ‘CDCE62005_send_control_settings’:
+src/pll_control_write.c:13:1: error: unable to find a register to spill in class ‘GENERAL_REGS’
+ }
+ ^
+src/pll_control_write.c:13:1: error: this is the insn:
+(insn 22 20 23 3 (set (cc0)
+        (compare (reg:QI 44 [ status.1_3 ])
+            (const_int 0 [0]))) "src/pll_control_write.c":8 392 {cmpqi3}
+     (expr_list:REG_DEAD (reg:QI 44 [ status.1_3 ])
+        (nil)))
+src/pll_control_write.c:13: confused by earlier errors, bailing out
+make: *** [Makefile:37: build/pll_control_write.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

@@ -1,0 +1,128 @@
+[
+  {
+    "step": 168,
+    "source": "alarm_state_clear.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 3,
+    "differing_bytes": 0
+  },
+  {
+    "step": 169,
+    "source": "channel_adc_zero_command.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 170,
+    "source": "console_character_send.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 3,
+    "differing_bytes": 0
+  },
+  {
+    "step": 171,
+    "source": "console_decimal_formatter.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 172,
+    "source": "console_dispatch.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 10,
+    "differing_bytes": 0
+  },
+  {
+    "step": 173,
+    "source": "dac_spi_send.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 3,
+    "differing_bytes": 0
+  },
+  {
+    "step": 174,
+    "source": "dma_channel_interrupt.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 175,
+    "source": "dma_gpio_handshake.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 176,
+    "source": "eeprom_page_commit.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 177,
+    "source": "eeprom_settings_store.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 178,
+    "source": "flash_interface_deinit.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 179,
+    "source": "fpga_data_exchange.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 7,
+    "differing_bytes": 0
+  },
+  {
+    "step": 180,
+    "source": "fpga_status_interrupt.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 181,
+    "source": "pll_console_reset.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 182,
+    "source": "pll_status_interrupt.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 183,
+    "source": "power_portd_interrupt.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 184,
+    "source": "system_status_display.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 185,
+    "source": "timer_overflow_interrupt.c",
+    "accepted": true,
+    "avr_primitive_instructions_replaced": 21,
+    "differing_bytes": 0
+  }
+]

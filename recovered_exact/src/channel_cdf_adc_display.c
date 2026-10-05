@@ -26,7 +26,7 @@ next_channel:;
     PRINT_SETTING("FUN_code_001397", "cli_send_msg");
     PRINT_SETTING("FUN_code_00139f", "cli_send_crlf");
     asm volatile("inc %0" : "+r" (channel) : : "cc");
-    asm goto("cpi %0, 12\n\tbrne %l[next_channel]" : : "r" (channel) : "cc" : next_channel);
+    if (channel != 12) goto next_channel;
     message = (const uint8_t *)0x2a92;
     PRINT_MESSAGE(message);
     low = RAM8(0x222f);

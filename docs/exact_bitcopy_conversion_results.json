@@ -1,0 +1,14 @@
+[
+  {
+    "step": 166,
+    "source": "adt_bit_transfer.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 167,
+    "source": "power_porte_interrupt.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  }
+]

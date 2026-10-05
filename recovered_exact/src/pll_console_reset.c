@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <stdint.h>
 
 void cdce62005_rst(void)
@@ -7,7 +8,7 @@ void cdce62005_rst(void)
     asm volatile("" : "+z" (cursor));
     register uint8_t count asm("r20") = 9;
     asm volatile("" : "+r" (count));
-    asm volatile("cli" : : : "memory");
+    pm_cpu_disable_irq();
 next_setting:
     {
         register uint8_t b0 asm("r16"), b1 asm("r17"), b2 asm("r18"), b3 asm("r19");
@@ -16,7 +17,7 @@ next_setting:
     }
     asm volatile("dec %0" : "+r" (count) : : "cc");
     asm goto("brne %l[next_setting]" : : "r" (count) : : next_setting);
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     cursor = (const uint8_t *)0x2998;
     asm volatile("rcall cli_send_msg" : "+z" (cursor) : : "memory", "cc");
 }

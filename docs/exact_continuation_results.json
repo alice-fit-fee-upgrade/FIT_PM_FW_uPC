@@ -1,0 +1,823 @@
+{
+  "step_range": [
+    93,
+    190
+  ],
+  "attempts": 98,
+  "accepted_attempts": 67,
+  "rejected_attempts": 31,
+  "accepted_translation_units": 41,
+  "sources": [
+    "adt_bit_transfer.c",
+    "alarm_state_clear.c",
+    "channel_adc_zero_command.c",
+    "channel_cdf_adc_display.c",
+    "channel_settings_display.c",
+    "channel_tdc_adjust_command.c",
+    "console_character_read.c",
+    "console_character_send.c",
+    "console_cts_interrupt.c",
+    "console_decimal_formatter.c",
+    "console_dispatch.c",
+    "console_hex_parser.c",
+    "console_rx_interrupt.c",
+    "dac_spi_send.c",
+    "dac_stored_settings_apply.c",
+    "dma_channel_interrupt.c",
+    "dma_gpio_handshake.c",
+    "eeprom_page_commit.c",
+    "eeprom_settings_store.c",
+    "flash_address_send.c",
+    "flash_device_id.c",
+    "flash_interface_deinit.c",
+    "flash_wait_ready.c",
+    "flash_write_enable.c",
+    "fpga_data_exchange.c",
+    "fpga_multiword_read.c",
+    "fpga_settings_init.c",
+    "fpga_settings_reset.c",
+    "fpga_status_interrupt.c",
+    "fpga_timestamp_send.c",
+    "fpga_word_read.c",
+    "fpga_word_write.c",
+    "pll_console_reset.c",
+    "pll_control_read.c",
+    "pll_control_write.c",
+    "pll_status_interrupt.c",
+    "power_portd_interrupt.c",
+    "power_porte_interrupt.c",
+    "system_status_display.c",
+    "tdc_host_read.c",
+    "timer_overflow_interrupt.c"
+  ],
+  "acceptance": "complete canonical FLASH byte equality, never behavioral equivalence",
+  "behavioral_emulator_runs": 0,
+  "baseline_start_c_bytes": 4182,
+  "final_c_bytes": 5190,
+  "c_byte_increase": 1008,
+  "compiler_generated_avr_primitive_bytes": 184,
+  "rows": [
+    {
+      "step": 93,
+      "source": "recovered_exact/src/fpga_word_read.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 94,
+      "source": "recovered_exact/src/dac_spi_send.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 95,
+      "source": "recovered_exact/src/flash_address_send.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 96,
+      "source": "recovered_exact/src/flash_device_id.c",
+      "accepted": true,
+      "symbols": [
+        "FUN_code_000c20"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 97,
+      "source": "recovered_exact/src/flash_wait_ready.c",
+      "accepted": true,
+      "symbols": [
+        "FUN_code_000b9d"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 98,
+      "source": "recovered_exact/src/fpga_multiword_read.c",
+      "accepted": true,
+      "symbols": [
+        "FUN_code_0011e5"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 99,
+      "source": "recovered_exact/src/fpga_timestamp_send.c",
+      "accepted": true,
+      "symbols": [
+        "fpga_send_mcu_ts"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 100,
+      "source": "recovered_exact/src/fpga_word_write.c",
+      "accepted": true,
+      "symbols": [
+        "fpga_msg_send_t2"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 101,
+      "source": "recovered_exact/src/pll_control_read.c",
+      "accepted": true,
+      "symbols": [
+        "FUN_code_001267"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 102,
+      "source": "recovered_exact/src/pll_control_write.c",
+      "accepted": false,
+      "reason": "GNU C SPI candidate failed complete binary build/compare; prior source restored",
+      "functional_test_claim": false,
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 103,
+      "source": "recovered_exact/src/pll_control_write.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "adjustment": "Release dead status constraint after polling; preserve original sole R22 scratch profile",
+      "report": "docs/exact_spi_conversion_results.json"
+    },
+    {
+      "step": 104,
+      "source": "flash_write_enable.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_poll_conversion_results.json"
+    },
+    {
+      "step": 105,
+      "source": "flash_wait_ready.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_poll_conversion_results.json"
+    },
+    {
+      "step": 106,
+      "source": "dac_spi_send.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_poll_conversion_results.json"
+    },
+    {
+      "step": 107,
+      "source": "flash_device_id.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_poll_conversion_results.json"
+    },
+    {
+      "step": 108,
+      "source": "flash_wait_ready.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_pointer_conversion_results.json"
+    },
+    {
+      "step": 109,
+      "source": "fpga_settings_init.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_pointer_conversion_results.json"
+    },
+    {
+      "step": 110,
+      "source": "fpga_settings_reset.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_pointer_conversion_results.json"
+    },
+    {
+      "step": 111,
+      "source": "console_rx_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_pointer_conversion_results.json"
+    },
+    {
+      "step": 112,
+      "source": "console_decimal_formatter.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_pointer_conversion_results.json"
+    },
+    {
+      "step": 113,
+      "source": "recovered_exact/src/alarm_state_clear.c",
+      "accepted": true,
+      "symbols": [
+        "alarms_clear"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 114,
+      "source": "recovered_exact/src/fpga_status_interrupt.c",
+      "accepted": true,
+      "symbols": [
+        "PORTE_INT1_vect_isr"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 115,
+      "source": "recovered_exact/src/pll_status_interrupt.c",
+      "accepted": true,
+      "symbols": [
+        "PORTF_INT1_vect_isr"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 116,
+      "source": "recovered_exact/src/power_fault_state.c",
+      "accepted": false,
+      "reason": "GNU C R16 candidate failed complete binary build/compare; prior source restored",
+      "functional_test_claim": false,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 117,
+      "source": "recovered_exact/src/power_portb_interrupt.c",
+      "accepted": false,
+      "reason": "GNU C R16 candidate failed complete binary build/compare; prior source restored",
+      "functional_test_claim": false,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 118,
+      "source": "recovered_exact/src/power_portd_interrupt.c",
+      "accepted": true,
+      "symbols": [
+        "PORTD_INT0_vect_isr"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 119,
+      "source": "recovered_exact/src/power_porte_interrupt.c",
+      "accepted": true,
+      "symbols": [
+        "PORTE_INT0_vect_isr"
+      ],
+      "differing_bytes": 0,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 120,
+      "source": "recovered_exact/src/system_deinit.c",
+      "accepted": false,
+      "reason": "GNU C R16 candidate failed complete binary build/compare; prior source restored",
+      "functional_test_claim": false,
+      "report": "docs/exact_r16_conversion_results.json"
+    },
+    {
+      "step": 121,
+      "source": "alarm_state_clear.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 122,
+      "source": "channel_cdf_adc_display.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 123,
+      "source": "console_character_read.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 124,
+      "source": "console_hex_digit.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 125,
+      "source": "console_hex_parser.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 126,
+      "source": "console_rx_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 127,
+      "source": "dac_stored_settings_apply.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 128,
+      "source": "eeprom_settings_store.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 129,
+      "source": "fpga_settings_init.c",
+      "accepted": true,
+      "comparisons_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 130,
+      "source": "fpga_settings_reset.c",
+      "accepted": true,
+      "comparisons_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 131,
+      "source": "power_porte_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 132,
+      "source": "tdc_channel_data_display.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 133,
+      "source": "tdc_host_read.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_branch_conversion_results.json"
+    },
+    {
+      "step": 134,
+      "source": "console_character_read.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 135,
+      "source": "console_character_send.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 136,
+      "source": "console_cts_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 137,
+      "source": "console_flash_message.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 138,
+      "source": "console_rx_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 139,
+      "source": "console_tx_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 140,
+      "source": "eeprom_page_commit.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 141,
+      "source": "power_porte_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_register_branch_conversion_results.json"
+    },
+    {
+      "step": 142,
+      "source": "console_character_send.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_anchored_branch_conversion_results.json"
+    },
+    {
+      "step": 143,
+      "source": "console_flash_message.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_anchored_branch_conversion_results.json"
+    },
+    {
+      "step": 144,
+      "source": "console_rx_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_anchored_branch_conversion_results.json"
+    },
+    {
+      "step": 145,
+      "source": "console_tx_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_anchored_branch_conversion_results.json"
+    },
+    {
+      "step": 146,
+      "source": "fpga_word_read.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_small_conversion_results.json"
+    },
+    {
+      "step": 147,
+      "source": "power_porte_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_small_conversion_results.json"
+    },
+    {
+      "step": 148,
+      "source": "eeprom_settings_store.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_small_conversion_results.json"
+    },
+    {
+      "step": 149,
+      "source": "channel_tdc_adjust_command.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_small_conversion_results.json"
+    },
+    {
+      "step": 150,
+      "source": "channel_settings_display.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_small_conversion_results.json"
+    },
+    {
+      "step": 151,
+      "source": "dac_channels.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_small_conversion_results.json"
+    },
+    {
+      "step": 152,
+      "source": "console_character_read.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 153,
+      "source": "console_character_send.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 154,
+      "source": "console_cts_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 155,
+      "source": "console_rx_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 156,
+      "source": "dma_gpio_handshake.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 157,
+      "source": "eeprom_page_commit.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 158,
+      "source": "eeprom_settings_store.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 159,
+      "source": "flash_wait_ready.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 160,
+      "source": "fpga_status_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 161,
+      "source": "pll_status_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 3,
+      "differing_bytes": 0,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 162,
+      "source": "power_porte_interrupt.c",
+      "accepted": true,
+      "comparisons_replaced": 4,
+      "differing_bytes": 0,
+      "report": "docs/exact_bit_conversion_results.json"
+    },
+    {
+      "step": 163,
+      "source": "fpga_word_read.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_packing_conversion_results.json"
+    },
+    {
+      "step": 164,
+      "source": "fpga_word_write.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_packing_conversion_results.json"
+    },
+    {
+      "step": 165,
+      "source": "dac_spi_send.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_packing_conversion_results.json"
+    },
+    {
+      "step": 166,
+      "source": "adt_bit_transfer.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_bitcopy_conversion_results.json"
+    },
+    {
+      "step": 167,
+      "source": "power_porte_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_bitcopy_conversion_results.json"
+    },
+    {
+      "step": 168,
+      "source": "alarm_state_clear.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 3,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 169,
+      "source": "channel_adc_zero_command.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 170,
+      "source": "console_character_send.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 3,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 171,
+      "source": "console_decimal_formatter.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 172,
+      "source": "console_dispatch.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 10,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 173,
+      "source": "dac_spi_send.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 3,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 174,
+      "source": "dma_channel_interrupt.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 175,
+      "source": "dma_gpio_handshake.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 176,
+      "source": "eeprom_page_commit.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 177,
+      "source": "eeprom_settings_store.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 178,
+      "source": "flash_interface_deinit.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 179,
+      "source": "fpga_data_exchange.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 7,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 180,
+      "source": "fpga_status_interrupt.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 181,
+      "source": "pll_console_reset.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 182,
+      "source": "pll_status_interrupt.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 183,
+      "source": "power_portd_interrupt.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 2,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 184,
+      "source": "system_status_display.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 1,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 185,
+      "source": "timer_overflow_interrupt.c",
+      "accepted": true,
+      "avr_primitive_instructions_replaced": 21,
+      "differing_bytes": 0,
+      "report": "docs/exact_cpu_conversion_results.json"
+    },
+    {
+      "step": 186,
+      "source": "power_porte_interrupt.c",
+      "accepted": false,
+      "functional_validation_claimed": false,
+      "report": "docs/exact_final_fragment_results.json"
+    },
+    {
+      "step": 187,
+      "source": "adt_bit_transfer.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_final_fragment_results.json"
+    },
+    {
+      "step": 188,
+      "source": "fpga_settings_init.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_final_fragment_results.json"
+    },
+    {
+      "step": 189,
+      "source": "fpga_settings_reset.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_final_fragment_results.json"
+    },
+    {
+      "step": 190,
+      "source": "console_character_read.c",
+      "accepted": true,
+      "differing_bytes": 0,
+      "report": "docs/exact_final_fragment_results.json"
+    }
+  ]
+}

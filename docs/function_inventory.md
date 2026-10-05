@@ -6,9 +6,9 @@ Regenerate with `make c-progress`; root `make exact-check` is the acceptance gat
 | Measure | Count |
 |---|---|
 | Application entries | 89 |
-| C_BINARY_EXACT | 2 |
-| C_WITH_EXACT_ASM_HELPER | 81 |
-| ASM_EXACT | 6 |
+| C_BINARY_EXACT | 5 |
+| C_WITH_EXACT_ASM_HELPER | 83 |
+| ASM_EXACT | 1 |
 | Bootloader ASM procedures | 9 |
 
 Counts include 10 original ISRs, main and shared formatter entries. All 806 original
@@ -16,11 +16,13 @@ text symbols retain their addresses. Remaining ASM is reviewed in
 [easy_conversion_assessment.md](easy_conversion_assessment.md); its classification
 does not claim that larger further C recovery is impossible.
 
-Of 10836 executable bytes, compiler-generated C accounts for **3064 (28.2761%)** and
-ASM for **7772 (71.7239%)**, including **4138 inline ASM helper bytes**.
-For the 10058 application executable bytes, C is **30.4633%** and ASM **69.5367%**.
-All 778 boot executable bytes are ASM. Data (710 bytes) and erased/padding regions
-are excluded. C-hosted function regions total 7202 bytes; this includes helpers
+Of 10836 executable bytes, compiler-generated C accounts for **5190 (47.8959%)** and
+ASM for **5646 (52.1041%)**, including **4838 inline ASM helper bytes**.
+For the 10058 application executable bytes, C is **51.6007%** and ASM **48.3993%**.
+Of C bytes, 184 are compiler-generated AVR primitives; 5006 are other C
+operations. This subset is checked independently using the original instruction
+index and GCC assembly provenance. All 778 boot executable bytes are ASM. Data (710 bytes) and erased/padding regions
+are excluded. C-hosted function regions total 10028 bytes; this includes helpers
 and is not pure C coverage. `exact_c_provenance.json` independently checks every
 accepted helper range using GCC APP/NOAPP markers and GNU subsection ordering.
 
@@ -29,9 +31,9 @@ Golden and rebuilt canonical SHA256:
 
 | Byte address | Original symbol | Classification |
 |---|---|---|
-| 0x01E2 | DMA_CH1_vect_isr | ASM_EXACT |
+| 0x01E2 | DMA_CH1_vect_isr | C_WITH_EXACT_ASM_HELPER |
 | 0x046C | FUN_code_000236 | C_WITH_EXACT_ASM_HELPER |
-| 0x049E | TCC0_OVF_vect_isr | ASM_EXACT |
+| 0x049E | TCC0_OVF_vect_isr | C_WITH_EXACT_ASM_HELPER |
 | 0x08E4 | fpga_settings_init | C_WITH_EXACT_ASM_HELPER |
 | 0x098A | fpga_settings_reset | C_WITH_EXACT_ASM_HELPER |
 | 0x09DE | FUN_code_0004ef | C_WITH_EXACT_ASM_HELPER |
@@ -50,19 +52,19 @@ Golden and rebuilt canonical SHA256:
 | 0x0E88 | USARTF0_DRE_vect_isr | C_WITH_EXACT_ASM_HELPER |
 | 0x0EE0 | USARTF0_RXC_vect_isr | C_WITH_EXACT_ASM_HELPER |
 | 0x0F54 | main | C_WITH_EXACT_ASM_HELPER |
-| 0x115C | fpga_data_exchange | ASM_EXACT |
-| 0x12EA | cli_prompt_parse | ASM_EXACT |
+| 0x115C | fpga_data_exchange | C_WITH_EXACT_ASM_HELPER |
+| 0x12EA | cli_prompt_parse | C_WITH_EXACT_ASM_HELPER |
 | 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER |
 | 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER |
 | 0x1664 | FUN_code_000b32 | C_BINARY_EXACT |
 | 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER |
 | 0x16B2 | FUN_code_000b59 | C_WITH_EXACT_ASM_HELPER |
 | 0x1710 | FUN_code_000b88 | C_WITH_EXACT_ASM_HELPER |
-| 0x171E | FUN_code_000b8f | C_WITH_EXACT_ASM_HELPER |
+| 0x171E | FUN_code_000b8f | C_BINARY_EXACT |
 | 0x173A | FUN_code_000b9d | C_WITH_EXACT_ASM_HELPER |
 | 0x1772 | FUN_code_000bb9 | C_WITH_EXACT_ASM_HELPER |
 | 0x17E4 | FUN_code_000bf2 | C_WITH_EXACT_ASM_HELPER |
-| 0x1808 | FUN_code_000c04 | C_WITH_EXACT_ASM_HELPER |
+| 0x1808 | FUN_code_000c04 | C_BINARY_EXACT |
 | 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER |
 | 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER |
 | 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER |
@@ -89,7 +91,7 @@ Golden and rebuilt canonical SHA256:
 | 0x20EC | dac_set_value_2 | C_WITH_EXACT_ASM_HELPER |
 | 0x2104 | dac_set_value | C_WITH_EXACT_ASM_HELPER |
 | 0x211C | FUN_code_00108e | C_WITH_EXACT_ASM_HELPER |
-| 0x2130 | fpga_is_ready | ASM_EXACT |
+| 0x2130 | fpga_is_ready | C_WITH_EXACT_ASM_HELPER |
 | 0x214C | FUN_code_0010a6 | C_WITH_EXACT_ASM_HELPER |
 | 0x2174 | ths788_write | C_WITH_EXACT_ASM_HELPER |
 | 0x2208 | ths788_read | C_WITH_EXACT_ASM_HELPER |
@@ -97,7 +99,7 @@ Golden and rebuilt canonical SHA256:
 | 0x230E | fpga_msg_send_t2 | C_WITH_EXACT_ASM_HELPER |
 | 0x2368 | fpga_msg_read_t1 | C_WITH_EXACT_ASM_HELPER |
 | 0x23CA | FUN_code_0011e5 | C_WITH_EXACT_ASM_HELPER |
-| 0x2486 | CDCE62005_send_control_settings | C_WITH_EXACT_ASM_HELPER |
+| 0x2486 | CDCE62005_send_control_settings | C_BINARY_EXACT |
 | 0x24CE | FUN_code_001267 | C_WITH_EXACT_ASM_HELPER |
 | 0x2530 | fpga_send_mcu_ts | C_WITH_EXACT_ASM_HELPER |
 | 0x2598 | adt7311_8bit_rw | C_WITH_EXACT_ASM_HELPER |

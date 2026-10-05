@@ -262,3 +262,69 @@ PM.hex equals rebuilt FLASH. All 806 original symbols retain their byte addresse
 Every inline-ASM range also matches independent GCC assembly provenance; C loop
 jumps are counted as C, while predecrement stores and all inline instructions are
 counted as ASM. The immutable reference project and images are unchanged.
+
+## Further exact continuation: steps 84–92
+
+Five more entries now use compiler-generated C plus exact helpers: signed scaler
+0x2130 (6 C bytes), FPGA exchange 0x115c (168 C bytes), console dispatch 0x12ea
+(208 C bytes), DMA ISR 0x01e2 (300 C bytes) and timer ISR 0x049e (436 C bytes).
+The total increase is 1118 C instruction bytes. The complete image passed
+exact-check after each accepted entry and each subsequent helper reduction.
+
+The dispatcher and ISR branches retain zero-byte local ASM label anchors beside
+C labels. They prevent GCC merging original jump-only blocks or redirecting
+short flag branches to shared distant tails. FPGA exchange retains the original
+redundant jump to its next instruction as a two-byte ASM helper. All emitted
+instructions, including these branches, are accounted for by GCC provenance.
+
+Signed multiplication keeps live R1, staged rounding and carry propagation in
+ASM; the result copy and final high-byte addition are C. Its comment includes
+the historical tested, binary-different C alternative and bridge/test scope.
+For the newly recovered state machines no independent functional validation of
+rejected plain-C alternatives is claimed. Full byte identity is the acceptance
+evidence. No exhaustive emulator suite was run.
+
+Final application counts: 89 entries, 2 C_BINARY_EXACT,
+86 C_WITH_EXACT_ASM_HELPER, 1 ASM_EXACT. Boot remains 9 ASM procedures.
+C is 4182/10836 executable bytes (38.5936%); ASM is 6654 bytes (61.4064%),
+including 5846 inline-helper bytes. Application-only C is 41.5788%.
+Canonical golden/rebuilt SHA256 remains
+`e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0`.
+Differing bytes: 0. The immutable exact ASM implementation and inputs are unchanged.
+
+## Further exact continuation: steps 93–190
+
+98 candidates were compiled and checked; 67 were accepted across 41 translation
+units, and 31 were rejected/restored. See `exact_continuation_results.json` and
+per-step logs for completed clean whole-image checks. No emulator suite was run.
+The application entry count stays 89; the work removes ASM fragments from entries
+already represented in C, rather than increasing a wrapper count.
+
+SPI data stores, status polling and readbacks now use C in the accepted callers.
+For the PLL writer, releasing a dead final status operand avoids needing a second
+scratch register and reproduces the original sole-R22 save frame. The original
+writer, FLASH address transaction and FLASH write-enable entry are now entirely
+compiler-generated C, bringing C_BINARY_EXACT from 2 to 5.
+
+Selected absolute SRAM reads, immediate/register comparisons, bit tests and FPGA
+address shifts also moved to C. Register-starved loads, pointer increments,
+predecrement stores, delay-loop changes, alternate skip encodings and reordered
+bit copies were rejected. Existing exact helpers remain for those cases; no new
+functional-validation success is claimed for a rejected candidate.
+
+GNU AVR built-ins generate original CLI/SEI/NOP/SWAP instructions, and a named
+bit-copy helper generates the original ADT BST/BLD pair. IRQ compiler barriers
+emit no bytes but preserve memory ordering. These are compiler-generated target
+operations, explicitly separated as a subset of C coverage: 184 bytes of 5190.
+The remaining 5006 C bytes are other compiler-generated operations. Primitive
+counts agree between the golden instruction index and GCC APP/NOAPP provenance.
+The built-in mapping is documented by GNU GCC:
+https://gcc.gnu.org/onlinedocs/gcc-7.2.0/gcc/AVR-Built-in-Functions.html
+
+Final classifications: 5 C_BINARY_EXACT, 83 C_WITH_EXACT_ASM_HELPER,
+1 ASM_EXACT; boot remains 9 ASM procedures. C is 5190/10836 bytes (47.8959%),
+ASM is 5646 bytes (52.1041%), including 4838 inline-helper bytes.
+Application-only C is 51.6007%. Both clean final builds and fresh normalization
+of original PM.hex produce canonical SHA256
+`e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0`.
+Differing bytes: 0. Exact ASM, hardware state and reference artifacts are unchanged.

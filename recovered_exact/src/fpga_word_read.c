@@ -1,4 +1,4 @@
-#include "legacy_spi.h"
+#include "legacy_spi_c.h"
 
 /* Legacy input R18 is an address; output word is returned in R17:R16.
  * R21 starts with the caller's bits, as in the original (no invented clear). */
@@ -9,9 +9,15 @@ void fpga_msg_read_t1(void)
     register uint8_t address asm("r18");
     register uint8_t address_low asm("r21");
     asm volatile("" : "=r" (address), "=r" (address_low));
-    asm volatile("lsr %0\n\tror %1\n\tlsr %0\n\tror %1\n\tori %0, 0x80"
-                 : "+r" (address), "+r" (address_low) : "r" (mask) : "cc");
-    asm volatile("sts %0, %1" : : "n" (_SFR_MEM_ADDR(PORTD_OUTCLR)), "r" (mask) : "memory");
+    asm volatile("" : "+r" (address), "+r" (address_low), "+r" (mask));
+    address >>= 1;
+    asm volatile("ror %1" : "+r" (address), "+r" (address_low) : : "cc");
+    address >>= 1;
+    asm volatile("ror %1" : "+r" (address), "+r" (address_low) : : "cc");
+    address |= 0x80;
+    asm volatile("" : "+r" (address));
+    asm volatile("" : "+r" (mask));
+    PORTD_OUTCLR = mask;
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r18");
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r21");
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r17");

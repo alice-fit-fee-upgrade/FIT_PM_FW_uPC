@@ -1,19 +1,21 @@
-#include "legacy_spi.h"
+#include "legacy_cpu.h"
+#include "legacy_spi_c.h"
 
 void dac_send_value(void)
 {
     register uint8_t header asm("r22"), scratch asm("r23"), select asm("r24");
     asm volatile("" : "=r" (header));
-    asm volatile("cli" : : : "memory");
+    pm_cpu_disable_irq();
     scratch = 0xd5;
-    asm volatile("sts %0, %1" : : "n" (_SFR_MEM_ADDR(SPIC_CTRL)), "r" (scratch) : "memory");
+    asm volatile("" : "+r" (scratch));
+    SPIC_CTRL = scratch;
     /* Preserve original selection ordering and its flags. */
     asm volatile("mov %0, %2\n\tldi %1, 1\n\tandi %0, 0x30\n\tbreq 1f\n"
                  "\tlsl %1\n\tsubi %0, 0x10\n\tbreq 1f\n\tlsl %1\n1:"
                  : "=r" (scratch), "=r" (select) : "r" (header) : "cc");
     scratch = header;
     asm volatile("" : "+r" (scratch));
-    asm volatile("swap %0" : "+r" (header));
+    header = __builtin_avr_swap(header); asm volatile("" : "+r" (header));
     header &= 0xc0;
     asm volatile("" : "+r" (header));
     scratch += scratch;
@@ -26,12 +28,12 @@ void dac_send_value(void)
     asm volatile("" : "+r" (header));
     PORTC_OUTCLR = select;
     /* Polling overwrites the first outgoing byte register, as in the original. */
-    asm volatile("sts %1, %0\n\t1: lds %0, %2\n\tsbrs %0, 7\n\trjmp 1b"
-        : "+r" (header) : "n" (_SFR_MEM_ADDR(SPIC_DATA)), "n" (_SFR_MEM_ADDR(SPIC_STATUS)) : "memory");
+    SPIC_DATA = header;
+    PM_SPI_WAIT_AT(SPIC_STATUS, "r22");
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r17");
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r16");
     header = 7;
     asm volatile("" : "+r" (header));
     PORTC_OUTSET = header;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
 }

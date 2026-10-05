@@ -18,12 +18,14 @@ build/boot.o: ../exact_asm/src/boot.S Makefile | build
 R16_LEAF_OBJECTS = build/flash_interface_init.o
 R16_ONLY_OBJECTS = build/flash_write_enable.o build/system_deinit.o build/power_fault_state.o build/flash_interface_deinit.o build/status_led.o build/console_hex_digit.o build/power_state_request.o build/flash_device_id.o build/power_portb_interrupt.o
 R16_R17_OBJECTS = build/flash_sector_erase.o build/system_init.o build/adt_fault_clear.o
-C_OBJECTS = $(R16_LEAF_OBJECTS) $(R16_ONLY_OBJECTS) $(R16_R17_OBJECTS) build/console_crlf.o build/adt8.o build/adt16.o build/flash_address_send.o build/pll_control_write.o build/fpga_word_write.o build/fpga_word_read.o build/pll_control_read.o build/adt_bit_transfer.o build/dma_gpio_handshake.o build/console_hex_word.o build/dac_channels.o build/fpga_multiword_read.o build/fpga_timestamp_send.o build/pll_defaults_load.o build/power_portd_interrupt.o build/console_flash_message.o build/fpga_settings_reset.o build/fpga_settings_init.o build/tdc_host_write.o build/tdc_host_read.o build/dac_spi_send.o build/flash_wait_ready.o build/fpga_status_interrupt.o build/console_tx_interrupt.o build/console_cts_interrupt.o build/console_rx_interrupt.o build/console_character_read.o build/console_character_send.o build/pll_status_interrupt.o build/power_porte_interrupt.o build/eeprom_page_commit.o build/eeprom_settings_store.o build/alarm_state_clear.o build/pll_console_reset.o build/dac_offset_scale.o build/dac_gain_scale.o build/trigger_charge_command.o build/trigger_settings_command.o build/channel_adc_delay_command.o build/channel_cfd_zero_command.o build/channel_adc_zero_command.o build/channel_cfd_threshold_command.o build/channel_tdc_values_command.o build/channel_threshold_calibration_command.o build/channel_adc_range_command.o build/channel_tdc_adjust_command.o build/channel_mean_amplitude_display.o build/channel_baseline_dispersion_display.o build/channel_cdf_adc_display.o build/fpga_ready_guard.o build/programming_unlock.o build/channel_settings_display.o build/console_hex_parser.o build/flash_page_program.o build/flash_crc_stream_read.o build/flash_crc_bit_core.o build/tdc_channel_data_display.o build/dac_stored_settings_apply.o build/application_main.o build/system_status_display.o build/fpga_binary_programming_stream.o build/console_fixed2_entry.o build/console_temperature_entry.o build/console_fixed3_entry.o build/console_raw_byte_entry.o build/dac_saturating_scaled_product.o build/console_integer_parser.o build/console_decimal_formatter.o
+C_OBJECTS = build/timer_overflow_interrupt.o build/dma_channel_interrupt.o build/console_dispatch.o build/fpga_data_exchange.o build/dac_signed_scaled_product.o $(R16_LEAF_OBJECTS) $(R16_ONLY_OBJECTS) $(R16_R17_OBJECTS) build/console_crlf.o build/adt8.o build/adt16.o build/flash_address_send.o build/pll_control_write.o build/fpga_word_write.o build/fpga_word_read.o build/pll_control_read.o build/adt_bit_transfer.o build/dma_gpio_handshake.o build/console_hex_word.o build/dac_channels.o build/fpga_multiword_read.o build/fpga_timestamp_send.o build/pll_defaults_load.o build/power_portd_interrupt.o build/console_flash_message.o build/fpga_settings_reset.o build/fpga_settings_init.o build/tdc_host_write.o build/tdc_host_read.o build/dac_spi_send.o build/flash_wait_ready.o build/fpga_status_interrupt.o build/console_tx_interrupt.o build/console_cts_interrupt.o build/console_rx_interrupt.o build/console_character_read.o build/console_character_send.o build/pll_status_interrupt.o build/power_porte_interrupt.o build/eeprom_page_commit.o build/eeprom_settings_store.o build/alarm_state_clear.o build/pll_console_reset.o build/dac_offset_scale.o build/dac_gain_scale.o build/trigger_charge_command.o build/trigger_settings_command.o build/channel_adc_delay_command.o build/channel_cfd_zero_command.o build/channel_adc_zero_command.o build/channel_cfd_threshold_command.o build/channel_tdc_values_command.o build/channel_threshold_calibration_command.o build/channel_adc_range_command.o build/channel_tdc_adjust_command.o build/channel_mean_amplitude_display.o build/channel_baseline_dispersion_display.o build/channel_cdf_adc_display.o build/fpga_ready_guard.o build/programming_unlock.o build/channel_settings_display.o build/console_hex_parser.o build/flash_page_program.o build/flash_crc_stream_read.o build/flash_crc_bit_core.o build/tdc_channel_data_display.o build/dac_stored_settings_apply.o build/application_main.o build/system_status_display.o build/fpga_binary_programming_stream.o build/console_fixed2_entry.o build/console_temperature_entry.o build/console_fixed3_entry.o build/console_raw_byte_entry.o build/dac_saturating_scaled_product.o build/console_integer_parser.o build/console_decimal_formatter.o
+$(C_OBJECTS): $(wildcard src/legacy_*.h)
+
 $(R16_LEAF_OBJECTS): build/%.o: src/%.c Makefile | build
 	$(CC) $(CFLAGS) $(R16_LEAF) -c $< -o $@
-$(R16_ONLY_OBJECTS): build/%.o: src/%.c src/legacy_r16.h src/legacy_spi.h src/legacy_interrupt.h Makefile | build
+$(R16_ONLY_OBJECTS): build/%.o: src/%.c src/legacy_r16.h src/legacy_r16_c.h src/legacy_spi.h src/legacy_spi_c.h src/legacy_interrupt.h Makefile | build
 	$(CC) $(CFLAGS) $(R16_ONLY) -c $< -o $@
-$(R16_R17_OBJECTS): build/%.o: src/%.c src/legacy_r16.h src/legacy_spi.h Makefile | build
+$(R16_R17_OBJECTS): build/%.o: src/%.c src/legacy_r16.h src/legacy_r16_c.h src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r17 $(R16_ONLY) -c $< -o $@
 build/console_crlf.o: src/console_crlf.c Makefile | build
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -31,25 +33,25 @@ build/adt8.o: src/adt8.c Makefile | build
 	$(CC) $(CFLAGS) -fcall-saved-r18 -fcall-saved-r19 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 20 21 22 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
 build/adt16.o: src/adt16.c Makefile | build
 	$(CC) $(CFLAGS) -fcall-saved-r18 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 19 22 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
-build/flash_address_send.o: src/flash_address_send.c src/legacy_spi.h Makefile | build
+build/flash_address_send.o: src/flash_address_send.c src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 18 19 20 21 22 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
-build/pll_control_write.o: src/pll_control_write.c src/legacy_spi.h Makefile | build
+build/pll_control_write.o: src/pll_control_write.c src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -fcall-saved-r22 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
-build/fpga_word_write.o build/fpga_word_read.o build/fpga_multiword_read.o: build/%.o: src/%.c src/legacy_spi.h Makefile | build
+build/fpga_word_write.o build/fpga_word_read.o build/fpga_multiword_read.o: build/%.o: src/%.c src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -fcall-saved-r18 -fcall-saved-r21 -fcall-saved-r22 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 19 20 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
-build/pll_control_read.o: src/pll_control_read.c src/legacy_spi.h Makefile | build
+build/pll_control_read.o: src/pll_control_read.c src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -fcall-saved-r22 -fcall-saved-r23 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 17 18 19 20 21 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
-build/adt_bit_transfer.o build/dma_gpio_handshake.o: build/%.o: src/%.c src/legacy_r16.h src/legacy_spi.h Makefile | build
+build/adt_bit_transfer.o build/dma_gpio_handshake.o: build/%.o: src/%.c src/legacy_r16.h src/legacy_r16_c.h src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
 build/console_hex_word.o: src/console_hex_word.c Makefile | build
 	$(CC) $(CFLAGS) -fcall-saved-r18 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
 build/dac_channels.o: src/dac_channels.c Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -fcall-saved-r18 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 20 21 23 24 25 26 27 28 29 30 31,-ffixed-r$(n)) -c $< -o $@
-build/fpga_timestamp_send.o: src/fpga_timestamp_send.c src/legacy_spi.h Makefile | build
+build/fpga_timestamp_send.o: src/fpga_timestamp_send.c src/legacy_spi.h src/legacy_spi_c.h Makefile | build
 	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -fcall-saved-r18 -fcall-saved-r21 -fcall-saved-r22 -fcall-saved-r30 -fcall-saved-r31 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 19 20 23 24 25 26 27 28 29,-ffixed-r$(n)) -c $< -o $@
 build/pll_defaults_load.o: src/pll_defaults_load.c Makefile | build
 	$(CC) $(CFLAGS) -fcall-saved-r18 -fcall-saved-r19 -fcall-saved-r20 -fcall-saved-r30 -fcall-saved-r31 $(foreach n,2 3 4 5 6 7 8 9 10 11 12 13 14 15 21 22 23 24 25 26 27 28 29,-ffixed-r$(n)) -c $< -o $@
-build/power_portd_interrupt.o: src/power_portd_interrupt.c src/legacy_interrupt.h src/legacy_r16.h Makefile | build
+build/power_portd_interrupt.o: src/power_portd_interrupt.c src/legacy_interrupt.h src/legacy_r16.h src/legacy_r16_c.h Makefile | build
 	$(CC) $(CFLAGS) -fno-reorder-blocks $(R16_ONLY) -c $< -o $@
 build/console_flash_message.o: src/console_flash_message.c Makefile | build
 	$(CC) $(CFLAGS) -fno-reorder-blocks $(R16_ONLY) -fcall-saved-r16 -c $< -o $@
@@ -177,3 +179,18 @@ clean:
 	rm -rf build
 	rm -f generated/stamp
 .PHONY: all clean exact-check
+
+build/dac_signed_scaled_product.o: src/dac_signed_scaled_product.c Makefile | build
+	$(CC) $(CFLAGS) -fcall-used-r16 -fcall-used-r17 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c $< -o $@
+
+build/fpga_data_exchange.o: src/fpga_data_exchange.c Makefile | build
+	$(CC) $(CFLAGS) -fno-reorder-blocks -fno-crossjumping -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-used-r20 -fcall-used-r21 -fcall-used-r22 -fcall-used-r23 -fcall-used-r24 -fcall-used-r30 -fcall-used-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -c $< -o $@
+
+build/console_dispatch.o: src/console_dispatch.c Makefile | build
+	$(CC) $(CFLAGS) -fno-reorder-blocks -fno-crossjumping -fcall-used-r3 -fcall-used-r4 -fcall-used-r5 -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r20 -fcall-used-r21 -fcall-used-r22 -fcall-used-r30 -fcall-used-r31 -ffixed-r2 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r19 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -c $< -o $@
+
+build/dma_channel_interrupt.o: src/dma_channel_interrupt.c Makefile | build
+	$(CC) $(CFLAGS) -fno-reorder-blocks -fno-crossjumping -fcall-used-r2 -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-used-r20 -fcall-used-r22 -fcall-used-r26 -fcall-used-r27 -fcall-used-r30 -fcall-used-r31 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r21 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r28 -ffixed-r29 -c $< -o $@
+
+build/timer_overflow_interrupt.o: src/timer_overflow_interrupt.c Makefile | build
+	$(CC) $(CFLAGS) -fno-reorder-blocks -fno-crossjumping -fcall-used-r16 -fcall-used-r17 -fcall-used-r18 -fcall-used-r19 -fcall-used-r20 -fcall-used-r21 -fcall-used-r22 -fcall-used-r23 -fcall-used-r24 -fcall-used-r25 -fcall-used-r30 -fcall-used-r31 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -c $< -o $@

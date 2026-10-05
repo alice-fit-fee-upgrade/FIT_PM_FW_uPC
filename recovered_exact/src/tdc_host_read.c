@@ -6,7 +6,7 @@ void ths788_read(void)
     register uint8_t device asm("r19"), data_mask asm("r20");
     register uint8_t count asm("r21"), clock asm("r22");
     asm volatile("" : "=r" (command), "=r" (lo), "=r" (hi), "=r" (device));
-    asm goto("cpi %0, 3\n\tbrlo %l[selected]" : : "r" (device) : "cc" : selected);
+    if (device < 3) goto selected;
     goto finished;
 selected:
     clock = 4;

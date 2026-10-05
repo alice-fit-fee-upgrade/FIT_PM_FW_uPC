@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 #define RAM8(address) (*(volatile uint8_t *)(address))
 
@@ -10,8 +11,10 @@ void cli_get_next_char(void)
     register uint8_t value asm("r16"), index asm("r17"), data asm("r18"), flow asm("r20"), mode asm("r19");
     asm volatile("" : "=r" (mode));
 wait_character:
-    asm volatile("cli\n\tld %0, Z\n\tldd %1, Z+1\n\tsei" : "=r" (index), "=r" (value) : "z" (cursor) : "memory");
-    asm goto("cp %0, %1\n\tbreq %l[wait_character]" : : "r" (value), "r" (index) : "cc" : wait_character);
+    pm_cpu_disable_irq();
+    asm volatile("ld %0, Z\n\tldd %1, Z+1" : "=r" (index), "=r" (value) : "z" (cursor) : "memory");
+    pm_cpu_enable_irq();
+    if (value == index) goto wait_character;
     asm volatile("inc %0" : "+r" (index) : : "cc");
     index &= 0x3f;
     asm volatile("" : "+r" (index));
@@ -32,7 +35,7 @@ fetch:
     data = *cursor;
     asm volatile("" : "+r" (data));
     RAM8(0x2000) = index;
-    asm goto("cpi %0, 13\n\tbrne %l[case_fold]" : : "r" (data) : "cc" : case_fold);
+    if (data != 13) goto case_fold;
     index = RAM8(0x2005);
     asm volatile("dec %0" : "+r" (index) : : "cc");
     RAM8(0x2005) = index;

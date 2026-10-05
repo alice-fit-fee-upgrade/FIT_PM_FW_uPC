@@ -1,4 +1,31 @@
-#include "legacy_spi.h"
+#include "legacy_spi_c.h"
+
+/* Archived C alternative for the exact ASM helpers below (not compiled).
+ * This implementation, with its historical private-ABI ASM bridge and callees,
+ * passed the functional comparisons recorded in docs/mixed_recovery_reads_checkpoint.md.
+ * The historical integrated FLASH differed from PM.hex; it is NOT an accepted
+ * baseline implementation. Tests do not establish timing/async IRQ/hardware
+ * equivalence. Full register/SREG restoration belongs to the archived bridge.
+ * Dependencies (types, MMIO definitions, helper functions and bridge contracts):
+ * mixed_c_asm/src/device_reads.c; see that source and the checkpoint for the full context.
+ * Scope is the archived function shown; wrappers/callees in that tree cover
+ * additional behavior. Individual ASM fragments were not independently
+ * validated as standalone plain C implementations.
+ *
+ * void pm_fpga_stamp_c(void)
+ * {
+ *     SPIC_CTRL=0xd1;
+ *     PORTD_OUTCLR=1;
+ *     fpga_byte(0x3d); fpga_byte(0x40);
+ *     uint16_t address=0x2b92;
+ *     for (uint8_t words=0;words!=2;++words) {
+ *         uint8_t low=pgm_read_byte(address++);
+ *         uint8_t high=pgm_read_byte(address++);
+ *         fpga_byte(high); fpga_byte(low);
+ *     }
+ *     PORTD_OUTSET=1;
+ * }
+ */
 
 void fpga_send_mcu_ts(void)
 {

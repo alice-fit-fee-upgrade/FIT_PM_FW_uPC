@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 #include "legacy_r16.h"
 #define RAM8(address) (*(volatile uint8_t *)(address))
@@ -13,7 +14,7 @@ void pm_dma_gpio_handshake(void)
         : "r18", "memory");
     RAM8(0x243c) = state;
     DMA_CH0_CTRLB = enable;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
 wait_dma:
     state = DMA_CH0_CTRLB;
     asm goto("sbrs %0, 4\n\trjmp %l[wait_dma]" : : "r" (state) : : wait_dma);

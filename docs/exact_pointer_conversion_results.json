@@ -1,0 +1,32 @@
+[
+  {
+    "step": 108,
+    "source": "flash_wait_ready.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 109,
+    "source": "fpga_settings_init.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 110,
+    "source": "fpga_settings_reset.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 111,
+    "source": "console_rx_interrupt.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 112,
+    "source": "console_decimal_formatter.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 #define SET_VALUE(constant) do { value=(constant); asm volatile("" : "+r" (value)); } while (0)
 
@@ -13,7 +14,7 @@ wait_nvm:
     previous = 0xd8; asm volatile("" : "+r" (previous));
     asm volatile("cli\n\tsts %0, %1" : : "n" (_SFR_MEM_ADDR(CCP)), "r" (previous) : "memory");
     NVM_CTRLA = value;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     register const uint8_t *settings asm("r30") = (const uint8_t *)0x2163;
     asm volatile("" : "+z" (settings));
     register uint8_t *eeprom asm("r28") = (uint8_t *)0x0fff;
@@ -35,7 +36,7 @@ unchanged:
         : : "z" (settings), "r" (end_high) : "cc" : finished);
     asm volatile("mov %0, r28" : "=r" (offset) : "y" (eeprom));
     offset &= 0x1f; asm volatile("" : "+r" (offset));
-    asm goto("cpi %0, 0x1f\n\tbrne %l[next_byte]" : : "r" (offset) : "cc" : next_byte);
+    if (offset != 0x1f) goto next_byte;
     asm volatile("rcall FUN_code_000d07" : "+r" (dirty), "=r" (value), "=r" (previous)
         : "y" (eeprom) : "memory", "cc");
     goto next_byte;

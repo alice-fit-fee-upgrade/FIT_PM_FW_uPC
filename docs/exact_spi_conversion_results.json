@@ -1,0 +1,88 @@
+[
+  {
+    "step": 93,
+    "source": "recovered_exact/src/fpga_word_read.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 94,
+    "source": "recovered_exact/src/dac_spi_send.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 95,
+    "source": "recovered_exact/src/flash_address_send.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 96,
+    "source": "recovered_exact/src/flash_device_id.c",
+    "accepted": true,
+    "symbols": [
+      "FUN_code_000c20"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 97,
+    "source": "recovered_exact/src/flash_wait_ready.c",
+    "accepted": true,
+    "symbols": [
+      "FUN_code_000b9d"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 98,
+    "source": "recovered_exact/src/fpga_multiword_read.c",
+    "accepted": true,
+    "symbols": [
+      "FUN_code_0011e5"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 99,
+    "source": "recovered_exact/src/fpga_timestamp_send.c",
+    "accepted": true,
+    "symbols": [
+      "fpga_send_mcu_ts"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 100,
+    "source": "recovered_exact/src/fpga_word_write.c",
+    "accepted": true,
+    "symbols": [
+      "fpga_msg_send_t2"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 101,
+    "source": "recovered_exact/src/pll_control_read.c",
+    "accepted": true,
+    "symbols": [
+      "FUN_code_001267"
+    ],
+    "differing_bytes": 0
+  },
+  {
+    "step": 102,
+    "source": "recovered_exact/src/pll_control_write.c",
+    "accepted": false,
+    "reason": "GNU C SPI candidate failed complete binary build/compare; prior source restored",
+    "functional_test_claim": false
+  },
+  {
+    "step": 103,
+    "source": "recovered_exact/src/pll_control_write.c",
+    "accepted": true,
+    "differing_bytes": 0,
+    "adjustment": "Release dead status constraint after polling; preserve original sole R22 scratch profile"
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "step": 121,
+    "source": "alarm_state_clear.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 122,
+    "source": "channel_cdf_adc_display.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 123,
+    "source": "console_character_read.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 124,
+    "source": "console_hex_digit.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 125,
+    "source": "console_hex_parser.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 126,
+    "source": "console_rx_interrupt.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 127,
+    "source": "dac_stored_settings_apply.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 128,
+    "source": "eeprom_settings_store.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 129,
+    "source": "fpga_settings_init.c",
+    "accepted": true,
+    "comparisons_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 130,
+    "source": "fpga_settings_reset.c",
+    "accepted": true,
+    "comparisons_replaced": 2,
+    "differing_bytes": 0
+  },
+  {
+    "step": 131,
+    "source": "power_porte_interrupt.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 132,
+    "source": "tdc_channel_data_display.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 133,
+    "source": "tdc_host_read.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  }
+]

@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <stdint.h>
 #define STORE_DIGIT() asm volatile("st -Z, r18" : "+z" (cursor) : "r" (digit) : "memory")
 #define STORE_CHARACTER() asm volatile("st -Z, r16" : "+z" (cursor) : "r" (character) : "memory")
@@ -27,7 +28,7 @@ next_digit:;
     asm volatile("ror r14\n\tror r18" : "+r" (digit) : : "cc");
     quotient_high &= 0x1f;
     asm volatile("" : "+r" (quotient_high));
-    asm volatile("swap %0" : "+r" (digit));
+    digit = __builtin_avr_swap(digit); asm volatile("" : "+r" (digit));
     digit &= 0x0f; asm volatile("" : "+r" (digit));
     digit += '0'; asm volatile("" : "+r" (digit));
     STORE_DIGIT();

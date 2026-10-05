@@ -1,4 +1,4 @@
-#include "legacy_spi.h"
+#include "legacy_spi_c.h"
 
 /* R18 is the incoming address; never borrow it for peripheral constants. */
 
@@ -9,8 +9,11 @@ void fpga_msg_send_t2(void)
     register uint8_t address_low asm("r21");
     asm volatile("" : "=r" (address));
     /* Preserve the original address packing and its flag effects. */
-    asm volatile("clr %1\n\tlsr %0\n\tror %1\n\tlsr %0\n\tror %1"
-                 : "+r" (address), "=r" (address_low) : : "cc");
+    asm volatile("clr %1" : "+r" (address), "=r" (address_low) : : "cc");
+    address >>= 1;
+    asm volatile("ror %1" : "+r" (address), "+r" (address_low) : : "cc");
+    address >>= 1;
+    asm volatile("ror %1" : "+r" (address), "+r" (address_low) : : "cc");
     PM_WRITE_R22(PORTD_OUTCLR, 1);
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r18");
     PM_SPI_SEND_REGISTER(SPIC, "r22", "r21");

@@ -29,7 +29,7 @@ receive:
     asm volatile("" : "+r" (status));
     data = USARTF0_DATA;
     asm volatile("" : "+r" (data));
-    asm goto("sbrc %0, 4\n\trjmp %l[finished]" : : "r" (status) : : finished);
+    if (status & (1u << 4)) goto finished;
     asm goto("cp %0, %1\n\tbreq %l[finished]" : : "r" (read_index), "r" (write_index) : "cc" : finished);
     *cursor = write_index;
     cursor = (uint8_t *)0x2007;
@@ -37,7 +37,7 @@ receive:
         : "+z" (cursor), "=r" (read_index) : "r" (write_index) : "cc");
     asm volatile("" : "+r" (data));
     *cursor = data;
-    asm goto("cpi %0, 13\n\tbrne %l[finished]" : : "r" (data) : "cc" : finished);
+    if (data != 13) goto finished;
     read_index = RAM8(0x2005);
     asm volatile("inc %0" : "+r" (read_index) : : "cc");
     RAM8(0x2005) = read_index;

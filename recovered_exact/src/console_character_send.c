@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 
 void cli_send_buf(void)
@@ -14,7 +15,7 @@ retry:
     asm goto("cp %0, %1\n\tbreq %l[direct_send]" : : "r" (read_index), "r" (write_index) : "cc" : direct_send);
     asm volatile("inc %0" : "+r" (write_index) : : "cc");
     asm goto("cp %0, %1\n\tbrne %l[enqueue]" : : "r" (read_index), "r" (write_index) : "cc" : enqueue);
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     cursor -= 2;
     asm volatile("" : "+z" (cursor));
     goto retry;
@@ -26,7 +27,7 @@ enqueue:
     cursor = (uint8_t *)0x2003;
     asm volatile("" : "+z" (cursor));
     *cursor = write_index;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
     goto finished;
 direct_send:
     asm volatile("inc %0" : "+r" (write_index) : : "cc");
@@ -39,7 +40,7 @@ direct_send:
     control |= 2;
     asm volatile("" : "+r" (control));
     USARTF0_CTRLA = control;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
 finished:
     asm volatile("pop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r30\n\tpop r31\n\tret" : : : "memory");
     __builtin_unreachable();

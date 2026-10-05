@@ -1,5 +1,36 @@
 #include <stdint.h>
 
+/* Archived C alternative for the exact ASM helpers below (not compiled).
+ * This implementation, with its historical private-ABI ASM bridge and callees,
+ * passed the functional comparisons recorded in docs/mixed_crc_byte_checkpoint.md.
+ * The historical integrated FLASH differed from PM.hex; it is NOT an accepted
+ * baseline implementation. Tests do not establish timing/async IRQ/hardware
+ * equivalence. Full register/SREG restoration belongs to the archived bridge.
+ * Dependencies (types, MMIO definitions, helper functions and bridge contracts):
+ * mixed_c_asm/src/crc_byte.c; see that source and the checkpoint for the full context.
+ * Scope is the archived function shown; wrappers/callees in that tree cover
+ * additional behavior. Individual ASM fragments were not independently
+ * validated as standalone plain C implementations.
+ *
+ * pm_crc_packet pm_crc_byte_abi(uint32_t crc, uint32_t polynomial, uint8_t byte)
+ * {
+ *     uint8_t last_half = 0;
+ *     uint8_t last_carry = (uint8_t)(byte >> 7);
+ *     for (uint8_t bit = 0; bit < 8; ++bit) {
+ *         last_half = (uint8_t)((uint8_t)(crc >> 24) & 8u);
+ *         uint8_t feedback = (uint8_t)((crc >> 31) ^ (byte & 1u));
+ *         crc <<= 1;
+ *         if (feedback) crc ^= polynomial;
+ *         byte >>= 1;
+ *     }
+ *     pm_crc_packet p;
+ *     p.crc = crc;
+ *     p.flags = (uint8_t)(2u | last_carry | (last_half << 2));
+ *     p.reserved[0] = p.reserved[1] = p.reserved[2] = 0;
+ *     return p;
+ * }
+ */
+
 /* Original CRC state order is R17:R16:R19:R18. Bit input is consumed LSB
  * first. Carry-dependent decisions stay in ASM; polynomial XORs are C. */
 void FUN_code_000bf2(void)

@@ -1,0 +1,18 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fcall-used-r16 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r17 -ffixed-r18 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/flash_wait_ready.c -o build/flash_wait_ready.o
+src/flash_wait_ready.c: In function ‘pm_flash_wait_ready’:
+src/flash_wait_ready.c:56:1: error: unable to find a register to spill in class ‘GENERAL_REGS’
+ }
+ ^
+src/flash_wait_ready.c:56:1: error: this is the insn:
+(insn 14 12 15 4 (parallel [
+            (set (cc0)
+                (compare (reg:HI 43 [ _2 ])
+                    (const_int 0 [0])))
+            (clobber (scratch:QI))
+        ]) "src/flash_wait_ready.c":39 398 {cmphi3}
+     (expr_list:REG_DEAD (reg:HI 43 [ _2 ])
+        (nil)))
+src/flash_wait_ready.c:56: confused by earlier errors, bailing out
+make: *** [Makefile:67: build/flash_wait_ready.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

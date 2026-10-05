@@ -1,0 +1,32 @@
+[
+  {
+    "step": 186,
+    "source": "power_porte_interrupt.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 187,
+    "source": "adt_bit_transfer.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 188,
+    "source": "fpga_settings_init.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 189,
+    "source": "fpga_settings_reset.c",
+    "accepted": true,
+    "differing_bytes": 0
+  },
+  {
+    "step": 190,
+    "source": "console_character_read.c",
+    "accepted": true,
+    "differing_bytes": 0
+  }
+]

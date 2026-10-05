@@ -1,21 +1,22 @@
+#include "legacy_cpu.h"
 #include "legacy_interrupt.h"
-#include "legacy_r16.h"
+#include "legacy_r16_c.h"
 
 void PORTE_INT1_vect_isr(void)
 {
     asm volatile("push r31\n\tin r31, 0x3f\n\tpush r16\n\tpush r17\n\tpush r18" : : : "memory");
     register uint8_t lo asm("r16"), hi asm("r17"), address asm("r18") = 0x7f;
     asm volatile("call fpga_msg_read_t1" : "=r" (lo), "=r" (hi), "+r" (address) : : "memory", "cc");
-    asm goto("sbrs %0, 1\n\trjmp %l[merge_status]" : : "r" (hi) : : merge_status);
+    if (!(hi & (1u << 1))) goto merge_status;
     address = PM_RAM8(0x2006);
     address |= 1;
     asm volatile("" : "+r" (address));
     PM_RAM8(0x2006) = address;
 merge_status:
-    asm volatile("swap %0" : "+r" (lo));
+    lo = __builtin_avr_swap(lo); asm volatile("" : "+r" (lo));
     lo &= 0x0f;
     asm volatile("" : "+r" (lo));
-    asm volatile("swap %0" : "+r" (hi));
+    hi = __builtin_avr_swap(hi); asm volatile("" : "+r" (hi));
     hi &= 0x10;
     asm volatile("" : "+r" (hi));
     hi |= lo;

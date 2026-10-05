@@ -27,7 +27,7 @@ next_channel:;
     selected = channel; asm volatile("" : "+r" (selected), "+r" (channel));
     DAC_CALL("FUN_code_001068", word, selected);
     asm volatile("inc %0" : "+r" (channel) : : "cc");
-    asm goto("cpi %0, 12\n\tbrne %l[next_channel]" : : "r" (channel) : "cc" : next_channel);
+    if (channel != 12) goto next_channel;
     asm volatile("pop r0\n\tpop r1\n\tpop r16\n\tpop r17\n\tpop r18\n\tpop r19\n\tpop r20\n\tpop r21\n\tpop r22\n\tpop r23\n\tpop r28\n\tpop r29\n\tpop r30\n\tpop r31\n\tret" : : : "memory");
     __builtin_unreachable();
 }

@@ -1,4 +1,4 @@
-#include "legacy_spi.h"
+#include "legacy_spi_c.h"
 
 void pm_fpga_multiword_read(void) asm("FUN_code_0011e5");
 /* Original eight-byte response is returned in R9:R8 ... R15:R14. */

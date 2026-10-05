@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <stdint.h>
 #define RAM8(address) (*(volatile uint8_t *)(address))
 #define SET_MESSAGE(address) do { message = (const uint8_t *)(address); asm volatile("" : "+z" (message)); } while (0)
@@ -21,7 +22,7 @@ void cli_send_system_status(void)
     word = second;
     asm volatile("rcall cli_send_32bit_hex" : "+r" (word) : : "memory", "cc");
     SET_MESSAGE(0x29a6); SEND_MESSAGE();
-    asm volatile("cli" : : : "memory");
+    pm_cpu_disable_irq();
     register uint8_t status asm("r18") = RAM8(0x2157);
     asm volatile("" : "+r" (status));
     word = *(volatile uint16_t *)0x2160;

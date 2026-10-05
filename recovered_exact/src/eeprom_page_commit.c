@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 
 void pm_eeprom_page_commit(void) asm("FUN_code_000d07");
@@ -5,7 +6,7 @@ void pm_eeprom_page_commit(void)
 {
     register uint8_t dirty asm("r19"), low asm("r28"), high asm("r29");
     asm volatile("" : "=r" (dirty), "=r" (low), "=r" (high));
-    asm goto("tst %0\n\tbreq %l[finished]" : : "r" (dirty) : "cc" : finished);
+    if (dirty == 0) goto finished;
     register uint8_t command asm("r16") = 0x35;
     asm volatile("" : "+r" (command));
     NVM_CMD = command;
@@ -15,10 +16,10 @@ void pm_eeprom_page_commit(void)
     asm volatile("" : "+r" (command));
     register uint8_t unlock asm("r17") = 0xd8;
     asm volatile("" : "+r" (unlock));
-    asm volatile("cli" : : : "memory");
+    pm_cpu_disable_irq();
     asm volatile("sts %0, %1" : : "n" (_SFR_MEM_ADDR(CCP)), "r" (unlock) : "memory");
     NVM_CTRLA = command;
-    asm volatile("sei" : : : "memory");
+    pm_cpu_enable_irq();
 wait_ready:
     command = NVM_STATUS;
     asm goto("sbrc %0, 7\n\trjmp %l[wait_ready]" : : "r" (command) : : wait_ready);

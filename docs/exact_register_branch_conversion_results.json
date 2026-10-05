@@ -1,0 +1,54 @@
+[
+  {
+    "step": 134,
+    "source": "console_character_read.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 135,
+    "source": "console_character_send.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 136,
+    "source": "console_cts_interrupt.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 137,
+    "source": "console_flash_message.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 138,
+    "source": "console_rx_interrupt.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 139,
+    "source": "console_tx_interrupt.c",
+    "accepted": false,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 140,
+    "source": "eeprom_page_commit.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  },
+  {
+    "step": 141,
+    "source": "power_porte_interrupt.c",
+    "accepted": true,
+    "comparisons_replaced": 1,
+    "differing_bytes": 0
+  }
+]

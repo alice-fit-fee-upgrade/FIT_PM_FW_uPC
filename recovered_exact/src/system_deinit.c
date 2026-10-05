@@ -1,4 +1,32 @@
 #include <avr/io.h>
+/* Archived C alternative for the exact ASM helpers below (not compiled).
+ * This implementation, with its historical private-ABI ASM bridge and callees,
+ * passed the functional comparisons recorded in docs/mixed_recovery_system_checkpoint.md.
+ * The historical integrated FLASH differed from PM.hex; it is NOT an accepted
+ * baseline implementation. Tests do not establish timing/async IRQ/hardware
+ * equivalence. Full register/SREG restoration belongs to the archived bridge.
+ * Dependencies (types, MMIO definitions, helper functions and bridge contracts):
+ * mixed_c_asm/src/system_control.c; see that source and the checkpoint for the full context.
+ * Scope is the archived function shown; wrappers/callees in that tree cover
+ * additional behavior. Individual ASM fragments were not independently
+ * validated as standalone plain C implementations.
+ *
+ * void pm_system_deinit_c(void)
+ * {
+ *     REG8(PM_FPGA_TIMER_LOW)=0; REG8(PM_FPGA_TIMER_HIGH)=0;
+ *     REG8(PM_FPGA_STATE)=0; REG8(PM_THS_STATE)=0;
+ *     REG8(PM_RESTART_REASON)=0; REG8(PM_FPGA_REQUEST)=0; REG8(PM_CLOCK_STATE)=0;
+ *     REG8(PM_PORTE_INTCTRL)=1; REG8(PM_PORTF_INTCTRL)=2;
+ *     REG8(PM_PORTB_INTCTRL)=0; REG8(PM_PORTD_INTCTRL)=0;
+ *     REG8(PM_PORTB_DIRCLR)=0xbf; REG8(PM_SPIC_CTRL)=0;
+ *     REG8(PM_PORTC_DIRCLR)=0xff; REG8(PM_PORTD_DIRCLR)=0x41;
+ *     REG8(PM_PORTD_OUTCLR)=4; REG8(PM_PORTF_OUTCLR)=0x20;
+ *     REG8(PM_PORTF_DIRCLR)=0x20;
+ *     REG8(PM_STATUS_FLAGS) &= 0xefu;
+ *     REG8(PM_PORTA_OUTSET)=0xa0; REG8(PM_SPID_CTRL)=0; REG8(PM_DMA_CTRL)=0;
+ * }
+ */
+
 #define RAM(a) (*(volatile uint8_t *)(a))
 #include "legacy_r16.h"
 void system_deinit(void)

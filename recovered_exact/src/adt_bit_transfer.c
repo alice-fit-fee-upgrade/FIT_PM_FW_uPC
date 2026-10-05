@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 
 /* Eight clock edges, with original bit tests and sampling timing preserved. */
@@ -14,10 +15,13 @@ next_bit:
                 "n" (_SFR_MEM_ADDR(PORTA_OUTCLR)) : "memory");
     }
     PORTA_OUTCLR = 2;
-    asm volatile("lsl %0\n\tnop" : "+r" (data) : : "cc");
+    data += data;
+    asm volatile("" : "+r" (data));
+    pm_cpu_nop();
     PORTA_OUTSET = 2;
     register uint8_t sample asm("r17") = PORTA_IN;
-    asm volatile("bst %1, 2\n\tbld %0, 0" : "+r" (data) : "r" (sample) : "cc");
+    data = PM_COPY_BIT(data, 0, sample, 2);
+    asm volatile("" : "+r" (data));
     /* DEC, unlike SUBI, preserves the original carry flag. */
     asm volatile("dec %0" : "+r" (count) : : "cc");
     asm goto("brne %l[next_bit]" : : "r" (count) : : next_bit);
