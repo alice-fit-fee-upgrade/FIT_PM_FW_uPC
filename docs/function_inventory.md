@@ -125,3 +125,5 @@ Boot body entries (vector stubs excluded): 0x0201E2, 0x02023A, 0x0202A0, 0x0203D
 
 Historical behavioral counts are archived in mixed_recovery_reads_function_inventory.md;
 they do not contribute to the accepted baseline counts.
+
+Current checkpoint: steps 614–622, 6732 native C bytes; 66.9318% application / 62.1262% including boot. See [frame recovery](native_frame_recovery_622.md).

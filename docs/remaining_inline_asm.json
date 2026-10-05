@@ -1,9 +1,9 @@
 {
   "scope": "inline ASM inside accepted C regions; pure ASM/boot excluded",
   "address_units": "FLASH bytes",
-  "manifest_sha256": "01ed664a39ebcb1eab1b3104f214c735b330877758753e350a4012ea82cf9d98",
-  "inline_asm_bytes": 3348,
-  "instructions": 1650,
+  "manifest_sha256": "27b1de8e6ead061eb3c18dca90fceb9108b810d33951cdaea24d3e4461ce16c8",
+  "inline_asm_bytes": 3296,
+  "instructions": 1624,
   "opcodes": [
     {
       "mnemonic": "rcall",
@@ -32,8 +32,8 @@
     },
     {
       "mnemonic": "pop",
-      "bytes": 268,
-      "instructions": 134,
+      "bytes": 254,
+      "instructions": 127,
       "examples": [
         {
           "address": 588,
@@ -52,31 +52,6 @@
           "source": "src/dma_channel_interrupt.c",
           "golden_bytes": "df91",
           "instruction": "pop\tr29"
-        }
-      ]
-    },
-    {
-      "mnemonic": "push",
-      "bytes": 260,
-      "instructions": 130,
-      "examples": [
-        {
-          "address": 482,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "ff93",
-          "instruction": "push\tr31"
-        },
-        {
-          "address": 486,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "0f93",
-          "instruction": "push\tr16"
-        },
-        {
-          "address": 488,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "1f93",
-          "instruction": "push\tr17"
         }
       ]
     },
@@ -127,6 +102,31 @@
           "source": "src/dma_channel_interrupt.c",
           "golden_bytes": "c134",
           "instruction": "cpi\tr28, 0x41\t; 65"
+        }
+      ]
+    },
+    {
+      "mnemonic": "push",
+      "bytes": 222,
+      "instructions": 111,
+      "examples": [
+        {
+          "address": 486,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "0f93",
+          "instruction": "push\tr16"
+        },
+        {
+          "address": 488,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "1f93",
+          "instruction": "push\tr17"
+        },
+        {
+          "address": 490,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "2f93",
+          "instruction": "push\tr18"
         }
       ]
     },
@@ -1290,8 +1290,8 @@
   "functions": {
     "DMA_CH1_vect_isr": {
       "source": "src/dma_channel_interrupt.c",
-      "inline_asm_bytes": 274,
-      "instructions": 137
+      "inline_asm_bytes": 272,
+      "instructions": 136
     },
     "FUN_code_000236": {
       "source": "src/dma_gpio_handshake.c",
@@ -1300,13 +1300,13 @@
     },
     "TCC0_OVF_vect_isr": {
       "source": "src/timer_overflow_interrupt.c",
-      "inline_asm_bytes": 424,
-      "instructions": 212
+      "inline_asm_bytes": 422,
+      "instructions": 211
     },
     "fpga_settings_init": {
       "source": "src/fpga_settings_init.c",
-      "inline_asm_bytes": 42,
-      "instructions": 21
+      "inline_asm_bytes": 38,
+      "instructions": 19
     },
     "fpga_settings_reset": {
       "source": "src/fpga_settings_reset.c",
@@ -1315,8 +1315,8 @@
     },
     "FUN_code_0004ef": {
       "source": "src/dac_stored_settings_apply.c",
-      "inline_asm_bytes": 76,
-      "instructions": 38
+      "inline_asm_bytes": 72,
+      "instructions": 36
     },
     "PORTD_INT0_vect_isr": {
       "source": "src/power_portd_interrupt.c",
@@ -1335,8 +1335,8 @@
     },
     "PORTF_INT1_vect_isr": {
       "source": "src/pll_status_interrupt.c",
-      "inline_asm_bytes": 40,
-      "instructions": 20
+      "inline_asm_bytes": 38,
+      "instructions": 19
     },
     "FUN_code_0005b4": {
       "source": "src/power_fault_state.c",
@@ -1345,13 +1345,13 @@
     },
     "PORTE_INT0_vect_isr": {
       "source": "src/power_porte_interrupt.c",
-      "inline_asm_bytes": 36,
-      "instructions": 18
+      "inline_asm_bytes": 34,
+      "instructions": 17
     },
     "PORTE_INT1_vect_isr": {
       "source": "src/fpga_status_interrupt.c",
-      "inline_asm_bytes": 18,
-      "instructions": 9
+      "inline_asm_bytes": 16,
+      "instructions": 8
     },
     "system_deinit": {
       "source": "src/system_deinit.c",
@@ -1370,18 +1370,18 @@
     },
     "PORTF_INT0_vect_isr": {
       "source": "src/console_cts_interrupt.c",
-      "inline_asm_bytes": 52,
-      "instructions": 26
+      "inline_asm_bytes": 50,
+      "instructions": 25
     },
     "USARTF0_DRE_vect_isr": {
       "source": "src/console_tx_interrupt.c",
-      "inline_asm_bytes": 48,
-      "instructions": 24
+      "inline_asm_bytes": 46,
+      "instructions": 23
     },
     "USARTF0_RXC_vect_isr": {
       "source": "src/console_rx_interrupt.c",
-      "inline_asm_bytes": 48,
-      "instructions": 24
+      "inline_asm_bytes": 46,
+      "instructions": 23
     },
     "main": {
       "source": "src/application_main.c",
@@ -1640,13 +1640,13 @@
     },
     "cli_get_integer": {
       "source": "src/console_integer_parser.c",
-      "inline_asm_bytes": 96,
-      "instructions": 48
+      "inline_asm_bytes": 92,
+      "instructions": 46
     },
     "cli_get_hex": {
       "source": "src/console_hex_parser.c",
-      "inline_asm_bytes": 46,
-      "instructions": 23
+      "inline_asm_bytes": 42,
+      "instructions": 21
     },
     "cli_send_32bit_hex": {
       "source": "src/console_hex_word.c",
@@ -1660,23 +1660,23 @@
     },
     "FUN_code_001397": {
       "source": "src/console_fixed2_entry.c",
-      "inline_asm_bytes": 6,
-      "instructions": 3
+      "inline_asm_bytes": 4,
+      "instructions": 2
     },
     "cli_send_temperature": {
       "source": "src/console_temperature_entry.c",
-      "inline_asm_bytes": 6,
-      "instructions": 3
+      "inline_asm_bytes": 4,
+      "instructions": 2
     },
     "FUN_code_00139f": {
       "source": "src/console_fixed3_entry.c",
-      "inline_asm_bytes": 6,
-      "instructions": 3
+      "inline_asm_bytes": 4,
+      "instructions": 2
     },
     "cli_send_uint16": {
       "source": "src/console_decimal_formatter.c",
-      "inline_asm_bytes": 158,
-      "instructions": 79
+      "inline_asm_bytes": 154,
+      "instructions": 77
     },
     "cli_send_crlf": {
       "source": "src/console_crlf.c",
@@ -1690,18 +1690,18 @@
     },
     "cli_get_next_byte": {
       "source": "src/console_raw_byte_entry.c",
-      "inline_asm_bytes": 4,
-      "instructions": 2
+      "inline_asm_bytes": 2,
+      "instructions": 1
     },
     "cli_get_next_char": {
       "source": "src/console_character_read.c",
-      "inline_asm_bytes": 48,
-      "instructions": 24
+      "inline_asm_bytes": 44,
+      "instructions": 22
     },
     "cli_send_buf": {
       "source": "src/console_character_send.c",
-      "inline_asm_bytes": 52,
-      "instructions": 26
+      "inline_asm_bytes": 48,
+      "instructions": 24
     }
   }
 }

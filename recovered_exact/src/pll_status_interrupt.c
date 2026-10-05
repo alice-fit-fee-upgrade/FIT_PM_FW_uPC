@@ -1,3 +1,7 @@
+/* Native outer frame: GCC emits the original entry PUSH under the local
+ * call-saved register profile. -fno-ipa-pure-const prevents noreturn inference
+ * from dropping that save before the exact shared RET/RETI tail. The tail
+ * restores this register in ASM; full FLASH identity validates the pairing. */
 #include <avr/io.h>
 /* Calls retain private fixed-register inputs/results through zero-byte
  * barriers. Void declarations deliberately introduce no GNU arguments/results;
@@ -13,7 +17,6 @@ extern void FUN_code_001267(void);
 
 void PORTF_INT1_vect_isr(void)
 {
-    asm volatile("push r31" : : : "memory");
     {
         register uint8_t saved_status asm("r31") = SREG;
         asm volatile("" : "+r" (saved_status) : : "memory");

@@ -214,5 +214,86 @@
     "log": "docs/exact_c_steps/step_613.log",
     "differing_bytes": 0,
     "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 614,
+    "source": "console_fixed3_entry.c",
+    "change": "Native shared-entry PUSH R20 with noreturn inference disabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_614.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 615,
+    "source": "console_temperature_entry.c",
+    "change": "Native shared-entry PUSH R20 with noreturn inference disabled",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_615.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 616,
+    "source": "fpga_status_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_616.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 617,
+    "source": "pll_status_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_617.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 618,
+    "source": "console_cts_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_618.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 619,
+    "source": "console_rx_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_619.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 620,
+    "source": "console_tx_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_620.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 621,
+    "source": "timer_overflow_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_621.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 622,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native outer ISR PUSH R31 with noreturn inference disabled; exact restoring RETI tail retained",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_622.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
   }
 ]

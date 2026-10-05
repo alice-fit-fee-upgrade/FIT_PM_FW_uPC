@@ -1,3 +1,7 @@
+/* Native outer frame: GCC emits the original entry PUSH under the local
+ * call-saved register profile. -fno-ipa-pure-const prevents noreturn inference
+ * from dropping that save before the exact shared RET/RETI tail. The tail
+ * restores this register in ASM; full FLASH identity validates the pairing. */
 /* C equivalent of the retained cursor-read helper:
  * ready++; data = *--cursor; read_index = *--cursor;
  * Steps365–370 failed allocation or changed fixed layout/bytes, including
@@ -9,7 +13,6 @@
 
 void PORTF_INT0_vect_isr(void)
 {
-    asm volatile("push r31" : : : "memory");
     {
         register uint8_t saved_status asm("r31") = SREG;
         asm volatile("" : "+r" (saved_status) : : "memory");

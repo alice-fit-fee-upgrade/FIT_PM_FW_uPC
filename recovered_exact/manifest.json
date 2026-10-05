@@ -909,11 +909,6 @@
       "meaning": "Original FPGA interrupt status nibble merge and alarm GPIO update",
       "asm_helper_ranges": [
         {
-          "start": 3114,
-          "end_exclusive": 3116,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 3118,
           "end_exclusive": 3124,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -940,11 +935,6 @@
       "compiler_profile": "console_tx_interrupt_legacy",
       "meaning": "Original USART transmit-empty interrupt and ring buffer",
       "asm_helper_ranges": [
-        {
-          "start": 3720,
-          "end_exclusive": 3722,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
         {
           "start": 3724,
           "end_exclusive": 3736,
@@ -993,11 +983,6 @@
       "meaning": "Original console CTS interrupt, immediate send and ring ready flag",
       "asm_helper_ranges": [
         {
-          "start": 3616,
-          "end_exclusive": 3618,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 3620,
           "end_exclusive": 3632,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -1044,11 +1029,6 @@
       "compiler_profile": "console_rx_interrupt_legacy",
       "meaning": "Original USART receive interrupt, watermark and character ring",
       "asm_helper_ranges": [
-        {
-          "start": 3808,
-          "end_exclusive": 3810,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
         {
           "start": 3812,
           "end_exclusive": 3824,
@@ -1220,11 +1200,6 @@
       "compiler_profile": "pll_status_interrupt_legacy",
       "meaning": "Original PLL interrupt control word, readback alarms and power state",
       "asm_helper_ranges": [
-        {
-          "start": 2784,
-          "end_exclusive": 2786,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
         {
           "start": 2788,
           "end_exclusive": 2796,
@@ -3059,14 +3034,9 @@
       "meaning": "Signed temperature console value with one decimal place",
       "asm_helper_ranges": [
         {
-          "start": 10038,
-          "end_exclusive": 10040,
-          "reason": "Exact saved mode register"
-        },
-        {
           "start": 10042,
           "end_exclusive": 10046,
-          "reason": "Carry selector and shared tail jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -3081,14 +3051,9 @@
       "meaning": "Signed fixed-point console value with three decimal places",
       "asm_helper_ranges": [
         {
-          "start": 10046,
-          "end_exclusive": 10048,
-          "reason": "Exact saved mode register"
-        },
-        {
           "start": 10050,
           "end_exclusive": 10054,
-          "reason": "Carry selector and shared tail jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -3757,11 +3722,6 @@
       "meaning": "Original DMA channel interrupt, state and peripheral updates",
       "asm_helper_ranges": [
         {
-          "start": 482,
-          "end_exclusive": 484,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 486,
           "end_exclusive": 500,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -3983,11 +3943,6 @@
       "compiler_profile": "timer_interrupt_private_registers",
       "meaning": "Original timer overflow interrupt, state and peripheral updates",
       "asm_helper_ranges": [
-        {
-          "start": 1182,
-          "end_exclusive": 1184,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
         {
           "start": 1186,
           "end_exclusive": 1218,

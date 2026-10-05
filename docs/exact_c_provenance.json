@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3314,
+  "inline_asm_bytes": 3296,
   "compiler_generated_avr_primitive_bytes": 402,
   "avr_primitive_mnemonics": [
     "bld",
@@ -238,27 +238,27 @@
     },
     {
       "symbol": "PORTE_INT1_vect_isr",
-      "inline_asm_bytes": 18,
+      "inline_asm_bytes": 16,
       "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 66
+      "compiler_bytes": 68
     },
     {
       "symbol": "USARTF0_DRE_vect_isr",
-      "inline_asm_bytes": 48,
+      "inline_asm_bytes": 46,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 40
+      "compiler_bytes": 42
     },
     {
       "symbol": "PORTF_INT0_vect_isr",
-      "inline_asm_bytes": 52,
+      "inline_asm_bytes": 50,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 52
+      "compiler_bytes": 54
     },
     {
       "symbol": "USARTF0_RXC_vect_isr",
-      "inline_asm_bytes": 48,
+      "inline_asm_bytes": 46,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 68
+      "compiler_bytes": 70
     },
     {
       "symbol": "cli_get_next_char",
@@ -274,9 +274,9 @@
     },
     {
       "symbol": "PORTF_INT1_vect_isr",
-      "inline_asm_bytes": 40,
+      "inline_asm_bytes": 38,
       "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 96
+      "compiler_bytes": 98
     },
     {
       "symbol": "PORTE_INT0_vect_isr",
@@ -478,15 +478,15 @@
     },
     {
       "symbol": "cli_send_temperature",
-      "inline_asm_bytes": 6,
+      "inline_asm_bytes": 4,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 2
+      "compiler_bytes": 4
     },
     {
       "symbol": "FUN_code_00139f",
-      "inline_asm_bytes": 6,
+      "inline_asm_bytes": 4,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 2
+      "compiler_bytes": 4
     },
     {
       "symbol": "cli_get_next_byte",
@@ -532,15 +532,15 @@
     },
     {
       "symbol": "DMA_CH1_vect_isr",
-      "inline_asm_bytes": 274,
+      "inline_asm_bytes": 272,
       "compiler_generated_avr_primitive_bytes": 6,
-      "compiler_bytes": 376
+      "compiler_bytes": 378
     },
     {
       "symbol": "TCC0_OVF_vect_isr",
-      "inline_asm_bytes": 424,
+      "inline_asm_bytes": 422,
       "compiler_generated_avr_primitive_bytes": 84,
-      "compiler_bytes": 670
+      "compiler_bytes": 672
     }
   ]
 }

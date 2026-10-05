@@ -1,3 +1,7 @@
+/* Native outer frame: GCC emits the original entry PUSH under the local
+ * call-saved register profile. -fno-ipa-pure-const prevents noreturn inference
+ * from dropping that save before the exact shared RET/RETI tail. The tail
+ * restores this register in ASM; full FLASH identity validates the pairing. */
 /* Private entry calls below intentionally have no GNU argument/result ABI.
  * Adjacent fixed-register setup/capture preserves each historical contract;
  * these declarations emit the original wide CALL, not a new C API. The whole
@@ -39,7 +43,6 @@ void DMA_CH1_vect_isr(void)
     register uint8_t r29 asm("r29");
     register uint8_t r30 asm("r30");
     register uint8_t r31 asm("r31");
-    asm volatile("push        r31" : : : "memory", "cc");
     {
         register uint8_t saved_status asm("r31") = *(volatile uint8_t *)0x3f;
         asm volatile("" : "+r" (saved_status) : : "memory");
