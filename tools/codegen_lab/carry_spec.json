@@ -1,0 +1,16 @@
+{
+  "candidates": [
+    {
+      "name": "carry_split_literal_integer",
+      "source": "src/channel_adc_range_command.c",
+      "semantic_class": "shared_carry_primitive",
+      "edits": [
+        {
+          "old": "\"cpi r16, 0x20\\n\\tbrne LAB_code_000f16\\n\\trcall cli_get_integer\\n\"\n                 \"brcs LAB_code_000f16\\n\\tcpi r16, 0x2c\\n\\tbrne LAB_code_000f16\"\n                 ",
+          "new": "\"cpi r16, 0x20\\n\\tbrne LAB_code_000f16\\n\\t\" PM_INTEGER_PARSE_OR_BRANCH_ASM(\"LAB_code_000f16\") \"\\n\\tcpi r16, 0x2c\\n\\tbrne LAB_code_000f16\"",
+          "expected_count": 1
+        }
+      ]
+    }
+  ]
+}

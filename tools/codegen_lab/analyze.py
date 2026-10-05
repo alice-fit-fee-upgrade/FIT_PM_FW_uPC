@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Operand-aware inventory of retained idioms, with conservative CFG liveness."""
-import bisect,hashlib,json,re,subprocess
+import argparse,bisect,hashlib,json,re,subprocess
 from collections import Counter,defaultdict
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
@@ -54,6 +54,7 @@ def effects(row):
  return u,d,confidence
 
 def main():
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output-prefix',default='docs/asm_idioms');args=parser.parse_args();prefix=ROOT/args.output_prefix
  idx=json.loads((ROOT/'docs/instruction_index.json').read_text());manifest=json.loads((ROOT/'recovered_exact/manifest.json').read_text());inv=json.loads((ROOT/'recovered_exact/build/function_inventory.json').read_text())
  owners={a:f for f in manifest['accepted'] for z in f.get('asm_helper_ranges',[]) for a in range(z['start'],z['end_exclusive'])};byaddr={r['address']:i for i,r in enumerate(idx)}
  effects_all=[effects(r) for r in idx];succ=[]
@@ -100,11 +101,15 @@ def main():
      cl='configuration_word_'+('load' if kind=='LD_LD' else 'store')
     direction='read' if kind=='LD_LD' else 'write';mem={'direction':direction,'pointer':pointer,'address':'runtime pointer; see context/setup, not assumed constant','order':'instruction order','volatile_reason':'no blanket volatile assumption; queue/device stream ownership must be inspected'}
     semantic=f'{cl}: {operands}; pointer updates exactly as encoded; no SREG writes'
-    if kind=='LD_LD':ref='lo = *p++; hi = *p++;' if cl.startswith('adjacent') else ('second = *--p; first = *--p;' if cl.startswith('predecrement') else 'first = *p++; second = *p++;')
-    else:ref='*p++ = first; *p++ = second;'
+    reference=[]
+    for args in operands:
+     ptr=args[1] if kind=='LD_LD' else args[0];reg=args[0] if kind=='LD_LD' else args[1]
+     expression='*--p' if ptr.startswith('-') else '*p++' if ptr.endswith('+') else '*p'
+     reference.append(f'{reg} = {expression};' if kind=='LD_LD' else f'{expression} = {reg};')
+    ref=' '.join(reference)
    else:
     mem={'direction':'none directly; callee effects unknown' if callee else 'none','pointer':None};samefunc=bt is not None and f['address']<=bt<f['end_exclusive'] if 'end_exclusive' in f else None
-    if kind=='RCALL_BRCS':cl='carry_parser_status' if callee==0x2634 else 'carry_device_or_stream_status';semantic=f'call 0x{callee:x}; branch to 0x{bt:x} if returned C=1';ref='if (legacy_result.error) goto error;'
+    if kind=='RCALL_BRCS':cl='carry_parser_status' if callee==0x2634 else 'carry_device_or_stream_status';semantic=f'call 0x{callee:x}; branch to 0x{bt:x} if returned C=1';ref='if (legacy_result.carry) goto original_target;'
     elif kind=='CPI_CPC_BRGE':cl='signed_word_upper_bound';semantic=f'signed 16-bit compare, CPC consumes C and Z from CPI; BRGE tests S=N xor V; target 0x{bt:x}';ref='if ((int16_t)value >= signed_limit) goto error;'
     else:
      compared=operands[0][0];imm=int(operands[0][1],0)
@@ -117,7 +122,7 @@ def main():
    def view(rs):return [{**r,'address_hex':hex(r['address'])} for r in rs]
    records.append({'idiom':kind,'address':addresses[0],'address_hex':hex(addresses[0]),'function':f['symbol'],'source':f['source'],'before':view(idx[max(0,i-4):i]),'sequence':view(rows),'after':view(idx[i+len(rows):i+len(rows)+4]),'registers':registers,'pointer_registers':sorted(PTR.get(pointer,set())),'memory':mem,'memory_setup_source_evidence':[line.strip() for line in (ROOT/'recovered_exact'/f['source']).read_text().split('/* BEGIN COMPILED')[0].splitlines() if re.search(r'(?:settings|cursor|pointer|address)\s*(?:asm\([^)]*\))?\s*=.*0x[0-9a-f]+',line)][:12],'branch_target':bt,'branch_target_scope':'within_entry' if bt is not None and f['address']<=bt<f['end_exclusive'] else 'outside_entry' if bt is not None else None,'callee':callee,'callee_sreg_writes_unknown':callee is not None,'sreg_reads':sorted(reads&set('C Z N V S H T I'.split())),'sreg_writes':sorted(writes&set('C Z N V S H T I'.split())),'live_before_conservative':sorted(lin[start]),'live_after_conservative':sorted(lout[end]),'liveness_scope':'CFG over verified instructions; unknown calls/returns use all state; not a precise private ABI proof','semantic_class':cl,'inferred_semantics':semantic,'reference_c':ref,'reference_status':'REFERENCE_C_INFERRED','confidence':'operand-level inference; dynamic address and full call contract require manual evidence'})
  result={'baseline':inv,'site_measure':'contiguous nonempty ASM helper ranges; zero-byte barriers excluded','asm_sites':sum(len(f.get('asm_helper_ranges',[])) for f in manifest['accepted']),'occurrences':records,'classes':{k:dict(Counter(r['semantic_class'] for r in records if r['idiom']==k)) for k in PATTERNS},'overlap_warning':'neighboring windows overlap; unique bytes are union, never sum occurrences * width'}
- (ROOT/'docs/asm_idioms.json').write_text(json.dumps(result,indent=2)+'\n')
+ prefix.with_suffix('.json').write_text(json.dumps(result,indent=2)+'\n')
  out='# Operand-aware retained ASM idioms\n\nGenerated by tools/codegen_lab/analyze.py. Full machine-readable fields are in\n[asm_idioms.json](asm_idioms.json). All addresses are FLASH byte addresses.\n\nLiveness is conservative CFG dataflow: unknown private calls and returns keep\nall registers/flags live. It is not an exact private ABI proof. Dynamic memory\naddresses are explicitly unknown unless the source/context establishes them.\nReference snippets are REFERENCE_C_INFERRED; existing transition models are\nseparate evidence and do not certify these value-only snippets.\n\n'
  for kind in PATTERNS:
   rr=[r for r in records if r['idiom']==kind];covered={a for r in rr for z in r['sequence'] for a in range(z['address'],z['address']+len(bytes.fromhex(z['bytes'])))}
@@ -132,6 +137,6 @@ def main():
    out+=f'SREG reads/writes: {r["sreg_reads"]} / {r["sreg_writes"]}; branch: {r["branch_target"]} ({r["branch_target_scope"]}); callee: {r["callee"]}.\n\n'
    out+=f'Conservative live before: {r["live_before_conservative"]}; after: {r["live_after_conservative"]}.\n\n'
    out+='REFERENCE_C_INFERRED: `'+r['reference_c']+'`\n\n'
- (ROOT/'docs/asm_idioms.md').write_text(out)
+ prefix.with_suffix('.md').write_text(out)
  print(json.dumps(result['classes']))
 if __name__=='__main__':main()

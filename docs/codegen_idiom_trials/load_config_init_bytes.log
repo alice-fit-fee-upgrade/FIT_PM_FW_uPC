@@ -1,0 +1,18 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+python3 tools/prepare_sources.py
+touch generated/stamp
+avr-gcc -mmcu=atxmega128a3u -I../asm_analysis -c generated/application.S -o build/application.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fcall-saved-r18 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r30 -ffixed-r31 -c src/fpga_settings_reset.c -o build/fpga_settings_reset.o
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fcall-used-r16 -fcall-used-r17 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r19 -ffixed-r20 -ffixed-r21 -ffixed-r22 -ffixed-r23 -ffixed-r24 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -fcall-saved-r18 -c src/fpga_settings_init.c -o build/fpga_settings_init.o
+src/fpga_settings_init.c: In function ‘fpga_settings_init’:
+src/fpga_settings_init.c:87:1: error: unable to find a register to spill in class ‘POINTER_REGS’
+ }
+ ^
+src/fpga_settings_init.c:87:1: error: this is the insn:
+(insn 36 35 37 3 (set (reg/v:QI 16 r16 [ lo ])
+        (mem:QI (reg/f:HI 43 [ cursor.0_2 ]) [0 *cursor.0_2+0 S1 A8])) "src/fpga_settings_init.c":60 56 {movqi_insn}
+     (expr_list:REG_DEAD (reg/f:HI 43 [ cursor.0_2 ])
+        (nil)))
+src/fpga_settings_init.c:87: confused by earlier errors, bailing out
+make: *** [Makefile:61: build/fpga_settings_init.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "name": "signed_guard_natural_c_shared_error",
+      "source": "src/legacy_word_ops.h",
+      "edits": [
+        {
+          "old": "#define PM_REJECT_I16_GE(value, high, limit, error_label) \\\n    asm volatile(\"cpi %A0, %2\\n\\tcpc %B0, %1\\n\\tbrge \" error_label \\\n        : : \"r\" (value), \"r\" (high), \"n\" ((uint16_t)(limit) & 0xffu) : \"cc\")\n",
+          "new": "#define PM_REJECT_I16_GE(value, high, limit, error_label) do { \\\n    if ((int16_t)(value) >= (int16_t)(limit)) \\\n        asm volatile(\"rjmp \" error_label : : : \"cc\"); \\\n} while (0)\n"
+        }
+      ],
+      "accepted": false,
+      "log": "docs/codegen_signed_trials/signed_guard_natural_c_shared_error.log",
+      "acceptance": "complete canonical FLASH equality and provenance audit",
+      "differing_bytes": null
+    }
+  ]
+}

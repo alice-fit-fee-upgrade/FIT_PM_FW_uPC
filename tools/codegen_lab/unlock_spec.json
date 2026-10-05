@@ -1,0 +1,23 @@
+{
+  "candidates": [
+    {
+      "name": "compare_unlock_local_error",
+      "source": "src/programming_unlock.c",
+      "semantic_class": "delimiter_validation_local_error_tail",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi r16, 13\\n\\tbrne LAB_code_000ad0\" : : \"r\" (received) : \"cc\");",
+          "new": "if (received != 13) goto password_error;"
+        },
+        {
+          "old": "    asm volatile(\"clc\" : : : \"memory\", \"cc\");\n    return;\n}",
+          "new": "    asm volatile(\"clc\" : : : \"memory\", \"cc\");\n    return;\npassword_error:\n    asm volatile(\"sec\" : : : \"memory\", \"cc\");\n    return;\n}"
+        },
+        {
+          "old": "asm(\".pushsection .text.unlock_programming,\\\"ax\\\",@progbits\\n\"\n    \".subsection 1\\nsec\\nret\\nrjmp LAB_code_0009e4\\n.popsection\");",
+          "new": "asm(\".pushsection .text.unlock_programming,\\\"ax\\\",@progbits\\n\"\n    \".subsection 1\\nrjmp LAB_code_0009e4\\n.popsection\");"
+        }
+      ]
+    }
+  ]
+}

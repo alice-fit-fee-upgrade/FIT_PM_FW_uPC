@@ -10,7 +10,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -75,7 +75,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_int16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -140,7 +140,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_bytes.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -205,7 +205,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_bytes_volatile.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "LAB_ONLY: exploration of access ordering; no claim that configuration RAM requires volatile",
+      "volatility_reason": "LAB_ONLY: configuration RAM is not proven volatile; ineligible without ownership evidence",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -270,7 +270,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_struct.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -335,7 +335,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -398,7 +398,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_int16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -461,7 +461,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_bytes.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -524,7 +524,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_bytes_volatile.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "LAB_ONLY: configuration RAM is not proven volatile; ineligible without ownership evidence",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -587,7 +587,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_struct.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -650,7 +650,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -714,7 +714,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_int16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -778,7 +778,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_bytes.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -842,7 +842,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_bytes_volatile.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -906,7 +906,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_struct.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1025,7 +1025,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1161,7 +1161,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_int16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1297,7 +1297,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1428,7 +1428,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_struct.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1549,7 +1549,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1697,7 +1697,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_int16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1845,7 +1845,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -1993,7 +1993,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_struct.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2136,7 +2136,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2272,7 +2272,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_int16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2408,7 +2408,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2539,7 +2539,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_struct.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2660,7 +2660,7 @@
       "source": "tools/codegen_lab/candidates/store_fill_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2723,7 +2723,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_uint8_t_eq.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2832,7 +2832,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_uint8_t_ne.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -2941,7 +2941,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_int8_t_eq.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3050,7 +3050,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_int8_t_ne.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3159,7 +3159,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_ge.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3278,7 +3278,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_lt.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3397,7 +3397,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_le.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3516,7 +3516,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_gt.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3635,7 +3635,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_init.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3700,7 +3700,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_init_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3765,7 +3765,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_fpga_settings_init.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3875,7 +3875,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_reset.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3936,7 +3936,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_reset_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -3997,7 +3997,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_fpga_settings_reset.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4123,7 +4123,7 @@
       "source": "tools/codegen_lab/candidates/load_global_dac_stored_settings_apply.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4186,7 +4186,7 @@
       "source": "tools/codegen_lab/candidates/load_global_dac_stored_settings_apply_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4249,7 +4249,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_dac_stored_settings_apply.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4357,7 +4357,7 @@
       "source": "tools/codegen_lab/candidates/load_global_console_tx_interrupt.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4421,7 +4421,7 @@
       "source": "tools/codegen_lab/candidates/load_global_console_tx_interrupt_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4485,7 +4485,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_console_tx_interrupt.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ISR-shared queue fields",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4594,7 +4594,7 @@
       "source": "tools/codegen_lab/candidates/store_global_fpga_data_exchange.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4725,7 +4725,7 @@
       "source": "tools/codegen_lab/candidates/store_global_dma_channel_interrupt.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -4873,7 +4873,7 @@
       "source": "tools/codegen_lab/candidates/store_global_console_dispatch.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -5004,7 +5004,7 @@
       "source": "tools/codegen_lab/candidates/queue_predecrement.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -5069,7 +5069,7 @@
       "source": "tools/codegen_lab/candidates/compare_enum_ne.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -5184,7 +5184,7 @@
       "source": "tools/codegen_lab/candidates/positive_control_native_mmio.c",
       "strip_final_ret": true,
       "idiom": "CONTROL",
-      "volatility_reason": "hardware/shared-state write, explicit MMIO lvalue",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
       "compile_command": [
         "avr-gcc",
         "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
@@ -5261,6 +5261,373 @@
       "exact_instruction_count": 2,
       "total_mismatches": 0,
       "extra_generated_bytes": 0
+    },
+    {
+      "name": "negative_control_mutated_opcode",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2000",
+      "length": 6,
+      "desired_bytes": "0ce000935721",
+      "source": "tools/codegen_lab/candidates/positive_control_native_mmio.c",
+      "strip_final_ret": true,
+      "idiom": "CONTROL",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
+      "compile_command": [
+        "avr-gcc",
+        "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
+        "-mmcu=atxmega128a3u",
+        "-Os",
+        "-std=gnu99",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-lto",
+        "-fno-reorder-blocks",
+        "-fcall-used-r16",
+        "-fcall-used-r17",
+        "-ffixed-r2",
+        "-ffixed-r3",
+        "-ffixed-r4",
+        "-ffixed-r5",
+        "-ffixed-r6",
+        "-ffixed-r7",
+        "-ffixed-r8",
+        "-ffixed-r9",
+        "-ffixed-r10",
+        "-ffixed-r11",
+        "-ffixed-r12",
+        "-ffixed-r13",
+        "-ffixed-r14",
+        "-ffixed-r15",
+        "-ffixed-r19",
+        "-ffixed-r25",
+        "-ffixed-r26",
+        "-ffixed-r27",
+        "-ffixed-r28",
+        "-ffixed-r29",
+        "-ffixed-r30",
+        "-ffixed-r31",
+        "-c",
+        "/home/codex-hil/FIT_PM_FW_uPC/tools/codegen_lab/candidates/positive_control_native_mmio.c",
+        "-o",
+        "/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/build/codegen_lab/negative_control_mutated_opcode/probe.o"
+      ],
+      "source_sha256": "ef2997f72de970ee8cc0ea269a4e183c3729a0b7bdf774c7990fc5f2113c406e",
+      "profile_source": "src/channel_adc_zero_command.c",
+      "comparison_scope": "entire probe text, excluding only final RET when requested; prologues/increment instructions remain included",
+      "status": "DIFFERENT",
+      "generated_bytes": "0de000935721",
+      "generated_instructions": [
+        {
+          "address": 8192,
+          "bytes": "0de0",
+          "instruction": "ldi\tr16, 0x0D\t; 13"
+        },
+        {
+          "address": 8194,
+          "bytes": "00935721",
+          "instruction": "sts\t0x2157, r16\t; 0x802157 <probe+0x800157>"
+        }
+      ],
+      "desired_instructions": [
+        {
+          "address": 8192,
+          "bytes": "0ce0",
+          "instruction": "ldi\tr16, 0x0C\t; 12"
+        },
+        {
+          "address": 8194,
+          "bytes": "00935721",
+          "instruction": "sts\t0x2157, r16\t;  0x802157"
+        }
+      ],
+      "first_mismatch": {
+        "byte_offset": 0,
+        "desired_instruction": {
+          "address": 8192,
+          "bytes": "0ce0",
+          "instruction": "ldi\tr16, 0x0C\t; 12"
+        },
+        "generated_instruction": {
+          "address": 8192,
+          "bytes": "0de0",
+          "instruction": "ldi\tr16, 0x0D\t; 13"
+        }
+      },
+      "exact_byte_count": 5,
+      "exact_instruction_count": 1,
+      "total_mismatches": 1,
+      "extra_generated_bytes": 0
+    },
+    {
+      "name": "compare_signed_ge_live",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_ge_live.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
+      "compile_command": [
+        "avr-gcc",
+        "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
+        "-mmcu=atxmega128a3u",
+        "-Os",
+        "-std=gnu99",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-lto",
+        "-fno-reorder-blocks",
+        "-fcall-used-r16",
+        "-fcall-used-r17",
+        "-ffixed-r2",
+        "-ffixed-r3",
+        "-ffixed-r4",
+        "-ffixed-r5",
+        "-ffixed-r6",
+        "-ffixed-r7",
+        "-ffixed-r8",
+        "-ffixed-r9",
+        "-ffixed-r10",
+        "-ffixed-r11",
+        "-ffixed-r12",
+        "-ffixed-r13",
+        "-ffixed-r14",
+        "-ffixed-r15",
+        "-ffixed-r19",
+        "-ffixed-r25",
+        "-ffixed-r26",
+        "-ffixed-r27",
+        "-ffixed-r28",
+        "-ffixed-r29",
+        "-ffixed-r30",
+        "-ffixed-r31",
+        "-c",
+        "/home/codex-hil/FIT_PM_FW_uPC/tools/codegen_lab/candidates/compare_signed_ge_live.c",
+        "-o",
+        "/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/build/codegen_lab/compare_signed_ge_live/probe.o"
+      ],
+      "desired_bytes": "453f580774f7",
+      "source_sha256": "e3baf0a38adb5391a6600ba2567f2347c9d8f98020792832f83d75dd9b7b084d",
+      "profile_source": "src/channel_adc_zero_command.c",
+      "comparison_scope": "entire probe text, excluding only final RET when requested; prologues/increment instructions remain included",
+      "status": "DIFFERENT",
+      "generated_bytes": "453f81e058071cf081e0809357214093302250933122",
+      "generated_instructions": [
+        {
+          "address": 8200,
+          "bytes": "453f",
+          "instruction": "cpi\tr20, 0xF5\t; 245"
+        },
+        {
+          "address": 8202,
+          "bytes": "81e0",
+          "instruction": "ldi\tr24, 0x01\t; 1"
+        },
+        {
+          "address": 8204,
+          "bytes": "5807",
+          "instruction": "cpc\tr21, r24"
+        },
+        {
+          "address": 8206,
+          "bytes": "1cf0",
+          "instruction": "brlt\t.+6      \t; 0x2016 <probe+0xe>"
+        },
+        {
+          "address": 8208,
+          "bytes": "81e0",
+          "instruction": "ldi\tr24, 0x01\t; 1"
+        },
+        {
+          "address": 8210,
+          "bytes": "80935721",
+          "instruction": "sts\t0x2157, r24\t; 0x802157 <probe+0x80014f>"
+        },
+        {
+          "address": 8214,
+          "bytes": "40933022",
+          "instruction": "sts\t0x2230, r20\t; 0x802230 <probe+0x800228>"
+        },
+        {
+          "address": 8218,
+          "bytes": "50933122",
+          "instruction": "sts\t0x2231, r21\t; 0x802231 <probe+0x800229>"
+        }
+      ],
+      "desired_instructions": [
+        {
+          "address": 8200,
+          "bytes": "453f",
+          "instruction": "cpi\tr20, 0xF5\t; 245"
+        },
+        {
+          "address": 8202,
+          "bytes": "5807",
+          "instruction": "cpc\tr21, r24"
+        },
+        {
+          "address": 8204,
+          "bytes": "74f7",
+          "instruction": "brge\t.-36     \t;  0x1fea"
+        }
+      ],
+      "first_mismatch": {
+        "byte_offset": 2,
+        "desired_instruction": {
+          "address": 8202,
+          "bytes": "5807",
+          "instruction": "cpc\tr21, r24"
+        },
+        "generated_instruction": {
+          "address": 8202,
+          "bytes": "81e0",
+          "instruction": "ldi\tr24, 0x01\t; 1"
+        }
+      },
+      "exact_byte_count": 2,
+      "exact_instruction_count": 1,
+      "total_mismatches": 20,
+      "extra_generated_bytes": 16
+    },
+    {
+      "name": "compare_signed_lt_live",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_lt_live.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "ordinary configuration RAM; no volatile required",
+      "compile_command": [
+        "avr-gcc",
+        "-I/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/src",
+        "-mmcu=atxmega128a3u",
+        "-Os",
+        "-std=gnu99",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-lto",
+        "-fno-reorder-blocks",
+        "-fcall-used-r16",
+        "-fcall-used-r17",
+        "-ffixed-r2",
+        "-ffixed-r3",
+        "-ffixed-r4",
+        "-ffixed-r5",
+        "-ffixed-r6",
+        "-ffixed-r7",
+        "-ffixed-r8",
+        "-ffixed-r9",
+        "-ffixed-r10",
+        "-ffixed-r11",
+        "-ffixed-r12",
+        "-ffixed-r13",
+        "-ffixed-r14",
+        "-ffixed-r15",
+        "-ffixed-r19",
+        "-ffixed-r25",
+        "-ffixed-r26",
+        "-ffixed-r27",
+        "-ffixed-r28",
+        "-ffixed-r29",
+        "-ffixed-r30",
+        "-ffixed-r31",
+        "-c",
+        "/home/codex-hil/FIT_PM_FW_uPC/tools/codegen_lab/candidates/compare_signed_lt_live.c",
+        "-o",
+        "/home/codex-hil/FIT_PM_FW_uPC/recovered_exact/build/codegen_lab/compare_signed_lt_live/probe.o"
+      ],
+      "desired_bytes": "453f580774f7",
+      "source_sha256": "a0c4b34cc4da04e560c1b4bec1f025f8874bb31ba1a2ea2fedd655d151f5f704",
+      "profile_source": "src/channel_adc_zero_command.c",
+      "comparison_scope": "entire probe text, excluding only final RET when requested; prologues/increment instructions remain included",
+      "status": "DIFFERENT",
+      "generated_bytes": "453f81e058071cf481e0809357214093302250933122",
+      "generated_instructions": [
+        {
+          "address": 8200,
+          "bytes": "453f",
+          "instruction": "cpi\tr20, 0xF5\t; 245"
+        },
+        {
+          "address": 8202,
+          "bytes": "81e0",
+          "instruction": "ldi\tr24, 0x01\t; 1"
+        },
+        {
+          "address": 8204,
+          "bytes": "5807",
+          "instruction": "cpc\tr21, r24"
+        },
+        {
+          "address": 8206,
+          "bytes": "1cf4",
+          "instruction": "brge\t.+6      \t; 0x2016 <probe+0xe>"
+        },
+        {
+          "address": 8208,
+          "bytes": "81e0",
+          "instruction": "ldi\tr24, 0x01\t; 1"
+        },
+        {
+          "address": 8210,
+          "bytes": "80935721",
+          "instruction": "sts\t0x2157, r24\t; 0x802157 <probe+0x80014f>"
+        },
+        {
+          "address": 8214,
+          "bytes": "40933022",
+          "instruction": "sts\t0x2230, r20\t; 0x802230 <probe+0x800228>"
+        },
+        {
+          "address": 8218,
+          "bytes": "50933122",
+          "instruction": "sts\t0x2231, r21\t; 0x802231 <probe+0x800229>"
+        }
+      ],
+      "desired_instructions": [
+        {
+          "address": 8200,
+          "bytes": "453f",
+          "instruction": "cpi\tr20, 0xF5\t; 245"
+        },
+        {
+          "address": 8202,
+          "bytes": "5807",
+          "instruction": "cpc\tr21, r24"
+        },
+        {
+          "address": 8204,
+          "bytes": "74f7",
+          "instruction": "brge\t.-36     \t;  0x1fea"
+        }
+      ],
+      "first_mismatch": {
+        "byte_offset": 2,
+        "desired_instruction": {
+          "address": 8202,
+          "bytes": "5807",
+          "instruction": "cpc\tr21, r24"
+        },
+        "generated_instruction": {
+          "address": 8202,
+          "bytes": "81e0",
+          "instruction": "ldi\tr24, 0x01\t; 1"
+        }
+      },
+      "exact_byte_count": 2,
+      "exact_instruction_count": 1,
+      "total_mismatches": 20,
+      "extra_generated_bytes": 16
     }
   ]
 }

@@ -48,3 +48,24 @@ is used for a byte-identical adoption.
 Generated objects/ELFs/disassembly live under recovered_exact/build/codegen_lab
 and are not committed. The candidate sources, spec and summarized result JSON
 remain in the repo for the future, separate compiler-directive pass.
+
+## Integrated trials
+
+`integrate.py --spec <reviewed-spec.json> --output docs/<trial-directory>`
+tries one source substitution at a time, builds the complete image, regenerates
+manifest provenance for successful candidates, then runs clean root exact-check.
+It restores source and manifest on any rejection. Header edits refresh all
+affected provenance entries. Output directories must be within this repository;
+paths are validated before changing source. Each trial records its source edit,
+acceptance result and build log. A final clean check leaves restored build
+artifacts after the last rejected candidate. Do not run two integration jobs
+simultaneously, and do not use it with unrelated concurrent source edits.
+
+The positive and deliberately mutated negative opcode controls assert both
+comparison outcomes. Live-value signed probes distinguish destructive SBCI
+from CPI/CPC when the original value remains needed. Complete output bodies
+include the observation stores, so they are still full-body experiments, not
+claims that an internal matching subsequence suffices for firmware acceptance.
+
+The initial inventory is docs/asm_idioms.json. To avoid overwriting it after
+conversions, run `analyze.py --output-prefix docs/asm_idioms_after`.

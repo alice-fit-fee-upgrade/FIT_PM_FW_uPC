@@ -1,0 +1,37 @@
+[
+  {
+    "source": "recovered_exact/src/legacy_cli.h",
+    "source_fragments": 2,
+    "accepted": true,
+    "native_asm_bytes_removed": 0,
+    "log": "docs/codegen_carry_trials/legacy_cli.log"
+  },
+  {
+    "source": "recovered_exact/src/channel_adc_range_command.c",
+    "source_fragments": 1,
+    "accepted": true,
+    "native_asm_bytes_removed": 0,
+    "log": "docs/codegen_carry_trials/channel_adc_range_command.log"
+  },
+  {
+    "source": "recovered_exact/src/fpga_binary_programming_stream.c",
+    "source_fragments": 1,
+    "accepted": true,
+    "native_asm_bytes_removed": 0,
+    "log": "docs/codegen_carry_trials/fpga_binary_programming_stream.log"
+  },
+  {
+    "source": "recovered_exact/src/trigger_charge_command.c",
+    "source_fragments": 1,
+    "accepted": true,
+    "native_asm_bytes_removed": 0,
+    "log": "docs/codegen_carry_trials/trigger_charge_command.log"
+  },
+  {
+    "source": "recovered_exact/src/trigger_settings_command.c",
+    "source_fragments": 1,
+    "accepted": true,
+    "native_asm_bytes_removed": 0,
+    "log": "docs/codegen_carry_trials/trigger_settings_command.log"
+  }
+]

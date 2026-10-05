@@ -47,6 +47,9 @@ def run(spec,output):
   result.update(status='EXACT' if mismatch is None else 'DIFFERENT',generated_bytes=rebuilt.hex(),generated_instructions=rows,desired_instructions=desiredrows,first_mismatch=first,exact_byte_count=exact_bytes,exact_instruction_count=instruction_match,total_mismatches=max(len(desired),len(rebuilt))-exact_bytes,extra_generated_bytes=max(0,len(rebuilt)-len(desired)))
   results.append(result);print(name,result['status'],result['generated_bytes'])
  (output/'results.json').write_text(json.dumps({'toolchain':subprocess.check_output(['avr-gcc','--version'],text=True).splitlines()[0],'authoritative_acceptance':'root make exact-check, never a micro-probe alone','results':results},indent=2)+'\n')
+ controls={r['name']:r['status'] for r in results}
+ if 'positive_control_native_mmio' in controls:assert controls['positive_control_native_mmio']=='EXACT'
+ if 'negative_control_mutated_opcode' in controls:assert controls['negative_control_mutated_opcode']=='DIFFERENT'
  return results
 if __name__=='__main__':
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--spec',type=Path,required=True);p.add_argument('--output',type=Path,default=PROJECT/'build/codegen_lab');a=p.parse_args();run(json.loads(a.spec.read_text()),a.output.resolve())

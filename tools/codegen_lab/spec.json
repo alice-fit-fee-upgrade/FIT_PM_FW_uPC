@@ -8,7 +8,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_fpga_settings_init_int16_t",
@@ -18,7 +18,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_int16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_fpga_settings_init_bytes",
@@ -28,7 +28,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_bytes.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_fpga_settings_init_bytes_volatile",
@@ -38,7 +38,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_bytes_volatile.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "LAB_ONLY: exploration of access ordering; no claim that configuration RAM requires volatile"
+      "volatility_reason": "LAB_ONLY: configuration RAM is not proven volatile; ineligible without ownership evidence"
     },
     {
       "name": "load_fpga_settings_init_struct",
@@ -48,7 +48,7 @@
       "source": "tools/codegen_lab/candidates/load_fpga_settings_init_struct.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_dac_stored_settings_apply_uint16_t",
@@ -58,7 +58,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_dac_stored_settings_apply_int16_t",
@@ -68,7 +68,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_int16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_dac_stored_settings_apply_bytes",
@@ -78,7 +78,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_bytes.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_dac_stored_settings_apply_bytes_volatile",
@@ -88,7 +88,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_bytes_volatile.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "LAB_ONLY: configuration RAM is not proven volatile; ineligible without ownership evidence"
     },
     {
       "name": "load_dac_stored_settings_apply_struct",
@@ -98,7 +98,7 @@
       "source": "tools/codegen_lab/candidates/load_dac_stored_settings_apply_struct.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_console_tx_interrupt_uint16_t",
@@ -108,7 +108,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "load_console_tx_interrupt_int16_t",
@@ -118,7 +118,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_int16_t.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "load_console_tx_interrupt_bytes",
@@ -128,7 +128,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_bytes.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "load_console_tx_interrupt_bytes_volatile",
@@ -138,7 +138,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_bytes_volatile.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "load_console_tx_interrupt_struct",
@@ -148,7 +148,7 @@
       "source": "tools/codegen_lab/candidates/load_console_tx_interrupt_struct.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "store_fpga_data_exchange_uint16_t",
@@ -158,7 +158,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_fpga_data_exchange_int16_t",
@@ -168,7 +168,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_int16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_fpga_data_exchange_bytes",
@@ -178,7 +178,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_fpga_data_exchange_struct",
@@ -188,7 +188,7 @@
       "source": "tools/codegen_lab/candidates/store_fpga_data_exchange_struct.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_dma_channel_interrupt_uint16_t",
@@ -198,7 +198,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_dma_channel_interrupt_int16_t",
@@ -208,7 +208,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_int16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_dma_channel_interrupt_bytes",
@@ -218,7 +218,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_dma_channel_interrupt_struct",
@@ -228,7 +228,7 @@
       "source": "tools/codegen_lab/candidates/store_dma_channel_interrupt_struct.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_console_dispatch_uint16_t",
@@ -238,7 +238,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_uint16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_console_dispatch_int16_t",
@@ -248,7 +248,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_int16_t.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_console_dispatch_bytes",
@@ -258,7 +258,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_console_dispatch_struct",
@@ -268,7 +268,7 @@
       "source": "tools/codegen_lab/candidates/store_console_dispatch_struct.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_fill_bytes",
@@ -278,7 +278,7 @@
       "source": "tools/codegen_lab/candidates/store_fill_bytes.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_byte_uint8_t_eq",
@@ -288,7 +288,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_uint8_t_eq.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_byte_uint8_t_ne",
@@ -298,7 +298,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_uint8_t_ne.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_byte_int8_t_eq",
@@ -308,7 +308,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_int8_t_eq.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_byte_int8_t_ne",
@@ -318,7 +318,7 @@
       "source": "tools/codegen_lab/candidates/compare_byte_int8_t_ne.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_signed_ge",
@@ -328,7 +328,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_ge.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_signed_lt",
@@ -338,7 +338,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_lt.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_signed_le",
@@ -348,7 +348,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_le.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_signed_gt",
@@ -358,7 +358,7 @@
       "source": "tools/codegen_lab/candidates/compare_signed_gt.c",
       "strip_final_ret": true,
       "idiom": "CPI_CPC_BRGE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_fpga_settings_init",
@@ -368,7 +368,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_init.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_fpga_settings_init_const",
@@ -378,7 +378,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_init_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_word_fpga_settings_init",
@@ -388,7 +388,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_fpga_settings_init.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_fpga_settings_reset",
@@ -398,7 +398,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_reset.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_fpga_settings_reset_const",
@@ -408,7 +408,7 @@
       "source": "tools/codegen_lab/candidates/load_global_fpga_settings_reset_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_word_fpga_settings_reset",
@@ -418,7 +418,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_fpga_settings_reset.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_dac_stored_settings_apply",
@@ -428,7 +428,7 @@
       "source": "tools/codegen_lab/candidates/load_global_dac_stored_settings_apply.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_dac_stored_settings_apply_const",
@@ -438,7 +438,7 @@
       "source": "tools/codegen_lab/candidates/load_global_dac_stored_settings_apply_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_word_dac_stored_settings_apply",
@@ -448,7 +448,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_dac_stored_settings_apply.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "load_global_console_tx_interrupt",
@@ -458,7 +458,7 @@
       "source": "tools/codegen_lab/candidates/load_global_console_tx_interrupt.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "load_global_console_tx_interrupt_const",
@@ -468,7 +468,7 @@
       "source": "tools/codegen_lab/candidates/load_global_console_tx_interrupt_const.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "load_global_word_console_tx_interrupt",
@@ -478,7 +478,7 @@
       "source": "tools/codegen_lab/candidates/load_global_word_console_tx_interrupt.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ISR-shared queue fields"
     },
     {
       "name": "store_global_fpga_data_exchange",
@@ -488,7 +488,7 @@
       "source": "tools/codegen_lab/candidates/store_global_fpga_data_exchange.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_global_dma_channel_interrupt",
@@ -498,7 +498,7 @@
       "source": "tools/codegen_lab/candidates/store_global_dma_channel_interrupt.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "store_global_console_dispatch",
@@ -508,7 +508,7 @@
       "source": "tools/codegen_lab/candidates/store_global_console_dispatch.c",
       "strip_final_ret": true,
       "idiom": "ST_ST",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "queue_predecrement",
@@ -518,7 +518,7 @@
       "source": "tools/codegen_lab/candidates/queue_predecrement.c",
       "strip_final_ret": true,
       "idiom": "LD_LD",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "compare_enum_ne",
@@ -528,7 +528,7 @@
       "source": "tools/codegen_lab/candidates/compare_enum_ne.c",
       "strip_final_ret": true,
       "idiom": "CPI_BRNE",
-      "volatility_reason": "original accesses shared queue bytes"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     },
     {
       "name": "positive_control_native_mmio",
@@ -539,7 +539,38 @@
       "source": "tools/codegen_lab/candidates/positive_control_native_mmio.c",
       "strip_final_ret": true,
       "idiom": "CONTROL",
-      "volatility_reason": "hardware/shared-state write, explicit MMIO lvalue"
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
+    },
+    {
+      "name": "negative_control_mutated_opcode",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2000",
+      "length": 6,
+      "desired_bytes": "0ce000935721",
+      "source": "tools/codegen_lab/candidates/positive_control_native_mmio.c",
+      "strip_final_ret": true,
+      "idiom": "CONTROL",
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
+    },
+    {
+      "name": "compare_signed_ge_live",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_ge_live.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
+    },
+    {
+      "name": "compare_signed_lt_live",
+      "profile": "src/channel_adc_zero_command.c",
+      "address": "0x2008",
+      "length": 6,
+      "source": "tools/codegen_lab/candidates/compare_signed_lt_live.c",
+      "strip_final_ret": true,
+      "idiom": "CPI_CPC_BRGE",
+      "volatility_reason": "ordinary configuration RAM; no volatile required"
     }
   ]
 }

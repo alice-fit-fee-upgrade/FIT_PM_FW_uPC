@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "name": "delimiter_natural_c_shared_error",
+      "source": "src/legacy_cli.h",
+      "edits": [
+        {
+          "old": "#define PM_PARSE_VALUE(result, error) \\\n    asm volatile(\"cpi r16, 0x20\\n\\tbrne \" error \"\\n\\t\" PM_INTEGER_PARSE_OR_BRANCH_ASM(error) \\\n        \"\\n\\tcpi r16, 13\\n\\tbrne \" error : \"=r\" (result) : : \"r16\", \"memory\", \"cc\")\n",
+          "new": "#define PM_PARSE_VALUE(result, error) do { \\\n    register uint8_t delimiter asm(\"r16\"); \\\n    asm volatile(\"\" : \"=r\" (delimiter)); \\\n    if (delimiter != 0x20) asm volatile(\"rjmp \" error : : : \"cc\"); \\\n    asm volatile(PM_INTEGER_PARSE_OR_BRANCH_ASM(error) \\\n        : \"=r\" (result) : : \"r16\", \"memory\", \"cc\"); \\\n    asm volatile(\"\" : \"=r\" (delimiter)); \\\n    if (delimiter != 13) asm volatile(\"rjmp \" error : : : \"cc\"); \\\n} while (0)\n"
+        }
+      ],
+      "accepted": false,
+      "log": "docs/codegen_delimiter_trials/delimiter_natural_c_shared_error.log",
+      "acceptance": "complete canonical FLASH equality and provenance audit",
+      "differing_bytes": null
+    }
+  ]
+}

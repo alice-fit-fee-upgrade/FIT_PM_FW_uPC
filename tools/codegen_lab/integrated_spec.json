@@ -1,0 +1,340 @@
+{
+  "candidates": [
+    {
+      "name": "load_config_reset_bytes",
+      "source": "src/fpga_settings_reset.c",
+      "semantic_class": "configuration_word_load",
+      "edits": [
+        {
+          "old": "asm volatile(\"ld %0, Y+\\n\\tld %1, Y+\" : \"=r\" (lo), \"=r\" (hi), \"+y\" (cursor) : : \"memory\");",
+          "new": "lo = *cursor++; hi = *cursor++;",
+          "expected_count": 2
+        }
+      ]
+    },
+    {
+      "name": "load_config_init_bytes",
+      "source": "src/fpga_settings_init.c",
+      "semantic_class": "configuration_word_load",
+      "edits": [
+        {
+          "old": "asm volatile(\"ld %0, Y+\\n\\tld %1, Y+\" \\\n        : \"=r\" (lo), \"=r\" (hi), \"+y\" (cursor) : : \"memory\")",
+          "new": "do { (lo) = *(cursor)++; (hi) = *(cursor)++; } while (0)",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "load_dac_word",
+      "source": "src/dac_stored_settings_apply.c",
+      "semantic_class": "configuration_word_load",
+      "edits": [
+        {
+          "old": "asm volatile(\"ld r20, Y+\\n\\tld r21, Y+\" : \"=r\" (value), \"+y\" (cursor) : : \"memory\")",
+          "new": "do { (value) = *(const uint16_t *)(cursor); (cursor) += 2; } while (0)",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "load_queue_console_tx_interrupt",
+      "source": "src/console_tx_interrupt.c",
+      "semantic_class": "queue_cursor_fields_postincrement",
+      "edits": [
+        {
+          "old": "asm volatile(\"ld %0, Z+\\n\\tld %1, Z+\"\n        : \"=r\" (read_index), \"=r\" (write_index), \"+z\" (cursor) : : \"memory\");",
+          "new": "read_index = *(volatile uint8_t *)cursor++;\n    write_index = *(volatile uint8_t *)cursor++;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "load_queue_console_character_send",
+      "source": "src/console_character_send.c",
+      "semantic_class": "queue_cursor_fields_postincrement",
+      "edits": [
+        {
+          "old": "asm volatile(\"ld %0, Z+\\n\\tld %1, Z+\"\n        : \"=r\" (read_index), \"=r\" (write_index), \"+z\" (cursor) : : \"memory\");",
+          "new": "read_index = *(volatile uint8_t *)cursor++;\n    write_index = *(volatile uint8_t *)cursor++;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "store_config_console_dispatch",
+      "source": "src/console_dispatch.c",
+      "semantic_class": "configuration_word_store",
+      "edits": [
+        {
+          "old": "asm volatile(\"st          Y+,r16\" : : : \"memory\", \"cc\");\n    asm volatile(\"st          Y+,r17\" : : : \"memory\", \"cc\");",
+          "new": "{ register uint8_t *p asm(\"r28\"); asm volatile(\"\" : \"=y\" (p), \"=r\" (r16), \"=r\" (r17)); *p++ = r16; *p++ = r17; asm volatile(\"\" : \"+y\" (p)); }",
+          "expected_count": 2
+        }
+      ]
+    },
+    {
+      "name": "store_config_fpga_data_exchange",
+      "source": "src/fpga_data_exchange.c",
+      "semantic_class": "configuration_word_store",
+      "edits": [
+        {
+          "old": "asm volatile(\"st          Y+,r16\" : : : \"memory\", \"cc\");\n    asm volatile(\"st          Y+,r17\" : : : \"memory\", \"cc\");",
+          "new": "{ register uint8_t *p asm(\"r28\"); asm volatile(\"\" : \"=y\" (p), \"=r\" (r16), \"=r\" (r17)); *p++ = r16; *p++ = r17; asm volatile(\"\" : \"+y\" (p)); }",
+          "expected_count": 5
+        }
+      ]
+    },
+    {
+      "name": "store_fill_three_bytes",
+      "source": "src/fpga_binary_programming_stream.c",
+      "semantic_class": "repeated_byte_fill",
+      "edits": [
+        {
+          "old": "asm volatile(\"st X+, r16\\n\\tst X+, r16\\n\\tst X+, r16\"\n                 : \"+x\" (pointer) : \"r\" (byte) : \"memory\");",
+          "new": "*pointer++ = byte; *pointer++ = byte; *pointer++ = byte;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_dma_channel_interrupt_0",
+      "source": "src/dma_channel_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r28,0x41\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ldma_L_00011c\" : : : \"memory\", \"cc\" : L_00011c);",
+          "new": "asm volatile(\"\" : \"=r\" (r28));\n    if (r28 != 0x41) goto L_00011c;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_dma_channel_interrupt_1",
+      "source": "src/dma_channel_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r28,0x41\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ldma_L_000133\" : : : \"memory\", \"cc\" : L_000133);",
+          "new": "asm volatile(\"\" : \"=r\" (r28));\n    if (r28 != 0x41) goto L_000133;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_dma_channel_interrupt_2",
+      "source": "src/dma_channel_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r30,0x7e\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ldma_L_000112\" : : : \"memory\", \"cc\" : L_000112);",
+          "new": "asm volatile(\"\" : \"=r\" (r30));\n    if (r30 != 0x7e) goto L_000112;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_0",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0xc4\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00029c\" : : : \"memory\", \"cc\" : L_00029c);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0xc4) goto L_00029c;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_1",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r19,0x3\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00029b\" : : : \"memory\", \"cc\" : L_00029b);",
+          "new": "asm volatile(\"\" : \"=r\" (r19));\n    if (r19 != 0x3) goto L_00029b;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_2",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r17,0x1\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_0002b8\" : : : \"memory\", \"cc\" : L_0002b8);",
+          "new": "asm volatile(\"\" : \"=r\" (r17));\n    if (r17 != 0x1) goto L_0002b8;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_3",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r19,0x3\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_0002ad\" : : : \"memory\", \"cc\" : L_0002ad);",
+          "new": "asm volatile(\"\" : \"=r\" (r19));\n    if (r19 != 0x3) goto L_0002ad;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_4",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x8c\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00030d\" : : : \"memory\", \"cc\" : L_00030d);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x8c) goto L_00030d;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_5",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r19,0x3\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00030d\" : : : \"memory\", \"cc\" : L_00030d);",
+          "new": "asm volatile(\"\" : \"=r\" (r19));\n    if (r19 != 0x3) goto L_00030d;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_6",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x1\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00033d\" : : : \"memory\", \"cc\" : L_00033d);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x1) goto L_00033d;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_7",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x1\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_000339\" : : : \"memory\", \"cc\" : L_000339);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x1) goto L_000339;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_8",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x2\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00035a\" : : : \"memory\", \"cc\" : L_00035a);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x2) goto L_00035a;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_9",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x3\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_00036c\" : : : \"memory\", \"cc\" : L_00036c);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x3) goto L_00036c;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_10",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x4\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_000381\" : : : \"memory\", \"cc\" : L_000381);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x4) goto L_000381;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_11",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,0x5\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_000398\" : : : \"memory\", \"cc\" : L_000398);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 0x5) goto L_000398;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_timer_overflow_interrupt_12",
+      "source": "src/timer_overflow_interrupt.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r17,0x6\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Ltimer_L_0003e1\" : : : \"memory\", \"cc\" : L_0003e1);",
+          "new": "asm volatile(\"\" : \"=r\" (r17));\n    if (r17 != 0x6) goto L_0003e1;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_console_dispatch_0",
+      "source": "src/console_dispatch.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,'P'\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Lcli_L_0009b1\" : : : \"memory\", \"cc\" : L_0009b1);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 'P') goto L_0009b1;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_console_dispatch_1",
+      "source": "src/console_dispatch.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r16,'S'\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Lcli_L_0009db\" : : : \"memory\", \"cc\" : L_0009db);",
+          "new": "asm volatile(\"\" : \"=r\" (r16));\n    if (r16 != 'S') goto L_0009db;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_console_dispatch_2",
+      "source": "src/console_dispatch.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r18,0xc\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Lcli_L_000a4c\" : : : \"memory\", \"cc\" : L_000a4c);",
+          "new": "asm volatile(\"\" : \"=r\" (r18));\n    if (r18 != 0xc) goto L_000a4c;",
+          "expected_count": 1
+        }
+      ]
+    },
+    {
+      "name": "compare_console_dispatch_3",
+      "source": "src/console_dispatch.c",
+      "semantic_class": "local_byte_equality",
+      "edits": [
+        {
+          "old": "asm volatile(\"cpi         r18,0x3c\" : : : \"memory\", \"cc\");\n    asm goto(\"brbc 1, .Lcli_L_000a58\" : : : \"memory\", \"cc\" : L_000a58);",
+          "new": "asm volatile(\"\" : \"=r\" (r18));\n    if (r18 != 0x3c) goto L_000a58;",
+          "expected_count": 1
+        }
+      ]
+    }
+  ]
+}

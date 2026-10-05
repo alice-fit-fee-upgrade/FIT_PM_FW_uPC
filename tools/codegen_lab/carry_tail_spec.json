@@ -1,0 +1,30 @@
+{
+  "candidates": [
+    {
+      "name": "carry_unlock_local_branch",
+      "source": "src/console_dispatch.c",
+      "semantic_class": "carry_password_rejection",
+      "edits": [
+        {
+          "old": "asm volatile(\"rcall       unlock_programming\" : : : \"memory\", \"cc\");\n    asm goto(\"brbs 0, .Lcli_L_000a6b\" : : : \"memory\", \"cc\" : L_000a6b);",
+          "new": "asm goto(PM_CALL_BRANCH_CARRY_SET_ASM(\"unlock_programming\", \"%l[L_000a6b]\")\n        : : : \"memory\", \"cc\" : L_000a6b);"
+        },
+        {
+          "old": "#include <avr/io.h>\n",
+          "new": "#include \"legacy_carry.h\"\n#include <avr/io.h>\n"
+        }
+      ]
+    },
+    {
+      "name": "carry_flash_transfer_completion",
+      "source": "src/fpga_binary_programming_stream.c",
+      "semantic_class": "carry_flash_completion_not_error",
+      "edits": [
+        {
+          "old": "asm volatile(\"rcall FUN_code_000b9d\\n\\trcall FUN_code_000b59\" : : : \"memory\", \"cc\");\n    asm goto(\"brcs %l[finished]\" : : : : finished);",
+          "new": "asm goto(\"rcall FUN_code_000b9d\\n\\t\"\n        PM_CALL_BRANCH_CARRY_SET_ASM(\"FUN_code_000b59\", \"%l[finished]\")\n        : : : \"memory\", \"cc\" : finished);"
+        }
+      ]
+    }
+  ]
+}
