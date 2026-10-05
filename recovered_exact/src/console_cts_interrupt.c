@@ -1,3 +1,7 @@
+/* C equivalent of the retained cursor-read helper:
+ * ready++; data = *--cursor; read_index = *--cursor;
+ * Steps365–370 failed allocation or changed fixed layout/bytes, including
+ * one local Z-allocation retry. No standalone functional test is claimed. */
 #include <avr/io.h>
 
 void PORTF_INT0_vect_isr(void)

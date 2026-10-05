@@ -1,0 +1,29 @@
+[
+  {
+    "step": 368,
+    "source": "console_tx_interrupt.c",
+    "change": "C UART TX cursor reads preserving Z postincrement ordering; local Z allocation enabled",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_368_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 369,
+    "source": "console_rx_interrupt.c",
+    "change": "C UART RX cursor reads preserving Z postincrement; local Z allocation enabled",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_369_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 370,
+    "source": "console_cts_interrupt.c",
+    "change": "C UART CTS cursor predecrement reads; local Z allocation enabled",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_370_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

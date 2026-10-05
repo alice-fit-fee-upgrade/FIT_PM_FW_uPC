@@ -87,3 +87,7 @@ Steps 353–364 accepted six further candidates: two power-state logic operation
 and four private programming limit-byte copies. C now represents 6190 executable
 bytes; 3838 inline ASM bytes remain. Private R1, register-pair layout and signed
 conditional encodings retain exact ASM and explanatory C comments.
+
+Steps365–370 verified UART TX/RX/CTS pointer-read alternatives and one local Z
+profile retry each. All were restored; register allocation or exact code layout
+prevents accepting these clean replacements with the current compiler.

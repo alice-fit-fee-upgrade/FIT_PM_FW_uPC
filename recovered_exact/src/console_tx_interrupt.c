@@ -1,3 +1,7 @@
+/* C equivalent of the retained cursor-read helper:
+ * read_index = *cursor++; write_index = *cursor++; ready = *cursor;
+ * Steps365–370 failed allocation or changed fixed layout/bytes, including
+ * one local Z-allocation retry. No standalone functional test is claimed. */
 #include <avr/io.h>
 
 void USARTF0_DRE_vect_isr(void)

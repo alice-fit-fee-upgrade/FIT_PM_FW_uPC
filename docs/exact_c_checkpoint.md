@@ -463,3 +463,11 @@ Golden/rebuilt FLASH SHA256:
 e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
 Differing bytes: 0. Rejected fragments retain explanatory C comments and explicit
 scope; historical tested complete alternatives keep their original evidence.
+
+## UART pointer-read trials: steps 365–370
+
+Three direct post/preincrement C cursor-read replacements failed register allocation.
+One reasonable local Z-allocation profile retry per ISR also failed exact layout or
+byte matching. All six candidates were restored. The retained helpers now carry C
+equivalent comments with no new behavioral-test claim. Current totals are unchanged:
+6190 C executable bytes, 4646 ASM, zero differing FLASH bytes. Two clean builds agree.
