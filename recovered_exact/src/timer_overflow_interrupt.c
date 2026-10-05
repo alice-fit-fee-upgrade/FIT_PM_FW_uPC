@@ -131,7 +131,8 @@ L_00028c:
     asm volatile(".Ltimer_L_00028c:" : : : "memory");
     r16 = *(volatile uint8_t *)0x668;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrs        r16,0x3\n\trjmp .Ltimer_L_00031b" : : : "memory", "cc" : L_00031b);
+    asm volatile("" : "=r" (r16));
+    if (!(r16 & (1u << 3))) goto L_00031b;
     r16 = 0x80;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -287,7 +288,8 @@ L_0002d9:
     *(volatile uint8_t *)0x645 = r16;
     r16 = *(volatile uint8_t *)0x628;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x6\n\trjmp .Ltimer_L_0002f7" : : : "memory", "cc" : L_0002f7);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 6))) goto L_0002f7;
     pm_cpu_disable_irq();
     r16 = *(volatile uint8_t *)0x2157;
     asm volatile("" : "+r" (r16));
@@ -446,7 +448,8 @@ L_00033d:
     asm goto("brbc 1, .Ltimer_L_000357" : : : "memory", "cc" : L_000357);
     r16 = *(volatile uint8_t *)0x2157;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x3\n\trjmp .Ltimer_L_00034f" : : : "memory", "cc" : L_00034f);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 3))) goto L_00034f;
     r16 = 0x4;
     asm volatile("" : "+r" (r16));
     pm_cpu_disable_irq();
@@ -532,7 +535,8 @@ L_00036c:
     asm goto("brbc 1, .Ltimer_L_000381" : : : "memory", "cc" : L_000381);
     r16 = *(volatile uint8_t *)0x668;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrs        r16,0x3\n\trjmp .Ltimer_L_00037d" : : : "memory", "cc" : L_00037d);
+    asm volatile("" : "=r" (r16));
+    if (!(r16 & (1u << 3))) goto L_00037d;
     r16 = 0x5;
     asm volatile("" : "+r" (r16));
     {
@@ -571,7 +575,8 @@ L_000383:
     asm volatile(".Ltimer_L_000383:" : : : "memory");
     r16 = *(volatile uint8_t *)0x624;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrs        r16,0x7\n\trjmp .Ltimer_L_000398" : : : "memory", "cc" : L_000398);
+    asm volatile("" : "=r" (r16));
+    if (!(r16 & (1u << 7))) goto L_000398;
     r16 = 0x1;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -662,13 +667,15 @@ L_0003ba:
     asm volatile("ser         r18" : : : "memory", "cc");
     adt7311_16bit_rw();
     asm volatile("eor         r17,r17" : : : "memory", "cc");
-    asm goto("sbrs        r20,0x2\n\trjmp .Ltimer_L_0003c9" : : : "memory", "cc" : L_0003c9);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 2))) goto L_0003c9;
     r17 = 0x6;
     asm volatile("" : "+r" (r17));
     goto L_0003d0;
 L_0003c9:
     asm volatile(".Ltimer_L_0003c9:" : : : "memory");
-    asm goto("sbrs        r20,0x1\n\trjmp .Ltimer_L_0003cd" : : : "memory", "cc" : L_0003cd);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 1))) goto L_0003cd;
     r17 = 0x4;
     asm volatile("" : "+r" (r17));
     goto L_0003d0;
@@ -740,7 +747,8 @@ L_0003e7:
     asm volatile("std         Z+0x6,r17" : : : "memory", "cc");
     r20 = *(volatile uint8_t *)0x689;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp .Ltimer_L_00045f" : : : "memory", "cc" : L_00045f);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_00045f;
     asm volatile("cp          r16,r18" : : : "memory", "cc");
     asm volatile("cpc         r17,r19" : : : "memory", "cc");
     asm goto("brbs 1, .Ltimer_L_0003ff" : : : "memory", "cc" : L_0003ff);

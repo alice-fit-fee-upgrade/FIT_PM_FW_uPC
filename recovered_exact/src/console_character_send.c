@@ -21,7 +21,7 @@ retry:
     pm_cpu_disable_irq();
     asm volatile("ld %0, Z+\n\tld %1, Z+"
         : "=r" (read_index), "=r" (write_index), "+z" (cursor) : : "memory");
-    asm goto("cp %0, %1\n\tbreq %l[direct_send]" : : "r" (read_index), "r" (write_index) : "cc" : direct_send);
+    if (read_index == write_index) goto direct_send;
     asm volatile("inc %0" : "+r" (write_index) : : "cc");
     asm goto("cp %0, %1\n\tbrne %l[enqueue]" : : "r" (read_index), "r" (write_index) : "cc" : enqueue);
     pm_cpu_enable_irq();
@@ -48,7 +48,7 @@ enqueue:
 direct_send:
     asm volatile("inc %0" : "+r" (write_index) : : "cc");
     ready = *cursor;
-    asm goto("tst %0\n\tbreq %l[enqueue]" : : "r" (ready) : "cc" : enqueue);
+    if (!ready) goto enqueue;
     control = USARTF0_STATUS;
     asm goto("sbrs %0, 5\n\trjmp %l[enqueue]" : : "r" (control) : : enqueue);
     USARTF0_DATA = character;

@@ -22,7 +22,7 @@ void USARTF0_DRE_vect_isr(void)
         : "=r" (read_index), "=r" (write_index), "+z" (cursor) : : "memory");
     ready = *cursor;
     asm volatile("" : "+r" (ready));
-    asm goto("tst %0\n\tbreq %l[disable]" : : "r" (ready) : "cc" : disable);
+    if (!ready) goto disable;
     asm goto("cp %0, %1\n\tbrne %l[send]" : : "r" (read_index), "r" (write_index) : "cc" : send);
 disable:
     control = USARTF0_CTRLA;

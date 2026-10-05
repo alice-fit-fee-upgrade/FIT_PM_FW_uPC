@@ -29,7 +29,7 @@ void PORTF_INT0_vect_isr(void)
         : "+r" (ready), "=r" (data), "=r" (read_index), "+z" (cursor) : : "memory", "cc");
     if (read_index == data) goto advance_ready;
     control = USARTF0_STATUS;
-    asm goto("sbrs %0, 5\n\trjmp %l[enable_tx]" : : "r" (control) : : enable_tx);
+    if (!(control & (1u << 5))) goto enable_tx;
     asm volatile("clr %0\n\tinc %1" : "=r" (data), "+r" (read_index) : : "cc");
     cursor = (uint8_t *)0x2047;
     {

@@ -45,7 +45,7 @@ receive:
     data = USARTF0_DATA;
     asm volatile("" : "+r" (data));
     if (status & (1u << 4)) goto finished;
-    asm goto("cp %0, %1\n\tbreq %l[finished]" : : "r" (read_index), "r" (write_index) : "cc" : finished);
+    if (read_index == write_index) goto finished;
     *cursor = write_index;
     cursor = (uint8_t *)0x2007;
     asm volatile("clr %0" : "=r" (read_index) : "z" (cursor) : "cc");

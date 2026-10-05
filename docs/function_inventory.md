@@ -127,3 +127,5 @@ Historical behavioral counts are archived in mixed_recovery_reads_function_inven
 they do not contribute to the accepted baseline counts.
 
 Current checkpoint: steps 614–622, 6732 native C bytes; 66.9318% application / 62.1262% including boot. See [frame recovery](native_frame_recovery_622.md).
+
+Current checkpoint 671: **6844 native C bytes**, **68.0453% application / 63.1598% including boot**; inline ASM 3184 bytes. See [small C recovery](small_c_recovery_671.md).

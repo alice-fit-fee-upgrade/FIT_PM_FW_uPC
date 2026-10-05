@@ -20,7 +20,7 @@ next_character:
  * Validated flag-aware version: compiled C model below,
  * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
  * This does not claim the historical value-only candidate preserved all flags. */
-        asm goto("tst %0\n\tbreq %l[finished]" : : "r" (byte) : "cc" : finished);
+        if (!byte) goto finished;
         byte = pm_console_send_character(byte);
     }
     goto next_character;

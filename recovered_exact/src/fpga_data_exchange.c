@@ -35,7 +35,8 @@ void fpga_data_exchange(void)
     *(volatile uint8_t *)0x2006 = r16;
     r16 = PORTB_OUT;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x7\n\trjmp %l[L_0008b8]" : : : "memory", "cc" : L_0008b8);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 7))) goto L_0008b8;
 L_0008b6:
     pm_cpu_enable_irq();
     return;
@@ -75,7 +76,8 @@ L_0008c9:
     pm_cpu_disable_irq();
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_0008b6;
     fpga_msg_read_t1();
     pm_cpu_enable_irq();
     asm volatile("cpi         r18,0xb0" : : : "memory", "cc");
@@ -112,7 +114,8 @@ L_0008e4:
     pm_cpu_disable_irq();
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_0008b6;
     fpga_msg_send_t2();
     pm_cpu_enable_irq();
 L_0008ec:
@@ -171,7 +174,8 @@ L_000904:
     pm_cpu_disable_irq();
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_0008b6;
     fpga_msg_send_t2();
     pm_cpu_enable_irq();
 L_00090c:
@@ -225,7 +229,8 @@ L_000924:
     pm_cpu_disable_irq();
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_0008b6;
     fpga_msg_send_t2();
     pm_cpu_enable_irq();
 L_00092c:
@@ -266,7 +271,8 @@ L_00093b:
     pm_cpu_disable_irq();
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_0008b6;
     fpga_msg_send_t2();
     pm_cpu_enable_irq();
     asm volatile("st          Y+,r16" : : : "memory", "cc");
@@ -305,7 +311,8 @@ L_00094c:
     pm_cpu_disable_irq();
     r20 = PORTE_INTCTRL;
     asm volatile("" : "+r" (r20));
-    asm goto("sbrs        r20,0x3\n\trjmp %l[L_0008b6]" : : : "memory", "cc" : L_0008b6);
+    asm volatile("" : "=r" (r20));
+    if (!(r20 & (1u << 3))) goto L_0008b6;
     fpga_msg_send_t2();
     pm_cpu_enable_irq();
 L_00095a:
