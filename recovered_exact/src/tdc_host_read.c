@@ -56,7 +56,8 @@ next_response_bit:
      * This fragment has no separate successful functional-test claim. */
     asm volatile("adc %0, %0" : "+r" (hi) : : "cc");
     command = PORTB_IN;
-    asm volatile("sbrc %1, 1\n\tori %0, 1" : "+r" (lo) : "r" (command) : "cc");
+    asm volatile("" : "+r" (command), "+r" (lo));
+    if (command & 2u) { lo |= 1u; asm volatile("" : "+r" (lo)); }
     PORTB_OUTCLR = clock;
     /* C counter value: --count; if (count != 0) goto loop_start;
      * DEC/BRNE also preserves C for the serial shift. Plain C decrements

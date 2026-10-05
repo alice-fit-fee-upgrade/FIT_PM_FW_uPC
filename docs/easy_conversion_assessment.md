@@ -12,15 +12,15 @@ PUSH/SEC/shared-entry RJMP need the private formatter frame. An all-ASM C wrappe
 would contribute zero compiler-generated instruction bytes and is not counted
 as a C conversion. It remains exact GNU AVR assembly.
 
-The application still has 3678 inline ASM bytes inside 83 mixed functions.
+The application still has 3646 inline ASM bytes inside 83 mixed functions.
 These are live-flag operations, ISR frames, carry chains, private calls, pointer
 accesses and exact encodings. Moving an entry into a C file does not make these
 bytes C: independent GCC APP/NOAPP provenance counts every emitted ASM byte.
 Further work can replace individual helpers when clean C emits the same bytes.
 Boot remains 9 ASM procedures, 778 executable bytes.
 
-Of 10836 executable bytes, C accounts for 6350 (58.6010%) and ASM for 4486
-(41.3990%). Application-only C coverage is 63.1338%. All original 806 symbols
+Of 10836 executable bytes, C accounts for 6382 (58.8963%) and ASM for 4454
+(41.1037%). Application-only C coverage is 63.4520%. All original 806 symbols
 retain their addresses and complete canonical FLASH has zero differences.
 
 Further steps 93–190 accepted 67 changes across 41 translation units and

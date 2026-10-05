@@ -1,0 +1,47 @@
+[
+  {
+    "step": 445,
+    "source": "adt_bit_transfer.c",
+    "change": "C ADT serial output bit set/clear with opaque register boundary",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_445_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 446,
+    "source": "tdc_host_write.c",
+    "change": "C TDC masked command branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_446_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 447,
+    "source": "console_hex_digit.c",
+    "change": "C unsigned hexadecimal digit threshold branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_447_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 448,
+    "source": "power_state_request.c",
+    "change": "Native C power-state no-change return with exact comparisons",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_448.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 449,
+    "source": "tdc_channel_data_display.c",
+    "change": "C signed TDC channel limit branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_449_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

@@ -46,8 +46,9 @@ void pm_power_state_request(void)
     PORTB_OUTCLR = 0x80;
     value = RAM8(0x2159);
     /* Retain the two early branches and the no-change return exactly. */
-    asm goto("tst %0\n\tbreq %l[changed]\n\tcpi %0, 5\n\tbreq %l[changed]\n\tret"
+    asm goto("tst %0\n\tbreq %l[changed]\n\tcpi %0, 5\n\tbreq %l[changed]"
         : : "r" (value) : "cc" : changed);
+    return;
 changed:
     RAM8(0x2159) = 4;
 }

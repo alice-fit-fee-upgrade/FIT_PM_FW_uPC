@@ -1,0 +1,47 @@
+[
+  {
+    "step": 450,
+    "source": "power_fault_state.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_450_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 451,
+    "source": "system_deinit.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_451_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 452,
+    "source": "power_portb_interrupt.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_452_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 453,
+    "source": "system_init.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_453.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 454,
+    "source": "channel_settings_display.c",
+    "change": "C low-byte settings pointer offsets preserving high carry ADC",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_454.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

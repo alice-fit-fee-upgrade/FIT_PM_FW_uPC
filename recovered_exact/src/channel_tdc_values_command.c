@@ -24,8 +24,16 @@ void fpga_set_tdc_values(void)
     register uint8_t offset asm("r23") = channel;
     asm volatile("" : "+r" (offset));
     offset += offset; asm volatile("" : "+r" (offset));
-    asm volatile("clr r11\n\tadd r28, %1\n\tadc r29, r11\n\tst Y+, r20\n\tst Y, r21"
-                 : "+y" (settings) : "r" (offset), "r" (requested) : "r11", "memory", "cc");
+    asm volatile("clr r11" : : : "r11", "cc");
+    {
+        register uint8_t address_low asm("r28");
+        asm volatile("" : "=r" (address_low) : "y" (settings));
+        address_low += offset;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Original ADC consumes carry from the C low-byte addition. */
+    asm volatile("adc r29, r11\n\tst Y+, r20\n\tst Y, r21"
+                 : "=y" (settings) : "r" (offset), "r" (requested) : "r11", "memory", "cc");
     register uint8_t address asm("r18") = 1;
     asm volatile("" : "+r" (address));
     address += channel; asm volatile("" : "+r" (address));

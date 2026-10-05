@@ -28,6 +28,9 @@
  */
 
 #define RAM(a) (*(volatile uint8_t *)(a))
+/* Steps451/456 rejected C scratch/read alternatives. C value equivalent:
+ * *(volatile uint8_t *)0x2157; no standalone functional validation.
+ * Original R16 helper and constant/flag contracts stay exact. */
 #include "legacy_r16.h"
 void system_deinit(void)
 {

@@ -37,7 +37,12 @@ void pm_dac_offset_scale(void)
     register uint8_t channel asm("r22");
     asm volatile("" : "=r" (channel));
     channel += channel; asm volatile("" : "+r" (channel));
-    asm volatile("add r30, %1\n\tadc r31, r20" : "+z" (cursor) : "r" (channel), "r" (correction) : "cc");
+    {
+        register uint8_t address_low asm("r30");
+        asm volatile("" : "=r" (address_low) : "z" (cursor));
+        address_low += channel; asm volatile("" : "+r" (address_low));
+    }
+    asm volatile("adc r31, r20" : "=z" (cursor) : "r" (correction) : "cc");
     channel += channel; asm volatile("" : "+r" (channel));
     channel |= 3; asm volatile("" : "+r" (channel));
     asm volatile("ld r20, Z+\n\tld r21, Z" : "=r" (correction), "+z" (cursor) : : "memory");

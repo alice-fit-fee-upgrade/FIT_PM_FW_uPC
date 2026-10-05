@@ -2,7 +2,12 @@
 #include <stdint.h>
 #define MESSAGE(cursor) asm volatile("rcall cli_send_msg" : "+z" (cursor) : : "memory", "cc")
 #define OFFSET_POINTER(pointer, offset, zero) \
- asm volatile("add r28, %1\n\tadc r29, %2" : "+y" (pointer) : "r" (offset), "r" (zero) : "cc")
+ do { \
+ register uint8_t address_low asm("r28"); \
+ asm volatile("" : "=r" (address_low) : "y" (pointer)); \
+ address_low += (offset); asm volatile("" : "+r" (address_low)); \
+ asm volatile("adc r29, %1" : "=y" (pointer) : "r" (zero) : "cc"); \
+ } while (0)
 #define READ_PAIR(last_load, formatter, tail) \
  asm volatile("ld r16, Y+\n\t" last_load "\n\trcall " formatter "\n\trcall " tail \
  : "=r" (word), "+y" (settings), "+z" (message) : : "memory", "cc")

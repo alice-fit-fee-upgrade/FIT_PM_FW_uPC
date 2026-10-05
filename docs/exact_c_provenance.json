@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3678,
+  "inline_asm_bytes": 3646,
   "compiler_generated_avr_primitive_bytes": 394,
   "avr_primitive_mnemonics": [
     "bld",
@@ -130,9 +130,9 @@
     },
     {
       "symbol": "FUN_code_00054e",
-      "inline_asm_bytes": 10,
+      "inline_asm_bytes": 8,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 22
+      "compiler_bytes": 24
     },
     {
       "symbol": "FUN_code_000236",
@@ -220,9 +220,9 @@
     },
     {
       "symbol": "ths788_read",
-      "inline_asm_bytes": 24,
+      "inline_asm_bytes": 20,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 138
+      "compiler_bytes": 142
     },
     {
       "symbol": "dac_send_value",
@@ -310,9 +310,9 @@
     },
     {
       "symbol": "FUN_code_001053",
-      "inline_asm_bytes": 14,
+      "inline_asm_bytes": 12,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 28
+      "compiler_bytes": 30
     },
     {
       "symbol": "FUN_code_001068",
@@ -334,51 +334,51 @@
     },
     {
       "symbol": "fpga_set_ch_adc_delay",
-      "inline_asm_bytes": 58,
+      "inline_asm_bytes": 56,
       "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 26
+      "compiler_bytes": 28
     },
     {
       "symbol": "fpga_set_ch_cfd_zero",
-      "inline_asm_bytes": 58,
-      "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 30
-    },
-    {
-      "symbol": "fpga_set_adc_zero",
-      "inline_asm_bytes": 62,
-      "compiler_generated_avr_primitive_bytes": 8,
-      "compiler_bytes": 36
-    },
-    {
-      "symbol": "fpga_set_ch_cfd_threshold",
-      "inline_asm_bytes": 60,
-      "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 34
-    },
-    {
-      "symbol": "fpga_set_tdc_values",
-      "inline_asm_bytes": 58,
-      "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 20
-    },
-    {
-      "symbol": "fpga_set_threshold_calibration",
-      "inline_asm_bytes": 68,
+      "inline_asm_bytes": 56,
       "compiler_generated_avr_primitive_bytes": 4,
       "compiler_bytes": 32
     },
     {
-      "symbol": "fpga_set_adc_range_corr",
-      "inline_asm_bytes": 86,
+      "symbol": "fpga_set_adc_zero",
+      "inline_asm_bytes": 60,
       "compiler_generated_avr_primitive_bytes": 8,
-      "compiler_bytes": 34
+      "compiler_bytes": 38
+    },
+    {
+      "symbol": "fpga_set_ch_cfd_threshold",
+      "inline_asm_bytes": 58,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 36
+    },
+    {
+      "symbol": "fpga_set_tdc_values",
+      "inline_asm_bytes": 56,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 22
+    },
+    {
+      "symbol": "fpga_set_threshold_calibration",
+      "inline_asm_bytes": 64,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 36
+    },
+    {
+      "symbol": "fpga_set_adc_range_corr",
+      "inline_asm_bytes": 84,
+      "compiler_generated_avr_primitive_bytes": 8,
+      "compiler_bytes": 36
     },
     {
       "symbol": "FUN_code_000f70",
-      "inline_asm_bytes": 60,
+      "inline_asm_bytes": 58,
       "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 30
+      "compiler_bytes": 32
     },
     {
       "symbol": "cli_send_ch_mean_amplitude",
@@ -412,9 +412,9 @@
     },
     {
       "symbol": "channels_read",
-      "inline_asm_bytes": 86,
+      "inline_asm_bytes": 80,
       "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 58
+      "compiler_bytes": 64
     },
     {
       "symbol": "cli_get_hex",

@@ -1,4 +1,7 @@
 #include <avr/io.h>
+/* Steps450/455: C R16 absolute read/constant alternatives changed binary.
+ * Equivalent read: *(volatile uint8_t *)0x2157; unvalidated standalone.
+ * Keep exact scratch-register helpers and original live flags. */
 #include "legacy_r16.h"
 #define RAM(a) (*(volatile uint8_t *)(a))
 

@@ -1,0 +1,65 @@
+[
+  {
+    "step": 459,
+    "source": "channel_adc_delay_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_459.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 460,
+    "source": "channel_adc_range_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_460.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 461,
+    "source": "channel_adc_zero_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_461.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 462,
+    "source": "channel_cfd_zero_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_462.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 463,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_463.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 464,
+    "source": "channel_tdc_values_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_464.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 465,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_465.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -74,6 +74,8 @@ next_channel:
     /* C equivalent: cli_send_crlf(); ++channel; trial439 changed layout.
      * Unvalidated standalone; private call ABI and INC flags remain exact. */
     asm volatile("rcall cli_send_crlf\n\tinc %0" : "+r" (channel) : : "memory", "cc");
+    /* Step449 C equivalent: if ((int8_t)channel < 12) goto next_channel;
+     * Failed exact matching; unvalidated standalone, retain signed flags. */
     asm goto("cpi %0, 12\n\tbrlt %l[next_channel]" : : "r" (channel) : "cc" : next_channel);
     asm volatile("rcall cli_send_crlf\n\trjmp LAB_code_000ff1" : : : "memory", "cc");
     __builtin_unreachable();

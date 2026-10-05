@@ -44,9 +44,17 @@ asm volatile("cpi r20, 0x55\n\tcpc r21, r26\n\tbrlt LAB_code_000f16\ncpi r24, 0x
     register uint8_t offset asm("r23") = channel;
     asm volatile("" : "+r" (offset));
     offset += offset; asm volatile("" : "+r" (offset));
-    asm volatile("clr r11\n\tadd r28, %1\n\tadc r29, r11\n"
+    asm volatile("clr r11" : : : "r11", "cc");
+    {
+        register uint8_t address_low asm("r28");
+        asm volatile("" : "=r" (address_low) : "y" (settings));
+        address_low += offset;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Original ADC consumes carry from the C low-byte addition. */
+    asm volatile("adc r29, r11\n"
                  "st Y+, r24\n\tst Y+, r25\n\tst Y+, r20\n\tst Y, r21"
-                 : "+y" (settings) : "r" (offset), "r" (first), "r" (requested) : "r11", "memory", "cc");
+                 : "=y" (settings) : "r" (offset), "r" (first), "r" (requested) : "r11", "memory", "cc");
     register uint8_t address asm("r18") = 0x25;
     asm volatile("" : "+r" (address));
     address += channel; asm volatile("" : "+r" (address));

@@ -32,6 +32,8 @@ void ths788_write(void)
     asm volatile("" : "+r" (count));
     /* C branch value equivalent: if (count == 0) goto command_clock;
      * BREQ consumes flags from the exact ANDI emitted for the C mask. */
+    /* Step446 `if (!count) goto command_clock;` changed the binary/layout.
+     * Unvalidated standalone; consume original ANDI flags directly. */
     asm goto("breq %l[command_clock]" : : "r" (count) : : command_clock);
     PORTB_OUTSET = data_mask;
 command_clock:

@@ -2,6 +2,8 @@
 #include "legacy_interrupt_register_c.h"
 #include "legacy_r16.h"
 
+/* Steps452/457: C absolute read of *(volatile uint8_t *)0x2157 changed
+ * binary/layout. Unvalidated standalone; keep original R16 ISR helper. */
 void PORTB_INT0_vect_isr(void)
 {
     PM_ISR_ENTER_R16();

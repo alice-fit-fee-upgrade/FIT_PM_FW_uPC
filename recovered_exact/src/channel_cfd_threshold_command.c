@@ -44,8 +44,13 @@ asm volatile("cpi r20, 0x2c\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (re
     offset += offset;
     asm volatile("" : "+r" (offset), "+y" (settings));
     /* C pointer value: settings += offset; CLR/ADC retain live flags. */
-    asm volatile("clr r11\n\tadd r28, %0\n\tadc r29, r11"
-        : "+r" (offset), "+y" (settings) : : "r11", "cc");
+    asm volatile("clr r11" : : : "r11", "cc");
+    {
+        register uint8_t address_low asm("r28");
+        asm volatile("" : "=r" (address_low) : "y" (settings));
+        address_low += offset; asm volatile("" : "+r" (address_low));
+    }
+    asm volatile("adc r29, r11" : "=y" (settings), "+r" (offset) : : "r11", "cc");
     asm volatile("st Y+, r20\n\tst Y, r21" : "+y" (settings) : "r" (requested) : "memory");
     asm volatile("rcall FUN_code_001053" : : "r" (requested), "r" (channel) : "memory", "cc");
     register const uint8_t *message asm("r30") = (const uint8_t *)0x2998;

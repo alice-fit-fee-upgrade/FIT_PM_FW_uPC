@@ -114,6 +114,8 @@ L_0008e4:
     fpga_msg_send_t2();
     pm_cpu_enable_irq();
 L_0008ec:
+    /* Unvalidated C equivalent: *destination++ = r16; *destination++ = r17;
+     * Step440 changed layout with typed Y operands; keep private stores. */
     asm volatile("st          Y+,r16" : : : "memory", "cc");
     asm volatile("st          Y+,r17" : : : "memory", "cc");
     {

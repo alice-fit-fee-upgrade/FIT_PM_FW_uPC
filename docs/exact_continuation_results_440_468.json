@@ -1,0 +1,263 @@
+[
+  {
+    "step": 440,
+    "source": "fpga_data_exchange.c",
+    "change": "C typed Y postincrement stores of FPGA words",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_440_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 441,
+    "source": "console_decimal_formatter.c",
+    "change": "C decimal digit predecrement stores",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_441_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 442,
+    "source": "console_decimal_formatter.c",
+    "change": "C formatter character predecrement stores",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_442_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 443,
+    "source": "console_decimal_formatter.c",
+    "change": "C formatter postincrement output load",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_443_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 444,
+    "source": "tdc_host_read.c",
+    "change": "C sampled TDC bit conditional OR with opaque registers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_444.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 445,
+    "source": "adt_bit_transfer.c",
+    "change": "C ADT serial output bit set/clear with opaque register boundary",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_445_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 446,
+    "source": "tdc_host_write.c",
+    "change": "C TDC masked command branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_446_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 447,
+    "source": "console_hex_digit.c",
+    "change": "C unsigned hexadecimal digit threshold branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_447_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 448,
+    "source": "power_state_request.c",
+    "change": "Native C power-state no-change return with exact comparisons",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_448.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 449,
+    "source": "tdc_channel_data_display.c",
+    "change": "C signed TDC channel limit branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_449_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 450,
+    "source": "power_fault_state.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_450_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 451,
+    "source": "system_deinit.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_451_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 452,
+    "source": "power_portb_interrupt.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_452_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 453,
+    "source": "system_init.c",
+    "change": "Opt-in exact C R16 constants and absolute memory reads",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_453.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 454,
+    "source": "channel_settings_display.c",
+    "change": "C low-byte settings pointer offsets preserving high carry ADC",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_454.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 455,
+    "source": "power_fault_state.c",
+    "change": "C R16 absolute read only, preserving historical constant helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_455_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 456,
+    "source": "system_deinit.c",
+    "change": "C R16 absolute read only, preserving historical constant helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_456_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 457,
+    "source": "power_portb_interrupt.c",
+    "change": "C R16 absolute read only, preserving historical constant helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_457_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 458,
+    "source": "system_init.c",
+    "change": "C DMA control store through opaque R16 value",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_458_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 459,
+    "source": "channel_adc_delay_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_459.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 460,
+    "source": "channel_adc_range_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_460.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 461,
+    "source": "channel_adc_zero_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_461.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 462,
+    "source": "channel_cfd_zero_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_462.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 463,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_463.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 464,
+    "source": "channel_tdc_values_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_464.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 465,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C settings address low-byte addition with exact CLR/ADC carry helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_465.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 466,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C CFD threshold settings low address with exact upper ADC",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_466.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 467,
+    "source": "dac_offset_scale.c",
+    "change": "C DAC offset correction address low-byte addition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_467.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 468,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration second settings pointer low-byte addition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_468.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

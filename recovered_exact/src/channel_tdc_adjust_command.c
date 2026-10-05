@@ -25,8 +25,16 @@ asm volatile("cpi r20, 0x40\n\tcpc r21, r24\n\tbrge LAB_code_000f9c\n" : : "r" (
 asm volatile("cpi r20, 0xc0\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (requested), "r" (limit_high) : "cc");
     PM_FPGA_GUARD(requested);
     register uint8_t *settings asm("r28") = (uint8_t *)0x217b;
-    asm volatile("clr r11\n\tadd r28, %1\n\tadc r29, r11"
-                 : "+y" (settings) : "r" (channel) : "r11", "cc");
+    asm volatile("clr r11" : : : "r11", "cc");
+    {
+        register uint8_t address_low asm("r28");
+        asm volatile("" : "=r" (address_low) : "y" (settings));
+        address_low += channel;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Original ADC consumes carry from the C low-byte addition. */
+    asm volatile("adc r29, r11"
+                 : "=y" (settings) : "r" (channel) : "r11", "cc");
     asm volatile("st Y, r20" : : "y" (settings), "r" (requested) : "memory");
     register uint8_t command_index asm("r21") = channel;
     asm volatile("" : "+r" (command_index));

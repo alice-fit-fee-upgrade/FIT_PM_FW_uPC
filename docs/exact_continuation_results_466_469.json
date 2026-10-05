@@ -1,0 +1,29 @@
+[
+  {
+    "step": 466,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C CFD threshold settings low address with exact upper ADC",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_466.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 467,
+    "source": "dac_offset_scale.c",
+    "change": "C DAC offset correction address low-byte addition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_467.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 468,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration second settings pointer low-byte addition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_468.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

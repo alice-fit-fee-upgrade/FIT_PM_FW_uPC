@@ -27,6 +27,8 @@ void cli_send_digit_hex(void)
     asm volatile("" : "=r" (digit));
     digit = (digit & 0x0f) + '0';
     asm volatile("" : "+r" (digit));
+    /* Step447 plain C `if (digit < 0x3a) goto send;` failed exact matching.
+     * No standalone validation; original threshold flags/private ABI remain. */
     /* Exact unsigned threshold branch without a second scratch register. */
     asm goto("cpi %0, 0x3a\n\tbrlo %l[send]" : : "r" (digit) : "cc" : send);
     digit += 'A' - '0' - 10;

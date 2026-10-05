@@ -10,6 +10,9 @@ void adt7311_byte_rw(void)
 next_bit:
     {
         register uint8_t data_mask asm("r17") = 8;
+        /* Unvalidated C equivalent: if (data & 0x80) PORTA_OUTSET = data_mask;
+         * if (!(data & 0x80)) PORTA_OUTCLR = data_mask;
+         * Step445 changed binary/layout; original paired skips remain. */
         asm volatile("sbrc %0, 7\n\tsts %2, %1\n\tsbrs %0, 7\n\tsts %3, %1"
             : : "r" (data), "r" (data_mask), "n" (_SFR_MEM_ADDR(PORTA_OUTSET)),
                 "n" (_SFR_MEM_ADDR(PORTA_OUTCLR)) : "memory");

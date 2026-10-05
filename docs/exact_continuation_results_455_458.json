@@ -1,0 +1,38 @@
+[
+  {
+    "step": 455,
+    "source": "power_fault_state.c",
+    "change": "C R16 absolute read only, preserving historical constant helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_455_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 456,
+    "source": "system_deinit.c",
+    "change": "C R16 absolute read only, preserving historical constant helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_456_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 457,
+    "source": "power_portb_interrupt.c",
+    "change": "C R16 absolute read only, preserving historical constant helpers",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_457_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 458,
+    "source": "system_init.c",
+    "change": "C DMA control store through opaque R16 value",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_458_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

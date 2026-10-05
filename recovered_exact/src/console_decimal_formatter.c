@@ -1,5 +1,8 @@
 #include "legacy_cpu.h"
 #include <stdint.h>
+/* Unvalidated C equivalents: *--cursor = digit; *--cursor = character;
+ * character = *cursor++; steps441-443 changed exact encoding/layout.
+ * Preserve original predecrement/postincrement pointer and private register ABI. */
 #define STORE_DIGIT() asm volatile("st -Z, r18" : "+z" (cursor) : "r" (digit) : "memory")
 #define STORE_CHARACTER() asm volatile("st -Z, r16" : "+z" (cursor) : "r" (character) : "memory")
 

@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include "legacy_r16.h"
+#include "legacy_r16_c.h"
 /* Archived C alternative for the exact ASM helpers below (not compiled).
  * This implementation, with its historical private-ABI ASM bridge and callees,
  * passed the functional comparisons recorded in docs/mixed_recovery_system_checkpoint.md.
@@ -59,6 +59,8 @@ void system_init(void)
     wait_dma_reset();
     SPID_CTRL=0x44;
     register uint8_t dma_control asm("r16")=0x83;
+    /* Unvalidated C equivalent: DMA_CTRL = dma_control; step458 failed
+     * matching; keep exact store and the original R16 value contract. */
     asm volatile ("sts %[ctrl], %[value]" :
         : [ctrl] "n" (_SFR_MEM_ADDR(DMA_CTRL)), [value] "r" (dma_control) : "memory");
     DMA_CH0_TRIGSRC=0x6a;

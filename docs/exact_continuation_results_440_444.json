@@ -1,0 +1,47 @@
+[
+  {
+    "step": 440,
+    "source": "fpga_data_exchange.c",
+    "change": "C typed Y postincrement stores of FPGA words",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_440_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 441,
+    "source": "console_decimal_formatter.c",
+    "change": "C decimal digit predecrement stores",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_441_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 442,
+    "source": "console_decimal_formatter.c",
+    "change": "C formatter character predecrement stores",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_442_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 443,
+    "source": "console_decimal_formatter.c",
+    "change": "C formatter postincrement output load",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_443_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 444,
+    "source": "tdc_host_read.c",
+    "change": "C sampled TDC bit conditional OR with opaque registers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_444.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

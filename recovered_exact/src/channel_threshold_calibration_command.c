@@ -26,8 +26,16 @@ void fpga_set_threshold_calibration(void)
     register uint8_t offset asm("r23") = channel;
     asm volatile("" : "+r" (offset));
     offset += offset; asm volatile("" : "+r" (offset));
-    asm volatile("clr r11\n\tadd r28, %1\n\tadc r29, r11\n\tst Y+, r20\n\tst Y, r21"
-                 : "+y" (settings) : "r" (offset), "r" (requested) : "r11", "memory", "cc");
+    asm volatile("clr r11" : : : "r11", "cc");
+    {
+        register uint8_t address_low asm("r28");
+        asm volatile("" : "=r" (address_low) : "y" (settings));
+        address_low += offset;
+        asm volatile("" : "+r" (address_low));
+    }
+    /* Original ADC consumes carry from the C low-byte addition. */
+    asm volatile("adc r29, r11\n\tst Y+, r20\n\tst Y, r21"
+                 : "=y" (settings) : "r" (offset), "r" (requested) : "r11", "memory", "cc");
     settings = (uint8_t *)0x21cf;
     register uint8_t settings_offset asm("r10") = channel;
     asm volatile("" : "+r" (settings_offset), "+y" (settings));
@@ -37,8 +45,14 @@ void fpga_set_threshold_calibration(void)
     /* C values: settings += settings_offset;
      * requested = settings[0] | ((uint16_t)settings[1] << 8); settings++;
      * Retain exact carry/CLR/LD Y+ encodings; explanation only. */
-    asm volatile("clr r11\n\tadd r28, r10\n\tadc r29, r11\n\tld r20, Y+\n\tld r21, Y"
-                 : "+y" (settings), "=r" (requested) : "r" (settings_offset) : "r11", "memory", "cc");
+    asm volatile("clr r11" : : : "r11", "cc");
+    {
+        register uint8_t address_low asm("r28");
+        asm volatile("" : "=r" (address_low) : "y" (settings));
+        address_low += settings_offset; asm volatile("" : "+r" (address_low));
+    }
+    asm volatile("adc r29, r11\n\tld r20, Y+\n\tld r21, Y"
+                 : "=y" (settings), "=r" (requested) : "r" (settings_offset) : "r11", "memory", "cc");
     asm volatile("rcall FUN_code_001053\n\trjmp LAB_code_000ff1"
                  : : "r" (requested), "r" (channel) : "memory", "cc");
     __builtin_unreachable();
