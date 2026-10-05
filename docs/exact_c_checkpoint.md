@@ -9,97 +9,96 @@ are no longer acceptance evidence for C integration.
 
 | Byte address | Original entry | Classification | Compiler bytes | ASM helper bytes |
 |---|---|---|---|---|
-| 0x046C | FUN_code_000236 | C_WITH_EXACT_ASM_HELPER | 26 | 24 |
-| 0x08E4 | fpga_settings_init | C_WITH_EXACT_ASM_HELPER | 50 | 116 |
-| 0x098A | fpga_settings_reset | C_WITH_EXACT_ASM_HELPER | 38 | 46 |
-| 0x09DE | FUN_code_0004ef | C_WITH_EXACT_ASM_HELPER | 12 | 98 |
-| 0x0A4C | PORTD_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 40 | 40 |
+| 0x01E2 | DMA_CH1_vect_isr | C_WITH_EXACT_ASM_HELPER | 308 | 342 |
+| 0x046C | FUN_code_000236 | C_WITH_EXACT_ASM_HELPER | 28 | 22 |
+| 0x049E | TCC0_OVF_vect_isr | C_WITH_EXACT_ASM_HELPER | 492 | 602 |
+| 0x08E4 | fpga_settings_init | C_WITH_EXACT_ASM_HELPER | 90 | 76 |
+| 0x098A | fpga_settings_reset | C_WITH_EXACT_ASM_HELPER | 58 | 26 |
+| 0x09DE | FUN_code_0004ef | C_WITH_EXACT_ASM_HELPER | 16 | 94 |
+| 0x0A4C | PORTD_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 52 | 28 |
 | 0x0A9C | FUN_code_00054e | C_WITH_EXACT_ASM_HELPER | 22 | 10 |
 | 0x0ABC | PORTB_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 18 | 18 |
-| 0x0AE0 | PORTF_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 62 | 74 |
+| 0x0AE0 | PORTF_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 80 | 56 |
 | 0x0B68 | FUN_code_0005b4 | C_WITH_EXACT_ASM_HELPER | 40 | 6 |
-| 0x0B96 | PORTE_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 56 | 92 |
-| 0x0C2A | PORTE_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 38 | 46 |
+| 0x0B96 | PORTE_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 92 | 56 |
+| 0x0C2A | PORTE_INT1_vect_isr | C_WITH_EXACT_ASM_HELPER | 54 | 30 |
 | 0x0C7E | set_status_and_vd8_led | C_BINARY_EXACT | 24 | 0 |
 | 0x0C96 | system_deinit | C_WITH_EXACT_ASM_HELPER | 108 | 14 |
 | 0x0D10 | system_init | C_WITH_EXACT_ASM_HELPER | 168 | 36 |
-| 0x0DDC | CDCE62005_control_rst | C_WITH_EXACT_ASM_HELPER | 48 | 20 |
-| 0x0E20 | PORTF_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 42 | 62 |
+| 0x0DDC | CDCE62005_control_rst | C_WITH_EXACT_ASM_HELPER | 52 | 16 |
+| 0x0E20 | PORTF_INT0_vect_isr | C_WITH_EXACT_ASM_HELPER | 46 | 58 |
 | 0x0E88 | USARTF0_DRE_vect_isr | C_WITH_EXACT_ASM_HELPER | 32 | 56 |
-| 0x0EE0 | USARTF0_RXC_vect_isr | C_WITH_EXACT_ASM_HELPER | 52 | 64 |
+| 0x0EE0 | USARTF0_RXC_vect_isr | C_WITH_EXACT_ASM_HELPER | 60 | 56 |
 | 0x0F54 | main | C_WITH_EXACT_ASM_HELPER | 374 | 146 |
+| 0x115C | fpga_data_exchange | C_WITH_EXACT_ASM_HELPER | 182 | 216 |
+| 0x12EA | cli_prompt_parse | C_WITH_EXACT_ASM_HELPER | 228 | 428 |
 | 0x157A | unlock_programming | C_WITH_EXACT_ASM_HELPER | 8 | 36 |
 | 0x15A6 | fpga_firmware_update | C_WITH_EXACT_ASM_HELPER | 54 | 136 |
 | 0x1664 | FUN_code_000b32 | C_BINARY_EXACT | 26 | 0 |
-| 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 42 | 10 |
+| 0x167E | FUN_code_000b3f | C_WITH_EXACT_ASM_HELPER | 46 | 6 |
 | 0x16B2 | FUN_code_000b59 | C_WITH_EXACT_ASM_HELPER | 56 | 38 |
 | 0x1710 | FUN_code_000b88 | C_WITH_EXACT_ASM_HELPER | 10 | 4 |
-| 0x171E | FUN_code_000b8f | C_WITH_EXACT_ASM_HELPER | 20 | 8 |
-| 0x173A | FUN_code_000b9d | C_WITH_EXACT_ASM_HELPER | 24 | 32 |
+| 0x171E | FUN_code_000b8f | C_BINARY_EXACT | 28 | 0 |
+| 0x173A | FUN_code_000b9d | C_WITH_EXACT_ASM_HELPER | 52 | 4 |
 | 0x1772 | FUN_code_000bb9 | C_WITH_EXACT_ASM_HELPER | 54 | 60 |
 | 0x17E4 | FUN_code_000bf2 | C_WITH_EXACT_ASM_HELPER | 12 | 24 |
-| 0x1808 | FUN_code_000c04 | C_WITH_EXACT_ASM_HELPER | 8 | 48 |
-| 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER | 16 | 62 |
+| 0x1808 | FUN_code_000c04 | C_BINARY_EXACT | 56 | 0 |
+| 0x1840 | FUN_code_000c20 | C_WITH_EXACT_ASM_HELPER | 76 | 2 |
 | 0x188E | cli_send_ch_mean_amplitude | C_WITH_EXACT_ASM_HELPER | 4 | 44 |
 | 0x18BE | cli_send_adc_baseline_dispersion | C_WITH_EXACT_ASM_HELPER | 16 | 66 |
-| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 26 | 132 |
-| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 40 | 56 |
-| 0x1A0E | FUN_code_000d07 | C_WITH_EXACT_ASM_HELPER | 28 | 20 |
-| 0x1A3E | cdce62005_rst | C_WITH_EXACT_ASM_HELPER | 12 | 26 |
-| 0x1A64 | cli_send_system_status | C_WITH_EXACT_ASM_HELPER | 218 | 166 |
-| 0x1BE4 | alarms_clear | C_WITH_EXACT_ASM_HELPER | 82 | 44 |
-| 0x1C62 | channels_read | C_WITH_EXACT_ASM_HELPER | 48 | 96 |
-| 0x1CF2 | cli_send_channel_cdf_adc | C_WITH_EXACT_ASM_HELPER | 28 | 84 |
+| 0x1910 | cli_send_tdc_data | C_WITH_EXACT_ASM_HELPER | 38 | 120 |
+| 0x19AE | eeprom_settings_save | C_WITH_EXACT_ASM_HELPER | 46 | 50 |
+| 0x1A0E | FUN_code_000d07 | C_WITH_EXACT_ASM_HELPER | 36 | 12 |
+| 0x1A3E | cdce62005_rst | C_WITH_EXACT_ASM_HELPER | 16 | 22 |
+| 0x1A64 | cli_send_system_status | C_WITH_EXACT_ASM_HELPER | 220 | 164 |
+| 0x1BE4 | alarms_clear | C_WITH_EXACT_ASM_HELPER | 108 | 18 |
+| 0x1C62 | channels_read | C_WITH_EXACT_ASM_HELPER | 58 | 86 |
+| 0x1CF2 | cli_send_channel_cdf_adc | C_WITH_EXACT_ASM_HELPER | 32 | 80 |
 | 0x1D62 | fpga_set_trg_charge_lvls | C_WITH_EXACT_ASM_HELPER | 12 | 36 |
 | 0x1D92 | fpga_set_trg_settings | C_WITH_EXACT_ASM_HELPER | 8 | 28 |
-| 0x1DB6 | fpga_set_adc_range_corr | C_WITH_EXACT_ASM_HELPER | 22 | 98 |
+| 0x1DB6 | fpga_set_adc_range_corr | C_WITH_EXACT_ASM_HELPER | 26 | 94 |
 | 0x1E2E | fpga_set_tdc_values | C_WITH_EXACT_ASM_HELPER | 16 | 62 |
-| 0x1E7C | fpga_set_threshold_calibration | C_WITH_EXACT_ASM_HELPER | 20 | 80 |
-| 0x1EE0 | FUN_code_000f70 | C_WITH_EXACT_ASM_HELPER | 20 | 70 |
-| 0x1F3A | fpga_set_ch_adc_delay | C_WITH_EXACT_ASM_HELPER | 22 | 62 |
-| 0x1F8E | fpga_set_ch_cfd_threshold | C_WITH_EXACT_ASM_HELPER | 18 | 76 |
-| 0x1FEC | fpga_set_adc_zero | C_WITH_EXACT_ASM_HELPER | 22 | 76 |
-| 0x204E | fpga_set_ch_cfd_zero | C_WITH_EXACT_ASM_HELPER | 22 | 66 |
+| 0x1E7C | fpga_set_threshold_calibration | C_WITH_EXACT_ASM_HELPER | 24 | 76 |
+| 0x1EE0 | FUN_code_000f70 | C_WITH_EXACT_ASM_HELPER | 22 | 68 |
+| 0x1F3A | fpga_set_ch_adc_delay | C_WITH_EXACT_ASM_HELPER | 26 | 58 |
+| 0x1F8E | fpga_set_ch_cfd_threshold | C_WITH_EXACT_ASM_HELPER | 28 | 66 |
+| 0x1FEC | fpga_set_adc_zero | C_WITH_EXACT_ASM_HELPER | 30 | 68 |
+| 0x204E | fpga_set_ch_cfd_zero | C_WITH_EXACT_ASM_HELPER | 26 | 62 |
 | 0x20A6 | FUN_code_001053 | C_WITH_EXACT_ASM_HELPER | 28 | 14 |
 | 0x20D0 | FUN_code_001068 | C_WITH_EXACT_ASM_HELPER | 24 | 4 |
 | 0x20EC | dac_set_value_2 | C_WITH_EXACT_ASM_HELPER | 18 | 6 |
 | 0x2104 | dac_set_value | C_WITH_EXACT_ASM_HELPER | 18 | 6 |
 | 0x211C | FUN_code_00108e | C_WITH_EXACT_ASM_HELPER | 10 | 10 |
+| 0x2130 | fpga_is_ready | C_WITH_EXACT_ASM_HELPER | 6 | 22 |
 | 0x214C | FUN_code_0010a6 | C_WITH_EXACT_ASM_HELPER | 6 | 34 |
 | 0x2174 | ths788_write | C_WITH_EXACT_ASM_HELPER | 100 | 48 |
-| 0x2208 | ths788_read | C_WITH_EXACT_ASM_HELPER | 120 | 42 |
-| 0x22AA | dac_send_value | C_WITH_EXACT_ASM_HELPER | 38 | 62 |
-| 0x230E | fpga_msg_send_t2 | C_WITH_EXACT_ASM_HELPER | 20 | 70 |
-| 0x2368 | fpga_msg_read_t1 | C_WITH_EXACT_ASM_HELPER | 20 | 78 |
-| 0x23CA | FUN_code_0011e5 | C_WITH_EXACT_ASM_HELPER | 22 | 166 |
-| 0x2486 | CDCE62005_send_control_settings | C_WITH_EXACT_ASM_HELPER | 24 | 48 |
-| 0x24CE | FUN_code_001267 | C_WITH_EXACT_ASM_HELPER | 16 | 82 |
-| 0x2530 | fpga_send_mcu_ts | C_WITH_EXACT_ASM_HELPER | 36 | 68 |
-| 0x2598 | adt7311_8bit_rw | C_WITH_EXACT_ASM_HELPER | 24 | 14 |
-| 0x25BE | adt7311_16bit_rw | C_WITH_EXACT_ASM_HELPER | 26 | 18 |
+| 0x2208 | ths788_read | C_WITH_EXACT_ASM_HELPER | 124 | 38 |
+| 0x22AA | dac_send_value | C_WITH_EXACT_ASM_HELPER | 84 | 16 |
+| 0x230E | fpga_msg_send_t2 | C_WITH_EXACT_ASM_HELPER | 84 | 6 |
+| 0x2368 | fpga_msg_read_t1 | C_WITH_EXACT_ASM_HELPER | 94 | 4 |
+| 0x23CA | FUN_code_0011e5 | C_WITH_EXACT_ASM_HELPER | 186 | 2 |
+| 0x2486 | CDCE62005_send_control_settings | C_BINARY_EXACT | 72 | 0 |
+| 0x24CE | FUN_code_001267 | C_WITH_EXACT_ASM_HELPER | 88 | 10 |
+| 0x2530 | fpga_send_mcu_ts | C_WITH_EXACT_ASM_HELPER | 96 | 8 |
+| 0x2598 | adt7311_8bit_rw | C_WITH_EXACT_ASM_HELPER | 34 | 4 |
+| 0x25BE | adt7311_16bit_rw | C_WITH_EXACT_ASM_HELPER | 38 | 6 |
 | 0x25EA | adt7311_faults_clr | C_WITH_EXACT_ASM_HELPER | 22 | 8 |
-| 0x2608 | adt7311_byte_rw | C_WITH_EXACT_ASM_HELPER | 20 | 24 |
+| 0x2608 | adt7311_byte_rw | C_WITH_EXACT_ASM_HELPER | 28 | 16 |
 | 0x2634 | cli_get_integer | C_WITH_EXACT_ASM_HELPER | 10 | 110 |
-| 0x26AC | cli_get_hex | C_WITH_EXACT_ASM_HELPER | 24 | 52 |
+| 0x26AC | cli_get_hex | C_WITH_EXACT_ASM_HELPER | 28 | 48 |
 | 0x26F8 | cli_send_32bit_hex | C_WITH_EXACT_ASM_HELPER | 24 | 16 |
 | 0x2720 | cli_send_digit_hex | C_WITH_EXACT_ASM_HELPER | 8 | 6 |
 | 0x272E | FUN_code_001397 | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
 | 0x2736 | cli_send_temperature | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
 | 0x273E | FUN_code_00139f | C_WITH_EXACT_ASM_HELPER | 2 | 6 |
-| 0x274E | cli_send_uint16 | C_WITH_EXACT_ASM_HELPER | 38 | 170 |
+| 0x274E | cli_send_uint16 | C_WITH_EXACT_ASM_HELPER | 40 | 168 |
 | 0x281E | cli_send_crlf | C_WITH_EXACT_ASM_HELPER | 6 | 2 |
 | 0x2826 | cli_send_msg | C_WITH_EXACT_ASM_HELPER | 8 | 8 |
 | 0x2836 | cli_get_next_byte | C_WITH_EXACT_ASM_HELPER | 2 | 4 |
-| 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 40 | 72 |
-| 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 42 | 64 |
+| 0x283C | cli_get_next_char | C_WITH_EXACT_ASM_HELPER | 52 | 60 |
+| 0x28AC | cli_send_buf | C_WITH_EXACT_ASM_HELPER | 48 | 58 |
 
-Every accepted replacement was compiled and checked against complete FLASH.
-Final totals: **89 application entries: 2 C_BINARY_EXACT,
-81 C_WITH_EXACT_ASM_HELPER, 6 ASM_EXACT**, plus **9 boot ASM procedures**.
-Compiler-generated instructions cover **3064/10836 bytes (28.2761%)**;
-ASM covers **7772/10836 (71.7239%)**, including **4138 helper bytes**.
-Application-only C coverage is **30.4633%**. Data, padding and erased FLASH are
-excluded. The 7202 bytes hosted in C regions include helpers and are not pure C.
+Current C coverage is 5286/10836 executable bytes (48.7818%), or 52.5552% of the application. Inline ASM is counted separately. Complete FLASH differs in zero bytes.
 
 ## Accepted implementation choices
 
@@ -328,3 +327,24 @@ Application-only C is 51.6007%. Both clean final builds and fresh normalization
 of original PM.hex produce canonical SHA256
 `e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0`.
 Differing bytes: 0. Exact ASM, hardware state and reference artifacts are unchanged.
+
+## Further exact continuation: steps 191–208
+
+18 accepted fragment changes across 13 translation units replaced 96 ASM bytes
+with compiler-generated C; all 18 independently passed clean `make exact-check`.
+No candidate was accepted by behavioral equivalence, and no emulator runs were needed.
+The manifest and GCC APP/NOAPP provenance audit agree on every helper range.
+
+C now handles ADT7311 transfer-byte copies and chip-select stores, channel offset
+scaling, two device-index shifts, byte additions/subtractions in DMA and timer
+interrupts, and IRQ primitives around original FPGA/TDC/PLL calls. CALL/RCALL
+widths and protected register operations remain in exact ASM. Existing annotated
+historical C alternatives remain beside the retained helpers.
+
+Application entries: 89; C_BINARY_EXACT 5, C_WITH_EXACT_ASM_HELPER 83, ASM_EXACT 1.
+Boot: 9 ASM procedures. Compiler-generated C: 5286/10836 bytes (48.7818%);
+ASM: 5550 bytes (51.2182%), including 4742 inline helpers. Application-only C:
+52.5552%. Of C bytes, 228 are GNU AVR primitives; 5058 are other C instructions.
+Golden and rebuilt SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0.
+Differing bytes: 0. Two final clean ELF/HEX/BIN builds are identical.
+Machine-readable changes and per-step logs: exact_latest_continuation_results.json.

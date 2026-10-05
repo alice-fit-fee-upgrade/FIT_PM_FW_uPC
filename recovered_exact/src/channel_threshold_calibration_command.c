@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void fpga_set_threshold_calibration(void)
@@ -16,7 +17,10 @@ void fpga_set_threshold_calibration(void)
     register uint8_t address asm("r18") = 0xb0;
     asm volatile("" : "+r" (address));
     address += channel;
-    asm volatile("cli\n\trcall fpga_msg_send_t2\n\tsei" : "+r" (word), "+r" (address) : : "memory", "cc");
+    asm volatile("" : "+r" (word), "+r" (address) : : "memory");
+    pm_cpu_disable_irq();
+    asm volatile("rcall fpga_msg_send_t2" : "+r" (word), "+r" (address) : : "memory", "cc");
+    pm_cpu_enable_irq();
     register uint8_t *settings asm("r28") = (uint8_t *)0x2163;
     asm volatile("" : "+y" (settings));
     register uint8_t offset asm("r23") = channel;

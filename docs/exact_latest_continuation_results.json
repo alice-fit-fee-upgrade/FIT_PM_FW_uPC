@@ -1,0 +1,164 @@
+[
+  {
+    "step": 191,
+    "source": "adt8.c",
+    "change": "C transfer-byte register copy",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_191.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 192,
+    "source": "adt16.c",
+    "change": "C low/high transfer register copies",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_192.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 193,
+    "source": "adt8.c",
+    "change": "C chip-select MMIO stores",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_193.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 194,
+    "source": "adt16.c",
+    "change": "C chip-select MMIO stores",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_194.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 195,
+    "source": "channel_settings_display.c",
+    "change": "C device shifts and IRQ primitives around exact TDC call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_195.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 196,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C channel-to-offset scaling",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_196.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 197,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C byte arithmetic for standalone SUBI fragments",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_197.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 198,
+    "source": "dma_channel_interrupt.c",
+    "change": "C byte arithmetic for standalone SUBI fragments",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_198.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 199,
+    "source": "channel_adc_zero_command.c",
+    "change": "Compiler IRQ primitives around exact FPGA call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_199.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 200,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Compiler IRQ primitives around exact FPGA call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_200.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 201,
+    "source": "channel_adc_delay_command.c",
+    "change": "Compiler IRQ primitives around exact FPGA call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_201.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 202,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "Compiler IRQ primitives around exact FPGA call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_202.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 203,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "Compiler IRQ primitives around exact FPGA call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_203.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 204,
+    "source": "channel_adc_range_command.c",
+    "change": "Compiler IRQ primitives around exact FPGA call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_204.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 205,
+    "source": "pll_defaults_load.c",
+    "change": "Compiler IRQ primitives around exact PLL call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_205.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 206,
+    "source": "tdc_channel_data_display.c",
+    "change": "Compiler IRQ primitives around exact FPGA read macro",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_206.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 207,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C register subtraction retaining original bound registers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_207.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 208,
+    "source": "dma_channel_interrupt.c",
+    "change": "C register subtraction retaining original bound registers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_208.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

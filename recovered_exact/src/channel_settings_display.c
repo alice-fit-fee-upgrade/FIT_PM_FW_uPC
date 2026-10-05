@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <stdint.h>
 #define MESSAGE(cursor) asm volatile("rcall cli_send_msg" : "+z" (cursor) : : "memory", "cc")
 #define OFFSET_POINTER(pointer, offset, zero) \
@@ -37,8 +38,13 @@ next_channel:;
     asm volatile("" : "+r" (low));
     register uint8_t device asm("r19") = channel;
     asm volatile("" : "+r" (device), "+r" (channel));
-    asm volatile("lsr %0\n\tlsr %0\n\tcli\n\trcall ths788_read\n\tsei"
-                 : "+r" (device), "=r" (word) : "r" (low) : "memory", "cc");
+    device >>= 1;
+    asm volatile("" : "+r" (device));
+    device >>= 1;
+    asm volatile("" : "+r" (device) : "r" (low));
+    pm_cpu_disable_irq();
+    asm volatile("rcall ths788_read" : "+r" (device), "=r" (word) : "r" (low) : "memory", "cc");
+    pm_cpu_enable_irq();
     register uint8_t high asm("r17");
     asm volatile("" : "=r" (high));
     low = high;

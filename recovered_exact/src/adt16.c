@@ -24,7 +24,8 @@
 
 #define CS_REGISTER(address, reg) \
  do { register uint8_t mask asm(reg)=0x10; \
- asm volatile ("sts %0, %1" : : "n" (address), "r" (mask) : "memory"); } while (0)
+ asm volatile ("" : "+r" (mask)); \
+ *(volatile uint8_t *)(address) = mask; } while (0)
 #define TRANSFER(value) \
  asm volatile ("rcall adt7311_byte_rw" : "+r" (value) \
      : : "r17", "r18", "memory", "cc")
@@ -38,8 +39,10 @@ void adt7311_16bit_rw(void)
     asm volatile ("" : "=r" (tx_low), "=r" (tx_high));
     register uint8_t low asm("r20");
     register uint8_t high asm("r21");
-    asm volatile ("mov %0, %2\n\tmov %1, %3" : "=r" (low), "=r" (high)
-        : "r" (tx_low), "r" (tx_high));
+    low = tx_low;
+    asm volatile ("" : "+r" (low));
+    high = tx_high;
+    asm volatile ("" : "+r" (high));
     TRANSFER(command);
     command=high;
     TRANSFER(command);

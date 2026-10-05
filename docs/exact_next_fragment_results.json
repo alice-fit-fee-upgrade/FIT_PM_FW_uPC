@@ -1,0 +1,74 @@
+[
+  {
+    "step": 191,
+    "source": "adt8.c",
+    "change": "C transfer-byte register copy",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_191.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 192,
+    "source": "adt16.c",
+    "change": "C low/high transfer register copies",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_192.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 193,
+    "source": "adt8.c",
+    "change": "C chip-select MMIO stores",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_193.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 194,
+    "source": "adt16.c",
+    "change": "C chip-select MMIO stores",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_194.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 195,
+    "source": "channel_settings_display.c",
+    "change": "C device shifts and IRQ primitives around exact TDC call",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_195.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 196,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C channel-to-offset scaling",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_196.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 197,
+    "source": "timer_overflow_interrupt.c",
+    "change": "C byte arithmetic for standalone SUBI fragments",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_197.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 198,
+    "source": "dma_channel_interrupt.c",
+    "change": "C byte arithmetic for standalone SUBI fragments",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_198.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

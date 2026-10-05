@@ -131,7 +131,12 @@ L_00029c:
     asm volatile("" : "=r" (r17), "=r" (r20));
     r20 |= r17;
     asm volatile("" : "+r" (r20));
-    asm volatile("subi        r16,0xe0" : : : "memory", "cc");
+    {
+        register uint8_t scratch_r16 asm("r16");
+        asm volatile("" : "=r" (scratch_r16) : : "memory");
+        scratch_r16 -= 224;
+        asm volatile("" : "+r" (scratch_r16) : : "memory");
+    }
     asm volatile("cpi         r16,0xc4" : : : "memory", "cc");
     asm goto("brbc 1, .Ltimer_L_00029c" : : : "memory", "cc" : L_00029c);
     asm volatile("inc         r19" : : : "memory", "cc");
@@ -287,7 +292,12 @@ L_00030d:
     asm volatile("ld          r17,Y+" : : : "memory", "cc");
     asm volatile("eor         r18,r18" : : : "memory", "cc");
     asm volatile("call        ths788_write" : : : "memory", "cc");
-    asm volatile("subi        r16,0xe0" : : : "memory", "cc");
+    {
+        register uint8_t scratch_r16 asm("r16");
+        asm volatile("" : "=r" (scratch_r16) : : "memory");
+        scratch_r16 -= 224;
+        asm volatile("" : "+r" (scratch_r16) : : "memory");
+    }
     asm volatile("cpi         r16,0x8c" : : : "memory", "cc");
     asm goto("brbc 1, .Ltimer_L_00030d" : : : "memory", "cc" : L_00030d);
     r16 = 0xc;
@@ -650,7 +660,12 @@ L_00040f:
     asm volatile("" : "=r" (r18));
     r18 += r18;
     asm volatile("" : "+r" (r18));
-    asm volatile("subi        r18,0xf3" : : : "memory", "cc");
+    {
+        register uint8_t scratch_r18 asm("r18");
+        asm volatile("" : "=r" (scratch_r18) : : "memory");
+        scratch_r18 -= 243;
+        asm volatile("" : "+r" (scratch_r18) : : "memory");
+    }
     pm_cpu_disable_irq();
     asm volatile("call        fpga_msg_read_t1" : : : "memory", "cc");
     asm volatile("bset        7" : : : "memory", "cc");
@@ -675,7 +690,13 @@ L_000422:
     asm goto("brbc 0, .Ltimer_L_00045b" : : : "memory", "cc" : L_00045b);
     r16 = 0x1e;
     asm volatile("" : "+r" (r16));
-    asm volatile("sub         r16,r20" : : : "memory", "cc");
+    {
+        register uint8_t destination asm("r16");
+        register uint8_t operand asm("r20");
+        asm volatile("" : "=r" (destination), "=r" (operand) : : "memory");
+        destination -= operand;
+        asm volatile("" : "+r" (destination) : "r" (operand) : "memory");
+    }
     goto L_000434;
 L_00042b:
     asm volatile(".Ltimer_L_00042b:" : : : "memory");
@@ -689,7 +710,13 @@ L_00042f:
     r16 = 0x96;
     asm volatile("" : "+r" (r16));
     asm volatile("eor         r17,r17" : : : "memory", "cc");
-    asm volatile("sub         r16,r20" : : : "memory", "cc");
+    {
+        register uint8_t destination asm("r16");
+        register uint8_t operand asm("r20");
+        asm volatile("" : "=r" (destination), "=r" (operand) : : "memory");
+        destination -= operand;
+        asm volatile("" : "+r" (destination) : "r" (operand) : "memory");
+    }
     asm volatile("sbc         r17,r21" : : : "memory", "cc");
 L_000434:
     asm volatile(".Ltimer_L_000434:" : : : "memory");
@@ -712,7 +739,12 @@ L_000434:
     asm volatile("" : "=r" (r20));
     r20 += r20;
     asm volatile("" : "+r" (r20));
-    asm volatile("subi        r20,0xfc" : : : "memory", "cc");
+    {
+        register uint8_t scratch_r20 asm("r20");
+        asm volatile("" : "=r" (scratch_r20) : : "memory");
+        scratch_r20 -= 252;
+        asm volatile("" : "+r" (scratch_r20) : : "memory");
+    }
     asm volatile("eor         r21,r21" : : : "memory", "cc");
     asm volatile("" : "=r" (r20), "=r" (r28));
     r28 += r20;
@@ -750,7 +782,12 @@ L_000450:
     asm volatile("st          Y,r20" : : : "memory", "cc");
     asm volatile("std         Y+0x1,r21" : : : "memory", "cc");
     asm volatile("movw        r16,r20" : : : "memory", "cc");
-    asm volatile("subi        r18,0x7e" : : : "memory", "cc");
+    {
+        register uint8_t scratch_r18 asm("r18");
+        asm volatile("" : "=r" (scratch_r18) : : "memory");
+        scratch_r18 -= 126;
+        asm volatile("" : "+r" (scratch_r18) : : "memory");
+    }
     pm_cpu_disable_irq();
     asm volatile("call        fpga_msg_send_t2" : : : "memory", "cc");
     asm volatile("bset        7" : : : "memory", "cc");

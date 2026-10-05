@@ -57,7 +57,13 @@ L_000101:
     asm volatile("" : "+r" (r29));
     r16 = 0x8;
     asm volatile("" : "+r" (r16));
-    asm volatile("sub         r16,r17" : : : "memory", "cc");
+    {
+        register uint8_t destination asm("r16");
+        register uint8_t operand asm("r17");
+        asm volatile("" : "=r" (destination), "=r" (operand) : : "memory");
+        destination -= operand;
+        asm volatile("" : "+r" (destination) : "r" (operand) : "memory");
+    }
     asm volatile("eor         r17,r17" : : : "memory", "cc");
     asm volatile("" : "=r" (r16), "=r" (r28));
     r28 += r16;
@@ -272,10 +278,21 @@ L_0001b7:
     asm volatile("" : "=r" (r2));
     r18 = r2;
     asm volatile("" : "+r" (r18));
-    asm volatile("sub         r16,r20" : : : "memory", "cc");
+    {
+        register uint8_t destination asm("r16");
+        register uint8_t operand asm("r20");
+        asm volatile("" : "=r" (destination), "=r" (operand) : : "memory");
+        destination -= operand;
+        asm volatile("" : "+r" (destination) : "r" (operand) : "memory");
+    }
     asm volatile("sbc         r17,r21" : : : "memory", "cc");
     asm volatile("sbc         r18,r22" : : : "memory", "cc");
-    asm volatile("subi        r16,0xff" : : : "memory", "cc");
+    {
+        register uint8_t scratch_r16 asm("r16");
+        asm volatile("" : "=r" (scratch_r16) : : "memory");
+        scratch_r16 -= 255;
+        asm volatile("" : "+r" (scratch_r16) : : "memory");
+    }
     asm volatile("sbci        r17,0xff" : : : "memory", "cc");
     asm volatile("sbci        r18,0xff" : : : "memory", "cc");
     asm volatile("and         r18,r18" : : : "memory", "cc");

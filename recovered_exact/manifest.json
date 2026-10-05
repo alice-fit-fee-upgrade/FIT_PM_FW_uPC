@@ -220,29 +220,14 @@
       "meaning": "Command/data transaction preserving all registers and discarding RX",
       "asm_helper_ranges": [
         {
-          "start": 9634,
-          "end_exclusive": 9638,
-          "reason": "Exact CS assertion store"
-        },
-        {
-          "start": 9638,
-          "end_exclusive": 9640,
-          "reason": "Capture original R17 transmit byte"
-        },
-        {
           "start": 9640,
           "end_exclusive": 9642,
-          "reason": "Original byte-primitive RCALL"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 9644,
           "end_exclusive": 9646,
-          "reason": "Original byte-primitive RCALL"
-        },
-        {
-          "start": 9648,
-          "end_exclusive": 9652,
-          "reason": "Exact CS release store"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -289,34 +274,19 @@
       "meaning": "Command/high/low transaction with original R20/R21 receive outputs",
       "asm_helper_ranges": [
         {
-          "start": 9670,
-          "end_exclusive": 9674,
-          "reason": "Exact CS assertion store"
-        },
-        {
-          "start": 9674,
-          "end_exclusive": 9678,
-          "reason": "Capture original transmit registers"
-        },
-        {
           "start": 9678,
           "end_exclusive": 9680,
-          "reason": "Original byte-primitive RCALL"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 9682,
           "end_exclusive": 9684,
-          "reason": "Original byte-primitive RCALL"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 9688,
           "end_exclusive": 9690,
-          "reason": "Original byte-primitive RCALL"
-        },
-        {
-          "start": 9694,
-          "end_exclusive": 9698,
-          "reason": "Exact CS release store"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -660,8 +630,18 @@
       "asm_helper_ranges": [
         {
           "start": 3568,
+          "end_exclusive": 3576,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 3578,
+          "end_exclusive": 3582,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 3584,
           "end_exclusive": 3588,
-          "reason": "Exact FLASH reads, CALL/interrupt window and loop flag behavior"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1648,22 +1628,22 @@
         {
           "start": 7994,
           "end_exclusive": 8006,
-          "reason": "Exact channel parse and signed bounds"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8008,
           "end_exclusive": 8038,
-          "reason": "Exact value parse, range and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 8050,
-          "end_exclusive": 8056,
-          "reason": "Exact protected FPGA write"
+          "start": 8052,
+          "end_exclusive": 8054,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8064,
           "end_exclusive": 8078,
-          "reason": "Exact SRAM pointer, ordered word store, DAC scaling and shared reply"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1680,22 +1660,22 @@
         {
           "start": 8270,
           "end_exclusive": 8282,
-          "reason": "Exact channel parse and signed bounds"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8284,
           "end_exclusive": 8318,
-          "reason": "Exact value parse, signed range and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 8330,
-          "end_exclusive": 8336,
-          "reason": "Exact protected FPGA write"
+          "start": 8332,
+          "end_exclusive": 8334,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8344,
           "end_exclusive": 8358,
-          "reason": "Exact SRAM pointer/store, DAC scaling and shared reply"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1720,8 +1700,8 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 8234,
-          "end_exclusive": 8240,
+          "start": 8236,
+          "end_exclusive": 8238,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -1754,37 +1734,32 @@
         {
           "start": 8078,
           "end_exclusive": 8090,
-          "reason": "Exact channel parse and signed bounds"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8092,
           "end_exclusive": 8126,
-          "reason": "Exact value parse, signed range and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 8128,
-          "end_exclusive": 8134,
-          "reason": "Exact low scratch register selection and shifts"
-        },
-        {
-          "start": 8138,
-          "end_exclusive": 8144,
-          "reason": "Exact protected FPGA write"
+          "start": 8140,
+          "end_exclusive": 8142,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8148,
           "end_exclusive": 8162,
-          "reason": "Exact SRAM pointer/store and DAC scaling"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8166,
           "end_exclusive": 8168,
-          "reason": "Exact response RCALL"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 8170,
           "end_exclusive": 8172,
-          "reason": "Original shared error jump"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1833,27 +1808,27 @@
         {
           "start": 7804,
           "end_exclusive": 7816,
-          "reason": "Exact channel parsing"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7818,
           "end_exclusive": 7848,
-          "reason": "Exact value parse, signed bounds and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7854,
-          "end_exclusive": 7860,
-          "reason": "Exact protected FPGA write"
+          "start": 7856,
+          "end_exclusive": 7858,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7868,
           "end_exclusive": 7878,
-          "reason": "Exact SRAM pointer and ordered word store"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7882,
           "end_exclusive": 7904,
-          "reason": "Exact low scratch pointer, DAC source reads/scaling and shared reply"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -1870,32 +1845,37 @@
         {
           "start": 7606,
           "end_exclusive": 7618,
-          "reason": "Exact channel parsing"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7620,
           "end_exclusive": 7632,
-          "reason": "Exact first value and comma parsing"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7634,
           "end_exclusive": 7676,
-          "reason": "Exact second value, paired signed bounds and FPGA guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7686,
           "end_exclusive": 7700,
-          "reason": "Exact SRAM pointer and ordered four-byte store"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7706,
+          "start": 7708,
+          "end_exclusive": 7710,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 7712,
           "end_exclusive": 7714,
-          "reason": "Exact protected first FPGA write and INC"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 7716,
           "end_exclusive": 7726,
-          "reason": "Exact second write, shared response and adjacent error entry"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -2152,8 +2132,8 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 7324,
-          "end_exclusive": 7334,
+          "start": 7330,
+          "end_exclusive": 7332,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
@@ -2344,62 +2324,72 @@
         {
           "start": 6416,
           "end_exclusive": 6428,
-          "reason": "Delimiter/readiness guard"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6430,
-          "end_exclusive": 6436,
-          "reason": "Atomic FPGA read"
+          "start": 6432,
+          "end_exclusive": 6434,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6438,
           "end_exclusive": 6446,
-          "reason": "Signed-byte formatter"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6448,
           "end_exclusive": 6450,
-          "reason": "Console ABI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6452,
           "end_exclusive": 6460,
-          "reason": "Signed-byte formatter"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6462,
           "end_exclusive": 6464,
-          "reason": "Console ABI"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6466,
+          "start": 6468,
+          "end_exclusive": 6470,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6472,
           "end_exclusive": 6482,
-          "reason": "Atomic FPGA read, signed formatter and CRLF"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6486,
           "end_exclusive": 6488,
-          "reason": "Flag-setting channel clear"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 6492,
+          "start": 6494,
+          "end_exclusive": 6496,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 6498,
           "end_exclusive": 6528,
-          "reason": "FPGA read, exact coarse/fine rounding and saved low byte"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6530,
           "end_exclusive": 6536,
-          "reason": "Space, saved low-byte restore and signed formatter"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6538,
           "end_exclusive": 6556,
-          "reason": "Console ABI, calibration signed 7-bit load and formatter"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 6558,
           "end_exclusive": 6574,
-          "reason": "Console ABI, signed loop, success/error tails"
+          "reason": "Original flags, private frame/call or branch/pointer helper"
         }
       ]
     },
@@ -3587,7 +3577,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 534,
+          "start": 536,
           "end_exclusive": 538,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3687,7 +3677,12 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 882,
+          "start": 884,
+          "end_exclusive": 888,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 890,
           "end_exclusive": 898,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3844,7 +3839,7 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 1342,
+          "start": 1344,
           "end_exclusive": 1356,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -3940,6 +3935,11 @@
         },
         {
           "start": 1560,
+          "end_exclusive": 1570,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 1572,
           "end_exclusive": 1576,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -4184,11 +4184,6 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 2082,
-          "end_exclusive": 2084,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 2086,
           "end_exclusive": 2096,
           "reason": "Original flags, private frame/call or branch/pointer helper"
@@ -4199,22 +4194,22 @@
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 2130,
-          "end_exclusive": 2132,
-          "reason": "Original flags, private frame/call or branch/pointer helper"
-        },
-        {
           "start": 2134,
           "end_exclusive": 2144,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
           "start": 2146,
+          "end_exclusive": 2148,
+          "reason": "Original flags, private frame/call or branch/pointer helper"
+        },
+        {
+          "start": 2150,
           "end_exclusive": 2152,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {
-          "start": 2166,
+          "start": 2168,
           "end_exclusive": 2170,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
@@ -4240,7 +4235,7 @@
         },
         {
           "start": 2208,
-          "end_exclusive": 2216,
+          "end_exclusive": 2214,
           "reason": "Original flags, private frame/call or branch/pointer helper"
         },
         {

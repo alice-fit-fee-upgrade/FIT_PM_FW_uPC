@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void fpga_set_ch_cfd_zero(void)
@@ -20,7 +21,10 @@ void fpga_set_ch_cfd_zero(void)
     register uint8_t address asm("r18") = 0x81;
     asm volatile("" : "+r" (address));
     address += offset;
-    asm volatile("cli\n\trcall fpga_msg_send_t2\n\tsei" : "+r" (word), "+r" (address) : : "memory", "cc");
+    asm volatile("" : "+r" (word), "+r" (address) : : "memory");
+    pm_cpu_disable_irq();
+    asm volatile("rcall fpga_msg_send_t2" : "+r" (word), "+r" (address) : : "memory", "cc");
+    pm_cpu_enable_irq();
     register uint8_t *settings asm("r28") = (uint8_t *)0x21cf;
     asm volatile("" : "+y" (settings));
     offset += offset; asm volatile("" : "+r" (offset));

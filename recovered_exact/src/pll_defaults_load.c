@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include <avr/io.h>
 
 /* Archived C alternative for the exact ASM helpers below (not compiled).
@@ -41,8 +42,11 @@ next_setting:
             : "=r" (b0), "=r" (b1), "=r" (b2), "=r" (b3), "+z" (cursor)
             : "r" (remaining) : "memory");
         /* Retain CALL rather than RCALL and the original interrupt window. */
-        asm volatile("cli\n\tcall CDCE62005_send_control_settings\n\tsei"
+        asm volatile("" : "+r" (b0), "+r" (b1), "+r" (b2), "+r" (b3) : : "memory");
+        pm_cpu_disable_irq();
+        asm volatile("call CDCE62005_send_control_settings"
             : "+r" (b0), "+r" (b1), "+r" (b2), "+r" (b3) : : "memory", "cc");
+        pm_cpu_enable_irq();
     }
     asm volatile("dec %0" : "+r" (remaining) : : "cc");
     asm goto("brne %l[next_setting]" : : "r" (remaining) : : next_setting);

@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void fpga_set_adc_range_corr(void)
@@ -32,7 +33,10 @@ void fpga_set_adc_range_corr(void)
     asm volatile("" : "+r" (address));
     address += channel; asm volatile("" : "+r" (address));
     register uint16_t word asm("r16") = first;
-    asm volatile("cli\n\trcall fpga_msg_send_t2\n\tsei" : "+r" (word), "+r" (address) : : "memory", "cc");
+    asm volatile("" : "+r" (word), "+r" (address) : : "memory");
+    pm_cpu_disable_irq();
+    asm volatile("rcall fpga_msg_send_t2" : "+r" (word), "+r" (address) : : "memory", "cc");
+    pm_cpu_enable_irq();
     asm volatile("inc %0" : "+r" (address) : : "cc");
     word = requested;
     asm volatile("cli\n\trcall fpga_msg_send_t2\n\tsei\n\trjmp LAB_code_000ff1"

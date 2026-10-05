@@ -1,3 +1,4 @@
+#include "legacy_cpu.h"
 #include "legacy_cli.h"
 
 void fpga_set_ch_cfd_threshold(void)
@@ -14,11 +15,19 @@ void fpga_set_ch_cfd_threshold(void)
     register uint16_t word asm("r16") = requested;
     asm volatile("" : "+r" (word));
     register uint8_t offset asm("r10");
-    asm volatile("mov %0, %1\n\tlsl %0\n\tlsl %0" : "=r" (offset) : "r" (channel) : "cc");
+    offset = channel;
+    asm volatile("" : "+r" (offset));
+    offset += offset;
+    asm volatile("" : "+r" (offset));
+    offset += offset;
+    asm volatile("" : "+r" (offset));
     register uint8_t address asm("r18") = 0x80;
     asm volatile("" : "+r" (address));
     address += offset;
-    asm volatile("cli\n\trcall fpga_msg_send_t2\n\tsei" : "+r" (word), "+r" (address) : : "memory", "cc");
+    asm volatile("" : "+r" (word), "+r" (address) : : "memory");
+    pm_cpu_disable_irq();
+    asm volatile("rcall fpga_msg_send_t2" : "+r" (word), "+r" (address) : : "memory", "cc");
+    pm_cpu_enable_irq();
     register uint8_t *settings asm("r28") = (uint8_t *)0x21cf;
     asm volatile("" : "+y" (settings));
     asm volatile("lsl %0\n\tclr r11\n\tadd r28, %0\n\tadc r29, r11"

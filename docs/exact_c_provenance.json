@@ -2,8 +2,8 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 4838,
-  "compiler_generated_avr_primitive_bytes": 184,
+  "inline_asm_bytes": 4742,
+  "compiler_generated_avr_primitive_bytes": 228,
   "avr_primitive_mnemonics": [
     "bld",
     "bst",
@@ -70,9 +70,9 @@
     },
     {
       "symbol": "adt7311_8bit_rw",
-      "inline_asm_bytes": 14,
+      "inline_asm_bytes": 4,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 24
+      "compiler_bytes": 34
     },
     {
       "symbol": "adt7311_faults_clr",
@@ -82,9 +82,9 @@
     },
     {
       "symbol": "adt7311_16bit_rw",
-      "inline_asm_bytes": 18,
+      "inline_asm_bytes": 6,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 26
+      "compiler_bytes": 38
     },
     {
       "symbol": "FUN_code_000c04",
@@ -178,9 +178,9 @@
     },
     {
       "symbol": "CDCE62005_control_rst",
-      "inline_asm_bytes": 20,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 48
+      "inline_asm_bytes": 16,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 52
     },
     {
       "symbol": "PORTB_INT0_vect_isr",
@@ -334,27 +334,27 @@
     },
     {
       "symbol": "fpga_set_ch_adc_delay",
-      "inline_asm_bytes": 62,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 22
-    },
-    {
-      "symbol": "fpga_set_ch_cfd_zero",
-      "inline_asm_bytes": 66,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 22
-    },
-    {
-      "symbol": "fpga_set_adc_zero",
-      "inline_asm_bytes": 72,
+      "inline_asm_bytes": 58,
       "compiler_generated_avr_primitive_bytes": 4,
       "compiler_bytes": 26
     },
     {
+      "symbol": "fpga_set_ch_cfd_zero",
+      "inline_asm_bytes": 62,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 26
+    },
+    {
+      "symbol": "fpga_set_adc_zero",
+      "inline_asm_bytes": 68,
+      "compiler_generated_avr_primitive_bytes": 8,
+      "compiler_bytes": 30
+    },
+    {
       "symbol": "fpga_set_ch_cfd_threshold",
-      "inline_asm_bytes": 76,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 18
+      "inline_asm_bytes": 66,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 28
     },
     {
       "symbol": "fpga_set_tdc_values",
@@ -364,15 +364,15 @@
     },
     {
       "symbol": "fpga_set_threshold_calibration",
-      "inline_asm_bytes": 80,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 20
+      "inline_asm_bytes": 76,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 24
     },
     {
       "symbol": "fpga_set_adc_range_corr",
-      "inline_asm_bytes": 98,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 22
+      "inline_asm_bytes": 94,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 26
     },
     {
       "symbol": "FUN_code_000f70",
@@ -412,9 +412,9 @@
     },
     {
       "symbol": "channels_read",
-      "inline_asm_bytes": 94,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 50
+      "inline_asm_bytes": 86,
+      "compiler_generated_avr_primitive_bytes": 4,
+      "compiler_bytes": 58
     },
     {
       "symbol": "cli_get_hex",
@@ -442,9 +442,9 @@
     },
     {
       "symbol": "cli_send_tdc_data",
-      "inline_asm_bytes": 132,
-      "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 26
+      "inline_asm_bytes": 120,
+      "compiler_generated_avr_primitive_bytes": 12,
+      "compiler_bytes": 38
     },
     {
       "symbol": "FUN_code_0004ef",
@@ -532,15 +532,15 @@
     },
     {
       "symbol": "DMA_CH1_vect_isr",
-      "inline_asm_bytes": 348,
+      "inline_asm_bytes": 342,
       "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 302
+      "compiler_bytes": 308
     },
     {
       "symbol": "TCC0_OVF_vect_isr",
-      "inline_asm_bytes": 616,
+      "inline_asm_bytes": 602,
       "compiler_generated_avr_primitive_bytes": 42,
-      "compiler_bytes": 478
+      "compiler_bytes": 492
     }
   ]
 }

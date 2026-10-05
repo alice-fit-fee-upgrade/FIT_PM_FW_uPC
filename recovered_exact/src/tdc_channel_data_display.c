@@ -1,5 +1,11 @@
+#include "legacy_cpu.h"
 #include <stdint.h>
-#define READ_WORD(value, address) asm volatile("cli\n\trcall fpga_msg_read_t1\n\tsei" : "=r" (value), "+r" (address) : : "memory", "cc")
+#define READ_WORD(value, address) do { \
+    asm volatile("" : "+r" (address) : : "memory"); \
+    pm_cpu_disable_irq(); \
+    asm volatile("rcall fpga_msg_read_t1" : "=r" (value), "+r" (address) : : "memory", "cc"); \
+    pm_cpu_enable_irq(); \
+} while (0)
 #define PRINT_SIGNED_BYTE(low) asm volatile("clr r17\n\tsbrc r16, 7\n\tcom r17\n\trcall cli_send_int16" : "+r" (low) : : "r17", "memory", "cc")
 #define SEND_SPACE(low) do { (low) = ' '; asm volatile("rcall cli_send_buf" : "+r" (low) : : "memory", "cc"); } while (0)
 
