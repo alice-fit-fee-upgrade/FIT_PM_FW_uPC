@@ -79,7 +79,7 @@ decimal_point:
     digit = '0'; STORE_DIGIT();
 format_sign:
     quotient_high = 0x50; asm volatile("" : "+r" (quotient_high));
-    asm goto("tst r20\n\tbreq %l[sign_character]" : : : "cc" : sign_character);
+    { register uint8_t tested asm("r20"); asm volatile("" : "=r" (tested)); if (!tested) goto sign_character; }
     asm volatile("dec r17" : "+r" (quotient_high) : : "cc");
 sign_character:;
     register uint8_t character asm("r16") = ' ';
@@ -98,7 +98,7 @@ begin_output:
     cursor += 1; asm volatile("" : "+z" (cursor));
 next_character:
     asm volatile("ld r16, Z+" : "=r" (character), "+z" (cursor) : : "memory");
-    asm goto("tst r16\n\tbreq %l[restore]" : : "r" (character) : "cc" : restore);
+    if (!character) goto restore;
     character = pm_console_send_character(character);
     goto next_character;
 restore:

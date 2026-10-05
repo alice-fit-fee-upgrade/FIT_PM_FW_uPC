@@ -43,7 +43,7 @@ power_state:
     thermal &= 6; asm volatile("" : "+r" (thermal));
     asm goto("breq %l[thermal_state]" : : : : thermal_state);
     SET_MESSAGE(0x29e2);
-    asm goto("cpi r19, 6\n\tbreq %l[thermal_state]" : : "r" (thermal) : "cc" : thermal_state);
+    if (thermal == 6) goto thermal_state;
     SET_MESSAGE(0x29dc);
     thermal &= 4; asm volatile("" : "+r" (thermal));
     asm goto("brne %l[thermal_state]" : : : : thermal_state);
@@ -110,7 +110,7 @@ tdc_alarm:
     asm volatile("rcall cli_send_buf" : "+r" (character) : : "memory", "cc");
     SET_MESSAGE(0x2b2e); SEND_MESSAGE();
 next_tdc:
-    asm goto("cpi r17, 2\n\tbrcc %l[finished]" : : "r" (device) : "cc" : finished);
+    if (device >= 2) goto finished;
     /* C value equivalent: ++device; INC keeps the original carry flag. */
     asm volatile("inc %0" : "+r" (device) : : "cc");
     power >>= 1;

@@ -1,9 +1,9 @@
 {
   "scope": "inline ASM inside accepted C regions; pure ASM/boot excluded",
   "address_units": "FLASH bytes",
-  "manifest_sha256": "e28db15e048ae13cf32d9c9ab13491a72debd6ebb971fb12110fccaebf4295c7",
-  "inline_asm_bytes": 3184,
-  "instructions": 1568,
+  "manifest_sha256": "67dcf969ab2e75381aed4adab919c65593340d626af98e6248613f3c77f03d43",
+  "inline_asm_bytes": 3148,
+  "instructions": 1550,
   "opcodes": [
     {
       "mnemonic": "rcall",
@@ -82,8 +82,8 @@
     },
     {
       "mnemonic": "cpi",
-      "bytes": 238,
-      "instructions": 119,
+      "bytes": 232,
+      "instructions": 116,
       "examples": [
         {
           "address": 544,
@@ -157,8 +157,8 @@
     },
     {
       "mnemonic": "rjmp",
-      "bytes": 168,
-      "instructions": 84,
+      "bytes": 160,
+      "instructions": 80,
       "examples": [
         {
           "address": 606,
@@ -231,31 +231,6 @@
       ]
     },
     {
-      "mnemonic": "breq",
-      "bytes": 90,
-      "instructions": 45,
-      "examples": [
-        {
-          "address": 546,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "21f0",
-          "instruction": "breq\t.+8      \t;  0x22c"
-        },
-        {
-          "address": 552,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "d9f0",
-          "instruction": "breq\t.+54     \t;  0x260"
-        },
-        {
-          "address": 558,
-          "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "41f0",
-          "instruction": "breq\t.+16     \t;  0x240"
-        }
-      ]
-    },
-    {
       "mnemonic": "inc",
       "bytes": 88,
       "instructions": 44,
@@ -306,27 +281,27 @@
       ]
     },
     {
-      "mnemonic": "and",
-      "bytes": 80,
-      "instructions": 40,
+      "mnemonic": "breq",
+      "bytes": 84,
+      "instructions": 42,
       "examples": [
         {
-          "address": 894,
+          "address": 546,
           "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "2223",
-          "instruction": "and\tr18, r18"
+          "golden_bytes": "21f0",
+          "instruction": "breq\t.+8      \t;  0x22c"
         },
         {
-          "address": 978,
+          "address": 552,
           "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "ff23",
-          "instruction": "and\tr31, r31"
+          "golden_bytes": "d9f0",
+          "instruction": "breq\t.+54     \t;  0x260"
         },
         {
-          "address": 1042,
+          "address": 558,
           "source": "src/dma_channel_interrupt.c",
-          "golden_bytes": "5523",
-          "instruction": "and\tr21, r21"
+          "golden_bytes": "41f0",
+          "instruction": "breq\t.+16     \t;  0x240"
         }
       ]
     },
@@ -356,9 +331,34 @@
       ]
     },
     {
+      "mnemonic": "and",
+      "bytes": 76,
+      "instructions": 38,
+      "examples": [
+        {
+          "address": 894,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "2223",
+          "instruction": "and\tr18, r18"
+        },
+        {
+          "address": 978,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "ff23",
+          "instruction": "and\tr31, r31"
+        },
+        {
+          "address": 1042,
+          "source": "src/dma_channel_interrupt.c",
+          "golden_bytes": "5523",
+          "instruction": "and\tr21, r21"
+        }
+      ]
+    },
+    {
       "mnemonic": "brcs",
-      "bytes": 78,
-      "instructions": 39,
+      "bytes": 76,
+      "instructions": 38,
       "examples": [
         {
           "address": 1040,
@@ -407,8 +407,8 @@
     },
     {
       "mnemonic": "brcc",
-      "bytes": 60,
-      "instructions": 30,
+      "bytes": 58,
+      "instructions": 29,
       "examples": [
         {
           "address": 904,
@@ -527,31 +527,6 @@
           "source": "src/timer_overflow_interrupt.c",
           "golden_bytes": "0217",
           "instruction": "cp\tr16, r18"
-        }
-      ]
-    },
-    {
-      "mnemonic": "sbrc",
-      "bytes": 30,
-      "instructions": 15,
-      "examples": [
-        {
-          "address": 2804,
-          "source": "src/pll_status_interrupt.c",
-          "golden_bytes": "05fd",
-          "instruction": "sbrc\tr16, 5"
-        },
-        {
-          "address": 3408,
-          "source": "src/system_init.c",
-          "golden_bytes": "06fd",
-          "instruction": "sbrc\tr16, 6"
-        },
-        {
-          "address": 3642,
-          "source": "src/console_cts_interrupt.c",
-          "golden_bytes": "01fd",
-          "instruction": "sbrc\tr16, 1"
         }
       ]
     },
@@ -677,6 +652,31 @@
           "source": "src/fpga_data_exchange.c",
           "golden_bytes": "a794",
           "instruction": "ror\tr10"
+        }
+      ]
+    },
+    {
+      "mnemonic": "sbrc",
+      "bytes": 22,
+      "instructions": 11,
+      "examples": [
+        {
+          "address": 2804,
+          "source": "src/pll_status_interrupt.c",
+          "golden_bytes": "05fd",
+          "instruction": "sbrc\tr16, 5"
+        },
+        {
+          "address": 3408,
+          "source": "src/system_init.c",
+          "golden_bytes": "06fd",
+          "instruction": "sbrc\tr16, 6"
+        },
+        {
+          "address": 3642,
+          "source": "src/console_cts_interrupt.c",
+          "golden_bytes": "01fd",
+          "instruction": "sbrc\tr16, 1"
         }
       ]
     },
@@ -1395,8 +1395,8 @@
     },
     "cli_prompt_parse": {
       "source": "src/console_dispatch.c",
-      "inline_asm_bytes": 162,
-      "instructions": 75
+      "inline_asm_bytes": 146,
+      "instructions": 67
     },
     "unlock_programming": {
       "source": "src/programming_unlock.c",
@@ -1475,8 +1475,8 @@
     },
     "cli_send_system_status": {
       "source": "src/system_status_display.c",
-      "inline_asm_bytes": 118,
-      "instructions": 59
+      "inline_asm_bytes": 110,
+      "instructions": 55
     },
     "alarms_clear": {
       "source": "src/alarm_state_clear.c",
@@ -1580,8 +1580,8 @@
     },
     "ths788_write": {
       "source": "src/tdc_host_write.c",
-      "inline_asm_bytes": 20,
-      "instructions": 10
+      "inline_asm_bytes": 16,
+      "instructions": 8
     },
     "ths788_read": {
       "source": "src/tdc_host_read.c",
@@ -1675,8 +1675,8 @@
     },
     "cli_send_uint16": {
       "source": "src/console_decimal_formatter.c",
-      "inline_asm_bytes": 154,
-      "instructions": 77
+      "inline_asm_bytes": 146,
+      "instructions": 73
     },
     "cli_send_crlf": {
       "source": "src/console_crlf.c",

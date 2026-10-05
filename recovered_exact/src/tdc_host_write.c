@@ -16,7 +16,7 @@ void ths788_write(void)
     /* C value selection: clock = device == 3 ? 0x1c : (4u << device);
      * The exact loop additionally leaves device at its decremented value and
      * preserves live flags; this is an explanatory value description. */
-    asm goto("cpi %0, 3\n\tbrlo %l[single_strobe]" : : "r" (device), "r" (count) : "cc" : single_strobe);
+    if (device < 3) goto single_strobe;
     clock = 0x1c; asm volatile("" : "+r" (clock));
     goto clock_selected;
 single_strobe:

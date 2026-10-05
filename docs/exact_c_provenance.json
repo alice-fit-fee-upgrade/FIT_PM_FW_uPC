@@ -2,7 +2,7 @@
   "method": "GCC APP/NOAPP instruction provenance with GNU subsection ordering",
   "accepted_entries": 88,
   "translation_units": 87,
-  "inline_asm_bytes": 3184,
+  "inline_asm_bytes": 3148,
   "compiler_generated_avr_primitive_bytes": 402,
   "avr_primitive_mnemonics": [
     "bld",
@@ -214,9 +214,9 @@
     },
     {
       "symbol": "ths788_write",
-      "inline_asm_bytes": 20,
+      "inline_asm_bytes": 16,
       "compiler_generated_avr_primitive_bytes": 0,
-      "compiler_bytes": 128
+      "compiler_bytes": 132
     },
     {
       "symbol": "ths788_read",
@@ -460,9 +460,9 @@
     },
     {
       "symbol": "cli_send_system_status",
-      "inline_asm_bytes": 118,
+      "inline_asm_bytes": 110,
       "compiler_generated_avr_primitive_bytes": 4,
-      "compiler_bytes": 266
+      "compiler_bytes": 274
     },
     {
       "symbol": "fpga_firmware_update",
@@ -508,9 +508,9 @@
     },
     {
       "symbol": "cli_send_uint16",
-      "inline_asm_bytes": 154,
+      "inline_asm_bytes": 146,
       "compiler_generated_avr_primitive_bytes": 2,
-      "compiler_bytes": 54
+      "compiler_bytes": 62
     },
     {
       "symbol": "fpga_is_ready",
@@ -526,9 +526,9 @@
     },
     {
       "symbol": "cli_prompt_parse",
-      "inline_asm_bytes": 162,
+      "inline_asm_bytes": 146,
       "compiler_generated_avr_primitive_bytes": 38,
-      "compiler_bytes": 494
+      "compiler_bytes": 510
     },
     {
       "symbol": "DMA_CH1_vect_isr",

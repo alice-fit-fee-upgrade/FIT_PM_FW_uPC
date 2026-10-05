@@ -260,7 +260,8 @@ L_0009f5:
     *(volatile uint8_t *)0x2234 = r20;
     r16 = *(volatile uint8_t *)0x1cf;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x7\n\trjmp .Lcli_L_0009f5" : : : "memory", "cc" : L_0009f5);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 7))) goto L_0009f5;
     r16 = 0x36;
     asm volatile("" : "+r" (r16));
     asm volatile("" : "=r" (r16));
@@ -278,7 +279,8 @@ L_000a06:
     asm volatile(".Lcli_L_000a06:" : : : "memory");
     r16 = *(volatile uint8_t *)0x1cf;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x7\n\trjmp .Lcli_L_000a06" : : : "memory", "cc" : L_000a06);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 7))) goto L_000a06;
     r28 = 0xd1;
     asm volatile("" : "+r" (r28));
     r29 = 0x10;
@@ -308,7 +310,8 @@ L_000a1c:
     asm volatile(".Lcli_L_000a1c:" : : : "memory");
     r16 = *(volatile uint8_t *)0x1cf;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x7\n\trjmp .Lcli_L_000a1c" : : : "memory", "cc" : L_000a1c);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 7))) goto L_000a1c;
     asm volatile("and         r20,r20" : : : "memory", "cc");
     asm goto("brbc 1, .Lcli_L_000a38" : : : "memory", "cc" : L_000a38);
     r16 = 0x4;
@@ -319,7 +322,8 @@ L_000a25:
     asm volatile(".Lcli_L_000a25:" : : : "memory");
     r16 = *(volatile uint8_t *)0x2157;
     asm volatile("" : "+r" (r16));
-    asm goto("sbrc        r16,0x3\n\trjmp .Lcli_L_000a25" : : : "memory", "cc" : L_000a25);
+    asm volatile("" : "=r" (r16));
+    if ((r16 & (1u << 3))) goto L_000a25;
     pm_cpu_disable_irq();
     r16 = 0x1;
     asm volatile("" : "+r" (r16));

@@ -736,5 +736,284 @@
     "log": "docs/exact_c_steps/step_671.log",
     "differing_bytes": 0,
     "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 672,
+    "source": "console_dispatch.c",
+    "change": "Native dispatcher bit condition with zero-byte register capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_672.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 673,
+    "source": "console_dispatch.c",
+    "change": "Native dispatcher bit condition with zero-byte register capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_673.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 674,
+    "source": "console_dispatch.c",
+    "change": "Native dispatcher bit condition with zero-byte register capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_674.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 675,
+    "source": "console_dispatch.c",
+    "change": "Native dispatcher bit condition with zero-byte register capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_675.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 676,
+    "source": "application_main.c",
+    "change": "Native single compare: if (!value) goto console_check;",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_676_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 677,
+    "source": "application_main.c",
+    "change": "Native single compare: if (!value) goto main_loop;",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_677_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 678,
+    "source": "console_decimal_formatter.c",
+    "change": "Native single compare: if (!character) goto restore;",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_678.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 679,
+    "source": "system_status_display.c",
+    "change": "Native single compare: if (thermal == 6) goto thermal_state;",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_679.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 680,
+    "source": "system_status_display.c",
+    "change": "Native single compare: if (device >= 2) goto finished;",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_680.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 681,
+    "source": "tdc_channel_data_display.c",
+    "change": "Native single compare: if ((int8_t)channel < 12) goto next_channel;",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_681_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 682,
+    "source": "tdc_host_write.c",
+    "change": "Native single compare: if (device < 3) goto single_strobe;",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_682.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 683,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "Native private-register zero test using explicit capture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_683_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 684,
+    "source": "flash_page_program.c",
+    "change": "Native private-register zero test using explicit capture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_684_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 685,
+    "source": "console_decimal_formatter.c",
+    "change": "Native private-register zero test using explicit capture",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_685.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 686,
+    "source": "channel_adc_zero_command.c",
+    "change": "Native post-increment settings byte store",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_686_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 687,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Native post-increment settings byte store",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_687_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 688,
+    "source": "channel_adc_delay_command.c",
+    "change": "Native post-increment settings byte store",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_688_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 689,
+    "source": "console_dispatch.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_689_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 690,
+    "source": "console_dispatch.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_690_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 691,
+    "source": "fpga_data_exchange.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_691_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 692,
+    "source": "fpga_data_exchange.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_692_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 693,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_693_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 694,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_694_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 695,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment Y pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_695_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 696,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment X pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_696_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 697,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment X pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_697_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 698,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment X pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_698_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 699,
+    "source": "dma_channel_interrupt.c",
+    "change": "Native byte store with bound post-increment X pointer and zero-byte captures",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_699_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 700,
+    "source": "channel_adc_zero_command.c",
+    "change": "Native settings store with explicitly captured low byte to avoid GNU ABI temporary",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_700_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 701,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Native settings store with explicitly captured low byte to avoid GNU ABI temporary",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_701_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 702,
+    "source": "channel_adc_delay_command.c",
+    "change": "Native settings store with explicitly captured low byte to avoid GNU ABI temporary",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_702_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
   }
 ]
