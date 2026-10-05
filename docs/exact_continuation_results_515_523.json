@@ -1,0 +1,83 @@
+[
+  {
+    "step": 515,
+    "source": "channel_adc_range_command.c",
+    "change": "C final ADC range high-byte store after exact low postincrements",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_515.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 516,
+    "source": "channel_adc_delay_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_516.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 517,
+    "source": "channel_adc_range_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_517.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 518,
+    "source": "channel_adc_zero_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_518.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 519,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_519.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 520,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_520.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 521,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_521.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 522,
+    "source": "channel_tdc_values_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_522.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 523,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_523.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,3 @@
+ADDRESS GOLDEN_BYTES REBUILT_BYTES GOLDEN_INSTRUCTION | REBUILT_INSTRUCTION | CLASS
+0x0022c2 7051 7031 subi	r23, 0x10	; 16 | cpi	r23, 0x10	; 16 | B wrong instruction (or O boundary ambiguity)
+Differing instruction/data windows: 1

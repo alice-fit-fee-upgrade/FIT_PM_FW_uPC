@@ -1,0 +1,11 @@
+{
+  "source": "recovered_exact/src/eeprom_settings_store.c",
+  "candidate_source_sha256": "d1d46da03b651228a5728f4f6ddb714c76f4184c4265d0dc648bf20f24dbb281",
+  "candidate_bin_sha256": "84fc1dc69544c72765a5e2bb44186c8dca029822bd78eb508b0c8429bdf98a75",
+  "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "differing_bytes": 1,
+  "first_mismatch": 6639,
+  "last_mismatch": 6639,
+  "accepted": false,
+  "functional_validation_claimed": false
+}

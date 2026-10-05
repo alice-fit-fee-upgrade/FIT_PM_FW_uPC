@@ -1,0 +1,3787 @@
+{
+  "scope": "All 87 C translation units and 9 headers; retained emitting helper review against verified instruction index. This is a reviewed continuation checkpoint, not a proof that no future C conversion can exist.",
+  "acceptance": "Every accepted conversion passed complete clean make exact-check, zero differences. Byte percentages count compiler output, not whole C-hosted regions.",
+  "trial_steps": "469\u2013589",
+  "new_attempts": 121,
+  "accepted_attempts": 89,
+  "restored_attempts": 32,
+  "diagnostic_candidate_rebuilds": 3,
+  "reviewed_c_files": 87,
+  "reviewed_headers": 9,
+  "files": [
+    {
+      "source": "src/adt16.c",
+      "source_sha256": "5527cc01d45c2ece92a085e1cbf48f8e68f23138cdd7c04c47b2a7958e7dc7e4",
+      "entries": [
+        {
+          "symbol": "adt7311_16bit_rw",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 38,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 6
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 320,
+        "model_sha256": "673991b333e1b4626e0780c7140290688ca6208958099604d65ab11481394a48",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/adt8.c",
+      "source_sha256": "bc948d7dad91a8de7501d4bc668011a26441f0b54b6ea77b1a2ab40456b04291",
+      "entries": [
+        {
+          "symbol": "adt7311_8bit_rw",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 34,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 272,
+        "model_sha256": "3b577b6b3cd09574907600851c598925c6db5fbc2b0737d7035a8a37b3ab3265",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/adt_bit_transfer.c",
+      "source_sha256": "2c348d31e916eed28caa7376c58bf2ef2757ac9d96b019cfdf7692f5fa11b866",
+      "entries": [
+        {
+          "symbol": "adt7311_byte_rw",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 28,
+          "asm_helper_bytes": 16
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 2,
+        "dec": 2,
+        "sbrc": 2,
+        "sbrs": 2,
+        "sts": 8
+      },
+      "retention_review": [
+        "INC/DEC encoding and carry preservation",
+        "Exact access width/register/protected-write or allocation constraint",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 272,
+        "model_sha256": "390126330bbc513e4dc35dfcb9d052c28dbf52aca4fb6a5e0d17d70cad53c19e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/adt_fault_clear.c",
+      "source_sha256": "1b9640a17f0ec5ce3253c74c85ec8dcb374aaa5248b7bcf441616d8b308cd70e",
+      "entries": [
+        {
+          "symbol": "adt7311_faults_clr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 22,
+          "asm_helper_bytes": 8
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 8
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 208,
+        "model_sha256": "b7b49c9c1cdcb1beb600779b2972659bd7924258bcb63fc05751fa9006d48f7c",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/alarm_state_clear.c",
+      "source_sha256": "460b29b38259fbdfb548c2f1e15c8baee55d80aedf235aee6c4b48efd863a8e4",
+      "entries": [
+        {
+          "symbol": "alarms_clear",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 114,
+          "asm_helper_bytes": 12
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 2,
+        "cpi": 2,
+        "eor": 2,
+        "rcall": 4,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 472,
+          "accepted": false,
+          "change": "C alarm-mask branch after opaque ANDI value",
+          "log": "docs/exact_c_steps/step_472_rejected.log"
+        },
+        {
+          "step": 541,
+          "accepted": true,
+          "change": "C alarm mask and branch with register boundary before mask",
+          "log": "docs/exact_c_steps/step_541.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 784,
+        "model_sha256": "4820854540317dc8b70731ac93b63b3ae4d5c7984132b3dd3888f8d42a163f20",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/application_main.c",
+      "source_sha256": "3ad9df77eb27677409d43791134cda87aabe6e2ff0a6ca4917ef41b32a7944c0",
+      "entries": [
+        {
+          "symbol": "main",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 428,
+          "asm_helper_bytes": 92
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 4,
+        "bld": 2,
+        "breq": 4,
+        "brne": 4,
+        "brts": 2,
+        "bst": 2,
+        "cbi": 2,
+        "cp": 2,
+        "cpc": 4,
+        "cpi": 2,
+        "eor": 4,
+        "inc": 2,
+        "ld": 2,
+        "lds": 8,
+        "rcall": 4,
+        "rjmp": 4,
+        "sbrs": 6,
+        "sei": 2,
+        "st": 4,
+        "sts": 28
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Exact access width/register/protected-write or allocation constraint",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 2976,
+        "model_sha256": "6141433d3a40aeaf7eb0e4a9e4b4ab4035773845768d5bdbcdd08d27eb2033cb",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_adc_delay_command.c",
+      "source_sha256": "b307146101b8d1222ac8d276d06602e8f1763e9f71a4728db94e5985027c516f",
+      "entries": [
+        {
+          "symbol": "fpga_set_ch_adc_delay",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 32,
+          "asm_helper_bytes": 52
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 4,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brmi": 2,
+        "brne": 6,
+        "cpc": 2,
+        "cpi": 8,
+        "eor": 2,
+        "ldi": 2,
+        "rcall": 10,
+        "rjmp": 2,
+        "st": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 507,
+          "accepted": true,
+          "change": "C final settings high-byte store after exact low postincrement",
+          "log": "docs/exact_c_steps/step_507.log"
+        },
+        {
+          "step": 516,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_516.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 672,
+        "model_sha256": "f8b5710f02338326107bf62bbd8326390c87c18671d8d7884a27f753cbf38be6",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_adc_range_command.c",
+      "source_sha256": "be5797072e365718e8cb5195bde18c35dea0e85892874e797c1b2f185e13f4e9",
+      "entries": [
+        {
+          "symbol": "fpga_set_adc_range_corr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 40,
+          "asm_helper_bytes": 80
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "brcc": 2,
+        "brcs": 6,
+        "brge": 6,
+        "brlt": 4,
+        "brne": 8,
+        "cpc": 8,
+        "cpi": 16,
+        "eor": 2,
+        "inc": 2,
+        "rcall": 12,
+        "rjmp": 4,
+        "st": 6
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 515,
+          "accepted": true,
+          "change": "C final ADC range high-byte store after exact low postincrements",
+          "log": "docs/exact_c_steps/step_515.log"
+        },
+        {
+          "step": 517,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_517.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 960,
+        "model_sha256": "418e77ca2f34d278dcd102f1579cd55116b7179b4fc37b0685cb040565b79050",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_adc_zero_command.c",
+      "source_sha256": "c91afa6952d5008b09805b9c66750383f3fceeee521e6a6a71ac1e4af6d7f48e",
+      "entries": [
+        {
+          "symbol": "fpga_set_adc_zero",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 42,
+          "asm_helper_bytes": 56
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brlt": 2,
+        "brne": 6,
+        "cbi": 2,
+        "cpc": 4,
+        "cpi": 10,
+        "eor": 2,
+        "rcall": 10,
+        "rjmp": 4,
+        "st": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 508,
+          "accepted": true,
+          "change": "C final settings high-byte store after exact low postincrement",
+          "log": "docs/exact_c_steps/step_508.log"
+        },
+        {
+          "step": 518,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_518.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 784,
+        "model_sha256": "1e9bcb00788da2f3addaabf31ac98454649d2bc95546e6ad26fe567fc06da299",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_baseline_dispersion_display.c",
+      "source_sha256": "bc07e612df4f559a948b1b472e3c7ffa36c4fe1625f0cc1125506562b3b25763",
+      "entries": [
+        {
+          "symbol": "cli_send_adc_baseline_dispersion",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 38,
+          "asm_helper_bytes": 44
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brcc": 2,
+        "brne": 2,
+        "cpi": 2,
+        "eor": 2,
+        "inc": 4,
+        "rcall": 28,
+        "rjmp": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 526,
+          "accepted": true,
+          "change": "C unsigned display iteration limit",
+          "log": "docs/exact_c_steps/step_526.log"
+        },
+        {
+          "step": 528,
+          "accepted": true,
+          "change": "Native C early display return after exact FPGA carry guard",
+          "log": "docs/exact_c_steps/step_528.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 656,
+        "model_sha256": "4f6538f0fae78f80d879f436c9a04e23f2e8e8facf5069c1e27cfef11d2fc58d",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_cdf_adc_display.c",
+      "source_sha256": "161a3d0848fb5b368487e7836a939430ca1da36da2ab7b49e1f50f4b16e4fb82",
+      "entries": [
+        {
+          "symbol": "cli_send_channel_cdf_adc",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 48,
+          "asm_helper_bytes": 64
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 2,
+        "cpi": 2,
+        "eor": 6,
+        "inc": 2,
+        "ld": 16,
+        "rcall": 34,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 848,
+        "model_sha256": "0e0ff56fd5de66c885ce3676479c2870f0cb09146a4f47acaef722ff5e8467ed",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_cfd_threshold_command.c",
+      "source_sha256": "3f1789d3f8505c1761633a5d0cb8358e6a63cd59bf3bc607d670b437aedbab0c",
+      "entries": [
+        {
+          "symbol": "fpga_set_ch_cfd_threshold",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 40,
+          "asm_helper_bytes": 54
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brlt": 2,
+        "brne": 6,
+        "cpc": 4,
+        "cpi": 10,
+        "eor": 2,
+        "rcall": 12,
+        "rjmp": 2,
+        "st": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 509,
+          "accepted": true,
+          "change": "C final settings high-byte store after exact low postincrement",
+          "log": "docs/exact_c_steps/step_509.log"
+        },
+        {
+          "step": 519,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_519.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 752,
+        "model_sha256": "9aaa22a46d14335623b5c13edcdb24e6e3977acb886e9c23b8ba867cfb04c798",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_cfd_zero_command.c",
+      "source_sha256": "23ad090545e2a9ae76c25272040dc45e167546c6b88a3350192ba326cd117479",
+      "entries": [
+        {
+          "symbol": "fpga_set_ch_cfd_zero",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 36,
+          "asm_helper_bytes": 52
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brlt": 2,
+        "brne": 6,
+        "cpc": 4,
+        "cpi": 10,
+        "eor": 2,
+        "rcall": 10,
+        "rjmp": 2,
+        "st": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 510,
+          "accepted": true,
+          "change": "C final settings high-byte store after exact low postincrement",
+          "log": "docs/exact_c_steps/step_510.log"
+        },
+        {
+          "step": 520,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_520.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 704,
+        "model_sha256": "1753f9ced48aa5d888a8af8a85fe0783e8fe72adb69bec307e98b5d567f4d5d4",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_mean_amplitude_display.c",
+      "source_sha256": "3841ed9e0f2756372a0ecfbdf02d9eb88d774778ef6f118884e120fd818d505d",
+      "entries": [
+        {
+          "symbol": "cli_send_ch_mean_amplitude",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 22,
+          "asm_helper_bytes": 26
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brcc": 2,
+        "brne": 2,
+        "cpi": 2,
+        "inc": 4,
+        "rcall": 14,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 527,
+          "accepted": true,
+          "change": "C unsigned display iteration limit",
+          "log": "docs/exact_c_steps/step_527.log"
+        },
+        {
+          "step": 529,
+          "accepted": true,
+          "change": "Native C early display return after exact FPGA carry guard",
+          "log": "docs/exact_c_steps/step_529.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 368,
+        "model_sha256": "f3761a56fead3851e402af189775b2cfb584f6de98c8cdc0277f6b6743f61564",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_settings_display.c",
+      "source_sha256": "91809b5d92003593b193e5a8d1358916c5ca3d849dcd69cecaa92232b347a004",
+      "entries": [
+        {
+          "symbol": "channels_read",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 68,
+          "asm_helper_bytes": 76
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 6,
+        "breq": 2,
+        "brne": 2,
+        "cpi": 4,
+        "eor": 8,
+        "inc": 2,
+        "ld": 12,
+        "ldi": 2,
+        "mul": 2,
+        "rcall": 30,
+        "rjmp": 4,
+        "sbrc": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Private multiply / nonzero R1 contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 479,
+          "accepted": false,
+          "change": "C high-byte reads in plain Y settings-display pairs",
+          "log": "docs/exact_c_steps/step_479_rejected.log"
+        },
+        {
+          "step": 483,
+          "accepted": false,
+          "change": "C settings-display high reads with explicit typed Y recapture",
+          "log": "docs/exact_c_steps/step_483_rejected.log"
+        },
+        {
+          "step": 502,
+          "accepted": true,
+          "change": "C settings-display final high loads using globally reserved typed Y cursor",
+          "log": "docs/exact_c_steps/step_502.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1152,
+        "model_sha256": "b47beefd6d258e2eb6a7a7237282ce8c46553d60aede51b580209c83c5b480dd",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_tdc_adjust_command.c",
+      "source_sha256": "14d579882aaa5d494d04e09d595180aeea2cb97aa1146af9f9322c92dab0b525",
+      "entries": [
+        {
+          "symbol": "FUN_code_000f70",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 36,
+          "asm_helper_bytes": 54
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brlt": 2,
+        "brne": 6,
+        "cpc": 4,
+        "cpi": 10,
+        "eor": 4,
+        "mul": 2,
+        "rcall": 8,
+        "rjmp": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Private multiply / nonzero R1 contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 513,
+          "accepted": true,
+          "change": "C plain byte settings store using globally reserved Y pointer",
+          "log": "docs/exact_c_steps/step_513.log"
+        },
+        {
+          "step": 521,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_521.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 720,
+        "model_sha256": "50b33d0fa2f5d773487888a8d8e9c5c6fa44562295936a5eff47f0701e8a708e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_tdc_values_command.c",
+      "source_sha256": "d5bcd3ae16a7830dba46a9e9f6fd4f2dd7204b174c41db3170e1be8f6ff216c3",
+      "entries": [
+        {
+          "symbol": "fpga_set_tdc_values",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 26,
+          "asm_helper_bytes": 52
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 4,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brmi": 2,
+        "brne": 6,
+        "cpc": 2,
+        "cpi": 8,
+        "eor": 2,
+        "ldi": 2,
+        "rcall": 8,
+        "rjmp": 4,
+        "st": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 511,
+          "accepted": true,
+          "change": "C final settings high-byte store after exact low postincrement",
+          "log": "docs/exact_c_steps/step_511.log"
+        },
+        {
+          "step": 522,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_522.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 624,
+        "model_sha256": "00a2012c71e56ccd8a5262ca51c8ab7fbec13277e1a846f7a14bf939d51df58c",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/channel_threshold_calibration_command.c",
+      "source_sha256": "5740b0d3da513b368ccfba8649e5a0069624b2b234081d1c5044b25f4d2ada55",
+      "entries": [
+        {
+          "symbol": "fpga_set_threshold_calibration",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 42,
+          "asm_helper_bytes": 58
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 4,
+        "and": 4,
+        "brcc": 2,
+        "brcs": 4,
+        "brge": 4,
+        "brmi": 2,
+        "brne": 6,
+        "cpc": 2,
+        "cpi": 8,
+        "eor": 4,
+        "ld": 2,
+        "ldi": 2,
+        "rcall": 10,
+        "rjmp": 2,
+        "st": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 478,
+          "accepted": false,
+          "change": "C calibration final high-byte load after exact low postincrement",
+          "log": "docs/exact_c_steps/step_478_rejected.log"
+        },
+        {
+          "step": 482,
+          "accepted": false,
+          "change": "C calibration high read with explicit typed Y recapture",
+          "log": "docs/exact_c_steps/step_482_rejected.log"
+        },
+        {
+          "step": 501,
+          "accepted": true,
+          "change": "C final calibration high load using globally reserved typed Y cursor",
+          "log": "docs/exact_c_steps/step_501.log"
+        },
+        {
+          "step": 512,
+          "accepted": true,
+          "change": "C final settings high-byte store after exact low postincrement",
+          "log": "docs/exact_c_steps/step_512.log"
+        },
+        {
+          "step": 523,
+          "accepted": true,
+          "change": "Native C early return after exact private FPGA carry guard",
+          "log": "docs/exact_c_steps/step_523.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 800,
+        "model_sha256": "b3dd1aa76f467845ead99766de5991c5814da0a31c66dcd4ae6faa33cc184076",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_character_read.c",
+      "source_sha256": "9afc2d8a4a2bfd38eb52f0b6eeccd63e3367d1c54025d4d50e61a667fef4e636",
+      "entries": [
+        {
+          "symbol": "cli_get_next_char",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 64,
+          "asm_helper_bytes": 48
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "breq": 2,
+        "brlt": 2,
+        "cpi": 2,
+        "cpse": 2,
+        "dec": 2,
+        "eor": 4,
+        "inc": 2,
+        "ldi": 2,
+        "pop": 12,
+        "push": 12,
+        "rjmp": 2,
+        "sbrs": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 816,
+        "model_sha256": "3f47284228fc4969c0a1b5ef539c0efbf898edd10cc78d429df6bfac943c18d2",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_character_send.c",
+      "source_sha256": "5aae94664290bdc805299c5bb998b43ebbce876c8a0ad199f4e90062c9e379c5",
+      "entries": [
+        {
+          "symbol": "cli_send_buf",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 54,
+          "asm_helper_bytes": 52
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "breq": 4,
+        "brne": 2,
+        "cp": 4,
+        "eor": 2,
+        "inc": 4,
+        "ld": 4,
+        "pop": 12,
+        "push": 12,
+        "rjmp": 2,
+        "sbrs": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 784,
+        "model_sha256": "2a9f710536215108e6c6485e8d7850b0d751cfb5614feebda0cfa95de9d15c84",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_crlf.c",
+      "source_sha256": "8dced55aff9fead28d8add81e790f146878e9ac3cd81b7a5b07fcb029851706c",
+      "entries": [
+        {
+          "symbol": "cli_send_crlf",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 6,
+          "asm_helper_bytes": 2
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 64,
+        "model_sha256": "b60589b39743f09e38b7c621035ab11ff2d5f9b66e37eed1ef3cdeb3db2c4254",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_cts_interrupt.c",
+      "source_sha256": "c77910fab0fbabe9313c1ab3074bff338e8810f56c8c2307f661d8abeb79b561",
+      "entries": [
+        {
+          "symbol": "PORTF_INT0_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 52,
+          "asm_helper_bytes": 52
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "eor": 4,
+        "inc": 4,
+        "ld": 4,
+        "pop": 14,
+        "push": 14,
+        "reti": 2,
+        "rjmp": 4,
+        "sbrc": 2,
+        "sbrs": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 752,
+        "model_sha256": "5cfb1b1e09b7e574d98e1bc43b4a3f83ace60d2f77b299f613bdf76cbbfa579e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_decimal_formatter.c",
+      "source_sha256": "0711af13988b6b8a77f2c31ba51752c2d62d9a2adc6688d49ce10251836400f2",
+      "entries": [
+        {
+          "symbol": "cli_send_uint16",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 50,
+          "asm_helper_bytes": 158
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 6,
+        "and": 12,
+        "brcc": 4,
+        "brcs": 2,
+        "breq": 12,
+        "brlt": 2,
+        "brne": 8,
+        "brpl": 4,
+        "clc": 4,
+        "cp": 8,
+        "dec": 6,
+        "eor": 8,
+        "inc": 8,
+        "ld": 2,
+        "pop": 20,
+        "push": 20,
+        "rcall": 2,
+        "rjmp": 2,
+        "ror": 4,
+        "sbrs": 2,
+        "sec": 2,
+        "st": 16,
+        "subi": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1664,
+        "model_sha256": "f2ce6385e73348aeed09a153efe35b8308dbd5b0920005687aaea310b8e9b0d5",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_dispatch.c",
+      "source_sha256": "6415660fe9799a406be8cee8c108e38174f6cd473c9e2d722be15a1164075f9b",
+      "entries": [
+        {
+          "symbol": "cli_prompt_parse",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 494,
+          "asm_helper_bytes": 162
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "brcc": 4,
+        "brcs": 6,
+        "brge": 2,
+        "brne": 12,
+        "cp": 4,
+        "cpc": 4,
+        "cpi": 10,
+        "eor": 6,
+        "inc": 6,
+        "jmp": 4,
+        "rcall": 10,
+        "rjmp": 56,
+        "sbrc": 8,
+        "st": 8,
+        "sts": 20
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Exact access width/register/protected-write or allocation constraint",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 484,
+          "accepted": false,
+          "change": "C dispatcher plain Y EEPROM byte store",
+          "log": "docs/exact_c_steps/step_484_rejected.log"
+        },
+        {
+          "step": 503,
+          "accepted": true,
+          "change": "C plain Y EEPROM byte store using globally reserved cursor",
+          "log": "docs/exact_c_steps/step_503.log"
+        },
+        {
+          "step": 504,
+          "accepted": true,
+          "change": "Native C dispatcher return at L_0009e4 with compiler barrier",
+          "log": "docs/exact_c_steps/step_504.log"
+        },
+        {
+          "step": 505,
+          "accepted": true,
+          "change": "Native C dispatcher return at L_000a3c with compiler barrier",
+          "log": "docs/exact_c_steps/step_505.log"
+        },
+        {
+          "step": 506,
+          "accepted": true,
+          "change": "Native C dispatcher return at L_000a6c with compiler barrier",
+          "log": "docs/exact_c_steps/step_506.log"
+        },
+        {
+          "step": 548,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'C'\", 'c', 'L_000984', 'L_000984')",
+          "log": "docs/exact_c_steps/step_548.log"
+        },
+        {
+          "step": 549,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'A'\", 'c', 'L_000981', 'L_000981')",
+          "log": "docs/exact_c_steps/step_549.log"
+        },
+        {
+          "step": 550,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_550_rejected.log"
+        },
+        {
+          "step": 551,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'O'\", 'c', 'L_00098e', 'L_00098e')",
+          "log": "docs/exact_c_steps/step_551.log"
+        },
+        {
+          "step": 552,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'N'\", 'c', 'L_00098b', 'L_00098b')",
+          "log": "docs/exact_c_steps/step_552.log"
+        },
+        {
+          "step": 553,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_553_rejected.log"
+        },
+        {
+          "step": 554,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'P'\", 'c', 'L_00099b', 'L_00099b')",
+          "log": "docs/exact_c_steps/step_554.log"
+        },
+        {
+          "step": 555,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'A'\", 'c', 'L_000995', 'L_000995')",
+          "log": "docs/exact_c_steps/step_555.log"
+        },
+        {
+          "step": 556,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'C'\", 'c', 'L_000998', 'L_000998')",
+          "log": "docs/exact_c_steps/step_556.log"
+        },
+        {
+          "step": 557,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_557_rejected.log"
+        },
+        {
+          "step": 558,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'R'\", 'c', 'L_0009b2', 'L_0009b2')",
+          "log": "docs/exact_c_steps/step_558.log"
+        },
+        {
+          "step": 559,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'A'\", 'c', 'L_0009a2', 'L_0009a2')",
+          "log": "docs/exact_c_steps/step_559.log"
+        },
+        {
+          "step": 560,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'C'\", 'c', 'L_0009a5', 'L_0009a5')",
+          "log": "docs/exact_c_steps/step_560.log"
+        },
+        {
+          "step": 561,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009a8', 'L_0009a8')",
+          "log": "docs/exact_c_steps/step_561.log"
+        },
+        {
+          "step": 562,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009ab', 'L_0009ab')",
+          "log": "docs/exact_c_steps/step_562.log"
+        },
+        {
+          "step": 563,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'T'\", 'c', 'L_0009ae', 'L_0009ae')",
+          "log": "docs/exact_c_steps/step_563.log"
+        },
+        {
+          "step": 564,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'Z'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_564.log"
+        },
+        {
+          "step": 565,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+          "log": "docs/exact_c_steps/step_565_rejected.log"
+        },
+        {
+          "step": 566,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'C'\", 'c', 'L_0009c6', 'L_0009c6')",
+          "log": "docs/exact_c_steps/step_566.log"
+        },
+        {
+          "step": 567,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'L'\", 'c', 'L_0009bd', 'L_0009bd')",
+          "log": "docs/exact_c_steps/step_567.log"
+        },
+        {
+          "step": 568,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009c0', 'L_0009c0')",
+          "log": "docs/exact_c_steps/step_568.log"
+        },
+        {
+          "step": 569,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'T'\", 'c', 'L_0009c3', 'L_0009c3')",
+          "log": "docs/exact_c_steps/step_569.log"
+        },
+        {
+          "step": 570,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'R'\", 'c', 'L_0009e4', 'L_0009e4')",
+          "log": "docs/exact_c_steps/step_570_rejected.log"
+        },
+        {
+          "step": 571,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'D'\", 'c', 'L_0009c9', 'L_0009c9')",
+          "log": "docs/exact_c_steps/step_571.log"
+        },
+        {
+          "step": 572,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'L'\", 'c', 'L_0009cc', 'L_0009cc')",
+          "log": "docs/exact_c_steps/step_572.log"
+        },
+        {
+          "step": 573,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'O'\", 'c', 'L_0009cf', 'L_0009cf')",
+          "log": "docs/exact_c_steps/step_573.log"
+        },
+        {
+          "step": 574,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009d2', 'L_0009d2')",
+          "log": "docs/exact_c_steps/step_574.log"
+        },
+        {
+          "step": 575,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'T'\", 'c', 'L_0009d5', 'L_0009d5')",
+          "log": "docs/exact_c_steps/step_575.log"
+        },
+        {
+          "step": 576,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'V'\", 'c', 'L_0009d8', 'L_0009d8')",
+          "log": "docs/exact_c_steps/step_576.log"
+        },
+        {
+          "step": 577,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'Z'\", 'c', 'L_0009e4', 'L_0009e4')",
+          "log": "docs/exact_c_steps/step_577.log"
+        },
+        {
+          "step": 578,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'W'\", 'c', 'L_0009e4', 'L_0009e4')",
+          "log": "docs/exact_c_steps/step_578.log"
+        },
+        {
+          "step": 579,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'R'\", 'c', 'L_0009e4', 'L_0009e4')",
+          "log": "docs/exact_c_steps/step_579.log"
+        },
+        {
+          "step": 580,
+          "accepted": true,
+          "change": "Native C command-character predicate ('0xd', 'c', 'L_0009e2', 'L_0009e2')",
+          "log": "docs/exact_c_steps/step_580.log"
+        },
+        {
+          "step": 581,
+          "accepted": true,
+          "change": "Native C command-character predicate ('0xd', 'c', 'L_0009e4', 'L_0009e4')",
+          "log": "docs/exact_c_steps/step_581.log"
+        },
+        {
+          "step": 582,
+          "accepted": true,
+          "change": "Native C command-character predicate ('0xd', 'c', 'L_000a3b', 'L_000a3b')",
+          "log": "docs/exact_c_steps/step_582.log"
+        },
+        {
+          "step": 583,
+          "accepted": true,
+          "change": "Native C command-character predicate ('0x20', 'c', 'L_000a6b', 'L_000a6b')",
+          "log": "docs/exact_c_steps/step_583.log"
+        },
+        {
+          "step": 584,
+          "accepted": true,
+          "change": "Native C command-character predicate ('0xd', 'c', 'L_000a6b', 'L_000a6b')",
+          "log": "docs/exact_c_steps/step_584.log"
+        },
+        {
+          "step": 585,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_585_rejected.log"
+        },
+        {
+          "step": 586,
+          "accepted": true,
+          "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_586.log"
+        },
+        {
+          "step": 587,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+          "log": "docs/exact_c_steps/step_587_rejected.log"
+        },
+        {
+          "step": 588,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+          "log": "docs/exact_c_steps/step_588_rejected.log"
+        },
+        {
+          "step": 589,
+          "accepted": false,
+          "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+          "log": "docs/exact_c_steps/step_589_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 4304,
+        "model_sha256": "b0f707521fcba283a89f34e50861014f3100af06e8dbe8d87ec37407a0db3733",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_fixed2_entry.c",
+      "source_sha256": "144e9302a236dac46051a202f18a9bbbfd401b91d38532461517d4303c8952fb",
+      "entries": [
+        {
+          "symbol": "FUN_code_001397",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 2,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "push": 2,
+        "rjmp": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 64,
+        "model_sha256": "919a34a01b1d3cb323c2866076849f178871b3170593400d787ab94728c35d3c",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_fixed3_entry.c",
+      "source_sha256": "b8226e69b1af468cfea878caf361d650889c5ae567315f42847ab3b7b9939b36",
+      "entries": [
+        {
+          "symbol": "FUN_code_00139f",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 2,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "push": 2,
+        "rjmp": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 64,
+        "model_sha256": "be70f9bbfd852a64b59400220f26a38ae281c4f6373d41149d6b422924f83f1d",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_flash_message.c",
+      "source_sha256": "23211fec1a494e6d12d58931ea53b3ceff066d4125d2ef06eadb900cbda823b1",
+      "entries": [
+        {
+          "symbol": "cli_send_msg",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 8,
+          "asm_helper_bytes": 8
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "breq": 2,
+        "lpm": 2,
+        "rcall": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 473,
+          "accepted": false,
+          "change": "C FLASH message terminator branch preserving exact LPM helper",
+          "log": "docs/exact_c_steps/step_473_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 128,
+        "model_sha256": "f6b542a922a955caf11b01fc9b41ec2dc29cf8ba9918c5a13e8576eb65da0933",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_hex_digit.c",
+      "source_sha256": "545f3e3ebca92d9e97090adf334d929f25f83f582d7a966ef1de264c5814f0e2",
+      "entries": [
+        {
+          "symbol": "cli_send_digit_hex",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 8,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brcs": 2,
+        "cpi": 2,
+        "rcall": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 112,
+        "model_sha256": "bde063cdd58203cc0a8c7baf991323ae5dbdce621e9d2cf066af7922ab9f3bca",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_hex_parser.c",
+      "source_sha256": "e42d63d28c77b617c23be368c0144d5206bbb2f3cf2f11e637a58a4dc28ea696",
+      "entries": [
+        {
+          "symbol": "cli_get_hex",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 30,
+          "asm_helper_bytes": 46
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "brcc": 2,
+        "brcs": 6,
+        "breq": 2,
+        "clc": 2,
+        "cpi": 8,
+        "eor": 6,
+        "inc": 2,
+        "pop": 4,
+        "push": 4,
+        "rcall": 4,
+        "rjmp": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 608,
+        "model_sha256": "674e91b4a6fe58aca4cd1d47e044b83836d4c814c97c5256e13152caa74e337b",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_hex_word.c",
+      "source_sha256": "60d37a90c6993cd0b14c6fafe66108dbf8e61a05acbb2e7008c3366820536944",
+      "entries": [
+        {
+          "symbol": "cli_send_32bit_hex",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 32,
+          "asm_helper_bytes": 8
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 8
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 320,
+        "model_sha256": "9081bc65632f2eab300b9821f87e7c27e3adb13fe4fc11ead6bbe1b173ecea57",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_integer_parser.c",
+      "source_sha256": "1810d6abe6f823902c4fecdbef0108eee1d3b74e65d15b9addc56572b1696a61",
+      "entries": [
+        {
+          "symbol": "cli_get_integer",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 24,
+          "asm_helper_bytes": 96
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 4,
+        "and": 6,
+        "brcc": 2,
+        "breq": 6,
+        "brge": 2,
+        "brlt": 2,
+        "brne": 6,
+        "brpl": 2,
+        "clc": 2,
+        "cpi": 10,
+        "eor": 12,
+        "inc": 6,
+        "mov": 2,
+        "mul": 4,
+        "pop": 12,
+        "push": 12,
+        "rcall": 2,
+        "rjmp": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Private multiply / nonzero R1 contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 960,
+        "model_sha256": "7bdacf1e82cf711c33999e57344cdbbad6c70f50eea368525492cdb9936afeeb",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_raw_byte_entry.c",
+      "source_sha256": "a641dd798a7e81fd11930922c9229d00a52188c0faf8ea28b9b7d8caf82b032a",
+      "entries": [
+        {
+          "symbol": "cli_get_next_byte",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 2,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "push": 2,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 48,
+        "model_sha256": "91e4063060f351732806982804ae3aa57c89c48e88ca8f1869bb8341ac0d0daa",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_rx_interrupt.c",
+      "source_sha256": "924470afe5364ea853458e116532bd06e9e473b79eec7c5abc608c3ff72ba7b7",
+      "entries": [
+        {
+          "symbol": "USARTF0_RXC_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 68,
+          "asm_helper_bytes": 48
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "breq": 2,
+        "brne": 2,
+        "cp": 4,
+        "eor": 2,
+        "inc": 4,
+        "ld": 2,
+        "pop": 14,
+        "push": 14,
+        "reti": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 816,
+        "model_sha256": "82361272121e84417100c5a4a7d8423ce34b178a767c8eda8bb9334a03d90ff6",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_temperature_entry.c",
+      "source_sha256": "aab48e2a410a517cc6c5db3cee3e4e7fbd12fac9deb0b42cffdde81a67631781",
+      "entries": [
+        {
+          "symbol": "cli_send_temperature",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 2,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "push": 2,
+        "rjmp": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 64,
+        "model_sha256": "2d4e279cfb1fdd4065f26c297c26f841fc8a5fc058f679b5a82550bc90cfe779",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/console_tx_interrupt.c",
+      "source_sha256": "c641e5c1e7d062ab99e19bafa40f49798e8514f967a1ce458c36203c5a56d00d",
+      "entries": [
+        {
+          "symbol": "USARTF0_DRE_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 40,
+          "asm_helper_bytes": 48
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 2,
+        "breq": 2,
+        "brne": 2,
+        "cp": 2,
+        "eor": 2,
+        "inc": 2,
+        "ld": 4,
+        "pop": 14,
+        "push": 14,
+        "reti": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 656,
+        "model_sha256": "fca713b3fb2e05c400d54ba94025711f993dc51c5106e2a2d7ea907fe181bd6f",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_channels.c",
+      "source_sha256": "506aa4013afcf916de5b7f5d0125cfbac8b8001d9626cb503a7df91a5ae1ab0e",
+      "entries": [
+        {
+          "symbol": "dac_set_value_2",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 20,
+          "asm_helper_bytes": 4
+        },
+        {
+          "symbol": "dac_set_value",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 20,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 8
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 384,
+        "model_sha256": "99121f0442932df2207dcd67c03fcc6897e58ac679d75697c18572dfe701535a",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_gain_scale.c",
+      "source_sha256": "bd869d95fbc201aa1949a6d1b32ea81ee6722d4699e4cd3ebf49ba2be61e6dad",
+      "entries": [
+        {
+          "symbol": "FUN_code_001068",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 24,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 224,
+        "model_sha256": "1d743479093395fe5a9be7c3bb56f6ef9973d87520181760008b80b9d49b7e2f",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_offset_scale.c",
+      "source_sha256": "371dcdd8f319ce0abe0d2fd0bda8bb9237c1a93af9c4aa084d094e8f8b118e28",
+      "entries": [
+        {
+          "symbol": "FUN_code_001053",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 32,
+          "asm_helper_bytes": 10
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "eor": 2,
+        "ld": 2,
+        "rcall": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update"
+      ],
+      "new_trials": [
+        {
+          "step": 477,
+          "accepted": true,
+          "change": "C correction high-byte load after exact low postincrement",
+          "log": "docs/exact_c_steps/step_477.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 336,
+        "model_sha256": "d41de9d04c9d19e2d8d1b97164cd049342b0476309070d63b0004ff0d0039dfa",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_saturating_scaled_product.c",
+      "source_sha256": "58feae6600dea510d1f1d363e1f5c70028bbae4a115b6d2277b6fc27389aa1c7",
+      "entries": [
+        {
+          "symbol": "FUN_code_0010a6",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 14,
+          "asm_helper_bytes": 26
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 4,
+        "add": 2,
+        "and": 2,
+        "brcs": 2,
+        "brne": 2,
+        "eor": 2,
+        "inc": 2,
+        "mul": 8,
+        "sbrc": 2
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Private multiply / nonzero R1 contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 320,
+        "model_sha256": "e98224c2f0fd7e869c359924d6718024bbcc53cb30361e874022789598ecadaf",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_signed_scaled_product.c",
+      "source_sha256": "50b9bfed5c3b689b491504a00f3e855dadecb482f2e1f372c881ea2ef6597e5f",
+      "entries": [
+        {
+          "symbol": "fpga_is_ready",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 10,
+          "asm_helper_bytes": 18
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 4,
+        "eor": 2,
+        "inc": 2,
+        "mul": 4,
+        "mulsu": 4,
+        "sbrc": 2
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Private multiply / nonzero R1 contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 224,
+        "model_sha256": "74bd3279da62ab9d2f77df71d4d9d071ff3742434d6fc93c1e12029a9fa0dff9",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_spi_send.c",
+      "source_sha256": "8c0b14b9d77575122e2850fd1fc1a59f480c7d603322518a997a628c7cad10df",
+      "entries": [
+        {
+          "symbol": "dac_send_value",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 98,
+          "asm_helper_bytes": 2
+        }
+      ],
+      "retained_instruction_bytes": {
+        "breq": 2
+      },
+      "retention_review": [
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 495,
+          "accepted": true,
+          "change": "C DAC selection copy/constant/mask with opaque header preventing substitution",
+          "log": "docs/exact_c_steps/step_495.log"
+        },
+        {
+          "step": 496,
+          "accepted": true,
+          "change": "C DAC select shifts and remaining subtract preserving BREQ flags",
+          "log": "docs/exact_c_steps/step_496.log"
+        },
+        {
+          "step": 539,
+          "accepted": true,
+          "change": "C first DAC masked branch without opaque post-mask barrier",
+          "log": "docs/exact_c_steps/step_539.log"
+        },
+        {
+          "step": 540,
+          "accepted": false,
+          "change": "C second DAC selection branch with input-only subtract barrier",
+          "log": "docs/exact_c_steps/step_540_rejected.log"
+        },
+        {
+          "step": 543,
+          "accepted": false,
+          "change": "C second DAC selection branch without post-subtract barrier",
+          "log": "docs/exact_c_steps/step_543_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 656,
+        "model_sha256": "08bd100a0e78621ac7324e459915efd0c56e0fc2ff83967b6a704aea359ad48f",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dac_stored_settings_apply.c",
+      "source_sha256": "f2f9637305203e75fe5e0a3847690c4900deb2330a9eadb4ac329a9ba9b66eef",
+      "entries": [
+        {
+          "symbol": "FUN_code_0004ef",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 34,
+          "asm_helper_bytes": 76
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2,
+        "inc": 2,
+        "ld": 16,
+        "pop": 28,
+        "push": 28
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update"
+      ],
+      "new_trials": [
+        {
+          "step": 469,
+          "accepted": true,
+          "change": "Native C return with original carry/private frame helpers",
+          "log": "docs/exact_c_steps/step_469.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 816,
+        "model_sha256": "9abef9c70f3d378710066675855c160470715cddb1a158f9b52ebc38f8d89b00",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dma_channel_interrupt.c",
+      "source_sha256": "b68e201e1d7214966e410a7fafca725c7246983723a773ad9aeaa2e6417969c5",
+      "entries": [
+        {
+          "symbol": "DMA_CH1_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 376,
+          "asm_helper_bytes": 274
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "and": 6,
+        "brcc": 2,
+        "brcs": 2,
+        "breq": 12,
+        "brne": 10,
+        "cp": 4,
+        "cpc": 2,
+        "cpi": 12,
+        "dec": 2,
+        "eor": 32,
+        "inc": 2,
+        "ld": 16,
+        "lpm": 2,
+        "pop": 58,
+        "push": 42,
+        "rcall": 6,
+        "reti": 2,
+        "rjmp": 16,
+        "sbc": 4,
+        "sbrc": 2,
+        "sbrs": 12,
+        "st": 26
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 4240,
+        "model_sha256": "b71569bfa2c524d5eba730d4ffaeebc8aea715b137d74b68863b345725856411",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/dma_gpio_handshake.c",
+      "source_sha256": "1db751c5a22cafc984a3dc9f09706b13da3cce699b545e0b3d06eadf34d81890",
+      "entries": [
+        {
+          "symbol": "FUN_code_000236",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 48,
+          "asm_helper_bytes": 2
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 304,
+        "model_sha256": "029759116b644fd4ba5afecad452bc52e498a48e95a67012c9488c5f450e661b",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/eeprom_page_commit.c",
+      "source_sha256": "ef383e76232c759bb74def0b1626c644650bf8689391db404cd4dc68f3bfda20",
+      "entries": [
+        {
+          "symbol": "FUN_code_000d07",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 40,
+          "asm_helper_bytes": 8
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2,
+        "rjmp": 2,
+        "sts": 4
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Exact access width/register/protected-write or allocation constraint",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 490,
+          "accepted": true,
+          "change": "C EEPROM status busy loop test with opaque R16 sample",
+          "log": "docs/exact_c_steps/step_490.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 288,
+        "model_sha256": "552d76dd5219616a2815115e57c1ea70daded6bb89d36c33439b610beb738566",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/eeprom_settings_store.c",
+      "source_sha256": "0df753a76e3c685143aecdaeb05804058070108a64769781ddd03f335ab80097",
+      "entries": [
+        {
+          "symbol": "eeprom_settings_save",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 68,
+          "asm_helper_bytes": 28
+        }
+      ],
+      "retained_instruction_bytes": {
+        "breq": 4,
+        "brne": 2,
+        "cpc": 2,
+        "cpi": 4,
+        "eor": 2,
+        "ld": 2,
+        "rcall": 6,
+        "rjmp": 2,
+        "sts": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Original memory instruction/register and cursor update",
+        "Exact access width/register/protected-write or allocation constraint",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 491,
+          "accepted": true,
+          "change": "C EEPROM erase/buffer status busy loop tests",
+          "log": "docs/exact_c_steps/step_491.log"
+        },
+        {
+          "step": 544,
+          "accepted": false,
+          "change": "C EEPROM changed-byte XOR and branch without opaque result barrier",
+          "log": "docs/exact_c_steps/step_544_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 688,
+        "model_sha256": "d88a463674128607e0913025fad0eab2780dba07c9de7f9053ec2332f795e573",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_address_send.c",
+      "source_sha256": "7f4a72a08a6fd9d1e2bb390c6c3c7d46ecf757d16f804f99c4fba9aa6a8d73bb",
+      "entries": [
+        {
+          "symbol": "FUN_code_000c04",
+          "classification": "C_BINARY_EXACT",
+          "compiler_generated_bytes": 56,
+          "asm_helper_bytes": 0
+        }
+      ],
+      "retained_instruction_bytes": {},
+      "retention_review": [
+        "Compiler-generated C only; no emitting inline helper remains"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 304,
+        "model_sha256": "98db06d6187ce57da14e709d9ef63deda7934256dda4c7214bcfae686c1bf0c0",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_crc_bit_core.c",
+      "source_sha256": "2ed3d1777420d4669196d95e6d35d352168a650d7850267822c503bd1d25849a",
+      "entries": [
+        {
+          "symbol": "FUN_code_000bf2",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 14,
+          "asm_helper_bytes": 22
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 6,
+        "brcc": 4,
+        "brcs": 2,
+        "brne": 2,
+        "dec": 2,
+        "lsr": 4,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 288,
+        "model_sha256": "c0984eb96e1ed3d09e4dfd1a6701283f9bb0d694702db1cfa4fd84418a573549",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_crc_stream_read.c",
+      "source_sha256": "04fc28526a3672bb3d773020f7fb15db75d813f25b8bb11b8adbfc7de157628d",
+      "entries": [
+        {
+          "symbol": "FUN_code_000bb9",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 96,
+          "asm_helper_bytes": 18
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "breq": 2,
+        "cp": 2,
+        "cpc": 4,
+        "eor": 2,
+        "rcall": 4,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 704,
+        "model_sha256": "2a70f15d697b5c75919111b8df11bf29ac7d8fd882a4558130dfbee1d1c15131",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_device_id.c",
+      "source_sha256": "7ec19fcd92371cb1516670969879ff0c72021c5d39481e6f7dcbbc409281c828",
+      "entries": [
+        {
+          "symbol": "FUN_code_000c20",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 76,
+          "asm_helper_bytes": 2
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 416,
+        "model_sha256": "949431998c091a403defb87f6545297cf6d49b510c472b6d8cafe567bd90da9e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_interface_deinit.c",
+      "source_sha256": "3d230af763853ad8b606b81873494d4936dbb287992adc862172ea25ab98d552",
+      "entries": [
+        {
+          "symbol": "FUN_code_000b3f",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 48,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2,
+        "rcall": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 304,
+        "model_sha256": "09ac918c44c59f63d06757f6712f29a1177f6cf4bd55471299e5d62fb5633468",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_interface_init.c",
+      "source_sha256": "a233d7cfe6cf1680bc9a7019d8029ed6ed89092fdab41417c70b1bc85bcc7ca5",
+      "entries": [
+        {
+          "symbol": "FUN_code_000b32",
+          "classification": "C_BINARY_EXACT",
+          "compiler_generated_bytes": 26,
+          "asm_helper_bytes": 0
+        }
+      ],
+      "retained_instruction_bytes": {},
+      "retention_review": [
+        "Compiler-generated C only; no emitting inline helper remains"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 144,
+        "model_sha256": "a601e457b3b730ccf8ad807beaaa9da0fe96f81231b2176176f592cd5c0f49b4",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_page_program.c",
+      "source_sha256": "8f2ca724faa4d21baedd593edf8ebb8cff54fba5bce8264544472103ac44ce65",
+      "entries": [
+        {
+          "symbol": "FUN_code_000b59",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 74,
+          "asm_helper_bytes": 20
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "brne": 4,
+        "clc": 2,
+        "cp": 2,
+        "cpc": 4,
+        "rcall": 4,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 470,
+          "accepted": true,
+          "change": "Native C return with original carry/private frame helpers",
+          "log": "docs/exact_c_steps/step_470.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 592,
+        "model_sha256": "725b7cce1be55be46e7aabdef15baf93b2e94143b069c57457bbd0b7fb17b4fc",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_sector_erase.c",
+      "source_sha256": "821e56957f6c3612d3ce019bf0cafe7a14770e1681d8b8b7b3f645940a3a8733",
+      "entries": [
+        {
+          "symbol": "FUN_code_000b88",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 10,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "rcall": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 96,
+        "model_sha256": "034d293547ab55c1742f97963cd5b1b345b0ffda34a5a22944baea6cec49303c",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_wait_ready.c",
+      "source_sha256": "d2c7e6d9ac0a45289a4a742e2847ebc9d3c46667dbe23a8198256537dd2dcc80",
+      "entries": [
+        {
+          "symbol": "FUN_code_000b9d",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 52,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 2,
+        "sbiw": 2
+      },
+      "retention_review": [
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 488,
+          "accepted": false,
+          "change": "C delay loop preserving original SBIW/BRNE instruction pair",
+          "log": "docs/exact_c_steps/step_488_rejected.log"
+        },
+        {
+          "step": 537,
+          "accepted": false,
+          "change": "O1 C SBIW delay loop with explicit original word pair",
+          "log": "docs/exact_c_steps/step_537_rejected.log"
+        },
+        {
+          "step": 538,
+          "accepted": false,
+          "change": "C flash delay loop with global original register-pair reservation",
+          "log": "docs/exact_c_steps/step_538_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 336,
+        "model_sha256": "46a07ddd385030f5ad45214cfd760348cebbe86b0dd795b8583848d2e10e8bee",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/flash_write_enable.c",
+      "source_sha256": "4266715d5d2e1203523f99391ef1a8805c808bb0fc0a27c533c813a55cd83ab1",
+      "entries": [
+        {
+          "symbol": "FUN_code_000b8f",
+          "classification": "C_BINARY_EXACT",
+          "compiler_generated_bytes": 28,
+          "asm_helper_bytes": 0
+        }
+      ],
+      "retained_instruction_bytes": {},
+      "retention_review": [
+        "Compiler-generated C only; no emitting inline helper remains"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 160,
+        "model_sha256": "a374c1e03c5ee45aff1285ecf806fb0d66198237d8937575467394a506a83a1e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_binary_programming_stream.c",
+      "source_sha256": "c4582fd0f8622dce081dd4e0fe7894370c8310d614d5df80cb5dbbcb7427a6d8",
+      "entries": [
+        {
+          "symbol": "fpga_firmware_update",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 132,
+          "asm_helper_bytes": 58
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "brcs": 4,
+        "breq": 2,
+        "brne": 4,
+        "dec": 2,
+        "eor": 8,
+        "rcall": 20,
+        "rjmp": 2,
+        "sbc": 4,
+        "sbci": 4,
+        "st": 6
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 497,
+          "accepted": true,
+          "change": "C low-byte inclusive remaining-count increment with exact upper carry",
+          "log": "docs/exact_c_steps/step_497.log"
+        },
+        {
+          "step": 498,
+          "accepted": true,
+          "change": "C explicitly bound private R1 limit-byte copy",
+          "log": "docs/exact_c_steps/step_498.log"
+        },
+        {
+          "step": 499,
+          "accepted": true,
+          "change": "C explicitly bound copy from live private R1 limit byte",
+          "log": "docs/exact_c_steps/step_499.log"
+        },
+        {
+          "step": 514,
+          "accepted": true,
+          "change": "C final initial buffer byte store after three exact X postincrements",
+          "log": "docs/exact_c_steps/step_514.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1216,
+        "model_sha256": "788e151c62f031e12414bb9b8ba578d796968f78a6db0094b705307af594261d",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_data_exchange.c",
+      "source_sha256": "b28b1436588bb8feb15cddcf392d551c0f474530c0e685ca38022f4f3efcc830",
+      "entries": [
+        {
+          "symbol": "fpga_data_exchange",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 250,
+          "asm_helper_bytes": 148
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "brcc": 4,
+        "brcs": 8,
+        "breq": 2,
+        "brge": 8,
+        "brne": 6,
+        "cpc": 16,
+        "cpi": 26,
+        "eor": 4,
+        "inc": 2,
+        "ld": 2,
+        "rcall": 10,
+        "rjmp": 16,
+        "ror": 8,
+        "sbrc": 2,
+        "sbrs": 12,
+        "st": 20
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 547,
+          "accepted": true,
+          "change": "C FPGA exchange masked channel branch without opaque result barrier",
+          "log": "docs/exact_c_steps/step_547.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 2944,
+        "model_sha256": "c4b6c76c590a979d4f280af67222940e96c16d18d1b7c5ec318b60810ba0ba13",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_multiword_read.c",
+      "source_sha256": "5e10db1d70eb8c991112be50d601faa246afb1475bd3d3750d4ccb37c3426b8a",
+      "entries": [
+        {
+          "symbol": "FUN_code_0011e5",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 186,
+          "asm_helper_bytes": 2
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1008,
+        "model_sha256": "def70e89716af2b7937141c40f32e965952b4e0821b718b77c86e1afa370c769",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_ready_guard.c",
+      "source_sha256": "c645b3a06b048bcd5b5cc1985811b905271d43d5f43ea95c5d90c35cbd26b1a3",
+      "entries": [
+        {
+          "symbol": "FUN_code_00108e",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 10,
+          "asm_helper_bytes": 10
+        }
+      ],
+      "retained_instruction_bytes": {
+        "clc": 2,
+        "rcall": 2,
+        "ret": 2,
+        "sbrc": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 474,
+          "accepted": false,
+          "change": "C early ready-bit return with original carry status",
+          "log": "docs/exact_c_steps/step_474_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 144,
+        "model_sha256": "daf015e80bdc53e4a0c86412506b9ffb764192f65a473b2e15a5b334cb17a59a",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_settings_init.c",
+      "source_sha256": "a3edec957c7f90f842898b10f685f3926fc04ade34311dabcc3e819825036f20",
+      "entries": [
+        {
+          "symbol": "fpga_settings_init",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 124,
+          "asm_helper_bytes": 42
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 8,
+        "inc": 6,
+        "ld": 8,
+        "pop": 10,
+        "push": 10
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update"
+      ],
+      "new_trials": [
+        {
+          "step": 471,
+          "accepted": true,
+          "change": "Native C return with original carry/private frame helpers",
+          "log": "docs/exact_c_steps/step_471.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1088,
+        "model_sha256": "739aa1a50875a56211bb5223eb029cb0ef9cb53e72ca7d420449f31d22cccd70",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_settings_reset.c",
+      "source_sha256": "258f199f655369c317ed3deac3b288ab4ed462873c1db797904349410f8c1299",
+      "entries": [
+        {
+          "symbol": "fpga_settings_reset",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 70,
+          "asm_helper_bytes": 14
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2,
+        "inc": 4,
+        "ld": 8
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 608,
+        "model_sha256": "093d5aca36ce51a2ba1becd12d9e610b5aa2dfda6705a4ff7da1e13009f8e069",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_status_interrupt.c",
+      "source_sha256": "4567c9e2ca912ca0bb2481b457456035bbe905b2fd22f6c450a6a103933e1e2a",
+      "entries": [
+        {
+          "symbol": "PORTE_INT1_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 66,
+          "asm_helper_bytes": 18
+        }
+      ],
+      "retained_instruction_bytes": {
+        "pop": 8,
+        "push": 8,
+        "reti": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract"
+      ],
+      "new_trials": [
+        {
+          "step": 546,
+          "accepted": true,
+          "change": "C FPGA status mask and zero branch without opaque result barrier",
+          "log": "docs/exact_c_steps/step_546.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 544,
+        "model_sha256": "8c2afb2c636c8ab9be176214a6cf86a20a1ceb471f7e23eac922735651053a45",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_timestamp_send.c",
+      "source_sha256": "5516f27d6935b05393101c4121c6283dad49be1afa8e67e889fd6377610c073b",
+      "entries": [
+        {
+          "symbol": "fpga_send_mcu_ts",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 100,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "lpm": 4
+      },
+      "retention_review": [
+        "Original memory instruction/register and cursor update"
+      ],
+      "new_trials": [
+        {
+          "step": 475,
+          "accepted": true,
+          "change": "C low-byte timestamp cursor loop comparison",
+          "log": "docs/exact_c_steps/step_475.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 656,
+        "model_sha256": "8b248dc984532e79c6b89a761ee0b2e990c88c779d32f95dc046de2d52609518",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_word_read.c",
+      "source_sha256": "daaee466774c999959df83d8ce4a700b0fd450ceba6b00ce30cd8d150f58f8af",
+      "entries": [
+        {
+          "symbol": "fpga_msg_read_t1",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 94,
+          "asm_helper_bytes": 4
+        }
+      ],
+      "retained_instruction_bytes": {
+        "ror": 4
+      },
+      "retention_review": [
+        "Live carry/T/status coupling; ordinary C value is insufficient"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 576,
+        "model_sha256": "066ec0b3c47e9b6517423e49e2e9969b1dab425f952b1f9d43c226a31537c4d2",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/fpga_word_write.c",
+      "source_sha256": "7d909cf19ac31235e6397bd8eee64b6dc37d727fe793e185d0d349551bf5263f",
+      "entries": [
+        {
+          "symbol": "fpga_msg_send_t2",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 84,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2,
+        "ror": 4
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 544,
+        "model_sha256": "eac551d609a072cce01cfc1f158c9957676056cc342b84cdf7f10a37a7b38169",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/pll_console_reset.c",
+      "source_sha256": "e89fc20f0d6d05d6a4571fa77de1fb96bf1cf972139cf6d2a18b7d607e0b5cda",
+      "entries": [
+        {
+          "symbol": "cdce62005_rst",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 16,
+          "asm_helper_bytes": 22
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 4,
+        "cpi": 2,
+        "dec": 2,
+        "lpm": 8,
+        "rcall": 6
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 304,
+        "model_sha256": "b4b3e7c2c0ccc4d456cb33a7723f4ecd3bb94e52c371e929fffb8c482f45c687",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/pll_control_read.c",
+      "source_sha256": "4f49982486b85f17d97f9dcc297654f3b1168ae69407122ae46556133cc01c1d",
+      "entries": [
+        {
+          "symbol": "FUN_code_001267",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 88,
+          "asm_helper_bytes": 10
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 8,
+        "rcall": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 560,
+        "model_sha256": "8ef4291f21621e4dc145cca29b656735b0a198ae3f6f074a7ed1c681f4acabbc",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/pll_control_write.c",
+      "source_sha256": "d2ab8637cea4db16c9c410cd2f8c8dbc3906dc99304c8bfe01cf29e4cc5dbc84",
+      "entries": [
+        {
+          "symbol": "CDCE62005_send_control_settings",
+          "classification": "C_BINARY_EXACT",
+          "compiler_generated_bytes": 72,
+          "asm_helper_bytes": 0
+        }
+      ],
+      "retained_instruction_bytes": {},
+      "retention_review": [
+        "Compiler-generated C only; no emitting inline helper remains"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 400,
+        "model_sha256": "3c3c3665c6b67b1abf9559147b81a4f453d5e0c9af5431cf4e544297391f1535",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/pll_defaults_load.c",
+      "source_sha256": "88246e62861e55a0d3027b8fa2ddc42083518fa9e64b86a93c12bbd47b937a9b",
+      "entries": [
+        {
+          "symbol": "CDCE62005_control_rst",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 56,
+          "asm_helper_bytes": 12
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 2,
+        "dec": 2,
+        "lpm": 8
+      },
+      "retention_review": [
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 496,
+        "model_sha256": "77d6fac9dba7ff2b26cd5c798b486fc7e03c982626cc8d7aaf59d8223e9d3d32",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/pll_status_interrupt.c",
+      "source_sha256": "8fd813682340ab884bfe54359448422613a9b26686a867c3ad618fcacbc69fe8",
+      "entries": [
+        {
+          "symbol": "PORTF_INT1_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 96,
+          "asm_helper_bytes": 40
+        }
+      ],
+      "retained_instruction_bytes": {
+        "bld": 2,
+        "breq": 2,
+        "brtc": 4,
+        "bst": 2,
+        "pop": 10,
+        "push": 10,
+        "rcall": 2,
+        "reti": 2,
+        "rjmp": 2,
+        "sbi": 2,
+        "sbrc": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 492,
+          "accepted": false,
+          "change": "C PLL lock-status bit copy using compiler AVR insert-bits",
+          "log": "docs/exact_c_steps/step_492_rejected.log"
+        },
+        {
+          "step": 545,
+          "accepted": false,
+          "change": "C PLL changed-state XOR and branch without opaque result barrier",
+          "log": "docs/exact_c_steps/step_545_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 912,
+        "model_sha256": "982c64466d39ac122a21eee8c968142c7dc461d7765af04d8066ecdddf783864",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/power_fault_state.c",
+      "source_sha256": "a49ade969bae3e8770c330af748940c0bd84afb39d049743c859386518ab509c",
+      "entries": [
+        {
+          "symbol": "FUN_code_0005b4",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 40,
+          "asm_helper_bytes": 6
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 2,
+        "lds": 4
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Exact access width/register/protected-write or allocation constraint"
+      ],
+      "new_trials": [
+        {
+          "step": 533,
+          "accepted": false,
+          "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+          "log": "docs/exact_c_steps/step_533_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 240,
+        "model_sha256": "441eded3ef357d19823cb2c59f80fde230dad4750038666ea8922934963e96ea",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/power_portb_interrupt.c",
+      "source_sha256": "9fc2a5258c009384870343057146619679ba81e90c4e13c2a71ac69c0d082cab",
+      "entries": [
+        {
+          "symbol": "PORTB_INT0_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 20,
+          "asm_helper_bytes": 16
+        }
+      ],
+      "retained_instruction_bytes": {
+        "in": 2,
+        "lds": 4,
+        "pop": 4,
+        "push": 4,
+        "reti": 2
+      },
+      "retention_review": [
+        "Original saved frame / RETI / shared entry contract",
+        "Exact access width/register/protected-write or allocation constraint"
+      ],
+      "new_trials": [
+        {
+          "step": 535,
+          "accepted": false,
+          "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+          "log": "docs/exact_c_steps/step_535_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 224,
+        "model_sha256": "25a1d749cbac029017e21e8e3f4aaf341a2121d920bb4733ad4294f66f942a59",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/power_portd_interrupt.c",
+      "source_sha256": "3a98a06b5272d58483435bfe1bd644fa8377299ea6b6e2a4a015ded03e26b0e5",
+      "entries": [
+        {
+          "symbol": "PORTD_INT0_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 60,
+          "asm_helper_bytes": 20
+        }
+      ],
+      "retained_instruction_bytes": {
+        "bld": 2,
+        "brtc": 2,
+        "bst": 2,
+        "eor": 2,
+        "pop": 4,
+        "push": 4,
+        "rcall": 2,
+        "reti": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 496,
+        "model_sha256": "25eeeb944778f5ba9b0e90f3138749240aef2d74ba59669b9412092e3ea458cd",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/power_porte_interrupt.c",
+      "source_sha256": "2f76e101b5d2ee33a679594099cd8a12489624dffdab04fafcc902a0511f8f35",
+      "entries": [
+        {
+          "symbol": "PORTE_INT0_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 112,
+          "asm_helper_bytes": 36
+        }
+      ],
+      "retained_instruction_bytes": {
+        "bld": 2,
+        "brtc": 2,
+        "bst": 4,
+        "dec": 2,
+        "eor": 2,
+        "pop": 8,
+        "push": 8,
+        "rcall": 6,
+        "reti": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation"
+      ],
+      "new_trials": [
+        {
+          "step": 500,
+          "accepted": false,
+          "change": "Compiler bit-insertion for two power-status bits with exact final T capture",
+          "log": "docs/exact_c_steps/step_500_rejected.log"
+        },
+        {
+          "step": 524,
+          "accepted": true,
+          "change": "Compiler power-state first bit insertion retaining second and final T helpers",
+          "log": "docs/exact_c_steps/step_524.log"
+        },
+        {
+          "step": 525,
+          "accepted": false,
+          "change": "Compiler power-state second bit insertion with retained final T helper",
+          "log": "docs/exact_c_steps/step_525_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1008,
+        "model_sha256": "02cfe083f317dc522c261c8cccd396964b79464a6ab5794d5187a323d7e11f26",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/power_state_request.c",
+      "source_sha256": "3320286c845959dca91d9fe95f18c32c2143d66aa73db280e1144b4a0214fa59",
+      "entries": [
+        {
+          "symbol": "FUN_code_00054e",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 24,
+          "asm_helper_bytes": 8
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "breq": 4,
+        "cpi": 2
+      },
+      "retention_review": [
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 192,
+        "model_sha256": "a36ddde4f2fb340389ce0598a1c2ef3df59ee4b3e44a3155b94e0c23b87fed74",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/programming_unlock.c",
+      "source_sha256": "1dffef9e1f33fea677c1941e2f16ce223953674ab1e42e847cdaab4a8057c975",
+      "entries": [
+        {
+          "symbol": "unlock_programming",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 26,
+          "asm_helper_bytes": 18
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brne": 4,
+        "clc": 2,
+        "cp": 2,
+        "cpi": 2,
+        "lpm": 2,
+        "ret": 2,
+        "rjmp": 2,
+        "sec": 2
+      },
+      "retention_review": [
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 476,
+          "accepted": true,
+          "change": "C low-byte password cursor loop comparison",
+          "log": "docs/exact_c_steps/step_476.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 304,
+        "model_sha256": "a49746ca72e846cf0f895a7aa3fb33bc8941da2af515aade44b395b3d4d44acd",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/status_led.c",
+      "source_sha256": "c7537a320ac83b8859e32d0438562b525debf701da5ced7fba03953b1cf901a6",
+      "entries": [
+        {
+          "symbol": "set_status_and_vd8_led",
+          "classification": "C_BINARY_EXACT",
+          "compiler_generated_bytes": 24,
+          "asm_helper_bytes": 0
+        }
+      ],
+      "retained_instruction_bytes": {},
+      "retention_review": [
+        "Compiler-generated C only; no emitting inline helper remains"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 160,
+        "model_sha256": "8a8a883c82d0799f960e773f56e71d7054f0bf9e87a38510a7813085e39229d9",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/system_deinit.c",
+      "source_sha256": "38bb4363b4e2219e1bcdc9331ed541d8f838560ef3109c44c4878068f100ab85",
+      "entries": [
+        {
+          "symbol": "system_deinit",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 108,
+          "asm_helper_bytes": 14
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 6,
+        "ldi": 4,
+        "lds": 4
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Exact access width/register/protected-write or allocation constraint"
+      ],
+      "new_trials": [
+        {
+          "step": 534,
+          "accepted": false,
+          "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+          "log": "docs/exact_c_steps/step_534_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 608,
+        "model_sha256": "199ed6c74de955ed3e0e69fab5bcb0ade8efef3dfe9777bec769231ff0b14b2e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/system_init.c",
+      "source_sha256": "a0c2978d1f4e585afcc94593798536ab9f87ab0aa503c990dd1b42f299b72a6c",
+      "entries": [
+        {
+          "symbol": "system_init",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 180,
+          "asm_helper_bytes": 24
+        }
+      ],
+      "retained_instruction_bytes": {
+        "eor": 12,
+        "lds": 4,
+        "rjmp": 2,
+        "sbrc": 2,
+        "sts": 4
+      },
+      "retention_review": [
+        "Flag-setting CLR or other exact EOR still present",
+        "Exact access width/register/protected-write or allocation constraint",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 480,
+          "accepted": true,
+          "change": "C PLL initial command bytes with exact flag/call window",
+          "log": "docs/exact_c_steps/step_480.log"
+        },
+        {
+          "step": 481,
+          "accepted": true,
+          "change": "Compiler CLI/SEI primitives around exact PLL CALL",
+          "log": "docs/exact_c_steps/step_481.log"
+        },
+        {
+          "step": 487,
+          "accepted": true,
+          "change": "C private void PLL wide CALL with bound input/output barriers",
+          "log": "docs/exact_c_steps/step_487.log"
+        },
+        {
+          "step": 536,
+          "accepted": false,
+          "change": "O1 C DMA control store avoiding repeated-address pointer CSE",
+          "log": "docs/exact_c_steps/step_536_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1120,
+        "model_sha256": "edac2b7df83ab675d5a0e945cbb9942bd0718ad406118f8a91558875fc6ab3a9",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/system_status_display.c",
+      "source_sha256": "1d6ad467c6dc980f8d456567811bec6bb15eb3b7cce8db4ae977efac1174eb61",
+      "entries": [
+        {
+          "symbol": "cli_send_system_status",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 266,
+          "asm_helper_bytes": 118
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 2,
+        "brcc": 2,
+        "breq": 4,
+        "brne": 4,
+        "cpi": 6,
+        "eor": 4,
+        "inc": 2,
+        "lpm": 10,
+        "rcall": 68,
+        "ret": 2,
+        "rjmp": 6,
+        "sbrc": 4,
+        "sbrs": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 485,
+          "accepted": true,
+          "change": "C status-message table low-byte address addition",
+          "log": "docs/exact_c_steps/step_485.log"
+        },
+        {
+          "step": 486,
+          "accepted": true,
+          "change": "C FLASH table high-byte load after exact LPM Z+ helper",
+          "log": "docs/exact_c_steps/step_486.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 2912,
+        "model_sha256": "d9acb77329d64b70192f608e703476bd702925d2cd1cac0277f5b792131e2324",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/tdc_channel_data_display.c",
+      "source_sha256": "8fff5bc962f7293efba11bbffa74abd224b4398f037044171b0a8b91328dc9d5",
+      "entries": [
+        {
+          "symbol": "cli_send_tdc_data",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 64,
+          "asm_helper_bytes": 94
+        }
+      ],
+      "retained_instruction_bytes": {
+        "brcc": 6,
+        "brlt": 4,
+        "brne": 2,
+        "cpi": 8,
+        "eor": 12,
+        "inc": 2,
+        "ld": 2,
+        "ori": 2,
+        "pop": 2,
+        "push": 2,
+        "rcall": 38,
+        "rjmp": 6,
+        "sbrc": 2,
+        "sbrs": 2,
+        "subi": 4
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 489,
+          "accepted": true,
+          "change": "C signed coarse-byte shifts preserving final ASM carry injection",
+          "log": "docs/exact_c_steps/step_489.log"
+        },
+        {
+          "step": 530,
+          "accepted": true,
+          "change": "Native C early display return after exact FPGA carry guard",
+          "log": "docs/exact_c_steps/step_530.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 1264,
+        "model_sha256": "5981475966c4d267203dc4e4df8f7317482ca3bafaffa33eaf50e011442f3e6f",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/tdc_host_read.c",
+      "source_sha256": "90f26192f367e8b9ec078465be867dbef93f842b34e728b58e18628a3c289e0e",
+      "entries": [
+        {
+          "symbol": "ths788_read",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 146,
+          "asm_helper_bytes": 16
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 4,
+        "brmi": 2,
+        "brne": 4,
+        "dec": 6
+      },
+      "retention_review": [
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 493,
+          "accepted": true,
+          "change": "C TDC strobe-mask shift inside exact DEC/BRMI loop",
+          "log": "docs/exact_c_steps/step_493.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 928,
+        "model_sha256": "77ed15eff734096342da0d5adc22bf3a31d9e437915978d50b9bd61116f2ae68",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/tdc_host_write.c",
+      "source_sha256": "b2b87a4d01322b4abc143833b3297902f8527e49ad49ff45d3f71e145c5a33d2",
+      "entries": [
+        {
+          "symbol": "ths788_write",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 128,
+          "asm_helper_bytes": 20
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 6,
+        "brcs": 2,
+        "breq": 2,
+        "brmi": 2,
+        "brne": 2,
+        "cpi": 2,
+        "dec": 4
+      },
+      "retention_review": [
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 494,
+          "accepted": true,
+          "change": "C TDC single/broadcast mask constants and shift with exact branches",
+          "log": "docs/exact_c_steps/step_494.log"
+        },
+        {
+          "step": 542,
+          "accepted": false,
+          "change": "C TDC command mask branch with input-only mask barrier",
+          "log": "docs/exact_c_steps/step_542_rejected.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 912,
+        "model_sha256": "b520f597bcbaf22ef80335b2fd3a825bdde7a61202ccf8d1a86149e98c441643",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/timer_overflow_interrupt.c",
+      "source_sha256": "fa1cd8f60eaadb1fa1bae134eea4633bbc2fcffdca520dc114336a9741316240",
+      "entries": [
+        {
+          "symbol": "TCC0_OVF_vect_isr",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 670,
+          "asm_helper_bytes": 424
+        }
+      ],
+      "retained_instruction_bytes": {
+        "adc": 6,
+        "and": 14,
+        "brcc": 6,
+        "brcs": 4,
+        "breq": 26,
+        "brge": 4,
+        "brne": 50,
+        "cp": 4,
+        "cpc": 10,
+        "cpi": 42,
+        "dec": 12,
+        "eor": 38,
+        "inc": 10,
+        "ld": 2,
+        "ldd": 18,
+        "ldi": 4,
+        "mul": 2,
+        "mulsu": 2,
+        "pop": 34,
+        "push": 34,
+        "rcall": 14,
+        "reti": 2,
+        "rjmp": 30,
+        "ror": 2,
+        "sbc": 2,
+        "sbic": 4,
+        "sbis": 8,
+        "sbrc": 4,
+        "sbrs": 14,
+        "std": 22
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original saved frame / RETI / shared entry contract",
+        "Flag-setting CLR or other exact EOR still present",
+        "Live carry/T/status coupling; ordinary C value is insufficient",
+        "INC/DEC encoding and carry preservation",
+        "Original memory instruction/register and cursor update",
+        "Private multiply / nonzero R1 contract",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 7824,
+        "model_sha256": "24032cb859000badc65aaca2d973020c0ccf704287a9978777838d3edaf009b0",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/trigger_charge_command.c",
+      "source_sha256": "cf1e09685f10fa74aac9468c81c1b2e7cb70d28efe88450d08f38376800f1908",
+      "entries": [
+        {
+          "symbol": "fpga_set_trg_charge_lvls",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 18,
+          "asm_helper_bytes": 30
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "brcc": 2,
+        "brcs": 2,
+        "brge": 2,
+        "brmi": 2,
+        "brne": 2,
+        "cpc": 2,
+        "cpi": 4,
+        "ldi": 2,
+        "rcall": 8,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 531,
+          "accepted": true,
+          "change": "Native C early trigger-command return after exact FPGA carry guard",
+          "log": "docs/exact_c_steps/step_531.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 352,
+        "model_sha256": "b145ecbc28bf2878975c85fd4a6f1d88e9dfa09ceb5453d2405ebd0b475d27b7",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/trigger_settings_command.c",
+      "source_sha256": "cbac6e29365bb2757af11ff1c8d2de132ae39c4c69676fa600781b8adb15607f",
+      "entries": [
+        {
+          "symbol": "fpga_set_trg_settings",
+          "classification": "C_WITH_EXACT_ASM_HELPER",
+          "compiler_generated_bytes": 14,
+          "asm_helper_bytes": 22
+        }
+      ],
+      "retained_instruction_bytes": {
+        "and": 2,
+        "brcc": 2,
+        "brcs": 2,
+        "brne": 4,
+        "cpi": 2,
+        "rcall": 8,
+        "rjmp": 2
+      },
+      "retention_review": [
+        "Original two-byte RCALL and private register ABI",
+        "Original conditional/target/layout remains in helper"
+      ],
+      "new_trials": [
+        {
+          "step": 532,
+          "accepted": true,
+          "change": "Native C early trigger-command return after exact FPGA carry guard",
+          "log": "docs/exact_c_steps/step_532.log"
+        }
+      ],
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 272,
+        "model_sha256": "0f71c991d4b31076853c00b3e71acea9fc887171743ddd573db7154c906ba6e6",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    }
+  ],
+  "headers": [
+    {
+      "source": "src/legacy_cli.h",
+      "sha256": "eb3c8d6237a1abefc3083d7b15e222f0bf72080ad3ace8399a33cdca485b9312",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 7104,
+        "model_sha256": "e79a906f57fbe1c19b1461732afb4bc71569437a26df2cb283421ac0a2ec7e9b",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_cli_guard_c.h",
+      "sha256": "0cb9a30a40fad681012253a1757a35f21bad79c04240f4a232aa49785f368ca1",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 3808,
+        "model_sha256": "360bd9a8fb26b68be49453b251352d9c4e8cc416e2d383c3c9c21e259b4a39cf",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_cpu.h",
+      "sha256": "2d8de744520ebb51a45ed7d6f53808522f5edc5f6ef8858680cec4ea010d1763",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 208,
+        "model_sha256": "e3372cb5188f6c0d2c6d0008e3bd3b3a019679642ec2e594fed23de587d47ead",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_interrupt.h",
+      "sha256": "6cfe11bf82c98341b90e96b347c61546fa58857599dd0883ef74494c96447126",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 800,
+        "model_sha256": "110431172bee6de78a0fdcb1ecc9ef3ede648846093c11082117466b4a2ee6fc",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_interrupt_register_c.h",
+      "sha256": "5a0ca3438404c2433a055f2025b3df0956b97335718979d467f63aa5152a0bf4",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 800,
+        "model_sha256": "f949c93ee329a8e17b21373df42340a6994339613dc48dcf758a3e6f87493d52",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_r16.h",
+      "sha256": "a39364eae296528d20197d8eaee5a6b1114f92066722a7d25ab6cc25baf5ccbb",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 5648,
+        "model_sha256": "05a292bf3bc3a0092eefb04629194e33ed542576f5467acecc0a9568f5618f2d",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_r16_c.h",
+      "sha256": "412db26f7f4c3044c3dbe62f5f17a0be67e6119dbaa4366240e97e8ffbfb6f9b",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 5648,
+        "model_sha256": "aca44a0e7fc0c25d74afd60485156121b7e282e0bb90ed6b1e2d36d683e461c0",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_spi.h",
+      "sha256": "cba80c20e3ebb9da55b22b7af3766bbe4a0dc012a9546fc4b348ed41c8f33a94",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 6992,
+        "model_sha256": "05e94b3bd84a32c8f50ca33b17659994a7444d7c1837c5bd4011aa6ae121337e",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    },
+    {
+      "source": "src/legacy_spi_c.h",
+      "sha256": "8fc3ae9f53de6fba2b064d0125f65eea183950715525dab6ee595d0e238743d7",
+      "logical_c_validation": {
+        "status": "PASS_INSTRUCTION_TRANSITIONS",
+        "instruction_transition_cases": 6992,
+        "model_sha256": "67b32d3069c94ec4ab5105a0fc32d6d31d84bbc7c0438295a1a05610d22eda01",
+        "evidence": "docs/logical_c_validation.json"
+      }
+    }
+  ],
+  "logical_c_comment_files": 96,
+  "logical_c_instruction_transition_cases": 384240,
+  "historical_functional_suites_rerun": 23
+}

@@ -1,0 +1,5 @@
+PASS every even FLASH status byte and H/T/I flag combinations
+PASS all incoming SREG patterns
+PASS all ready SPI status bytes and failed-poll profiles
+PASS 1/2/4 busy retry transactions through retained delay
+ALL PASS FLASH wait: 5120 cases; 15 additional stack bytes

@@ -1,0 +1,7 @@
+PASS all 65536 input words; cycled SREG
+PASS HEX16 UART scenario: direct
+PASS HEX16 UART scenario: queued
+PASS HEX16 UART scenario: busy
+PASS HEX16 UART scenario: wrap
+PASS HEX16 UART scenario: full
+ALL PASS HEX16: 75776 cases; 32 additional stack bytes

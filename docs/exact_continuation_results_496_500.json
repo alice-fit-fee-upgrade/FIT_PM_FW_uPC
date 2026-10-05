@@ -1,0 +1,11 @@
+[
+  {
+    "step": 496,
+    "source": "dac_spi_send.c",
+    "change": "C DAC select shifts and remaining subtract preserving BREQ flags",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_496.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

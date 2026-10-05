@@ -1,0 +1,3 @@
+PASS FPGA state entry: 0xa9c
+PASS FPGA state entry: 0x167e
+PASS FPGA state: 131072 cases; 20 additional stack bytes

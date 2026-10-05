@@ -1,0 +1,23 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/source_recovery'
+cd ../reference && sha256sum -c SHA256SUMS
+eeprom_golden.bin: OK
+flash_golden.bin: OK
+originals/1-PM-Zrzut-ekranu-2023-11-11-131139.jpg: OK
+originals/1-PM.hex: OK
+originals/2-FIT_PM12-1-.PDF: OK
+originals/2-PM_Atxmega128.elf: OK
+originals/3-PM_sign.hex: OK
+originals/4-PM.eep: OK
+originals/5-PM_sign.hex: OK
+usersig_golden.bin: OK
+python3 tests/differential.py
+PASS parser returns, partial-error values and consumed input {'parse_integer': 99092, 'parse_hex': 66304}
+PASS console emitted bytes including signed widths/decimal positions {'parse_integer': 99092, 'parse_hex': 66304, 'hex_digit': 256, 'hex16': 65536, 'decimal': 14700}
+PASS fixed-point results including staged unsigned saturation {'parse_integer': 99092, 'parse_hex': 66304, 'hex_digit': 256, 'hex16': 65536, 'decimal': 14700, 'signed_scale': 69536, 'unsigned_scale': 69536}
+PASS UART MMIO, ring boundaries, flow-control and busy loops
+PASS peripheral wire bytes, sampled inputs and MMIO ordering
+PASS IRQ bodies, settings sequence, shutdown, FLASH strings and CRLF
+ALL PASS 390601 cases
+python3 tests/coverage.py
+Functional C corresponds to 2494 original routine-span bytes / 10836 (23.02%). Original ABI integration remains pending.
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/source_recovery'

@@ -1,0 +1,47 @@
+[
+  {
+    "step": 543,
+    "source": "dac_spi_send.c",
+    "change": "C second DAC selection branch without post-subtract barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_543_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 544,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM changed-byte XOR and branch without opaque result barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_544_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 545,
+    "source": "pll_status_interrupt.c",
+    "change": "C PLL changed-state XOR and branch without opaque result barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_545_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 546,
+    "source": "fpga_status_interrupt.c",
+    "change": "C FPGA status mask and zero branch without opaque result barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_546.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 547,
+    "source": "fpga_data_exchange.c",
+    "change": "C FPGA exchange masked channel branch without opaque result barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_547.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,14 @@
+PASS all inputs, coefficient 0x0000: 65536 cases; cumulative 65536; 23.7s
+PASS all inputs, coefficient 0x0001: 65536 cases; cumulative 131072; 47.8s
+PASS all inputs, coefficient 0x00ff: 65536 cases; cumulative 196608; 71.9s
+PASS all inputs, coefficient 0x0100: 65536 cases; cumulative 262144; 95.7s
+PASS all inputs, coefficient 0x4188: 65536 cases; cumulative 327680; 114.9s
+PASS all inputs, coefficient 0x8000: 65536 cases; cumulative 393216; 134.4s
+PASS all inputs, coefficient 0xffff: 65536 cases; cumulative 458752; 153.7s
+PASS all coefficients, input 0x0000: 65536 cases; cumulative 524288; 177.4s
+PASS all coefficients, input 0x0001: 65536 cases; cumulative 589824; 201.2s
+PASS all coefficients, input 0x7fff: 65536 cases; cumulative 655360; 220.6s
+PASS all coefficients, input 0x8000: 65536 cases; cumulative 720896; 239.9s
+PASS all coefficients, input 0xffff: 65536 cases; cumulative 786432; 259.1s
+PASS random input/coefficient/state: 10000 cases; cumulative 796432; 262.1s
+ALL PASS: 796432 register/SREG/stack comparisons; 22 additional stack bytes

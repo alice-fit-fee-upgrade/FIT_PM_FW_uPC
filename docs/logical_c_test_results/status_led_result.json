@@ -1,0 +1,9 @@
+{
+  "cases": 65536,
+  "gpio_values": 256,
+  "incoming_sreg_patterns": 256,
+  "all_registers_flags_memory_trace_return_stack_equal": true,
+  "maximum_additional_stack": 18,
+  "mixed_bin_sha256": "9f7a76d16f858b5174e11fa5b48725135b0381ff02523b9eb963e276f101e25c",
+  "limits": "bounded functional interpreter; no cycle, asynchronous IRQ or physical hardware validation"
+}

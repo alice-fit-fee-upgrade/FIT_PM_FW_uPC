@@ -1,0 +1,17 @@
+Golden SHA256: e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0
+Rebuilt SHA256: ac2dcedd2dca528ebb411010a60fc83cd4e1440044460eeab03df01483965e60
+FLASH size: 139264
+Used address range (golden non-FF): 0x0 .. 0x204e5
+Identical bytes: 139263
+Differing bytes: 1
+ALL FLASH identical percentage: 99.999282%
+PROGRAMMED / USED FLASH (golden non-FF): 11354 bytes, 1 differing, 99.991193% identical
+PROGRAMMED UNION (golden or rebuilt non-FF): 11354 bytes, 1 differing, 99.991193% identical
+USED EXTENT (includes internal erased holes): 132326 bytes, 1 differing, 99.999244% identical
+First mismatch: 0xb1f
+Last mismatch: 0xb1f
+Number of mismatch regions: 1
+START       END         LENGTH      TYPE
+0x000000    0x000B1E    2847        MATCH
+0x000B1F    0x000B1F    1           DIFF
+0x000B20    0x021FFF    136416      MATCH

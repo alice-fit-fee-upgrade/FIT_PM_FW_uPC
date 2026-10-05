@@ -1,0 +1,6 @@
+PASS all 256 status bytes x all 256 SREG patterns, direct UART
+PASS status gate UART scenario: queued
+PASS status gate UART scenario: busy
+PASS status gate UART scenario: wrap
+PASS status gate UART scenario: full
+ALL PASS status gate: 70656 cases; 18 additional stack bytes

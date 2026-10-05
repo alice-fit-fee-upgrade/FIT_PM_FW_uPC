@@ -1,0 +1,38 @@
+[
+  {
+    "step": 497,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C low-byte inclusive remaining-count increment with exact upper carry",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_497.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 498,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C explicitly bound private R1 limit-byte copy",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_498.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 499,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C explicitly bound copy from live private R1 limit byte",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_499.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 500,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler bit-insertion for two power-status bits with exact final T capture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_500_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

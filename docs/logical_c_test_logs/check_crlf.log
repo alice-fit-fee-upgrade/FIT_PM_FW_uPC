@@ -1,0 +1,6 @@
+PASS CRLF UART scenario: direct
+PASS CRLF UART scenario: queued
+PASS CRLF UART scenario: busy
+PASS CRLF UART scenario: wrap
+PASS CRLF UART scenario: full
+ALL PASS CRLF: 20480 cases; 28 additional stack bytes

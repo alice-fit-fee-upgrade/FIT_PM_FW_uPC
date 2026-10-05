@@ -1,0 +1,23 @@
+{
+  "cases": 201216,
+  "entries": [
+    {
+      "entry": 9624,
+      "cases": 67072
+    },
+    {
+      "entry": 9662,
+      "cases": 67072
+    },
+    {
+      "entry": 9706,
+      "cases": 67072
+    }
+  ],
+  "all_sreg_patterns": 256,
+  "clock_primitive_retained": true,
+  "all_registers_sreg_ordered_cs_clock_gpio_and_return_stack_equal": true,
+  "maximum_additional_stack": 29,
+  "mixed_bin_sha256": "9f7a76d16f858b5174e11fa5b48725135b0381ff02523b9eb963e276f101e25c",
+  "limits": "functional interpreter, original within-byte ASM timing retained; no cycle/async IRQ/hardware validation"
+}

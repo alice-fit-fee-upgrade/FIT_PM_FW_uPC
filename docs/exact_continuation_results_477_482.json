@@ -1,0 +1,47 @@
+[
+  {
+    "step": 477,
+    "source": "dac_offset_scale.c",
+    "change": "C correction high-byte load after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_477.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 478,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration final high-byte load after exact low postincrement",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_478_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 479,
+    "source": "channel_settings_display.c",
+    "change": "C high-byte reads in plain Y settings-display pairs",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_479_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 480,
+    "source": "system_init.c",
+    "change": "C PLL initial command bytes with exact flag/call window",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_480.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 481,
+    "source": "system_init.c",
+    "change": "Compiler CLI/SEI primitives around exact PLL CALL",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_481.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

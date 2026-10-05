@@ -1,0 +1,3 @@
+ADDRESS GOLDEN_BYTES REBUILT_BYTES GOLDEN_INSTRUCTION | REBUILT_INSTRUCTION | CLASS
+0x000b1e 0327 0317 eor	r16, r19 | cp	r16, r19 | B wrong instruction (or O boundary ambiguity)
+Differing instruction/data windows: 1

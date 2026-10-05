@@ -1,0 +1,11 @@
+{
+  "source": "recovered_exact/src/dac_spi_send.c",
+  "candidate_source_sha256": "de181f751ff6ed12fd0a657a328eb879c077aa0e2bad1e464b63aaec2d74219c",
+  "candidate_bin_sha256": "cf8ef8fea7cbc26d1283af8ef2a8b8fb9a5eaf7c1361cb71dc347407c8d3b1fa",
+  "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "differing_bytes": 1,
+  "first_mismatch": 8899,
+  "last_mismatch": 8899,
+  "accepted": false,
+  "functional_validation_claimed": false
+}

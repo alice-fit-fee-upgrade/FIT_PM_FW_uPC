@@ -1,0 +1,6 @@
+PASS all 256 input bytes x all 256 SREG patterns, direct UART
+PASS HEX digit UART scenario: queued
+PASS HEX digit UART scenario: busy
+PASS HEX digit UART scenario: wrap
+PASS HEX digit UART scenario: full
+ALL PASS HEX digit: 70656 cases; 17 additional stack bytes

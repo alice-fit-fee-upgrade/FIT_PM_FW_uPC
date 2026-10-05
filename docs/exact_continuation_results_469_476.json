@@ -1,0 +1,74 @@
+[
+  {
+    "step": 469,
+    "source": "dac_stored_settings_apply.c",
+    "change": "Native C return with original carry/private frame helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_469.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 470,
+    "source": "flash_page_program.c",
+    "change": "Native C return with original carry/private frame helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_470.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 471,
+    "source": "fpga_settings_init.c",
+    "change": "Native C return with original carry/private frame helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_471.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 472,
+    "source": "alarm_state_clear.c",
+    "change": "C alarm-mask branch after opaque ANDI value",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_472_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 473,
+    "source": "console_flash_message.c",
+    "change": "C FLASH message terminator branch preserving exact LPM helper",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_473_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 474,
+    "source": "fpga_ready_guard.c",
+    "change": "C early ready-bit return with original carry status",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_474_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 475,
+    "source": "fpga_timestamp_send.c",
+    "change": "C low-byte timestamp cursor loop comparison",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_475.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 476,
+    "source": "programming_unlock.c",
+    "change": "C low-byte password cursor loop comparison",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_476.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

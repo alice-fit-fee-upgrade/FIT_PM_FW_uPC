@@ -1,0 +1,16 @@
+{
+  "cases": 70656,
+  "status_bytes": 256,
+  "initial_sreg_patterns": 256,
+  "uart_scenarios": [
+    "direct",
+    "queued",
+    "busy",
+    "wrap",
+    "full"
+  ],
+  "registers_sreg_memory_uart_irq_and_return_stack_equal": true,
+  "maximum_additional_stack": 17,
+  "mixed_bin_sha256": "9f7a76d16f858b5174e11fa5b48725135b0381ff02523b9eb963e276f101e25c",
+  "limits": "bounded functional interpreter; scripted UART consumption; no cycle/async interrupt/hardware validation"
+}

@@ -1,0 +1,14 @@
+make: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+avr-gcc -mmcu=atxmega128a3u -Os -std=gnu99 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -fno-lto -fno-reorder-blocks -fcall-used-r16 -fcall-used-r17 -ffixed-r2 -ffixed-r3 -ffixed-r4 -ffixed-r5 -ffixed-r6 -ffixed-r7 -ffixed-r8 -ffixed-r9 -ffixed-r10 -ffixed-r11 -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -ffixed-r19 -ffixed-r25 -ffixed-r26 -ffixed-r27 -ffixed-r28 -ffixed-r29 -ffixed-r30 -ffixed-r31 -c src/channel_threshold_calibration_command.c -o build/channel_threshold_calibration_command.o
+src/channel_threshold_calibration_command.c: In function ‘fpga_set_threshold_calibration’:
+src/channel_threshold_calibration_command.c:62:1: error: unable to find a register to spill in class ‘POINTER_REGS’
+ }
+ ^
+src/channel_threshold_calibration_command.c:62:1: error: this is the insn:
+(insn 64 62 65 2 (set (reg/v:QI 21 r21 [ high ])
+        (mem:QI (reg/f:HI 28 r28) [0 *settings.14_23+0 S1 A8])) "src/channel_threshold_calibration_command.c":56 56 {movqi_insn}
+     (expr_list:REG_DEAD (reg:QI 29 r29)
+        (nil)))
+src/channel_threshold_calibration_command.c:62: confused by earlier errors, bailing out
+make: *** [Makefile:113: build/channel_threshold_calibration_command.o] Error 1
+make: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'

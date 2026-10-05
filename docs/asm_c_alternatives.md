@@ -34,3 +34,15 @@ Steps 234–317 add explanatory C versions beside parser range checks, LPM point
 reads, carry-dependent products, 64-bit bitmap shifts, offset pointer helpers
 and shared error tails. Newly rejected snippets explicitly carry no functional
 test claim; the 25 historically tested alternatives remain indexed separately.
+
+## Complete compiled comment models and new suite reruns
+
+Every accepted source now includes a compiled, flag-aware logical C model.
+See [logical_c_comments.md](logical_c_comments.md) and its hash-indexed test
+report for all 87 C files and 9 headers. PASS_INSTRUCTION_TRANSITIONS means
+transition coverage, not full-path or physical hardware validation. Historical
+plain-C alternatives retain their separate integration evidence; new suite
+reruns are recorded in logical_c_historical_tests.json and logical_c_test_logs.
+The older unvalidated fragment remarks describe those historical candidates.
+They do not invalidate the new corrected C models or justify accepting binary
+differences in the baseline.

@@ -1,0 +1,74 @@
+[
+  {
+    "step": 507,
+    "source": "channel_adc_delay_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_507.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 508,
+    "source": "channel_adc_zero_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_508.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 509,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_509.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 510,
+    "source": "channel_cfd_zero_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_510.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 511,
+    "source": "channel_tdc_values_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_511.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 512,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_512.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 513,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C plain byte settings store using globally reserved Y pointer",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_513.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 514,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C final initial buffer byte store after three exact X postincrements",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_514.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

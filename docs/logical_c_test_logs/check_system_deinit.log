@@ -1,0 +1,2 @@
+PASS system deinit entry: 0xc96
+PASS system deinit: 65536 cases; 18 additional stack bytes

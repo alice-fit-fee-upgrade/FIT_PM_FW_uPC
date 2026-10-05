@@ -1,0 +1,20 @@
+[
+  {
+    "step": 583,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0x20', 'c', 'L_000a6b', 'L_000a6b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_583.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 584,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0xd', 'c', 'L_000a6b', 'L_000a6b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_584.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

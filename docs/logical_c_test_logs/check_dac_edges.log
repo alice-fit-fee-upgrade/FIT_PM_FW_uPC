@@ -1,0 +1,6 @@
+PASS DAC entry 0x20a6: all 256 channel bytes and boundary values
+PASS DAC entry 0x20d0: all 256 channel bytes and boundary values
+PASS DAC entry 0x20ec: all 256 channel bytes and boundary values
+PASS DAC entry 0x2104: all 256 channel bytes and boundary values
+PASS all 65,536 calibration words; channel/SREG patterns cycled
+ALL PASS DAC boundary/calibration cases: 87040

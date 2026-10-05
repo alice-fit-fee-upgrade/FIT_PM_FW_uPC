@@ -28,10 +28,58 @@ void cli_send_digit_hex(void)
     digit = (digit & 0x0f) + '0';
     asm volatile("" : "+r" (digit));
     /* Step447 plain C `if (digit < 0x3a) goto send;` failed exact matching.
-     * No standalone validation; original threshold flags/private ABI remain. */
+     * No standalone validation; original threshold flags/private ABI remain.
+ * Validated flag-aware version: compiled C model below,
+ * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
+ * This does not claim the historical value-only candidate preserved all flags. */
     /* Exact unsigned threshold branch without a second scratch register. */
     asm goto("cpi %0, 0x3a\n\tbrlo %l[send]" : : "r" (digit) : "cc" : send);
     digit += 'A' - '0' - 10;
 send:
     asm volatile("rcall cli_send_buf" : "+r" (digit) : : "memory", "cc");
 }
+
+/* BEGIN COMPILED LOGICAL C EQUIVALENT
+ * Validation: PASS_INSTRUCTION_TRANSITIONS: 112 file cases; shared exhaustive operand tests also passed.
+ * Logical C equivalent: explicit private registers, SREG, RAM/MMIO and control flow.
+ * Compiled verbatim and differentially tested by tests/check_logical_comments.py.
+ * PASS applies only when docs/logical_c_validation.json matches this model hash.
+ * Scope: every instruction transition, not timing/async IRQ or whole-path coverage.
+ * Calls return the next PC to a dispatcher; callbacks/callees retain the private ABI.
+ * Runtime/helper definitions: tests/logical_c_runtime.h. RETI restores I architecturally.
+ * This is explanatory C, not a proposed GNU ABI replacement or a binary acceptance.
+ *
+uint32_t pm_logical_console_hex_digit(PMLogical *s, uint32_t pc)
+{
+    switch (pc) {
+    case 0x2720: { // andi r16, 0x0F
+        s->r[16] &= 15;
+        pm_nzv(s, s->r[16], false);
+        return 10018;
+    }
+    case 0x2722: { // subi r16, 0xD0
+        s->r[16] = pm_sub(s, s->r[16], 208, 0, false);
+        return 10020;
+    }
+    case 0x2724: { // cpi r16, 0x3A
+        pm_sub(s, s->r[16], 58, 0, false);
+        return 10022;
+    }
+    case 0x2726: { // brcs .+2
+        return (pm_getflag(s, 0) == 1) ? 10026 : 10024;
+    }
+    case 0x2728: { // subi r16, 0xF9
+        s->r[16] = pm_sub(s, s->r[16], 249, 0, false);
+        return 10026;
+    }
+    case 0x272a: { // rcall .+384
+        s->calls[s->call_depth++] = 10028;
+        return 10412;
+    }
+    case 0x272c: { // ret
+        return s->calls[--s->call_depth];
+    }
+    default: return UINT32_MAX;
+    }
+}
+END COMPILED LOGICAL C EQUIVALENT */

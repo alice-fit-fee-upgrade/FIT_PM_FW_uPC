@@ -1,0 +1,47 @@
+[
+  {
+    "step": 528,
+    "source": "channel_baseline_dispersion_display.c",
+    "change": "Native C early display return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_528.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 529,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "Native C early display return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_529.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 530,
+    "source": "tdc_channel_data_display.c",
+    "change": "Native C early display return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_530.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 531,
+    "source": "trigger_charge_command.c",
+    "change": "Native C early trigger-command return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_531.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 532,
+    "source": "trigger_settings_command.c",
+    "change": "Native C early trigger-command return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_532.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

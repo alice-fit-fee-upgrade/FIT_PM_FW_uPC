@@ -1,0 +1,167 @@
+[
+  {
+    "symbol": "fpga_settings_init",
+    "source": "src/fpga_settings_init.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "FUN_code_0004ef",
+    "source": "src/dac_stored_settings_apply.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "PORTE_INT0_vect_isr",
+    "source": "src/power_porte_interrupt.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "PORTE_INT1_vect_isr",
+    "source": "src/fpga_status_interrupt.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "system_init",
+    "source": "src/system_init.c",
+    "added_c_bytes": 12
+  },
+  {
+    "symbol": "fpga_data_exchange",
+    "source": "src/fpga_data_exchange.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "cli_prompt_parse",
+    "source": "src/console_dispatch.c",
+    "added_c_bytes": 148
+  },
+  {
+    "symbol": "unlock_programming",
+    "source": "src/programming_unlock.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_firmware_update",
+    "source": "src/fpga_binary_programming_stream.c",
+    "added_c_bytes": 8
+  },
+  {
+    "symbol": "FUN_code_000b59",
+    "source": "src/flash_page_program.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "cli_send_ch_mean_amplitude",
+    "source": "src/channel_mean_amplitude_display.c",
+    "added_c_bytes": 6
+  },
+  {
+    "symbol": "cli_send_adc_baseline_dispersion",
+    "source": "src/channel_baseline_dispersion_display.c",
+    "added_c_bytes": 6
+  },
+  {
+    "symbol": "cli_send_tdc_data",
+    "source": "src/tdc_channel_data_display.c",
+    "added_c_bytes": 6
+  },
+  {
+    "symbol": "eeprom_settings_save",
+    "source": "src/eeprom_settings_store.c",
+    "added_c_bytes": 8
+  },
+  {
+    "symbol": "FUN_code_000d07",
+    "source": "src/eeprom_page_commit.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "cli_send_system_status",
+    "source": "src/system_status_display.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "alarms_clear",
+    "source": "src/alarm_state_clear.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "channels_read",
+    "source": "src/channel_settings_display.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_trg_charge_lvls",
+    "source": "src/trigger_charge_command.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "fpga_set_trg_settings",
+    "source": "src/trigger_settings_command.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "fpga_set_adc_range_corr",
+    "source": "src/channel_adc_range_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_tdc_values",
+    "source": "src/channel_tdc_values_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_threshold_calibration",
+    "source": "src/channel_threshold_calibration_command.c",
+    "added_c_bytes": 6
+  },
+  {
+    "symbol": "FUN_code_000f70",
+    "source": "src/channel_tdc_adjust_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_ch_adc_delay",
+    "source": "src/channel_adc_delay_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_ch_cfd_threshold",
+    "source": "src/channel_cfd_threshold_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_adc_zero",
+    "source": "src/channel_adc_zero_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "fpga_set_ch_cfd_zero",
+    "source": "src/channel_cfd_zero_command.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "FUN_code_001053",
+    "source": "src/dac_offset_scale.c",
+    "added_c_bytes": 2
+  },
+  {
+    "symbol": "ths788_write",
+    "source": "src/tdc_host_write.c",
+    "added_c_bytes": 10
+  },
+  {
+    "symbol": "ths788_read",
+    "source": "src/tdc_host_read.c",
+    "added_c_bytes": 4
+  },
+  {
+    "symbol": "dac_send_value",
+    "source": "src/dac_spi_send.c",
+    "added_c_bytes": 14
+  },
+  {
+    "symbol": "fpga_send_mcu_ts",
+    "source": "src/fpga_timestamp_send.c",
+    "added_c_bytes": 4
+  }
+]

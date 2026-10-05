@@ -1,0 +1,5 @@
+PASS original caller 0x20ec: all 65,536 inputs, cycled 12 channels
+PASS original caller 0x2104: all 65,536 inputs, cycled 12 channels
+PASS original caller 0x20a6: all 65,536 inputs, cycled 12 channels
+PASS original caller 0x20d0: all 65,536 inputs, cycled 12 channels
+ALL PASS caller composition: 262144 cases; 35 additional stack bytes

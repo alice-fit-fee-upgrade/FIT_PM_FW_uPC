@@ -1,0 +1,29 @@
+[
+  {
+    "step": 493,
+    "source": "tdc_host_read.c",
+    "change": "C TDC strobe-mask shift inside exact DEC/BRMI loop",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_493.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 494,
+    "source": "tdc_host_write.c",
+    "change": "C TDC single/broadcast mask constants and shift with exact branches",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_494.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 495,
+    "source": "dac_spi_send.c",
+    "change": "C DAC selection copy/constant/mask with opaque header preventing substitution",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_495.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

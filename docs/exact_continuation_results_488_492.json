@@ -1,0 +1,47 @@
+[
+  {
+    "step": 488,
+    "source": "flash_wait_ready.c",
+    "change": "C delay loop preserving original SBIW/BRNE instruction pair",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_488_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 489,
+    "source": "tdc_channel_data_display.c",
+    "change": "C signed coarse-byte shifts preserving final ASM carry injection",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_489.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 490,
+    "source": "eeprom_page_commit.c",
+    "change": "C EEPROM status busy loop test with opaque R16 sample",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_490.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 491,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM erase/buffer status busy loop tests",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_491.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 492,
+    "source": "pll_status_interrupt.c",
+    "change": "C PLL lock-status bit copy using compiler AVR insert-bits",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_492_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

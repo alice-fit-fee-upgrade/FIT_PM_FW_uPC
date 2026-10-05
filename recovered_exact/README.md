@@ -9,13 +9,13 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 Current result: 89 application entries, 5 C_BINARY_EXACT, 83
 C_WITH_EXACT_ASM_HELPER, 1 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 6382 of 10836 executable bytes (58.8963%);
-ASM occupies 4454 bytes (41.1037%), including 3646 inline-helper bytes. Of C bytes,
-394 are compiler-generated AVR primitives (CLI/SEI/NOP/SWAP/BST/BLD); the other
-5988 are other C operations. GNU AVR built-ins are counted as compiler output,
+Compiler-generated instructions occupy 6680 of 10836 executable bytes (61.6464%);
+ASM occupies 4156 bytes (38.3536%), including 3348 inline-helper bytes. Of C bytes,
+402 are compiler-generated AVR primitives (CLI/SEI/NOP/SWAP/BST/BLD); the other
+6278 are other C operations. GNU AVR built-ins are counted as compiler output,
 not as inline assembly. Instruction-index and GCC-provenance counts agree.
 Data and padding do not contribute to these percentages. Application-only C is
-63.4520%. The entry count includes main, ISRs and shared formatter entries,
+66.4148%. The entry count includes main, ISRs and shared formatter entries,
 rather than 89 independent C-style function bodies.
 
 ## Build and source layout
@@ -95,3 +95,13 @@ See [continuation results](../docs/exact_continuation_results.json) for all
 
 The remaining inline helper inventory is in [remaining_inline_asm.md](../docs/remaining_inline_asm.md).
 Regenerate with `python3 tools/remaining_asm.py --output ../docs/remaining_inline_asm.json`.
+
+## Logical C equivalents in comments
+
+All 87 C translation units and 9 private-ABI headers contain a compilable logical
+C state model. `make -C .. c-comment-check` validates the comment bodies against
+the original FLASH, including registers, SREG and ordered memory/IRQ effects.
+`PASS_INSTRUCTION_TRANSITIONS` describes bounded transition tests, not all paths
+or timing. Existing readable historical alternatives and their integration tests
+are retained. See ../docs/logical_c_comments.md for precise evidence and limits.
+The explanatory models emit no firmware bytes and do not count as C coverage.

@@ -1,0 +1,190 @@
+{
+  "suites": [
+    {
+      "suite": "mixed_c_asm/tests/check_gpio_instructions.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 0.357,
+      "log": "docs/logical_c_test_logs/check_gpio_instructions.log",
+      "suite_sha256": "ee524e073fe8de96618a7728bf79c10904c24ecf7ec24a3bb7e7a5fecafe335d"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_fpga_settings_contract.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 9.287,
+      "log": "docs/logical_c_test_logs/check_fpga_settings_contract.log",
+      "suite_sha256": "fcb76d2e77ea7cd6b3964aa48a6d712dd8d3448e5ebc290c93f3264711d73c10"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_fpga_settings.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 92.257,
+      "log": "docs/logical_c_test_logs/check_fpga_settings.log",
+      "suite_sha256": "da9e6786e8f91c3cfec40fcc2cdc08748f0eaad4d466aa3dec2229b4b5ae801d"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_system_deinit.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 11.81,
+      "log": "docs/logical_c_test_logs/check_system_deinit.log",
+      "suite_sha256": "c03a9499dce66afaca7abc422ad1c038e0fcaa31ee3c35c0fef2cf2c18fb1ea5"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_system_init.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 14.831,
+      "log": "docs/logical_c_test_logs/check_system_init.log",
+      "suite_sha256": "e65292a9ef7fb0379ecb8dd6fc0960a9325d60d8fcfbd317d1aeb20688291d7b"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_pll_reset.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 65.994,
+      "log": "docs/logical_c_test_logs/check_pll_reset.log",
+      "suite_sha256": "740f9d9c05d39746c616a69b40b16b3e6e859639ef816d49bd6e38ef6c9437f9"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_pll_read.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 17.692,
+      "log": "docs/logical_c_test_logs/check_pll_read.log",
+      "suite_sha256": "84b43c7ce6e6672943947187c1da02c4cfe4d77ac6cbfb25d4ae3fa59bd211ca"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_adt.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 239.474,
+      "log": "docs/logical_c_test_logs/check_adt.log",
+      "suite_sha256": "61cedaab2cd9cc688cfb41571a5d989a31d851f8481115babdde8bc9fa9b13a0"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_fpga_stamp.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 9.562,
+      "log": "docs/logical_c_test_logs/check_fpga_stamp.log",
+      "suite_sha256": "3e34e0d27c7efacc32ee48c725c86b92418a0efb871d7ef90693f4e28722a547"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_hex_digit.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 14.947,
+      "log": "docs/logical_c_test_logs/check_hex_digit.log",
+      "suite_sha256": "918fcaa9a3b425b8dda8e474c69b48789f55a041d37b0294b3ba7a992fcc9654"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_hex16.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 59.238,
+      "log": "docs/logical_c_test_logs/check_hex16.log",
+      "suite_sha256": "3a2e2f506f0f5f1005f894eade50c098d3387e0ca77459b2cb510c8a569ac5a6"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_crlf.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 7.725,
+      "log": "docs/logical_c_test_logs/check_crlf.log",
+      "suite_sha256": "2734042432bdf4d4d5dbdf5271298ed8ea3a532b97c2dc680895bc51dd48457e"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_layout.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 0.146,
+      "log": "docs/logical_c_test_logs/check_layout.log",
+      "suite_sha256": "2697f1ba8ba4ff3d8c9e18855ccb0a5a4485eec52d9c1e6e0e7429591e043cef"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_abi.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 138.695,
+      "log": "docs/logical_c_test_logs/check_abi.log",
+      "suite_sha256": "f8282bd494ee98049c69ba31314af482ffe4b67f4e02d108ac0437de8f3259cb"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_unsigned_abi.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 262.511,
+      "log": "docs/logical_c_test_logs/check_unsigned_abi.log",
+      "suite_sha256": "a3735056decf5876363f4f91abe700fc4a7475a303f62342407011552a8fdd78"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_callers.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 114.259,
+      "log": "docs/logical_c_test_logs/check_callers.log",
+      "suite_sha256": "b2c07bea5d8119d64053b6c70c7d1364702d6662b69e35b11e520df6b2467cf7"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_dac_edges.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 44.836,
+      "log": "docs/logical_c_test_logs/check_dac_edges.log",
+      "suite_sha256": "e9a343ff7e449637efb143c9b0939f5212caeb8e014857130bca24a76501f3b1"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_status_gate.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 67.787,
+      "log": "docs/logical_c_test_logs/check_status_gate.log",
+      "suite_sha256": "95e15d1eb6e562b1cce60eaa781ad8977c586843030d574e1e4da9c0ab2a2e47"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_crc_byte.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 52.639,
+      "log": "docs/logical_c_test_logs/check_crc_byte.log",
+      "suite_sha256": "f1bfac56258f60031d6ebb61e24bffe825651df343226be223cc6317384ede56"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_flash_spi.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 39.025,
+      "log": "docs/logical_c_test_logs/check_flash_spi.log",
+      "suite_sha256": "a16f4d82c615a1d29305161da0685c4ecce36fdd64ec93832bbc32d41261992e"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_flash_wait.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 60.488,
+      "log": "docs/logical_c_test_logs/check_flash_wait.log",
+      "suite_sha256": "94e0b77b288e810b75bf2c258ea29111ee4012668d693e2f68a3a82a6986f981"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_fpga_state.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 26.88,
+      "log": "docs/logical_c_test_logs/check_fpga_state.log",
+      "suite_sha256": "bc90beef615137dc29c9b7a8e802cef4031bcc1c9ec81a17e46cf950dd904b4e"
+    },
+    {
+      "suite": "mixed_c_asm/tests/check_status_led.py",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 4.912,
+      "log": "docs/logical_c_test_logs/check_status_led.log",
+      "suite_sha256": "4f79a7736e989532fac1e9f0a8632d186c4fab3243bc29f605775befbe528ddf"
+    }
+  ],
+  "complete": true,
+  "mixed_flash_sha256": "9f7a76d16f858b5174e11fa5b48725135b0381ff02523b9eb963e276f101e25c"
+}

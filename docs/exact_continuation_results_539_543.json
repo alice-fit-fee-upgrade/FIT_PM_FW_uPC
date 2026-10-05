@@ -1,0 +1,38 @@
+[
+  {
+    "step": 539,
+    "source": "dac_spi_send.c",
+    "change": "C first DAC masked branch without opaque post-mask barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_539.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 540,
+    "source": "dac_spi_send.c",
+    "change": "C second DAC selection branch with input-only subtract barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_540_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 541,
+    "source": "alarm_state_clear.c",
+    "change": "C alarm mask and branch with register boundary before mask",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_541.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 542,
+    "source": "tdc_host_write.c",
+    "change": "C TDC command mask branch with input-only mask barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_542_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "step": 524,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler power-state first bit insertion retaining second and final T helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_524.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 525,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler power-state second bit insertion with retained final T helper",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_525_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 526,
+    "source": "channel_baseline_dispersion_display.c",
+    "change": "C unsigned display iteration limit",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_526.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 527,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "C unsigned display iteration limit",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_527.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

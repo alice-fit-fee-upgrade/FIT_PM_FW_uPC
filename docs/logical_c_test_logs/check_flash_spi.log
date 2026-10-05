@@ -1,0 +1,5 @@
+PASS FLASH helper 0x1664: 65536 cases
+PASS FLASH helper 0x171e: 98304 cases
+PASS FLASH helper 0x1808: 65536 cases
+PASS FLASH helper 0x1710: 65536 cases
+ALL PASS FLASH helpers: 294912 cases; 20 additional stack bytes

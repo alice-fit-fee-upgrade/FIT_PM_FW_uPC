@@ -1,0 +1,4 @@
+PASS ADT wrapper 0x2598 67072 cases
+PASS ADT wrapper 0x25be 67072 cases
+PASS ADT wrapper 0x25ea 67072 cases
+ALL PASS ADT: 201216 cases; 29 additional stack bytes

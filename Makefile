@@ -245,3 +245,12 @@ c-progress:
 experimental-c-progress:
 	$(MAKE) -C mixed_c_asm all
 	python3 tools/function_inventory.py
+
+# Auxiliary validation of compiled C equivalents embedded in comments.
+.PHONY: c-comment-check
+c-comment-check:
+	python3 recovered_exact/tests/check_logical_comments.py
+
+.PHONY: c-alternative-check
+c-alternative-check: c-comment-check c-check
+	python3 recovered_exact/tests/check_archived_alternatives.py

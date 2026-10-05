@@ -1,0 +1,11 @@
+[
+  {
+    "step": 538,
+    "source": "flash_wait_ready.c",
+    "change": "C flash delay loop with global original register-pair reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_538_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "step": 501,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C final calibration high load using globally reserved typed Y cursor",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_501.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 502,
+    "source": "channel_settings_display.c",
+    "change": "C settings-display final high loads using globally reserved typed Y cursor",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_502.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 503,
+    "source": "console_dispatch.c",
+    "change": "C plain Y EEPROM byte store using globally reserved cursor",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_503.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 504,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher return at L_0009e4 with compiler barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_504.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 505,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher return at L_000a3c with compiler barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_505.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 506,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher return at L_000a6c with compiler barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_506.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

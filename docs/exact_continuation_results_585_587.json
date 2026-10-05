@@ -1,0 +1,29 @@
+[
+  {
+    "step": 585,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_585_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 586,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_586.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 587,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_587_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

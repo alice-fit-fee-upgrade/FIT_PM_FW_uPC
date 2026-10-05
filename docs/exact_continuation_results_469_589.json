@@ -1,0 +1,1131 @@
+[
+  {
+    "step": 469,
+    "source": "dac_stored_settings_apply.c",
+    "change": "Native C return with original carry/private frame helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_469.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 470,
+    "source": "flash_page_program.c",
+    "change": "Native C return with original carry/private frame helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_470.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 471,
+    "source": "fpga_settings_init.c",
+    "change": "Native C return with original carry/private frame helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_471.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 472,
+    "source": "alarm_state_clear.c",
+    "change": "C alarm-mask branch after opaque ANDI value",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_472_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 473,
+    "source": "console_flash_message.c",
+    "change": "C FLASH message terminator branch preserving exact LPM helper",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_473_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 474,
+    "source": "fpga_ready_guard.c",
+    "change": "C early ready-bit return with original carry status",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_474_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "O candidate binary mismatch; inspect recorded instruction evidence"
+  },
+  {
+    "step": 475,
+    "source": "fpga_timestamp_send.c",
+    "change": "C low-byte timestamp cursor loop comparison",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_475.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 476,
+    "source": "programming_unlock.c",
+    "change": "C low-byte password cursor loop comparison",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_476.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 477,
+    "source": "dac_offset_scale.c",
+    "change": "C correction high-byte load after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_477.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 478,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration final high-byte load after exact low postincrement",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_478_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 479,
+    "source": "channel_settings_display.c",
+    "change": "C high-byte reads in plain Y settings-display pairs",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_479_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 480,
+    "source": "system_init.c",
+    "change": "C PLL initial command bytes with exact flag/call window",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_480.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 481,
+    "source": "system_init.c",
+    "change": "Compiler CLI/SEI primitives around exact PLL CALL",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_481.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 482,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration high read with explicit typed Y recapture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_482_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 483,
+    "source": "channel_settings_display.c",
+    "change": "C settings-display high reads with explicit typed Y recapture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_483_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 484,
+    "source": "console_dispatch.c",
+    "change": "C dispatcher plain Y EEPROM byte store",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_484_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 485,
+    "source": "system_status_display.c",
+    "change": "C status-message table low-byte address addition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_485.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 486,
+    "source": "system_status_display.c",
+    "change": "C FLASH table high-byte load after exact LPM Z+ helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_486.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 487,
+    "source": "system_init.c",
+    "change": "C private void PLL wide CALL with bound input/output barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_487.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 488,
+    "source": "flash_wait_ready.c",
+    "change": "C delay loop preserving original SBIW/BRNE instruction pair",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_488_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 489,
+    "source": "tdc_channel_data_display.c",
+    "change": "C signed coarse-byte shifts preserving final ASM carry injection",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_489.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 490,
+    "source": "eeprom_page_commit.c",
+    "change": "C EEPROM status busy loop test with opaque R16 sample",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_490.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 491,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM erase/buffer status busy loop tests",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_491.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 492,
+    "source": "pll_status_interrupt.c",
+    "change": "C PLL lock-status bit copy using compiler AVR insert-bits",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_492_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference",
+    "semantic_note": "Invalid proposed source operand: current value is overwritten by SPI calls; the original BLD consumes saved CPU T. Candidate never accepted."
+  },
+  {
+    "step": 493,
+    "source": "tdc_host_read.c",
+    "change": "C TDC strobe-mask shift inside exact DEC/BRMI loop",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_493.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 494,
+    "source": "tdc_host_write.c",
+    "change": "C TDC single/broadcast mask constants and shift with exact branches",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_494.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 495,
+    "source": "dac_spi_send.c",
+    "change": "C DAC selection copy/constant/mask with opaque header preventing substitution",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_495.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 496,
+    "source": "dac_spi_send.c",
+    "change": "C DAC select shifts and remaining subtract preserving BREQ flags",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_496.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 497,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C low-byte inclusive remaining-count increment with exact upper carry",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_497.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 498,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C explicitly bound private R1 limit-byte copy",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_498.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 499,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C explicitly bound copy from live private R1 limit byte",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_499.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 500,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler bit-insertion for two power-status bits with exact final T capture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_500_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 501,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C final calibration high load using globally reserved typed Y cursor",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_501.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 502,
+    "source": "channel_settings_display.c",
+    "change": "C settings-display final high loads using globally reserved typed Y cursor",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_502.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 503,
+    "source": "console_dispatch.c",
+    "change": "C plain Y EEPROM byte store using globally reserved cursor",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_503.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 504,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher return at L_0009e4 with compiler barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_504.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 505,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher return at L_000a3c with compiler barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_505.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 506,
+    "source": "console_dispatch.c",
+    "change": "Native C dispatcher return at L_000a6c with compiler barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_506.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 507,
+    "source": "channel_adc_delay_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_507.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 508,
+    "source": "channel_adc_zero_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_508.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 509,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_509.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 510,
+    "source": "channel_cfd_zero_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_510.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 511,
+    "source": "channel_tdc_values_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_511.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 512,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C final settings high-byte store after exact low postincrement",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_512.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 513,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "C plain byte settings store using globally reserved Y pointer",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_513.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 514,
+    "source": "fpga_binary_programming_stream.c",
+    "change": "C final initial buffer byte store after three exact X postincrements",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_514.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 515,
+    "source": "channel_adc_range_command.c",
+    "change": "C final ADC range high-byte store after exact low postincrements",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_515.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 516,
+    "source": "channel_adc_delay_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_516.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 517,
+    "source": "channel_adc_range_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_517.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 518,
+    "source": "channel_adc_zero_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_518.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 519,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_519.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 520,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_520.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 521,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_521.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 522,
+    "source": "channel_tdc_values_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_522.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 523,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "Native C early return after exact private FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_523.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 524,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler power-state first bit insertion retaining second and final T helpers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_524.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 525,
+    "source": "power_porte_interrupt.c",
+    "change": "Compiler power-state second bit insertion with retained final T helper",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_525_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 526,
+    "source": "channel_baseline_dispersion_display.c",
+    "change": "C unsigned display iteration limit",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_526.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 527,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "C unsigned display iteration limit",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_527.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 528,
+    "source": "channel_baseline_dispersion_display.c",
+    "change": "Native C early display return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_528.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 529,
+    "source": "channel_mean_amplitude_display.c",
+    "change": "Native C early display return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_529.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 530,
+    "source": "tdc_channel_data_display.c",
+    "change": "Native C early display return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_530.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 531,
+    "source": "trigger_charge_command.c",
+    "change": "Native C early trigger-command return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_531.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 532,
+    "source": "trigger_settings_command.c",
+    "change": "Native C early trigger-command return after exact FPGA carry guard",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_532.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 533,
+    "source": "power_fault_state.c",
+    "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_533_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 534,
+    "source": "system_deinit.c",
+    "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_534_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 535,
+    "source": "power_portb_interrupt.c",
+    "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_535_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 536,
+    "source": "system_init.c",
+    "change": "O1 C DMA control store avoiding repeated-address pointer CSE",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_536_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 537,
+    "source": "flash_wait_ready.c",
+    "change": "O1 C SBIW delay loop with explicit original word pair",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_537_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 538,
+    "source": "flash_wait_ready.c",
+    "change": "C flash delay loop with global original register-pair reservation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_538_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "N register allocation / constrained assembler operands"
+  },
+  {
+    "step": 539,
+    "source": "dac_spi_send.c",
+    "change": "C first DAC masked branch without opaque post-mask barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_539.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 540,
+    "source": "dac_spi_send.c",
+    "change": "C second DAC selection branch with input-only subtract barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_540_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 541,
+    "source": "alarm_state_clear.c",
+    "change": "C alarm mask and branch with register boundary before mask",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_541.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 542,
+    "source": "tdc_host_write.c",
+    "change": "C TDC command mask branch with input-only mask barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_542_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 543,
+    "source": "dac_spi_send.c",
+    "change": "C second DAC selection branch without post-subtract barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_543_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "B wrong instruction",
+    "instruction_evidence": "docs/exact_c_steps/step_543_instruction_diff.txt",
+    "candidate_proof": "docs/exact_c_steps/step_543_candidate_proof.json"
+  },
+  {
+    "step": 544,
+    "source": "eeprom_settings_store.c",
+    "change": "C EEPROM changed-byte XOR and branch without opaque result barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_544_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "B wrong instruction",
+    "instruction_evidence": "docs/exact_c_steps/step_544_instruction_diff.txt",
+    "candidate_proof": "docs/exact_c_steps/step_544_candidate_proof.json"
+  },
+  {
+    "step": 545,
+    "source": "pll_status_interrupt.c",
+    "change": "C PLL changed-state XOR and branch without opaque result barrier",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_545_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "B wrong instruction",
+    "instruction_evidence": "docs/exact_c_steps/step_545_instruction_diff.txt",
+    "candidate_proof": "docs/exact_c_steps/step_545_candidate_proof.json"
+  },
+  {
+    "step": 546,
+    "source": "fpga_status_interrupt.c",
+    "change": "C FPGA status mask and zero branch without opaque result barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_546.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 547,
+    "source": "fpga_data_exchange.c",
+    "change": "C FPGA exchange masked channel branch without opaque result barrier",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_547.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 548,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'C'\", 'c', 'L_000984', 'L_000984')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_548.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 549,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'A'\", 'c', 'L_000981', 'L_000981')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_549.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 550,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_550_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 551,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'O'\", 'c', 'L_00098e', 'L_00098e')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_551.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 552,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'N'\", 'c', 'L_00098b', 'L_00098b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_552.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 553,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_553_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 554,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'P'\", 'c', 'L_00099b', 'L_00099b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_554.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 555,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'A'\", 'c', 'L_000995', 'L_000995')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_555.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 556,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'C'\", 'c', 'L_000998', 'L_000998')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_556.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 557,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_557_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 558,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'R'\", 'c', 'L_0009b2', 'L_0009b2')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_558.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 559,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'A'\", 'c', 'L_0009a2', 'L_0009a2')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_559.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 560,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'C'\", 'c', 'L_0009a5', 'L_0009a5')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_560.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 561,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009a8', 'L_0009a8')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_561.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 562,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009ab', 'L_0009ab')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_562.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 563,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'T'\", 'c', 'L_0009ae', 'L_0009ae')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_563.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 564,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'Z'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_564.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 565,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_565_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 566,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'C'\", 'c', 'L_0009c6', 'L_0009c6')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_566.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 567,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'L'\", 'c', 'L_0009bd', 'L_0009bd')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_567.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 568,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009c0', 'L_0009c0')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_568.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 569,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'T'\", 'c', 'L_0009c3', 'L_0009c3')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_569.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 570,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'R'\", 'c', 'L_0009e4', 'L_0009e4')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_570_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 571,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'D'\", 'c', 'L_0009c9', 'L_0009c9')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_571.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 572,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'L'\", 'c', 'L_0009cc', 'L_0009cc')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_572.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 573,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'O'\", 'c', 'L_0009cf', 'L_0009cf')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_573.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 574,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009d2', 'L_0009d2')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_574.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 575,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'T'\", 'c', 'L_0009d5', 'L_0009d5')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_575.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 576,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'V'\", 'c', 'L_0009d8', 'L_0009d8')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_576.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 577,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'Z'\", 'c', 'L_0009e4', 'L_0009e4')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_577.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 578,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'W'\", 'c', 'L_0009e4', 'L_0009e4')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_578.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 579,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'R'\", 'c', 'L_0009e4', 'L_0009e4')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_579.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 580,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0xd', 'c', 'L_0009e2', 'L_0009e2')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_580.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 581,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0xd', 'c', 'L_0009e4', 'L_0009e4')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_581.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 582,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0xd', 'c', 'L_000a3b', 'L_000a3b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_582.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false,
+    "validation_note": "Initial canonical comparison passed, but one independent provenance compiler invocation failed without captured diagnostics. Independent audit and full clean exact-check retry passed; no binary-different acceptance."
+  },
+  {
+    "step": 583,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0x20', 'c', 'L_000a6b', 'L_000a6b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_583.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 584,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate ('0xd', 'c', 'L_000a6b', 'L_000a6b')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_584.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 585,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_585_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 586,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'F'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_586.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 587,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_587_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 588,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'P'\", 'c', 'L_0009b1', 'L_0009b1')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_588_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  },
+  {
+    "step": 589,
+    "source": "console_dispatch.c",
+    "change": "Native C command-character predicate (\"'S'\", 'c', 'L_0009db', 'L_0009db')",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_589_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false,
+    "failure_class": "F section/layout difference"
+  }
+]

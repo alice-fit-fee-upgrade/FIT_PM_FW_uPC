@@ -1,0 +1,47 @@
+[
+  {
+    "step": 533,
+    "source": "power_fault_state.c",
+    "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_533_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 534,
+    "source": "system_deinit.c",
+    "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_534_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 535,
+    "source": "power_portb_interrupt.c",
+    "change": "O1 C absolute scratch reads/constants avoiding pointer CSE allocation",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_535_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 536,
+    "source": "system_init.c",
+    "change": "O1 C DMA control store avoiding repeated-address pointer CSE",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_536_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 537,
+    "source": "flash_wait_ready.c",
+    "change": "O1 C SBIW delay loop with explicit original word pair",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_537_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  }
+]

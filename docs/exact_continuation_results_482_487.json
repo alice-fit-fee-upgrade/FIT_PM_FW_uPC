@@ -1,0 +1,56 @@
+[
+  {
+    "step": 482,
+    "source": "channel_threshold_calibration_command.c",
+    "change": "C calibration high read with explicit typed Y recapture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_482_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 483,
+    "source": "channel_settings_display.c",
+    "change": "C settings-display high reads with explicit typed Y recapture",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_483_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 484,
+    "source": "console_dispatch.c",
+    "change": "C dispatcher plain Y EEPROM byte store",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_484_rejected.log",
+    "differing_bytes": null,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 485,
+    "source": "system_status_display.c",
+    "change": "C status-message table low-byte address addition",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_485.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 486,
+    "source": "system_status_display.c",
+    "change": "C FLASH table high-byte load after exact LPM Z+ helper",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_486.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  },
+  {
+    "step": 487,
+    "source": "system_init.c",
+    "change": "C private void PLL wide CALL with bound input/output barriers",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_487.log",
+    "differing_bytes": 0,
+    "functional_validation_claimed": false
+  }
+]

@@ -1,0 +1,3 @@
+PASS CRC all bytes x state/polynomial boundary combinations x flags
+PASS CRC state/polynomial/input bit basis
+ALL PASS CRC: 77864 direct; 280 original SPI stream callers

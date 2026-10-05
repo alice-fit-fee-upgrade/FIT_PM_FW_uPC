@@ -38,3 +38,25 @@ recovered_exact baseline also has zero differences; its C/ASM counts, independen
 GCC provenance audit and remaining-ASM review are recorded in function_inventory.md,
 exact_c_provenance.json and easy_conversion_assessment.md. Literal code bytes remain
 zero. Compiler layout/register adjustments are documented in exact_c_checkpoint.md.
+
+## Controlled C continuation: rejected predicates 543–545
+
+The final accepted image still has zero differences. Three rejected candidates
+were rebuilt only to retain instruction-aware evidence; no emulator validation
+was used to justify them. Each differed at one instruction window (class B):
+
+| Step | Address | Golden | Candidate | Cause / evidence |
+|---|---|---|---|---|
+| 543 | 0x0022C2 | `7051`, SUBI r23,0x10 | `7031`, CPI r23,0x10 | GCC removed the dead subtract result; [instruction diff](exact_c_steps/step_543_instruction_diff.txt) |
+| 544 | 0x0019EE | `1027`, EOR r17,r16 | `1017`, CP r17,r16 | GCC lowered zero-after-XOR to comparison; [instruction diff](exact_c_steps/step_544_instruction_diff.txt) |
+| 545 | 0x000B1E | `0327`, EOR r16,r19 | `0317`, CP r16,r19 | GCC lowered zero-after-XOR to comparison; [instruction diff](exact_c_steps/step_545_instruction_diff.txt) |
+
+Candidate source snapshots, canonical SHA256/byte-count proofs and complete
+byte reports are stored beside those instruction reports. All three are restored
+to exact ASM predicates. Clean final builds match the original full FLASH.
+Other restored experiments in steps 469–547 failed constrained register allocation
+(class N) or linker region/layout assertions (class F); the consolidated JSON
+records the applicable reason. Trial492 also used an invalid proposed operand:
+the current R16 value after SPI is not the original saved PORTF input bit6.
+That hypothesis is withdrawn and the original live T/BLD contract remains ASM.
+See [file review](file_by_file_review.md) and exact_continuation_results_469_547.json.
