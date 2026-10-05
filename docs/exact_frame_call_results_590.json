@@ -1015,5 +1015,104 @@
     "log": "docs/exact_c_steps/step_702_rejected.log",
     "differing_bytes": null,
     "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 703,
+    "source": "channel_adc_zero_command.c",
+    "change": "Name signed word bounds without changing original CPI/CPC/error branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_703_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 704,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Name signed word bounds without changing original CPI/CPC/error branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_704_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 705,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "Name signed word bounds without changing original CPI/CPC/error branch",
+    "accepted": false,
+    "log": "docs/exact_c_steps/step_705_rejected.log",
+    "differing_bytes": null,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 706,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "Name signed word bounds without changing original CPI/CPC/error branch",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_706.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 707,
+    "source": "channel_adc_zero_command.c",
+    "change": "Name original little-endian settings store and partial pointer advance",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_707.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 708,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Name original little-endian settings store and partial pointer advance",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_708.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 709,
+    "source": "channel_adc_delay_command.c",
+    "change": "Name original little-endian settings store and partial pointer advance",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_709.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 710,
+    "source": "channel_cfd_threshold_command.c",
+    "change": "Name original little-endian settings store and partial pointer advance",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_710.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 711,
+    "source": "channel_adc_zero_command.c",
+    "change": "Named signed bound helper with full-width immediate constraint",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_711.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 712,
+    "source": "channel_cfd_zero_command.c",
+    "change": "Named signed bound helper with full-width immediate constraint",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_712.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
+  },
+  {
+    "step": 713,
+    "source": "channel_tdc_adjust_command.c",
+    "change": "Named signed bound helper with full-width immediate constraint",
+    "accepted": true,
+    "log": "docs/exact_c_steps/step_713.log",
+    "differing_bytes": 0,
+    "scope": "native prologue/profile/inline conversion; acceptance only complete canonical FLASH identity"
   }
 ]

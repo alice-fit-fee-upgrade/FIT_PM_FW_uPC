@@ -9,13 +9,11 @@ ELF, Intel HEX and the full 0x22000-byte BIN, verifies reference hashes and runs
 Current result: 89 application entries, 5 C_BINARY_EXACT, 83
 C_WITH_EXACT_ASM_HELPER, 1 ASM_EXACT. All nine boot procedures remain exact ASM.
 All 806 original text symbols keep their addresses. FLASH differs in zero bytes.
-Compiler-generated instructions occupy 6680 of 10836 executable bytes (61.6464%);
-ASM occupies 4156 bytes (38.3536%), including 3348 inline-helper bytes. Of C bytes,
-402 are compiler-generated AVR primitives (CLI/SEI/NOP/SWAP/BST/BLD); the other
-6278 are other C operations. GNU AVR built-ins are counted as compiler output,
-not as inline assembly. Instruction-index and GCC-provenance counts agree.
-Data and padding do not contribute to these percentages. Application-only C is
-66.4148%. The entry count includes main, ISRs and shared formatter entries,
+Compiler-generated instructions occupy 6880 of 10836 executable bytes (63.4921%);
+ASM occupies 3956 bytes (36.5079%), including 3148 inline-helper bytes.
+Instruction-index and GCC-provenance counts agree. Data and padding do not
+contribute to these percentages. Application-only C is 68.4033%.
+The entry count includes main, ISRs and shared formatter entries,
 rather than 89 independent C-style function bodies.
 
 ## Build and source layout
@@ -40,6 +38,14 @@ Remaining application ASM is mechanically derived from the existing verified
 analysis; boot is built directly from ../exact_asm/src/boot.S. The immutable
 exact_asm project and all golden inputs remain unchanged. No whole-image incbin,
 literal executable blob or link-time opcode substitution is used.
+
+## Reading the code and adding features
+
+See [the development guide](../docs/development_guide.md) for the helper catalog,
+register/flag contracts, review workflow and the boundary for future standard-ABI
+C drivers such as I2C sensors. [Private console ABI](../docs/private_console_abi.md)
+explains the named character bridges. `src/legacy_word_ops.h` centralizes signed
+bounds and the original little-endian configuration store.
 
 ## Legacy register contracts
 

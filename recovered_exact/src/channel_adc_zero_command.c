@@ -1,3 +1,4 @@
+#include "legacy_word_ops.h"
 #include <avr/io.h>
 #include "legacy_cpu.h"
 #include "legacy_cli_guard_c.h"
@@ -13,24 +14,12 @@ void fpga_set_adc_zero(void)
     PM_PARSE_VALUE(requested, "LAB_code_000ff5");
     register uint8_t limit_high asm("r24") = 1;
     asm volatile("" : "+r" (limit_high));
-    /* C value equivalent (not compiled):
-     * if ((int16_t)requested >= 501) goto LAB_code_000ff5;
-     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
-     * has no separate successful functional-test claim.
- * Validated flag-aware version: compiled C model below,
- * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
- * This does not claim the historical value-only candidate preserved all flags. */
-asm volatile("cpi r20, 0xf5\n\tcpc r21, r24\n\tbrge LAB_code_000ff5\n" : : "r" (requested), "r" (limit_high) : "cc");
+    /* Reject values at or above 501 through the original error tail. */
+    PM_REJECT_I16_GE(requested, limit_high, 501, "LAB_code_000ff5");
     limit_high = 0xfe;
     asm volatile("" : "+r" (limit_high));
-    /* C value equivalent (not compiled):
-     * if ((int16_t)requested < -500) goto LAB_code_000ff5;
-     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
-     * has no separate successful functional-test claim.
- * Validated flag-aware version: compiled C model below,
- * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
- * This does not claim the historical value-only candidate preserved all flags. */
-asm volatile("cpi r20, 0x0c\n\tcpc r21, r24\n\tbrlt LAB_code_000ff5" : : "r" (requested), "r" (limit_high) : "cc");
+    /* Reject values below -500 through the original error tail. */
+    PM_REJECT_I16_LT(requested, limit_high, -500, "LAB_code_000ff5");
     PM_FPGA_GUARD(requested);
     GPIOR0 |= (1u << 3);
     register uint16_t word asm("r16") = requested;
@@ -60,10 +49,7 @@ asm volatile("cpi r20, 0x0c\n\tcpc r21, r24\n\tbrlt LAB_code_000ff5" : : "r" (re
     /* Original ADC consumes carry from the C low-byte addition. */
     asm volatile("adc r29, r11" : "=y" (settings) : "r" (offset) : "r11", "cc");
     pm_cpu_disable_irq();
-    asm volatile("st Y+, r20" : "+y" (settings) : "r" (requested) : "memory");
-    { register uint8_t high asm("r21");
-      asm volatile("" : "=r" (high) : "r" (requested));
-      *settings = high; asm volatile("" : : : "memory"); }
+    PM_STORE_WORD_LE_Y(settings, requested);
     pm_cpu_enable_irq();
     asm volatile("rcall dac_set_value\n\tcbi 0, 3\n\trjmp LAB_code_000ff1" : : "r" (requested), "r" (channel) : "memory", "cc");
     __builtin_unreachable();

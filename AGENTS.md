@@ -36,3 +36,12 @@ only whole-FLASH zero-difference exact-check accepts a baseline implementation.
 For newly retained fragments also include an explanatory C value equivalent when
 there is no historical successful test evidence. Label it as unvalidated and
 state relevant live flags/private ABI; never present it as a tested alternative.
+
+# Readability and future development
+
+Prioritize meaningful helper names, explicit register/flag/pointer contracts and
+short intent comments over maximizing C byte coverage. Use the standard shared
+GCC; do not patch its backend or ABI for marginal reconstruction gains.
+See [development guide](docs/development_guide.md) and the helper catalog before
+adding wrappers. New device drivers should use ordinary GNU C ABI behind explicit
+legacy adapters; the exact baseline remains a separately validated reference.

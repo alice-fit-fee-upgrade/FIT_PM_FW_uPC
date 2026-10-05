@@ -1,3 +1,4 @@
+#include "legacy_word_ops.h"
 #include "legacy_cpu.h"
 #include "legacy_cli_guard_c.h"
 /* Private Y cursor: register reservation, no SRAM object or GNU frame. */
@@ -39,10 +40,7 @@ void fpga_set_ch_adc_delay(void)
     }
     /* Original ADC consumes carry from the C low-byte addition. */
     asm volatile("adc r29, r11" : "=y" (settings) : "r" (offset) : "r11", "cc");
-    asm volatile("st Y+, r20" : "+y" (settings) : "r" (requested) : "memory");
-    { register uint8_t high asm("r21");
-      asm volatile("" : "=r" (high) : "r" (requested));
-      *settings = high; asm volatile("" : : : "memory"); }
+    PM_STORE_WORD_LE_Y(settings, requested);
     asm volatile("rcall FUN_code_001068\n\trjmp LAB_code_000ff1" : : "r" (requested), "r" (channel) : "memory", "cc");
     __builtin_unreachable();
 }

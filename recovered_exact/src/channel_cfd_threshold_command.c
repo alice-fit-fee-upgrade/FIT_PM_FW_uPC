@@ -1,3 +1,4 @@
+#include "legacy_word_ops.h"
 #include "legacy_cpu.h"
 #include "legacy_cli_guard_c.h"
 /* Private Y cursor: register reservation, no SRAM object or GNU frame. */
@@ -12,24 +13,12 @@ void fpga_set_ch_cfd_threshold(void)
     PM_PARSE_VALUE(requested, "LAB_code_000f9c");
     register uint8_t limit_high asm("r24") = 0x75;
     asm volatile("" : "+r" (limit_high));
-    /* C value equivalent (not compiled):
-     * if ((int16_t)requested >= 30001) goto LAB_code_000f9c;
-     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
-     * has no separate successful functional-test claim.
- * Validated flag-aware version: compiled C model below,
- * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
- * This does not claim the historical value-only candidate preserved all flags. */
-asm volatile("cpi r20, 0x31\n\tcpc r21, r24\n\tbrge LAB_code_000f9c\n" : : "r" (requested), "r" (limit_high) : "cc");
+    /* Reject values at or above 30001 through the original error tail. */
+    PM_REJECT_I16_GE(requested, limit_high, 30001, "LAB_code_000f9c");
     limit_high = 1;
     asm volatile("" : "+r" (limit_high));
-    /* C value equivalent (not compiled):
-     * if ((int16_t)requested < 300) goto LAB_code_000f9c;
-     * Keep exact CPI/CPC flags and shared ASM error tails. This explanation
-     * has no separate successful functional-test claim.
- * Validated flag-aware version: compiled C model below,
- * PASS_INSTRUCTION_TRANSITIONS (docs/logical_c_validation.json).
- * This does not claim the historical value-only candidate preserved all flags. */
-asm volatile("cpi r20, 0x2c\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (requested), "r" (limit_high) : "cc");
+    /* Reject values below 300 through the original error tail. */
+    PM_REJECT_I16_LT(requested, limit_high, 300, "LAB_code_000f9c");
     PM_FPGA_GUARD(requested);
     register uint16_t word asm("r16") = requested;
     asm volatile("" : "+r" (word));
@@ -59,10 +48,7 @@ asm volatile("cpi r20, 0x2c\n\tcpc r21, r24\n\tbrlt LAB_code_000f9c" : : "r" (re
         address_low += offset; asm volatile("" : "+r" (address_low));
     }
     asm volatile("adc r29, r11" : "=y" (settings), "+r" (offset) : : "r11", "cc");
-    asm volatile("st Y+, r20" : "+y" (settings) : "r" (requested) : "memory");
-    { register uint8_t high asm("r21");
-      asm volatile("" : "=r" (high) : "r" (requested));
-      *settings = high; asm volatile("" : : : "memory"); }
+    PM_STORE_WORD_LE_Y(settings, requested);
     asm volatile("rcall FUN_code_001053" : : "r" (requested), "r" (channel) : "memory", "cc");
     register const uint8_t *message asm("r30") = (const uint8_t *)0x2998;
     asm volatile("rcall cli_send_msg" : "+z" (message) : : "memory", "cc");
