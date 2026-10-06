@@ -99,3 +99,9 @@ Negative layout tests prove rejection of differences in vectors, continuation,
 nonreserved FLASH and bootloader. They are CPU/state and host tests, not timing
 or asynchronous IRQ simulation. Hardware UART, interrupt latency and eventual
 I2C operation still require device validation.
+
+## Physical-board development
+
+The agreed additive TWI/UART stage and subsequent measured legacy-function
+replacement stage are described in [hardware development tracks](../docs/hardware_development_tracks.md).
+Keep binary-different development replacements separate from the exact baseline.
