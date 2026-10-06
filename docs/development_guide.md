@@ -83,5 +83,7 @@ free TWI instance or pins from the MCU name alone.
 Keep the current exact baseline as the reference target. A firmware that adds a
 new sensor intentionally changes FLASH and needs a separate development build
 and tests. The present fixed-region linker rejects new sections and moved code;
-it must not be silently relaxed in the baseline. No development target or I2C
-driver is implemented by this readability refactor.
+it must not be silently relaxed in the baseline. The separate `development/` target now provides an extension gate and standard
+GNU ABI adapters; see [extension guide](../development/README.md). The exact
+baseline linker remains unchanged. An I2C backend still requires a reviewed
+bus/pin selection; no sensor driver is assumed from the MCU name alone.

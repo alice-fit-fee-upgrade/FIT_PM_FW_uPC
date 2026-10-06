@@ -254,3 +254,10 @@ c-comment-check:
 .PHONY: c-alternative-check
 c-alternative-check: c-comment-check c-check
 	python3 recovered_exact/tests/check_archived_alternatives.py
+
+# Intentional extensions: separate output and acceptance from the exact baseline.
+.PHONY: development development-check
+development:
+	$(MAKE) -C development all
+development-check:
+	$(MAKE) -C development check

@@ -45,3 +45,12 @@ GCC; do not patch its backend or ABI for marginal reconstruction gains.
 See [development guide](docs/development_guide.md) and the helper catalog before
 adding wrappers. New device drivers should use ordinary GNU C ABI behind explicit
 legacy adapters; the exact baseline remains a separately validated reference.
+
+# Intentional firmware extensions
+
+`development/` is the separately authorized extension build. Root `make` and
+`make exact-check` retain the zero-difference recovered baseline. Root
+`make development-check` tests intentional changes: a six-byte CLI gate and
+a bounded new FLASH section only. See `development/README.md`. New modules use
+ordinary GNU ABI through explicit private-register adapters. Do not relax the
+baseline linker or add unreviewed SRAM allocations/peripheral assignments.
