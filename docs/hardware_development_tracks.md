@@ -13,8 +13,10 @@ Add a typed, normal-GNU-ABI TWI driver and new `@` command handlers under
 register/flag contracts. Existing commands continue through the original path.
 
 Before initializing TWI, record the board connector, MCU instance, SDA/SCL pins,
-voltage, pull-ups, pin ownership and first sensor/address. These details are
-currently unknown. Do not select a peripheral or drive pins from the MCU name.
+voltage, pull-ups, pin ownership and first sensor/address. The user supplied SDA=PF7, SCL=PA1 and switch RESET=PB6 on
+2026-10-06. See `i2c_pin_assignment.md` for existing ownership conflicts. Bus
+voltage, external pull-ups, switch model and first sensor/address remain unknown.
+Do not initialize or drive these pins until electrical sharing is resolved.
 
 The backend must expose bounded transactions and explicit results for timeout,
 NACK and bus failure. Command handlers validate address/register/count arguments
