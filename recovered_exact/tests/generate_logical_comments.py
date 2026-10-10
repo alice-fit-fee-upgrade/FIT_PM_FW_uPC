@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate compilable, flag-aware C equivalents in every accepted source file.
+"""Generate flag-aware C fixtures under tests/logical_models, never in firmware sources.
 The equivalent is a register-state transition model, not an ordinary GNU ABI
-replacement. Its comments are compiled verbatim by check_logical_comments.py.
+replacement. Its fixtures are compiled verbatim by check_logical_comments.py.
 """
 import pathlib,sys,json,re,hashlib
 ROOT=pathlib.Path(__file__).resolve().parents[2]
@@ -133,19 +133,10 @@ def generate(write=True):
                 code += ['        '+line for line in body(a,PROGRAM[a])]
                 code.append('    }')
         code+=['    default: return UINT32_MAX;','    }','}'];model='\n'.join(code)
-        digest=hashlib.sha256(model.encode()).hexdigest()
-        evidence=validated.get(source,{})
-        passed=evidence.get('model_sha256')==digest and previous.get('status')=='PASS' and previous.get('golden_sha256')==hashlib.sha256(FLASH).hexdigest() and previous.get('runtime_sha256')==hashlib.sha256((ROOT/'recovered_exact/tests/logical_c_runtime.h').read_bytes()).hexdigest()
-        status=('PASS_INSTRUCTION_TRANSITIONS: '+str(evidence['instruction_transition_cases'])+' file cases; shared exhaustive operand tests also passed.') if passed else 'PENDING: rerun make c-comment-check; never infer a pass from compilation alone.'
-        note=(BEGIN+'\n * Validation: '+status+'\n * Logical C equivalent: explicit private registers, SREG, RAM/MMIO and control flow.\n'
-              ' * Compiled verbatim and differentially tested by tests/check_logical_comments.py.\n'
-              ' * PASS applies only when docs/logical_c_validation.json matches this model hash.\n'
-              ' * Scope: every instruction transition, not timing/async IRQ or whole-path coverage.\n'
-              ' * Calls return the next PC to a dispatcher; callbacks/callees retain the private ABI.\n'
-              ' * Runtime/helper definitions: tests/logical_c_runtime.h. RETI restores I architecturally.\n'
-              ' * This is explanatory C, not a proposed GNU ABI replacement or a binary acceptance.\n *\n'+model+'\n'+END+'\n')
-        old=path.read_text();old=re.sub(re.escape(BEGIN)+r'.*?'+re.escape(END)+r'\n?', '',old,flags=re.S)
-        if write: path.write_text(old.rstrip()+'\n\n'+note)
+        if write:
+            archive=ROOT/'recovered_exact/tests/logical_models'/(path.stem+'.c')
+            archive.parent.mkdir(parents=True,exist_ok=True)
+            archive.write_text(model+'\n')
         models.append(model);index.append({'source':source,'model':name,'model_sha256':hashlib.sha256(model.encode()).hexdigest(),'addresses':sites})
     out=ROOT/'recovered_exact/build/logical_comments';out.mkdir(parents=True,exist_ok=True)
     if write: (out/'index.json').write_text(json.dumps(index,indent=2)+'\n')

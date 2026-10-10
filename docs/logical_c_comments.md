@@ -1,3 +1,17 @@
+# Logical C test models — separated from firmware sources
+
+The instruction-transition models formerly embedded as comments in recovered
+functions now live in `recovered_exact/tests/logical_models/`. Production source
+comments retain readable C alternatives and private-ABI/flag explanations only.
+Model bodies and SHA256 hashes were preserved during relocation; the mapping is
+in `logical_model_relocation.json`. Historical validation evidence below applies
+to those models, not to newly written readable replacement sketches.
+
+`make c-comment-check` retains its compatibility name and compiles archived
+fixtures. The generator now writes only test fixtures, never source comments.
+
+## Historical evidence (before relocation)
+
 # Logical C equivalents embedded in the exact source
 
 Every accepted source file in `recovered_exact/src` contains a compiled logical C

@@ -37,7 +37,8 @@ test claim; the 25 historically tested alternatives remain indexed separately.
 
 ## Complete compiled comment models and new suite reruns
 
-Every accepted source now includes a compiled, flag-aware logical C model.
+Compiled, flag-aware logical C models are archived under
+`recovered_exact/tests/logical_models/`; they are no longer embedded in sources.
 See [logical_c_comments.md](logical_c_comments.md) and its hash-indexed test
 report for all 87 C files and 9 headers. PASS_INSTRUCTION_TRANSITIONS means
 transition coverage, not full-path or physical hardware validation. Historical

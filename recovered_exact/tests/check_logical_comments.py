@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile commented C verbatim; compare transitions with the golden AVR oracle.
+"""Compile archived logical C models verbatim; compare transitions with the golden AVR oracle.
 All sites, deterministic boundary/random registers and all SREG bits. Additional
 exhaustive byte cases cover each opcode/operand shape. This is transition coverage,
 not all path coverage, not a timing/interrupt/peripheral hardware emulator.
@@ -11,12 +11,10 @@ from avr_oracle import Machine,PROGRAM,FLASH
 from generate_logical_comments import BEGIN,END,generate
 BUILD=ROOT/'recovered_exact/build/logical_comments'
 index=generate(write=False)
-# Use the exact comment bodies, not an unrelated model implementation.
+# Use the preserved model bodies, separated from production source comments.
 models=[]
 for item in index:
-    text=(ROOT/'recovered_exact'/item['source']).read_text()
-    block=text.split(BEGIN,1)[1].split(END,1)[0]
-    model=block[block.index('uint32_t '):].rstrip()
+    model=(ROOT/'recovered_exact/tests/logical_models'/ (pathlib.Path(item['source']).stem+'.c')).read_text().rstrip()
     assert hashlib.sha256(model.encode()).hexdigest()==item['model_sha256']
     models.append(model)
 (BUILD/'models.c').write_text('#include "logical_c_runtime.h"\nstatic const uint8_t pm_golden_flash[] = {'+','.join(map(str,FLASH[:65536]))+'};\n'+'\n\n'.join(models))

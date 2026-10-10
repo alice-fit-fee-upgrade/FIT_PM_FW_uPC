@@ -1,0 +1,502 @@
+[
+  {
+    "source": "recovered_exact/src/adt16.c",
+    "archive": "recovered_exact/tests/logical_models/adt16.c",
+    "model_sha256": "673991b333e1b4626e0780c7140290688ca6208958099604d65ab11481394a48"
+  },
+  {
+    "source": "recovered_exact/src/adt8.c",
+    "archive": "recovered_exact/tests/logical_models/adt8.c",
+    "model_sha256": "3b577b6b3cd09574907600851c598925c6db5fbc2b0737d7035a8a37b3ab3265"
+  },
+  {
+    "source": "recovered_exact/src/adt_bit_transfer.c",
+    "archive": "recovered_exact/tests/logical_models/adt_bit_transfer.c",
+    "model_sha256": "390126330bbc513e4dc35dfcb9d052c28dbf52aca4fb6a5e0d17d70cad53c19e"
+  },
+  {
+    "source": "recovered_exact/src/adt_fault_clear.c",
+    "archive": "recovered_exact/tests/logical_models/adt_fault_clear.c",
+    "model_sha256": "b7b49c9c1cdcb1beb600779b2972659bd7924258bcb63fc05751fa9006d48f7c"
+  },
+  {
+    "source": "recovered_exact/src/alarm_state_clear.c",
+    "archive": "recovered_exact/tests/logical_models/alarm_state_clear.c",
+    "model_sha256": "4820854540317dc8b70731ac93b63b3ae4d5c7984132b3dd3888f8d42a163f20"
+  },
+  {
+    "source": "recovered_exact/src/application_main.c",
+    "archive": "recovered_exact/tests/logical_models/application_main.c",
+    "model_sha256": "6141433d3a40aeaf7eb0e4a9e4b4ab4035773845768d5bdbcdd08d27eb2033cb"
+  },
+  {
+    "source": "recovered_exact/src/channel_adc_delay_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_adc_delay_command.c",
+    "model_sha256": "f8b5710f02338326107bf62bbd8326390c87c18671d8d7884a27f753cbf38be6"
+  },
+  {
+    "source": "recovered_exact/src/channel_adc_range_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_adc_range_command.c",
+    "model_sha256": "418e77ca2f34d278dcd102f1579cd55116b7179b4fc37b0685cb040565b79050"
+  },
+  {
+    "source": "recovered_exact/src/channel_adc_zero_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_adc_zero_command.c",
+    "model_sha256": "1e9bcb00788da2f3addaabf31ac98454649d2bc95546e6ad26fe567fc06da299"
+  },
+  {
+    "source": "recovered_exact/src/channel_baseline_dispersion_display.c",
+    "archive": "recovered_exact/tests/logical_models/channel_baseline_dispersion_display.c",
+    "model_sha256": "4f6538f0fae78f80d879f436c9a04e23f2e8e8facf5069c1e27cfef11d2fc58d"
+  },
+  {
+    "source": "recovered_exact/src/channel_cdf_adc_display.c",
+    "archive": "recovered_exact/tests/logical_models/channel_cdf_adc_display.c",
+    "model_sha256": "0e0ff56fd5de66c885ce3676479c2870f0cb09146a4f47acaef722ff5e8467ed"
+  },
+  {
+    "source": "recovered_exact/src/channel_cfd_threshold_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_cfd_threshold_command.c",
+    "model_sha256": "9aaa22a46d14335623b5c13edcdb24e6e3977acb886e9c23b8ba867cfb04c798"
+  },
+  {
+    "source": "recovered_exact/src/channel_cfd_zero_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_cfd_zero_command.c",
+    "model_sha256": "1753f9ced48aa5d888a8af8a85fe0783e8fe72adb69bec307e98b5d567f4d5d4"
+  },
+  {
+    "source": "recovered_exact/src/channel_mean_amplitude_display.c",
+    "archive": "recovered_exact/tests/logical_models/channel_mean_amplitude_display.c",
+    "model_sha256": "f3761a56fead3851e402af189775b2cfb584f6de98c8cdc0277f6b6743f61564"
+  },
+  {
+    "source": "recovered_exact/src/channel_settings_display.c",
+    "archive": "recovered_exact/tests/logical_models/channel_settings_display.c",
+    "model_sha256": "b47beefd6d258e2eb6a7a7237282ce8c46553d60aede51b580209c83c5b480dd"
+  },
+  {
+    "source": "recovered_exact/src/channel_tdc_adjust_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_tdc_adjust_command.c",
+    "model_sha256": "50b33d0fa2f5d773487888a8d8e9c5c6fa44562295936a5eff47f0701e8a708e"
+  },
+  {
+    "source": "recovered_exact/src/channel_tdc_values_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_tdc_values_command.c",
+    "model_sha256": "00a2012c71e56ccd8a5262ca51c8ab7fbec13277e1a846f7a14bf939d51df58c"
+  },
+  {
+    "source": "recovered_exact/src/channel_threshold_calibration_command.c",
+    "archive": "recovered_exact/tests/logical_models/channel_threshold_calibration_command.c",
+    "model_sha256": "b3dd1aa76f467845ead99766de5991c5814da0a31c66dcd4ae6faa33cc184076"
+  },
+  {
+    "source": "recovered_exact/src/console_character_read.c",
+    "archive": "recovered_exact/tests/logical_models/console_character_read.c",
+    "model_sha256": "3f47284228fc4969c0a1b5ef539c0efbf898edd10cc78d429df6bfac943c18d2"
+  },
+  {
+    "source": "recovered_exact/src/console_character_send.c",
+    "archive": "recovered_exact/tests/logical_models/console_character_send.c",
+    "model_sha256": "2a9f710536215108e6c6485e8d7850b0d751cfb5614feebda0cfa95de9d15c84"
+  },
+  {
+    "source": "recovered_exact/src/console_crlf.c",
+    "archive": "recovered_exact/tests/logical_models/console_crlf.c",
+    "model_sha256": "b60589b39743f09e38b7c621035ab11ff2d5f9b66e37eed1ef3cdeb3db2c4254"
+  },
+  {
+    "source": "recovered_exact/src/console_cts_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/console_cts_interrupt.c",
+    "model_sha256": "5cfb1b1e09b7e574d98e1bc43b4a3f83ace60d2f77b299f613bdf76cbbfa579e"
+  },
+  {
+    "source": "recovered_exact/src/console_decimal_formatter.c",
+    "archive": "recovered_exact/tests/logical_models/console_decimal_formatter.c",
+    "model_sha256": "f2ce6385e73348aeed09a153efe35b8308dbd5b0920005687aaea310b8e9b0d5"
+  },
+  {
+    "source": "recovered_exact/src/console_dispatch.c",
+    "archive": "recovered_exact/tests/logical_models/console_dispatch.c",
+    "model_sha256": "b0f707521fcba283a89f34e50861014f3100af06e8dbe8d87ec37407a0db3733"
+  },
+  {
+    "source": "recovered_exact/src/console_fixed2_entry.c",
+    "archive": "recovered_exact/tests/logical_models/console_fixed2_entry.c",
+    "model_sha256": "919a34a01b1d3cb323c2866076849f178871b3170593400d787ab94728c35d3c"
+  },
+  {
+    "source": "recovered_exact/src/console_fixed3_entry.c",
+    "archive": "recovered_exact/tests/logical_models/console_fixed3_entry.c",
+    "model_sha256": "be70f9bbfd852a64b59400220f26a38ae281c4f6373d41149d6b422924f83f1d"
+  },
+  {
+    "source": "recovered_exact/src/console_flash_message.c",
+    "archive": "recovered_exact/tests/logical_models/console_flash_message.c",
+    "model_sha256": "f6b542a922a955caf11b01fc9b41ec2dc29cf8ba9918c5a13e8576eb65da0933"
+  },
+  {
+    "source": "recovered_exact/src/console_hex_digit.c",
+    "archive": "recovered_exact/tests/logical_models/console_hex_digit.c",
+    "model_sha256": "bde063cdd58203cc0a8c7baf991323ae5dbdce621e9d2cf066af7922ab9f3bca"
+  },
+  {
+    "source": "recovered_exact/src/console_hex_parser.c",
+    "archive": "recovered_exact/tests/logical_models/console_hex_parser.c",
+    "model_sha256": "674e91b4a6fe58aca4cd1d47e044b83836d4c814c97c5256e13152caa74e337b"
+  },
+  {
+    "source": "recovered_exact/src/console_hex_word.c",
+    "archive": "recovered_exact/tests/logical_models/console_hex_word.c",
+    "model_sha256": "9081bc65632f2eab300b9821f87e7c27e3adb13fe4fc11ead6bbe1b173ecea57"
+  },
+  {
+    "source": "recovered_exact/src/console_integer_parser.c",
+    "archive": "recovered_exact/tests/logical_models/console_integer_parser.c",
+    "model_sha256": "7bdacf1e82cf711c33999e57344cdbbad6c70f50eea368525492cdb9936afeeb"
+  },
+  {
+    "source": "recovered_exact/src/console_raw_byte_entry.c",
+    "archive": "recovered_exact/tests/logical_models/console_raw_byte_entry.c",
+    "model_sha256": "91e4063060f351732806982804ae3aa57c89c48e88ca8f1869bb8341ac0d0daa"
+  },
+  {
+    "source": "recovered_exact/src/console_rx_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/console_rx_interrupt.c",
+    "model_sha256": "82361272121e84417100c5a4a7d8423ce34b178a767c8eda8bb9334a03d90ff6"
+  },
+  {
+    "source": "recovered_exact/src/console_temperature_entry.c",
+    "archive": "recovered_exact/tests/logical_models/console_temperature_entry.c",
+    "model_sha256": "2d4e279cfb1fdd4065f26c297c26f841fc8a5fc058f679b5a82550bc90cfe779"
+  },
+  {
+    "source": "recovered_exact/src/console_tx_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/console_tx_interrupt.c",
+    "model_sha256": "fca713b3fb2e05c400d54ba94025711f993dc51c5106e2a2d7ea907fe181bd6f"
+  },
+  {
+    "source": "recovered_exact/src/dac_channels.c",
+    "archive": "recovered_exact/tests/logical_models/dac_channels.c",
+    "model_sha256": "99121f0442932df2207dcd67c03fcc6897e58ac679d75697c18572dfe701535a"
+  },
+  {
+    "source": "recovered_exact/src/dac_gain_scale.c",
+    "archive": "recovered_exact/tests/logical_models/dac_gain_scale.c",
+    "model_sha256": "1d743479093395fe5a9be7c3bb56f6ef9973d87520181760008b80b9d49b7e2f"
+  },
+  {
+    "source": "recovered_exact/src/dac_offset_scale.c",
+    "archive": "recovered_exact/tests/logical_models/dac_offset_scale.c",
+    "model_sha256": "d41de9d04c9d19e2d8d1b97164cd049342b0476309070d63b0004ff0d0039dfa"
+  },
+  {
+    "source": "recovered_exact/src/dac_saturating_scaled_product.c",
+    "archive": "recovered_exact/tests/logical_models/dac_saturating_scaled_product.c",
+    "model_sha256": "e98224c2f0fd7e869c359924d6718024bbcc53cb30361e874022789598ecadaf"
+  },
+  {
+    "source": "recovered_exact/src/dac_signed_scaled_product.c",
+    "archive": "recovered_exact/tests/logical_models/dac_signed_scaled_product.c",
+    "model_sha256": "74bd3279da62ab9d2f77df71d4d9d071ff3742434d6fc93c1e12029a9fa0dff9"
+  },
+  {
+    "source": "recovered_exact/src/dac_spi_send.c",
+    "archive": "recovered_exact/tests/logical_models/dac_spi_send.c",
+    "model_sha256": "08bd100a0e78621ac7324e459915efd0c56e0fc2ff83967b6a704aea359ad48f"
+  },
+  {
+    "source": "recovered_exact/src/dac_stored_settings_apply.c",
+    "archive": "recovered_exact/tests/logical_models/dac_stored_settings_apply.c",
+    "model_sha256": "9abef9c70f3d378710066675855c160470715cddb1a158f9b52ebc38f8d89b00"
+  },
+  {
+    "source": "recovered_exact/src/dma_channel_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/dma_channel_interrupt.c",
+    "model_sha256": "b71569bfa2c524d5eba730d4ffaeebc8aea715b137d74b68863b345725856411"
+  },
+  {
+    "source": "recovered_exact/src/dma_gpio_handshake.c",
+    "archive": "recovered_exact/tests/logical_models/dma_gpio_handshake.c",
+    "model_sha256": "029759116b644fd4ba5afecad452bc52e498a48e95a67012c9488c5f450e661b"
+  },
+  {
+    "source": "recovered_exact/src/eeprom_page_commit.c",
+    "archive": "recovered_exact/tests/logical_models/eeprom_page_commit.c",
+    "model_sha256": "552d76dd5219616a2815115e57c1ea70daded6bb89d36c33439b610beb738566"
+  },
+  {
+    "source": "recovered_exact/src/eeprom_settings_store.c",
+    "archive": "recovered_exact/tests/logical_models/eeprom_settings_store.c",
+    "model_sha256": "d88a463674128607e0913025fad0eab2780dba07c9de7f9053ec2332f795e573"
+  },
+  {
+    "source": "recovered_exact/src/flash_address_send.c",
+    "archive": "recovered_exact/tests/logical_models/flash_address_send.c",
+    "model_sha256": "98db06d6187ce57da14e709d9ef63deda7934256dda4c7214bcfae686c1bf0c0"
+  },
+  {
+    "source": "recovered_exact/src/flash_crc_bit_core.c",
+    "archive": "recovered_exact/tests/logical_models/flash_crc_bit_core.c",
+    "model_sha256": "c0984eb96e1ed3d09e4dfd1a6701283f9bb0d694702db1cfa4fd84418a573549"
+  },
+  {
+    "source": "recovered_exact/src/flash_crc_stream_read.c",
+    "archive": "recovered_exact/tests/logical_models/flash_crc_stream_read.c",
+    "model_sha256": "2a70f15d697b5c75919111b8df11bf29ac7d8fd882a4558130dfbee1d1c15131"
+  },
+  {
+    "source": "recovered_exact/src/flash_device_id.c",
+    "archive": "recovered_exact/tests/logical_models/flash_device_id.c",
+    "model_sha256": "949431998c091a403defb87f6545297cf6d49b510c472b6d8cafe567bd90da9e"
+  },
+  {
+    "source": "recovered_exact/src/flash_interface_deinit.c",
+    "archive": "recovered_exact/tests/logical_models/flash_interface_deinit.c",
+    "model_sha256": "09ac918c44c59f63d06757f6712f29a1177f6cf4bd55471299e5d62fb5633468"
+  },
+  {
+    "source": "recovered_exact/src/flash_interface_init.c",
+    "archive": "recovered_exact/tests/logical_models/flash_interface_init.c",
+    "model_sha256": "a601e457b3b730ccf8ad807beaaa9da0fe96f81231b2176176f592cd5c0f49b4"
+  },
+  {
+    "source": "recovered_exact/src/flash_page_program.c",
+    "archive": "recovered_exact/tests/logical_models/flash_page_program.c",
+    "model_sha256": "725b7cce1be55be46e7aabdef15baf93b2e94143b069c57457bbd0b7fb17b4fc"
+  },
+  {
+    "source": "recovered_exact/src/flash_sector_erase.c",
+    "archive": "recovered_exact/tests/logical_models/flash_sector_erase.c",
+    "model_sha256": "034d293547ab55c1742f97963cd5b1b345b0ffda34a5a22944baea6cec49303c"
+  },
+  {
+    "source": "recovered_exact/src/flash_wait_ready.c",
+    "archive": "recovered_exact/tests/logical_models/flash_wait_ready.c",
+    "model_sha256": "46a07ddd385030f5ad45214cfd760348cebbe86b0dd795b8583848d2e10e8bee"
+  },
+  {
+    "source": "recovered_exact/src/flash_write_enable.c",
+    "archive": "recovered_exact/tests/logical_models/flash_write_enable.c",
+    "model_sha256": "a374c1e03c5ee45aff1285ecf806fb0d66198237d8937575467394a506a83a1e"
+  },
+  {
+    "source": "recovered_exact/src/fpga_binary_programming_stream.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_binary_programming_stream.c",
+    "model_sha256": "788e151c62f031e12414bb9b8ba578d796968f78a6db0094b705307af594261d"
+  },
+  {
+    "source": "recovered_exact/src/fpga_data_exchange.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_data_exchange.c",
+    "model_sha256": "c4b6c76c590a979d4f280af67222940e96c16d18d1b7c5ec318b60810ba0ba13"
+  },
+  {
+    "source": "recovered_exact/src/fpga_multiword_read.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_multiword_read.c",
+    "model_sha256": "def70e89716af2b7937141c40f32e965952b4e0821b718b77c86e1afa370c769"
+  },
+  {
+    "source": "recovered_exact/src/fpga_ready_guard.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_ready_guard.c",
+    "model_sha256": "daf015e80bdc53e4a0c86412506b9ffb764192f65a473b2e15a5b334cb17a59a"
+  },
+  {
+    "source": "recovered_exact/src/fpga_settings_init.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_settings_init.c",
+    "model_sha256": "739aa1a50875a56211bb5223eb029cb0ef9cb53e72ca7d420449f31d22cccd70"
+  },
+  {
+    "source": "recovered_exact/src/fpga_settings_reset.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_settings_reset.c",
+    "model_sha256": "093d5aca36ce51a2ba1becd12d9e610b5aa2dfda6705a4ff7da1e13009f8e069"
+  },
+  {
+    "source": "recovered_exact/src/fpga_status_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_status_interrupt.c",
+    "model_sha256": "8c2afb2c636c8ab9be176214a6cf86a20a1ceb471f7e23eac922735651053a45"
+  },
+  {
+    "source": "recovered_exact/src/fpga_timestamp_send.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_timestamp_send.c",
+    "model_sha256": "8b248dc984532e79c6b89a761ee0b2e990c88c779d32f95dc046de2d52609518"
+  },
+  {
+    "source": "recovered_exact/src/fpga_word_read.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_word_read.c",
+    "model_sha256": "066ec0b3c47e9b6517423e49e2e9969b1dab425f952b1f9d43c226a31537c4d2"
+  },
+  {
+    "source": "recovered_exact/src/fpga_word_write.c",
+    "archive": "recovered_exact/tests/logical_models/fpga_word_write.c",
+    "model_sha256": "eac551d609a072cce01cfc1f158c9957676056cc342b84cdf7f10a37a7b38169"
+  },
+  {
+    "source": "recovered_exact/src/legacy_carry.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_carry.c",
+    "model_sha256": "164e77140b59b01606ed2d799cae2c37834a3fb3bff483e7b823da943444324f"
+  },
+  {
+    "source": "recovered_exact/src/legacy_cli.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_cli.c",
+    "model_sha256": "e79a906f57fbe1c19b1461732afb4bc71569437a26df2cb283421ac0a2ec7e9b"
+  },
+  {
+    "source": "recovered_exact/src/legacy_cli_guard_c.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_cli_guard_c.c",
+    "model_sha256": "360bd9a8fb26b68be49453b251352d9c4e8cc416e2d383c3c9c21e259b4a39cf"
+  },
+  {
+    "source": "recovered_exact/src/legacy_console_call_c.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_console_call_c.c",
+    "model_sha256": "7c5ebea6952a92b4191f08b91b9a8449105cb11416cb16e85e96488d58e77ffd"
+  },
+  {
+    "source": "recovered_exact/src/legacy_cpu.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_cpu.c",
+    "model_sha256": "e3372cb5188f6c0d2c6d0008e3bd3b3a019679642ec2e594fed23de587d47ead"
+  },
+  {
+    "source": "recovered_exact/src/legacy_flag_ops.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_flag_ops.c",
+    "model_sha256": "1532dc5d7d0d083991bd235736ae417255464deafa973b8af65462618930cfb5"
+  },
+  {
+    "source": "recovered_exact/src/legacy_interrupt.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_interrupt.c",
+    "model_sha256": "110431172bee6de78a0fdcb1ecc9ef3ede648846093c11082117466b4a2ee6fc"
+  },
+  {
+    "source": "recovered_exact/src/legacy_interrupt_register_c.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_interrupt_register_c.c",
+    "model_sha256": "f949c93ee329a8e17b21373df42340a6994339613dc48dcf758a3e6f87493d52"
+  },
+  {
+    "source": "recovered_exact/src/legacy_r16.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_r16.c",
+    "model_sha256": "05a292bf3bc3a0092eefb04629194e33ed542576f5467acecc0a9568f5618f2d"
+  },
+  {
+    "source": "recovered_exact/src/legacy_r16_c.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_r16_c.c",
+    "model_sha256": "aca44a0e7fc0c25d74afd60485156121b7e282e0bb90ed6b1e2d36d683e461c0"
+  },
+  {
+    "source": "recovered_exact/src/legacy_spi.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_spi.c",
+    "model_sha256": "05e94b3bd84a32c8f50ca33b17659994a7444d7c1837c5bd4011aa6ae121337e"
+  },
+  {
+    "source": "recovered_exact/src/legacy_spi_c.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_spi_c.c",
+    "model_sha256": "67b32d3069c94ec4ab5105a0fc32d6d31d84bbc7c0438295a1a05610d22eda01"
+  },
+  {
+    "source": "recovered_exact/src/legacy_word_ops.h",
+    "archive": "recovered_exact/tests/logical_models/legacy_word_ops.c",
+    "model_sha256": "112960524edf81d0cf5d0e1c0f6ad9ef2ce3a47b53737e08b304ec7b29ee7684"
+  },
+  {
+    "source": "recovered_exact/src/pll_console_reset.c",
+    "archive": "recovered_exact/tests/logical_models/pll_console_reset.c",
+    "model_sha256": "b4b3e7c2c0ccc4d456cb33a7723f4ecd3bb94e52c371e929fffb8c482f45c687"
+  },
+  {
+    "source": "recovered_exact/src/pll_control_read.c",
+    "archive": "recovered_exact/tests/logical_models/pll_control_read.c",
+    "model_sha256": "8ef4291f21621e4dc145cca29b656735b0a198ae3f6f074a7ed1c681f4acabbc"
+  },
+  {
+    "source": "recovered_exact/src/pll_control_write.c",
+    "archive": "recovered_exact/tests/logical_models/pll_control_write.c",
+    "model_sha256": "3c3c3665c6b67b1abf9559147b81a4f453d5e0c9af5431cf4e544297391f1535"
+  },
+  {
+    "source": "recovered_exact/src/pll_defaults_load.c",
+    "archive": "recovered_exact/tests/logical_models/pll_defaults_load.c",
+    "model_sha256": "77d6fac9dba7ff2b26cd5c798b486fc7e03c982626cc8d7aaf59d8223e9d3d32"
+  },
+  {
+    "source": "recovered_exact/src/pll_status_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/pll_status_interrupt.c",
+    "model_sha256": "982c64466d39ac122a21eee8c968142c7dc461d7765af04d8066ecdddf783864"
+  },
+  {
+    "source": "recovered_exact/src/power_fault_state.c",
+    "archive": "recovered_exact/tests/logical_models/power_fault_state.c",
+    "model_sha256": "441eded3ef357d19823cb2c59f80fde230dad4750038666ea8922934963e96ea"
+  },
+  {
+    "source": "recovered_exact/src/power_portb_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/power_portb_interrupt.c",
+    "model_sha256": "25a1d749cbac029017e21e8e3f4aaf341a2121d920bb4733ad4294f66f942a59"
+  },
+  {
+    "source": "recovered_exact/src/power_portd_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/power_portd_interrupt.c",
+    "model_sha256": "25eeeb944778f5ba9b0e90f3138749240aef2d74ba59669b9412092e3ea458cd"
+  },
+  {
+    "source": "recovered_exact/src/power_porte_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/power_porte_interrupt.c",
+    "model_sha256": "02cfe083f317dc522c261c8cccd396964b79464a6ab5794d5187a323d7e11f26"
+  },
+  {
+    "source": "recovered_exact/src/power_state_request.c",
+    "archive": "recovered_exact/tests/logical_models/power_state_request.c",
+    "model_sha256": "a36ddde4f2fb340389ce0598a1c2ef3df59ee4b3e44a3155b94e0c23b87fed74"
+  },
+  {
+    "source": "recovered_exact/src/programming_unlock.c",
+    "archive": "recovered_exact/tests/logical_models/programming_unlock.c",
+    "model_sha256": "a49746ca72e846cf0f895a7aa3fb33bc8941da2af515aade44b395b3d4d44acd"
+  },
+  {
+    "source": "recovered_exact/src/status_led.c",
+    "archive": "recovered_exact/tests/logical_models/status_led.c",
+    "model_sha256": "8a8a883c82d0799f960e773f56e71d7054f0bf9e87a38510a7813085e39229d9"
+  },
+  {
+    "source": "recovered_exact/src/system_deinit.c",
+    "archive": "recovered_exact/tests/logical_models/system_deinit.c",
+    "model_sha256": "199ed6c74de955ed3e0e69fab5bcb0ade8efef3dfe9777bec769231ff0b14b2e"
+  },
+  {
+    "source": "recovered_exact/src/system_init.c",
+    "archive": "recovered_exact/tests/logical_models/system_init.c",
+    "model_sha256": "edac2b7df83ab675d5a0e945cbb9942bd0718ad406118f8a91558875fc6ab3a9"
+  },
+  {
+    "source": "recovered_exact/src/system_status_display.c",
+    "archive": "recovered_exact/tests/logical_models/system_status_display.c",
+    "model_sha256": "d9acb77329d64b70192f608e703476bd702925d2cd1cac0277f5b792131e2324"
+  },
+  {
+    "source": "recovered_exact/src/tdc_channel_data_display.c",
+    "archive": "recovered_exact/tests/logical_models/tdc_channel_data_display.c",
+    "model_sha256": "5981475966c4d267203dc4e4df8f7317482ca3bafaffa33eaf50e011442f3e6f"
+  },
+  {
+    "source": "recovered_exact/src/tdc_host_read.c",
+    "archive": "recovered_exact/tests/logical_models/tdc_host_read.c",
+    "model_sha256": "77ed15eff734096342da0d5adc22bf3a31d9e437915978d50b9bd61116f2ae68"
+  },
+  {
+    "source": "recovered_exact/src/tdc_host_write.c",
+    "archive": "recovered_exact/tests/logical_models/tdc_host_write.c",
+    "model_sha256": "b520f597bcbaf22ef80335b2fd3a825bdde7a61202ccf8d1a86149e98c441643"
+  },
+  {
+    "source": "recovered_exact/src/timer_overflow_interrupt.c",
+    "archive": "recovered_exact/tests/logical_models/timer_overflow_interrupt.c",
+    "model_sha256": "24032cb859000badc65aaca2d973020c0ccf704287a9978777838d3edaf009b0"
+  },
+  {
+    "source": "recovered_exact/src/trigger_charge_command.c",
+    "archive": "recovered_exact/tests/logical_models/trigger_charge_command.c",
+    "model_sha256": "b145ecbc28bf2878975c85fd4a6f1d88e9dfa09ceb5453d2405ebd0b475d27b7"
+  },
+  {
+    "source": "recovered_exact/src/trigger_settings_command.c",
+    "archive": "recovered_exact/tests/logical_models/trigger_settings_command.c",
+    "model_sha256": "0f71c991d4b31076853c00b3e71acea9fc887171743ddd573db7154c906ba6e6"
+  }
+]
