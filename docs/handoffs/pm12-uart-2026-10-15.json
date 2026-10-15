@@ -1,0 +1,26 @@
+{
+  "board": "PM12",
+  "adapter_user_description": "Gembird, probably Prolific",
+  "port": "/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0",
+  "device_at_test": "/dev/ttyUSB29",
+  "usb_vid_pid": "067b:2303",
+  "baud": 115200,
+  "format": "8N1",
+  "lock": "/home/codex-hil/.cache/pm12-210249A73E43.lock",
+  "transmitted_commands": [
+    "RS\\r",
+    "RS\\r",
+    "RS\\r"
+  ],
+  "received_consecutive_fragments": [
+    "\\r\\nINR",
+    " PM12",
+    " cont"
+  ],
+  "result": "PARTIAL: recognizable original PM12 banner; full console transfer NOT_PASS",
+  "handshake_tests": "RTS and DTR combinations produced no additional pending output. CTS host input TRUE throughout, not proof MCU CTS is asserted.",
+  "hypothesis": "MCU CTS PF1 unconnected or miswired/coupled to RX; needs wiring verification, not proven.",
+  "schematic_console": "FIT_PM12v1.1.PDF sheet4 X6 RJ45: pin2 boardTX, pin3 boardRX, pin5 GND, pin7 boardCTS(input), pin8 boardRTS(output). PF0 RTS output/PF1 CTS input.",
+  "cleanup": "Serial closed; DTR/RTS deasserted; board lock released. No resets or firmware/flash/power changes. Stop transmitting commands while TX queue may be blocked.",
+  "next": "User to clarify cable wiring (TX/RX/GND only or RTS/CTS too). Verify host RTS reaches board CTS and correct RS232 domain, then drain pending banner and complete bounded status read before any programming."
+}
