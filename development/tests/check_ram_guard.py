@@ -10,7 +10,7 @@ plan=subprocess.check_output(['make','-B','-n','build/reconstructed.elf'],cwd=BA
 command=next(shlex.split(line) for line in plan.splitlines() if line.startswith('avr-gcc ') and ' -nostdlib ' in line)
 original=[str(BASE/a) for a in command if a.endswith('.o')]
 args=['avr-gcc','-mmcu=atxmega128a3u','-nostdlib','-Wl,-T,'+str(BUILD/'development.ld'),*original,
-      str(BUILD/'extension.o'),str(BUILD/'legacy_bridge.o'),str(obj),'-lgcc','-o',str(BUILD/'forbidden.elf')]
+      str(BUILD/'extension.o'),str(BUILD/'legacy_bridge.o'),str(BUILD/'timer_relocated.o'),str(obj),'-lgcc','-o',str(BUILD/'forbidden.elf')]
 result=subprocess.run(args,cwd=BASE,text=True,capture_output=True)
 assert result.returncode and 'unplaced code/data/runtime support' in result.stderr, result.stderr
 (BUILD/'ram_guard_rejection.txt').write_text(result.stderr)

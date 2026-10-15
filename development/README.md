@@ -105,3 +105,51 @@ I2C operation still require device validation.
 The agreed additive TWI/UART stage and subsequent measured legacy-function
 replacement stage are described in [hardware development tracks](../docs/hardware_development_tracks.md).
 Keep binary-different development replacements separate from the exact baseline.
+
+## Relocated timer ISR (development only)
+
+The original timer vector is unchanged. Four bytes at 0x049E..0x04A1 now contain
+JMP to `pm_timer_relocated` in the extension FLASH window; the remainder of the
+old ISR body remains untouched. Together with the CLI gate, only ten old FLASH
+bytes are authorized for patching. New parser/diagnostic handlers already live
+in this window; sensor telemetry itself is not implemented yet.
+
+`tools/relocate_timer.py` deterministically emits symbolic GNU AVR instructions
+from the accepted source-built ISR (0x049E..0x08E3). Every instruction gets an
+original-address label. Calls/jumps are widened; conditional branches become
+inverse-branch/JMP; skip instructions become inverse-skip/JMP so they skip an
+entire relocated operation. No whole-image blob is used. The readable C original
+is `recovered_exact/src/timer_overflow_interrupt.c`; no baseline source changes.
+
+`tests/check_timer_relocation.py` checks all 489 original instruction sites:
+ordinary opcode bytes, internal/external targets, skip successors, fallthroughs
+and RETI. The ordinary register/flag save/restore and peripheral operations stay
+intact. Widened transfers change cycle counts and call return addresses; this is
+NOT binary identity or a proof of IRQ latency/timing equivalence. Hardware tester
+comparison against the original is required before deployment.
+
+### Next: mutual exclusion for temperature SPI and on-demand sensor I²C
+
+Voltage/current reads will be on UART demand (periodic polling, if later needed,
+can be ten seconds or slower). Do not add slow INA transactions to the ISR.
+A shared ownership byte must be explicitly allocated and initialized before use;
+the existing no-unreviewed-SRAM linker guard remains enabled. No lock or I²C
+transport has been implemented by the relocation change.
+
+The main-loop command handler claims the bus BEFORE driving SDA/SCL; the ISR
+claims it BEFORE lowering temperature CS. A busy ISR must defer temperature and
+continue unrelated PSU/IRQ duties, never spin. A busy UART handler reports BUSY
+or defers bounded work. UART RX/TX interrupts themselves remain operational.
+Only a brief save-SREG/CLI/restore-SREG protects an ownership update, not the
+whole transaction. Every timeout/error path releases ownership, leaves bus lines
+released and records stale/deferred temperature. Bound transaction duration so
+thermal monitoring cannot be indefinitely starved by repeated UART requests.
+
+Before enabling direct MCU I²C, resolve the currently removed R226/R227/R228,
+FPGA isolation with power absent, independent pull-ups/RESET and monitor/UART
+power domains. The current handoff says FPGA is the only connected master.
+
+Final hardware acceptance compares original/candidate with the same tester:
+legacy commands, temperature/alarms, PSU faults, concurrent UART/poll scheduling,
+NACK/timeout recovery and intended FPGA/DC-DC power-loss conditions. Record raw
+traces and firmware hashes. These tests have not been run here.

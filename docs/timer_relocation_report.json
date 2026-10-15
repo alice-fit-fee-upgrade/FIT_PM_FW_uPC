@@ -1,0 +1,34 @@
+{
+  "scope": "Offline relocation prerequisite; on-demand telemetry and bus ownership lock not yet implemented",
+  "layout": {
+    "acceptance": "planned development differences only; NOT binary-exact PM.hex",
+    "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+    "development_sha256": "143b97c9d639ecdae1e6ff608eb33be77e83a1a43b2092a08d39ef936a277c05",
+    "differing_bytes": 2441,
+    "gate_start": 4842,
+    "gate_length": 6,
+    "timer_gate_start": 1182,
+    "timer_gate_length": 4,
+    "timer_relocated": 17322,
+    "extension_start": 16384,
+    "extension_size": 2454,
+    "extension_limit": 32768,
+    "legacy_symbols_preserved": 4657,
+    "bootloader_unchanged": true,
+    "ram_globals": "rejected by linker; no unverified SRAM reservation"
+  },
+  "timer": {
+    "status": "PASS",
+    "original_start": 1182,
+    "original_end_exclusive": 2276,
+    "relocated_start": 17322,
+    "instruction_sites": 489,
+    "unchanged_instruction_encodings": 360,
+    "control_flow_edges": 189,
+    "scope": "All ordinary opcode bytes and transformed control-flow edges checked; no timing or hardware proof."
+  },
+  "development_check": "PASS",
+  "exact_check": "PASS: zero differing bytes",
+  "hardware_comparison": "NOT_RUN; user plans comparison with tester",
+  "no_hardware_programming": true
+}

@@ -50,7 +50,7 @@ legacy adapters; the exact baseline remains a separately validated reference.
 
 `development/` is the separately authorized extension build. Root `make` and
 `make exact-check` retain the zero-difference recovered baseline. Root
-`make development-check` tests intentional changes: a six-byte CLI gate and
+`make development-check` tests intentional changes: a six-byte CLI gate, a four-byte timer-ISR entry gate and
 a bounded new FLASH section only. See `development/README.md`. New modules use
 ordinary GNU ABI through explicit private-register adapters. Do not relax the
 baseline linker or add unreviewed SRAM allocations/peripheral assignments.

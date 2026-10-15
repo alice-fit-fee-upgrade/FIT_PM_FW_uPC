@@ -2,6 +2,7 @@
 all:
 	python3 tools/build.py
 check: all
+	python3 tests/check_timer_relocation.py
 	python3 tests/check_bridge.py
 	python3 tests/check_layout_guards.py
 	python3 tests/check_ram_guard.py
