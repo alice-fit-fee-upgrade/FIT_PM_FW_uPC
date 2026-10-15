@@ -6,6 +6,7 @@ other errors fail. This is laboratory coverage, not forced-fault validation.
 import argparse,fcntl,json,re,time
 from pathlib import Path
 from pm12_console_regression import PORT,capture
+from pm12_power import wait_power_good,require_power_good
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True)
@@ -15,6 +16,8 @@ def main():
  report={'scope':'read-only POWER bursts interleaved with ADT/console/ownership reads; no injected physical faults','records':[],'busy_replies':0,'successful_monitor_reads':0};started=time.monotonic()
  def record(s,c):
   assert time.monotonic()-started<120,'overall deadline'
+  if c.startswith(('@TEMP','@INA','@POWER')):
+   report.setdefault('sensor_power_rechecks',[]).append(require_power_good(s,capture))
   row=capture(s,c,limit=6);report['records'].append(row);assert row['reply'],row
   return row['reply']
  with open('/home/codex-hil/.cache/pm12-210249A73E43.lock','a+') as lease:
@@ -22,6 +25,7 @@ def main():
   s=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);s.dtr=False;s.rts=True;s.port=PORT;s.open()
   try:
    s.read(4096)
+   report['power_ready']=wait_power_good(s,capture)
    for n in range(a.cycles):
     reply=record(s,'\r'.join(['@POWER']*a.burst));errors=[v for v in reply.splitlines() if v.startswith('ERR ')]
     assert all(v=='ERR I2C BUSY' for v in errors),errors

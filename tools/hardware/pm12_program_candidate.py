@@ -48,18 +48,26 @@ def main():
   # Isolate sensor behavior BEFORE any I2C transaction or FPGA reload.
   import serial
   sys.path.insert(0,str(ROOT/'tools/hardware'));from pm12_console_regression import PORT,capture
-  time.sleep(8)
+  from pm12_power import wait_power_good,require_power_good
+
   uart=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);uart.dtr=False;uart.rts=True;uart.port=PORT;uart.open()
   try:
+   report['pre_sensor_power_ready']=wait_power_good(uart,capture)
    report['pre_i2c_sensor']=[]
    if args.recover_adt:
-    report['before_adt_recovery']=[capture(uart,c) for c in ['@HW','@TEMP ALL','@TEMP SLOW']]
+    report['before_adt_recovery']=[]
+    for c in ['@HW','@TEMP ALL','@TEMP SLOW']:
+     if c.startswith('@TEMP'):report.setdefault('sensor_power_rechecks',[]).append(require_power_good(uart,capture))
+     report['before_adt_recovery'].append(capture(uart,c))
+    report['recovery_power_recheck']=require_power_good(uart,capture)
     report['adt_recovery']=capture(uart,'@TEMP INIT');print('ADT_RECOVERY '+json.dumps(report['adt_recovery']),flush=True)
     assert report['adt_recovery']['reply']=='ADT7311 INIT SENT VERIFY_READBACK\r\n'
     time.sleep(1)
    pre_commands=['@PING','@HW','RS','@TEMP','@HW','@TEMP','@HW','@TEMP','@HW','RS'] if args.sensor_probe else ['@PING','@HW','RS','@I2C','@I2C TEST','@TEMP']
    if args.temperature_registers:pre_commands+=['@TEMP ALL','@TEMP SLOW','@HW']
    for command in pre_commands:
+    if command.startswith(('@TEMP','@INA','@POWER')):
+     report.setdefault('sensor_power_rechecks',[]).append(require_power_good(uart,capture))
     row=capture(uart,command);report['pre_i2c_sensor'].append(row);print('PRE_I2C '+json.dumps(row),flush=True)
    sensors=[r['reply'] for r in report['pre_i2c_sensor'] if r['command']=='@TEMP']
    assert all('ADT7311 REG=03 C3\r\n' in sensor for sensor in sensors),'ADT7311 ID failed before I2C/FPGA reload'
@@ -95,9 +103,12 @@ def main():
   s=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);s.dtr=False;s.rts=True;s.port=PORT;s.open()
   try:
    report['startup_drain']=s.read(4096).decode('ascii',errors='replace')
+   report['post_fpga_power_ready']=wait_power_good(s,capture)
    commands=['@PING','@HELP','RS','@TEMP','@I2C','@INA 4','@INA 5','@INA 6','@I2C','RS','@TEMP','@FPGATEST']
    if args.temperature_registers:commands+=['@TEMP ALL','@TEMP SLOW','@HW']
    for command in commands:
+    if command.startswith(('@TEMP','@INA','@POWER')):
+     report.setdefault('sensor_power_rechecks',[]).append(require_power_good(s,capture))
     row=capture(s,command);report['commands'].append(row);print(json.dumps(row),flush=True)
     assert row['reply'],row
     if command=='@PING':assert row['reply']=='PONG\r\n'
@@ -127,11 +138,16 @@ def main():
     # Verify the restored runtime as well as its memory image.
     import serial
     sys.path.insert(0,str(ROOT/'tools/hardware'));from pm12_console_regression import PORT,capture
+    from pm12_power import wait_power_good,require_power_good
     time.sleep(1)
     restored=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);restored.dtr=False;restored.rts=True;restored.port=PORT;restored.open()
     try:
      restored.read(4096)
-     report['rollback_console']=[capture(restored,c) for c in ['@PING','@TEMP','@HW','RS']]
+     report['rollback_power_ready']=wait_power_good(restored,capture)
+     report['rollback_console']=[]
+     for c in ['@PING','@TEMP','@HW','RS']:
+      if c=='@TEMP':report['rollback_power_recheck']=require_power_good(restored,capture)
+      report['rollback_console'].append(capture(restored,c))
      temp=next(r['reply'] for r in report['rollback_console'] if r['command']=='@TEMP')
      status=next(r['reply'] for r in report['rollback_console'] if r['command']=='RS')
      assert 'ADT7311 REG=03 C3\r\n' in temp and 'Board power ON, OK' in status and ' NORMAL' in status,report['rollback_console']

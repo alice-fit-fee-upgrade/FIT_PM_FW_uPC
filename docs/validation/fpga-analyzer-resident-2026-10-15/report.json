@@ -1,0 +1,197 @@
+{
+  "fpga_sha256": "e215a8c36572a6ffdd266c1c288f4106c92d3d1550d6c2bfaede08bdd63d15c6",
+  "mcu_flash_writes": false,
+  "persistent_writes": false,
+  "input_only": [
+    "SDA",
+    "SCL",
+    "RESET_N"
+  ],
+  "source_sha256": {
+    "pm12_analyzer.v": "431d368759b81b1fe9d7ea365efe3d018ddcd9e0a1c8ccd19949337585168596",
+    "pm12_mcu_spi.vhd": "dd3c22862fa557578c2430bcb9c87fb4fd5535c73745fe00f074fef57d3d1560",
+    "eth_jtag.v": "705d74b4c9774c8b4937a9f2f487a20b18e7451c2f45b13cee15fec8e851fd00",
+    "pins.xdc": "188bc1caef61cf6c9470ff761d0db5f14c6c3a5b4791b2512aa3378ddf96dd1a",
+    "build.tcl": "d0b41c54a0213f87bc5adf269a6352a4551e8e87a87003844038209cc2070a8d"
+  },
+  "power_ready_checks": [
+    [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000003102310109\r\n",
+        "duration_s": 0.2113
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000006700310109\r\n",
+        "duration_s": 0.211
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000008502310109\r\n",
+        "duration_s": 0.2116
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000BA00310109\r\n",
+        "duration_s": 0.2111
+      }
+    ],
+    [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000A603310109\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000DD01310109\r\n",
+        "duration_s": 0.2106
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000001400310109\r\n",
+        "duration_s": 0.2106
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000003302310109\r\n",
+        "duration_s": 0.2115
+      }
+    ],
+    [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000005C03310109\r\n",
+        "duration_s": 0.2116
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000009201310109\r\n",
+        "duration_s": 0.2116
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000B003310109\r\n",
+        "duration_s": 0.2119
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000E501310109\r\n",
+        "duration_s": 0.2116
+      }
+    ]
+  ],
+  "sensor_power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000FF02310109\r\n",
+      "duration_s": 0.2113
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000007903310109\r\n",
+      "duration_s": 0.2114
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000004100310109\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000DF00310109\r\n",
+      "duration_s": 0.2118
+    }
+  ],
+  "before": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2111
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2114
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000005B01310109\r\n",
+      "duration_s": 0.2112
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2113
+    }
+  ],
+  "power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000006300310109\r\n",
+      "duration_s": 0.2115
+    }
+  ],
+  "during": [
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2114
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2117
+    }
+  ],
+  "measured_sample_hz": 40030093.1372549,
+  "scl": {
+    "transitions": 288,
+    "widths_ns": {
+      "HIGH": {
+        "min": 399.6992948564799,
+        "median": 524.6053244991299,
+        "max": 1007207099.462794
+      },
+      "LOW": {
+        "min": 124.90602964264998,
+        "median": 187.35904446397498,
+        "max": 299.7744711423599
+      }
+    },
+    "sda_changes": 0,
+    "reset_changes": 0
+  },
+  "capture": "PASS",
+  "events": 289,
+  "retained_console": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000008402310109\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@FPGATEST",
+      "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+      "duration_s": 0.2108
+    }
+  ],
+  "analyzer_left_loaded": true,
+  "capture_state": "stopped; trace retained in BRAM, ready for explicit rearm"
+}

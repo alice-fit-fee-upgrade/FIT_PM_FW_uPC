@@ -43,3 +43,18 @@ The FPGA itself needs its power rails to remain alive. It cannot preserve a
 BRAM trace through loss of its own supply. An unpowered-hub test requires the
 hub supply to be independently absent while FPGA sampling remains powered;
 ordinary idle traffic alone cannot validate that condition.
+
+Use `--leave-loaded` to keep the instrument resident after a successful capture
+and ADT/PSU/MCU-SPI validation. Any failed capture or validation still restores
+the known passive image. Repeated runs recognize the resident analyzer and
+rearm it without reprogramming. Recording stops after the bounded window; the
+trace remains in BRAM until rearmed, FPGA reconfigured or FPGA power lost.
+This is SRAM residency, not a persistent boot/configuration-FLASH write.
+
+Before requesting a temperature/monitor read, the runner polls `@HW` (GPIO
+and SRAM snapshot only) for PE1 IN_PWR_OK, PE3 P1V2LDO_PG and PE2 EN_PSU
+readback. It requires at least three good samples spanning >=1 s, with a 20 s
+timeout, then rechecks GPIO immediately before sensor commands. A missing
+PGOOD aborts the host-requested read. This changes host test sequencing, not
+the preserved original MCU ISR/startup implementation. The programming and
+console-regression runners use the same helper in `../pm12_power.py`.

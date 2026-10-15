@@ -21,6 +21,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--out',required=True,type=Path);p.add_argument('--new',action='store_true');args=p.parse_args()
  assert not args.out.exists(),'do not overwrite evidence';args.out.parent.mkdir(parents=True,exist_ok=True)
  import serial
+ from pm12_power import wait_power_good,require_power_good
  records=[]
  report={'port':PORT,'commands':records,'excluded':['PA/PF programming streams','PC resets PLL defaults','WR EEPROM commit','ON/OF power transitions','CA/CP clear state','S* parameter/calibration changes','CFG HOLD/BOOT destroys FPGA SRAM; separate controlled restoration test'], 'scope':'read-only legacy commands, all preexisting diagnostic command names, bounded scratch test, invalid arguments; NOT all legacy state-changing paths'}
  with open('/home/codex-hil/.cache/pm12-210249A73E43.lock','a+') as lock:
@@ -28,7 +29,10 @@ def main():
   s=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);s.dtr=False;s.rts=True;s.port=PORT;s.open()
   try:
    report['initial_drain']=s.read(4096).decode('ascii',errors='replace')
+   report['power_ready']=wait_power_good(s,capture)
    for command in COMMANDS+(['@I2C','@INA 4','@INA 5','@INA 6','@POWER','@I2C','RS','@TEMP','@FPGATEST','@PING'] if args.new else []):
+    if command.startswith(('@TEMP','@INA','@POWER')):
+     report.setdefault('sensor_power_rechecks',[]).append(require_power_good(s,capture))
     row=capture(s,command);records.append(row);print(json.dumps(row),flush=True)
     if command=='@PING':assert row['reply']=='PONG\r\n',row
     if command=='RS':assert 'Board S/N: 1803' in row['reply'] and 'NORMAL' in row['reply'] and 'Board power ON, OK' in row['reply'],row

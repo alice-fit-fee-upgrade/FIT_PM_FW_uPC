@@ -56,3 +56,15 @@ ADT7311 reset-ready delay, a four-byte JMP adapting the ADT byte cell to the
 loaded shared clock, and a bounded new FLASH section only. See `development/README.md`. New modules use
 ordinary GNU ABI through explicit private-register adapters. Do not relax the
 baseline linker or add unreviewed SRAM allocations/peripheral assignments.
+
+# PM12 hardware readiness and resident analyzer
+
+Read `docs/pm12_current_hardware_state.md` before PM12 hardware actions.
+User requests leaving the passive analyzer (USER1 504d5a03) in FPGA SRAM;
+retain it after successful captures, restore known passive 504d5a02 on failure.
+No configuration-FLASH write. MCU reset/programming may remove its SRAM image.
+Before host-requested temperature/I2C sensor reads after startup/programming,
+wait for physical PGOOD using `tools/hardware/pm12_power.py` (`@HW` GPIO-only,
+PORTE mask 0x0e, >=3 good samples over >=1 s, timeout 20 s), and recheck just
+before the sensor command. A fixed sleep is not proof of readiness. Preserve
+both hardware leases. Do not infer unpowered-hub operation from powered traces.

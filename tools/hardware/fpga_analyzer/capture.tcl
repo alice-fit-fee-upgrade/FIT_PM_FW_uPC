@@ -18,6 +18,8 @@ set r [report];set t1 [clock milliseconds];set c1 [expr {($r>>32)&0xffffffff}]
 set rate [expr {(($c1-$c0)&0xffffffff)*1000.0/($t1-$t0)}]
 puts "CLOCK $rate"
 if {$rate<10000000 || $rate>200000000} {error "Unexpected sample clock $rate"}
+command 0
+runtest_hw_jtag -tck 10
 command 32768
 # Host emits a bounded console read after this marker, while this Tcl owns JTAG.
 set marker [open $::env(PM12_PAYLOAD) w];puts $marker armed;close $marker
