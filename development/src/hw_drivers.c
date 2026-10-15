@@ -3,6 +3,7 @@
  * each transaction is finite, with at most 128 SPI polls per byte. Hardware
  * interrupt latency and electrical ownership still need validation. */
 #include "hw_diag.h"
+#include "bus_lock.h"
 
 #define A 0x600u
 #define B 0x620u
@@ -20,31 +21,52 @@
 static uint8_t powered(void) { return (pm_read8(E+OUT)&4) && (pm_read8(E+IN)&10)==10; }
 static void restore_bits(uint16_t port,uint8_t mask,uint8_t out)
 { pm_write8(port+CLR,mask & (uint8_t)~out);pm_write8(port+SET,mask & out); }
-static uint8_t temp_byte(uint8_t tx)
+#ifdef __AVR__
+/* Native R24 adapter to the unchanged original bit cell at 0x2608. */
+extern uint8_t pm_diag_legacy_temp_byte(uint8_t tx);
+#endif
+static void temp_phase_delay(void)
 {
+#ifdef __AVR__
+ /* 1 us at the recovered 32 MHz clock; a diagnostic timing experiment. */
+ __builtin_avr_delay_cycles(32);
+#endif
+}
+static uint8_t temp_byte(uint8_t tx,uint8_t slow)
+{
+#ifdef __AVR__
+ if(!slow)return pm_diag_legacy_temp_byte(tx);
+#else
+ (void)slow; /* Host value/framing model; no electrical timing claim. */
+#endif
  uint8_t rx=0;
  for(uint8_t n=0;n<8;++n) {
-  pm_write8(A+CLR,2);pm_write8(A+((tx&128)?SET:CLR),8);
-  pm_write8(A+SET,2);rx=(uint8_t)((rx<<1)|((pm_read8(A+IN)>>2)&1));tx<<=1;
+  pm_write8(A+((tx&128)?SET:CLR),8);temp_phase_delay();
+  pm_write8(A+CLR,2);temp_phase_delay();
+  pm_write8(A+SET,2);temp_phase_delay();
+  rx=(uint8_t)((rx<<1)|((pm_read8(A+IN)>>2)&1));tx<<=1;
  }
  return rx;
 }
 /* Native TEMP retains its previously validated short IRQ exclusion. It cannot
  * overlap main-loop I2C; adding a second ownership wrapper here is unnecessary. */
-uint8_t pm_diag_temp(uint8_t reg,uint16_t *value)
+static uint8_t temp_read(uint8_t reg,uint16_t *value,uint8_t slow)
 {
- if(reg>3)return PM_DIAG_ARGUMENT;
+ if(reg>7)return PM_DIAG_ARGUMENT;
  uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK;
  uint8_t old=pm_read8(A+OUT);
- if(!powered())result=PM_DIAG_POWER;
+ if(pm_read8(PM_BUS_OWNER_ADDR)&0x43u)result=PM_DIAG_BUSY;
+ else if(!powered())result=PM_DIAG_POWER;
  else if((pm_read8(A+DIR)&0x1a)!=0x1a || !(old&16))result=PM_DIAG_BUSY;
  else {
-  pm_write8(A+CLR,16);(void)temp_byte((uint8_t)(0x40|(reg<<3)));
-  uint16_t v=temp_byte(0);if(reg==2)v=(uint16_t)((v<<8)|temp_byte(0));
+  pm_write8(A+CLR,16);(void)temp_byte((uint8_t)(0x40|(reg<<3)),slow);
+  uint16_t v=temp_byte(0,slow);if(reg==2 || reg==4 || reg==6 || reg==7)v=(uint16_t)((v<<8)|temp_byte(0,slow));
   pm_write8(A+SET,16);restore_bits(A,0x1a,old);*value=v;
  }
  pm_irq_leave(irq);return result;
 }
+uint8_t pm_diag_temp(uint8_t reg,uint16_t *value){return temp_read(reg,value,0);}
+uint8_t pm_diag_temp_slow(uint8_t reg,uint16_t *value){return temp_read(reg,value,1);}
 static void clock_tdc(void) { pm_write8(B+SET,1);pm_write8(B+CLR,1); }
 static void send_tdc_bit(uint8_t bit) { pm_write8(B+(bit?SET:CLR),2);clock_tdc(); }
 uint8_t pm_diag_tdc(uint8_t chip,uint8_t reg,uint16_t *value)

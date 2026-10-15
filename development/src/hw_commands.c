@@ -9,7 +9,7 @@ static uint8_t result(uint8_t s){if(s==PM_DIAG_OK)return 1;pm_console_write(s==P
 void pm_command_hw(const char *args)
 {
  if(*args){pm_console_write(earg);return;}
- uint8_t saved=pm_irq_enter();uint8_t ports[6],state[12];
+ uint8_t saved=pm_irq_enter();uint8_t ports[6],state[12],flags=pm_read8(0),out_a=pm_read8(0x604);
  for(uint8_t n=0;n<6;++n)ports[n]=pm_read8(0x608u+n*32u);
  for(uint8_t n=0;n<12;++n)state[n]=pm_read8(0x2157u+n);
  pm_irq_leave(saved);
@@ -17,13 +17,20 @@ void pm_command_hw(const char *args)
  for(uint8_t n=0;n<6;++n)hex(ports[n],2);
  static const PM_FLASH char label[]=" STATE 2157..2162=";pm_console_write(label);
  for(uint8_t n=0;n<12;++n)hex(state[n],2);
+ static const PM_FLASH char f[]=" GPIOR0=";pm_console_write(f);hex(flags,2);
+ static const PM_FLASH char a[]=" A_OUT=";pm_console_write(a);hex(out_a,2);
  line();
 }
 void pm_command_temp(const char *args)
 {
- if(*args){pm_console_write(earg);return;}
+ uint8_t count=4,slow=0;
+ if(*args){
+  if(args[0]=='A'&&args[1]=='L'&&args[2]=='L'&&!args[3])count=8;
+  else if(args[0]=='S'&&args[1]=='L'&&args[2]=='O'&&args[3]=='W'&&!args[4]){count=8;slow=1;}
+  else{pm_console_write(earg);return;}
+ }
  static const PM_FLASH char label[]="ADT7311 REG=";
- for(uint8_t reg=0;reg<4;++reg){uint16_t v=0;if(!result(pm_diag_temp(reg,&v)))return;pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,reg==2?4:2);line();}
+ for(uint8_t reg=0;reg<count;++reg){uint16_t v=0;if(!result(slow?pm_diag_temp_slow(reg,&v):pm_diag_temp(reg,&v)))return;pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,(reg==2||reg==4||reg==6||reg==7)?4:2);line();}
 }
 void pm_command_tdc(const char *args)
 {

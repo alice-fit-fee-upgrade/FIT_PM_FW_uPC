@@ -74,6 +74,23 @@ for function,target,send in [('pm_console_getc',0x283c,False),('pm_console_putc'
         if send:assert m.observed==regs[24]
         else:assert m.r[24]==0x5a
         cases+=1
+# Reused original ADT byte cell: native arguments/results and callee-saved
+# registers are checked with every TX byte. This does not model bus timing.
+class AdtByteMachine(Machine):
+    def enter_call(self,address):
+        if self.program[address-4][3]==names['adt7311_byte_rw']:
+            self.sent=self.r[16]
+            self.r[16]^=0xa5;self.r[17]=0xe7;self.r[18]=0x58;self.f[:]=[1]*8
+        super().enter_call(address)
+for tx in range(256):
+    program=dict(linked);program[names['adt7311_byte_rw']]=('ret','',2,None)
+    m=AdtByteMachine(lambda a:0,lambda a,v:None,lambda v:None,program=program)
+    m.r[:]=[rng.randrange(256) for _ in range(32)];m.r[1]=0;m.r[24]=tx;before=m.r.copy()
+    m.run(names['pm_diag_legacy_temp_byte'])
+    assert m.sent==tx and m.r[24]==(tx^0xa5) and m.r[1]==0
+    assert all(m.r[i]==before[i] for i in list(range(2,18))+[28,29])
+    assert not m.stack and not m.calls
+    cases+=1
 report={'status':'PASS','cases':cases,'scope':'decoded gate and ABI adapters; substituted adversarial callees; no timing or asynchronous IRQ model'}
 (BUILD/'bridge_validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print('PASS decoded ABI boundary:',cases,'cases')

@@ -5,6 +5,7 @@
 static uint8_t mem[0x2500],irq,timeout,spi_count,bit_count,tx[12],tx_count;
 static unsigned polls,writes,steps;
 static uint32_t temp_stream;
+static uint8_t adt_tx[3],adt_bits;
 uint8_t pm_irq_enter(void){uint8_t s=irq;irq=0;return s;}
 void pm_irq_leave(uint8_t s){assert(irq==0);irq=s;}
 uint8_t pm_read8(uint16_t a)
@@ -30,11 +31,15 @@ void pm_write8(uint16_t a,uint8_t v)
  assert(off==1||off==2||off==5||off==6);
  if(port==0x620 && off==5 && (v&1) && (mem[port]&2) && (mem[port+4]&0x1c)!=0x1c && tx_count<12)tx[tx_count++]=(mem[port+4]>>1)&1;
  uint16_t target=port+(off<4?0:4);
+ uint8_t was_clock=mem[0x604]&2;
  if(off==1||off==5)mem[target]|=v;else mem[target]&=(uint8_t)~v;
+ if(port==0x600 && off==5 && (v&2) && !was_clock && !(mem[0x604]&16)){
+  assert(adt_bits<24);adt_tx[adt_bits/8]=(uint8_t)((adt_tx[adt_bits/8]<<1)|((mem[0x604]>>3)&1));++adt_bits;
+ }
 }
 static void init(uint8_t s)
 {
- memset(mem,0,sizeof mem);irq=s;timeout=spi_count=bit_count=tx_count=0;polls=writes=steps=0;
+ memset(mem,0,sizeof mem);memset(adt_tx,0,sizeof adt_tx);adt_bits=0;irq=s;timeout=spi_count=bit_count=tx_count=0;polls=writes=steps=0;
  mem[0x684]=4;mem[0x688]=10;mem[0x600]=0x1a;mem[0x604]=0xfa;
  mem[0x620]=0xbf;mem[0x624]=0xbc;mem[0x628]=64;
  mem[0x664]=3;mem[0x644]=7;mem[0x6a4]=0xf0;mem[0x8c0]=0xd5;temp_stream=0x00c30000;
@@ -44,6 +49,17 @@ int main(void)
  for(uint8_t s=0;s<2;++s){
   uint16_t v=0xbeef;uint32_t p=0;
   init(s);assert(pm_diag_temp(3,&v)==PM_DIAG_OK && v==0xc3 && irq==s && mem[0x604]==0xfa);
+  for(uint8_t mode=0;mode<2;++mode)for(uint8_t reg=0;reg<8;++reg){
+   init(s);temp_stream=0x00123400;assert((mode?pm_diag_temp_slow(reg,&v):pm_diag_temp(reg,&v))==PM_DIAG_OK);
+   uint8_t wide=reg==2||reg==4||reg==6||reg==7;
+   assert(adt_bits==(wide?24:16) && adt_tx[0]==(0x40|(reg<<3)) && adt_tx[1]==0 && adt_tx[2]==0);
+   assert(v==(wide?0x1234:0x12) && bit_count==(wide?24:16) && irq==s && mem[0x604]==0xfa);
+  }
+  for(uint8_t owner=1;owner<=0x40;owner<<=1){
+   if(!(owner&0x43))continue;
+   init(s);mem[15]=owner;v=0xbeef;
+   assert(pm_diag_temp(3,&v)==PM_DIAG_BUSY && v==0xbeef && writes==0 && irq==s);
+  }
   init(s);assert(pm_diag_tdc(2,0x83,&v)==PM_DIAG_OK && v==0xa55a && irq==s && mem[0x624]==0xbc && mem[0x620]==0xbf);
   assert(tx_count==10 && tx[0]==1 && tx[1]==0);
   for(unsigned n=0;n<8;++n)assert(tx[n+2]==((0x83>>(7-n))&1));
@@ -56,7 +72,7 @@ int main(void)
   init(s);mem[0x624]&=~4;assert(pm_diag_tdc(1,0x83,&v)==PM_DIAG_BUSY && writes==0 && irq==s);
   init(s);mem[0x664]=2;assert(pm_diag_pll(&p)==PM_DIAG_BUSY && writes==0 && irq==s);
   init(s);mem[0x644]=6;assert(pm_diag_pll(&p)==PM_DIAG_BUSY && writes==0 && irq==s);
-  init(s);assert(pm_diag_temp(4,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
+  init(s);assert(pm_diag_temp(8,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
   assert(pm_diag_tdc(3,0x83,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
  }
  puts("PASS device serial framing, readbacks, IRQ restoration, bounded timeout, GPIO restoration, power/busy guards and write whitelist");
