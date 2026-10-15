@@ -142,3 +142,43 @@ primitives, synth/place/route with timing checks on both targets, followed by
 bounded PM–Kasli hardware tests under both board leases. Retain rollback images,
 resident analyzer functionality and MCU FLASH/EEPROM/fuses unchanged. Existing
 ADC/IPbus successes do not qualify this new HDMI/TDC diagnostic.
+
+## Selected Kasli interface: DIO-RJ45-LVDS
+
+User selected the Sinara DIO-RJ45-LVDS module. Plan two logical RJ45 ports:
+
+| Port | Channels | Direction relative to Kasli | Function |
+|---|---|---|---|
+| RX | four pairs | all input | PM TT0/TT1/AT0/AT1, final permutation to be verified |
+| SPI | three pairs | output | SCK, MOSI, select |
+| SPI | one pair | input | MISO |
+
+The Sinara wiki gives RJ45 pair pinout: 1P/2N SCK, 4P/5N MOSI,
+3P/6N MISO, 7P/8N CS, shield ground. These are module-side assignments,
+not yet a complete PM HDMI adapter pinout. All eight channels fit the nominal
+single-EEM capacity; actual Kasli connector mapping and module revision remain
+unconfirmed. Configure both module direction and FPGA I/O direction; do not
+assume ordinary ARTIQ TTL switch polarity. Current M-Labs documentation says
+ON fixes input, OFF permits I2C direction control and defaults to output.
+
+The module uses differential repeaters, not video conversion. Kasli gateware
+must retain the native HDL receiver/master and clocking; generic RTIO TTL edge
+capture is not a substitute for original320MHz receiver sampling. Published
+150MHz verified operation is a historical test limit; it neither qualifies nor
+rules out this particular320Mbit/s signal path. Validate timing and BER on the
+actual module/cable. A shielded adapter must preserve pair polarity and ground.
+
+IMPORTANT: upstream PM HDL identifies HSPI FPGA pins as LVCMOS33; current
+PMv1.1 schematic also names HSEL/HMOSI/HMISO/HSCK at MCU PD4..PD7.
+Do not connect the module's differential SPI pairs straight to these nets or
+assume they are separate from the live MCU bus. Trace actual HDMI connector,
+transceivers/muxes and physical board nets first. If single-ended access or a
+shared master remains, provide level conversion and explicit master isolation;
+firmware-only chip select is not proof against output contention. The four
+trigger LVDS pairs and the SPI adapter are distinct wiring questions.
+
+Sources checked:
+- https://github.com/sinara-hw/DIO_LVDS_RJ45/wiki
+- https://m-labs.hk/docs/sinara-datasheets/2245.pdf (July2025)
+- Local available DIOT variant repository c8cb69a084ef14d6f700eccb27d9d49566c85b5b;
+  do not assume it matches the user's physical module revision.
