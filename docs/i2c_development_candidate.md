@@ -74,3 +74,14 @@ failure before any I2C transfer or FPGA reload. Do not call that candidate a
 hardware PASS. The next isolated iteration removes the redundant native TEMP
 ownership wrapper while retaining ISR-versus-main I2C protection and stricter
 preflight/rollback. Physical evidence is outside the repo until final review.
+
+Third iteration retains the original timer body in place. Two four-byte JMPs at
+0x077E/0x0788 redirect only temperature acquisition/release to small ASM helpers
+in free FLASH, replaying displaced instructions and retaining the original
+successors/flag behavior. No vector or original ISR entry changes. This narrows
+the physical regression surface after both full-relocation variants failed
+pre-I2C temperature checks and were rolled back with exact memory verification.
+The prior whole-ISR relocation remains in history/release001, not as this image's
+active timer path. Tests check original ISR bytes outside explicit hooks plus
+all SREG cases for acquisition/defer and displaced release instructions.
+`@I2C TEST` performs a brief, SREG-preserving scratch-register readback test.

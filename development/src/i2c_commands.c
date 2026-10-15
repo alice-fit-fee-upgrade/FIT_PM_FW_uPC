@@ -30,11 +30,17 @@ static void error(uint8_t status)
 }
 void pm_command_i2c(const char *args)
 {
+ if(args[0]=='T'&&args[1]=='E'&&args[2]=='S'&&args[3]=='T'&&!args[4]){
+  uint8_t irq=pm_irq_enter(),old=pm_read8(PM_BUS_OWNER_ADDR);
+  pm_write8(PM_BUS_OWNER_ADDR,old|1u);uint8_t held=pm_read8(PM_BUS_OWNER_ADDR);
+  pm_write8(PM_BUS_OWNER_ADDR,old);pm_irq_leave(irq);
+  if(held==(uint8_t)(old|1u))TEXT("I2C LOCKTEST PASS\r\n");else TEXT("ERR I2C LOCK_STORAGE\r\n");return;
+ }
  if(*args){TEXT("ERR ARGUMENTS\r\n");return;}
  uint8_t irq=pm_irq_enter(),owner=pm_read8(PM_BUS_OWNER_ADDR),deferred=pm_read8(PM_BUS_DEFER_ADDR);
  uint8_t lines=(!!(pm_read8(0x6a8)&128))|((!!(pm_read8(0x608)&2))<<1)|((!!(pm_read8(0x628)&64))<<2);
  pm_irq_leave(irq);
- TEXT("I2C PF7/PA1 RESET_PB6 LINES=");hx(lines,2);TEXT(" OWNER=");hx(owner,2);TEXT(" DEFER=");hx(deferred,2);TEXT("\r\n");
+ TEXT("I2C PF7/PA1 RESET_PB6 LINES=");hx(lines,2);TEXT(" OWNER=");hx(owner,2);TEXT(" DEFER=");hx(deferred,2);TEXT(" A_DIR=");hx(pm_read8(0x600),2);TEXT(" A_OUT=");hx(pm_read8(0x604),2);TEXT(" A_CTRL1=");hx(pm_read8(0x611),2);TEXT(" A_CTRL2=");hx(pm_read8(0x612),2);TEXT("\r\n");
 }
 void pm_command_ina(const char *args)
 {

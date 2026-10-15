@@ -325,10 +325,3 @@ pm_console_putc:
     pop r1
     pop r0
     ret
-
-
-/* Four-byte gate at the old ISR entry; vector and original body stay in place. */
-.section .text.pm_timer_patch_template,"ax",@progbits
-.global pm_timer_patch_template
-pm_timer_patch_template:
-    jmp pm_timer_relocated

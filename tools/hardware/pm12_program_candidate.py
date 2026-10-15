@@ -46,7 +46,7 @@ def main():
   uart=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);uart.dtr=False;uart.rts=True;uart.port=PORT;uart.open()
   try:
    report['pre_i2c_sensor']=[]
-   for command in ['@PING','@HW','RS','@TEMP','@I2C']:
+   for command in ['@PING','@HW','RS','@I2C','@I2C TEST','@TEMP']:
     row=capture(uart,command);report['pre_i2c_sensor'].append(row);print('PRE_I2C '+json.dumps(row),flush=True)
    sensor=next(r['reply'] for r in report['pre_i2c_sensor'] if r['command']=='@TEMP')
    assert 'ADT7311 REG=03 C3\r\n' in sensor,'ADT7311 ID failed before I2C/FPGA reload'

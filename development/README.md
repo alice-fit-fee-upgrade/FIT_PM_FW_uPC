@@ -1,3 +1,9 @@
+Current direct-MCU I2C candidate: see [candidate contract](../docs/i2c_development_candidate.md).
+It preserves the original timer body and uses two small ownership gates instead
+of deploying the experimental whole-ISR relocation. Historical release001 below
+remains available, not overwritten. Diagnostic compatibility commands from the
+previous hardware image are retained explicitly.
+
 # Adding PM12 commands and drivers
 
 `make` / `make exact-check` still build the recovered **binary-exact baseline**.
@@ -106,7 +112,7 @@ The agreed additive TWI/UART stage and subsequent measured legacy-function
 replacement stage are described in [hardware development tracks](../docs/hardware_development_tracks.md).
 Keep binary-different development replacements separate from the exact baseline.
 
-## Relocated timer ISR (development only)
+## Historical release001: relocated timer ISR (superseded for I2C candidate)
 
 The original timer vector is unchanged. Four bytes at 0x049E..0x04A1 now contain
 JMP to `pm_timer_relocated` in the extension FLASH window; the remainder of the

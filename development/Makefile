@@ -2,7 +2,7 @@
 all:
 	python3 tools/build.py
 check: all
-	python3 tests/check_timer_relocation.py
+	python3 tests/check_temperature_guards.py
 	python3 tests/check_i2c.py
 	python3 tests/check_bus_lock.py
 	python3 tests/check_pg_timing.py

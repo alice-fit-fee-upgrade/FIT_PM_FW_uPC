@@ -72,7 +72,7 @@ pm_pg_start_hook:
 .Lstart_done:
  RESTORE
  sts 0x0685,r16
- jmp pm_timer_at_0666
+ jmp 0x0666
 /* Caller supplies result in r16; every gate saved r0/r16/r17/SREG. */
 pm_pg_record:
  push r16
@@ -120,8 +120,8 @@ pm_pg_irq_hook:
  RESTORE
  jmp \continuation
 .endm
-OFF pm_pg_timeout_hook,pm_timer_at_0692,3
-OFF pm_pg_thermal_hook,pm_timer_at_05ea,5
+OFF pm_pg_timeout_hook,0x0692,3
+OFF pm_pg_thermal_hook,0x05ea,5
 OFF pm_pg_alarm_hook,0x0ad8,5
 OFF pm_pg_input_loss_hook,0x0bd0,5
 OFF pm_pg_retry_hook,0x0c10,5

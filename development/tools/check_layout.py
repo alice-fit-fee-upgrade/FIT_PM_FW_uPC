@@ -24,13 +24,16 @@ def main():
     assert first & 0xfe0e == 0x940c and expected[4:] == b'\0\0', 'gate must be JMP + NOP'
     destination=2*(((first & 0x1f0)<<13)|((first & 1)<<16)|second)
     assert destination==names['pm_extension_entry'], 'gate does not reach extension entry'
-    timer_gate=dev[names['pm_timer_patch_template']:names['pm_timer_patch_template']+4]
-    assert dev[0x49e:0x4a2]==timer_gate
-    word=int.from_bytes(timer_gate[:2],'little')
-    assert word & 0xfe0e == 0x940c
-    target=2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(timer_gate[2:],'little'))
-    assert target==names['pm_timer_relocated']
-    allowed=set(range(0x49e,0x4a2))|set(range(0x12ea,0x12f0))|set(range(start,start+size))
+    assert dev[0x49e:0x4a2]==golden[0x49e:0x4a2], 'original ISR entry moved'
+    allowed=set(range(0x12ea,0x12f0))|set(range(start,start+size))
+    for i,(address,target) in enumerate(((0x77e,'pm_temperature_claim'),(0x788,'pm_temperature_release'))):
+        offset=names['pm_temperature_patch_table']+4*i
+        gate=dev[offset:offset+4]
+        assert dev[address:address+4]==gate
+        word=int.from_bytes(gate[:2],'little')
+        assert word & 0xfe0e==0x940c
+        assert 2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(gate[2:],'little'))==names[target]
+        allowed.update(range(address,address+4))
     from power_patch import SITES
     for i,(address,target) in enumerate(SITES):
         gate=dev[names['pm_pg_patch_table']+4*i:names['pm_pg_patch_table']+4*i+4]
@@ -44,7 +47,7 @@ def main():
     assert dev[0x20000:]==golden[0x20000:], 'bootloader modified'
     report={'acceptance':'planned development differences only; NOT binary-exact PM.hex',
             'golden_sha256':hashlib.sha256(golden).hexdigest(),'development_sha256':hashlib.sha256(dev).hexdigest(),
-            'differing_bytes':len(differing),'gate_start':0x12ea,'gate_length':6,'timer_gate_start':0x49e,'timer_gate_length':4,'timer_relocated':names['pm_timer_relocated'],'extension_start':start,
+            'differing_bytes':len(differing),'gate_start':0x12ea,'gate_length':6,'timer_mode':'legacy body in place; two four-byte temperature gates','temperature_guard_sites':[0x77e,0x788],'extension_start':start,
             'extension_size':size,'extension_limit':0x8000,'legacy_symbols_preserved':len(original),
             'bootloader_unchanged':True,'retained_diagnostic_pg_hooks':[hex(a) for a,_ in SITES],'bus_lock':'GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized','ram_globals':'rejected by linker; no unverified SRAM reservation'}
     (BUILD/'layout_report.json').write_text(json.dumps(report,indent=2)+'\n')

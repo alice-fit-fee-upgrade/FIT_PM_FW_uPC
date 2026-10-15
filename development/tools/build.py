@@ -2,7 +2,6 @@
 """Build development extensions from exact source objects; patch reviewed CLI and timer gates."""
 import json,shlex,subprocess,sys
 from pathlib import Path
-from relocate_timer import generate
 ROOT=Path(__file__).resolve().parents[2]
 DEV=ROOT/'development';BASE=ROOT/'recovered_exact';BUILD=DEV/'build'
 def run(args,cwd=ROOT): subprocess.run([str(a) for a in args],cwd=cwd,check=True)
@@ -23,9 +22,8 @@ def main():
     text=text.replace('*(.text*) *(.data*) *(.rodata*) *(.bss*) *(COMMON)', '*(.data*) *(.rodata*) *(.bss*) *(COMMON) *(.eeprom*) *(.init*) *(.fini*)')
     script=BUILD/'development.ld'
     script.write_text('OUTPUT_FORMAT("elf32-avr")\nOUTPUT_ARCH(avr:106)\nENTRY(reset)\nMEMORY { flash (rx) : ORIGIN = 0, LENGTH = 0x22000 }\nSECTIONS {\nreset = 0;\n'+text+'}\nINCLUDE generated/assertions.ld\nASSERT(SIZEOF(.extensions) <= 0x4000, "extension exceeds reviewed FLASH window")\nASSERT(pm_extension_entry == 0x4000, "extension entry moved")\n')
-    timer_source=generate(BASE/"build/reconstructed.elf",BUILD)
     objects=[];frames=[]
-    for source in sorted((DEV/'src').glob('*.c'))+sorted((DEV/'src').glob('*.S'))+[timer_source]:
+    for source in sorted((DEV/'src').glob('*.c'))+sorted((DEV/'src').glob('*.S')):
         obj=BUILD/(source.stem+'.o');objects.append(obj)
         run(['avr-gcc','-mmcu=atxmega128a3u','-Os','-std=gnu99','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-fno-lto','-fstack-usage','-I'+str(DEV/'src'),'-c',source,'-o',obj])
         if source.suffix=='.c':
@@ -53,9 +51,12 @@ def main():
     timer_section=BUILD/'timer_original.bin'
     run(['avr-objcopy','--dump-section','.c_00049e='+str(timer_section),elf])
     old_timer=timer_section.read_bytes()
-    timer_gate=data[names['pm_timer_patch_template']:names['pm_timer_patch_template']+4]
     assert old_timer==golden[0x49e:0x8e4]
-    timer_section.write_bytes(timer_gate+old_timer[4:])
+    patched=bytearray(old_timer)
+    for i,address in enumerate((0x77e,0x788)):
+        offset=names['pm_temperature_patch_table']+4*i
+        patched[address-0x49e:address-0x49e+4]=data[offset:offset+4]
+    timer_section.write_bytes(patched)
     run(['avr-objcopy','--update-section','.c_00049e='+str(timer_section),elf])
     from power_patch import apply
     apply(elf,golden,names,BUILD)
