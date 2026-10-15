@@ -33,14 +33,14 @@ static uint8_t temp_byte(uint8_t tx)
  * overlap main-loop I2C; adding a second ownership wrapper here is unnecessary. */
 uint8_t pm_diag_temp(uint8_t reg,uint16_t *value)
 {
- if(reg>3)return PM_DIAG_ARGUMENT;
+ if(reg>7)return PM_DIAG_ARGUMENT;
  uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK;
  uint8_t old=pm_read8(A+OUT);
  if(!powered())result=PM_DIAG_POWER;
  else if((pm_read8(A+DIR)&0x1a)!=0x1a || !(old&16))result=PM_DIAG_BUSY;
  else {
   pm_write8(A+CLR,16);(void)temp_byte((uint8_t)(0x40|(reg<<3)));
-  uint16_t v=temp_byte(0);if(reg==2)v=(uint16_t)((v<<8)|temp_byte(0));
+  uint16_t v=temp_byte(0);if(reg==2 || reg==4 || reg==6 || reg==7)v=(uint16_t)((v<<8)|temp_byte(0));
   pm_write8(A+SET,16);restore_bits(A,0x1a,old);*value=v;
  }
  pm_irq_leave(irq);return result;

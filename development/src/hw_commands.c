@@ -21,9 +21,14 @@ void pm_command_hw(const char *args)
 }
 void pm_command_temp(const char *args)
 {
- if(*args){pm_console_write(earg);return;}
+ uint8_t count=4;
+ if(*args){
+  if(args[0]=='A' && args[1]=='L' && args[2]=='L' && !args[3])count=8;
+  else{pm_console_write(earg);return;}
+ }
+ /* Read-only register extension; retain the original native byte timing. */
  static const PM_FLASH char label[]="ADT7311 REG=";
- for(uint8_t reg=0;reg<4;++reg){uint16_t v=0;if(!result(pm_diag_temp(reg,&v)))return;pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,reg==2?4:2);line();}
+ for(uint8_t reg=0;reg<count;++reg){uint16_t v=0;if(!result(pm_diag_temp(reg,&v)))return;pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,(reg==2||reg==4||reg==6||reg==7)?4:2);line();}
 }
 void pm_command_tdc(const char *args)
 {

@@ -44,6 +44,13 @@ int main(void)
  for(uint8_t s=0;s<2;++s){
   uint16_t v=0xbeef;uint32_t p=0;
   init(s);assert(pm_diag_temp(3,&v)==PM_DIAG_OK && v==0xc3 && irq==s && mem[0x604]==0xfa);
+  for(uint8_t reg=0;reg<8;++reg){
+   init(s);temp_stream=0x00a55a00;
+   assert(pm_diag_temp(reg,&v)==PM_DIAG_OK);
+   assert(v==((reg==2||reg==4||reg==6||reg==7)?0xa55a:0xa5));
+   assert(bit_count==((reg==2||reg==4||reg==6||reg==7)?24:16));
+   assert(irq==s && mem[0x604]==0xfa);
+  }
   init(s);assert(pm_diag_tdc(2,0x83,&v)==PM_DIAG_OK && v==0xa55a && irq==s && mem[0x624]==0xbc && mem[0x620]==0xbf);
   assert(tx_count==10 && tx[0]==1 && tx[1]==0);
   for(unsigned n=0;n<8;++n)assert(tx[n+2]==((0x83>>(7-n))&1));
@@ -56,7 +63,7 @@ int main(void)
   init(s);mem[0x624]&=~4;assert(pm_diag_tdc(1,0x83,&v)==PM_DIAG_BUSY && writes==0 && irq==s);
   init(s);mem[0x664]=2;assert(pm_diag_pll(&p)==PM_DIAG_BUSY && writes==0 && irq==s);
   init(s);mem[0x644]=6;assert(pm_diag_pll(&p)==PM_DIAG_BUSY && writes==0 && irq==s);
-  init(s);assert(pm_diag_temp(4,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
+  init(s);assert(pm_diag_temp(8,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
   assert(pm_diag_tdc(3,0x83,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
  }
  puts("PASS device serial framing, readbacks, IRQ restoration, bounded timeout, GPIO restoration, power/busy guards and write whitelist");

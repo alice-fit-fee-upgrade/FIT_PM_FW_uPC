@@ -159,3 +159,13 @@ Final hardware acceptance compares original/candidate with the same tester:
 legacy commands, temperature/alarms, PSU faults, concurrent UART/poll scheduling,
 NACK/timeout recovery and intended FPGA/DC-DC power-loss conditions. Record raw
 traces and firmware hashes. These tests have not been run here.
+
+## PGOOD / read-only ADT investigation branch
+
+`@TEMP ALL` reads registers 0..7 using the existing native byte timing. The
+ordinary `@TEMP` response stays registers 0..3. Registers 2/4/6/7 are 16-bit;
+the others are 8-bit. No sensor reset/configuration/threshold command is added.
+This branch starts from 9b3abb2 (minimal ownership gates and INA diagnostics),
+not the later reset-ready/slow-cell experiments. Host tests must wait for stable
+physical PGOOD before these reads. This is an intentional development image;
+canonical recovered exact firmware remains unchanged.
