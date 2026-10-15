@@ -18,7 +18,7 @@ RAM 0x2000..0x2442 inclusive is cleared beforehand; this is not an EEPROM defaul
 | 0x0CC | 1 | Startup read; save write | Gate byte, RAM 0x222F | High access/size; medium semantic | fpga_settings_init loads only R16 at 0x222F and clears R17 before FPGA register 00 write |
 | 0x0CD..0x0CE | 2 | Startup read; save write | Trigger saturation word, RAM 0x2230..0x2231 | High access/size; medium semantic | Original LDS pair in fpga_settings_init before register 3D write |
 | 0x0CF..0x0D0 | 2 | Startup read; save write | Board identifier word, RAM 0x2232..0x2233 | High access/size; medium semantic | Original LDS pair before register BD write |
-| 0x0D1 | 1 | Explicit command write; startup read | Persisted power/configuration flag, RAM 0x2234 | Medium meaning; high access | Original mapped 0x10D1 write and subsequent value test |
+| 0x0D1 | 1 | Explicit command write; startup read | Persisted ON/OF power request (0/1), RAM 0x2234 | High: command dispatch and access | Original mapped 0x10D1 write and subsequent value test |
 | 0x0D2..0x7FF | 1838 | No direct access proved | Unassigned state | Low | Whole dump preserved; indirect/boot behavior not exhaustively path-proven |
 
 Save path begins near word 0x0CD6 (byte 0x19AC): NVM_CMD 0x36 clears EEPROM page buffer,
@@ -42,3 +42,11 @@ Consequently the D1 power-state byte does NOT overlap the actual board-ID word c
 FPGA settings initialization. It overlapped only the earlier unverified Board S/N hypothesis.
 Original code remains untouched. Independently verified C in src/settings.c preserves these accesses
 and the final 0x0FFF value written to register 7C (older README said 0xFFFF).
+
+## Power-command side effect confirmed, 2026-10-15
+
+`console_dispatch.c`, labels L_000984/L_00098b/L_0009eb/L_000a39 route ON/OF
+to L_0009ec. The command stores 1/0 at RAM 0x2234, flushes the EEPROM buffer
+(NVM CMD 0x36), writes the mapped byte at 0x10d1, and commits with NVM CMD
+0x35 (erase/write page). These commands are not suitable for a test promising
+no EEPROM writes. No ON/OF command was issued in the PGOOD investigation.

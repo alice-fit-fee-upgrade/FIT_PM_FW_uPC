@@ -1,0 +1,42 @@
+{
+  "common_commands": 33,
+  "byte_equal_responses": 27,
+  "equal": [
+    "@PING",
+    "@PGTIME",
+    "@TDC 0 83",
+    "@TDC 1 83",
+    "@TDC 2 83",
+    "@PLL",
+    "@CFG",
+    "@FPGATEST",
+    "@FLASHID",
+    "@FLASHREAD 000000 10",
+    "@PING X",
+    "@TEMP X",
+    "@TDC 3 83",
+    "@TDC 0 GG",
+    "@PLL X",
+    "@FPGA X",
+    "@FPGATEST X",
+    "@CFG INVALID",
+    "@FLASHID X",
+    "@FLASHREAD 000000 11",
+    "@UNKNOWN",
+    "RA",
+    "RC",
+    "RF",
+    "RT",
+    "RZ",
+    "@PING"
+  ],
+  "different": [
+    "@HELP",
+    "@HW",
+    "RS",
+    "@TEMP",
+    "@FPGA",
+    "RS"
+  ],
+  "scope": "temperature/live state/scratch counts and HELP can change; not all state-changing legacy commands tested"
+}
