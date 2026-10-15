@@ -33,6 +33,10 @@ of correspondence with the original installed FPGA bitstream.
 | PM TDC receiver | PM/hdl/TDCCHAN.vhd | pin_capt, TDC_FIFO, clk300/600/600_90, tdcclk, rstr/rdata, coarse counter and BC timing |
 | TDC edge capture | PM/hdl/pin_capt.vhd | ISERDESE2 OVERSAMPLE; must retain clock phase and physical placement assumptions |
 
+`pm_trigger_tx.vhd` provides the small transmitter wrapper around the original
+trigger entity, including its original registered output stage and LVDS buffers.
+It requires extracted PM12_pkg.vhd and trigger.vhd; HDL compilation is pending.
+
 This is the HDMI-facing HSPI slave, not the MCU-facing SPI diagnostic slave.
 Do not replace the latter. The extracted PM SPI process still references the
 original full register map; a minimal standalone adapter is subsequent work.
