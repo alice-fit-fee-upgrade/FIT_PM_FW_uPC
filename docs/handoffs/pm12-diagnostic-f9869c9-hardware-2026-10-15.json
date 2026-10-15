@@ -1,0 +1,73 @@
+{
+  "source": "f9869c9",
+  "programmer": "J41800043065",
+  "candidate_hex_sha256": "93c010b4a13323259453b2b19b2154e73ba6f96968d4140cb778592881e0ac9d",
+  "chip_erase": false,
+  "writes": "application only, Xmega APP_PAGE erase",
+  "commands": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n"
+    },
+    {
+      "command": "@HELP",
+      "reply": "@PING\r\n@HELP\r\n@HW\r\n@TEMP\r\n@TDC\r\n@PLL\r\n@PGTIME\r\n@FPGA\r\n@FPGATEST\r\n@CFG\r\n@FLASHID\r\n@FLASHREAD\r\n"
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFC2F0F3F7BC STATE 2157..2162=0100000002C901C9012C0100\r\n"
+    },
+    {
+      "command": "@PGTIME",
+      "reply": "PGTIME STATE=00 TICKS=0000 OVF=00 US_NOMINAL=00000000\r\n"
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.0 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL NOT LOCKED\r\nFPGA not ready\r\n"
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F00\r\nADT7311 REG=03 C3\r\n"
+    },
+    {
+      "command": "@TDC 0 83",
+      "reply": "THS788 0 83 8010\r\n"
+    },
+    {
+      "command": "@TDC 1 83",
+      "reply": "THS788 1 83 8010\r\n"
+    },
+    {
+      "command": "@TDC 2 83",
+      "reply": "THS788 2 83 8010\r\n"
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009008\r\n"
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=0900000003FC00FC002C0100\r\n"
+    }
+  ],
+  "write_attempted": true,
+  "full_flash_readback": "PASS",
+  "full_flash_sha256": "56fe5ccb19340b05a8810d93beb5cb496d24e7c1f7e0418828923b30ad2806d9",
+  "protected_regions_unchanged": {
+    "boot": true,
+    "eeprom": true,
+    "fuse0": true,
+    "fuse1": true,
+    "fuse2": true,
+    "fuse4": true,
+    "fuse5": true,
+    "lock": true,
+    "usersig": true,
+    "prodsig": true,
+    "signature": true
+  },
+  "programming": "PASS",
+  "startup_rx": "12 control interface ready\r\n",
+  "basic_uart_validation": "PASS",
+  "candidate_left_running": true
+}
