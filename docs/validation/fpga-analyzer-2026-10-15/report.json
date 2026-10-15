@@ -1,0 +1,99 @@
+{
+  "fpga_sha256": "e215a8c36572a6ffdd266c1c288f4106c92d3d1550d6c2bfaede08bdd63d15c6",
+  "mcu_flash_writes": false,
+  "persistent_writes": false,
+  "input_only": [
+    "SDA",
+    "SCL",
+    "RESET_N"
+  ],
+  "source_sha256": {
+    "pm12_analyzer.v": "431d368759b81b1fe9d7ea365efe3d018ddcd9e0a1c8ccd19949337585168596",
+    "pm12_mcu_spi.vhd": "dd3c22862fa557578c2430bcb9c87fb4fd5535c73745fe00f074fef57d3d1560",
+    "eth_jtag.v": "705d74b4c9774c8b4937a9f2f487a20b18e7451c2f45b13cee15fec8e851fd00",
+    "pins.xdc": "188bc1caef61cf6c9470ff761d0db5f14c6c3a5b4791b2512aa3378ddf96dd1a",
+    "build.tcl": "d0b41c54a0213f87bc5adf269a6352a4551e8e87a87003844038209cc2070a8d"
+  },
+  "before": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000003A03310109\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.212
+    }
+  ],
+  "during": [
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 80\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2125
+    }
+  ],
+  "measured_sample_hz": 39876044.33497537,
+  "scl": {
+    "transitions": 288,
+    "widths_ns": {
+      "HIGH": {
+        "min": 401.24340984259476,
+        "median": 526.6319754184055,
+        "max": 1011098083.3832725
+      },
+      "LOW": {
+        "min": 125.38856557581084,
+        "median": 188.08284836371627,
+        "max": 275.8548442667839
+      }
+    },
+    "sda_changes": 0,
+    "reset_changes": 0
+  },
+  "capture": "PASS",
+  "events": 289,
+  "restored": true,
+  "after": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 00\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000000D01310109\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@FPGATEST",
+      "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+      "duration_s": 0.2116
+    }
+  ]
+}

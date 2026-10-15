@@ -164,7 +164,7 @@ traces and firmware hashes. These tests have not been run here.
 
 `@TEMP ALL` reads registers 0..7 using the existing native byte timing. The
 ordinary `@TEMP` response stays registers 0..3. Registers 2/4/6/7 are 16-bit;
-the others are 8-bit. No sensor reset/configuration/threshold command is added.
+the others are 8-bit. The read command does not change sensor configuration; the separate explicit RESTORE command below does.
 This branch starts from 9b3abb2 (minimal ownership gates and INA diagnostics),
 not the later reset-ready/slow-cell experiments. Host tests must wait for stable
 physical PGOOD before these reads. This is an intentional development image;
