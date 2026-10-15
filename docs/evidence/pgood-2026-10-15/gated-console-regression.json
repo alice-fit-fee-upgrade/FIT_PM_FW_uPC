@@ -1,0 +1,293 @@
+{
+  "port": "/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0",
+  "commands": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@HELP",
+      "reply": "@PING\r\n@HELP\r\n@HW\r\n@TEMP\r\n@TDC\r\n@PLL\r\n@PGTIME\r\n@FPGA\r\n@FPGATEST\r\n@CFG\r\n@FLASHID\r\n@FLASHREAD\r\n@I2C\r\n@INA\r\n@POWER\r\n",
+      "duration_s": 0.2121
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000008B022A0109\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "@PGTIME",
+      "reply": "PGTIME STATE=00 TICKS=0000 OVF=00 US_NOMINAL=00000000\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    29.8 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 80\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0EF8\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2121
+    },
+    {
+      "command": "@TDC 0 83",
+      "reply": "THS788 0 83 8010\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@TDC 1 83",
+      "reply": "THS788 1 83 8010\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "@TDC 2 83",
+      "reply": "THS788 2 83 8010\r\n",
+      "duration_s": 0.2123
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2121
+    },
+    {
+      "command": "@CFG",
+      "reply": "CFG PORTD IN=BF 07\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@FPGA",
+      "reply": "FPGA REG=40 0000\r\nFPGA REG=41 504D\r\nFPGA REG=42 5350\r\nFPGA REG=43 0001\r\nFPGA REG=44 0021\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@FPGATEST",
+      "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@FLASHID",
+      "reply": "ERR CONFIG OWNERSHIP\r\n",
+      "duration_s": 0.2124
+    },
+    {
+      "command": "@FLASHREAD 000000 10",
+      "reply": "ERR CONFIG OWNERSHIP\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@PING X",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "@TEMP X",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@TDC 3 83",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "@TDC 0 GG",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@PLL X",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2116
+    },
+    {
+      "command": "@FPGA X",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2121
+    },
+    {
+      "command": "@FPGATEST X",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2123
+    },
+    {
+      "command": "@CFG INVALID",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2124
+    },
+    {
+      "command": "@FLASHID X",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "@FLASHREAD 000000 11",
+      "reply": "ERR ARGUMENTS\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "@UNKNOWN",
+      "reply": "ERR UNKNOWN\r\n",
+      "duration_s": 0.2108
+    },
+    {
+      "command": "RA",
+      "reply": "FPGA not ready\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "RC",
+      "reply": "CH:    0 Lcal: 2190 TDC:    13 Time shift:   979 Range corr: 2048  2048\r\nCH:    1 Lcal: 2240 TDC:    12 Time shift:   958 Range corr: 2048  2048\r\nCH:    2 Lcal: 2520 TDC:     2 Time shift:   930 Range corr: 2048  2048\r\nCH:    3 Lcal: 2420 TDC:     5 Time shift:   932 Range corr: 2048  2048\r\nCH:    4 Lcal: 2500 TDC:    13 Time shift:   980 Range corr: 2048  2048\r\nCH:    5 Lcal: 2365 TDC:    13 Time shift:  1022 Range corr: 2048  2048\r\nCH:    6 Lcal: 2780 TDC:    12 Time shift:   915 Range corr: 2048  2048\r\nCH:    7 Lcal: 2420 TDC:     9 Time shift:  1021 Range corr: 2048  2048\r\nCH:    8 Lcal: 2225 TDC:     9 Time shift:  1020 Range corr: 2048  2048\r\nCH:    9 Lcal: 2490 TDC:    12 Time shift:  1048 Range corr: 2048  2048\r\nCH:   10 Lcal: 2190 TDC:    20 Time shift:   969 Range corr: 2048  2048\r\nCH:   11 Lcal: 2300 TDC:    20 Time shift:   968 Range corr: 2048  2048\r\n",
+      "duration_s": 0.2725
+    },
+    {
+      "command": "RF",
+      "reply": "CH:    0 Treshold:   3.00 Shift:   3.25 Zero offs:   3.82 Delay 10.260\r\nCH:    1 Treshold:   3.00 Shift:   2.65 Zero offs:   2.42 Delay  9.387\r\nCH:    2 Treshold:   3.00 Shift:   3.00 Zero offs:   3.23 Delay  9.298\r\nCH:    3 Treshold:   3.00 Shift:   3.05 Zero offs:   1.54 Delay  9.998\r\nCH:    4 Treshold:   5.00 Shift:   3.20 Zero offs:   3.91 Delay 10.765\r\nCH:    5 Treshold:   3.00 Shift:   2.30 Zero offs:   2.06 Delay  9.425\r\nCH:    6 Treshold:   3.00 Shift:  -0.15 Zero offs:   3.81 Delay 10.025\r\nCH:    7 Treshold:   3.00 Shift:   0.70 Zero offs:   3.17 Delay 10.682\r\nCH:    8 Treshold:   3.00 Shift:  -0.30 Zero offs:   3.85 Delay 10.432\r\nCH:    9 Treshold:   3.00 Shift:  -0.50 Zero offs:   1.84 Delay 11.462\r\nCH:   10 Treshold:   3.00 Shift:   0.30 Zero offs:   1.59 Delay  9.807\r\nCH:   11 Treshold:   3.00 Shift:   0.30 Zero offs:   2.23 Delay  9.714\r\nTrigger window:  153\r\nCFD sat. level: 4095\r\n",
+      "duration_s": 0.272
+    },
+    {
+      "command": "RT",
+      "reply": "FPGA not ready\r\n",
+      "duration_s": 0.2121
+    },
+    {
+      "command": "RZ",
+      "reply": "FPGA not ready\r\n",
+      "duration_s": 0.2125
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.0 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2125
+    },
+    {
+      "command": "@I2C",
+      "reply": "I2C PF7/PA1 RESET_PB6 LINES=07 OWNER=00 DEFER=00 A_DIR=FB A_OUT=BA A_CTRL1=80 A_CTRL2=18\r\n",
+      "duration_s": 0.2127
+    },
+    {
+      "command": "@INA 4",
+      "reply": "INA 4 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 4 CH=1 RAW=0010/03F0 MV=1008 MA=8 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=2 RAW=0010/04B0 MV=1200 MA=8 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=3 RAW=0008/0700 MV=1792 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\n",
+      "duration_s": 0.2424
+    },
+    {
+      "command": "@INA 5",
+      "reply": "INA 5 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 5 CH=1 RAW=7FF8/05D0 MV=1488 MA=NA STATUS=R15_NOT_FITTED_BUS_INPUT_ONLY\r\nINA 5 CH=2 RAW=03E0/0D00 MV=3328 MA=4960 STATUS=NOMINAL_UNCALIBRATED\r\nINA 5 CH=3 RAW=0038/06F8 MV=1784 MA=280 STATUS=NOMINAL_UNCALIBRATED\r\n",
+      "duration_s": 0.2424
+    },
+    {
+      "command": "@INA 6",
+      "reply": "INA 6 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 6 CH=1 RAW=0010/03F0 MV=1008 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=2 RAW=0010/1580 MV=5504 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=3 RAW=0000/0000 MV=0 MA=NA STATUS=NO_SHUNT\r\n",
+      "duration_s": 0.2426
+    },
+    {
+      "command": "@POWER",
+      "reply": "INA 4 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 4 CH=1 RAW=0008/03E8 MV=1000 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=2 RAW=0008/04B0 MV=1200 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=3 RAW=0008/0700 MV=1792 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\nINA 5 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 5 CH=1 RAW=7FF8/05D0 MV=1488 MA=NA STATUS=R15_NOT_FITTED_BUS_INPUT_ONLY\r\nINA 5 CH=2 RAW=03E0/0D00 MV=3328 MA=4960 STATUS=NOMINAL_UNCALIBRATED\r\nINA 5 CH=3 RAW=0038/06F8 MV=1784 MA=280 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 6 CH=1 RAW=0010/03F0 MV=1008 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=2 RAW=0010/1580 MV=5504 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=3 RAW=0000/0000 MV=0 MA=NA STATUS=NO_SHUNT\r\n",
+      "duration_s": 0.2721
+    },
+    {
+      "command": "@I2C",
+      "reply": "I2C PF7/PA1 RESET_PB6 LINES=07 OWNER=00 DEFER=00 A_DIR=FB A_OUT=BA A_CTRL1=80 A_CTRL2=18\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    29.9 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2127
+    },
+    {
+      "command": "@TEMP",
+      "reply": "ADT7311 REG=00 80\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0EF8\r\nADT7311 REG=03 C3\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "@FPGATEST",
+      "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+      "duration_s": 0.2115
+    },
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2119
+    }
+  ],
+  "excluded": [
+    "PA/PF programming streams",
+    "PC resets PLL defaults",
+    "WR EEPROM commit",
+    "ON/OF power transitions also commit EEPROM offset D1",
+    "CA/CP clear state",
+    "S* parameter/calibration changes",
+    "TEMP INIT/RESTORE are explicit sensor state changes; tested separately",
+    "CFG HOLD/BOOT destroys FPGA SRAM; separate controlled restoration test"
+  ],
+  "scope": "read-only legacy commands, all preexisting diagnostic command names, bounded scratch test, invalid arguments; NOT all legacy state-changing paths",
+  "initial_drain": "",
+  "power_ready": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=8900000100000095022A0109\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000CA002A0109\r\n",
+      "duration_s": 0.2124
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000E7022A0109\r\n",
+      "duration_s": 0.2123
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000001C012A0109\r\n",
+      "duration_s": 0.2122
+    }
+  ],
+  "sensor_power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=8900000100000013002A0109\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000EA012B0109\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000006D012C0109\r\n",
+      "duration_s": 0.2123
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=8900000100000091032A0109\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000CE012A0109\r\n",
+      "duration_s": 0.2127
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000000A002A0109\r\n",
+      "duration_s": 0.2128
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000006A002B0109\r\n",
+      "duration_s": 0.2127
+    }
+  ],
+  "bounded_console_sequence": "PASS",
+  "cleanup": "UART closed,RTS/DTR deasserted,lease released"
+}

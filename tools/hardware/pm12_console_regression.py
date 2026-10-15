@@ -23,7 +23,7 @@ def main():
  import serial
  from pm12_power import wait_power_good,require_power_good
  records=[]
- report={'port':PORT,'commands':records,'excluded':['PA/PF programming streams','PC resets PLL defaults','WR EEPROM commit','ON/OF power transitions','CA/CP clear state','S* parameter/calibration changes','CFG HOLD/BOOT destroys FPGA SRAM; separate controlled restoration test'], 'scope':'read-only legacy commands, all preexisting diagnostic command names, bounded scratch test, invalid arguments; NOT all legacy state-changing paths'}
+ report={'port':PORT,'commands':records,'excluded':['PA/PF programming streams','PC resets PLL defaults','WR EEPROM commit','ON/OF power transitions also commit EEPROM offset D1','CA/CP clear state','S* parameter/calibration changes','TEMP INIT/RESTORE are explicit sensor state changes; tested separately','CFG HOLD/BOOT destroys FPGA SRAM; separate controlled restoration test'], 'scope':'read-only legacy commands, all preexisting diagnostic command names, bounded scratch test, invalid arguments; NOT all legacy state-changing paths'}
  with open('/home/codex-hil/.cache/pm12-210249A73E43.lock','a+') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   s=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);s.dtr=False;s.rts=True;s.port=PORT;s.open()

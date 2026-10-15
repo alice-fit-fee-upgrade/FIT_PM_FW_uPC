@@ -1,3 +1,5 @@
+> Current physical PGOOD checkpoint is on branch `development/pgood-adt-readback`. See `docs/pgood_sensor_validation_2026-10-15.md`. This recovery-branch directory retains older experimental changes and is not the currently deployed image.
+
 Current direct-MCU I2C candidate: see [candidate contract](../docs/i2c_development_candidate.md).
 It preserves the original timer body and uses two small ownership gates instead
 of deploying the experimental whole-ISR relocation. Historical release001 below
