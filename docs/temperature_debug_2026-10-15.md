@@ -184,3 +184,35 @@ before/after data and requires both read paths to match the original settings.
 Host GPIO framing tests verify all 12 transmitted initialization bytes and the
 busy/power failure cleanup. This is a state-changing diagnostic, not an ordinary
 read-only console regression command, and is not automatically invoked at boot.
+
+
+## Shared-clock power-domain limitation / candidate8
+
+Candidate8 (`6d310af`, evidence `candidate8-program/`) returned zero ADT
+registers before recovery; explicit `@TEMP INIT` returned `ERR POWER`.
+The failing initialization frame is not instrumented, so this does not prove
+that main power was already absent at command entry. The supervisor restored
+the exact previous application and passive FPGA; rollback runtime validation
+passed with ID C3, NORMAL temperature and PSU ON.
+
+The ADT and MCU being powered from P3V3_LDO does **not** establish that ADT
+communication works with main P3V3 absent. PA1/SCLK is shared with the TCA
+upstream SCL, whose pull-ups R224/R225 are on switched P3V3. An unpowered hub
+or a pull-up to an unpowered rail can affect the shared clock. Neither the
+actual off-state waveform nor hub clamping has been measured. Idle GPIO
+readback cannot establish edge timing or absence of back-powering.
+
+A proposed removal of native temperature main-power guards was withdrawn
+before programming; candidate9 was never flashed. Keep those guards pending
+power-domain investigation. This is not a demonstrated electrical root cause
+of previous failures. Next establish SCL amplitude/edges and P3V3 correlation
+with physical instrumentation, and identify the failing INIT frame if needed.
+Do not claim diagnostics during a main-rail failure have been validated.
+
+
+## Passive FPGA observation
+
+See [physical shared-clock capture](fpga_shared_clock_capture_2026-10-15.md).
+A powered reference captured exactly the expected 144 SCL cycles (console +
+three ISR reads), with SDA/RESET HIGH and valid ADT ID C3. This does not test
+the unpowered-hub condition. Original MCU and passive FPGA remain restored.
