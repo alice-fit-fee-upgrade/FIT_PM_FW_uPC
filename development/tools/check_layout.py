@@ -31,6 +31,14 @@ def main():
     target=2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(timer_gate[2:],'little'))
     assert target==names['pm_timer_relocated']
     allowed=set(range(0x49e,0x4a2))|set(range(0x12ea,0x12f0))|set(range(start,start+size))
+    from power_patch import SITES
+    for i,(address,target) in enumerate(SITES):
+        gate=dev[names['pm_pg_patch_table']+4*i:names['pm_pg_patch_table']+4*i+4]
+        assert dev[address:address+4]==gate
+        word=int.from_bytes(gate[:2],'little')
+        assert word & 0xfe0e == 0x940c
+        assert 2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(gate[2:],'little'))==names[target]
+        allowed.update(range(address,address+4))
     differing={i for i,(a,b) in enumerate(zip(golden,dev)) if a!=b}
     assert not differing-allowed, ('unexpected FLASH differences',sorted(differing-allowed)[:16])
     assert dev[0x20000:]==golden[0x20000:], 'bootloader modified'
@@ -38,7 +46,7 @@ def main():
             'golden_sha256':hashlib.sha256(golden).hexdigest(),'development_sha256':hashlib.sha256(dev).hexdigest(),
             'differing_bytes':len(differing),'gate_start':0x12ea,'gate_length':6,'timer_gate_start':0x49e,'timer_gate_length':4,'timer_relocated':names['pm_timer_relocated'],'extension_start':start,
             'extension_size':size,'extension_limit':0x8000,'legacy_symbols_preserved':len(original),
-            'bootloader_unchanged':True,'ram_globals':'rejected by linker; no unverified SRAM reservation'}
+            'bootloader_unchanged':True,'retained_diagnostic_pg_hooks':[hex(a) for a,_ in SITES],'bus_lock':'GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized','ram_globals':'rejected by linker; no unverified SRAM reservation'}
     (BUILD/'layout_report.json').write_text(json.dumps(report,indent=2)+'\n')
     print('PASS development layout:',len(differing),'planned differing bytes; extension',size,'bytes')
 if __name__=='__main__':main()

@@ -6,6 +6,8 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'development/tools'))
 from build import BUILD,BASE,symbols
 from relocate_timer import decode,START,END,INVERSE,SKIPS
+from power_patch import SITES
+hooks=dict(SITES)
 old=decode(BASE/'build/reconstructed.elf');new=decode(BUILD/'development.elf')
 names=symbols(BUILD/'development.elf')
 rows=json.loads((BUILD/'timer_relocation.json').read_text())
@@ -13,10 +15,13 @@ mapping={r['original']:names[r['symbol']] for r in rows}
 def relocated(a):return mapping.get(a,a)
 counts={'unchanged_instruction_encodings':0,'control_flow_edges':0}
 for row in rows:
-    a=row['original'];b=mapping[a]
+    a=row['original'];b=names[f'pm_timer_instruction_{a:04x}']
     op,args,n,target,raw=old[a];actual=new[b]
     following=mapping.get(a+n)
-    if op in ('rjmp','jmp','rcall','call'):
+    if a in hooks:
+        assert actual[0]=='jmp' and actual[3]==names[hooks[a]]
+        counts['control_flow_edges']+=1
+    elif op in ('rjmp','jmp','rcall','call'):
         assert actual[0]==('call' if op in ('call','rcall') else 'jmp')
         assert actual[3]==relocated(target),(a,actual,target)
         assert following==b+4

@@ -1,0 +1,44 @@
+make -C development check
+make[1]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/development'
+python3 tools/build.py
+make[2]: Entering directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+cmp ../reference/flash_golden.bin build/flash_rebuilt.bin
+make[2]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/recovered_exact'
+PASS development layout: 11079 planned differing bytes; extension 11134 bytes
+Development build: GNU ABI extensions at 0x4000; exact baseline remains separate.
+python3 tests/check_timer_relocation.py
+PASS timer relocation: {'status': 'PASS', 'original_start': 1182, 'original_end_exclusive': 2276, 'relocated_start': 24876, 'instruction_sites': 489, 'unchanged_instruction_encodings': 357, 'control_flow_edges': 192, 'scope': 'All ordinary opcode bytes and transformed control-flow edges checked; no timing or hardware proof.'}
+python3 tests/check_i2c.py
+PASS I2C ok result 0 delays 1805
+PASS I2C busy result 1 delays 0
+PASS I2C pending result 1 delays 0
+PASS I2C off result 8 delays 0
+PASS I2C reset result 4 delays 0
+PASS I2C nack result 2 delays 625
+PASS I2C badid result 7 delays 725
+PASS I2C timeout result 5 delays 0
+PASS I2C stretch result 5 delays 2125
+PASS full signed conversion: 65536 raw words; I2C scenarios 9
+python3 tests/check_bus_lock.py
+PASS ISR mutex/defer: 1536 SREG/ownership cases; preserved registers/flags, no spinning
+python3 tests/check_pg_timing.py
+PASS PG instrumentation: 2048 decoded cases; flags/registers preserved, power cut precedes telemetry
+PASS original PG deadline paths: missing PG cuts EN; present PG retains original transition
+PASS full PG GPIO ISR: original status transition unchanged, elapsed captured
+python3 tests/check_bridge.py
+PASS decoded ABI boundary: 1788 cases
+python3 tests/check_layout_guards.py
+PASS development layout: 11079 planned differing bytes; extension 11134 bytes
+PASS layout rejection: vectors, continuation, unused nonreserved FLASH, window end and boot
+python3 tests/check_ram_guard.py
+PASS RAM guard: uninitialized global rejected by linker assertion
+cc -std=c99 -Wall -Wextra -Werror -Isrc src/extension.c src/hw_commands.c src/hw_drivers.c src/i2c_commands.c src/i2c_diag.c tests/check_commands.c -o build/check_commands
+build/check_commands
+PASS native C commands: valid/invalid arguments, line bounds and overflow recovery
+cc -std=c99 -Wall -Wextra -Werror -Isrc src/hw_drivers.c tests/check_hw_drivers.c -o build/check_hw_drivers
+build/check_hw_drivers
+PASS device serial framing, readbacks, IRQ restoration, bounded timeout, GPIO restoration, power/busy guards and write whitelist
+cc -std=c99 -Wall -Wextra -Werror -Isrc src/extension.c src/hw_commands.c src/hw_drivers.c src/i2c_commands.c src/i2c_diag.c tests/check_fpga_flash.c -o build/check_fpga_flash
+build/check_fpga_flash
+PASS FPGA headers, walking bits/restoration/image guard; flash read-only opcodes, ownership, reset/release, all byte timeouts and PSU-preserving GPIO whitelist
+make[1]: Leaving directory '/home/codex-hil/FIT_PM_FW_uPC/development'

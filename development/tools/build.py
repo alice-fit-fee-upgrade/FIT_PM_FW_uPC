@@ -14,7 +14,7 @@ def main():
     text=(BASE/'generated/sections.ld').read_text()
     assert text.count(' .boot 0x20000')==1
     extension=''' .extensions 0x4000 : {
- KEEP(*(.extension.entry)) *(.text*) *(.progmem*)
+ KEEP(*(.extension.entry)) *(.trampolines*) *(.text*) *(.progmem*)
  } > flash
 '''
     # Consume only new GNU code and explicit FLASH constants. Ordinary RAM
@@ -57,6 +57,8 @@ def main():
     assert old_timer==golden[0x49e:0x8e4]
     timer_section.write_bytes(timer_gate+old_timer[4:])
     run(['avr-objcopy','--update-section','.c_00049e='+str(timer_section),elf])
+    from power_patch import apply
+    apply(elf,golden,names,BUILD)
     run(['avr-objcopy','-O','ihex',elf,hexfile]);run([sys.executable,ROOT/'tools/memory_image.py',hexfile,binary])
     (BUILD/'development.dis').write_text(subprocess.check_output(['avr-objdump','-d',str(elf)],text=True))
     run([sys.executable,DEV/'tools/check_layout.py'])

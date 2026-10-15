@@ -5,6 +5,7 @@ this tool preserves instruction effects/control flow, not cycle counts.
 """
 import json,re,subprocess
 from pathlib import Path
+from power_patch import SITES
 START,END=0x49e,0x8e4
 INVERSE={'breq':'brne','brne':'breq','brcs':'brcc','brcc':'brcs','brge':'brlt'}
 SKIPS={'sbrs':'sbrc','sbrc':'sbrs','sbis':'sbic','sbic':'sbis'}
@@ -35,7 +36,23 @@ def generate(base,build):
     while a<END:
         op,args,n,target,raw=program[a];nxt=a+n
         lines += [f'.global {label(a)}',label(a)+':',f'/* Original byte address 0x{a:04x}: {op} {args} */']
-        if op in ('rjmp','jmp','rcall','call'):
+        if a==0x77e:
+            lines += ['    push r16','    in r16,0x3f','    push r16','    cli',
+                      '    in r16,0x0f','    andi r16,0x43','    brne .Ltemp_defer',
+                      '    cbi 0x0f,7','    sbi 0x0f,1',
+                      '    pop r16','    out 0x3f,r16','    pop r16','    rjmp .Ltemp_claimed',
+                      '.Ltemp_defer:','    sbi 0x0f,7','    in r16,0x0e','    cpi r16,255',
+                      '    breq .Ltemp_counted','    inc r16','    out 0x0e,r16','.Ltemp_counted:',
+                      '    pop r16','    out 0x3f,r16','    pop r16','    jmp '+dest(0x8be),
+                      '.Ltemp_claimed:']
+        if a==0x788:
+            lines += ['    cbi 0x0f,1']
+        hooks={address:name for address,name in SITES if START<=address<END}
+        lines += [f'.global pm_timer_instruction_{a:04x}',f'pm_timer_instruction_{a:04x}:']
+        if a in hooks:
+            assert op=='sts' and n==4
+            emitted=['jmp '+hooks[a]]
+        elif op in ('rjmp','jmp','rcall','call'):
             assert target is not None
             emitted=[('call' if op in ('rcall','call') else 'jmp')+' '+dest(target)]
         elif op in INVERSE:

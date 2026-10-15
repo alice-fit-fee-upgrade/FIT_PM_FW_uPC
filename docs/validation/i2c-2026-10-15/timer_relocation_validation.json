@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "original_start": 1182,
+  "original_end_exclusive": 2276,
+  "relocated_start": 24876,
+  "instruction_sites": 489,
+  "unchanged_instruction_encodings": 357,
+  "control_flow_edges": 192,
+  "scope": "All ordinary opcode bytes and transformed control-flow edges checked; no timing or hardware proof."
+}
