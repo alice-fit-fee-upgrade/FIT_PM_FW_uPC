@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-15",
+  "board_serial_reported": "1803",
+  "mcu_firmware_code_commit": "f9869c9",
+  "mcu_programmer": "Atmel-ICE J41800043065",
+  "fpga_cable": "210249A73E43",
+  "mcu_signature": "1e9742",
+  "vtarget_read_V": 3.26,
+  "candidate_application_hex_sha256": "93c010b4a13323259453b2b19b2154e73ba6f96968d4140cb778592881e0ac9d",
+  "candidate_full_flash_sha256": "56fe5ccb19340b05a8810d93beb5cb496d24e7c1f7e0418828923b30ad2806d9",
+  "baseline_physical_flash_matches_golden": true,
+  "physical_baseline_flash_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "backup_location": "/home/codex-hil/fit-bringup/evidence/pm12-fw-validation-2026-10-15/physical-backup",
+  "programming": "PASS application-only page programming, full canonical readback exact, no chip erase",
+  "protected_regions_unchanged": {
+    "boot": true,
+    "eeprom": true,
+    "fuse0": true,
+    "fuse1": true,
+    "fuse2": true,
+    "fuse4": true,
+    "fuse5": true,
+    "lock": true,
+    "usersig": true,
+    "prodsig": true,
+    "signature": true
+  },
+  "fuses_retained": {
+    "fuse0": "ff",
+    "fuse1": "00",
+    "fuse2": "fe",
+    "fuse4": "f3",
+    "fuse5": "e8",
+    "lock": "ff"
+  },
+  "uart": "PASS PING/HELP/HW/PGTIME/raw device commands and original RS, published --rtscts --fpga-test runner",
+  "temperature": "PASS ADT7311 ID C3, raw temperature tracks legacy approximately30..32C",
+  "tdc": "Read chip ID register83 returns8010 on all3 devices; acquisition/timing not tested",
+  "pll": "Readback works; settled legacy status INTERNAL/PLL LOCKED; initial post-program NOT LOCKED was observed",
+  "spi": "PASS20 full FPGATEST runs plus1 in published runner,672 walking-bit patterns and21 scratch restorations; each10-run test ended with writecount014A",
+  "config_flash": {
+    "jedec_id": "016017",
+    "read_only_ownership": "PASS runtime owner guard, PROGRAM hold, ID/data read, bus release",
+    "read_offsets_hex": [
+      "000000",
+      "000010",
+      "000020"
+    ],
+    "sampled_bytes": 48,
+    "sample_values": "all FF; does not prove entire flash is erased or contains no image",
+    "contents_written": false,
+    "boot_done_within_2s": false,
+    "boot_acceptance": "NOT_CONFIRMED:2s observation only, stored contents/required load time unknown"
+  },
+  "pg_timing": "NOT_VALIDATED: command returns NOT_STARTED, no observed EN-to-PG measurement",
+  "mcu_ina3221": "NOT_IMPLEMENTED; PA1 temperature sharing needs explicit serialization",
+  "physical_limits": [
+    "No injected PG timeout/thermal/power-fault testing",
+    "No ADC/AFE/TDC acquisition or analog/timing validation",
+    "No proof of power-off bus isolation",
+    "FPGA not ready in original RS is production protocol status, not failed diagnostic SPI"
+  ],
+  "current_state": {
+    "mcu": "Diagnostic f9869c9 running",
+    "fpga": "Input-only I2C/SPI diagnostic504d5a02 in SRAM, sha256a3c7301f466f193ec01347285fd858ba52767683342fa6114abb02eaa3de5aa9",
+    "power": "ON OK; settled INTERNAL PLL LOCKED; NORMAL~32C",
+    "uart": "closed; PM12/ICE locks released"
+  },
+  "evidence_files": [
+    "candidate-validation.json",
+    "fpga-spi-before-config.json",
+    "fpga-spi-hardware.json",
+    "config-flash-hardware.json",
+    "published-runner.json"
+  ]
+}

@@ -31,3 +31,27 @@ walking-bit tests; results were pending at this handoff. Do not open UART,
 programmer or FPGA concurrently. MCU INA/I²C and shared PA1 ownership protection
 remain unimplemented. No hardware operations were performed by this recovery
 thread while receiving this evidence.
+
+## Final bring-up checkpoint (supersedes pending SPI status above)
+
+Snapshot: `handoffs/pm12-diagnostic-hardware-summary-2026-10-15.json`.
+Published evidence: FIT_testing_sw branch `pm12-jtag-discovery`, commit a0e44ac,
+PR https://github.com/alice-fit-fee-upgrade/FIT_testing_sw/pull/1.
+Bring-up documentation checkpoint c2ac873 does not change candidate code f9869c9.
+
+* Diagnostic SPI PASS: 21 full tests, 672 walking-bit patterns, 21 scratch
+  restorations (20 manual plus the published runner).
+* Configuration-FLASH read-only ownership/PROGRAM hold/JEDEC/read/release PASS;
+  JEDEC 016017, 48 bytes sampled at 000000/000010/000020 all FF. No content writes.
+  These bytes do not prove the whole FLASH is blank or lacks a stored image.
+* FPGA DONE was not seen within the two-second observation; boot is
+  NOT_CONFIRMED, not diagnosed as faulty or erased FLASH.
+* PLL settled to INTERNAL/LOCKED. PGTIME remains NOT_STARTED; no measured PG
+  timing, injected thermal/PG/power faults, analog/TDC acquisition or power-off
+  isolation validation. MCU INA and shared-PA1 exclusion remain unimplemented.
+
+Leave the board as handed over: diagnostic MCU f9869c9 plus passive-I²C/SPI FPGA
+504D5A02 in SRAM, PSU ON/OK, temperature about 32 C NORMAL. UART closed and locks
+released does not authorize overwriting this state. No automatic programming or
+restoration from this recovery thread. This evidence still does not validate
+recovery release001, whose timer relocation has separate software-only checks.
