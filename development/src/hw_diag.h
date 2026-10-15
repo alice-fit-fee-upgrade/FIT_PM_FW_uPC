@@ -4,6 +4,7 @@
 enum pm_diag_result { PM_DIAG_OK, PM_DIAG_POWER, PM_DIAG_BUSY, PM_DIAG_TIMEOUT, PM_DIAG_ARGUMENT, PM_DIAG_CONFIG };
 uint8_t pm_diag_temp(uint8_t reg,uint16_t *value);
 uint8_t pm_diag_temp_slow(uint8_t reg,uint16_t *value);
+uint8_t pm_diag_temp_init(void);
 uint8_t pm_diag_tdc(uint8_t chip,uint8_t reg,uint16_t *value);
 uint8_t pm_diag_pll(uint32_t *value);
 uint8_t pm_diag_fpga(uint8_t write,uint8_t address,uint16_t *word);

@@ -166,3 +166,21 @@ no electrical waveform measurement has yet been made. Acceptance now requires
 both read methods to agree with the original intended startup settings:
 CONFIG=50, TCRIT=2300 (70 C), THYST=05, THIGH=1E00 (60 C), TLOW=0500 (10 C),
 and retain those settings across FPGA restoration and INA reads.
+
+Candidate7 (`8b6757a`) returned ID C3 and matching normal/C-slow configuration
+reads, but CONFIG=1F, TCRIT=43FF, THIGH=2000 and TLOW=FFD0 failed the required
+original-settings check. It was rejected and the old application/passive FPGA
+were restored. TEMPSEEN remained zero despite the shared system-fault latch.
+The slow shared cell alone therefore does not establish correct startup writes.
+
+The next explicit laboratory experiment adds `@TEMP INIT`. It sends the same
+32-one reset, waits >=600 us, then sends the original CONFIG=50, TCRIT=2300
+and THIGH=1E00 writes after the board is already powered. No new threshold
+values are chosen. TEMP ownership excludes ISR SPI across the operation; IRQs
+remain available during the reset wait, and each selected frame has bounded
+IRQ exclusion. The reply explicitly says SENT/VERIFY_READBACK, not PASS.
+The programming supervisor invokes this only with `--recover-adt`, records
+before/after data and requires both read paths to match the original settings.
+Host GPIO framing tests verify all 12 transmitted initialization bytes and the
+busy/power failure cleanup. This is a state-changing diagnostic, not an ordinary
+read-only console regression command, and is not automatically invoked at boot.

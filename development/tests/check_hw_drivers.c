@@ -5,7 +5,7 @@
 static uint8_t mem[0x2500],irq,timeout,spi_count,bit_count,tx[12],tx_count;
 static unsigned polls,writes,steps;
 static uint32_t temp_stream;
-static uint8_t adt_tx[3],adt_bits;
+static uint8_t adt_tx[12],adt_bits;
 uint8_t pm_irq_enter(void){uint8_t s=irq;irq=0;return s;}
 void pm_irq_leave(uint8_t s){assert(irq==0);irq=s;}
 uint8_t pm_read8(uint16_t a)
@@ -13,7 +13,7 @@ uint8_t pm_read8(uint16_t a)
  assert(!irq);++steps;
  if(a==0x8c2){++polls;return (timeout && spi_count>=timeout)?0:128;}
  if(a==0x8c3)return spi_count>4?(uint8_t)(0x11*(spi_count-4)):0;
- if(a==0x608){uint8_t bit=(temp_stream>>(31-bit_count++))&1;return (mem[a]&~4)|(bit<<2);}
+ if(a==0x608){uint8_t bit=bit_count<32?(temp_stream>>(31-bit_count))&1:0;++bit_count;return (mem[a]&~4)|(bit<<2);}
  if(a==0x628 && !(mem[0x620]&2) && (mem[0x624]&1)){
   uint8_t bit=(0xa55au>>(15-bit_count++))&1;return 64|(bit<<1);
  }
@@ -34,7 +34,7 @@ void pm_write8(uint16_t a,uint8_t v)
  uint8_t was_clock=mem[0x604]&2;
  if(off==1||off==5)mem[target]|=v;else mem[target]&=(uint8_t)~v;
  if(port==0x600 && off==5 && (v&2) && !was_clock && !(mem[0x604]&16)){
-  assert(adt_bits<24);adt_tx[adt_bits/8]=(uint8_t)((adt_tx[adt_bits/8]<<1)|((mem[0x604]>>3)&1));++adt_bits;
+  assert(adt_bits<96);adt_tx[adt_bits/8]=(uint8_t)((adt_tx[adt_bits/8]<<1)|((mem[0x604]>>3)&1));++adt_bits;
  }
 }
 static void init(uint8_t s)
@@ -60,6 +60,11 @@ int main(void)
    init(s);mem[15]=owner;v=0xbeef;
    assert(pm_diag_temp(3,&v)==PM_DIAG_BUSY && v==0xbeef && writes==0 && irq==s);
   }
+  init(s);assert(pm_diag_temp_init()==PM_DIAG_OK && irq==s && mem[15]==0 && adt_bits==96);
+  const uint8_t init_bytes[]={0xff,0xff,0xff,0xff,0x08,0x50,0x20,0x23,0,0x30,0x1e,0};
+  assert(!memcmp(adt_tx,init_bytes,sizeof init_bytes));
+  init(s);mem[15]=0x40;assert(pm_diag_temp_init()==PM_DIAG_BUSY && writes==0 && irq==s);
+  init(s);mem[0x688]=0;assert(pm_diag_temp_init()==PM_DIAG_POWER && writes==0 && irq==s && mem[15]==0);
   init(s);assert(pm_diag_tdc(2,0x83,&v)==PM_DIAG_OK && v==0xa55a && irq==s && mem[0x624]==0xbc && mem[0x620]==0xbf);
   assert(tx_count==10 && tx[0]==1 && tx[1]==0);
   for(unsigned n=0;n<8;++n)assert(tx[n+2]==((0x83>>(7-n))&1));

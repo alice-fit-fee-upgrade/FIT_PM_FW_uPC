@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[2]
 MEM=['flash','boot','eeprom','fuse0','fuse1','fuse2','fuse4','fuse5','lock','usersig','prodsig','signature']
 BASE=['avrdude','-c','atmelice_pdi','-p','x128a3u','-P','usb:J41800043065','-B','10','-u']
 def main():
- p=argparse.ArgumentParser();p.add_argument('--evidence',required=True,type=Path);p.add_argument('--hex',required=True,type=Path);p.add_argument('--bin',required=True,type=Path);p.add_argument('--backup',required=True,type=Path);p.add_argument('--sensor-probe',action='store_true',help='capture ADT/flags repeatedly, then restore the pre-update application');p.add_argument('--full-app-write',action='store_true',help='use bounded 128 KiB application alias, including FF pages');p.add_argument('--temperature-registers',action='store_true',help='compare normal/slow readback of all ADT registers before and after I2C');p.add_argument('--expect-original-adt-settings',action='store_true',help='require CONFIG 50, TCRIT 2300, THYST 05, THIGH 1E00, TLOW 0500');args=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--evidence',required=True,type=Path);p.add_argument('--hex',required=True,type=Path);p.add_argument('--bin',required=True,type=Path);p.add_argument('--backup',required=True,type=Path);p.add_argument('--sensor-probe',action='store_true',help='capture ADT/flags repeatedly, then restore the pre-update application');p.add_argument('--full-app-write',action='store_true',help='use bounded 128 KiB application alias, including FF pages');p.add_argument('--temperature-registers',action='store_true',help='compare normal/slow readback of all ADT registers before and after I2C');p.add_argument('--expect-original-adt-settings',action='store_true',help='require CONFIG 50, TCRIT 2300, THYST 05, THIGH 1E00, TLOW 0500');p.add_argument('--recover-adt',action='store_true',help='explicitly send original ADT initialization after capturing initial readback');args=p.parse_args()
  assert not args.expect_original_adt_settings or args.temperature_registers
  out=args.evidence;out.mkdir(exist_ok=False);backup=args.backup
  expected=args.bin.read_bytes();old=(backup/'flash-full.bin').read_bytes()
@@ -52,6 +52,11 @@ def main():
   uart=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);uart.dtr=False;uart.rts=True;uart.port=PORT;uart.open()
   try:
    report['pre_i2c_sensor']=[]
+   if args.recover_adt:
+    report['before_adt_recovery']=[capture(uart,c) for c in ['@HW','@TEMP ALL','@TEMP SLOW']]
+    report['adt_recovery']=capture(uart,'@TEMP INIT');print('ADT_RECOVERY '+json.dumps(report['adt_recovery']),flush=True)
+    assert report['adt_recovery']['reply']=='ADT7311 INIT SENT VERIFY_READBACK\r\n'
+    time.sleep(1)
    pre_commands=['@PING','@HW','RS','@TEMP','@HW','@TEMP','@HW','@TEMP','@HW','RS'] if args.sensor_probe else ['@PING','@HW','RS','@I2C','@I2C TEST','@TEMP']
    if args.temperature_registers:pre_commands+=['@TEMP ALL','@TEMP SLOW','@HW']
    for command in pre_commands:

@@ -182,3 +182,10 @@ used by the original startup and ISR as well as native diagnostics. DIN, low
 clock and high clock phases each include a 1 us wait; DOUT is captured before
 raising the clock. Register/SREG compatibility has a separate decoded test.
 The exact baseline's original byte cell and all reference files are preserved.
+
+`@TEMP INIT` is an explicit laboratory recovery command: it resets the ADT and
+resends the original CONFIG=50, TCRIT=2300 and THIGH=1E00 after >=600 us reset
+wait. It changes volatile sensor state and may clear sensor alarms. Its SENT
+reply requires verification with ALL/SLOW readback. It is not automatically run
+at boot and is excluded from ordinary read-only regression. MCU EEPROM, fuses,
+bootloader and configuration FLASH are not written by it.

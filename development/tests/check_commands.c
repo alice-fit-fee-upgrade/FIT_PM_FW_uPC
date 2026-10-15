@@ -28,6 +28,7 @@ int main(void)
     check("TEMP\r", "ERR POWER\r\n");
     check("TEMP ALL\r", "ERR POWER\r\n");
     check("TEMP SLOW\r", "ERR POWER\r\n");
+    check("TEMP INIT\r", "ERR POWER\r\n");
     check("TEMP ALL X\r", "ERR ARGUMENTS\r\n");
     check("PLL\r", "ERR POWER\r\n");
     check("TDC 0 83\r", "ERR POWER\r\n");

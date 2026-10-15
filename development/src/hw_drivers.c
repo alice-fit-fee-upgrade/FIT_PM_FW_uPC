@@ -69,6 +69,38 @@ static uint8_t temp_read(uint8_t reg,uint16_t *value,uint8_t slow)
 }
 uint8_t pm_diag_temp(uint8_t reg,uint16_t *value){return temp_read(reg,value,0);}
 uint8_t pm_diag_temp_slow(uint8_t reg,uint16_t *value){return temp_read(reg,value,1);}
+/* Explicit laboratory recovery, not a periodic operation. Owner excludes
+ * timer temperature SPI throughout; IRQs remain enabled during the reset wait.
+ * Each selected frame uses only a short IRQ exclusion. Values reproduce the
+ * original startup; completion means sent, so callers must verify readback. */
+static uint8_t temp_begin_frame(uint8_t *irq)
+{
+ *irq=pm_irq_enter();
+ if(!powered()){pm_irq_leave(*irq);return PM_DIAG_POWER;}
+ if((pm_read8(A+DIR)&0x1a)!=0x1a || !(pm_read8(A+OUT)&16)){
+  pm_irq_leave(*irq);return PM_DIAG_BUSY;
+ }
+ pm_write8(A+CLR,16);return PM_DIAG_OK;
+}
+static void temp_end_frame(uint8_t irq){pm_write8(A+SET,16);pm_irq_leave(irq);}
+uint8_t pm_diag_temp_init(void)
+{
+ if(!pm_bus_acquire(PM_BUS_TEMP))return PM_DIAG_BUSY;
+ uint8_t irq,result=temp_begin_frame(&irq);
+ if(result)goto done;
+ for(uint8_t n=0;n<4;++n)(void)temp_byte(0xff,1);
+ temp_end_frame(irq);
+#ifdef __AVR__
+ __builtin_avr_delay_cycles(19200); /* >=600 us, IRQs enabled at command entry. */
+#endif
+ result=temp_begin_frame(&irq);if(result)goto done;
+ (void)temp_byte(0x08,1);(void)temp_byte(0x50,1);temp_end_frame(irq);
+ result=temp_begin_frame(&irq);if(result)goto done;
+ (void)temp_byte(0x20,1);(void)temp_byte(0x23,1);(void)temp_byte(0x00,1);temp_end_frame(irq);
+ result=temp_begin_frame(&irq);if(result)goto done;
+ (void)temp_byte(0x30,1);(void)temp_byte(0x1e,1);(void)temp_byte(0x00,1);temp_end_frame(irq);
+ done:pm_bus_release();return result;
+}
 static void clock_tdc(void) { pm_write8(B+SET,1);pm_write8(B+CLR,1); }
 static void send_tdc_bit(uint8_t bit) { pm_write8(B+(bit?SET:CLR),2);clock_tdc(); }
 uint8_t pm_diag_tdc(uint8_t chip,uint8_t reg,uint16_t *value)
