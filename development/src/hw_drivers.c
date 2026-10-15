@@ -45,6 +45,26 @@ uint8_t pm_diag_temp(uint8_t reg,uint16_t *value)
  }
  pm_irq_leave(irq);return result;
 }
+/* Explicit laboratory restoration of original startup values, after host PGOOD
+ * qualification. No serial reset; preserve hysteresis/low threshold. Main-loop
+ * only: one bounded IRQ exclusion prevents timer SPI from splitting the frames. */
+static void temp_write(uint8_t command,uint16_t value,uint8_t wide)
+{
+ pm_write8(A+CLR,16);(void)temp_byte(command);
+ if(wide)(void)temp_byte((uint8_t)(value>>8));
+ (void)temp_byte((uint8_t)value);pm_write8(A+SET,16);
+}
+uint8_t pm_diag_temp_restore(void)
+{
+ uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK,old=pm_read8(A+OUT);
+ if(!powered())result=PM_DIAG_POWER;
+ else if((pm_read8(A+DIR)&0x1a)!=0x1a || !(old&16))result=PM_DIAG_BUSY;
+ else {
+  temp_write(0x08,0x50,0);temp_write(0x20,0x2300,1);temp_write(0x30,0x1e00,1);
+  restore_bits(A,0x1a,old);
+ }
+ pm_irq_leave(irq);return result;
+}
 static void clock_tdc(void) { pm_write8(B+SET,1);pm_write8(B+CLR,1); }
 static void send_tdc_bit(uint8_t bit) { pm_write8(B+(bit?SET:CLR),2);clock_tdc(); }
 uint8_t pm_diag_tdc(uint8_t chip,uint8_t reg,uint16_t *value)

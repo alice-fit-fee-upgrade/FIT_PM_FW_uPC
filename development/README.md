@@ -169,3 +169,11 @@ This branch starts from 9b3abb2 (minimal ownership gates and INA diagnostics),
 not the later reset-ready/slow-cell experiments. Host tests must wait for stable
 physical PGOOD before these reads. This is an intentional development image;
 canonical recovered exact firmware remains unchanged.
+
+`@TEMP RESTORE` is an explicit, state-changing laboratory command. It sends
+CONFIG=50, TCRIT=2300 and THIGH=1E00 through the unchanged native byte cell.
+It does not send a serial reset or modify THYST/TLOW, and it is never invoked
+by `@HW`, ordinary reads, startup or an automatic retry. The host must qualify
+PGOOD and verify all registers afterward; the reply means SENT, not PASS.
+The eight transmitted bytes are checked by the host GPIO framing harness for
+both initial IRQ states, with power/busy cleanup and GPIO restoration checks.

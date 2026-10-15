@@ -26,6 +26,7 @@ int main(void)
     check("PGTIME\r", "PGTIME STATE=00 TICKS=0000 OVF=00 US_NOMINAL=00000000\r\n");
     check("PGTIME 1\r", "ERR ARGUMENTS\r\n");
     check("TEMP\r", "ERR POWER\r\n");
+    check("TEMP RESTORE\r", "ERR POWER\r\n");
     check("PLL\r", "ERR POWER\r\n");
     check("TDC 0 83\r", "ERR POWER\r\n");
     check("TDC 3 83\r", "ERR ARGUMENTS\r\n");

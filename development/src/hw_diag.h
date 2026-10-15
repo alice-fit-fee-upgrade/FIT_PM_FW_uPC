@@ -20,4 +20,7 @@ void pm_write8(uint16_t a,uint8_t v);
 uint8_t pm_irq_enter(void);
 void pm_irq_leave(uint8_t s);
 #endif
+
+/* State-changing laboratory command; original values only, no sensor reset. */
+uint8_t pm_diag_temp_restore(void);
 #endif

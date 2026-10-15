@@ -21,6 +21,9 @@ void pm_command_hw(const char *args)
 }
 void pm_command_temp(const char *args)
 {
+ if(args[0]=='R'&&args[1]=='E'&&args[2]=='S'&&args[3]=='T'&&args[4]=='O'&&args[5]=='R'&&args[6]=='E'&&!args[7]){
+  if(result(pm_diag_temp_restore())){static const PM_FLASH char sent[]="ADT7311 RESTORE SENT VERIFY_READBACK\r\n";pm_console_write(sent);}return;
+ }
  uint8_t count=4;
  if(*args){
   if(args[0]=='A' && args[1]=='L' && args[2]=='L' && !args[3])count=8;

@@ -5,6 +5,7 @@
 static uint8_t mem[0x2500],irq,timeout,spi_count,bit_count,tx[12],tx_count;
 static unsigned polls,writes,steps;
 static uint32_t temp_stream;
+static uint8_t temp_tx[8],temp_tx_bits;
 uint8_t pm_irq_enter(void){uint8_t s=irq;irq=0;return s;}
 void pm_irq_leave(uint8_t s){assert(irq==0);irq=s;}
 uint8_t pm_read8(uint16_t a)
@@ -12,7 +13,7 @@ uint8_t pm_read8(uint16_t a)
  assert(!irq);++steps;
  if(a==0x8c2){++polls;return (timeout && spi_count>=timeout)?0:128;}
  if(a==0x8c3)return spi_count>4?(uint8_t)(0x11*(spi_count-4)):0;
- if(a==0x608){uint8_t bit=(temp_stream>>(31-bit_count++))&1;return (mem[a]&~4)|(bit<<2);}
+ if(a==0x608){uint8_t bit=(temp_stream>>(31-(bit_count++&31)))&1;return (mem[a]&~4)|(bit<<2);}
  if(a==0x628 && !(mem[0x620]&2) && (mem[0x624]&1)){
   uint8_t bit=(0xa55au>>(15-bit_count++))&1;return 64|(bit<<1);
  }
@@ -23,6 +24,9 @@ void pm_write8(uint16_t a,uint8_t v)
  assert(!irq);++steps;
  if(a==15){mem[a]=v;return;}
  ++writes;
+ if(a==0x605 && (v&2) && !(mem[0x604]&2) && !(mem[0x604]&16) && temp_tx_bits<64){
+  uint8_t byte=temp_tx_bits/8;temp_tx[byte]=(uint8_t)((temp_tx[byte]<<1)|!!(mem[0x604]&8));++temp_tx_bits;
+ }
  if(a==0x8c0){mem[a]=v;return;}
  if(a==0x8c3){++spi_count;mem[a]=v;return;}
  uint16_t port=a&0xffe0;uint8_t off=a-port;
@@ -34,7 +38,7 @@ void pm_write8(uint16_t a,uint8_t v)
 }
 static void init(uint8_t s)
 {
- memset(mem,0,sizeof mem);irq=s;timeout=spi_count=bit_count=tx_count=0;polls=writes=steps=0;
+ memset(mem,0,sizeof mem);memset(temp_tx,0,sizeof temp_tx);temp_tx_bits=0;irq=s;timeout=spi_count=bit_count=tx_count=0;polls=writes=steps=0;
  mem[0x684]=4;mem[0x688]=10;mem[0x600]=0x1a;mem[0x604]=0xfa;
  mem[0x620]=0xbf;mem[0x624]=0xbc;mem[0x628]=64;
  mem[0x664]=3;mem[0x644]=7;mem[0x6a4]=0xf0;mem[0x8c0]=0xd5;temp_stream=0x00c30000;
@@ -51,6 +55,10 @@ int main(void)
    assert(bit_count==((reg==2||reg==4||reg==6||reg==7)?24:16));
    assert(irq==s && mem[0x604]==0xfa);
   }
+  init(s);assert(pm_diag_temp_restore()==PM_DIAG_OK && irq==s && mem[0x604]==0xfa);
+  {const uint8_t expected[]={8,0x50,0x20,0x23,0,0x30,0x1e,0};assert(temp_tx_bits==64 && !memcmp(expected,temp_tx,8));}
+  init(s);mem[0x688]=0;assert(pm_diag_temp_restore()==PM_DIAG_POWER && writes==0 && irq==s);
+  init(s);mem[0x604]&=~16;assert(pm_diag_temp_restore()==PM_DIAG_BUSY && writes==0 && irq==s);
   init(s);assert(pm_diag_tdc(2,0x83,&v)==PM_DIAG_OK && v==0xa55a && irq==s && mem[0x624]==0xbc && mem[0x620]==0xbf);
   assert(tx_count==10 && tx[0]==1 && tx[1]==0);
   for(unsigned n=0;n<8;++n)assert(tx[n+2]==((0x83>>(7-n))&1));
