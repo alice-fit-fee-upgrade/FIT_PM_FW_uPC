@@ -1,0 +1,71 @@
+{
+  "programming": "FPGA SRAM only",
+  "nonvolatile_writes": false,
+  "mcu_programmed": false,
+  "expected_magic": "504d5a02",
+  "bitstream_sha256": "a3c7301f466f193ec01347285fd858ba52767683342fa6114abb02eaa3de5aa9",
+  "jtag_load": "PASS",
+  "queries": [
+    {
+      "seq": 0,
+      "response_hex": "4932433180000f000000000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 1,
+      "response_hex": "4932433180000f000001000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 2,
+      "response_hex": "4932433180000f000002000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 3,
+      "response_hex": "4932433180000f000003000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 4,
+      "response_hex": "4932433180000f000004000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 5,
+      "response_hex": "4932433180000f000005000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 6,
+      "response_hex": "4932433180000f000006000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 7,
+      "response_hex": "4932433180000f000007000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 8,
+      "response_hex": "4932433180000f000008000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    },
+    {
+      "seq": 9,
+      "response_hex": "4932433180000f000009000000000000",
+      "lines_SDA_SCL_RESET": 7,
+      "reported_drive_mask": 0
+    }
+  ],
+  "ethernet_passive_queries": "PASS"
+}

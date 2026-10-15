@@ -1,0 +1,29 @@
+{
+  "fpga_nonzero_I2C_requests": "PASS five rejected, queries recover with mask0/linesHIGH",
+  "negative_controls": [
+    {
+      "rejected_nonzero_mask": 1,
+      "post_rejection_query": "4932433180000f0000c8000000000000"
+    },
+    {
+      "rejected_nonzero_mask": 2,
+      "post_rejection_query": "4932433180000f0000c9000000000000"
+    },
+    {
+      "rejected_nonzero_mask": 4,
+      "post_rejection_query": "4932433180000f0000ca000000000000"
+    },
+    {
+      "rejected_nonzero_mask": 7,
+      "post_rejection_query": "4932433180000f0000cb000000000000"
+    },
+    {
+      "rejected_nonzero_mask": 3,
+      "post_rejection_query": "4932433180000f0000cc000000000000"
+    }
+  ],
+  "legacy_uart_after_fpga_load": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.5 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+  "mcu_programmed": false,
+  "fpga_sram_left_loaded": "pm12_mcu_spi_passive, JTAGmagic504d5a02",
+  "flash_writes": false
+}

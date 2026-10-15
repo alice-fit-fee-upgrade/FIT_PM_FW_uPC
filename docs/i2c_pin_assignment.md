@@ -133,3 +133,26 @@ of unpowered AFE/FPGA branches before releasing the revised schematic. This
 correction is recorded in the updated received handoff; no hardware changes or
 programming were performed here. Independent telemetry during main P3V3 failure
 cannot be achieved by firmware alone on the present wiring.
+
+## Latest bench FPGA state — passive image, 2026-10-15
+
+Bring-up thread loaded **FPGA SRAM only** with `pm12_mcu_spi_passive`, JTAG magic
+0x504D5A02, bitstream SHA256
+`a3c7301f466f193ec01347285fd858ba52767683342fa6114abb02eaa3de5aa9`.
+SDA/SCL/RESET use IBUF only with reset pull-up. Ten Ethernet observations showed
+all three lines HIGH, drive mask zero. Five nonzero-drive requests were rejected
+and subsequent observation recovered. Evidence snapshots:
+`handoffs/pm12-passive-fpga-hardware.json` and
+`handoffs/pm12-passive-negative-and-status.json`.
+
+This supersedes the earlier active FPGA-master diagnostic bench state. The
+previous FPGA-only telemetry client cannot read INA3221 with this passive image.
+It does not prove MCU wiring, MCU I²C, power-off isolation or sensor readings.
+The FPGA SRAM image remains loaded for subsequent tests; a power cycle loses it.
+
+Original MCU RS still worked after loading: 31.5 C NORMAL, power ON/OK,
+INTERNAL/PLL LOCKED. `FPGA not ready` is the legacy production-status result,
+not proof of absent FPGA configuration. No MCU/EEPROM/fuse/configuration-FLASH
+writes were performed. Bring-up released UART and PM12 lock; PDI was still
+blocked by Atmel-ICE USB ACL when this handoff was received. That thread retains
+hardware ownership and waits for user action; do not open ports concurrently.
