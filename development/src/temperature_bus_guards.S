@@ -13,6 +13,17 @@ pm_timer_at_077e:
  in r16,0x3f
  push r16
  cli
+ /* No shared SCL edges until PSU enable and both physical power-good inputs.
+  * This gate is inside the existing ISR temperature hook, after PSU service.
+  * C equivalent: if (!(PORTE_OUT & 4) || (PORTE_IN & 10) != 10) skip_read;
+  */
+ lds r16,0x0684
+ sbrs r16,2
+ rjmp .Lpower_unready
+ lds r16,0x0688
+ andi r16,0x0a
+ cpi r16,0x0a
+ brne .Lpower_unready
  in r16,0x0f
  andi r16,0x43
  brne .Ldefer
@@ -34,6 +45,13 @@ pm_timer_instruction_077e:
  inc r16
  out 0x0e,r16
 .Lcounted:
+ pop r16
+ out 0x3f,r16
+ pop r16
+ jmp 0x08be
+.Lpower_unready:
+ /* Power unavailability is not bus contention: leave owner/pending/defer
+  * untouched and return through the original ISR epilogue. */
  pop r16
  out 0x3f,r16
  pop r16

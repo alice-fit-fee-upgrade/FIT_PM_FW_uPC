@@ -177,3 +177,12 @@ by `@HW`, ordinary reads, startup or an automatic retry. The host must qualify
 PGOOD and verify all registers afterward; the reply means SENT, not PASS.
 The eight transmitted bytes are checked by the host GPIO framing harness for
 both initial IRQ states, with power/busy cleanup and GPIO restoration checks.
+
+The existing timer temperature hook now also checks PORTE_OUT.EN_PSU and both
+PORTE_IN readiness bits (mask 0x0a). If not ready, it jumps through the original
+ISR epilogue before acquiring the bus or clocking ADT. Other PSU ISR work still
+runs. Owner/pending/defer are unchanged on this power-unavailable path.
+Decoded instruction tests cover 5376 unready GPIO/SREG/ownership contexts and
+1536 ready mutex contexts, including original register/SREG restoration.
+This does not yet defer the original startup configuration writes: the explicit
+RESTORE laboratory command remains separate from the read gate.
