@@ -182,3 +182,17 @@ Sources checked:
 - https://m-labs.hk/docs/sinara-datasheets/2245.pdf (July2025)
 - Local available DIOT variant repository c8cb69a084ef14d6f700eccb27d9d49566c85b5b;
   do not assume it matches the user's physical module revision.
+
+## Confirmed shared-SPI selection (recovered MCU + original PM HDL)
+
+Recovered system_init sets SPID_CTRL=0x44: hardware SPID enabled, slave,
+mode1, MSB first. PORTD_DIRSET=0x41 includes PD6/MISO output; DMA channels0/1
+use trigger0x6a with SPID_DATA0x09c3 as destination/source.
+Original PM HDL fit.vhd sets hspi_rden<=not HSELI and drives HMISO through
+OBUFT(T=>hspi_rden); its slave process resets while HSELI=0. Thus HSEL high
+selects FPGA, HSEL low selects the MCU's active-low hardware SS. This is
+complementary slave selection, not two masters or software address arbitration.
+The TCM master's separate xmg_md path is consistent with MCU accesses.
+Keep the original select behavior: low is NOT an idle state for both slaves.
+FPGA HSPI accepts a read bit plus9-bit address and mapped16/32-bit data with
+increment/side effects; retain separate original MCU command framing.
