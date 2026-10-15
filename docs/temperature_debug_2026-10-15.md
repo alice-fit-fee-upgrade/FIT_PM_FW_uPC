@@ -134,3 +134,18 @@ power/startup faults; it does not retrospectively reconstruct a previous boot.
 3840 decoded release cases verify unchanged registers, SREG and successor
 branches plus the two explicit telemetry writes. Canonical ISR bytes outside
 the existing gates remain untouched.
+
+Candidate5 (`6faaa1c`) recovered normal-speed ID C3 and temperature, but was
+rejected: slow reads returned C2 instead of C3, CONFIG FE vs FF, THYST 04 vs 05
+and TCRIT 43FE vs 43FF. The last data bit is a specific sampling issue.
+The datasheet permits DOUT to go low shortly after the final rising/inactive
+SCLK edge (t10). The initial slow experiment incorrectly waited a whole us
+after that edge before sampling. The corrected slow read captures settled
+DOUT during the low phase before raising SCLK. A linked-AVR protocol test models
+DOUT going low after the last rising edge and validates all eight registers,
+including odd final bytes. This is not an electrical timing measurement.
+
+Candidate5 also reproduced shared GPIOR0=02 with TEMPFLAGS=00/TEMPSEEN=00 and
+normal temperature: no sensor alarm bits were observed by that ISR since reset.
+The initial reset-ready change alone did not establish correct setpoint readback;
+no claim that the startup issue is solved is made.

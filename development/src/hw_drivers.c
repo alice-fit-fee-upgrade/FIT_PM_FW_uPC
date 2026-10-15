@@ -43,8 +43,10 @@ static uint8_t temp_byte(uint8_t tx,uint8_t slow)
  for(uint8_t n=0;n<8;++n) {
   pm_write8(A+((tx&128)?SET:CLR),8);temp_phase_delay();
   pm_write8(A+CLR,2);temp_phase_delay();
-  pm_write8(A+SET,2);temp_phase_delay();
-  rx=(uint8_t)((rx<<1)|((pm_read8(A+IN)>>2)&1));tx<<=1;
+  /* DOUT is established after the falling edge. Capture before the rising
+   * edge: after the final rising edge the sensor may already drive DOUT low. */
+  rx=(uint8_t)((rx<<1)|((pm_read8(A+IN)>>2)&1));
+  pm_write8(A+SET,2);temp_phase_delay();tx<<=1;
  }
  return rx;
 }
