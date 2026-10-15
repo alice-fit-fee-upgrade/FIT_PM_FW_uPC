@@ -12,6 +12,9 @@ FILES = [
  'firmware/FT0/PM/hdl/trigger.vhd',
  'firmware/FT0/PM/hdl/TDCCHAN.vhd',
  'firmware/FT0/PM/hdl/pin_capt.vhd',
+ 'firmware/FT0/PM/hdl/Channel.vhd',
+ 'firmware/FT0/PM/hdl/autophase.vhd',
+ 'firmware/FT0/PM/ipcore_properties/CLK600_pll.txt',
  'firmware/FT0/PM/hdl/fit.vhd',
  'firmware/FT0/PM/ipcore_properties/TDC_FIFO.txt',
  'firmware/FT0/PM/ipcore_properties/PLL320.txt',
@@ -37,13 +40,14 @@ def main():
   dest.parent.mkdir(parents=True, exist_ok=True)
   dest.write_bytes(raw)
   result['files'].append({'path': name, 'size': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()})
- fit = (a.out/FILES[4]).read_bytes().splitlines(keepends=True)
+ fit_name = 'firmware/FT0/PM/hdl/fit.vhd'
+ fit = (a.out/fit_name).read_bytes().splitlines(keepends=True)
  # This is a verbatim process body, with original register-map dependencies.
  start = next(i for i,l in enumerate(fit) if l.strip() == b'process (HSCKI, HSELI, RESET)')
  end = next(i for i in range(start,len(fit)) if fit[i].strip() == b'end process;')+1
  name = 'pm_hdmi_spi_slave_process.vhd.fragment'
  (a.out/name).write_bytes(b''.join(fit[start:end]))
- result['slave_process'] = {'path': name, 'source': FILES[4], 'first_line': start+1, 'last_line': end,
+ result['slave_process'] = {'path': name, 'source': fit_name, 'first_line': start+1, 'last_line': end,
   'standalone': False, 'note': 'Keep read map, side effects, flags and CDC dependencies; not generic MCU SPI.'}
  (a.out/'manifest.json').write_text(json.dumps(result, indent=2)+'\n')
  print('Extracted',len(FILES),'pinned upstream files and PM HDMI SPI process; no hardware access.')

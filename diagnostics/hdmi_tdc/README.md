@@ -13,7 +13,7 @@ python3 extract.py /path/to/FIT_TCM_GW_FPGA
 The exporter reads git objects at revision
 `857b773eec28282b357d4668ab934e95f41b6fe7` from
 https://github.com/alice-fit-fee-upgrade/FIT_TCM_GW_FPGA.
-It stages 13 original files and a verbatim PM HDMI SPI slave process, preserving
+It stages 16 original files and a verbatim PM HDMI SPI slave process, preserving
 original bytes and recording SHA256 in generated/manifest.json. Generated files
 are ignored; the original repositories and baseline firmware are not edited.
 This source version must still be checked against the intended historical PM
@@ -196,3 +196,5 @@ The TCM master's separate xmg_md path is consistent with MCU accesses.
 Keep the original select behavior: low is NOT an idle state for both slaves.
 FPGA HSPI accepts a read bit plus9-bit address and mapped16/32-bit data with
 increment/side effects; retain separate original MCU command framing.
+
+Detailed original receiver analysis: [TDC_RECEIVER_REVIEW.md](TDC_RECEIVER_REVIEW.md).
