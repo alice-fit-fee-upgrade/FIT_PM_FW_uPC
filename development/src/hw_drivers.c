@@ -22,7 +22,7 @@ static uint8_t powered(void) { return (pm_read8(E+OUT)&4) && (pm_read8(E+IN)&10)
 static void restore_bits(uint16_t port,uint8_t mask,uint8_t out)
 { pm_write8(port+CLR,mask & (uint8_t)~out);pm_write8(port+SET,mask & out); }
 #ifdef __AVR__
-/* Native R24 adapter to the unchanged original bit cell at 0x2608. */
+/* Native R24 adapter to the timing-adapted legacy entry at 0x2608. */
 extern uint8_t pm_diag_legacy_temp_byte(uint8_t tx);
 #endif
 static void temp_phase_delay(void)

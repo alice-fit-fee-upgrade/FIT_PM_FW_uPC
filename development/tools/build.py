@@ -70,6 +70,15 @@ def main():
     patch=names['pm_adt_reset_patch'];startup[offset:offset+4]=data[patch:patch+4]
     section.write_bytes(startup)
     run(['avr-objcopy','--update-section','.c_000f54='+str(section),elf])
+    # Shared-pin development timing: retain original entry and all callers,
+    # redirect only its two initial LDI instructions to the slow private ABI cell.
+    assert golden[0x2608:0x260c]==bytes.fromhex('28e018e0')
+    section=BUILD/'adt-shared-clock.bin'
+    run(['avr-objcopy','--dump-section','.c_002608='+str(section),elf])
+    cell=bytearray(section.read_bytes());assert cell==golden[0x2608:0x2634]
+    patch=names['pm_adt_shared_patch'];cell[:4]=data[patch:patch+4]
+    section.write_bytes(cell)
+    run(['avr-objcopy','--update-section','.c_002608='+str(section),elf])
     run(['avr-objcopy','-O','ihex',elf,hexfile]);run([sys.executable,ROOT/'tools/memory_image.py',hexfile,binary])
     (BUILD/'development.dis').write_text(subprocess.check_output(['avr-objdump','-d',str(elf)],text=True))
     run([sys.executable,DEV/'tools/check_layout.py'])

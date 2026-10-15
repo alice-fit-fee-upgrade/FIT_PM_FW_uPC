@@ -7,6 +7,7 @@ check: all
 	python3 tests/check_bus_lock.py
 	python3 tests/check_adt_reset_ready.py
 	python3 tests/check_adt_sampling.py
+	python3 tests/check_adt_byte_contract.py
 	python3 tests/check_pg_timing.py
 	python3 tests/check_bridge.py
 	python3 tests/check_layout_guards.py

@@ -1,5 +1,5 @@
 /* REFERENCE_C_INFERRED: return legacy_adt_byte(tx);
- * Native R24 argument/result -> legacy R16. Legacy cell clobbers R17/R18
+ * Native R24 argument/result -> legacy R16. The shared-clock cell at the legacy entry clobbers R17/R18
  * and SREG only. Save native callee-saved R16/R17; R1 remains zero.
  * This adapter adds no sensor-register writes or reset sequence. */
 .section .text.pm_diag_legacy_temp_byte,"ax",@progbits

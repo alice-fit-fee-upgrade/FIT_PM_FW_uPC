@@ -149,3 +149,20 @@ Candidate5 also reproduced shared GPIOR0=02 with TEMPFLAGS=00/TEMPSEEN=00 and
 normal temperature: no sensor alarm bits were observed by that ISR since reset.
 The initial reset-ready change alone did not establish correct setpoint readback;
 no claim that the startup issue is solved is made.
+
+Candidate6 (`5eecbba`) still returned zeros through both read methods before I2C.
+It was rejected and restored. This rules out correcting the diagnostic sample
+point alone as a sufficient fix for startup/interface failure.
+
+Next controlled candidate also redirects the original SPI byte entry 0x2608
+through a four-byte JMP. All original reset/configuration/ISR callers keep their
+addresses and private ABI. The shared-clock cell adds 32-cycle (1 us) phases,
+sets DIN before the falling edge and captures DOUT before the rising edge.
+It preserves the private byte-cell GPR/SREG contract under stable MISO (192
+linked instruction comparisons with golden). Both linked native read paths pass
+16 register cases where DOUT can fall after the final rising edge. This tests
+whether the added shared-clock load makes the original short phases unreliable;
+no electrical waveform measurement has yet been made. Acceptance now requires
+both read methods to agree with the original intended startup settings:
+CONFIG=50, TCRIT=2300 (70 C), THYST=05, THIGH=1E00 (60 C), TLOW=0500 (10 C),
+and retain those settings across FPGA restoration and INA reads.

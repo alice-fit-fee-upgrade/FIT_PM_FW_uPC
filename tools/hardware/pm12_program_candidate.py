@@ -9,7 +9,8 @@ ROOT=Path(__file__).resolve().parents[2]
 MEM=['flash','boot','eeprom','fuse0','fuse1','fuse2','fuse4','fuse5','lock','usersig','prodsig','signature']
 BASE=['avrdude','-c','atmelice_pdi','-p','x128a3u','-P','usb:J41800043065','-B','10','-u']
 def main():
- p=argparse.ArgumentParser();p.add_argument('--evidence',required=True,type=Path);p.add_argument('--hex',required=True,type=Path);p.add_argument('--bin',required=True,type=Path);p.add_argument('--backup',required=True,type=Path);p.add_argument('--sensor-probe',action='store_true',help='capture ADT/flags repeatedly, then restore the pre-update application');p.add_argument('--full-app-write',action='store_true',help='use bounded 128 KiB application alias, including FF pages');p.add_argument('--temperature-registers',action='store_true',help='compare normal/slow readback of all ADT registers before and after I2C');args=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--evidence',required=True,type=Path);p.add_argument('--hex',required=True,type=Path);p.add_argument('--bin',required=True,type=Path);p.add_argument('--backup',required=True,type=Path);p.add_argument('--sensor-probe',action='store_true',help='capture ADT/flags repeatedly, then restore the pre-update application');p.add_argument('--full-app-write',action='store_true',help='use bounded 128 KiB application alias, including FF pages');p.add_argument('--temperature-registers',action='store_true',help='compare normal/slow readback of all ADT registers before and after I2C');p.add_argument('--expect-original-adt-settings',action='store_true',help='require CONFIG 50, TCRIT 2300, THYST 05, THIGH 1E00, TLOW 0500');args=p.parse_args()
+ assert not args.expect_original_adt_settings or args.temperature_registers
  out=args.evidence;out.mkdir(exist_ok=False);backup=args.backup
  expected=args.bin.read_bytes();old=(backup/'flash-full.bin').read_bytes()
  assert len(old)==len(expected)==0x22000 and old[0x20000:]==expected[0x20000:]
@@ -67,7 +68,10 @@ def main():
      samples.append({str(i):regs[i] for i in [1,3,4,5,6,7]})
     assert samples[0]==samples[1],('normal/slow ADT configuration mismatch',samples)
     return samples[0]
-   if args.temperature_registers:report['adt_before_i2c']=settings(report['pre_i2c_sensor'])
+   if args.temperature_registers:
+    report['adt_before_i2c']=settings(report['pre_i2c_sensor'])
+    if args.expect_original_adt_settings:
+     assert report['adt_before_i2c']=={'1':0x50,'3':0xc3,'4':0x2300,'5':5,'6':0x1e00,'7':0x0500},('ADT settings differ from original startup intent',report['adt_before_i2c'])
   finally:uart.rts=False;uart.close()
   if args.sensor_probe:
    report['sensor_probe']='PASS repeated ID capture only; not sensor configuration/feature acceptance; previous firmware restored below'

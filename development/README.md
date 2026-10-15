@@ -175,3 +175,10 @@ reset-ready wait (>=600 us at 32 MHz). It calls the original serial reset and
 preserves its return state. The subsequent original configuration and threshold
 writes are unchanged. Hardware acceptance is recorded in
 `docs/temperature_debug_2026-10-15.md`; this is not a change to the exact baseline.
+
+The shared-clock investigation additionally redirects only the original byte
+entry's first four bytes (0x2608) to a timing-adapted legacy-ABI helper. It is
+used by the original startup and ISR as well as native diagnostics. DIN, low
+clock and high clock phases each include a 1 us wait; DOUT is captured before
+raising the clock. Register/SREG compatibility has a separate decoded test.
+The exact baseline's original byte cell and all reference files are preserved.

@@ -45,16 +45,17 @@ class Xmega(Machine):
   if a==0x3f:super().io_write(a,v)
   else:self.write(a,v)
 cases=0
-for reg in range(8):
- sensor=Sensor();m=Xmega(sensor.read,sensor.write,lambda enabled:None,program=program)
- m.r[1]=0;m.r[24]=reg;m.r[22]=0;m.r[23]=0x23;m.f[7]=1
- m.run(names['pm_diag_temp_slow'],limit=20000)
- assert m.r[24]==0 and m.f[7]==1 and m.r[1]==0
- assert sensor.mem[0x2300]|(sensor.mem[0x2301]<<8)==values[reg],(reg,sensor.mem)
- assert len(sensor.frames)==1 and len(sensor.frames[0])==(24 if reg in (2,4,6,7) else 16)
- assert not any(sensor.frames[0][8:]),'read dummy bits must be zero'
- assert sensor.mem[0x604]==0xfb and not m.stack and not m.calls
- cases+=1
+for driver in ('pm_diag_temp','pm_diag_temp_slow'):
+ for reg in range(8):
+  sensor=Sensor();m=Xmega(sensor.read,sensor.write,lambda enabled:None,program=program)
+  m.r[1]=0;m.r[24]=reg;m.r[22]=0;m.r[23]=0x23;m.f[7]=1
+  m.run(names[driver],limit=20000)
+  assert m.r[24]==0 and m.f[7]==1 and m.r[1]==0
+  assert sensor.mem[0x2300]|(sensor.mem[0x2301]<<8)==values[reg],(reg,sensor.mem)
+  assert len(sensor.frames)==1 and len(sensor.frames[0])==(24 if reg in (2,4,6,7) else 16)
+  assert not any(sensor.frames[0][8:]),'read dummy bits must be zero'
+  assert sensor.mem[0x604]==0xfb and not m.stack and not m.calls
+  cases+=1
 report={'status':'PASS','cases':cases,'scope':'actual linked AVR slow driver with command framing and DOUT-low after final rising edge; no electrical or real-time proof'}
 (BUILD/'adt_sampling_validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print('PASS linked AVR ADT sampling:',cases,'registers, including odd final data bits')

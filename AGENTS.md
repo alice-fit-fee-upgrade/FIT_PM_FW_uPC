@@ -52,6 +52,7 @@ legacy adapters; the exact baseline remains a separately validated reference.
 `make exact-check` retain the zero-difference recovered baseline. Root
 `make development-check` tests intentional changes: a six-byte CLI gate, two four-byte temperature ownership gates, retained
 diagnostic PG observation hooks, a four-byte startup CALL adapter adding the
-ADT7311 reset-ready delay, and a bounded new FLASH section only. See `development/README.md`. New modules use
+ADT7311 reset-ready delay, a four-byte JMP adapting the ADT byte cell to the
+loaded shared clock, and a bounded new FLASH section only. See `development/README.md`. New modules use
 ordinary GNU ABI through explicit private-register adapters. Do not relax the
 baseline linker or add unreviewed SRAM allocations/peripheral assignments.
