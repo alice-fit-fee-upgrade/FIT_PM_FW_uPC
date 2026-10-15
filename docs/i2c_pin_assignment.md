@@ -117,3 +117,19 @@ configuration, or program hardware as part of this knowledge transfer. Save and
 restore both mux masks, including error paths; select one INA branch at a time.
 Physical MCU telemetry remains NOT_RUN. Future hardware operations must use the
 identified PM12 device and lock specified in the handoff.
+
+## Confirmed power-domain correction — 2026-10-15
+
+The user confirmed a current hardware error: INA3221 and TCA9548A are supplied
+by switched main P3V3 DC/DC, not the always-powered MCU P3V3_LDO domain.
+RS232 is already supplied from P3V3_LDO. Consequently MCU/UART can remain alive
+while the telemetry ICs cannot respond. Firmware must report unavailable
+telemetry on missing ACK, never fabricate measured zero voltage/current or
+weaken PSU protection to keep telemetry alive.
+
+Next board revision must move INA3221 VS/VPU, TCA9548A VCC and associated bus
+pull-ups into the MCU P3V3_LDO domain. Verify LDO current budget and back-powering
+of unpowered AFE/FPGA branches before releasing the revised schematic. This
+correction is recorded in the updated received handoff; no hardware changes or
+programming were performed here. Independent telemetry during main P3V3 failure
+cannot be achieved by firmware alone on the present wiring.

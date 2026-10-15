@@ -193,5 +193,12 @@
     "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/evidence/reset_with_pullup.json",
     "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/validation-2026-10-14.json"
   ],
-  "hardware_coordination": "PM12 Digilent210249A73E43; flock EX/NB /home/codex-hil/.cache/pm12-210249A73E43.lock przez wszystkie operacje HW/restore. Nie dotykać innych Digilentów. To przekazanie nie inicjuje programowania MCU ani zmian połączeń."
+  "hardware_coordination": "PM12 Digilent210249A73E43; flock EX/NB /home/codex-hil/.cache/pm12-210249A73E43.lock przez wszystkie operacje HW/restore. Nie dotykać innych Digilentów. To przekazanie nie inicjuje programowania MCU ani zmian połączeń.",
+  "next_revision_hardware_correction": {
+    "confirmed_by_user": "2026-10-15",
+    "problem": "INA3221 and TCA9548A currently powered from switched main P3V3 DC/DC; unavailable to always-powered MCU during shutdown/startup/fault. User identifies this as a hardware error.",
+    "required_change": "Move INA3221 VS and VPU, TCA9548A VCC and associated I2C pull-ups to MCU P3V3_LDO power domain.",
+    "review": "Verify P3V3_LDO current budget and I2C branches to unpowered AFE/FPGA for back-powering before schematic release.",
+    "firmware_current_revision": "Until hardware revision, treat missing sensor/mux ACK while main P3V3 is off as unavailable telemetry; preserve existing power protections."
+  }
 }
