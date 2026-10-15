@@ -28,6 +28,10 @@ def main():
   full=(dest/'flash.bin').read_bytes().ljust(0x22000,b'\xff');assert full==target,'canonical readback mismatch'
   protected={m:(dest/(m+'.bin')).read_bytes()==(backup/(m+'.bin')).read_bytes() for m in MEM[1:]}
   assert all(protected.values()),protected;return protected
+ prior=Path('/home/codex-hil/fit-bringup/evidence/pm12-fw-validation-2026-10-15')
+ text=(prior/'load_passive_fpga.tcl').read_text()
+ text=text.replace('if {[expr {("0x$baseline") & 0xffffffff}] != 0x00000000}', 'if {[expr {("0x$baseline") & 0xffffffff}] == 0x504d5a02} {puts "LOAD_PASS existing passive image"; pm12_close; exit}\nif {[expr {("0x$baseline") & 0xffffffff}] != 0x00000000}')
+ (out/'restore-passive.tcl').write_text(text)
  attempted=False
  try:
   run(BASE+['-n','-U','signature:r:'+str(out/'identity.bin')+':r'],out/'identify.log')
@@ -35,6 +39,18 @@ def main():
   attempted=True
   run(BASE+['-U','application:w:'+str(args.hex)+':i']+reads(out),out/'program-and-read.log')
   report['protected_regions_unchanged']=verify(out,expected);report['programming']='PASS full FLASH/readback and protected regions'
+  # Isolate sensor behavior BEFORE any I2C transaction or FPGA reload.
+  import serial
+  sys.path.insert(0,str(ROOT/'tools/hardware'));from pm12_console_regression import PORT,capture
+  time.sleep(8)
+  uart=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);uart.dtr=False;uart.rts=True;uart.port=PORT;uart.open()
+  try:
+   report['pre_i2c_sensor']=[]
+   for command in ['@PING','@HW','RS','@TEMP','@I2C']:
+    row=capture(uart,command);report['pre_i2c_sensor'].append(row);print('PRE_I2C '+json.dumps(row),flush=True)
+   sensor=next(r['reply'] for r in report['pre_i2c_sensor'] if r['command']=='@TEMP')
+   assert 'ADT7311 REG=03 C3\r\n' in sensor,'ADT7311 ID failed before I2C/FPGA reload'
+  finally:uart.rts=False;uart.close()
   # Retain the known passive image if already present, otherwise reload its
   # identical SRAM payload after MCU reset. Full chain identity is in Tcl.
   prior=Path('/home/codex-hil/fit-bringup/evidence/pm12-fw-validation-2026-10-15')
@@ -49,10 +65,11 @@ def main():
   s=serial.Serial(port=None,baudrate=115200,timeout=.03,write_timeout=1,rtscts=True,exclusive=True);s.dtr=False;s.rts=True;s.port=PORT;s.open()
   try:
    report['startup_drain']=s.read(4096).decode('ascii',errors='replace')
-   for command in ['@PING','@HELP','RS','@I2C','@INA 4','@INA 5','@INA 6','@I2C','RS','@TEMP','@FPGATEST']:
+   for command in ['@PING','@HELP','RS','@TEMP','@I2C','@INA 4','@INA 5','@INA 6','@I2C','RS','@TEMP','@FPGATEST']:
     row=capture(s,command);report['commands'].append(row);print(json.dumps(row),flush=True)
     assert row['reply'],row
     if command=='@PING':assert row['reply']=='PONG\r\n'
+    if command=='@TEMP':assert 'ADT7311 REG=03 C3\r\n' in row['reply'],row
     if command.startswith('@INA'):assert 'CONFIG=7127' in row['reply'] and 'ERR ' not in row['reply'],row
     if command=='@FPGATEST':assert row['reply']=='FPGA TEST PASS 32 RESTORED\r\n',row
     if command=='RS':assert 'Board power ON, OK' in row['reply'] and ' NORMAL' in row['reply'],row

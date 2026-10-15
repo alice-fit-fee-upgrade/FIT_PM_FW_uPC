@@ -22,8 +22,9 @@ Main code atomically claims ownership, preserving SREG/I. ISR claims before
 ADT7311 and releases immediately after; busy ISR marks deferred and skips only
 temperature-dependent work, not earlier PSU processing. Deferred temperature
 prevents another I2C request until the timer services it. No spin in ISR and no
-interrupt mask across I2C. Busy responses are explicit. Existing short native
-SPI/TDC diagnostic IRQ exclusion is retained.
+interrupt mask across I2C. Busy responses are explicit. Native TEMP is serialized by its preexisting short IRQ exclusion and main-loop
+execution; it does not add a redundant ownership wrapper. Other existing short
+SPI/TDC diagnostic IRQ exclusions are retained.
 
 PA1 SCL and PF7 SDA are open-drain during I2C; PB6 RESET remains alarm input.
 PF7 internal pull-down is removed and SDA remains released between commands.
@@ -63,3 +64,13 @@ BOOT/flash reads require a separate sequence restoring known FPGA SRAM. No
 EEPROM, fuse, bootloader or configuration-FLASH content writes are authorized by
 this implementation. Programming uses application-page erase and full readback,
 with exact rollback to the current diagnostic application if validation fails.
+
+## Iteration record
+
+Initial ab52b49 image read all three INA monitors correctly but failed ADT7311
+ID/temperature regression. Exact previous FLASH/protected memories were restored;
+the old firmware recovered C3/normal temperature. Repeating preflight isolated
+failure before any I2C transfer or FPGA reload. Do not call that candidate a
+hardware PASS. The next isolated iteration removes the redundant native TEMP
+ownership wrapper while retaining ISR-versus-main I2C protection and stricter
+preflight/rollback. Physical evidence is outside the repo until final review.

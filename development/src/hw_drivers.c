@@ -3,7 +3,7 @@
  * each transaction is finite, with at most 128 SPI polls per byte. Hardware
  * interrupt latency and electrical ownership still need validation. */
 #include "hw_diag.h"
-#include "bus_lock.h"
+
 #define A 0x600u
 #define B 0x620u
 #define C 0x640u
@@ -29,10 +29,11 @@ static uint8_t temp_byte(uint8_t tx)
  }
  return rx;
 }
+/* Native TEMP retains its previously validated short IRQ exclusion. It cannot
+ * overlap main-loop I2C; adding a second ownership wrapper here is unnecessary. */
 uint8_t pm_diag_temp(uint8_t reg,uint16_t *value)
 {
  if(reg>3)return PM_DIAG_ARGUMENT;
- if(!pm_bus_acquire(PM_BUS_TEMP))return PM_DIAG_BUSY;
  uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK;
  uint8_t old=pm_read8(A+OUT);
  if(!powered())result=PM_DIAG_POWER;
@@ -42,7 +43,7 @@ uint8_t pm_diag_temp(uint8_t reg,uint16_t *value)
   uint16_t v=temp_byte(0);if(reg==2)v=(uint16_t)((v<<8)|temp_byte(0));
   pm_write8(A+SET,16);restore_bits(A,0x1a,old);*value=v;
  }
- pm_irq_leave(irq);pm_bus_release();return result;
+ pm_irq_leave(irq);return result;
 }
 static void clock_tdc(void) { pm_write8(B+SET,1);pm_write8(B+CLR,1); }
 static void send_tdc_bit(uint8_t bit) { pm_write8(B+(bit?SET:CLR),2);clock_tdc(); }
