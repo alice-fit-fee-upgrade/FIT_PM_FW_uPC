@@ -1,0 +1,32 @@
+{
+  "port": "/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0",
+  "baud": 115200,
+  "format": "8N1",
+  "wiring": "User confirms previous swapped pins3/7 corrected",
+  "records": [
+    {
+      "tx_hex": "",
+      "rx_hex": "6e746572666163652072656164790d0a",
+      "rx_ascii": "nterface ready\r\n",
+      "cts": true,
+      "rts": true
+    },
+    {
+      "tx_hex": "52530d",
+      "rx_hex": "426f61726420532f4e3a203138303320466c6173682054696d657374616d703a2038353241443932420d0a45787465726e616c20706f77657220736f757263653a204f4b0d0a54656d70657261747572652020202033312e39204e4f524d414c0d0a426f61726420706f776572204f4e2c204f4b0d0a436c6f636b20736f7572636520494e5445524e414c2c20504c4c204c4f434b45440d0a46504741206e6f742072656164790d0a",
+      "rx_ascii": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.9 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "cts": true,
+      "rts": true
+    },
+    {
+      "tx_hex": "52530d",
+      "rx_hex": "426f61726420532f4e3a203138303320466c6173682054696d657374616d703a2038353241443932420d0a45787465726e616c20706f77657220736f757263653a204f4b0d0a54656d70657261747572652020202033322e30204e4f524d414c0d0a426f61726420706f776572204f4e2c204f4b0d0a436c6f636b20736f7572636520494e5445524e414c2c20504c4c204c4f434b45440d0a46504741206e6f742072656164790d0a",
+      "rx_ascii": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    32.0 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "cts": true,
+      "rts": true
+    }
+  ],
+  "persistent_writes": false,
+  "power_or_reset_commands": false,
+  "cleanup": "UART closed, RTS/DTR deasserted, board lease released"
+}

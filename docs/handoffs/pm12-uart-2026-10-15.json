@@ -17,10 +17,25 @@
     " PM12",
     " cont"
   ],
-  "result": "PARTIAL: recognizable original PM12 banner; full console transfer NOT_PASS",
+  "result": "PASS UART: user corrected previously swapped pins3/7; two complete RS status replies at1152008N1 with RTS asserted",
   "handshake_tests": "RTS and DTR combinations produced no additional pending output. CTS host input TRUE throughout, not proof MCU CTS is asserted.",
   "hypothesis": "MCU CTS PF1 unconnected or miswired/coupled to RX; needs wiring verification, not proven.",
   "schematic_console": "FIT_PM12v1.1.PDF sheet4 X6 RJ45: pin2 boardTX, pin3 boardRX, pin5 GND, pin7 boardCTS(input), pin8 boardRTS(output). PF0 RTS output/PF1 CTS input.",
   "cleanup": "Serial closed; DTR/RTS deasserted; board lock released. No resets or firmware/flash/power changes. Stop transmitting commands while TX queue may be blocked.",
-  "next": "User to clarify cable wiring (TX/RX/GND only or RTS/CTS too). Verify host RTS reaches board CTS and correct RS232 domain, then drain pending banner and complete bounded status read before any programming."
+  "next": "UART unblocked; coordinate any subsequent firmware/FPGA changes separately. Original MCU status says FPGA not ready; not a physical SPI PASS.",
+  "previous_result": "PARTIAL: recognizable original PM12 banner; full console transfer NOT_PASS",
+  "latest_evidence": "/home/codex-hil/fit-bringup/evidence/pm12-uart-2026-10-15/prolific-wiring-corrected.json",
+  "wiring_resolution": "User confirms pins3 and7 had been swapped; corrected before latest test.",
+  "reported_status": {
+    "serial_text": "1803",
+    "flash_timestamp_text": "852AD92B",
+    "external_power": "OK",
+    "board_power": "ON, OK",
+    "temperature_C": [
+      31.9,
+      32.0
+    ],
+    "clock": "INTERNAL, PLL LOCKED",
+    "fpga": "not ready"
+  }
 }
