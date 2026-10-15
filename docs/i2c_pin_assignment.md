@@ -92,3 +92,28 @@ RESET deselects all channels; a LOW shared alarm therefore also disables routing
 
 These are static design constraints. No hardware transaction has been performed.
 The development firmware has not yet been changed to drive the shared pins.
+
+## Superseding physical state — handoff 2026-10-15
+
+The previous shared-pin discussion describes the schematic and earlier state.
+The user has now removed R226/R227/R228: MCU SDA/SCL/RESET are physically
+isolated. FPGA is the sole current I²C master. Do not assume direct MCU reads
+work. A future extension needs an explicitly defined FPGA bridge or an agreed
+change of wiring/master ownership. No such transport is implemented here yet.
+
+Both TCA9548A addresses 0x70/0x71 and three INA3221 devices at 0x40 on mux 0x71
+channels 4/5/6 were physically validated by the diagnostic thread. RESET needs
+HIGH bias; FPGA B26 pull-up restored operation after MCU isolation.
+
+Authoritative received handoff: `handoffs/pm12-ina3221-2026-10-15.json`.
+It records register reads, signed conversion, nominal shunts, raw evidence and
+20 samples per monitor. In particular R15 is NOT fitted: P3V8 current is always
+unavailable, and its observed bus input must not be labelled the actual 3.8-V
+rail. TP1/TP2 also has no specified shunt/current conversion.
+
+Keep the original exact baseline and six-byte development CLI gate pattern.
+Do not import diagnostic PG/SPI hooks, alter PSU/IRQ protection, write monitor
+configuration, or program hardware as part of this knowledge transfer. Save and
+restore both mux masks, including error paths; select one INA branch at a time.
+Physical MCU telemetry remains NOT_RUN. Future hardware operations must use the
+identified PM12 device and lock specified in the handoff.

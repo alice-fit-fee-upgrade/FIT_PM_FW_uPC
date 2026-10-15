@@ -1,0 +1,197 @@
+{
+  "recipient_thread": "01a10600-2bd0-7363-afc8-a0638ec9568f",
+  "date": "2026-10-15",
+  "purpose": "Przekazanie potwierdzonej obsługi INA3221 do rozszerzenia odzyskanego firmware. Użytkownik chce nowy kod w wolnym FLASH i tylko kilka bajtów zmian starego kodu; zero-difference baseline pozostaje osobnym targetem.",
+  "hardware_state": {
+    "board": "PM12 v1.1",
+    "mcu": "ATxmega128A3U",
+    "mcu_isolated": "Użytkownik potwierdził wylutowanie R226 SDA, R227 SCL i R228 RESET. Obecnie tylko FPGA steruje I2C. Odczyty MCU wymagają przywrócenia połączenia/uzgodnienia jednego mastera albo mostka przez FPGA. Nie zakładać działającego MCU TWI i nie mapować pinów MCU na podstawie samych nazw TWI.",
+    "reset_bias": "Brak zewnętrznego pull-up RESET na schemacie strony35; po izolacji MCU RESET pływał. Pull-up FPGA B26 przywrócił prawidłowe działanie. RESET musi być nieaktywny HIGH.",
+    "fpga_pins": {
+      "SDA": "H22 przez R229 10 ohm",
+      "SCL": "H21 przez R230 10 ohm",
+      "RESET_n": "B26 przez R231 10 ohm"
+    },
+    "schematic": "/home/codex-hil/fit-bringup/documentation/i2c/FIT_PM12v1.1.PDF",
+    "schematic_sha256": "3bff65447a5b5fff46e856405f6b7edac444683c9ae6759fccd73d3cc5df3b70"
+  },
+  "confirmed_addresses_7bit": {
+    "0x70": "TCA9548A: kanały0..7 AFE1..8",
+    "0x71": "TCA9548A: kanały0..3 AFE9..12; kanały4,5,6 trzy INA3221; kanał7 bez ACK downstream w naszym skanie",
+    "0x40": "Każdy INA3221 ma ten sam adres; wybierać osobno 0x71 kanał4/5/6. Nie włączać równocześnie tych gałęzi.",
+    "afe_scan": "Za 12 gałęziami AFE brak ACK; nie uznawać tego za dowód uszkodzenia/obecności sensorów."
+  },
+  "procedure": [
+    "Zapamiętaj jednobajtowe maski obu TCA9548A.",
+    "Wyłącz wszystkie gałęzie obu muxów (zapis jednego bajtu 00, bez adresu rejestru).",
+    "Włącz tylko jeden kanał 0x71: kanał4 maska10, kanał5 maska20, kanał6 maska40 (hex). Odczyt jednego bajtu potwierdza maskę.",
+    "INA3221: START, 0x40 W, jednobajtowy pointer rejestru, repeated START, 0x40 R, dwa bajty MSB first, ACK pierwszego/NACK drugiego, STOP.",
+    "Zweryfikuj FE=5449 i FF=3220. Rejestr00 odczytany 7127; test nie zapisywał konfiguracji. Bity2..0=111 oznaczają ciągłe shunt+bus.",
+    "Kanał1: shunt01, bus02; kanał2:03/04; kanał3:05/06.",
+    "Przy błędach NACK/timeout zwolnij SDA/SCL, zakończ transakcję, przywróć maski. Bez nieskończonego oczekiwania i bez długiego blokowania IRQ zasilania.",
+    "Przywróć obie pierwotne maski także po niepowodzeniu. Nie resetuj bez potrzeby wszystkich gałęzi."
+  ],
+  "decoding": {
+    "code": "sign_extend_16(raw) arithmetic_shift_right 3; w C AVR nie polegać na implementacyjnej konwersji/shifcie bez testu; można najpierw raw>>3 i odjąć8192 jeśli ustawiony bit12.",
+    "shunt": "code * 40 microvolt",
+    "bus": "code * 8 millivolt",
+    "current": "I = Vshunt / R; dla R=10mOhm 4mA/code; dla R=1mOhm 40mA/code. Można użyć int32 w jednostkach uV/mV/mA, bez float.",
+    "saturation": "code==-4096 lub4095: prąd nieważny/clipped, nie normalny pomiar. Nadal można czytać bus voltage.",
+    "coherency": "Sześć oddzielnych odczytów to nie atomowa migawka wszystkich kanałów; podawać raw/status i nie sugerować dokładnej jednoczesności."
+  },
+  "channel_mapping_and_observations": [
+    {
+      "mux": "0x71",
+      "channel": 4,
+      "ina_address": "0x40",
+      "configuration_hex": "7127",
+      "channels": [
+        {
+          "rail": "P1V0_LDO",
+          "shunt_ohm": 0.01,
+          "resistor": "R53",
+          "bus_V_mean": 1.0,
+          "bus_V_min": 1.0,
+          "bus_V_max": 1.0,
+          "current_A_mean": 0.1276,
+          "current_A_min": 0.124,
+          "current_A_max": 0.128,
+          "clipped_samples": 0
+        },
+        {
+          "rail": "P1V2_LDO",
+          "shunt_ohm": 0.01,
+          "resistor": "R55",
+          "bus_V_mean": 1.2,
+          "bus_V_min": 1.2,
+          "bus_V_max": 1.2,
+          "current_A_mean": 0.092,
+          "current_A_min": 0.092,
+          "current_A_max": 0.092,
+          "clipped_samples": 0
+        },
+        {
+          "rail": "P1V8_LDO",
+          "shunt_ohm": 0.01,
+          "resistor": "R56",
+          "bus_V_mean": 1.792,
+          "bus_V_min": 1.792,
+          "bus_V_max": 1.792,
+          "current_A_mean": 0.004,
+          "current_A_min": 0.004,
+          "current_A_max": 0.004,
+          "clipped_samples": 0
+        }
+      ]
+    },
+    {
+      "mux": "0x71",
+      "channel": 5,
+      "ina_address": "0x40",
+      "configuration_hex": "7127",
+      "channels": [
+        {
+          "rail": "P3V8",
+          "shunt_ohm": 0.001,
+          "resistor": "R15",
+          "bus_V_mean": 1.48,
+          "bus_V_min": 1.48,
+          "bus_V_max": 1.48,
+          "current_A_mean": null,
+          "current_A_min": null,
+          "current_A_max": null,
+          "clipped_samples": 20
+        },
+        {
+          "rail": "P3V3",
+          "shunt_ohm": 0.001,
+          "resistor": "R92",
+          "bus_V_mean": 3.336,
+          "bus_V_min": 3.336,
+          "bus_V_max": 3.336,
+          "current_A_mean": 4.920000000000001,
+          "current_A_min": 4.920000000000001,
+          "current_A_max": 4.920000000000001,
+          "clipped_samples": 0
+        },
+        {
+          "rail": "P1V8",
+          "shunt_ohm": 0.001,
+          "resistor": "R84",
+          "bus_V_mean": 1.784,
+          "bus_V_min": 1.784,
+          "bus_V_max": 1.784,
+          "current_A_mean": 0.36000000000000004,
+          "current_A_min": 0.36000000000000004,
+          "current_A_max": 0.36000000000000004,
+          "clipped_samples": 0
+        }
+      ]
+    },
+    {
+      "mux": "0x71",
+      "channel": 6,
+      "ina_address": "0x40",
+      "configuration_hex": "7127",
+      "channels": [
+        {
+          "rail": "P1V0",
+          "shunt_ohm": 0.001,
+          "resistor": "R74",
+          "bus_V_mean": 1.008,
+          "bus_V_min": 1.008,
+          "bus_V_max": 1.008,
+          "current_A_mean": 0.10800000000000001,
+          "current_A_min": 0.08,
+          "current_A_max": 0.12000000000000001,
+          "clipped_samples": 0
+        },
+        {
+          "rail": "P5V5",
+          "shunt_ohm": 0.001,
+          "resistor": "R216",
+          "bus_V_mean": 5.5040000000000004,
+          "bus_V_min": 5.5040000000000004,
+          "bus_V_max": 5.5040000000000004,
+          "current_A_mean": 0.08,
+          "current_A_min": 0.08,
+          "current_A_max": 0.08,
+          "clipped_samples": 0
+        },
+        {
+          "rail": "TP1/TP2",
+          "shunt_ohm": null,
+          "resistor": null,
+          "bus_V_mean": 0.0,
+          "bus_V_min": 0.0,
+          "bus_V_max": 0.0,
+          "current_A_mean": null,
+          "current_A_min": null,
+          "current_A_max": null,
+          "clipped_samples": 0
+        }
+      ]
+    }
+  ],
+  "special_cases": {
+    "P3V8": "R15 NIE JEST WLUTOWANY (potwierdzenie użytkownika). Nie wyliczać prądu nawet jeśli raw shunt przestanie być clipped. Raportować tylko bus input (~1.480V w naszych odczytach), bez twierdzenia że to rzeczywiste napięcie szyny3.8V.",
+    "TP1_TP2": "Trzeci kanał monitora na gałęzi6: bez określonego bocznika, bez wyliczania prądu.",
+    "calibration": "Pozostałe prądy liczone z nominalnych rezystorów schematu, niekalibrowane; odczyty z FPGA diagnostycznym i stanem AFE z chwili testu."
+  },
+  "validated": "Fizycznie PASS: ACK obu muxów,16 masek kanałów,RESET po pull-up,ID trzech INA3221,20 próbek/monitor,powtórzenie i przywrócenie masek/FPGA. Fizyczne odczyty z MCU NOT_RUN.",
+  "implementation_context": {
+    "isolated_diagnostics": "/home/codex-hil/fit-pm12-mcu-diag branch pm12-hardware-diagnostics commit f9869c9; nie nakładać całego patcha bez analizy: zawiera osobno autoryzowane PG hooks i SPI.",
+    "small_patch_pattern": "development/ six-byte CLI gate + bounded free-FLASH section; użyj zwykłego GNU ABI przez jawny legacy adapter, bez niezainicjalizowanych .data/.bss i bez naruszania RAM/ochrony PSU.",
+    "exact_baseline": "/home/codex-hil/FIT_PM_FW_uPC reference30dec0a; make exact-check nadal0 różnic.",
+    "published_repo": "https://github.com/alice-fit-fee-upgrade/FIT_testing_sw/pull/1"
+  },
+  "authoritative_files": [
+    "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/measure.py",
+    "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/client.py",
+    "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/evidence/telemetry-repeat-2026-10-14.json",
+    "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/evidence/telemetry-2026-10-14.json",
+    "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/evidence/reset_with_pullup.json",
+    "/home/codex-hil/fit-testing-publish/diagnostics/pm12/i2c/validation-2026-10-14.json"
+  ],
+  "hardware_coordination": "PM12 Digilent210249A73E43; flock EX/NB /home/codex-hil/.cache/pm12-210249A73E43.lock przez wszystkie operacje HW/restore. Nie dotykać innych Digilentów. To przekazanie nie inicjuje programowania MCU ani zmian połączeń."
+}
