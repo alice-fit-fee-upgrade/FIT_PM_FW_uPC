@@ -1,0 +1,76 @@
+diff --git a/development/src/hw_commands.c b/development/src/hw_commands.c
+index 37cd141..c2f0fca 100644
+--- a/development/src/hw_commands.c
++++ b/development/src/hw_commands.c
+@@ -9,7 +9,7 @@ static uint8_t result(uint8_t s){if(s==PM_DIAG_OK)return 1;pm_console_write(s==P
+ void pm_command_hw(const char *args)
+ {
+  if(*args){pm_console_write(earg);return;}
+- uint8_t saved=pm_irq_enter();uint8_t ports[6],state[12];
++ uint8_t saved=pm_irq_enter();uint8_t ports[6],state[12],flags=pm_read8(0),out_a=pm_read8(0x604);
+  for(uint8_t n=0;n<6;++n)ports[n]=pm_read8(0x608u+n*32u);
+  for(uint8_t n=0;n<12;++n)state[n]=pm_read8(0x2157u+n);
+  pm_irq_leave(saved);
+@@ -17,13 +17,15 @@ void pm_command_hw(const char *args)
+  for(uint8_t n=0;n<6;++n)hex(ports[n],2);
+  static const PM_FLASH char label[]=" STATE 2157..2162=";pm_console_write(label);
+  for(uint8_t n=0;n<12;++n)hex(state[n],2);
++ static const PM_FLASH char f[]=" GPIOR0=";pm_console_write(f);hex(flags,2);
++ static const PM_FLASH char a[]=" A_OUT=";pm_console_write(a);hex(out_a,2);
+  line();
+ }
+ void pm_command_temp(const char *args)
+ {
+  if(*args){pm_console_write(earg);return;}
+  static const PM_FLASH char label[]="ADT7311 REG=";
+- for(uint8_t reg=0;reg<4;++reg){uint16_t v=0;if(!result(pm_diag_temp(reg,&v)))return;pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,reg==2?4:2);line();}
++ for(uint8_t reg=0;reg<8;++reg){uint16_t v=0;if(!result(pm_diag_temp(reg,&v)))return;pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,(reg==2 || reg==4 || reg==6 || reg==7)?4:2);line();}
+ }
+ void pm_command_tdc(const char *args)
+ {
+diff --git a/development/src/hw_drivers.c b/development/src/hw_drivers.c
+index 81b6e09..ae0c151 100644
+--- a/development/src/hw_drivers.c
++++ b/development/src/hw_drivers.c
+@@ -30,14 +30,14 @@ static uint8_t temp_byte(uint8_t tx)
+ }
+ uint8_t pm_diag_temp(uint8_t reg,uint16_t *value)
+ {
+- if(reg>3)return PM_DIAG_ARGUMENT;
++ if(reg>7)return PM_DIAG_ARGUMENT;
+  uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK;
+  uint8_t old=pm_read8(A+OUT);
+  if(!powered())result=PM_DIAG_POWER;
+  else if((pm_read8(A+DIR)&0x1a)!=0x1a || !(old&16))result=PM_DIAG_BUSY;
+  else {
+   pm_write8(A+CLR,16);(void)temp_byte((uint8_t)(0x40|(reg<<3)));
+-  uint16_t v=temp_byte(0);if(reg==2)v=(uint16_t)((v<<8)|temp_byte(0));
++  uint16_t v=temp_byte(0);if(reg==2 || reg==4 || reg==6 || reg==7)v=(uint16_t)((v<<8)|temp_byte(0));
+   pm_write8(A+SET,16);restore_bits(A,0x1a,old);*value=v;
+  }
+  pm_irq_leave(irq);return result;
+diff --git a/development/tests/check_hw_drivers.c b/development/tests/check_hw_drivers.c
+index d0c833c..7f2a045 100644
+--- a/development/tests/check_hw_drivers.c
++++ b/development/tests/check_hw_drivers.c
+@@ -42,6 +42,11 @@ int main(void)
+  for(uint8_t s=0;s<2;++s){
+   uint16_t v=0xbeef;uint32_t p=0;
+   init(s);assert(pm_diag_temp(3,&v)==PM_DIAG_OK && v==0xc3 && irq==s && mem[0x604]==0xfa);
++  for(uint8_t reg=0;reg<8;++reg){
++   init(s);temp_stream=0x00123400;assert(pm_diag_temp(reg,&v)==PM_DIAG_OK);
++   uint8_t wide=reg==2||reg==4||reg==6||reg==7;
++   assert(v==(wide?0x1234:0x12) && bit_count==(wide?24:16) && irq==s && mem[0x604]==0xfa);
++  }
+   init(s);assert(pm_diag_tdc(2,0x83,&v)==PM_DIAG_OK && v==0xa55a && irq==s && mem[0x624]==0xbc && mem[0x620]==0xbf);
+   assert(tx_count==10 && tx[0]==1 && tx[1]==0);
+   for(unsigned n=0;n<8;++n)assert(tx[n+2]==((0x83>>(7-n))&1));
+@@ -54,7 +59,7 @@ int main(void)
+   init(s);mem[0x624]&=~4;assert(pm_diag_tdc(1,0x83,&v)==PM_DIAG_BUSY && writes==0 && irq==s);
+   init(s);mem[0x664]=2;assert(pm_diag_pll(&p)==PM_DIAG_BUSY && writes==0 && irq==s);
+   init(s);mem[0x644]=6;assert(pm_diag_pll(&p)==PM_DIAG_BUSY && writes==0 && irq==s);
+-  init(s);assert(pm_diag_temp(4,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
++  init(s);assert(pm_diag_temp(8,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
+   assert(pm_diag_tdc(3,0x83,&v)==PM_DIAG_ARGUMENT && writes==0 && irq==s);
+  }
+  puts("PASS device serial framing, readbacks, IRQ restoration, bounded timeout, GPIO restoration, power/busy guards and write whitelist");
