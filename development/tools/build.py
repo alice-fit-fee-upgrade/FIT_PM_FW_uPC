@@ -60,6 +60,16 @@ def main():
     run(['avr-objcopy','--update-section','.c_00049e='+str(timer_section),elf])
     from power_patch import apply
     apply(elf,golden,names,BUILD)
+    # Reviewed startup-only CALL substitution: preserve the serial reset and
+    # subsequent original CONFIG/TCRIT/THIGH writes, adding its required wait.
+    assert golden[0x1100:0x1104]==bytes.fromhex('0e94f512')
+    section=BUILD/'main-reset-ready.bin'
+    run(['avr-objcopy','--dump-section','.c_000f54='+str(section),elf])
+    startup=bytearray(section.read_bytes());offset=0x1100-0xf54
+    assert startup[offset:offset+4]==golden[0x1100:0x1104]
+    patch=names['pm_adt_reset_patch'];startup[offset:offset+4]=data[patch:patch+4]
+    section.write_bytes(startup)
+    run(['avr-objcopy','--update-section','.c_000f54='+str(section),elf])
     run(['avr-objcopy','-O','ihex',elf,hexfile]);run([sys.executable,ROOT/'tools/memory_image.py',hexfile,binary])
     (BUILD/'development.dis').write_text(subprocess.check_output(['avr-objdump','-d',str(elf)],text=True))
     run([sys.executable,DEV/'tools/check_layout.py'])

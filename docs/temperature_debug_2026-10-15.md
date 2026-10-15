@@ -110,3 +110,27 @@ A separate static issue: original startup addresses the sensor immediately after
 its 32-one serial reset. The datasheet specifies at least 500 us before another
 address; the source has no such delay there. This is a hypothesis for startup
 configuration readback, not yet a demonstrated explanation of the earlier zeros.
+
+## Reset-ready / alarm-history experiment
+
+Candidate `17bccd7` (candidate4) failed again: normal and slow SPI both returned
+zero, including ID. The full application write alone therefore does not solve
+this problem. It was rolled back; protected memory comparison and restored
+runtime (ID C3 / 29.0 C NORMAL) passed.
+
+The next experiment redirects only the original CALL at 0x1100 to an adapter
+that calls the same serial reset and waits >=600 us before returning. The
+following original CONFIG=50, TCRIT=2300 and THIGH=1E00 writes are untouched.
+The counted loop is >=19201 cycles at 32 MHz. Sixteen decoded ABI cases verify
+that the adapter preserves every register and SREG returned by the reset.
+
+The already-required temperature release helper now stores last/sticky raw
+sensor alarm bits in the low bytes of disabled TCE0 compare channels C/D
+(0x0a2c/0x0a2e). These storage channels are cleared in the existing diagnostic
+TCE0 init. No compare outputs or interrupts are enabled. HW prints TEMPFLAGS
+and TEMPSEEN alongside the shared GPIOR0 flag. Bit 2 means TCRIT, bit 1 THIGH,
+bit 0 TLOW. This distinguishes thermal samples seen since reset from unrelated
+power/startup faults; it does not retrospectively reconstruct a previous boot.
+3840 decoded release cases verify unchanged registers, SREG and successor
+branches plus the two explicit telemetry writes. Canonical ISR bytes outside
+the existing gates remain untouched.

@@ -43,6 +43,18 @@ pm_timer_instruction_077e:
 pm_temperature_release:
 pm_timer_at_0788:
  cbi 0x0f,1
+ /* TCE0 compare channels C/D are disabled diagnostic storage. Snapshot the
+  * three sensor alarm bits and retain their OR since reset. No SPI/PSU write.
+  * ANDI/OR preserve C/H/T/I; the displaced EOR below restores Z/N/V/S.
+  * R16 is preserved and original R17 is overwritten by that EOR anyway. */
+ push r16
+ mov r17,r20
+ andi r17,7
+ sts 0x0a2c,r17
+ lds r16,0x0a2e
+ or r16,r17
+ sts 0x0a2e,r16
+ pop r16
 .global pm_timer_instruction_0788
 pm_timer_instruction_0788:
  eor r17,r17

@@ -39,6 +39,11 @@ pm_pg_init_hook:
  sts 0x0a28,r16
  sts 0x0a2b,r16
  sts 0x0a2a,r16
+ /* Disabled C/D compare channels: last/sticky ADT alarm bits. */
+ sts 0x0a2d,r16
+ sts 0x0a2c,r16
+ sts 0x0a2f,r16
+ sts 0x0a2e,r16
  ldi r16,0xff
  sts 0x0a27,r16
  sts 0x0a26,r16

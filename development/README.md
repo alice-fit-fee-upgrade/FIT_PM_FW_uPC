@@ -159,3 +159,19 @@ Final hardware acceptance compares original/candidate with the same tester:
 legacy commands, temperature/alarms, PSU faults, concurrent UART/poll scheduling,
 NACK/timeout recovery and intended FPGA/DC-DC power-loss conditions. Record raw
 traces and firmware hashes. These tests have not been run here.
+
+### Temperature investigation commands (hardware candidate)
+
+`@TEMP` retains registers 0–3. `@TEMP ALL` reads 0–7 through the unchanged
+legacy SPI byte cell; `@TEMP SLOW` reads the same registers with a C transfer
+using 1 us phase delays. Both are read requests; reading ADT status can clear
+its interrupt flags. `@HW` appends GPIOR0, PA.OUT, TEMPFLAGS and TEMPSEEN.
+TEMPSEEN is the OR of sensor alarm bits observed by the timer ISR since reset,
+not the shared system-fault latch. TCE0 compare channels C/D are disabled and
+reserved for these two diagnostic low bytes.
+
+A reviewed development-only CALL adapter at 0x1100 adds the ADT7311-required
+reset-ready wait (>=600 us at 32 MHz). It calls the original serial reset and
+preserves its return state. The subsequent original configuration and threshold
+writes are unchanged. Hardware acceptance is recorded in
+`docs/temperature_debug_2026-10-15.md`; this is not a change to the exact baseline.

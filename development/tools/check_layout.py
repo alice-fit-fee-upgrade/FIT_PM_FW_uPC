@@ -42,6 +42,12 @@ def main():
         assert word & 0xfe0e == 0x940c
         assert 2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(gate[2:],'little'))==names[target]
         allowed.update(range(address,address+4))
+    reset_patch=dev[names['pm_adt_reset_patch']:names['pm_adt_reset_patch']+4]
+    assert dev[0x1100:0x1104]==reset_patch
+    word=int.from_bytes(reset_patch[:2],'little')
+    assert word & 0xfe0e==0x940e, 'reset gate must be CALL'
+    assert 2*(((word&0x1f0)<<13)|((word&1)<<16)|int.from_bytes(reset_patch[2:],'little'))==names['pm_adt_reset_ready']
+    allowed.update(range(0x1100,0x1104))
     differing={i for i,(a,b) in enumerate(zip(golden,dev)) if a!=b}
     assert not differing-allowed, ('unexpected FLASH differences',sorted(differing-allowed)[:16])
     assert dev[0x20000:]==golden[0x20000:], 'bootloader modified'
@@ -49,7 +55,7 @@ def main():
             'golden_sha256':hashlib.sha256(golden).hexdigest(),'development_sha256':hashlib.sha256(dev).hexdigest(),
             'differing_bytes':len(differing),'gate_start':0x12ea,'gate_length':6,'timer_mode':'legacy body in place; two four-byte temperature gates','temperature_guard_sites':[0x77e,0x788],'extension_start':start,
             'extension_size':size,'extension_limit':0x8000,'legacy_symbols_preserved':len(original),
-            'bootloader_unchanged':True,'retained_diagnostic_pg_hooks':[hex(a) for a,_ in SITES],'bus_lock':'GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized','ram_globals':'rejected by linker; no unverified SRAM reservation'}
+            'bootloader_unchanged':True,'adt_reset_ready_call':0x1100,'adt_reset_delay_us_min':600,'retained_diagnostic_pg_hooks':[hex(a) for a,_ in SITES],'bus_lock':'GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized','ram_globals':'rejected by linker; no unverified SRAM reservation'}
     (BUILD/'layout_report.json').write_text(json.dumps(report,indent=2)+'\n')
     print('PASS development layout:',len(differing),'planned differing bytes; extension',size,'bytes')
 if __name__=='__main__':main()

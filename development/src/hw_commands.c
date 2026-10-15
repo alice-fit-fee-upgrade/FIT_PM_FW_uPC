@@ -9,7 +9,7 @@ static uint8_t result(uint8_t s){if(s==PM_DIAG_OK)return 1;pm_console_write(s==P
 void pm_command_hw(const char *args)
 {
  if(*args){pm_console_write(earg);return;}
- uint8_t saved=pm_irq_enter();uint8_t ports[6],state[12],flags=pm_read8(0),out_a=pm_read8(0x604);
+ uint8_t saved=pm_irq_enter();uint8_t ports[6],state[12],flags=pm_read8(0),out_a=pm_read8(0x604),temp_flags=pm_read8(0x0a2c),temp_seen=pm_read8(0x0a2e);
  for(uint8_t n=0;n<6;++n)ports[n]=pm_read8(0x608u+n*32u);
  for(uint8_t n=0;n<12;++n)state[n]=pm_read8(0x2157u+n);
  pm_irq_leave(saved);
@@ -19,6 +19,8 @@ void pm_command_hw(const char *args)
  for(uint8_t n=0;n<12;++n)hex(state[n],2);
  static const PM_FLASH char f[]=" GPIOR0=";pm_console_write(f);hex(flags,2);
  static const PM_FLASH char a[]=" A_OUT=";pm_console_write(a);hex(out_a,2);
+ static const PM_FLASH char tf[]=" TEMPFLAGS=";pm_console_write(tf);hex(temp_flags,2);
+ static const PM_FLASH char ts[]=" TEMPSEEN=";pm_console_write(ts);hex(temp_seen,2);
  line();
 }
 void pm_command_temp(const char *args)
