@@ -1,0 +1,43 @@
+{
+  "status": "PASS_EXHAUSTIVE_APPLICATION_INPUT_DOMAINS",
+  "cases": 1054720,
+  "stages": [
+    {
+      "name": "entry2130 coefficient4188: all input words x four T/I states",
+      "cases": 262144
+    },
+    {
+      "name": "entry214c coefficient020c: all input words x four T/I states",
+      "cases": 262144
+    },
+    {
+      "name": "entry214c coefficient0272: all input words x four T/I states",
+      "cases": 262144
+    },
+    {
+      "name": "all256 SREG values x arithmetic boundaries",
+      "cases": 6144
+    },
+    {
+      "name": "all coefficients x two boundary inputs: C selection/original fallback",
+      "cases": 262144
+    }
+  ],
+  "maximum_additional_stack_below_entry": 27,
+  "C_domains": {
+    "signed": "coefficient0x4188; all65536 input words x all4 T/I combinations",
+    "unsigned": "coefficients0x020c,0x0272; each all65536 input words x all4 T/I combinations"
+  },
+  "checks": [
+    "all32 GPRs including dirty R1:R0",
+    "all8 SREG bits",
+    "extended-bank save/restore",
+    "three-byte return addresses and physical stack balance",
+    "no MMIO/IRQ/static RAM accesses",
+    "fallback route for other coefficients"
+  ],
+  "canonical_candidate_sha256": "bdebd471aa90f7b97f023fead0cac61b332eddda328cc81471deeba9df393a8a",
+  "coverage_limit": "NOT exhaustive over all2^32 coefficient/input pairs or all arbitrary CPU states. Other coefficients retain original ASM. Bank tests model register restoration, not extended-address electrical bus behavior.",
+  "hardware": "NOT_RUN; ADT startup regression blocks deployment; no programming by this test",
+  "timing": "functional decoded instruction model; no cycle/async IRQ or total system stack proof"
+}

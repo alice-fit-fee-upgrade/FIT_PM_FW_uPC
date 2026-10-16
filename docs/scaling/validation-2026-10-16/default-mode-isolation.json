@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "candidate_gates": [],
+  "canonical_default_SHA256": "9ece53e796f4089d1bbd7aaf1d6c00fa52fc4780e53fe2edec487f0ce9726d0a",
+  "matches_pre_pass_development_image": true
+}

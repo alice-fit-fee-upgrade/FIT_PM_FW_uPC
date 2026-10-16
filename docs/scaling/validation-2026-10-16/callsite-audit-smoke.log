@@ -1,0 +1,6 @@
+PASS entry2130 coefficient4188: smoke values x four T/I states 36 cases
+PASS entry214c coefficient020c: smoke values x four T/I states 36 cases
+PASS entry214c coefficient0272: smoke values x four T/I states 36 cases
+PASS all256 SREG values x arithmetic boundaries 6144 cases
+PASS smoke coefficients x two boundary inputs: C selection/original fallback 56 cases
+SMOKE_ONLY 6308 cases; max additional stack 27

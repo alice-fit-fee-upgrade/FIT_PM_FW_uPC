@@ -1,0 +1,5 @@
+PASS original DAC caller 0x20a6 all12 channels x16 boundaries x4 SREG states
+PASS original DAC caller 0x20d0 all12 channels x16 boundaries x4 SREG states
+PASS original DAC caller 0x20ec all12 channels x16 boundaries x4 SREG states
+PASS original DAC caller 0x2104 all12 channels x16 boundaries x4 SREG states
+PASS 3072 original caller compositions

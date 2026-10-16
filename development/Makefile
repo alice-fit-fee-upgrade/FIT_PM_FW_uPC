@@ -20,3 +20,11 @@ check: all
 	build/check_fpga_flash
 clean:
 	rm -rf build
+
+# Experimental simulation-only image; never programs hardware.
+.PHONY: scaling-check
+scaling-check:
+	PM_SCALING_CANDIDATE=1 $(MAKE) check
+	python3 tests/check_scaling_candidate.py
+	python3 tests/check_scaling_native_api.py
+	python3 tests/check_scaling_callers.py

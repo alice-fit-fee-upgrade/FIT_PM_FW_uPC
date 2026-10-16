@@ -1,0 +1,3 @@
+PASS unsigned GNU API all65536 inputs coefficient 0x20c
+PASS unsigned GNU API all65536 inputs coefficient 0x272
+PASS 131072 GNU API cases

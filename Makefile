@@ -261,3 +261,7 @@ development:
 	$(MAKE) -C development all
 development-check:
 	$(MAKE) -C development check
+
+.PHONY: scaling-check
+scaling-check:
+	$(MAKE) -C development scaling-check

@@ -218,3 +218,11 @@ body remains available in place and in the exact baseline. Ordinary C in
 blocking completion polling and is a healthy-controller laboratory test.
 See [migration evidence](../docs/pll/c-read-migration-2026-10-16/README.md).
 The layout verifier explicitly protects the rest of the original PLL body.
+
+## Opt-in scaling simulation pass
+
+`make scaling-check` builds the isolated arithmetic candidates and runs full
+application input-domain comparisons. Ordinary development builds exclude
+`candidates/scaling/`. See [scope, results and limitations](../docs/scaling/README.md).
+The two old arithmetic entries retain their bodies and receive only four-byte
+JMPs in this optional mode. No hardware programming or release is performed.

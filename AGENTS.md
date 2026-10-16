@@ -64,3 +64,13 @@ place. The first allowed additional patch is a4-byte JMP at0x24ce into the
 new-FLASH legacy/GNU read-status adapter. Root exact baseline remains unchanged.
 EEPROM-copy PC, configuration writes and reset sequencing are not migrated
 with this read-only step. See docs/pll/README.md and validation reports.
+
+# Opt-in arithmetic simulation candidates
+
+User authorized arithmetic recovery with exhaustive simulator input coverage.
+`make scaling-check` builds two optional entry gates at0x2130/0x214c,
+retaining all body bytes after the four-byte prefixes. Sources are isolated in
+`development/candidates/scaling/`; ordinary development builds exclude them.
+Only coefficients0x4188 (signed),0x020c/0x0272 (unsigned) enter C; others replay
+the original prefixes and continue ASM. This target does not program hardware; ADT regression still blocks deployment.
+See docs/scaling/README.md for exact tested domains and limitations.

@@ -1,0 +1,25 @@
+{
+  "status": "SIMULATION_QUALIFIED_ONLY",
+  "function_entries": [
+    "0x2130",
+    "0x214c"
+  ],
+  "legacy_domain_cases": 1054720,
+  "native_API_cases": 131072,
+  "caller_boundary_cases": 3072,
+  "total_comparisons": 1188864,
+  "candidate_sha256": "bdebd471aa90f7b97f023fead0cac61b332eddda328cc81471deeba9df393a8a",
+  "golden_exact_check_differing_bytes": 0,
+  "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "new_extension_bytes": 906,
+  "new_C_instruction_bytes": 558,
+  "new_ASM_bytes": 348,
+  "legacy_function_bytes_retained_after_entry_JMPs": 60,
+  "new_entry_patch_bytes": 8,
+  "hardware_actions": [],
+  "hardware": "NOT_RUN; ADT regression remains unresolved",
+  "local_candidate_artifacts": "/home/codex-hil/artifacts/pm12-scaling-simulation-2026-10-16",
+  "full_generic_coefficient_input_domain_exhaustive": false,
+  "application_16_bit_input_domains_exhaustive": true,
+  "baseline_exact_C_coverage_unchanged": true
+}
