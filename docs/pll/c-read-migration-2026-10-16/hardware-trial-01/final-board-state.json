@@ -1,0 +1,24 @@
+{
+  "identity": [
+    1347228162,
+    65538,
+    1270783484
+  ],
+  "ADC_status_generation": [
+    12,
+    0
+  ],
+  "TDC_status_generation_depth_channels_frontend": [
+    24,
+    0,
+    4096,
+    12,
+    4095
+  ],
+  "MCU_canonical_sha256": "a016c00d39617d106ca855c03a62170d918f2e9a93514e7962bdc0cb7017c23e",
+  "MCU": "release002 restored; PLL C trial NOT accepted",
+  "FPGA": "4bbe9dfc restored to SRAM twice during failed trial and rollback; no ARM issued",
+  "capture_warning": "Prior frozen ADC/TDC/I2C captures are invalid after SRAM reload. No acquisition by this thread.",
+  "ADT": "ID C3, CONFIG50, TCRIT2300, THIGH1E00, THYST0F, TLOWFFD0; TLOW differs from pretrial0500",
+  "evidence": "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01"
+}
