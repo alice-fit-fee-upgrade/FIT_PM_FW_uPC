@@ -186,3 +186,18 @@ Decoded instruction tests cover 5376 unready GPIO/SREG/ownership contexts and
 1536 ready mutex contexts, including original register/SREG restoration.
 This does not yet defer the original startup configuration writes: the explicit
 RESTORE laboratory command remains separate from the read gate.
+
+## PLL register-map readback candidate
+
+On `development/pll-c-recovery`, `@PLL ALL` reads CDCE62005 registers0..8.
+Each line is `CDCE62005 REG=00 XXXXXXXX` (register index then raw32-bit word).
+Plain `@PLL` retains its register8-only response. Only read-selector commands
+0x0e..0x8e and dummy clocks are sent; there is no profile, reset or EEPROM-copy
+command in this diagnostic. Each register transaction independently restores
+IRQ state, SPIC configuration and inactive PLL LE. The nine-register dump is
+not an atomic snapshot across all registers; register8 status can change.
+
+Host runner: `python3 tools/hardware/pm12_pll_readback.py --all --out REPORT.json`.
+It needs this candidate installed; without `--all` it can inspect the existing
+PGOOD firmware. No programming/reset/EEPROM operation is performed by the runner.
+See `docs/pll/` for software tests, physical baseline and deployment status.

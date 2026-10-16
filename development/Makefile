@@ -13,6 +13,8 @@ check: all
 	build/check_commands
 	cc -std=c99 -Wall -Wextra -Werror -Isrc src/hw_drivers.c tests/check_hw_drivers.c -o build/check_hw_drivers
 	build/check_hw_drivers
+	cc -std=c99 -Wall -Wextra -Werror -Isrc src/extension.c src/hw_commands.c src/hw_drivers.c src/i2c_commands.c src/i2c_diag.c tests/check_pll_commands.c -o build/check_pll_commands
+	build/check_pll_commands
 	cc -std=c99 -Wall -Wextra -Werror -Isrc src/extension.c src/hw_commands.c src/hw_drivers.c src/i2c_commands.c src/i2c_diag.c tests/check_fpga_flash.c -o build/check_fpga_flash
 	build/check_fpga_flash
 clean:

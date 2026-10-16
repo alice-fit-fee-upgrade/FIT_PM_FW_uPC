@@ -91,15 +91,17 @@ static uint8_t spi_at(uint16_t base,uint8_t tx,uint8_t *rx)
  return PM_DIAG_TIMEOUT;
 }
 static uint8_t spi_byte(uint8_t tx,uint8_t *rx){return spi_at(PM_SPIC,tx,rx);}
-uint8_t pm_diag_pll(uint32_t *value)
+uint8_t pm_diag_pll_register(uint8_t reg,uint32_t *value)
 {
+ if(reg>8)return PM_DIAG_ARGUMENT;
  uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK,old=pm_read8(PM_SPIC),out=pm_read8(F+OUT),rx=0;
  if(!powered())result=PM_DIAG_POWER;
  else if(!(out&16) || (pm_read8(C+OUT)&7)!=7 || !(old&0x40) || !(pm_read8(0x664)&1))result=PM_DIAG_BUSY;
  else {
-  /* Same 0x8e readback request as recovered FUN_code_001267. No PLL profile writes. */
+  /* TI read selector: address in bits7:4, opcode0xe in bits3:0.
+   * Only working-register readback; never issue EEPROM/profile commands. */
   pm_write8(PM_SPIC,0xf1);pm_write8(F+CLR,16);
-  for(uint8_t n=0;n<4 && result==PM_DIAG_OK;++n)result=spi_byte(n?0:0x8e,&rx);
+  for(uint8_t n=0;n<4 && result==PM_DIAG_OK;++n)result=spi_byte(n?0:(uint8_t)((reg<<4)|0x0e),&rx);
   pm_write8(F+SET,16);
   uint32_t v=0;
   if(result==PM_DIAG_OK){pm_write8(F+CLR,16);for(uint8_t n=0;n<4 && result==PM_DIAG_OK;++n){result=spi_byte(0,&rx);v|=(uint32_t)rx<<(n*8);}}
@@ -108,6 +110,9 @@ uint8_t pm_diag_pll(uint32_t *value)
  }
  pm_irq_leave(irq);return result;
 }
+
+/* Preserve existing @PLL semantics: register8 only. */
+uint8_t pm_diag_pll(uint32_t *value) { return pm_diag_pll_register(8,value); }
 
 uint8_t pm_diag_fpga(uint8_t write,uint8_t address,uint16_t *word)
 {

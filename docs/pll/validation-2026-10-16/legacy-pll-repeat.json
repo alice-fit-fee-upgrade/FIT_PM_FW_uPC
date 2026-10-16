@@ -1,0 +1,97 @@
+{
+  "scope": "UART read commands only; no reset, programming or EEPROM copy",
+  "commands": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@CFG",
+      "reply": "CFG PORTD IN=F7 07\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.3 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.2 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2114
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2113
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.2 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2124
+    },
+    {
+      "command": "@TEMP ALL",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0FA0\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 05\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+      "duration_s": 0.2112
+    }
+  ],
+  "maps": [],
+  "writes_to_configuration": false,
+  "power_good": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000008701380109\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=09000401000000A303390109\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=09000401000000D801390109\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=090004010000000E00390109\r\n",
+      "duration_s": 0.2119
+    }
+  ],
+  "power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000005102390109\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=09000401000000C003380109\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=090004010000004A01380109\r\n",
+      "duration_s": 0.2123
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=09000401000000B902380109\r\n",
+      "duration_s": 0.2123
+    }
+  ],
+  "status": "PASS_READBACK_ONLY"
+}

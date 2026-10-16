@@ -1,0 +1,5 @@
+{
+  "scope": "read-only IPbus identity, no ARM/write/reset",
+  "status": "UNAVAILABLE",
+  "error": "TimeoutError('timed out')"
+}

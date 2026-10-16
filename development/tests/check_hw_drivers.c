@@ -4,6 +4,7 @@
 #include <string.h>
 static uint8_t mem[0x2500],irq,timeout,spi_count,bit_count,tx[12],tx_count;
 static unsigned polls,writes,steps;
+static uint8_t pll_tx[8],pll_frames;
 static uint32_t temp_stream;
 static uint8_t temp_tx[8],temp_tx_bits;
 uint8_t pm_irq_enter(void){uint8_t s=irq;irq=0;return s;}
@@ -28,7 +29,8 @@ void pm_write8(uint16_t a,uint8_t v)
   uint8_t byte=temp_tx_bits/8;temp_tx[byte]=(uint8_t)((temp_tx[byte]<<1)|!!(mem[0x604]&8));++temp_tx_bits;
  }
  if(a==0x8c0){mem[a]=v;return;}
- if(a==0x8c3){++spi_count;mem[a]=v;return;}
+ if(a==0x8c3){assert(spi_count<8);pll_tx[spi_count]=v;++spi_count;mem[a]=v;return;}
+ if(a==0x6a6 && (v&16)){assert(mem[0x8c0]==0xf1);++pll_frames;}
  uint16_t port=a&0xffe0;uint8_t off=a-port;
  assert((port==0x600 && !(v&~0x1a)) || (port==0x620 && !(v&~0x1f)) || (port==0x6a0 && !(v&~0x10)));
  assert(off==1||off==2||off==5||off==6);
@@ -38,6 +40,7 @@ void pm_write8(uint16_t a,uint8_t v)
 }
 static void init(uint8_t s)
 {
+ memset(pll_tx,0,sizeof pll_tx);pll_frames=0;
  memset(mem,0,sizeof mem);memset(temp_tx,0,sizeof temp_tx);temp_tx_bits=0;irq=s;timeout=spi_count=bit_count=tx_count=0;polls=writes=steps=0;
  mem[0x684]=4;mem[0x688]=10;mem[0x600]=0x1a;mem[0x604]=0xfa;
  mem[0x620]=0xbf;mem[0x624]=0xbc;mem[0x628]=64;
@@ -64,6 +67,22 @@ int main(void)
   for(unsigned n=0;n<8;++n)assert(tx[n+2]==((0x83>>(7-n))&1));
   init(s);assert(pm_diag_pll(&p)==PM_DIAG_OK && p==0x44332211 && irq==s && mem[0x8c0]==0xd5 && mem[0x6a4]==0xf0);
   for(uint8_t fail=1;fail<=8;++fail){init(s);timeout=fail;p=0xcafebabe;assert(pm_diag_pll(&p)==PM_DIAG_TIMEOUT && polls==127u+fail && spi_count==fail && p==0xcafebabe && irq==s && mem[0x8c0]==0xd5 && mem[0x6a4]==0xf0);}
+  for(uint8_t reg=0;reg<9;++reg){
+   init(s);p=0;assert(pm_diag_pll_register(reg,&p)==PM_DIAG_OK && p==0x44332211);
+   assert(spi_count==8 && pll_frames==2 && pll_tx[0]==(uint8_t)((reg<<4)|14));
+   for(uint8_t i=1;i<8;++i)assert(pll_tx[i]==0);
+   assert(irq==s && mem[0x8c0]==0xd5 && mem[0x6a4]==0xf0);
+   for(uint8_t fail=1;fail<=8;++fail){
+    init(s);timeout=fail;p=0xcafebabe;
+    assert(pm_diag_pll_register(reg,&p)==PM_DIAG_TIMEOUT && polls==127u+fail && spi_count==fail);
+    assert(p==0xcafebabe && irq==s && mem[0x8c0]==0xd5 && mem[0x6a4]==0xf0);
+    assert(pll_tx[0]==(uint8_t)((reg<<4)|14));
+   }
+  }
+  init(s);p=0xcafebabe;
+  assert(pm_diag_pll_register(9,&p)==PM_DIAG_ARGUMENT && p==0xcafebabe && steps==0 && irq==s);
+  assert(pm_diag_pll_register(255,&p)==PM_DIAG_ARGUMENT && p==0xcafebabe && steps==0 && irq==s);
+
   init(s);mem[0x688]=0;assert(pm_diag_temp(3,&v)==PM_DIAG_POWER && writes==0 && irq==s);
   assert(pm_diag_tdc(0,0x83,&v)==PM_DIAG_POWER && writes==0 && irq==s);
   assert(pm_diag_pll(&p)==PM_DIAG_POWER && writes==0 && irq==s);

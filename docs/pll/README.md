@@ -16,8 +16,9 @@ CDCE62005 uses SPI controller C. Recovered `pll_control_write.c` selects LSB-fir
 SPIC_CTRL=0xf1, lowers PF4/SPI_LE, transmits R16..R19, raises LE. Readback helper
 `pll_control_read.c` sends0x0000008e to select register8, followed by32 dummy
 clock bits. Current `@PLL` diagnostic likewise reads register8 only: it is NOT
-a complete register-map dump. Full register0..8 readback is the first diagnostic
-extension needed for this work, with documented status/write-only bit handling.
+a complete register-map dump. The candidate now implements full register0..8 readback (`@PLL ALL`); it is
+software-tested but not yet installed on the board. It reports raw words without
+guessed status masks; comparison/decoding remains a separate step.
 
 The timer's `CDCE62005_control_rst()` writes10 words from original FLASH0x2916.
 It configures working registers, including calibration transitions, without the
@@ -68,3 +69,13 @@ Read `/home/codex-hil/fit-testing-publish/diagnostics/pm12/ipbus_adc/CURRENT_STA
 and coordinate current owners before any hardware action. Both PM12 and
 Atmel-ICE leases remain mandatory. No reset/programming is needed for this
 initial branch checkpoint.
+
+## First test checkpoint,2026-10-16
+
+See `validation-2026-10-16/` for raw baseline captures and software results.
+Physical MCU UART/PGOOD/PLL/ADT/INA reads work, but MCU FPGA access returns
+ERR POWER and the diagnostic IPbus endpoint times out. MCU was not reset or
+programmed; candidate deployment, full-map physical readback, clock measurement,
+cold-boot and ASM/C initialization A/B remain NOT_RUN pending FPGA state
+clarification. Do not turn software PASS into board qualification. Existing
+ADT configuration was read, never reset/restored/rewritten in this checkpoint.

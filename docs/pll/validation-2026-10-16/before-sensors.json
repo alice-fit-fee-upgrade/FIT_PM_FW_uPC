@@ -1,0 +1,95 @@
+{
+  "scope": "read-only follow-up; unavailable FPGA recorded, no reset/programming",
+  "commands": [
+    {
+      "command": "@CFG",
+      "reply": "CFG PORTD IN=F7 07\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@TEMP ALL",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0FA8\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 05\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+      "duration_s": 0.2119
+    },
+    {
+      "command": "@I2C",
+      "reply": "I2C PF7/PA1 RESET_PB6 LINES=07 OWNER=00 DEFER=00 A_DIR=FB A_OUT=FA A_CTRL1=80 A_CTRL2=18\r\n",
+      "duration_s": 0.2126
+    },
+    {
+      "command": "@INA 4",
+      "reply": "INA 4 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 4 CH=1 RAW=0010/03E8 MV=1000 MA=8 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=2 RAW=0020/04B0 MV=1200 MA=16 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=3 RAW=0008/0700 MV=1792 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\n",
+      "duration_s": 0.2417
+    },
+    {
+      "command": "@INA 5",
+      "reply": "INA 5 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 5 CH=1 RAW=7FF8/05C0 MV=1472 MA=NA STATUS=R15_NOT_FITTED_BUS_INPUT_ONLY\r\nINA 5 CH=2 RAW=0468/0D00 MV=3328 MA=5640 STATUS=NOMINAL_UNCALIBRATED\r\nINA 5 CH=3 RAW=0038/06F8 MV=1784 MA=280 STATUS=NOMINAL_UNCALIBRATED\r\n",
+      "duration_s": 0.2423
+    },
+    {
+      "command": "@INA 6",
+      "reply": "INA 6 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 6 CH=1 RAW=0010/03F0 MV=1008 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=2 RAW=0010/1578 MV=5496 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=3 RAW=0000/0000 MV=0 MA=NA STATUS=NO_SHUNT\r\n",
+      "duration_s": 0.2423
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.2 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2115
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000006B00380109\r\n",
+      "duration_s": 0.2118
+    }
+  ],
+  "power_good": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=090004010000003901390109\r\n",
+      "duration_s": 0.2125
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000005503390109\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000008A01390109\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=09000401000000A703390109\r\n",
+      "duration_s": 0.2114
+    }
+  ],
+  "power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000000302390109\r\n",
+      "duration_s": 0.2122
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000007203390109\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF7EFFC STATE 2157..2162=09000401000000B001390109\r\n",
+      "duration_s": 0.2127
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=09000401000000D403380109\r\n",
+      "duration_s": 0.2124
+    }
+  ],
+  "status": "CAPTURED"
+}

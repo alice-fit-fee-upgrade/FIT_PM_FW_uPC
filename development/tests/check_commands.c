@@ -28,6 +28,11 @@ int main(void)
     check("TEMP\r", "ERR POWER\r\n");
     check("TEMP RESTORE\r", "ERR POWER\r\n");
     check("PLL\r", "ERR POWER\r\n");
+    check("PLL ALL\r", "ERR POWER\r\n");
+    check("PLL A\r", "ERR ARGUMENTS\r\n");
+    check("PLL AL\r", "ERR ARGUMENTS\r\n");
+    check("PLL ALL X\r", "ERR ARGUMENTS\r\n");
+    check("PLL INIT\r", "ERR ARGUMENTS\r\n");
     check("TDC 0 83\r", "ERR POWER\r\n");
     check("TDC 3 83\r", "ERR ARGUMENTS\r\n");
     check("TDC 0 8G\r", "ERR ARGUMENTS\r\n");

@@ -44,8 +44,16 @@ void pm_command_tdc(const char *args)
 }
 void pm_command_pll(const char *args)
 {
- if(*args){pm_console_write(earg);return;}uint32_t v=0;if(!result(pm_diag_pll(&v)))return;
- static const PM_FLASH char label[]="CDCE62005 ";pm_console_write(label);hex(v,8);line();
+ if(!*args){
+  uint32_t v=0;if(!result(pm_diag_pll(&v)))return;
+  static const PM_FLASH char label[]="CDCE62005 ";pm_console_write(label);hex(v,8);line();return;
+ }
+ if(args[0]!='A'||args[1]!='L'||args[2]!='L'||args[3]){pm_console_write(earg);return;}
+ for(uint8_t reg=0;reg<9;++reg){
+  uint32_t v=0;if(!result(pm_diag_pll_register(reg,&v)))return;
+  static const PM_FLASH char label[]="CDCE62005 REG=";
+  pm_console_write(label);hex(reg,2);pm_console_putc(' ');hex(v,8);line();
+ }
 }
 
 void pm_command_pgtime(const char *args)

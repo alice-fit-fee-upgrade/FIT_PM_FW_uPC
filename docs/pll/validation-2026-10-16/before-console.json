@@ -1,0 +1,53 @@
+{
+  "scope": "read-only UART baseline; no reset/programming/PC/PLL profile/EEPROM writes",
+  "commands": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.211
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.3 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@FPGA",
+      "reply": "ERR POWER\r\n",
+      "duration_s": 0.211
+    }
+  ],
+  "hardware_actions": [
+    "UART read commands only"
+  ],
+  "initial_drain": "",
+  "power_good": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=09000401000000CD02390109\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000000301390109\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000002203390109\r\n",
+      "duration_s": 0.2109
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FE7C7FF76FFC STATE 2157..2162=090004010000005801390109\r\n",
+      "duration_s": 0.211
+    }
+  ],
+  "status": "FAIL",
+  "error": "AssertionError({'command': '@FPGA', 'reply': 'ERR POWER\\r\\n', 'duration_s': 0.211})"
+}
