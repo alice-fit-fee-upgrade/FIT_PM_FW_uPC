@@ -1,0 +1,24 @@
+{
+  "source_commit": "4674a9a",
+  "status": "NOT_ACCEPTED_SYSTEM_REGRESSION",
+  "PLL_function_simulation": "PASS 768 legacy plus768 GNU diagnostic calls",
+  "PLL_function_physical": "PASS three @PLL LEGACY results equal bounded @PLL and register8 in three stable complete maps; PLL LOCKED",
+  "system_failure": "ADT7311 registers0..7 all zero, ID00 rather thanC3; candidate was rolled back",
+  "candidate_readback_sha256": "ed2139db02b2ba3e7e0c95a0757bd8ec835597d984dd41dcb76fd149fe71e0c4",
+  "canonical_candidate_readback_sha256": "9ece53e796f4089d1bbd7aaf1d6c00fa52fc4780e53fe2edec487f0ce9726d0a",
+  "canonical_rollback_sha256": "a016c00d39617d106ca855c03a62170d918f2e9a93514e7962bdc0cb7017c23e",
+  "running_firmware": "previous PGOOD release002 application, exact physical rollback verified",
+  "fpga": "4bbe9dfc restored in SRAM; no configuration flash/CPLD writes",
+  "protected_memories": "all unchanged on candidate and rollback",
+  "post_rollback": "ID C3, normal temperature, PLL LOCKED, INA routes4/5/6, SPI32-vector test pass",
+  "peripheral_state_delta": {
+    "ADT_TLOW_before": "0500",
+    "ADT_TLOW_after_rollback": "FFD0",
+    "ADT_THYST_before_and_after": "0F",
+    "critical_before_and_after": "2300",
+    "high_before_and_after": "1E00"
+  },
+  "cause": "NOT_ESTABLISHED. Existing pre-PGOOD ADT startup writes are a hypothesis, not proof that the PLL change is unrelated.",
+  "release": "NOT_CREATED: hardware system regression failed",
+  "hardware_backups_local_only": "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01"
+}

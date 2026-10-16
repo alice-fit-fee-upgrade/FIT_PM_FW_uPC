@@ -27,7 +27,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', required=True, type=Path)
     parser.add_argument('--all', action='store_true', help='requires firmware with @PLL ALL')
+    parser.add_argument('--legacy', action='store_true', help='compare patched old entry via @PLL LEGACY')
+    parser.add_argument('--repeat', type=int, default=3, help='bounded repetition count,1..1000')
     args = parser.parse_args()
+    if not 1 <= args.repeat <= 1000:
+        parser.error('--repeat must be1..1000')
     if args.out.exists():
         raise FileExistsError(args.out)
     args.out.parent.mkdir(parents=True, exist_ok=True)
@@ -55,10 +59,13 @@ def main():
             report['power_good'] = wait_power_good(uart, capture)
             # GPIO-only view; records actual INIT/PROGRAM state without changing it.
             read('@CFG')
-            for _ in range(3):
+            for _ in range(args.repeat):
                 report.setdefault('power_rechecks', []).append(require_power_good(uart, capture))
                 assert 'PLL LOCKED' in read('RS')
-                assert re.fullmatch(r'CDCE62005 [0-9A-F]{8}\r\n', read('@PLL'))
+                bounded = read('@PLL')
+                assert re.fullmatch(r'CDCE62005 [0-9A-F]{8}\r\n', bounded)
+                if args.legacy:
+                    assert read('@PLL LEGACY') == bounded
                 if args.all:
                     report['maps'].append(parse_pll_all(read('@PLL ALL')))
             report['power_rechecks'].append(require_power_good(uart, capture))
@@ -69,6 +76,9 @@ def main():
                 report['configuration_maps_equal'] = all(
                     all(v[r] == report['maps'][0][r] for r in range(8))
                     for v in report['maps'][1:])
+                assert report['configuration_maps_equal'], 'PLL configuration changed across reads'
+            report['repetitions'] = args.repeat
+            report['legacy_entry_compared'] = args.legacy
             report['status'] = 'PASS_READBACK_ONLY'
         except Exception as error:
             report['status'] = 'FAIL'

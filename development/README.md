@@ -1,3 +1,9 @@
+**Experimental PLL branch: hardware acceptance failed on2026-10-16.**
+The PLL-read C candidate passed simulation/local PLL reads but ADT failed after
+reset; the board was rolled back to release002. Do not treat this branch build
+as a newly accepted deployment. See
+[trial record](../docs/pll/c-read-migration-2026-10-16/README.md).
+
 Current direct-MCU I2C candidate: see [candidate contract](../docs/i2c_development_candidate.md).
 It preserves the original timer body and uses two small ownership gates instead
 of deploying the experimental whole-ISR relocation. Historical release001 below

@@ -1,6 +1,8 @@
 # First legacy PLL read migration
 
-Software-qualified candidate; hardware trial is recorded separately when run.
+Software qualification PASS; hardware system acceptance FAILED; candidate
+rolled back. The source is retained as an experimental candidate, not a new
+accepted deployment/release.
 
 The application entry at byte0x24ce (`FUN_code_001267`) receives one four-byte
 JMP into the reserved extension area0x4000..0x7fff. Its remaining original body
@@ -51,3 +53,40 @@ Physical acceptance compares three bounded/legacy/status reads and three
 full PLL maps, then normal temperature/PGOOD, INA3221 routes4/5/6 and the
 32-vector restored FPGA scratch test. Natural PLL lock remains required;
 fault/lock-loss IRQ injection and power-loss qualification are separate work.
+
+## Actual trial01 result
+
+See [summary](hardware-trial-01/summary.json) and raw console/programmer logs.
+The physical full candidate readback matched
+`9ece53e796f4089d1bbd7aaf1d6c00fa52fc4780e53fe2edec487f0ce9726d0a`.
+Three `@PLL LEGACY` replies matched bounded reads (`80009D38`) and register8
+in three stable complete maps; PLL stayed locked.
+
+System acceptance nevertheless FAILED: all eight ADT7311 registers read zero,
+including ID00 instead ofC3; RS reported0.0 NORMAL. Temperature value alone
+is therefore not a valid health check. The candidate was NOT left running.
+The exact previous application was restored (full canonical SHA
+`a016c00d39617d106ca855c03a62170d918f2e9a93514e7962bdc0cb7017c23e`).
+Both candidate and rollback preserved boot, EEPROM, fuses, lock, production/user
+signatures and device signature. The same FPGA4bbe9dfc SRAM image was restored.
+
+After rollback ID C3 and approximately29–30°C returned; INA routes4/5/6 and
+FPGA32-vector SPI scratch/restore test passed. However raw TLOW changed from
+0500 before the trial toFFD0 after rollback. THYST remained0F; CONFIG50,
+TCRIT2300 and THIGH1E00 returned. No explicit sensor INIT/RESTORE, PLL PC,
+profile or power command was sent. MCU resets DO execute unchanged original
+startup writes to ADT and the PLL RAM profile: the raw trial report's
+`PLL_configuration_or_EEPROM_commands: false` denotes no explicit test command,
+not absence of original startup SPI transactions.
+
+The cause is NOT established. Pre-PGOOD startup writes/shared SCL and reset
+sequencing are hypotheses; successful local PLL reads do not exonerate the
+replacement. Further releases/replacements wait for controlled old-firmware
+reset measurements and ADT startup diagnosis. No sensor thresholds were silently
+rewritten to force acceptance. The existing old firmware is restored, but
+peripheral TLOW is not claimed to equal its pre-trial value.
+
+The initial runner did not retain a partially returned runtime object when
+assertions failed, so candidate UART evidence is in `console-and-trial.log`.
+The runner now retains partial attempts and names failed ID assertions.
+Protected-memory contents remain local backups; only hashes/logs are committed.

@@ -84,8 +84,10 @@ def main():
     conf = ROOT/'tools/hardware/pdi-application-only.conf'
     assert conf.is_file()
     report = {'status': 'IN_PROGRESS', 'candidate_sha256': sha(candidate),
+              'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'fpga_bit_sha256': BIT_SHA, 'configuration_flash_written': False,
-              'PLL_configuration_or_EEPROM_commands': False, 'chip_erase': False,
+              'explicit_PLL_configuration_or_EEPROM_console_commands': False,
+              'unchanged_startup_can_replay_PLL_RAM_profile': True, 'chip_erase': False,
               'software_qualification': software, 'layout': layout,
               'excluded': ['PLL EEPROM copy PC', 'PLL profile/reset changes',
                            'power/fault injection', 'clock frequency/jitter proof',
@@ -162,7 +164,9 @@ def main():
         return fpga_identity()
 
     def runtime(extended):
-        result = {'commands': [], 'maps': []}
+        result = {'extended': extended, 'commands': [], 'maps': []}
+        # Retain partial captures even when a later acceptance assertion fails.
+        report.setdefault('runtime_attempts', []).append(result)
         with console() as uart:
             result['power_good'] = wait_power_good(uart, capture)
             def read(command):
@@ -185,7 +189,7 @@ def main():
                     assert values[8] == int(pll.split()[1], 16)
                     result['maps'].append(values)
             result['adt'] = read('@TEMP ALL')
-            assert 'ADT7311 REG=03 C3\r\n' in result['adt']
+            assert 'ADT7311 REG=03 C3\r\n' in result['adt'], ('ADT ID failed', result['adt'])
             for route in [4, 5, 6]:
                 # BUSY is an expected ownership result; bounded retries only.
                 for attempt in range(4):
@@ -226,6 +230,7 @@ def main():
             save()
             attempted = True
             report['protected_unchanged'] = program(candidate, out/'candidate-memory')
+            report['candidate_readback_sha256'] = sha(image(out/'candidate-memory'))
             report['after_fpga'] = restore_fpga(out/'candidate-memory')
             report['after_runtime'] = runtime(True)
             # Ignore only measured temperature/status, not configuration changes.

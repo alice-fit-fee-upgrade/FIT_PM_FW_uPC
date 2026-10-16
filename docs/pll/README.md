@@ -1,5 +1,15 @@
 # PLL C recovery and PM12 validation branch
 
+Current result2026-10-16: the first read-status C candidate passed function
+simulation and local PLL readback on PM12, but FAILED system acceptance because
+ADT7311 returned zeros after reset. The previous PGOOD firmware was physically
+restored and verified. No release003 was created. See
+[candidate/trial evidence](c-read-migration-2026-10-16/README.md) and
+[migration order](migration_plan.md). Do not deploy this branch as an accepted
+hardware checkpoint yet.
+
+Initial branch checkpoint below is historical.
+
 Branch: `development/pll-c-recovery`, based on board-tested PGOOD checkpoint
 `535f6aa` (`development/pgood-adt-readback`). This initial checkpoint creates
 an isolated working branch and acceptance contract; it does not replace a PLL

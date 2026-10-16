@@ -1,0 +1,72 @@
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.06s
+
+avrdude: Device signature = 0x1e9742 (probably x128a3u)
+avrdude: NOTE: Programmer supports page erase for Xmega devices.
+         Each page will be erased before programming it, but no chip erase is performed.
+         To disable page erases, specify the -D option; for a chip-erase, use the -e option.
+avrdude: reading flash memory:
+
+Reading | ################################################## | 100% 20.07s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/flash.bin"
+avrdude: reading boot memory:
+
+Reading | ################################################## | 100% 1.18s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/boot.bin"
+avrdude: reading eeprom memory:
+
+Reading | ################################################## | 100% 0.64s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/eeprom.bin"
+avrdude: reading fuse0 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/fuse0.bin"
+avrdude: reading fuse1 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/fuse1.bin"
+avrdude: reading fuse2 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/fuse2.bin"
+avrdude: reading fuse4 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/fuse4.bin"
+avrdude: reading fuse5 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/fuse5.bin"
+avrdude: reading lock memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/lock.bin"
+avrdude: reading usersig memory:
+
+Reading | ################################################## | 100% 0.07s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/usersig.bin"
+avrdude: reading prodsig memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/prodsig.bin"
+avrdude: reading signature memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/before-memory/signature.bin"
+
+avrdude done.  Thank you.
+

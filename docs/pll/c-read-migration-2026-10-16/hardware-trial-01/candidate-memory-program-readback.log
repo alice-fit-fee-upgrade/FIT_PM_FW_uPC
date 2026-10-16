@@ -1,0 +1,87 @@
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.06s
+
+avrdude: Device signature = 0x1e9742 (probably pm12_full_app)
+avrdude: NOTE: Programmer supports page erase for Xmega devices.
+         Each page will be erased before programming it, but no chip erase is performed.
+         To disable page erases, specify the -D option; for a chip-erase, use the -e option.
+avrdude: reading input file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/application-full.bin"
+avrdude: writing app_full (131072 bytes):
+
+Writing | ################################################## | 100% 22.05s
+
+avrdude: 131072 bytes of app_full written
+avrdude: verifying app_full memory against /home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/application-full.bin:
+avrdude: load data app_full data from input file /home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/application-full.bin:
+avrdude: input file /home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/application-full.bin contains 131072 bytes
+avrdude: reading on-chip app_full data:
+
+Reading | ################################################## | 100% 19.02s
+
+avrdude: verifying ...
+avrdude: 131072 bytes of app_full verified
+avrdude: reading flash memory:
+
+Reading | ################################################## | 100% 20.13s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/flash.bin"
+avrdude: reading boot memory:
+
+Reading | ################################################## | 100% 1.18s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/boot.bin"
+avrdude: reading eeprom memory:
+
+Reading | ################################################## | 100% 0.64s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/eeprom.bin"
+avrdude: reading fuse0 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/fuse0.bin"
+avrdude: reading fuse1 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/fuse1.bin"
+avrdude: reading fuse2 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/fuse2.bin"
+avrdude: reading fuse4 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/fuse4.bin"
+avrdude: reading fuse5 memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/fuse5.bin"
+avrdude: reading lock memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/lock.bin"
+avrdude: reading usersig memory:
+
+Reading | ################################################## | 100% 0.07s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/usersig.bin"
+avrdude: reading prodsig memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/prodsig.bin"
+avrdude: reading signature memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/c-read-trial-01/candidate-memory/signature.bin"
+
+avrdude done.  Thank you.
+

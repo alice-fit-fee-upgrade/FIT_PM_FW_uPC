@@ -1,0 +1,493 @@
+{
+  "status": "FAIL",
+  "candidate_sha256": "9ece53e796f4089d1bbd7aaf1d6c00fa52fc4780e53fe2edec487f0ce9726d0a",
+  "fpga_bit_sha256": "5b9c5fb30722a49cb8fdeea524f7541e0b10dce1e575b015a5d5e43d6ff6d5d4",
+  "configuration_flash_written": false,
+  "PLL_configuration_or_EEPROM_commands": false,
+  "chip_erase": false,
+  "software_qualification": {
+    "status": "PASS",
+    "cases": 768,
+    "GNU_diagnostic_adapter_cases": 768,
+    "initial_SREG_values": 256,
+    "response_and_busy_poll_scenarios": 3,
+    "compared": [
+      "all32GPR",
+      "all8SREG",
+      "saved extended-bank registers",
+      "entire SPI/LE MMIO read/write trace",
+      "controller and LE final state",
+      "balanced data/call stack",
+      "no explicit CLI/SEI"
+    ],
+    "maximum_push_stack_bytes": 26,
+    "scope": "full original versus compiled linked C+ASM adapter; abstract SPI completion delays; no cycle, asynchronous IRQ, extended-address bus or electrical proof"
+  },
+  "layout": {
+    "acceptance": "planned development differences only; NOT binary-exact PM.hex",
+    "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+    "development_sha256": "9ece53e796f4089d1bbd7aaf1d6c00fa52fc4780e53fe2edec487f0ce9726d0a",
+    "differing_bytes": 10854,
+    "gate_start": 4842,
+    "gate_length": 6,
+    "timer_mode": "legacy body in place; two four-byte temperature gates",
+    "temperature_guard_sites": [
+      1918,
+      1928
+    ],
+    "extension_start": 16384,
+    "extension_size": 10903,
+    "extension_limit": 32768,
+    "legacy_symbols_preserved": 4657,
+    "bootloader_unchanged": true,
+    "pll_read_gate": {
+      "address": 9422,
+      "length": 4,
+      "target": "pm_pll_read_legacy_adapter",
+      "original_body_retained": true
+    },
+    "retained_diagnostic_pg_hooks": [
+      "0x106a",
+      "0x662",
+      "0xac",
+      "0x68e",
+      "0x5e6",
+      "0xad4",
+      "0xbcc",
+      "0xc0c",
+      "0x1446",
+      "0x1550",
+      "0x1c3e"
+    ],
+    "bus_lock": "GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized",
+    "ram_globals": "rejected by linker; no unverified SRAM reservation"
+  },
+  "excluded": [
+    "PLL EEPROM copy PC",
+    "PLL profile/reset changes",
+    "power/fault injection",
+    "clock frequency/jitter proof",
+    "asynchronous IRQ/whole-firmware timing proof"
+  ],
+  "before_fpga": [
+    1347228162,
+    65538,
+    1270783484
+  ],
+  "before_runtime": {
+    "commands": [
+      {
+        "command": "@PING",
+        "reply": "PONG\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "RS",
+        "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.1 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@PLL",
+        "reply": "CDCE62005 80009D38\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "RS",
+        "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.1 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@PLL",
+        "reply": "CDCE62005 80009D38\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "RS",
+        "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    31.1 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@PLL",
+        "reply": "CDCE62005 80009D38\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@TEMP ALL",
+        "reply": "ADT7311 REG=00 80\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0F98\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@INA 4",
+        "reply": "INA 4 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 4 CH=1 RAW=0100/03E8 MV=1000 MA=128 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=2 RAW=00B8/04B0 MV=1200 MA=92 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=3 RAW=0008/0700 MV=1792 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\n",
+        "duration_s": 0.2407
+      },
+      {
+        "command": "@INA 5",
+        "reply": "INA 5 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 5 CH=1 RAW=7FF8/05C8 MV=1480 MA=NA STATUS=R15_NOT_FITTED_BUS_INPUT_ONLY\r\nINA 5 CH=2 RAW=04A0/0D00 MV=3328 MA=5920 STATUS=NOMINAL_UNCALIBRATED\r\nINA 5 CH=3 RAW=0090/06F8 MV=1784 MA=720 STATUS=NOMINAL_UNCALIBRATED\r\n",
+        "duration_s": 0.2408
+      },
+      {
+        "command": "@INA 6",
+        "reply": "INA 6 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 6 CH=1 RAW=0048/03F0 MV=1008 MA=360 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=2 RAW=0010/1578 MV=5496 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=3 RAW=0000/0000 MV=0 MA=NA STATUS=NO_SHUNT\r\n",
+        "duration_s": 0.2409
+      },
+      {
+        "command": "@CFG",
+        "reply": "CFG PORTD IN=BF 07\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@FPGA",
+        "reply": "FPGA REG=40 0000\r\nFPGA REG=41 504D\r\nFPGA REG=42 5350\r\nFPGA REG=43 0001\r\nFPGA REG=44 0021\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@FPGATEST",
+        "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+        "duration_s": 0.2108
+      }
+    ],
+    "maps": [],
+    "power_good": [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000006500370109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000008302370109\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000BA00370109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000D902370109\r\n",
+        "duration_s": 0.2107
+      }
+    ],
+    "power_rechecks": [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000006500370109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000D901370109\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000004E03370109\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000AB01370109\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000000900370109\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000003102360109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000007000360109\r\n",
+        "duration_s": 0.2109
+      }
+    ],
+    "adt": "ADT7311 REG=00 80\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0F98\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n"
+  },
+  "before_sha256": "a016c00d39617d106ca855c03a62170d918f2e9a93514e7962bdc0cb7017c23e",
+  "protected_unchanged": {
+    "boot": true,
+    "eeprom": true,
+    "fuse0": true,
+    "fuse1": true,
+    "fuse2": true,
+    "fuse4": true,
+    "fuse5": true,
+    "lock": true,
+    "usersig": true,
+    "prodsig": true,
+    "signature": true
+  },
+  "post_pdi_power_good": [
+    [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000109072103000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000140055801000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000176037603000000\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=0100000001AD01AD01000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000060C STATE 2157..2162=0100000002CC03CC03000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7C2F0F3F7BC STATE 2157..2162=010000000202020202000000\r\n",
+        "duration_s": 0.2109
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7C2F0F3FFBC STATE 2157..2162=090000000239003900000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=090000000357025702000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=09000000038E008E00000000\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=FF7C7FF76FFC STATE 2157..2162=09000401044D12AD02000009\r\n",
+        "duration_s": 0.2107
+      }
+    ],
+    [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=01000000010A072203000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000141055901000000\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000178037803000000\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=0100000001AE01AE01000000\r\n",
+        "duration_s": 0.2124
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7000000060C STATE 2157..2162=0100000002CB03CB03000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7C2F0F3F7BC STATE 2157..2162=010000000202020202000000\r\n",
+        "duration_s": 0.211
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=F7C2F0F3FFBC STATE 2157..2162=090000000238003800000000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=090000000356025602000000\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=09000000038D008D00000000\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=FFFC7FF76FFC STATE 2157..2162=09000401044B12AB02100109\r\n",
+        "duration_s": 0.2107
+      }
+    ]
+  ],
+  "after_fpga": [
+    1347228162,
+    65538,
+    1270783484
+  ],
+  "error": "AssertionError()",
+  "rollback_protected": {
+    "boot": true,
+    "eeprom": true,
+    "fuse0": true,
+    "fuse1": true,
+    "fuse2": true,
+    "fuse4": true,
+    "fuse5": true,
+    "lock": true,
+    "usersig": true,
+    "prodsig": true,
+    "signature": true
+  },
+  "rollback_sha256": "a016c00d39617d106ca855c03a62170d918f2e9a93514e7962bdc0cb7017c23e",
+  "rollback_fpga": [
+    1347228162,
+    65538,
+    1270783484
+  ],
+  "rollback_runtime": {
+    "commands": [
+      {
+        "command": "@PING",
+        "reply": "PONG\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "RS",
+        "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    29.1 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@PLL",
+        "reply": "CDCE62005 80009D38\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "RS",
+        "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    29.1 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@PLL",
+        "reply": "CDCE62005 80009D38\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "RS",
+        "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    29.1 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+        "duration_s": 0.2107
+      },
+      {
+        "command": "@PLL",
+        "reply": "CDCE62005 80009D38\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@TEMP ALL",
+        "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0E98\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 FFD0\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@INA 4",
+        "reply": "INA 4 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 4 CH=1 RAW=0100/03E8 MV=1000 MA=128 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=2 RAW=00B8/04B0 MV=1200 MA=92 STATUS=NOMINAL_UNCALIBRATED\r\nINA 4 CH=3 RAW=0008/0700 MV=1792 MA=4 STATUS=NOMINAL_UNCALIBRATED\r\n",
+        "duration_s": 0.2437
+      },
+      {
+        "command": "@INA 5",
+        "reply": "INA 5 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 5 CH=1 RAW=7FF8/05D0 MV=1488 MA=NA STATUS=R15_NOT_FITTED_BUS_INPUT_ONLY\r\nINA 5 CH=2 RAW=03D8/0D00 MV=3328 MA=4920 STATUS=NOMINAL_UNCALIBRATED\r\nINA 5 CH=3 RAW=0090/06F8 MV=1784 MA=720 STATUS=NOMINAL_UNCALIBRATED\r\n",
+        "duration_s": 0.2409
+      },
+      {
+        "command": "@INA 6",
+        "reply": "INA 6 ADDR=40 CONFIG=7127 MASKS_RESTORED=00/00\r\nINA 6 CH=1 RAW=0048/03F0 MV=1008 MA=360 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=2 RAW=0010/1580 MV=5504 MA=80 STATUS=NOMINAL_UNCALIBRATED\r\nINA 6 CH=3 RAW=0000/0000 MV=0 MA=NA STATUS=NO_SHUNT\r\n",
+        "duration_s": 0.2409
+      },
+      {
+        "command": "@CFG",
+        "reply": "CFG PORTD IN=BF 07\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@FPGA",
+        "reply": "FPGA REG=40 0000\r\nFPGA REG=41 504D\r\nFPGA REG=42 5350\r\nFPGA REG=43 0001\r\nFPGA REG=44 0000\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@FPGATEST",
+        "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+        "duration_s": 0.2114
+      }
+    ],
+    "maps": [],
+    "power_good": [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000E801220109\r\n",
+        "duration_s": 0.2117
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000001E00220109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000003C02230109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000007300230109\r\n",
+        "duration_s": 0.2108
+      }
+    ],
+    "power_rechecks": [
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000E801230109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000005C03230109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000E800230109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000002D03230109\r\n",
+        "duration_s": 0.2123
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000008901230109\r\n",
+        "duration_s": 0.2108
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000AE03230109\r\n",
+        "duration_s": 0.2133
+      },
+      {
+        "command": "@HW",
+        "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000EA01230109\r\n",
+        "duration_s": 0.2108
+      }
+    ],
+    "adt": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0E98\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 FFD0\r\n"
+  },
+  "candidate_left_running": false
+}
