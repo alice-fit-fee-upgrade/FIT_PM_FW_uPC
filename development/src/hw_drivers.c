@@ -111,6 +111,21 @@ uint8_t pm_diag_pll_register(uint8_t reg,uint32_t *value)
  pm_irq_leave(irq);return result;
 }
 
+/* Explicit diagnostic of the real legacy entry gate. Healthy SPI required:
+ * its original blocking-poll contract is intentionally retained. */
+uint8_t pm_diag_pll_legacy(uint32_t *value)
+{
+ uint8_t irq=pm_irq_enter(),result=PM_DIAG_OK;
+ uint8_t old=pm_read8(PM_SPIC),out=pm_read8(F+OUT);
+ if(!powered())result=PM_DIAG_POWER;
+ else if(!(out&16) || (pm_read8(C+OUT)&7)!=7 || !(old&0x40) || !(pm_read8(0x664)&1))result=PM_DIAG_BUSY;
+ else {
+  *value=pm_pll_read_legacy_native();
+  pm_write8(PM_SPIC,old);
+ }
+ pm_irq_leave(irq);return result;
+}
+
 /* Preserve existing @PLL semantics: register8 only. */
 uint8_t pm_diag_pll(uint32_t *value) { return pm_diag_pll_register(8,value); }
 

@@ -52,23 +52,25 @@ void pm_write8(uint16_t a,uint8_t v)
  default:assert(!"unexpected MMIO write");
  }
 }
-static void check(const char *request,const char *expected,unsigned frames,unsigned selects)
+static void check(const char *request,const char *expected,unsigned frames,unsigned selects,unsigned expected_reads)
 {
  input=request;used=transactions=selectors=reads=0;output[0]=0;
  pm_extension_dispatch();
  assert(!*input && strcmp(output,expected)==0);
- assert(transactions==frames && selectors==selects && reads==frames*4);
+ assert(transactions==frames && selectors==selects && reads==expected_reads);
  assert(!selected && !read_phase && irq==1 && ctrl==0xd5 && out==0xf0);
 }
 int main(void)
 {
- check("PLL\r","CDCE62005 80009D38\r\n",2,1);
+ check("PLL\r","CDCE62005 80009D38\r\n",2,1,8);
+ check("PLL LEGACY\r","CDCE62005 80009D38\r\n",2,1,4);
  char expected[512];size_t pos=0;
  for(unsigned i=0;i<9;++i)pos+=(size_t)snprintf(expected+pos,sizeof expected-pos,"CDCE62005 REG=%02X %08lX\r\n",i,(unsigned long)registers[i]);
- check("PLL ALL\r",expected,18,9);
- check("PLL A\r","ERR ARGUMENTS\r\n",0,0);
- check("PLL AL\r","ERR ARGUMENTS\r\n",0,0);
- check("PLL ALL X\r","ERR ARGUMENTS\r\n",0,0);
- check("PLL PC\r","ERR ARGUMENTS\r\n",0,0);
+ check("PLL ALL\r",expected,18,9,72);
+ check("PLL A\r","ERR ARGUMENTS\r\n",0,0,0);
+ check("PLL AL\r","ERR ARGUMENTS\r\n",0,0,0);
+ check("PLL ALL X\r","ERR ARGUMENTS\r\n",0,0,0);
+ check("PLL LEGACY X\r","ERR ARGUMENTS\r\n",0,0,0);
+ check("PLL PC\r","ERR ARGUMENTS\r\n",0,0,0);
  puts("PASS PLL console: legacy response, all9 register values/format, 18LE frames, LSB-first selector bytes, no configuration/EEPROM opcodes, rejected arguments and IRQ/controller restoration");
 }

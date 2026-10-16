@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """A new uninitialized SRAM global must fail this no-CRT extension link."""
-import shlex,subprocess
+import re,shlex,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];BASE=ROOT/'recovered_exact';BUILD=ROOT/'development/build'
 source=BUILD/'forbidden_global.c';obj=BUILD/'forbidden_global.o'
@@ -10,8 +10,12 @@ plan=subprocess.check_output(['make','-B','-n','build/reconstructed.elf'],cwd=BA
 command=next(shlex.split(line) for line in plan.splitlines() if line.startswith('avr-gcc ') and ' -nostdlib ' in line)
 original=[str(BASE/a) for a in command if a.endswith('.o')]
 args=['avr-gcc','-mmcu=atxmega128a3u','-nostdlib','-Wl,-T,'+str(BUILD/'development.ld'),*original,
-      str(BUILD/'extension.o'),str(BUILD/'legacy_bridge.o'),str(BUILD/'temperature_bus_guards.o'),str(BUILD/'hw_commands.o'),str(BUILD/'hw_drivers.o'),str(BUILD/'pg_timing.o'),str(BUILD/'i2c_diag.o'),str(BUILD/'i2c_commands.o'),str(obj),'-lgcc','-o',str(BUILD/'forbidden.elf')]
+      str(BUILD/'extension.o'),str(BUILD/'legacy_bridge.o'),str(BUILD/'temperature_bus_guards.o'),str(BUILD/'hw_commands.o'),str(BUILD/'hw_drivers.o'),str(BUILD/'pg_timing.o'),str(BUILD/'i2c_diag.o'),str(BUILD/'i2c_commands.o'),str(BUILD/'pll_transport.o'),str(BUILD/'pll_legacy_bridge.o'),str(obj),'-lgcc','-o',str(BUILD/'forbidden.elf')]
 result=subprocess.run(args,cwd=BASE,text=True,capture_output=True)
 assert result.returncode and 'unplaced code/data/runtime support' in result.stderr, result.stderr
+# A forbidden .bss global also pulls CRT clear support, whose bounds are
+# deliberately absent. Reject unrelated missing symbols as false positives.
+missing=re.findall(r"undefined reference to `([^']+)'",result.stderr)
+assert set(missing)<= {'__bss_start','__bss_end'},result.stderr
 (BUILD/'ram_guard_rejection.txt').write_text(result.stderr)
 print('PASS RAM guard: uninitialized global rejected by linker assertion')

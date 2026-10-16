@@ -55,3 +55,12 @@ diagnostic PG observation hooks and
 a bounded new FLASH section only. See `development/README.md`. New modules use
 ordinary GNU ABI through explicit private-register adapters. Do not relax the
 baseline linker or add unreviewed SRAM allocations/peripheral assignments.
+
+# PLL development migration
+
+User authorized functional C replacements in `development/` on2026-10-16,
+validated by simulation then this PM12 hardware, leaving original bodies in
+place. The first allowed additional patch is a4-byte JMP at0x24ce into the
+new-FLASH legacy/GNU read-status adapter. Root exact baseline remains unchanged.
+EEPROM-copy PC, configuration writes and reset sequencing are not migrated
+with this read-only step. See docs/pll/README.md and validation reports.

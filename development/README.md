@@ -201,3 +201,14 @@ Host runner: `python3 tools/hardware/pm12_pll_readback.py --all --out REPORT.jso
 It needs this candidate installed; without `--all` it can inspect the existing
 PGOOD firmware. No programming/reset/EEPROM operation is performed by the runner.
 See `docs/pll/` for software tests, physical baseline and deployment status.
+
+## Legacy PLL register8 C migration
+
+The development image additionally patches only the first four bytes of
+`FUN_code_001267` at0x24ce with a JMP to a new-FLASH ABI adapter. The original
+body remains available in place and in the exact baseline. Ordinary C in
+`src/pll_transport.c` retains the original blocking SPI read transaction.
+`@PLL LEGACY` exercises that original entry; unlike plain `@PLL` it retains
+blocking completion polling and is a healthy-controller laboratory test.
+See [migration evidence](../docs/pll/c-read-migration-2026-10-16/README.md).
+The layout verifier explicitly protects the rest of the original PLL body.

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "cases": 768,
+  "GNU_diagnostic_adapter_cases": 768,
+  "initial_SREG_values": 256,
+  "response_and_busy_poll_scenarios": 3,
+  "compared": [
+    "all32GPR",
+    "all8SREG",
+    "saved extended-bank registers",
+    "entire SPI/LE MMIO read/write trace",
+    "controller and LE final state",
+    "balanced data/call stack",
+    "no explicit CLI/SEI"
+  ],
+  "maximum_push_stack_bytes": 26,
+  "scope": "full original versus compiled linked C+ASM adapter; abstract SPI completion delays; no cycle, asynchronous IRQ, extended-address bus or electrical proof"
+}

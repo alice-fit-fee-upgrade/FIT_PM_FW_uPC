@@ -42,6 +42,14 @@ def main():
         assert word & 0xfe0e == 0x940c
         assert 2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(gate[2:],'little'))==names[target]
         allowed.update(range(address,address+4))
+    from pll_patch import ADDRESS as pll_address,TARGET as pll_target
+    gate=dev[names['pm_pll_patch_table']:names['pm_pll_patch_table']+4]
+    assert dev[pll_address:pll_address+4]==gate
+    word=int.from_bytes(gate[:2],'little')
+    assert word & 0xfe0e==0x940c
+    assert 2*(((word & 0x1f0)<<13)|((word & 1)<<16)|int.from_bytes(gate[2:],'little'))==names[pll_target]
+    assert dev[pll_address+4:0x2530]==golden[pll_address+4:0x2530], 'original PLL body overwritten'
+    allowed.update(range(pll_address,pll_address+4))
     differing={i for i,(a,b) in enumerate(zip(golden,dev)) if a!=b}
     assert not differing-allowed, ('unexpected FLASH differences',sorted(differing-allowed)[:16])
     assert dev[0x20000:]==golden[0x20000:], 'bootloader modified'
@@ -49,7 +57,7 @@ def main():
             'golden_sha256':hashlib.sha256(golden).hexdigest(),'development_sha256':hashlib.sha256(dev).hexdigest(),
             'differing_bytes':len(differing),'gate_start':0x12ea,'gate_length':6,'timer_mode':'legacy body in place; two four-byte temperature gates','temperature_guard_sites':[0x77e,0x788],'extension_start':start,
             'extension_size':size,'extension_limit':0x8000,'legacy_symbols_preserved':len(original),
-            'bootloader_unchanged':True,'retained_diagnostic_pg_hooks':[hex(a) for a,_ in SITES],'bus_lock':'GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized','ram_globals':'rejected by linker; no unverified SRAM reservation'}
+            'bootloader_unchanged':True,'pll_read_gate':{'address':pll_address,'length':4,'target':pll_target,'original_body_retained':True},'retained_diagnostic_pg_hooks':[hex(a) for a,_ in SITES],'bus_lock':'GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized','ram_globals':'rejected by linker; no unverified SRAM reservation'}
     (BUILD/'layout_report.json').write_text(json.dumps(report,indent=2)+'\n')
     print('PASS development layout:',len(differing),'planned differing bytes; extension',size,'bytes')
 if __name__=='__main__':main()

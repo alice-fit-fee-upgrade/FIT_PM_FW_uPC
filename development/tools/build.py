@@ -60,6 +60,8 @@ def main():
     run(['avr-objcopy','--update-section','.c_00049e='+str(timer_section),elf])
     from power_patch import apply
     apply(elf,golden,names,BUILD)
+    from pll_patch import apply as apply_pll
+    apply_pll(elf,golden,names,BUILD)
     run(['avr-objcopy','-O','ihex',elf,hexfile]);run([sys.executable,ROOT/'tools/memory_image.py',hexfile,binary])
     (BUILD/'development.dis').write_text(subprocess.check_output(['avr-objdump','-d',str(elf)],text=True))
     run([sys.executable,DEV/'tools/check_layout.py'])

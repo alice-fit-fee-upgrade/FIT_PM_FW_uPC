@@ -44,8 +44,9 @@ void pm_command_tdc(const char *args)
 }
 void pm_command_pll(const char *args)
 {
- if(!*args){
-  uint32_t v=0;if(!result(pm_diag_pll(&v)))return;
+ uint8_t legacy=args[0]=='L'&&args[1]=='E'&&args[2]=='G'&&args[3]=='A'&&args[4]=='C'&&args[5]=='Y'&&!args[6];
+ if(!*args || legacy){
+  uint32_t v=0;if(!result(legacy?pm_diag_pll_legacy(&v):pm_diag_pll(&v)))return;
   static const PM_FLASH char label[]="CDCE62005 ";pm_console_write(label);hex(v,8);line();return;
  }
  if(args[0]!='A'||args[1]!='L'||args[2]!='L'||args[3]){pm_console_write(earg);return;}

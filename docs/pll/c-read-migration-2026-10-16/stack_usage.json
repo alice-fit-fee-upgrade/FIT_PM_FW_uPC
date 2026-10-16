@@ -1,0 +1,256 @@
+{
+  "per_function_limit": 128,
+  "frames": [
+    {
+      "function": "extension.c:27:16:name_matches",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "extension.c:9:6:pm_console_write",
+      "bytes": 5,
+      "kind": "static"
+    },
+    {
+      "function": "extension.c:13:6:pm_command_ping",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "extension.c:17:6:pm_command_help",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "extension.c:32:6:pm_extension_dispatch",
+      "bytes": 59,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:6:13:hex",
+      "bytes": 9,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:7:13:line",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:8:16:result",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:9:6:pm_command_hw",
+      "bytes": 29,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:22:6:pm_command_temp",
+      "bytes": 13,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:36:6:pm_command_tdc",
+      "bytes": 10,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:45:6:pm_command_pll",
+      "bytes": 13,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:60:6:pm_command_pgtime",
+      "bytes": 9,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:74:6:pm_command_fpga",
+      "bytes": 11,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:80:6:pm_command_fpgatest",
+      "bytes": 15,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:98:6:pm_command_cfg",
+      "bytes": 5,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:106:6:pm_command_flashid",
+      "bytes": 12,
+      "kind": "static"
+    },
+    {
+      "function": "hw_commands.c:111:6:pm_command_flashread",
+      "bytes": 27,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:20:16:powered",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:23:16:temp_byte",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:68:13:clock_tdc",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:87:16:spi_at",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:94:9:pm_diag_pll_register.part.0",
+      "bytes": 16,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:34:9:pm_diag_temp",
+      "bytes": 9,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:57:9:pm_diag_temp_restore",
+      "bytes": 6,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:70:9:pm_diag_tdc",
+      "bytes": 14,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:94:9:pm_diag_pll_register",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:116:9:pm_diag_pll_legacy",
+      "bytes": 8,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:130:9:pm_diag_pll",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:132:9:pm_diag_fpga",
+      "bytes": 13,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:149:9:pm_diag_config",
+      "bytes": 5,
+      "kind": "static"
+    },
+    {
+      "function": "hw_drivers.c:164:9:pm_diag_flash",
+      "bytes": 16,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_commands.c:6:13:hx",
+      "bytes": 7,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_commands.c:8:13:number",
+      "bytes": 27,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_commands.c:31:6:pm_command_i2c",
+      "bytes": 6,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_commands.c:45:6:pm_command_ina",
+      "bytes": 40,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_commands.c:63:6:pm_command_power",
+      "bytes": 7,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:23:13:sda",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:24:16:clock.constprop",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:42:13:stop",
+      "bytes": 5,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:56:16:get",
+      "bytes": 11,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:48:16:put",
+      "bytes": 8,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:36:16:start",
+      "bytes": 5,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:68:16:reg16",
+      "bytes": 12,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:62:16:mux",
+      "bytes": 9,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:13:6:pm_i2c_delay",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:74:9:pm_ina_code",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "i2c_diag.c:79:9:pm_ina_read",
+      "bytes": 21,
+      "kind": "static"
+    },
+    {
+      "function": "pll_transport.c:6:13:send_byte",
+      "bytes": 3,
+      "kind": "static"
+    },
+    {
+      "function": "pll_transport.c:16:10:pm_pll_read_status_c",
+      "bytes": 11,
+      "kind": "static"
+    }
+  ],
+  "scope": "per-frame guard; not a whole-program stack or recursion proof"
+}
