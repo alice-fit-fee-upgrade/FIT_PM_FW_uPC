@@ -1,0 +1,12 @@
+{
+  "status": "BRANCH_CHECKPOINT_NO_PLL_REPLACEMENT_YET",
+  "base_commit": "535f6aa",
+  "exact_check": "PASS",
+  "original_baseline_differing_bytes": 0,
+  "original_baseline_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "development_build": "PASS",
+  "development_sha256": "a016c00d39617d106ca855c03a62170d918f2e9a93514e7962bdc0cb7017c23e",
+  "development_image_unchanged_from_pgood_checkpoint": true,
+  "hardware_actions": [],
+  "pll_eeprom_writes": false
+}
