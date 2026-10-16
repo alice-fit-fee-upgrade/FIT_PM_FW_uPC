@@ -1,0 +1,12 @@
+{
+  "scope": "IDCODE chain and USER1 report only; no programming/configuration/USER2/ARM writes",
+  "usb_serial": "210249A73E43",
+  "returncode": 0,
+  "chain_pass": true,
+  "summary": [
+    "IDS 16d8a09316d8a09316d8a09316d8a09316d8a09316d8a09316d8a09316d8a09316d8a09316d8a09316d8a09316d8a0930364c093",
+    "PM12_CHAIN_PASS",
+    "USER1_MAGIC 00000000"
+  ],
+  "status": "PASS"
+}

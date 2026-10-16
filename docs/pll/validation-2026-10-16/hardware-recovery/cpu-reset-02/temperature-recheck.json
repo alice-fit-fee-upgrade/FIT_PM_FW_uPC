@@ -1,0 +1,12 @@
+[
+  {
+    "command": "@TEMP ALL",
+    "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+    "duration_s": 0.2117
+  },
+  {
+    "command": "@TEMP ALL",
+    "reply": "ADT7311 REG=00 80\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0F48\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+    "duration_s": 0.2119
+  }
+]

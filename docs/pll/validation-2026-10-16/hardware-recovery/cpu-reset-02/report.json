@@ -1,0 +1,108 @@
+{
+  "action": "user-requested MCU PDI reset via no-write signature read",
+  "programming_requested": false,
+  "commands": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.7 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2106
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "@CFG",
+      "reply": "CFG PORTD IN=F7 07\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "@FPGA",
+      "reply": "ERR POWER\r\n",
+      "duration_s": 0.2106
+    },
+    {
+      "command": "@TEMP ALL",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0F60\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+      "duration_s": 0.211
+    },
+    {
+      "command": "@I2C",
+      "reply": "I2C PF7/PA1 RESET_PB6 LINES=07 OWNER=00 DEFER=00 A_DIR=FB A_OUT=FB A_CTRL1=80 A_CTRL2=18\r\n",
+      "duration_s": 0.2112
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFFC7FF7EFFC STATE 2157..2162=0900040104F80A2803330109\r\n",
+      "duration_s": 0.211
+    }
+  ],
+  "pdi_reset": "PASS",
+  "startup_drain": "",
+  "power_good": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000118073003000000\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=01000000014D056501000000\r\n",
+      "duration_s": 0.212
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=010000000182038203000000\r\n",
+      "duration_s": 0.2117
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7000000020C STATE 2157..2162=0100000001B801B801000000\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7000000060C STATE 2157..2162=0100000002D503D503000000\r\n",
+      "duration_s": 0.2118
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7C2F0F3F7BC STATE 2157..2162=01000000020B020B02000000\r\n",
+      "duration_s": 0.2115
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=F7C2F0F3FFBC STATE 2157..2162=090000000241004100000000\r\n",
+      "duration_s": 0.2108
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=09000000035F025F02000000\r\n",
+      "duration_s": 0.2115
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFFC77F3FF9C STATE 2157..2162=090000000395009500000000\r\n",
+      "duration_s": 0.2108
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFFC7FF7EFFC STATE 2157..2162=09000401045412B402330109\r\n",
+      "duration_s": 0.2107
+    }
+  ],
+  "power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=FFFC7FF7EFFC STATE 2157..2162=09000401046D0DB501330109\r\n",
+      "duration_s": 0.2107
+    }
+  ],
+  "status": "RESET_DONE_READBACK_CAPTURED"
+}

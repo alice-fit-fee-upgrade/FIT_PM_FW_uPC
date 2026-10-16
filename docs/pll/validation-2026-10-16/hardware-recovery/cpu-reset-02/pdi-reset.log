@@ -1,0 +1,18 @@
+avrdude: usbdev_open(): WARNING: failed to set configuration 1: Device or resource busy
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.06s
+
+avrdude: Device signature = 0x1e9742 (probably x128a3u)
+avrdude: NOTE: Programmer supports page erase for Xmega devices.
+         Each page will be erased before programming it, but no chip erase is performed.
+         To disable page erases, specify the -D option; for a chip-erase, use the -e option.
+avrdude: reading signature memory:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: writing output file "/home/codex-hil/artifacts/pm12-pll-validation-2026-10-16/cpu-reset-02/signature.bin"
+
+avrdude done.  Thank you.
+

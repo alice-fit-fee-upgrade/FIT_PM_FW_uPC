@@ -1,0 +1,89 @@
+{
+  "scope": "user-authorized volatile FPGA reload; existing ADC/TDC/I2C/SPI image",
+  "bit_sha256": "5b9c5fb30722a49cb8fdeea524f7541e0b10dce1e575b015a5d5e43d6ff6d5d4",
+  "build_id": "4bbe9dfc",
+  "configuration_flash_written": false,
+  "mcu_programmed": false,
+  "cplds_programmed": false,
+  "commands": [
+    {
+      "command": "@PING",
+      "reply": "PONG\r\n",
+      "duration_s": 0.2108
+    },
+    {
+      "command": "@CFG",
+      "reply": "CFG PORTD IN=BF 07\r\n",
+      "duration_s": 0.2108
+    },
+    {
+      "command": "@FPGA",
+      "reply": "FPGA REG=40 0000\r\nFPGA REG=41 504D\r\nFPGA REG=42 5350\r\nFPGA REG=43 0001\r\nFPGA REG=44 0000\r\n",
+      "duration_s": 0.2106
+    },
+    {
+      "command": "@FPGATEST",
+      "reply": "FPGA TEST PASS 32 RESTORED\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "@PLL",
+      "reply": "CDCE62005 80009D38\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "RS",
+      "reply": "Board S/N: 1803 Flash Timestamp: 852AD92B\r\nExternal power source: OK\r\nTemperature    30.9 NORMAL\r\nBoard power ON, OK\r\nClock source INTERNAL, PLL LOCKED\r\nFPGA not ready\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "@TEMP ALL",
+      "reply": "ADT7311 REG=00 00\r\nADT7311 REG=01 50\r\nADT7311 REG=02 0F78\r\nADT7311 REG=03 C3\r\nADT7311 REG=04 2300\r\nADT7311 REG=05 0F\r\nADT7311 REG=06 1E00\r\nADT7311 REG=07 0500\r\n",
+      "duration_s": 0.2107
+    }
+  ],
+  "jtag_load": "PASS",
+  "identity": [
+    1347228162,
+    65538,
+    1270783484
+  ],
+  "tdc_readiness": [
+    [
+      24,
+      4095
+    ]
+  ],
+  "tdc_frontend_ready": true,
+  "power_good": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=89000001000000E501360109\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000001C00360109\r\n",
+      "duration_s": 0.2108
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000003A02350109\r\n",
+      "duration_s": 0.2107
+    },
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000007100350109\r\n",
+      "duration_s": 0.2108
+    }
+  ],
+  "power_rechecks": [
+    {
+      "command": "@HW",
+      "reply": "HW V2 PORTS A..F=BEFC6FBF9EFC STATE 2157..2162=890000010000008802350109\r\n",
+      "duration_s": 0.2107
+    }
+  ],
+  "status": "PASS",
+  "fpga_left_loaded": true
+}

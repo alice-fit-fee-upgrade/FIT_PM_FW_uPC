@@ -79,3 +79,20 @@ programmed; candidate deployment, full-map physical readback, clock measurement,
 cold-boot and ASM/C initialization A/B remain NOT_RUN pending FPGA state
 clarification. Do not turn software PASS into board qualification. Existing
 ADT configuration was read, never reset/restored/rewritten in this checkpoint.
+
+## Hardware recovery follow-up
+
+After user-restored USB permissions, MCU PDI reset succeeded without memory
+programming. FPGA access still failed; JTAG subsequently read all12 CPLD IDs
+and Kintex ID correctly, but USER1 returned zero. On explicit user instruction,
+reloaded known ADC/TDC/I2C/SPI build4bbe9dfc into FPGA SRAM only (SHA256
+5b9c5fb30722a49cb8fdeea524f7541e0b10dce1e575b015a5d5e43d6ff6d5d4).
+IPbus device504d1202/ABI00010002/build4bbe9dfc and MCU32-pattern SPI
+scratch/restore test passed. This resolves the unavailable diagnostic FPGA
+observed in the earlier baseline. No MCU candidate or configuration FLASH
+was programmed. Raw evidence is in validation-2026-10-16/hardware-recovery/.
+
+ADT hysteresis readback after MCU reset is consistently0f rather than earlier05;
+configuration50, critical2300, high1e00 and low0500 remain as read before.
+No explicit sensor configuration/restore command was sent. Record the delta
+separately from PLL testing; its cause is not established.
