@@ -1,0 +1,28 @@
+progress 87995 cases 20.0 seconds
+progress 176111 cases 40.0 seconds
+PASS entry2130 coefficient4188: all65536 input words x four T/I states 262144 cases
+progress 263128 cases 60.0 seconds
+progress 314537 cases 80.0 seconds
+progress 365956 cases 100.0 seconds
+progress 418695 cases 120.0 seconds
+progress 472161 cases 140.0 seconds
+PASS entry214c coefficient020c: all65536 input words x four T/I states 262144 cases
+progress 525838 cases 160.0 seconds
+progress 576797 cases 180.0 seconds
+progress 627389 cases 200.0 seconds
+progress 679804 cases 220.0 seconds
+progress 732908 cases 240.0 seconds
+progress 785935 cases 260.0 seconds
+PASS entry214c coefficient0272: all65536 input words x four T/I states 262144 cases
+PASS all256 SREG values x arithmetic boundaries 6144 cases
+progress 1001017 cases 280.0 seconds
+PASS all65536 coefficients x two boundary inputs: C selection/original fallback 262144 cases
+PASS_EXHAUSTIVE_APPLICATION_INPUT_DOMAINS 1054720 cases; max additional stack 27
+PASS unsigned GNU API all65536 inputs coefficient 0x20c
+PASS unsigned GNU API all65536 inputs coefficient 0x272
+PASS 131072 GNU API cases
+PASS original DAC caller 0x20a6 all12 channels x16 boundaries x4 SREG states
+PASS original DAC caller 0x20d0 all12 channels x16 boundaries x4 SREG states
+PASS original DAC caller 0x20ec all12 channels x16 boundaries x4 SREG states
+PASS original DAC caller 0x2104 all12 channels x16 boundaries x4 SREG states
+PASS 3072 original caller compositions

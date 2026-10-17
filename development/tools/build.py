@@ -24,8 +24,10 @@ def main():
     script.write_text('OUTPUT_FORMAT("elf32-avr")\nOUTPUT_ARCH(avr:106)\nENTRY(reset)\nMEMORY { flash (rx) : ORIGIN = 0, LENGTH = 0x22000 }\nSECTIONS {\nreset = 0;\n'+text+'}\nINCLUDE generated/assertions.ld\nASSERT(SIZEOF(.extensions) <= 0x4000, "extension exceeds reviewed FLASH window")\nASSERT(pm_extension_entry == 0x4000, "extension entry moved")\n')
     objects=[];frames=[]
     sources=sorted((DEV/'src').glob('*.c'))+sorted((DEV/'src').glob('*.S'))
-    if os.environ.get('PM_SCALING_CANDIDATE')=='1':
+    if os.environ.get('PM_SCALING_CANDIDATE')=='1' or os.environ.get('PM_DAC_CANDIDATE')=='1':
         sources+=sorted((DEV/'candidates/scaling').glob('*.c'))+sorted((DEV/'candidates/scaling').glob('*.S'))
+    if os.environ.get('PM_DAC_CANDIDATE')=='1':
+        sources+=sorted((DEV/'candidates/dac').glob('*.c'))+sorted((DEV/'candidates/dac').glob('*.S'))
     for source in sources:
         obj=BUILD/(source.stem+'.o');objects.append(obj)
         run(['avr-gcc','-mmcu=atxmega128a3u','-Os','-std=gnu99','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-fno-lto','-fstack-usage','-I'+str(DEV/'src'),'-c',source,'-o',obj])
@@ -69,6 +71,9 @@ def main():
     if 'pm_scaling_patch_table' in names:
         from scaling_patch import apply as apply_scaling
         apply_scaling(elf,golden,names,BUILD)
+    if 'pm_dac_patch_table' in names:
+        from dac_patch import apply as apply_dac
+        apply_dac(elf,golden,names,BUILD)
     run(['avr-objcopy','-O','ihex',elf,hexfile]);run([sys.executable,ROOT/'tools/memory_image.py',hexfile,binary])
     (BUILD/'development.dis').write_text(subprocess.check_output(['avr-objdump','-d',str(elf)],text=True))
     run([sys.executable,DEV/'tools/check_layout.py'])

@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "cases": 3072,
+  "original_callers": [
+    8358,
+    8400,
+    8428,
+    8452
+  ],
+  "input_words": [
+    0,
+    1,
+    127,
+    128,
+    255,
+    256,
+    511,
+    512,
+    19999,
+    20000,
+    20001,
+    32767,
+    32768,
+    65280,
+    65534,
+    65535
+  ],
+  "channels": 12,
+  "initial_SREG": [
+    0,
+    63,
+    128,
+    255
+  ],
+  "compared": "all32 GPRs, SREG, banks, original calibration RAM reads, SPI polling/write/IRQ traces, physical3-byte return stack",
+  "maximum_additional_stack_below_caller_entry": 31,
+  "canonical_candidate_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "limits": "boundary composition only; one deterministic calibration-RAM pattern and one polling pattern. Not exhaustive caller state/EEPROM domain, analog HW, cycle or async IRQ proof."
+}

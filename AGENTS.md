@@ -74,3 +74,13 @@ retaining all body bytes after the four-byte prefixes. Sources are isolated in
 Only coefficients0x4188 (signed),0x020c/0x0272 (unsigned) enter C; others replay
 the original prefixes and continue ASM. This target does not program hardware; ADT regression still blocks deployment.
 See docs/scaling/README.md for exact tested domains and limitations.
+
+# DAC control/update development candidate
+
+`make dac-check` additionally opts into standard-GNU-C SPI send and48-setting
+update at0x22aa/0x9de. Only entry JMPs are changed; original bodies retained.
+It includes the scaling candidates. The normal development image excludes both.
+DAC8554 has no digital readback; console settings are RAM shadows, not confirmed
+DAC contents. Simulation compares full SPI/IRQ traces and CPU contracts. Hardware
+and analog validation remain separate; no automatic board programming occurs.
+See docs/dac/README.md.

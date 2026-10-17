@@ -1,0 +1,35 @@
+{
+  "status": "SIMULATION_QUALIFIED_ONLY",
+  "new_legacy_entry_patches": {
+    "0x22aa": "DAC SPI sender",
+    "0x09de": "48-setting updater"
+  },
+  "sender_comparisons": 917504,
+  "full_update_comparisons": 2048,
+  "update_frames_compared": 98304,
+  "arithmetic_and_caller_regression_comparisons": 1188864,
+  "total_comparisons": 2108416,
+  "candidate_canonical_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "new_extension_bytes_vs_scaling_candidate": 496,
+  "new_C_bytes": 162,
+  "new_ASM_boundary_and_patch_bytes": 334,
+  "retained_original_DAC_body_bytes_after_gates": 202,
+  "original_baseline_differing_bytes": 0,
+  "hardware_actions": [],
+  "DAC_digital_readback": false,
+  "console_RF": "RAM shadow settings only",
+  "limits": "Simulation matrices are not all header/data/state combinations, all settings/calibration RAM images or analog/timing/async IRQ proof. See README.",
+  "stack": {
+    "sender_old_new_observed": [
+      3,
+      24
+    ],
+    "update_old_new_observed": [
+      24,
+      68
+    ],
+    "scope": "additional below function entry; old values from smoke, new also full matrix; excludes asynchronous nesting/system worst case"
+  },
+  "hardware": "NOT_RUN; no new deployment/release; ADT startup regression not resolved by this change",
+  "local_candidate_artifacts": "/home/codex-hil/artifacts/pm12-dac-simulation-2026-10-17"
+}

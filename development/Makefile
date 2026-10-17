@@ -28,3 +28,12 @@ scaling-check:
 	python3 tests/check_scaling_candidate.py
 	python3 tests/check_scaling_native_api.py
 	python3 tests/check_scaling_callers.py
+
+# DAC driver +48-setting updater; simulation only, includes scaling candidates.
+.PHONY: dac-check
+dac-check:
+	PM_DAC_CANDIDATE=1 $(MAKE) check
+	python3 tests/check_scaling_candidate.py
+	python3 tests/check_scaling_native_api.py
+	python3 tests/check_scaling_callers.py
+	python3 tests/check_dac_candidate.py

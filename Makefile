@@ -265,3 +265,7 @@ development-check:
 .PHONY: scaling-check
 scaling-check:
 	$(MAKE) -C development scaling-check
+
+.PHONY: dac-check
+dac-check:
+	$(MAKE) -C development dac-check

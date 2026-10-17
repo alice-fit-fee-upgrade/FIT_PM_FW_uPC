@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "cases": 131072,
+  "domain": "all65536 input words for each coefficient0x020c,0x0272",
+  "contract": "GNU ABI numeric result, callee-saved GPRs, R1 zero, physical3-byte return stack, no MMIO/static RAM",
+  "maximum_additional_stack_below_entry": 4,
+  "canonical_candidate_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "limits": "compiled AVR against original; not all2^32 argument pairs, cycle/async IRQ or hardware validation"
+}

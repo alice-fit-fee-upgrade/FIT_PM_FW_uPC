@@ -1,0 +1,63 @@
+{
+  "status": "PASS_EXHAUSTIVE_APPLICATION_INPUT_DOMAINS",
+  "direct_call_audit": {
+    "0x20ac": {
+      "target": "0x214c",
+      "coefficient": "0x20c"
+    },
+    "0x20e0": {
+      "target": "0x214c",
+      "coefficient": "0x272"
+    },
+    "0x20f2": {
+      "target": "0x2130",
+      "coefficient": "0x4188"
+    },
+    "0x210a": {
+      "target": "0x2130",
+      "coefficient": "0x4188"
+    }
+  },
+  "compiler": "avr-gcc (GCC) 7.3.0",
+  "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "cases": 1054720,
+  "stages": [
+    {
+      "name": "entry2130 coefficient4188: all65536 input words x four T/I states",
+      "cases": 262144
+    },
+    {
+      "name": "entry214c coefficient020c: all65536 input words x four T/I states",
+      "cases": 262144
+    },
+    {
+      "name": "entry214c coefficient0272: all65536 input words x four T/I states",
+      "cases": 262144
+    },
+    {
+      "name": "all256 SREG values x arithmetic boundaries",
+      "cases": 6144
+    },
+    {
+      "name": "all65536 coefficients x two boundary inputs: C selection/original fallback",
+      "cases": 262144
+    }
+  ],
+  "maximum_additional_stack_below_entry": 27,
+  "C_domains": {
+    "signed": "coefficient0x4188; all65536 input words x all4 T/I combinations",
+    "unsigned": "coefficients0x020c,0x0272; each all65536 input words x all4 T/I combinations"
+  },
+  "checks": [
+    "all32 GPRs including dirty R1:R0",
+    "all8 SREG bits",
+    "extended-bank save/restore",
+    "three-byte return addresses and physical stack balance",
+    "no MMIO/IRQ/static RAM accesses",
+    "fallback route for other coefficients"
+  ],
+  "canonical_candidate_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "coverage_limit": "NOT exhaustive over all2^32 coefficient/input pairs or all arbitrary CPU states. Other coefficients retain original ASM. Bank tests model register restoration, not extended-address electrical bus behavior.",
+  "hardware": "NOT_RUN; ADT startup regression blocks deployment; no programming by this test",
+  "timing": "functional decoded instruction model; no cycle/async IRQ or total system stack proof"
+}

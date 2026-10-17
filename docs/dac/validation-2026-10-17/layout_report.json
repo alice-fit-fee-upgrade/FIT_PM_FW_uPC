@@ -1,0 +1,67 @@
+{
+  "acceptance": "planned development differences only; NOT binary-exact PM.hex",
+  "golden_sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0",
+  "development_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "differing_bytes": 12253,
+  "gate_start": 4842,
+  "gate_length": 6,
+  "timer_mode": "legacy body in place; two four-byte temperature gates",
+  "temperature_guard_sites": [
+    1918,
+    1928
+  ],
+  "extension_start": 16384,
+  "extension_size": 12305,
+  "extension_limit": 32768,
+  "legacy_symbols_preserved": 4657,
+  "dac_candidate_gates": [
+    {
+      "address": 8874,
+      "length": 4,
+      "target": "pm_dev_dac_send_entry",
+      "original_body_retained": true
+    },
+    {
+      "address": 2526,
+      "length": 4,
+      "target": "pm_dev_dac_apply_entry",
+      "original_body_retained": true
+    }
+  ],
+  "scaling_candidate_gates": [
+    {
+      "address": 8496,
+      "length": 4,
+      "target": "pm_scaling_signed_entry",
+      "original_body_retained": true
+    },
+    {
+      "address": 8524,
+      "length": 4,
+      "target": "pm_scaling_unsigned_entry",
+      "original_body_retained": true
+    }
+  ],
+  "bootloader_unchanged": true,
+  "pll_read_gate": {
+    "address": 9422,
+    "length": 4,
+    "target": "pm_pll_read_legacy_adapter",
+    "original_body_retained": true
+  },
+  "retained_diagnostic_pg_hooks": [
+    "0x106a",
+    "0x662",
+    "0xac",
+    "0x68e",
+    "0x5e6",
+    "0xad4",
+    "0xbcc",
+    "0xc0c",
+    "0x1446",
+    "0x1550",
+    "0x1c3e"
+  ],
+  "bus_lock": "GPIORE/GPIORF explicitly reserved, reset-cleared and startup initialized",
+  "ram_globals": "rejected by linker; no unverified SRAM reservation"
+}

@@ -1,0 +1,22 @@
+PASS sender codewords, channel 0 output 0
+PASS sender codewords, channel 0 output 1
+PASS sender codewords, channel 0 output 2
+PASS sender codewords, channel 0 output 3
+PASS sender codewords, channel 4 output 0
+PASS sender codewords, channel 4 output 1
+PASS sender codewords, channel 4 output 2
+PASS sender codewords, channel 4 output 3
+PASS sender codewords, channel 8 output 0
+PASS sender codewords, channel 8 output 1
+PASS sender codewords, channel 8 output 2
+PASS sender codewords, channel 8 output 3
+PASS sender header/SREG matrix 1132
+PASS48-frame update settings pattern 0
+PASS48-frame update settings pattern 1
+PASS48-frame update settings pattern 2
+PASS48-frame update settings pattern 3
+PASS48-frame update settings pattern 4
+PASS48-frame update settings pattern 5
+PASS48-frame update settings pattern 6
+PASS48-frame update settings pattern 7
+SMOKE_ONLY {'sender': 1132, 'update': 16} {'sender': 24, 'update': 68}

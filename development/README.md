@@ -226,3 +226,12 @@ application input-domain comparisons. Ordinary development builds exclude
 `candidates/scaling/`. See [scope, results and limitations](../docs/scaling/README.md).
 The two old arithmetic entries retain their bodies and receive only four-byte
 JMPs in this optional mode. No hardware programming or release is performed.
+
+## Opt-in DAC driver and48-setting updater
+
+`make dac-check` enables both the arithmetic candidates and two extra legacy
+entry gates into ordinary C DAC send/update functions. Original bodies and
+all addresses remain retained. Full-frame/CPU/IRQ simulation results and the
+DAC8554 no-readback explanation are in [docs/dac](../docs/dac/README.md).
+Ordinary development builds exclude this code; there is no new console write
+command, automatic programming or hardware-qualified release.

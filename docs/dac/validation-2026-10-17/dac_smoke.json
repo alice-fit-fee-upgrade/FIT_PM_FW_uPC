@@ -1,0 +1,21 @@
+{
+  "status": "SMOKE_ONLY",
+  "cases": {
+    "sender": 1132,
+    "update": 16
+  },
+  "maximum_additional_stack_below_entry": {
+    "sender": 24,
+    "update": 68
+  },
+  "original_maximum_additional_stack_below_entry": {
+    "sender": 3,
+    "update": 24
+  },
+  "sender_coverage": "SMOKE: nine words x twelve representative headers; all256 controls x two SREG x two extreme words",
+  "update_coverage": "SMOKE: eight settings images x two SREG x48 writes",
+  "compared": "all32 GPR, all8 SREG, banks, physical3-byte call stack, complete SPI MMIO/IRQ traces, CS selection and frame bytes",
+  "canonical_candidate_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "limits": "NOT exhaustive over all settings/calibration RAM images, all header/data/state Cartesian products, timing, asynchronous IRQs, analog outputs or hardware. No DAC readback exists.",
+  "hardware": "NOT_RUN; no board programming/reset in this pass"
+}

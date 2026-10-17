@@ -1,0 +1,36 @@
+PASS sender codewords, channel 0 output 0
+progress {'sender': 83240, 'update': 0} 20.0 seconds
+PASS sender codewords, channel 0 output 1
+progress {'sender': 166793, 'update': 0} 40.0 seconds
+PASS sender codewords, channel 0 output 2
+progress {'sender': 250176, 'update': 0} 60.0 seconds
+PASS sender codewords, channel 0 output 3
+PASS sender codewords, channel 4 output 0
+progress {'sender': 329501, 'update': 0} 80.0 seconds
+PASS sender codewords, channel 4 output 1
+progress {'sender': 408215, 'update': 0} 100.0 seconds
+PASS sender codewords, channel 4 output 2
+progress {'sender': 486949, 'update': 0} 120.0 seconds
+PASS sender codewords, channel 4 output 3
+progress {'sender': 565313, 'update': 0} 140.0 seconds
+PASS sender codewords, channel 8 output 0
+progress {'sender': 643579, 'update': 0} 160.0 seconds
+PASS sender codewords, channel 8 output 1
+PASS sender codewords, channel 8 output 2
+progress {'sender': 721882, 'update': 0} 180.0 seconds
+PASS sender codewords, channel 8 output 3
+progress {'sender': 800750, 'update': 0} 200.0 seconds
+progress {'sender': 880353, 'update': 0} 220.0 seconds
+PASS sender header/SREG matrix 917504
+PASS48-frame update settings pattern 0
+progress {'sender': 917504, 'update': 359} 240.0 seconds
+PASS48-frame update settings pattern 1
+PASS48-frame update settings pattern 2
+progress {'sender': 917504, 'update': 989} 260.0 seconds
+PASS48-frame update settings pattern 3
+PASS48-frame update settings pattern 4
+PASS48-frame update settings pattern 5
+progress {'sender': 917504, 'update': 1644} 280.0 seconds
+PASS48-frame update settings pattern 6
+PASS48-frame update settings pattern 7
+PASS_SIMULATION_MATRIX {'sender': 917504, 'update': 2048} {'sender': 24, 'update': 68}

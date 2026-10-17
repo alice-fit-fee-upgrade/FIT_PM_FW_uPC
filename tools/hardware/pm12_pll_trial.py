@@ -67,6 +67,7 @@ def main():
     assert len(candidate) == 0x22000
     software = json.loads((ROOT/'development/build/pll_legacy_validation.json').read_text())
     layout = json.loads((ROOT/'development/build/layout_report.json').read_text())
+    assert not layout.get('dac_candidate_gates'), 'DAC candidate is simulation-only, outside the PLL hardware trial'
     assert not layout.get('scaling_candidate_gates'), 'scaling candidate is simulation-only, outside the PLL hardware trial'
     assert software['status'] == 'PASS' and layout['development_sha256'] == sha(candidate)
     assert layout['golden_sha256'] == sha((ROOT/'reference/flash_golden.bin').read_bytes())

@@ -1,0 +1,17 @@
+{
+  "status": "PASS_SIMULATION_MATRIX",
+  "cases": {
+    "sender": 917504,
+    "update": 2048
+  },
+  "maximum_additional_stack_below_entry": {
+    "sender": 24,
+    "update": 68
+  },
+  "sender_coverage": "all65536 DAC words x four outputs x three representative CS groups; all256 control bytes x all256 SREG x two extreme words",
+  "update_coverage": "eight settings images x all256 initial SREG; all48 writes each, exact ordered settings/calibration reads and SPI/IRQ trace",
+  "compared": "all32 GPR, all8 SREG, banks, physical3-byte call stack, complete SPI MMIO/IRQ traces, CS selection and frame bytes",
+  "canonical_candidate_sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69",
+  "limits": "NOT exhaustive over all settings/calibration RAM images, all header/data/state Cartesian products, timing, asynchronous IRQs, analog outputs or hardware. No DAC readback exists.",
+  "hardware": "NOT_RUN; no board programming/reset in this pass"
+}
