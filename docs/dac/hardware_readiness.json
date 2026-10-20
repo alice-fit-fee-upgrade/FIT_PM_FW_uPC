@@ -1,0 +1,44 @@
+{
+  "checked_date": "2026-10-20",
+  "status": "WAITING_FOR_SIMULATOR",
+  "source_checkpoint": "08e6830",
+  "branch": "development/dac-c-simulation",
+  "user_instruction": "Wait for the simulator; do not program PM12 pending readiness.",
+  "software_validation": {
+    "comparisons": 2108416,
+    "status": "PASS_SIMULATION_ONLY",
+    "exact_original_baseline_differing_bytes": 0,
+    "rerun_this_check": false,
+    "reason": "Firmware/test sources unchanged since qualified checkpoint."
+  },
+  "readiness_evidence": [
+    {
+      "path": "/home/codex-hil/FIT_PM12_TEST_COVERAGE/README.md",
+      "sha256": "cf76b415a414591f01a2859ecd4c5e543581eeff411b71f2e60afef03b41d3ef"
+    },
+    {
+      "path": "/home/codex-hil/FIT_PM12_TEST_COVERAGE/OPEN_QUESTIONS.md",
+      "sha256": "28d799b8908ede4a2e305ae007b6f8df28fae5c76b74e6535fbd31b55116221b"
+    },
+    {
+      "path": "/home/codex-hil/FIT_PM12_TEST_COVERAGE/DMM_MUX_PROPOSAL.md",
+      "sha256": "de1216a8367dbf15051ab48fb880521b6df844c081b3ce123f8c753223929c87"
+    }
+  ],
+  "current_evidence": "Audit describes simulator as unfinished, with schematic and actual GPIO/analog/mux map unavailable. This continuation did not physically inspect or enumerate a fixture.",
+  "agreed_measurement_scope": "Mezzanine connector only; no assumed access to raw DAC pins. Connector measurements qualify the full bias path, not isolated DAC accuracy. DAC A clock delay requires a separate phase test.",
+  "requirements_before_hardware": [
+    "Available simulator schematic and actual connector/analog/GPIO map",
+    "Verified power/reset/ownership and safe fixture connections",
+    "Instrument/mux configuration, calibration and agreed acceptance uncertainty",
+    "Separate handling of the recorded ADT startup regression before firmware deployment",
+    "Hold both PM12 and Atmel-ICE leases through any eventual reset/program/test/restoration"
+  ],
+  "actions_this_continuation": [
+    "Read-only repository and local project-status review",
+    "Recorded current readiness gate"
+  ],
+  "hardware_actions": [],
+  "programming_actions": [],
+  "new_release_created": false
+}
