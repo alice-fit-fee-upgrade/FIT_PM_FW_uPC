@@ -1,0 +1,4 @@
+codex-hil-Precision-5820-Tower-X-Series
+ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b sha256:7792b1f7702a86946cd518db72b6a407302c3e9bc1635634368b878189e8221c
+119d3beaee499186dfa045b57801501e1e907132a6e3b5a0ccb64544b5eda095  /srv/nvme-fast-2/toolchains/pm12-avr-7.3/usr/bin/avr-gcc
+d3ecf6328f6f9972b79741a12c606c3b61c7a7b053e957a5a42a1be50c5b49b3  /srv/nvme-fast-2/toolchains/pm12-avr-7.3/usr/bin/avr-ld

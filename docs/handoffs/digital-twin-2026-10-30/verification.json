@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-30",
+  "firmware_commit": "f0b2c7ef68e3ac737a1db17239a1af6f3a5f0ef1",
+  "branch": "development/dac-c-simulation",
+  "host": "codex-hil-Precision-5820-Tower-X-Series",
+  "clean_builds": [
+    "recovered_exact",
+    "development",
+    "development_with_dac_and_scaling"
+  ],
+  "baseline_differing_bytes": 0,
+  "candidate_hashes_match_historical": true,
+  "new_behavioral_tests": "NOT_RUN; source unchanged, historical evidence retained",
+  "hardware_actions": [],
+  "artifacts": {
+    "handoff-artifacts/SHA256SUMS": {
+      "bytes": 1404,
+      "sha256": "ba5aca5e713492d920ebb33deb1ea8be2500c11e8e08bbd0a7372d96b99f18fa"
+    },
+    "handoff-artifacts/dac/development.bin": {
+      "bytes": 139264,
+      "sha256": "f98cae124c45c272935c1c22c5c70ab4fa082aba518a6d8c38f0c2256becfa69"
+    },
+    "handoff-artifacts/dac/development.dis": {
+      "bytes": 495029,
+      "sha256": "c3c1657640fde5d3b7e1f621b8a1b15a0947082b3f70066b88d6125ed19656be"
+    },
+    "handoff-artifacts/dac/development.elf": {
+      "bytes": 206168,
+      "sha256": "ad66e1e1b13486065dd922f47a288e6e594fa12a3ee314c892e943620527af4d"
+    },
+    "handoff-artifacts/dac/development.hex": {
+      "bytes": 70261,
+      "sha256": "6de9e96f0fa1474fb570160c28dbbb3ec694677972eb0b5ab1fa0628b7e25a19"
+    },
+    "handoff-artifacts/dac/development.map": {
+      "bytes": 182360,
+      "sha256": "71e2aa4de2a493255ae3ca505d4c2e01c8dad08df07397d45b417dd66d8d5fe1"
+    },
+    "handoff-artifacts/development/development.bin": {
+      "bytes": 139264,
+      "sha256": "9ece53e796f4089d1bbd7aaf1d6c00fa52fc4780e53fe2edec487f0ce9726d0a"
+    },
+    "handoff-artifacts/development/development.dis": {
+      "bytes": 468166,
+      "sha256": "1a1b4cf1e87e90eb23fa817ce46ad25d31944beefcb5d2108589e00ce55b964a"
+    },
+    "handoff-artifacts/development/development.elf": {
+      "bytes": 203920,
+      "sha256": "306b70b13013ab450c1eb6f20f64e37daefa62fbcc7394be77ec4e57ba04db9a"
+    },
+    "handoff-artifacts/development/development.hex": {
+      "bytes": 66313,
+      "sha256": "022652e29206da5a744257d0f75207f9fb22a04b7ad5d2f900ea6b3dcf349c12"
+    },
+    "handoff-artifacts/development/development.map": {
+      "bytes": 178920,
+      "sha256": "ac520a8604bbc71464ce5109f234bd2254f31dda84a3514d2d037e802b2d7904"
+    },
+    "handoff-artifacts/exact/flash_rebuilt.bin": {
+      "bytes": 139264,
+      "sha256": "e80e8612f7114caff6d7a2494ad0f51010182f2c2c83fdfb3047c9f8a34663c0"
+    },
+    "handoff-artifacts/exact/reconstructed.elf": {
+      "bytes": 186560,
+      "sha256": "17bbc46d3e3908f46215ea203fa78a23e0262345917c7098695c861d99080398"
+    },
+    "handoff-artifacts/exact/reconstructed.hex": {
+      "bytes": 35641,
+      "sha256": "1e5989bde5e4bedde9dcdce12eeb5f63b8f7e94106d3257829e93a4a66017031"
+    }
+  }
+}
